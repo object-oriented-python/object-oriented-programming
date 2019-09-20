@@ -62,63 +62,147 @@ process of defining and manipulating mathematical objects, and
 scientifically testing and debugging the results.
 
 Abstraction in action
-=====================
+---------------------
 
 Consider this line of Python code::
+  
   print(a + b)
 
-What does it do? Well, assuming that `a` and `b` suitably defined, it
+What does it do? Well, assuming that `a` and `b` are suitably defined, it
 prints their sum. This, however, begs the question: what is "suitably
-defined", and what is "sum"? For example::
-  a = 1
-  b = 2
-  print(a + b)
+defined", and what is "sum"? For example:
 
-prints::
+.. code-block:: ipython3
+  
+  In [1]: a = 1
+  
+  In [2]: b = 2
+
+  In [3]: print(a + b)                                                                                                                                                                                                  
   3
 
-You're unlikely to be surprised that Python can add integers. On the other hand::
-  a = 'fr'
-  b = 'og'
-  print(a + b)
+You're unlikely to be surprised that Python can add integers. On the
+other hand:
+  
+.. code-block:: ipython3
+  
+  In [1]: a = 'fr'
+  
+  In [2]: b = 'og'
 
-prints::
+  In [3]: print(a + b)                                                                                                                                                                                                  
   'frog'
 
 So the meaning of `+` depends on what is being added. What happens if
-we add an integer to a string?::
-  a = 1
-  b = 'og'
-  print(a + b)
+we add an integer to a string?
 
-results in this error::
+.. code-block:: ipython3
+
+  In [1]: a = 1                                                                                                                                                                                                       
+
+  In [2]: b = 'og'                                                                                                                                                                                                    
+
+  In [3]: print(a + b)                                                                                                                                                                                                
   ---------------------------------------------------------------------------
   TypeError                                 Traceback (most recent call last)
-  <ipython-input-9-bd58363a63fc> in <module>
-  ----> 1 a + b
-
+  <ipython-input-3-0ae8b1612688> in <module>
+  ----> 1 print(a + b)
+  
   TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
-Python is complaining that `+` does not make sense if the items being
-added (the "operands") are a in integer and a string. This makes our
-understanding of "suitably defined" more concrete: clearly some pairs
-of objects can be added and others can't. However, we should be
-careful in the conclusions we draw. We might be tempted to believe
-that we can add two values if they are of the same type. However, if
-we try this with a pair of sets then we're also in trouble:: a = {1,
-2} b = {2, 3} print(a + b)
+In this error, Python is complaining that `+` does not make sense if
+the items being added (the "operands") are a in integer and a
+string. This makes our understanding of "suitably defined" more
+concrete: clearly some pairs of objects can be added and others
+can't. However, we should be careful in the conclusions we draw. We
+might be tempted to believe that we can add two values if they are of
+the same type. However, if we try this with a pair of sets then we're
+also in trouble:
 
-results in::
+.. code-block:: ipython3
+  
+  In [1]: a = {1, 2}                                                                                                                                                                                                  
 
+  In [2]: b = {2, 3}                                                                                                                                                                                                  
 
-We might be tempted
-to conclude that two values can be added only if they are of the same
+  In [3]: print(a + b)                                                                                                                                                                                                
+  ---------------------------------------------------------------------------
+  TypeError                                 Traceback (most recent call last)
+  <ipython-input-3-0ae8b1612688> in <module>
+  ----> 1 print(a + b)
+
+  TypeError: unsupported operand type(s) for +: 'set' and 'set'
+  
+Conversely we might suspect that two values can be added only if they are of the same
 type. However it is perfectly legal to add an integer and a floating
 point value::
+
   a = 1
   b = 2.5
   print(a + b)
 
+yields::
+
+  3.5
+
+In Python, the operator `+` encodes an abstraction for addition. This means
+that `+` stands for the addition operation, whatever that may mean for
+a particular pair of operands. For the purposes of the abstraction,
+everything which is specific to the particular operands is
+ignored. This includes, for example,
+the mechanism by which the addition is calculated and the value of the
+result. This enables a programmer to think about the relatively simple
+mathematical operation of addition, rather than the potentially
+complex or messy way it might be implemented for particular data.
+
+.. proof:definition::
+
+   An *abstraction* is a mathematical object with a limited set of
+   defined properties. For the purposes of the abstraction, any other
+   properties that an object may have are disregarded.
+
+An abstraction is a purely mathematical concept, but it is one which
+maps to one or more concrete realisations in code. Sometimes the
+abstract mathematical concept and its concrete realisation match so
+perfectly that it is difficult to distinguish the two. In those
+circumstances we usually conflate the terminology for the abstraction
+and the code object. "Type" is one such example, and we turn to that
+now.
+
+Types
+-----
+
+In the previous section, we observed that addition may or may not be
+defined, depending on what the types of its operands are. In doing so,
+we skirted the question of what it means for a code object to have
+type.
+
+.. proof:definition::
+
+   A *type* or *class* is an abstraction defined by a set of possible values, and
+   a set of operators valid for objects of that type.
+
+Every object in Python has a type. This is true for primitive numeric
+types, such as :class:`int`, :class:`float`, and :class:`complex`; for sequences such as
+string (:class:`str`), :class:`tuple`, and :class:`list`; and also for more complex types
+such as :class:`set` and dictionary (:class:`dict`). Indeed, the
+Python concept of type goes much further, as we discover if we call
+:class:`type` on various objects:
+
+.. code-block:: ipython3
+
+  In [1]: type(1)                                                                                                                                                                                                     
+  Out[1]: int
+  
+  In [2]: type(abs)                                                                                                                                                                                                   
+  Out[2]: builtin_function_or_method
 
 
+  
 
+Defining objects
+----------------
+
+Abstractions by themselves are not sufficient: we need code objects
+embodying those abstractions in order to perform actual
+computations. Some of those

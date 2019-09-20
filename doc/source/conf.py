@@ -35,7 +35,9 @@ extensions = [
     'sphinxcontrib.youtube',
     'sphinx.ext.viewcode',
     'sphinxcontrib.proof',
-    'sphinxcontrib.bibtex'
+    'sphinxcontrib.bibtex',
+    'IPython.sphinxext.ipython_console_highlighting',
+    'IPython.sphinxext.ipython_directive'
 ]
 # Both the class’ and the __init__ method’s docstring are concatenated and
 # inserted into the class definition
@@ -84,7 +86,7 @@ exclude_patterns = []
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
-default_role = "math"
+#default_role = "python"
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 #add_function_parentheses = True
