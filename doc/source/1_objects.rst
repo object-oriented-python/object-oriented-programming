@@ -135,15 +135,16 @@ also in trouble:
   
 Conversely we might suspect that two values can be added only if they are of the same
 type. However it is perfectly legal to add an integer and a floating
-point value::
+point value:
 
-  a = 1
-  b = 2.5
-  print(a + b)
+.. code-block:: ipython3
+   
+   In [1]: a = 1                                                                                                                                                                                                       
 
-yields::
+   In [2]: b = 2.5                                                                                                                                                                                                     
 
-  3.5
+   In [3]: print(a + b)                                                                                                                                                                                                
+   3.5
 
 In Python, the operator `+` encodes an abstraction for addition. This means
 that `+` stands for the addition operation, whatever that may mean for
@@ -197,12 +198,103 @@ Python concept of type goes much further, as we discover if we call
   In [2]: type(abs)                                                                                                                                                                                                   
   Out[2]: builtin_function_or_method
 
+So `1` is an object of type :class:`int`, which means that it comes with all of
+Python's operations for integer arithmetic. :func:`abs`, on the other hand,
+is a builtin function, so its priciple operation is that it can be
+called on one or more suitable arguments (for example `abs(1)`). If
+every object has a type, what about types themselves? What is the type
+of `int`?
 
+.. code-block:: ipython3
   
+  In [1]: type(int)                                                                                                                                                                                                   
+  Out[1]: type 
 
-Defining objects
-----------------
+So :class:`int` is the type of integer objects, and is itself an
+object with type :class:`type`. That rather invites the question what
+is the type of :class:`type`?
 
-Abstractions by themselves are not sufficient: we need code objects
-embodying those abstractions in order to perform actual
-computations. Some of those
+.. code-block:: ipython3
+
+  In [1]: type(type)                                                                                                                                                                                                  
+  Out[1]: type
+
+This actually makes perfect sense, because :class:`type` is simply the
+type of types.
+
+We will return to types in much more detail later. At this stage, the
+take home message is that essentially everything you will encounter in
+Python is an object, and every object has a type.
+
+.. note::
+
+   In Python, the term
+   "class" is essentially synonymous with "type", so "what is the class
+   of `foo`" is the same as saying "what is the type of "foo". However
+   the two terms are not synonyms when used in code. :class:`type` can be
+   used to determine the type of an object, while :keyword:`class` is
+   used to define new types.
+
+
+Defining new types
+------------------
+
+Python has a rich set of :doc:`built-in types
+<library/stdtypes>`. These form powerful building blocks for the
+language, but one very soon finds mathematical abstractions which do
+not have implementations among the built-in types of the Python
+interpreter. For example, the built-in types do not include a matrix
+or multidimensional array type. The ability to make new data types
+which provide concrete implementations of further mathematical
+abstractions is central to effectively exploiting abstraction in
+programming.
+
+As an example, lets suppose that we want to work with real polynomials in
+one variable. That is to say, functions of the form:
+
+.. math::
+
+   f(x) = \sum_{n=0}^d c_n x^n \quad \textrm{for some } d\in
+   \mathbb{N}, c_n \in \mathbb{R}
+
+The set of all polynomials is a well-defined (though infinite) set of
+different values, with a number of well-defined properties. For
+example we can add and multiply polynomials, resulting in a new
+polynomial. We can also evaluate a polynomial for a particular value
+of :eq:`x`, which would result in a real value.
+
+This is the mathematical abstraction of a polynomial. How would we
+represent this abstraction in Python code? A polynomial is
+characterised by its set of coefficients, so we could in principle
+represent a polynomial as a :class:`tuple` of coefficient
+values. However, addition of tuples is concatenation, and
+multiplication of two tuples isn't even defined, so this would be a
+very poor representation of the mathematics: a polynomial represented
+as a tuple of coefficients would not behave the way a mathematician
+would expect. Instead, what we need to do is make a new type whose
+operations match the mathematical properties of a polynomial.
+
+Classes and constructors
+........................
+
+The Python keyword for declaring a new type is
+:keyword:`class`. Just like a function declaration, this creates a new
+indented block. In this case, the block contains all of the function
+declarations which define the operations on this new type. Let's make
+a very simple implementation::
+
+  class Polynomial:
+
+    def __init__(self, coefficients):
+
+        self.coefficients = coefficients
+
+Executing this code in a Python interpreter would enable us to create
+a simple polynomial, and inspect its coefficients:
+
+.. code-block:: ipython3
+
+   In [7]: f = Polynomial((0, 1, 2))                                                                                                                                                                                   
+
+   In [8]: f.coefficients                                                                                                                                                                                             
+   Out[8]: (0, 1, 2)
