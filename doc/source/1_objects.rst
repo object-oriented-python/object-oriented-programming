@@ -200,7 +200,7 @@ Python concept of type goes much further, as we discover if we call
 
 So `1` is an object of type :class:`int`, which means that it comes with all of
 Python's operations for integer arithmetic. :func:`abs`, on the other hand,
-is a builtin function, so its priciple operation is that it can be
+is a builtin function, so its defining operation is that it can be
 called on one or more suitable arguments (for example `abs(1)`). If
 every object has a type, what about types themselves? What is the type
 of `int`?
@@ -230,7 +230,7 @@ Python is an object, and every object has a type.
 
    In Python, the term
    "class" is essentially synonymous with "type", so "what is the class
-   of `foo`" is the same as saying "what is the type of "foo". However
+   of `foo`" is the same as saying "what is the type of `foo`". However
    the two terms are not synonyms when used in code. :class:`type` can be
    used to determine the type of an object, while :keyword:`class` is
    used to define new types.
@@ -294,7 +294,23 @@ a simple polynomial, and inspect its coefficients:
 
 .. code-block:: ipython3
 
-   In [7]: f = Polynomial((0, 1, 2))                                                                                                                                                                                   
-
-   In [8]: f.coefficients                                                                                                                                                                                             
+   In [7]: f = Polynomial((0, 1, 2))
+   In [8]: f.coefficients
    Out[8]: (0, 1, 2)
+
+The three lines of Python defining the :class:`Polynomial` class contain
+several important concepts and Python details that it is important to
+understand.
+
+The :doc:`class definition <class>` statement opens a new block, so
+just like a :doc:`function definition <function>`, it starts with
+the keyword, followed by the name of the class we are defining, and
+ends with a colon. User-defined classes in Python (i.e. classes not
+built in to the language) usually have CapWords names. This means
+that all the words in the name a run together without spaces. For
+example, if we decided to make a separate class for complex-valued
+polynomials, we might call it :class:`ComplexPolynomial`.
+
+ Inside the class definition, i.e. indented inside the block, is a
+ function called :meth:`__init__`. Functions defined inside a class
+ definition are called *methods*:
