@@ -285,9 +285,9 @@ a very simple implementation::
 
   class Polynomial:
 
-    def __init__(self, coefficients):
+    def __init__(self, coefs):
 
-        self.coefficients = coefficients
+        self.coefficients = coefs
 
 Executing this code in a Python interpreter would enable us to create
 a simple polynomial, and inspect its coefficients:
@@ -311,6 +311,267 @@ that all the words in the name a run together without spaces. For
 example, if we decided to make a separate class for complex-valued
 polynomials, we might call it :class:`ComplexPolynomial`.
 
- Inside the class definition, i.e. indented inside the block, is a
- function called :meth:`__init__`. Functions defined inside a class
- definition are called *methods*:
+Inside the class definition, i.e. indented inside the block, is a
+function called :meth:`__init__`. Functions defined inside a class
+definition are called :term:`methods<method>`. The :meth:`__init__` method has a
+rather distinctive form of name, starting and ending with two
+underscores. Names of this format are used in the Python language for
+objects which have special meaning in the Python language. The
+:meth:`__init__` method of a class has special meaning in Python as
+the :term:`constructor` of a class. When we write:
+
+.. code-block:: ipython3
+
+   In [7]: f = Polynomial((0, 1, 2))
+
+This is called :term:`instantiating` an object of type
+:class:`Polynomial`. The following steps occur:
+
+1. Python creates an object of type :class:`Polynomial`.
+2. The :class:`__init__` :term:`special method` of :class:`Polynomial`
+   is called. The new :class:`Polynomial` object is passed as the
+   first argument (`self`), and the :class:`tuple` `(0, 1, 2)` is passed
+   as second argument (`coefs`).
+3. The name `f` in the surrounding scope is associated with the
+   :class:`Polynomial`.
+
+         
+
+Attributes
+..........
+
+Let's now look at what happened inside the :meth:`__init__` method. We
+have just one line::
+
+  self.coefficients = coefs
+
+Remember that `self` is the object we are setting up, and coefs is the
+other parameter to :meth:`__init__`. This line of code creates a new
+name inside this :class:`Polynomial` object, called
+`coefficients`, and associates this new name with the object passed as
+the argument to the :class:`Polynomial` constructor. Names such as
+this are called :term:`attributes<attribute>`. We create an attribute
+just by assigning to it, and we can then read back the attribute using
+the same syntax, which is what we did here:
+
+.. code-block:: ipython3
+
+   In [8]: f.coefficients
+   Out[8]: (0, 1, 2)
+
+
+Methods
+.......
+
+We have already met the :term:`special method` :class:`__init__`,
+which defines the class constructor. A much more typical case is an
+ordinary method, without a special underscore name. For example,
+suppose we wish to be able to access the degree of a polynomial, then
+we might add a :meth:`degree` method to our class::
+
+  class Polynomial:
+
+    def __init__(self, coefs):
+
+        self.coefficients = coefs
+
+    def degree(self):
+        
+        return len(self.coefficients) - 1
+
+Observe that the new method is indented inside the :keyword:`class`
+block at the same level as the :meth:`__init__` method. Observe also
+that it too takes `self` as its first parameter. A key difference from
+the :meth:`__init__` method is that :meth:`degree` now returns a
+value, as most functions do. We can now use our new method to recover
+the degree of our Polynomial.
+
+.. code-block:: ipython3
+
+   In [1]: f = Polynomial((0, 1, 2))
+   In [2]: f.degree()
+   Out[2]: 2
+
+.. note::
+
+   The object itself is always passed as the first argument to a
+   :term:`method`. Technically, it is possible to name the first
+   parameter any legal Python name, but there is a **very** strong
+   convention that the first parameter to any method of a class
+   instance is called `self`. **Never, ever** name this parameter
+   anything other than `self`, or you will confuse every Python
+   programmer who reads your code!
+
+String representations of objects
+.................................
+
+Remember that a key reason for defining new classes is to enable users
+to reason about the resulting objects at a higher mathematical level. An
+important aid to the user in doing this is to be able to look at the
+object. What happens if we print a :class:`Polynomial`?
+
+.. code-block:: ipython3
+
+   In [1]: f = Polynomial((0, 1, 2))
+   In [2]: print(f)
+   <Polynomial object at 0x104960dd0>
+
+This is less than useful. By default, Python just prints the class of
+the object, and the memory address at which this particular object is
+stored. This is, however, not so surprising if we think about the
+situation in a little more depth. How was Python supposed to know what
+sort of string representation makes sense for this object? We will
+have to tell it.
+
+The way we do so is using another :term:`special method`. The special
+method for the primary string representation of an object is
+:meth:`__str__`. It takes no arguments other than the object itself,
+and we could define it thus::
+
+    def __str__(self):
+
+        coefs = self.coefficients
+        terms = []
+        # Process the higher degree terms in reverse order.
+        for d in range(self.degree(), 1, -1):
+            if coefs[d]:
+                terms.append(str(coefs[d]) + "x^" + str(d))
+        # Degree 1 and 0 terms conventionally have different representation.
+        if self.degree() > 0 and coefs[1]:
+            terms.append(str(coefs[1]) + "x")
+        if coefs[0]:
+            terms.append(str(coefs[0]))
+
+        return " + ".join(terms) or "0"
+
+This slightly longer piece of code results from the fact that the
+linear and constant terms in a polynomial are usually represented
+slightly differently from the higher order terms. Having added this
+new method to our class, we can now observe the result:
+      
+.. code-block:: ipython3
+
+      In [2]: f = Polynomial((1, 2, 0, 4, 5))                                                                                
+      In [3]: print(f)                                                                                                   
+      5x^4 + 4x^3 + 2x + 1
+   
+In fact, Python provides not one, but two :term:`special
+methods<special method>` which convert an object to a
+string. :meth:`__str__` is called by :func:`print` and also by
+:func:`str`. Its role is to provide the string representation which
+is best understood by humans. In mathematical code, this will usually
+be the mathematical notation for the object. In contrast, the
+:meth:`__repr__` method  is called by :func:`repr` and also provides
+the default string representation printed out by the Python command
+line. By convention, :meth:`__repr__` should return a string which a
+user might type in order to recreate the object. For example::
+
+  def __repr__(self):
+  
+      return "Polynomial(" + repr(self.coefficients) + ")"
+
+Notice that in order to help ensure consistency of representations we
+call :func:`repr` on the coefficients in this case, whereas in the
+:meth:`__str__` method we called :func:`str`.
+
+We can now observe the difference in the result:
+
+.. code-block:: ipython3
+
+   In [2]: f = Polynomial((1, 2, 0, 4, 5))                                                                                
+   In [3]: f                                                                                                          
+   Out[3]: Polynomial((1, 2, 0, 4, 5))
+
+
+Defining arithmetic options on objects
+......................................
+
+It's all very well to be able to print out our polynomial objects, but
+we won't really have captured the mathematical abstraction involved
+unless we have at least some mathematical operations. We have already
+observed that objects of some classes can be added. Is this true for
+:class:`Polynomial`\s? 
+
+.. code-block:: ipython3
+
+   In [2]: a = Polynomial((1, 0))                                                                                     
+   In [3]: b = Polynomial((1,))                                                                                       
+   In [4]: a + b                                                                                                      
+   ---------------------------------------------------------------------------
+   TypeError                                 Traceback (most recent call last)
+   <ipython-input-4-bd58363a63fc> in <module>
+   ----> 1 a + b
+
+   TypeError: unsupported operand type(s) for +: 'Polynomial' and 'Polynomial'
+
+Of course once again this is not so surprising since we haven't
+defined what addition of polynomials should mean. The :term:`special
+method` which defines addition is :meth:`__add__`. It takes the
+object itself and  another object, and returns their sum. That is,
+when you write `a + b` in Python, then what actually happens is
+`a.__add__(b)`. 
+
+Before we define our addition method, we first need to consider what
+other objects it might make sense to add to a polynomial. Obviously we
+should be able to add two polynomials, but it also makes sense to add
+a number to a polynomial. In either case, the result will be a new
+polynomial, with coefficients equal to the sum of those of the
+summands.
+
+We also need to do something in the case where a user attempts to add
+to a polynomial a value for which the operation makes no sense. For
+example, a user might accidentally attempt to add a string to a
+polynomial. In this case, the Python language specification requires
+that we return the special value
+:obj:`NotImplemented`. Differentiating between the types of operands
+requires two more Python features we have not yet met. One of these is
+the built in function :func:`isinstance`, which tests whether an
+object is an instance of a class. The other is the class :class:`Number`,
+which we import from the :mod:`numbers` module. All Python numbers are
+instances of :class:`Number` so this provides a mechanism for checking
+whether the other operand is a number. We will consider
+:func:`isinstance` and :class:`Number` in more detail when we look at
+inheritance and abstract base classes.
+
+Putting all this together, we can define polynomial addition:
+
+
+
+
+Glossary
+--------
+
+ .. glossary::
+    :sorted:
+
+    attribute
+       A value encapsulated in another object, such as a
+       :term:`class`. Attributes are accessed using dot syntax, so if
+       `b` is an attribute of `a` then its value is accessed using the
+       syntax `a.b`.
+
+    instance
+       An object of a particular class. `a` is an instance of
+       :class:`MyClass` means that `a` has class `MyClass`. We will
+       return to this concept when we learn about inheritance.
+
+    constructor
+       The :meth:`__init__` method of a :term:`class`. The constructor
+       is passed the new object as its first argument (`self`) and is
+       responsible for setting up the object. The constructor modifies
+       `self` in place: constructors never return a value.
+
+    method
+       A function defined within a :keyword:`class`. If `a` is an
+       instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
+       `a.foo()` is equivalent to `MyClass.foo(a)`. The first argument
+       of a method is always named `self`.
+
+    special method
+    magic method
+       A method which has special meaning in the Python
+       language. Special method names are used to define operations on
+       a :term:`class` such as arithmetic operators, indexing, or the
+       class :term:`constructor`. See :doc:`the Python documentation
+       <specialnames>` for a technical description. Special methods
+       are sometimes informally called "magic methods".
