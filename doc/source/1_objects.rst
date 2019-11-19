@@ -330,8 +330,8 @@ This is called :term:`instantiating` an object of type
 1. Python creates an object of type :class:`Polynomial`.
 2. The :class:`__init__` :term:`special method` of :class:`Polynomial`
    is called. The new :class:`Polynomial` object is passed as the
-   first argument (`self`), and the :class:`tuple` `(0, 1, 2)` is passed
-   as second argument (`coefs`).
+   first parameter (`self`), and the :class:`tuple` `(0, 1, 2)` is passed
+   as second parameter (`coefs`).
 3. The name `f` in the surrounding scope is associated with the
    :class:`Polynomial`.
 
@@ -432,13 +432,17 @@ and we could define it thus::
 
         coefs = self.coefficients
         terms = []
+
+        # It is conventional to omit factors of 1.
+        str1 = lambda n: '' if n == 1 else str(n)
+        
         # Process the higher degree terms in reverse order.
         for d in range(self.degree(), 1, -1):
             if coefs[d]:
-                terms.append(str(coefs[d]) + "x^" + str(d))
+                terms.append(str1(coefs[d]) + "x^" + str(d))
         # Degree 1 and 0 terms conventionally have different representation.
         if self.degree() > 0 and coefs[1]:
-            terms.append(str(coefs[1]) + "x")
+            terms.append(str1(coefs[1]) + "x")
         if coefs[0]:
             terms.append(str(coefs[0]))
 
@@ -451,9 +455,9 @@ new method to our class, we can now observe the result:
       
 .. code-block:: ipython3
 
-      In [2]: f = Polynomial((1, 2, 0, 4, 5))                                                                                
-      In [3]: print(f)                                                                                                   
-      5x^4 + 4x^3 + 2x + 1
+      In [2]: f = Polynomial((1, 2, 0, 1, 5))
+      In [3]: print(f)
+      5x^4 + x^3 + 2x + 1
    
 In fact, Python provides not one, but two :term:`special
 methods<special method>` which convert an object to a
@@ -533,11 +537,88 @@ whether the other operand is a number. We will consider
 :func:`isinstance` and :class:`Number` in more detail when we look at
 inheritance and abstract base classes.
 
-Putting all this together, we can define polynomial addition:
+Putting all this together, we can define polynomial addition::
+
+    def __add__(self, other):
+        
+        if isinstance(other, Number):
+            return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
+        
+        elif isinstance(other, Polynomial):
+            # Work out how many coefficient places the two polynomials have in common.
+            common = min(self.degree(), other.degree()) + 1
+            # Sum the common coefficient positions.
+            coefs = tuple(a + b for a, b in zip(self.coefficients[:common],
+                                                 other.coefficients[:common]))
+            
+            # Append the high degree coefficients from the higher degree summand.
+            coefs += self.coefficients[common:] + other.coefficients[common:]
+            
+            return Polynomial(coefs)
+
+        else:
+            return NotImplemented
+
+Notice that we create a new :class:`Polynomial` object for the result
+each time: the sum of two polynomials is a different polynomial, it
+doesn't modify either polynomial in place.
+
+Let's try our new addition functionality in action:
+
+.. code-block:: ipython3
+   
+   In [2]: a = Polynomial((1, 2, 0, 1))
+   In [3]: print(a)                                                                                                   
+   x^3 + 2x + 1
+   In [4]: b = Polynomial((0, 1))                                                                                     
+   In [5]: print(b)
+   In [6]: print(a + b)                                                                                               
+   x^3 + 3x + 1
+   In [7]: print(a + 1)                                                                                               
+   x^3 + 2x + 2
+   In [8]: print(1 + a)                                                                                               
+   ---------------------------------------------------------------------------
+   TypeError                                 Traceback (most recent call last)
+   <ipython-input-8-a42ff1c9a542> in <module>
+   ----> 1 print(1 + a)
+   
+   TypeError: unsupported operand type(s) for +: 'int' and 'Polynomial'
+
+So, everything proceeds as expected until we try to add a
+:class:`Polynomial` to an integer. What happened? Remember that
+`1 + a` causes Python to call `int.__add__(1, a)`. What does that do?:
+
+.. code-block:: ipython3
+    
+    In [9]: int.__add__(1, a)                                                                                          
+    Out[9]: NotImplemented
+
+Naturally, Python's inbuilt :type:`int` type knows nothing about our
+new :class:`Polynomial` class, so when we ask it to do the addition,
+it returns :obj:`NotImplemented`. We could, however, tell
+:class:`Polynomial` how to be added to an :type:`int`, and Python
+provides a mechanism for this. If the :meth:`__add__` of the left hand
+operand of `+` returns :obj:`NotImplemented`, then Python tries the
+reverse addition method, called :meth:`__radd__`, on the right hand
+operand. Because we know that polynomial addition is commutative,
+we can define this very easily::
+
+    def __radd__(self, other):
+
+        return self + other
+
+With our newly enhanced :class:`Polynomial` class, we can revisit the
+previously problematic operation:
+
+.. code-block:: ipython3
+   
+   In [2]: a = Polynomial((1, 2, 0, 1))
+   In [3]: print(1 + a)                                                                                               
+   x^3 + 2x + 2
 
 
 
-
+   
 Glossary
 --------
 
@@ -564,7 +645,7 @@ Glossary
     method
        A function defined within a :keyword:`class`. If `a` is an
        instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
-       `a.foo()` is equivalent to `MyClass.foo(a)`. The first argument
+       `a.foo()` is equivalent to `MyClass.foo(a)`. The first parameter
        of a method is always named `self`.
 
     special method
