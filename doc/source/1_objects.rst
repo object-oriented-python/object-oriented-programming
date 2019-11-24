@@ -75,10 +75,8 @@ defined", and what is "sum"? For example:
 .. code-block:: ipython3
   
   In [1]: a = 1
-  
   In [2]: b = 2
-
-  In [3]: print(a + b)                                                                                                                                                                                                  
+  In [3]: print(a + b)                                           
   3
 
 You're unlikely to be surprised that Python can add integers. On the
@@ -87,10 +85,8 @@ other hand:
 .. code-block:: ipython3
   
   In [1]: a = 'fr'
-  
   In [2]: b = 'og'
-
-  In [3]: print(a + b)                                                                                                                                                                                                  
+  In [3]: print(a + b)                                              
   'frog'
 
 So the meaning of `+` depends on what is being added. What happens if
@@ -98,11 +94,9 @@ we add an integer to a string?
 
 .. code-block:: ipython3
 
-  In [1]: a = 1                                                                                                                                                                                                       
-
-  In [2]: b = 'og'                                                                                                                                                                                                    
-
-  In [3]: print(a + b)                                                                                                                                                                                                
+  In [1]: a = 1
+  In [2]: b = 'og'
+  In [3]: print(a + b)
   ---------------------------------------------------------------------------
   TypeError                                 Traceback (most recent call last)
   <ipython-input-3-0ae8b1612688> in <module>
@@ -121,11 +115,9 @@ also in trouble:
 
 .. code-block:: ipython3
   
-  In [1]: a = {1, 2}                                                                                                                                                                                                  
-
-  In [2]: b = {2, 3}                                                                                                                                                                                                  
-
-  In [3]: print(a + b)                                                                                                                                                                                                
+  In [1]: a = {1, 2}
+  In [2]: b = {2, 3}
+  In [3]: print(a + b)
   ---------------------------------------------------------------------------
   TypeError                                 Traceback (most recent call last)
   <ipython-input-3-0ae8b1612688> in <module>
@@ -139,11 +131,9 @@ point value:
 
 .. code-block:: ipython3
    
-   In [1]: a = 1                                                                                                                                                                                                       
-
-   In [2]: b = 2.5                                                                                                                                                                                                     
-
-   In [3]: print(a + b)                                                                                                                                                                                                
+   In [1]: a = 1
+   In [2]: b = 2.5
+   In [3]: print(a + b)
    3.5
 
 In Python, the operator `+` encodes an abstraction for addition. This means
@@ -192,10 +182,9 @@ Python concept of type goes much further, as we discover if we call
 
 .. code-block:: ipython3
 
-  In [1]: type(1)                                                                                                                                                                                                     
+  In [1]: type(1)                                          
   Out[1]: int
-  
-  In [2]: type(abs)                                                                                                                                                                                                   
+  In [2]: type(abs)                                        
   Out[2]: builtin_function_or_method
 
 So `1` is an object of type :class:`int`, which means that it comes with all of
@@ -207,7 +196,7 @@ of `int`?
 
 .. code-block:: ipython3
   
-  In [1]: type(int)                                                                                                                                                                                                   
+  In [1]: type(int)                                        
   Out[1]: type 
 
 So :class:`int` is the type of integer objects, and is itself an
@@ -216,7 +205,7 @@ is the type of :class:`type`?
 
 .. code-block:: ipython3
 
-  In [1]: type(type)                                                                                                                                                                                                  
+  In [1]: type(type)                                       
   Out[1]: type
 
 This actually makes perfect sense, because :class:`type` is simply the
@@ -302,8 +291,8 @@ The three lines of Python defining the :class:`Polynomial` class contain
 several important concepts and Python details that it is important to
 understand.
 
-The :doc:`class definition <class>` statement opens a new block, so
-just like a :doc:`function definition <function>`, it starts with
+The :ref:`class definition <python:class>` statement opens a new block, so
+just like a :ref:`function definition <function>`, it starts with
 the keyword, followed by the name of the class we are defining, and
 ends with a colon. User-defined classes in Python (i.e. classes not
 built in to the language) usually have CapWords names. This means
@@ -335,7 +324,6 @@ This is called :term:`instantiating` an object of type
 3. The name `f` in the surrounding scope is associated with the
    :class:`Polynomial`.
 
-         
 
 Attributes
 ..........
@@ -392,6 +380,10 @@ the degree of our Polynomial.
    In [2]: f.degree()
    Out[2]: 2
 
+To clarify the role of the `self` parameter it helps to understand
+that `f.degree()` is just a short way of writing
+`Polynomial.degree(f)`.
+
 .. note::
 
    The object itself is always passed as the first argument to a
@@ -424,7 +416,7 @@ sort of string representation makes sense for this object? We will
 have to tell it.
 
 The way we do so is using another :term:`special method`. The special
-method for the primary string representation of an object is
+method name for the human readable string representation of an object is
 :meth:`__str__`. It takes no arguments other than the object itself,
 and we could define it thus::
 
@@ -530,7 +522,7 @@ that we return the special value
 :obj:`NotImplemented`. Differentiating between the types of operands
 requires two more Python features we have not yet met. One of these is
 the built in function :func:`isinstance`, which tests whether an
-object is an instance of a class. The other is the class :class:`Number`,
+object is an instance of a class. The other is the class :class:`~numbers.Number`,
 which we import from the :mod:`numbers` module. All Python numbers are
 instances of :class:`Number` so this provides a mechanism for checking
 whether the other operand is a number. We will consider
@@ -593,10 +585,10 @@ So, everything proceeds as expected until we try to add a
     In [9]: int.__add__(1, a)                                                                                          
     Out[9]: NotImplemented
 
-Naturally, Python's inbuilt :type:`int` type knows nothing about our
+Naturally, Python's inbuilt :class:`int` type knows nothing about our
 new :class:`Polynomial` class, so when we ask it to do the addition,
 it returns :obj:`NotImplemented`. We could, however, tell
-:class:`Polynomial` how to be added to an :type:`int`, and Python
+:class:`Polynomial` how to be added to an :class:`int`, and Python
 provides a mechanism for this. If the :meth:`__add__` of the left hand
 operand of `+` returns :obj:`NotImplemented`, then Python tries the
 reverse addition method, called :meth:`__radd__`, on the right hand
@@ -616,8 +608,63 @@ previously problematic operation:
    In [3]: print(1 + a)                                                                                               
    x^3 + 2x + 2
 
+Of course addition is not the only arithmetic operator one might wish
+to overload. A fully featured polynomial class will, at the very
+minimum, need subtraction, multiplication (by a scalar or another
+polynomial) and exponentiation by an integer power. The combination of
+these, and particularly exponentiation, would allow the user to define
+new polynomials in a particularly natural way, using Python's
+intrinsic operators:
 
+   In [1]: x = Polynomial((0, 1))
+   In [2]: print(x)
+   x
+   In [3]: p = x**3 + 2*x + 2
+   In [4]: p
+   Polynomial((1, 2, 0, 1))
 
+The :term:`special method` names for further arithmetic operators are
+given :ref:`in the Python documentation <numeric-types>`. The
+implementation of multiplication, exponentiation, and subtraction for
+the :class:`Polynomial` class is left as an exercise.
+
+Creating objects that act like functions
+........................................
+
+From a mathematical perspective, a real polynomial is a function. That is
+to say, if:
+
+.. math::
+
+   f = x^2 + 2x + 1
+
+then for any real :math:`x`, :math:`f(x)` is defined and is a real
+number. We already know from the example of :func:`abs`, above, that
+Python functions are objects. However our challenge is the converse of
+this: we have :class:`Polynomial` objects which we would like to be
+able to call like functions. The solution to our challenge is that
+calling a function is an operation on an object similar to addition,
+and Python provides another :term:`special method` name for
+this. `f(x)` is mapped to `f.__call__(x)`, so any Python object with a
+:meth:`__call__` method behaves like a function, and any class
+defining a :meth:`__call__` method in effect defines a new type of
+function.
+
+Exercises
+---------
+
+1. Define the subtraction, multiplication and exponentiation
+   operations on the :class:`Polynomial` class.
+
+2. Implement the :meth:`__call__`  method on the :class:`Polynomial`
+   class.
+
+3. Define a function `derivative` which takes a :class:`Polynomial`
+   and returns a new :class:`Polynomial` which is its derivative. Also
+   define a :method:`dx` on the :class:`Polynomial` class which
+   returns the derivative of that :class:`Polynomial`. Rather than
+   duplicating code, you should implement the function by calling the
+   method.
    
 Glossary
 --------
@@ -647,6 +694,12 @@ Glossary
        instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
        `a.foo()` is equivalent to `MyClass.foo(a)`. The first parameter
        of a method is always named `self`.
+
+    pseudocode
+       A description of an algorithm given in the form of a computer
+       programme but without conforming to the rules of a particular
+       programming language, and employing mathematical notation or
+       plain text to express the algorithm in a human-readable form.
 
     special method
     magic method
