@@ -44,7 +44,7 @@ class Polynomial:
             common = min(self.degree(), other.degree()) + 1
             # Sum the common coefficient positions.
             coefs = tuple(a + b for a, b in zip(self.coefficients[:common],
-                                                 other.coefficients[:common]))
+                                                other.coefficients[:common]))
             
             # Append the high degree coefficients from the higher degree summand.
             coefs += self.coefficients[common:] + other.coefficients[common:]
