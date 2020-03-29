@@ -37,7 +37,7 @@ error:
 
     ZeroDivisionError: float division by zero
 
-An important rule in iterpreting errors, the reasons for which we will
+An important rule in iterpreting Python errors, the reasons for which we will
 return to, is to always read the error message from the bottom up. In
 this case, the last line contains the name of the exception which has
 been raised :obj:`ZeroDivisionError`, followed by a colon, followed by
@@ -45,7 +45,10 @@ a descriptive string providing more information about what has gone
 wrong. In this case, that more or less says the same as the exception
 name, but that won't be the case for all exceptions. The four lines
 above the exception are called a traceback. We'll return to
-interpreting tracebacks presently. 
+interpreting tracebacks presently.
+
+Syntax errors
+.............
 
 Now consider the case of an expression that doesn't make mathematical sense:
 
@@ -74,6 +77,52 @@ interpreter found a problem. This is indicated by the caret symbol
 sense is that the modulo operator (`%`) is not a permissable second
 operand to multiplication (`*`), so the Python interpreter places the
 caret under the modulo operator.
+
+Even though the Python interpreter will highlight the point at which
+the syntax doesn't make sense, this might not quite actually be the
+point at which you made the mistake. In particular, failing to finish
+a line of code will result in the interpreter assuming that the
+expression continues on the next line of programme text, resulting in
+the syntax error appearing to be one line later than it really
+occurs. Consider the following code:
+
+.. code-block:: python3
+
+    a = (1, 2
+    print(a)
+
+The error here is a missing closing bracket on the first line, however
+the error message which the Python interpeter prints when this code is run is:
+
+.. code-block:: python3
+
+      File "syntax_error.py", line 2
+        print(a)
+            ^
+    SyntaxError: invalid syntax
+
+To understand why Python reports the error on the line following the
+actual problem, we need to understand that the missing closing bracket
+was not by itself an error. The user could, after all, validly
+continue the :class:`tuple` constructor on the next line. For example,
+the following code would be completely valid:
+
+.. code-block:: python3
+
+    a = (1, 2
+         )
+    print(a)
+
+This means that the Python interpreter can only know that something is
+wrong when it sees `print`, because `print` cannot follow `2` in a
+tuple constructor. The interpreter therefore reports that the `print`
+is a syntax error.
+
+.. hint::
+
+   If the Python interpreter reports a syntax error at the start of a
+   line, always check to see if the actual error is on the previous
+   line.
 
 Tracebacks: finding errors
 --------------------------
