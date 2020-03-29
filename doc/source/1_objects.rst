@@ -1,3 +1,5 @@
+.. _objects:
+
 Objects and abstraction
 =======================
 

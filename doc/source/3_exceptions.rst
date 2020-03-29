@@ -82,7 +82,7 @@ Even though the Python interpreter will highlight the point at which
 the syntax doesn't make sense, this might not quite actually be the
 point at which you made the mistake. In particular, failing to finish
 a line of code will result in the interpreter assuming that the
-expression continues on the next line of programme text, resulting in
+expression continues on the next line of program text, resulting in
 the syntax error appearing to be one line later than it really
 occurs. Consider the following code:
 
@@ -124,12 +124,6 @@ is a syntax error.
    line, always check to see if the actual error is on the previous
    line.
 
-Tracebacks: finding errors
---------------------------
-
-
-
-
 Exceptions
 ----------
 
@@ -137,3 +131,55 @@ Python has many types of exception built in, and Python developers can
 define their own exceptions so there are many more defined in
 third-party packages. The :doc:`full list of built-in exceptions
 <library/exceptions>` is available in the Python documentation.
+
+
+Tracebacks: finding errors
+--------------------------
+
+The errors we have looked at so far have all been located in the top
+level of code either typed directly into iPython or executed in a
+script. However what happens if an error occurs in a function call, or
+even several functions down? Consider the following code, which uses
+the :class:`~polynomial.Polynomial` class from
+:numref:`chapter %s <objects>`:
+
+.. code-block:: ipython3
+
+    In [1]: from polynomial import Polynomial
+
+    In [2]: p = Polynomial(("a", "b"))
+
+    In [3]: print(p)
+    bx + a
+
+So, perhaps surprisingly, we are able to define a polynomial whose
+coefficents are letters, and we can even print the resulting
+object. However, if we attempt to add this polynomial to the number 1,
+we are in trouble:
+
+.. code-block:: ipython3
+
+    In [4]: print(1 + p)
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-5-141816221609> in <module>
+    ----> 1 print(1 + p)
+
+    ~/docs/object-oriented-programming/src/polynomial.py in __radd__(self, other)
+         57     def __radd__(self, other):
+         58 
+    ---> 59         return self + other
+
+    ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
+         38 
+         39         if isinstance(other, Number):
+    ---> 40             return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
+         41 
+         42         elif isinstance(other, Polynomial):
+
+    TypeError: can only concatenate str (not "int") to str
+
+This is a much larger error message than those we have previously
+encountered, however the same principles apply. We start by reading
+the last line. This tells us that the error was a :class:`TypeError`.
+
