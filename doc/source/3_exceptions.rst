@@ -181,5 +181,26 @@ we are in trouble:
 
 This is a much larger error message than those we have previously
 encountered, however the same principles apply. We start by reading
-the last line. This tells us that the error was a :class:`TypeError`.
+the last line. This tells us that the error was a :class:`TypeError`
+caused by attempting to concatenate (add) an integer to a
+string. Where did this error occur? This is a more involved question
+than it may first appear, and the rest of the error message above is
+designed to help us answer this question. This type of error message
+is called a "traceback", as the second line of the error message
+suggests. In order to understand this message, we need to understand a
+little about how a Python program is executed, and in particular about
+the call stack.
 
+The call stack
+..............
+
+One of the most basic features of a function call is that the contents
+of the function execute, and then the code which called the function
+continues on from the point of the function call, using the return
+value of the function in place of the call. Let's think about what
+happens when this happens. Before calling the function, there is a
+large amount of information which describes the current state of the
+program execution. For example, there are all of the module, function,
+and variable names which are in scope, there is the value of all the
+local variables, and there is the record of which instruction is next
+to be executed. 
