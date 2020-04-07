@@ -186,7 +186,7 @@ caused by attempting to concatenate (add) an integer to a
 string. Where did this error occur? This is a more involved question
 than it may first appear, and the rest of the error message above is
 designed to help us answer this question. This type of error message
-is called a "traceback", as the second line of the error message
+is called a :term:`traceback`, as the second line of the error message
 suggests. In order to understand this message, we need to understand a
 little about how a Python program is executed, and in particular about
 the call stack.
@@ -194,13 +194,131 @@ the call stack.
 The call stack
 ..............
 
+A Python program is a sequence of Python statements, which are
+executed in a sequence determined by the flow control logic of the
+program itself. Each statement contains zero or more function calls [#function]_,
+which are executed in the course of evaluating that statement.
+
 One of the most basic features of a function call is that the contents
 of the function execute, and then the code which called the function
 continues on from the point of the function call, using the return
 value of the function in place of the call. Let's think about what
 happens when this happens. Before calling the function, there is a
-large amount of information which describes the current state of the
+large amount of information which describes the context of the current
 program execution. For example, there are all of the module, function,
-and variable names which are in scope, there is the value of all the
-local variables, and there is the record of which instruction is next
-to be executed. 
+and variable names which are in scope, and there is the record of
+which instruction is next to be executed. This collection of
+information about the current execution context is called a
+:term:`stack frame`.
+
+When a function is called, the Python interpreter creates a new stack
+frame containing the local execution context of that
+function. Importantly, the new stack frame contains a reference back
+to the stack frame from which the function was called. This enables
+execution of the calling routine to continue when the newly called
+function returns. Because functions can call functions which call
+functions and so on in a nearly limitless sequence, there can be a
+number of stack frames in existence at any time. These form a sequence
+back from the current function which is being executed, through the
+function which called it, through the function that called that one
+and so forth until the very first stack frame. This frame contains the
+execution context for the Python script that the user ran, or for the
+iPython shell or Jupyter notebook the user was typing into in the case
+where the user worked interactively.
+
+The trail of stack frames from the currently executing statement all
+the way back to the user script or command line is an example of a
+type of data structure called a :term:`stack`, which we will study in
+more detail later. Consequently, the term for this collection of stack
+frames is the :term:`call stack`. It is also sometimes called the
+:term:`execution stack` or :term:`interpreter stack`.
+
+.. note::
+
+   FIXME: put in an illustration of a call stack here. Probably an
+   animation.
+
+Interpreting tracebacks
+.......................
+
+Let's return to the traceback for our erroneous polynomial addition:
+
+.. code-block:: ipython3
+
+    In [4]: print(1 + p)
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-5-141816221609> in <module>
+    ----> 1 print(1 + p)
+
+    ~/docs/object-oriented-programming/src/polynomial.py in __radd__(self, other)
+         57     def __radd__(self, other):
+         58 
+    ---> 59         return self + other
+
+    ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
+         38 
+         39         if isinstance(other, Number):
+    ---> 40             return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
+         41 
+         42         elif isinstance(other, Polynomial):
+
+    TypeError: can only concatenate str (not "int") to str
+
+This shows information about a :term:`call stack` comprising three
+:term:`stack frames <stack frame>`. Look first at the bottom-most
+frame, which corresponds to the function in which the exception
+occured. The traceback for this frame starts:
+
+.. code-block:: ipython3
+
+    ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
+
+This indicates that the frame describes code in the file
+`polynomial.py` (which on the author's computer is located in the
+folder `~/docs/object-oriented-programming/src/`). Specifically, the
+stack frame describes the execution of the :meth:`__add__` method,
+which is the :term:`special method` responsible for polynomial
+addition. The lines below this show the line on which execution
+stopped (line 40, in this case) and a couple of lines on either side,
+for context.
+
+The stack frame above this shows the function from which the
+:meth:`__add__` method was called. In this case, this 
+
+
+Glossary
+--------
+
+ .. glossary::
+    :sorted:
+
+    stack frame
+        An object encapsulating the set of variables which define the
+        execution of a Python script or function. This information
+        includes the code being executed, all the local and gobal
+        names which are visible, the last instruction that was
+        executed, and a reference to the stack frame which called this
+        function.
+
+    call stack
+    execution stack
+    interpreter stack
+        The :term:`stack` of :term:`stack frames <stack frame>` in existence. The
+        current item on the stack is the currently executing function,
+        while the deepest item is the stack frame corresponding to the
+        user script or interpreter.
+
+    traceback
+    stack trace
+    back trace
+        A text representation of the :term:`call stack`. A traceback
+        shows a few lines of code around the current execution point
+        in each :term:`stack frame`, with the current frame at the
+        bottom and the outermost frame at the top.
+      
+.. rubric:: Footnotes
+
+
+.. [#function] "Function call" here includes :term:`method` calls and
+               operations implemented using a :term:`special method`.
