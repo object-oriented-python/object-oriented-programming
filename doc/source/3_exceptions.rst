@@ -313,6 +313,18 @@ line of the iPython session.
 Using a debugger
 ----------------
 
+The :term:`traceback` that the Python interpreter prints when it
+encounters an untrapped exception provides a lot of information about
+an exception which has occurred, but it's not all the information
+available and it might not be enough to work out the cause of the
+bug. The next tool in our forensic armoury is called a "debugger"
+which is a software tool which attaches a Python command line to a
+running or just terminated Python programme. This enables us to look
+at or set variables in any of the :term:`frames <stack frame>` on the
+:term:`call stack`, or even type and run Python code. This is
+exceptionally useful in determining the source of errors.
+
+
 Debugging strategy
 ------------------
 
@@ -328,6 +340,12 @@ Glossary
 
  .. glossary::
     :sorted:
+
+    debugger
+       A piece of software which enables an interactive Python command
+       line to be attached to a running, or just terminated, Python
+       program. This enables the state of the program to be examined
+       to determine the cause of problems.
 
     stack frame
         An object encapsulating the set of variables which define the
