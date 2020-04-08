@@ -284,7 +284,43 @@ stopped (line 40, in this case) and a couple of lines on either side,
 for context.
 
 The stack frame above this shows the function from which the
-:meth:`__add__` method was called. In this case, this 
+:meth:`__add__` method was called. In this case, this is the reverse
+addition :term:`special method`, :meth:`__radd__`. On line 59 :meth:`__radd__` calls
+:meth:`__add__` through the addition of `self` and `other`.
+
+Finally, the top stack frame corresponds to the command that the user
+typed in iPython. This stack frame looks a little different from the
+others. For starters, instead of the file name there is the string
+`<ipython-input-5-141816221609>`. This is simply the Python
+interpreter's internal name for a notional "file" containing one line
+of iPython input. Similarly, because the line the user typed is not in
+any function, the interpreter treats it as code written in the top
+level of an unnamed module called `<module>`. Finally, because the
+interpreter treats every line of input as a separate file, the call to
+:meth:`__radd__` implementing the reverse addition of the number 1 to
+the polynomial `p` occurs on line 1 even though we are on the fourth
+line of the iPython session.
+
+.. hint::
+
+   The proximate cause of the error will be in the last :term:`stack
+   frame` printed, so always read the :term:`traceback` from the
+   bottom up. However, the ultimate cause of the problem is likely to
+   be further up the :term:`call stack`, so don't stop reading at the
+   bottom frame!
+   
+
+Using a debugger
+----------------
+
+Debugging strategy
+------------------
+
+Raising and handling exceptions
+-------------------------------
+
+Creating new exception classes
+..............................
 
 
 Glossary
