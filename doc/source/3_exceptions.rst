@@ -324,6 +324,44 @@ at or set variables in any of the :term:`frames <stack frame>` on the
 :term:`call stack`, or even type and run Python code. This is
 exceptionally useful in determining the source of errors.
 
+Python has an inbuilt debugger, :mod:`pdb`, which is part of the
+Python standard library. This is a highly capable debugger, however
+its command line interface is essentially that of the default Python
+shell, with all the limitations that brings. Just as `IPython
+<https://ipython.readthedocs.io>`_ provides a more powerful Python
+command line including features such as colour syntax highlighting,
+tab completion, and better formatted tracebacks, `ipdb
+<https://github.com/gotcha/ipdb#ipython-pdb>`_ provides a somewhat
+friendlier command line to the same set of debugger commands as
+:mod:`pdb`. We will therefore generally use :mod:`ipdb`, but in the
+few circumstances where only :mod:`pdb` is abvailable, its usage is
+very similar.
+
+Obtaining :mod:`ipdb`
+.....................
+
+Because :mod:`ipdb` does not form a part of the standard library, you
+may not always find it installed by default.
+
+.. note::
+
+   FIXME: Put in a link to the installation instructions here.
+
+Postmortem debugging
+....................
+
+Postmortem debugging means using a debugger after an exception has
+occured (i.e. after the program has "died"). The default behaviour of
+Python on an untrapped exception is to print a :term:`traceback` and
+exit, in the case of a script, or continue with a new interactive
+shell line in the case of an interactive shell. We therefore need to
+take some positive action in order to have Python instead launch the
+debugger on exception.
+
+Invoking the debugger on a running program
+..........................................
+
+   
 
 Debugging strategy
 ------------------
