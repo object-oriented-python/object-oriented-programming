@@ -18,5 +18,6 @@
    :maxdepth: 2
 
    1_objects.rst
+   2_style.rst
    3_exceptions.rst
    zbibliography
