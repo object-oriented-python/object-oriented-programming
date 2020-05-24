@@ -1,6 +1,6 @@
 .. _style.rst
 
-Programming style
+A matter of style
 =================
 
 The value of convention
