@@ -46,7 +46,7 @@ difficulty before they realised that it's completely wrong.
 
 In reality, a computer program is frequently read. Indeed, code is
 typically read many more times than it is written or changed. Most
-obviously, programmers read code in order to extend its functionality,
+obviously, programmers read code in order to understand its functionality,
 and in order to work out what is wrong with the code when it fails to
 produce the correct results. Reading code is very much like reading
 mathematics, because a computer program is nothing but a realisation
@@ -75,8 +75,8 @@ intention of this chapter to produce an exhaustive guide. However it
 is useful to introduce some of the key concepts, rules and conventions
 in a more formal way.
 
-PEP8 and flake8
----------------
+PEP 8 and flake8
+----------------
 
 Publishers, journals, and institutions often have style guides
 designed to instill a certain uniformity in the use of English (or
@@ -86,4 +86,158 @@ significantly from project to project, and there can be vigorous
 disagreement between factions about fine points of style, such as
 whether or not an opening curly bracket should start on a new line
 (Google it, it's as bizarre as it sounds). Fortunately, the Python
-community has a
+community has an essentially unified and very widely followed set of
+conventions. These are codified in one of the Python standards
+documents, `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_
+[#pep]_. PEP 8 isn't all that long and it is worth taking the time to
+read. Not every rule in PEP 8 is reproduced in this chapter, though
+many of the most commonly encountered ones are. Conversely, PEP 8 is
+rather narrowly concerned with code layout rules while this chapter
+roams more widely.
+
+One of the helpful characteristics of PEP 8 is that many of its
+strictures can be enforced automatically by a computer
+program. Indeed, many Python editors can be configured to highlight
+violations of PEP 8 visually in the editing window. Alternatively, one
+can run a stand-alone program which will read Python source files and
+create reports of (many of) the PEP 8 violations they contain. One
+such program is called flake8. Running flake8 on all of the source
+code in a project, preferably automatically on every commit, is an
+excellent mechanism for keeping a project's code in PEP 8
+conformance. Indeed, without a mechanism like this, there is a strong
+tendency for programmers to cut style corners, with the effect that
+the code in a project becomes harder and harder to read and work with.
+
+Code layout
+-----------
+
+Perhaps surprisingly, one of the most important factors in making code
+readable is the space, or lack of it, between and around the text
+which makes up the code. Whitespace affects readability in many
+ways. Too much code bunched together makes it hard for the eye to
+separate programme statements, while leaving too much space limits the
+amount of code which fits in the editor window at once. This requires
+the programmer to scroll constantly and to have to remember
+definitions which are not currently on the screen.
+
+As in written prose, whitespace can also convey information by
+grouping together concepts which are related and separating distinct
+ideas. This gives the reader visual clues which can aid in
+understanding the code. With this in mind, we now turn to some of the
+PEP 8 rules around white space and code formatting.
+
+Blank lines
+...........
+
+1. Classes and functions defined at the top level of a module
+   (i.e. not nested in other classes or functions) have two blank
+   lines before and after them. These are the largest and most
+   distinct units in a module, so it helps the reader to make them
+   quite distinct from each other.
+2. Methods within a class are separated by a single blank
+   line. Similarly, functions defined inside other functions are
+   separated from surrounding code by a single blank line.
+3. Statements within functions usually follow on the immediate next
+   line, except that logical groups of statements can be separated by
+   single blank lines. Think of each statement as a sentence following
+   on from the previous, with blank lines used to divide the function
+   into short paragraphs.
+
+White space within lines
+........................
+
+1. Don't put a space after an opening bracket (of any shape), or
+   before a closing bracket. This is because the role of brackets is
+   to group their contents, so it's confusing to visually separate the
+   bracket from the contents.
+2. Similarly, don't put a space between the function name and the
+   opening round bracket of a function call, or between a variable
+   name and the opening square bracket of an index. In each of these
+   cases, the opening bracket belongs to the object, so it's confusing
+   to insert space between the object name and the bracket.
+3. Put a space after a comma but not before it, exactly like you would
+   in writing prose. Following the convention that everyone is used to
+   from writing aids understanding. Where a trailing comma comes right
+   before a closing bracket, then don't put a space. The rule that
+   there are no spaces before a closing bracket is more important.
+4. Put exactly one space on each side of an assignment (`=`) and an
+   augmented assignment (`+=`, `-=`, etc.). In an assignment
+   statement, the most important distinction is between the left and
+   right hand sides of the assignment, so adding space here aids the
+   reader.
+5. Put exactly one space before and after the lowest priority
+   mathematical operators in an expression. This has the effect of
+   visually separating the terms of an expression, as we
+   conventionally do in mathematics.
+6. *Never, ever* have blank spaces at the end of a line, even a blank
+   line. These tend to get changed by editors, which results in lots
+   of spurious differences between otherwise identical code. This can
+   make the difference between two commits of a file very hard to read
+   indeed.
+
+Line breaks
+...........
+
+1. Have no lines longer than 79 characters. Limiting the line length
+   makes lines easier to read, and prevents the editor from
+   automatically wrapping the line in harder to read ways. Shorter
+   lines are also very useful when using side-by-side differencing
+   tools to show the differences between two versions of a piece of
+   code.
+2. When breaking lines to fit under 79 characters, it's better to
+   break the lines using the implied continuation within round, square
+   or curly brackets than explicitly with a backslash. This is because
+   the brackets provide good visual "book ends" for the beginning and
+   end of the continuation.
+3. When a mathematical operator occurs at a line break, always put the
+   operator first on the next line, and not last on the first
+   line. Having the second line start with a mathematical operator
+   provides a solid visual clue that the next line is a continuation
+   of the previous line. (If you look closely, this is also the rule
+   that most publishers of maths books use).
+
+Indentation
+...........
+
+1. Indentation is *always* by four spaces per indentation level. If
+   your text editor is not set to create 4 spaces per indentation
+   level, Google how to change it!
+2. When indenting continuation lines inside brackets, there are two
+   options, usually depending on how many characters are already on
+   the line before the opening bracket:
+   
+   a. With one or more items on the first line after the opening
+      bracket.  Subsequent lines are indented to one space more than
+      the opening bracket, so that the first items on each line start
+      exactly under each other. The closing bracket comes on the same
+      line as the final item.
+   b. With the opening bracket as the last item on the first
+      line. Subsequent lines are indented more than the first line but
+      the same as each other. The closing bracket comes on a new line,
+      and is either indented to the same level as the first line, or
+      to the subsequent lines (but be consistent in nearby code about
+      which).
+
+
+Naming conventions
+------------------
+
+Comments
+--------
+
+Docstrings
+..........
+
+Parsimony
+---------
+
+
+.. rubric:: Footnotes
+
+.. [#pep] PEP stands for "Python Enhancement Proposal". PEPs describe
+          everything from code style to voting algorithms among Python
+          developers. Their main purpose, as the name suggests, is to
+          document proposals for changes to the Python language. As
+          such, they are usually of little interest to most Python
+          users. However the PEPs having to do with style have wider
+          significance.
