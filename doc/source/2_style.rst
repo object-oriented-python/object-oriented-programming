@@ -219,8 +219,36 @@ Indentation
       which).
 
 
-Naming conventions
-------------------
+Names
+-----
+
+Programs are full of names. Variables, classes, functions,
+modules: much, perhaps most, of the text of a program is made up of
+names. The choice of names therefore has a massive impact on the
+readability of a program. There are two aspects to naming
+conventions. One is a set of rules about the formatting of names: when
+to use capitals, when underscores and so on. This is covered by PEP 8
+and we reproduce some of the important rules below. The second aspect
+is the choice of the letter, word, or words that make up a name. This
+is much more a matter of judgment, though there are guiding principles
+that greatly help with clarity.
+
+PEP 8 name conventions
+......................
+
+PEP 8 has some rather detailed rules for naming, including for
+advanced cases that we are unlikely to encounter in the short term,
+but the most important rules are short and clear:
+
+class names
+  Class names use the CapWords convention: each word in a name is
+  capitalised and words are concatenated, without underscores between.
+
+exception names
+  Exceptions are classes, so the rules for class names apply with the
+  addition that exceptions that designate errors w
+
+
 
 Comments
 --------
