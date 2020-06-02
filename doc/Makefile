@@ -52,7 +52,7 @@ clean:
 	rm -rf $(BUILDDIR)/*
 
 apidoc: $(GENERATED_FILES)
-	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../fe_utils -o source/ -f -T
+	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../src -o source/ -f -T
 
 #webgit:
 #	git clone git@github.com:finite-element/finite-element.github.io.git webgit

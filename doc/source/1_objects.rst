@@ -618,12 +618,14 @@ these, and particularly exponentiation, would allow the user to define
 new polynomials in a particularly natural way, using Python's
 intrinsic operators:
 
+.. code-block:: ipython3
+
    In [1]: x = Polynomial((0, 1))
    In [2]: print(x)
    x
    In [3]: p = x**3 + 2*x + 2
    In [4]: p
-   Polynomial((1, 2, 0, 1))
+   Polynomial((2, 2, 0, 1))
 
 The :term:`special method` names for further arithmetic operators are
 given :ref:`in the Python documentation <numeric-types>`. The
@@ -663,7 +665,7 @@ Exercises
 
 3. Define a function `derivative` which takes a :class:`Polynomial`
    and returns a new :class:`Polynomial` which is its derivative. Also
-   define a :method:`dx` on the :class:`Polynomial` class which
+   define a :meth:`dx` on the :class:`Polynomial` class which
    returns the derivative of that :class:`Polynomial`. Rather than
    duplicating code, you should implement the function by calling the
    method.

@@ -75,8 +75,8 @@ intention of this chapter to produce an exhaustive guide. However it
 is useful to introduce some of the key concepts, rules and conventions
 in a more formal way.
 
-PEP 8 and flake8
-----------------
+PEP 8
+-----
 
 Publishers, journals, and institutions often have style guides
 designed to instill a certain uniformity in the use of English (or
@@ -94,6 +94,9 @@ read. Not every rule in PEP 8 is reproduced in this chapter, though
 many of the most commonly encountered ones are. Conversely, PEP 8 is
 rather narrowly concerned with code layout rules while this chapter
 roams more widely.
+
+flake8
+......
 
 One of the helpful characteristics of PEP 8 is that many of its
 strictures can be enforced automatically by a computer
@@ -143,6 +146,9 @@ Blank lines
    on from the previous, with blank lines used to divide the function
    into short paragraphs.
 
+**Do not add extra blank lines to space out code**. Vertical space on
+the screen is limited, your readers will not thank you.
+   
 White space within lines
 ........................
 
@@ -169,7 +175,7 @@ White space within lines
    mathematical operators in an expression. This has the effect of
    visually separating the terms of an expression, as we
    conventionally do in mathematics.
-6. *Never, ever* have blank spaces at the end of a line, even a blank
+6. **Never, ever** have blank spaces at the end of a line, even a blank
    line. These tend to get changed by editors, which results in lots
    of spurious differences between otherwise identical code. This can
    make the difference between two commits of a file very hard to read
@@ -246,18 +252,138 @@ class names
 
 exception names
   Exceptions are classes, so the rules for class names apply with the
-  addition that exceptions that designate errors w
+  addition that exceptions that designate errors should end in
+  `Error`.
 
+function, variable, and module names
+  Almost all names other than classes are usually written in all
+  lower case, with underscores separating words. Even proper nouns are
+  usually spelt with lower case letters to avoid being confused with
+  class names.
+
+method parameters
+  The first parameter to an instance method is the class
+  itself. *Always and without exception* name this parameter `self`.
+
+non-public methods and attributes
+  If a method or attribute is not intended to be directly accessed
+  from outside the class, it should have a name starting with an
+  underscore. This provides a clear distinction between the public
+  interface of a class, and its internal implementation.
+
+Choosing names
+..............
+
+Short names help make short lines of code, which in turn makes it easier
+to read and understand what the code does to the values it is
+operating on. However short names can also be cryptic, making it
+difficult to establish what the names mean. This creates a tension:
+should names be short to create readable code, or long and descriptive
+to clarify their meaning?
+
+A good answer to this dilemma is that local variables should have
+short names. These are often the most frequently occuring variables on
+a line of code, which makes the statement more
+intelligible. Should a reader be unclear what a variable stands for,
+the definition of a local variable will not be very far
+away. Conversely, a module, class, or function which might be used
+far from its definition had better have a descriptive name which makes
+its purpose immediately apparent.
+
+Follow the mathematics
+......................
+
+Remember that the key objective of code style conventions is to make
+it easier for readers to understand the code. If the code implements a
+mathematical algorithm, then it's quite likely that readers of that
+code will have at least a passing acquantence with that area of
+mathematics. You will therefore greatly help their intuition for what
+your code does if the names in the code match the mathematical
+conventions for the same concepts. You can use underscores to hint at
+subscripts, just like in LaTeX: for example if you write a function
+which changes coordinates, then `x_old` and `x_new` are likely to be
+good names for the coordinate vector before and after the
+transformation.
+
+As an exception to the rules about variable case, it is a good idea to
+use single capital letter names in circumstances where they would be
+used in the maths, for example to name a matrix.
+
+Mathematicians often use Greek letters as variable names,
+occasionally they venture further afield and use Cyrilic or Hebrew
+letters. Python does allow for variable names written in other
+alphabets, but these are hard to type on many keyboards. Someone
+trying to fix bugs in your code will curse you if they can't even type
+the names! Do, by all means, use Greek or other language variable
+names where this will make the relationship between the maths and the
+code obvious, but write out the Greek letter name in Roman
+letters. For example, `theta` is a very good name for a variable
+representing an angle. Capital greek letters are sometimes represented
+by capitalising the first letter of the Roman word, but take care to
+avoid situations where this might be confused for a class name.
+
+Parsimony and simplicity
+------------------------
+
+Redundant logical expressions
+.............................
 
 
 Comments
 --------
 
+Comments are non-code text included in programs to help explain what
+they do. Since comments exist to aid understanding, some programmers
+come to the conclusion that more comments implies more
+understanding. Indeed, some programmers are even taught that every
+line of code should have a comment. This could not be more wrong!
+
+While judiciously deployed comments can be an essential aid to
+understanding, too many comments can be worse than too few. If the
+code is simple, elegant, and closely follows how a reader would expect
+the algorithm to be written, then it will be readily understood
+without comments. Conversely, attempting to rescue obscure, badly
+thought-through code by writing about it is unlikely to remedy the
+situation.
+
+A further severe problem with comments is that they can easily become
+out of date. If a piece of code is modified, it is all to easy for the
+programmer to neglect to update accompanying comments. The result is
+comments which explain one thing, code which does something else, and
+exceptionally baffled readers.
+
+Three rules for commenting
+..........................
+
+1. If code is so simple, clear, and obvious that it can be easily
+   understood without comments, don't comment.
+2. If code is not easily understood without comments, the problem is
+   probably the code. Refactor the code to be simpler and easier to
+   understand.
+3. If, and only if, you are convinced that it is strictly necessary to do
+   something unobvious, then do so and include a comment.
+
+Comment why, not what
+.....................
+
+Even where a comment is unavoidable, it should still usually be
+obvious *what* it is that code does. It is far more likely to be
+justifiable to include a comment about *why* a particular approach is
+taken. For example it might be worth commenting why an apparently
+simpler alternative strategy is actually invalid.
+
+
 Docstrings
 ..........
 
-Parsimony
----------
+There is one enormous exception to the rule that comments should be
+used only sparingly: docstrings. Docstrings (a portmanteau of
+"documentation strings") are comments at the start of modules,
+classes, and functions which describe public interfaces. The entire
+point of a public interface is that the programmer using it should not
+have to concern themselves with how it is implemented. They should
+therefore not need to read the code in order to understand how to use
+it. 
 
 
 .. rubric:: Footnotes
