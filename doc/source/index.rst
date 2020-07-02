@@ -17,7 +17,9 @@
    :numbered:
    :maxdepth: 2
 
-   1_objects.rst
-   2_style.rst
-   3_exceptions.rst
+   0_introduction.rst
+   1_programs_in_files.rst
+   2_objects.rst
+   3_style.rst
+   4_exceptions.rst
    zbibliography
