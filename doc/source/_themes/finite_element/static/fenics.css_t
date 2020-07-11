@@ -161,7 +161,7 @@ div.youtube{
 /* -- body styles ----------------------------------------------------------- */
 
 a, a .pre {
-    color: #41075B;
+    color: #c52b03;
     text-decoration: none;
     word-wrap: break-word;
 }
