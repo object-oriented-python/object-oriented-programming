@@ -1,8 +1,8 @@
-Programmes in files
+Programs in files
 ===================
 
 You will previously have written Python code in Jupyter notebooks, and
-possibly used an interactive Python environment usch as
+possibly used an interactive Python environment such as
 iPython. Jupyter notebooks are an excellent platform for writing and
 documenting short pieces of code. However, they are much less good for
 writing code which is designed to be used by other people. If the
@@ -155,15 +155,19 @@ module, and use the function :func:`fib`:
    In [2]: fibonacci.fib(3)
    Out[2]: 2
 
-Notice that we do not include the `.py` suffix when we import a module.
+Notice that we do not include the `.py` suffix when we import a
+module. Importing a module provides access to whatever it
+contains. This is a key tool in building up algorithms out of
+components: we import the components we need at each stage of our
+programs.
 
-Importing and name spaces
+Importing and namespaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When we imported the module :mod:`fibonacci`, this created the name
 `fibonacci` in the current environment. The code in `fibonacci.py` is
 then run, and any names defined in that code (such as the function
-:func:`fib`) are defined within the *name space* `fibonacci`. As we
+:func:`fib`) are defined within the :term:`namespace` `fibonacci`. As we
 begin to compose together code from different parts of mathematics,
 the ability to separate identically named but different objects from
 each other is essential. For example, Python has a module containing
@@ -172,13 +176,83 @@ containing complex maths functions called
 :mod:`python:cmath`. Clearly, it's important that we can distinguish
 between :func:`python:math.sin` and :func:`python:cmath.sin`!
 
+Other forms of import
+~~~~~~~~~~~~~~~~~~~~~
 
+Importing modules into their own namespaces is frequently what we
+want: it clearly separates the names in the module from the names we
+have defined ourselves, and makes it very obvious to a reader where
+the names come from. The downside is that names in namespaces can be
+quite long and cumbersome, which is particularly inconvenient if names
+are to be used frequently or in the middle of formulae: you probably
+don't really want to write :func:`math.sin` in every trig formula you
+ever write. One alternative is to rename the module on import. This is
+achieved using the keyword `as` in an import statement. For example,
+it is usual to import the numerical Python module :mod:`numpy` in the
+following way:
+
+.. code-block:: python
+
+   import numpy as np
+
+This creates the local name :mod:`np <numpy>` instead of :mod:`numpy`,
+so that the function for creating an evenly spaced sequence of values
+between to end points is now accessible as :func:`np.linspace
+<numpy.linspace>`.
+
+A second option is to import particular names from a module directly
+into the current namespace. For example, if we planned to use the
+fuctions :func:`math.sin` and :func:`math.cos` a lot in our script, we
+might use the following import statement:
+
+.. code-block:: python
+
+   from math import sin, cos
+
+Now we can use the names :func:`sin <math.sin>` and :func:`cos
+<math.cos>` directly. What if we also wanted to use a short name for
+their complex counterparts? We can't have two functions with the same
+name in a single :term:`namespace`. Fortunately, the keyword `as`
+comes to our rescue again:
+
+.. code-block:: python
+
+   from cmath import sin as csin, cos as ccos
+
+Renaming on import is a double-edged sword. You must always take care
+that renaming does not add to confusion. As a somewhat extreme example
+example, should you ever type the following code, you should expect
+the wrath of your users to be without bounds:
+
+.. code-block:: python
+
+  from math import sin as cos, cos as sin
+
+It is possible to import all of the names from a module into the current namespace:
+
+.. code-block:: python
+
+   from math import *
+
+Now everything in the math module can be used without a namespace
+prefix. This may seem superficially attractive, but actually importing
+`*` is a frequent source of problems. For starters, if you import `*`
+from more than one module, it becomes impossible for the reader of the
+code to work out from which module each name comes. Further, if a
+module from which you import `*` contains a name that you have already
+used, then the meaning of that name will be overwritten with the one
+from the module (without any warning or error). This is a frequent
+source of confusion. For this reason, importing `*` is usually a bad
+idea.
 
 Python venvs
 ------------
 
 Packages
 --------
+
+Relative imports
+~~~~~~~~~~~~~~~~
 
 Testing frameworks
 ------------------
@@ -193,11 +267,11 @@ Glossary
     module
        A text file containing Python code which is accessed using the :ref:`import statement <python:import>`.
 
-    name space
-       A collection of names. Within a single name space, each
+    namespace
+       A collection of names. Within a single namespace, each
        name has a single defined meaning. Names in different spaces
        can be referred to using the syntax `namespace.name` where
-       `namespace` is an name for the name space. Name spaces are
+       `namespace` is an name for the namespace. namespaces are
        themselves named, so they can be nested (`namespace.inner_namespace.name`).
 
     scope
