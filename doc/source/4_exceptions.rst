@@ -366,6 +366,14 @@ Invoking the debugger on a running program
 Debugging strategy
 ------------------
 
+.. _bisection-debugging:
+
+Bisection debugging
+...................
+
+
+
+
 Raising and handling exceptions
 -------------------------------
 

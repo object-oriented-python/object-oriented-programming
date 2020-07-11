@@ -22,4 +22,5 @@
    2_objects.rst
    3_style.rst
    4_exceptions.rst
+   42_advanced_python_scripting.rst
    zbibliography
