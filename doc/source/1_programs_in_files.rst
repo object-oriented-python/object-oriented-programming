@@ -1,6 +1,8 @@
 Programs in files
 ===================
 
+This chapter is about how to combine pieces of code into larger units,
+and how to package up your code so that you or others can do the same. 
 You will previously have written Python code in Jupyter notebooks, and
 possibly used an interactive Python environment such as
 iPython. Jupyter notebooks are an excellent platform for writing and
@@ -120,6 +122,8 @@ module. This means that scripts should usually be quite short lists of
 calls out to code in modules. We'll see a simple example of this
 shortly.
 
+.. _modules:
+
 Modules
 -------
 
@@ -175,6 +179,20 @@ core real-valued maths functions called :mod:`python:math`, and one
 containing complex maths functions called
 :mod:`python:cmath`. Clearly, it's important that we can distinguish
 between :func:`python:math.sin` and :func:`python:cmath.sin`!
+
+.. note::
+
+   :term:`Namespaces <namespace>` may look unfamiliar at first, but
+   actually they are such a natural concept that you have been working
+   with them for as long as you have used a computer, without even
+   thinking about it. This is because folders are simply namespaces
+   for files. Each filename can exist only once in each folder, and
+   you can nest folders inside folders. Indeed, "directory" is an
+   older synonym for "folder" and makes the link to namespaces much
+   clearer: a folder or directory is just a list of named files in the
+   same way that a telephone directory is a list of named phone
+   numbers.
+
 
 Other forms of import
 ~~~~~~~~~~~~~~~~~~~~~
@@ -245,14 +263,149 @@ from the module (without any warning or error). This is a frequent
 source of confusion. For this reason, importing `*` is usually a bad
 idea.
 
-Python venvs
-------------
+The full details of all the ways that the import statement can be used
+is in :ref:`the official Python documentation. <python:import>`
 
 Packages
 --------
 
-Relative imports
-~~~~~~~~~~~~~~~~
+Modules are the principal mechanism for storing code which is intended
+to be used by other code. However, putting all of the code for a
+complex area of mathematics in a single huge Python file is not a
+great idea. Readers of that code will struggle to see the logical
+structure of thousands or tens of thousands of lines of code. It would
+be much more logical, and much easier to work with, to split the code
+up into several files of more reasonable length. This is where
+packages come in. A Python package is a collection of module files,
+which can be imported together. The basic folder structure of a Python
+package looks like the following::
+
+    my_git_repo
+    ├── my_package
+    │   ├── __init__.py
+    │   ├── module_1.py
+    │   ├── module_2.py
+    │   └── subpackage
+    │       ├── __init__.py
+    │       └── module_3.py
+    └── setup.py
+
+If you haven't seen a diagram like this before, the names with lines
+descending from their first letter are folder names, and the
+descending line connects the folder name to the files and folders it
+contains. Let's walk through these files and folders to understand how
+they make up the Python package.
+
+`my_git_repo`
+    This is not really a part of the package at all, but the
+    `my_package` folder needs to be in some folder, and this is a
+    reminder that all your work should be in a revision control system
+    such as `git <https://git-scm.org>`_. It would be usual for
+    package folders to be contained immediately in the top level of
+    the repository, in the manner shown here.
+
+`my_package`
+    This is the actual package. The name of this folder sets the
+    package name, so if you really made a package folder with this
+    name, then you would type:
+
+    .. code-block:: python3
+
+        import my_package
+
+    to access the package.
+
+`__init__.py`
+    Every package must contain a file with *exactly* this name. This is
+    how Python recognises that a folder is a package. `__init__.py`
+    can be an empty file, or it can contain code to populate the top
+    level :term:`namespace` of the package. See :numref:`importing_packages` below.
+
+`module_1.py`, `module_2.py`
+    These are just Python :term:`modules <module>`. If the user imports
+    `my_package` using the line above then these modules will appear
+    as `my_package.module_1` and `my_package.module_2` respectively.
+
+`subpackage`
+    Packages can contain packages. A subpackage is just a folder
+    containing a file `__init__.py`. It can also contain modules and
+    further subpackages.
+
+`setup.py`
+    This file is outside the package directory and is not
+    actually a part of the package. The role of `setup.py` will be
+    covered in :numref:`installable_packages`.
+
+.. _importing_packages:
+
+Importing packages
+~~~~~~~~~~~~~~~~~~
+
+The system for importing packages is the same as that described in
+:numref:`modules`, though the nested nature of packages makes the
+process somewhat more involved. Importing a package also imports all
+the modules it contains, including those in subpackages. This will
+establish a set of nested namespaces. In the example above, after
+importing :mod:`my_package`, :mod:`module_3` will be accessible as
+`my_package.subpackage.module_3`. The usual rules about the `from`
+keyword still apply, so:
+
+.. code-block:: python3
+
+   from my_package.subpackages import module_3
+
+would import the name `module_3` straight into the current local
+namespace.
+
+The file `__init__.py` is itself a module and will be imported when
+the package is imported. However, names defined in `__init__.py` will
+appear directly in the namespace of the package. This is usually used
+to extract names from submodules that are supposed to be directly
+accessed by users of the package. 
+
+For example, suppose that `module_1` contains a function
+`my_func`. Then the top level `__init__.py` in `my_package` contain
+the line:
+
+.. code-block:: python3
+
+   from .module_1 import my_func
+
+The result of this would be that the user of `my_package` would be
+able to access `my_func` as `my_package.my_func` (though
+`my_package.module_1.my_func` would also work). This sort of
+arrangement is provides a mechanism for the programmer to arrange the
+internal module structure of a package in a logical way while still
+providing users with direct access to the most important or most
+frequently used features.
+
+The eagle-eyed reader will have noticed the extra `.` in front of
+`.module_1`. This marks this import as a *relative import*. In other
+words, in looking for `module_1.py`, Python should look for files in
+the same folder as the module where the import statement occurs,
+instead of looking for an external package called `module_1`. We could
+have equivalently written:
+
+.. code-block:: python3
+
+   from my_package.module_1 import my_func
+
+but the relative import is shorter and provides a reminder to the
+reader that the import is from the current package.
+
+.. _installable_packages:
+
+Making packages installable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Python venvs
+------------
+
+Before we move on to combining modules together to make packages,
+we'll take a brief detour to introduce a Python feature which is
+exceptionally useful when writing new code. Python 
+
 
 Testing frameworks
 ------------------
@@ -273,6 +426,9 @@ Glossary
        can be referred to using the syntax `namespace.name` where
        `namespace` is an name for the namespace. namespaces are
        themselves named, so they can be nested (`namespace.inner_namespace.name`).
+
+    package
+       A grouping of related :term:`modules` into a single importable unit.
 
     scope
        The scope of a name is the section of code for which that name is valid.
