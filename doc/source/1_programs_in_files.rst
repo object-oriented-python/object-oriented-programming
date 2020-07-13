@@ -220,7 +220,7 @@ comes to our rescue again:
    from cmath import sin as csin, cos as ccos
 
 Renaming on import is a double-edged sword. You must always take care
-that renaming does not add to confusion. As a somewhat extreme example
+that renaming does not add to confusion. As a somewhat extreme
 example, should you ever type the following code, you should expect
 the wrath of your users to be without bounds:
 
