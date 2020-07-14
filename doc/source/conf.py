@@ -211,12 +211,14 @@ htmlhelp_basename = 'Finiteelementcoursedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
+latex_engine = 'luatex'
+
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'a4paper',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+'pointsize': '11pt',
 
 # Additional stuff for the LaTeX preamble.
     'preamble': r'\setcounter{MaxMatrixCols}{20}',
@@ -297,4 +299,7 @@ numfig = True
 intersphinx_mapping = {'python': ('http://docs.python.org/3/', None),
                        'scipy': ('http://docs.scipy.org/doc/scipy-dev/reference/', None),
                        'numpy': ('http://docs.scipy.org/doc/numpy/', None),
-                       'matplotlib': ('http://matplotlib.org/', None)}
+                       'matplotlib': ('http://matplotlib.org/', None),
+                       'setuptools': ('https://setuptools.readthedocs.io/en/latest/', None),
+                       'pip': ('https://pip.pypa.io/en/stable/', None),
+                       'sympy': ('https://docs.sympy.org/latest', None)}

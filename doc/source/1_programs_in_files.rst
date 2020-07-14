@@ -171,14 +171,29 @@ Importing and namespaces
 When we imported the module :mod:`fibonacci`, this created the name
 `fibonacci` in the current environment. The code in `fibonacci.py` is
 then run, and any names defined in that code (such as the function
-:func:`fib`) are defined within the :term:`namespace` `fibonacci`. As we
-begin to compose together code from different parts of mathematics,
+:func:`fib`) are defined within the :term:`namespace` `fibonacci`. As
+we begin to compose together code from different parts of mathematics,
 the ability to separate identically named but different objects from
 each other is essential. For example, Python has a module containing
 core real-valued maths functions called :mod:`python:math`, and one
 containing complex maths functions called
 :mod:`python:cmath`. Clearly, it's important that we can distinguish
-between :func:`python:math.sin` and :func:`python:cmath.sin`!
+between :func:`python:math.sin` and :func:`python:cmath.sin`. Here the
+module names :mod:`math` and :mod:`cmath` form the namespaces that
+differentiate between the two :func:`sin` functions. There are
+essentially only two core namespace concepts. One of them is that
+every name is in a namespace, and any given time points to a unique
+value. The second one is that namespaces can be nested, so a name in a
+namespace can itself be another namespace. For example, the math
+namespace contains the value :obj:`math.pi`, which itself defines a
+namespace for some operations that are built into Python numbers. The
+(somewhat uninteresting) imaginary part of π can be accessed as
+:obj:`math.pi.imag`.
+
+Namespaces are a simple but fundamental concept in programming. To
+quote one of the key developers of the Python language:
+
+  Namespaces are one honking great idea -- let's do more of those! [#peters]_
 
 .. note::
 
@@ -398,14 +413,213 @@ reader that the import is from the current package.
 Making packages installable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+In order for the :ref:`import statement <python:import>` to work,
+Python needs to know about the package being imported. This is
+achieved by installing the package. In order to make a package
+installable, we need to provide Python with a bit more information
+about the package. This information is contained in a Python module
+which must be called `setup.py`. This file isn't part of the package
+and does not go in the package folder. Instead, it should be placed in
+the top level folder of your git repository, so that the Python
+package installer will be able to find it.
+
+At the very least, `setup.py` should contain the following:
+
+.. code-block:: python3
+
+   from setuptools import setup, find_packages
+   setup(
+       name="my_package",
+       version="0.1",
+       packages=find_packages(),
+   )
+
+`Setuptools <https://setuptools.readthedocs.io/en/latest/index.html>`_
+is a Python package which exists to help with the packaging and
+installation of Python packages. The :func:`~setuptools.setup`
+function records metadata such as the installation name to be given to
+your whole set of packages, and the version. It also needs to know
+about all of the packages in the current repository, but this can be
+automated with the :func:`~setuptools.find_packages` function, which
+will return a list of folders containing `__init__.py`.
+
+This very simple `setup.py` will suffice for packages that you only
+intend to use yourself. Should you wish to publish packages for use by
+other people then you'll need to add some more information to the
+file. The canonical guide to this is the `Python packaging user guide
+<https://packaging.python.org/tutorials/packaging-projects/>`_.
 
 Python venvs
 ------------
 
-Before we move on to combining modules together to make packages,
-we'll take a brief detour to introduce a Python feature which is
-exceptionally useful when writing new code. Python 
+Before we move on to actually installing packages, we need to give a
+little thought to where the packages are to be installed. We could
+simply install packages into the Python installation on our
+computer. This can be a reasonable approach if all you want to do is
+run code from the default versions of public packages. However it has
+a number of limitations. Basically, a Python installation is a single
+:term:`namespace` for packages, so if two different projects you are
+working on need two different versions of the same package, you're out
+of luck. Similarly, if you are working on changes to a package, you
+probably don't want your half-finished experimental work to be the
+package that your other projects use.
 
+Python virtual environments, or venvs, are separate namespaces within
+a Python installation. They have their own Python command and
+collection of packages. Effectively they behave like their own
+separate Python installation, except that most of the core Python
+files are shared so a venv takes rather little additional space.
+
+Creating a venv
+~~~~~~~~~~~~~~~
+
+The most straightforward way to create a venv is on the terminal
+command line, not from within Python itself. This is accomplished
+using Python's :mod:`venv` package. For example, to create a venv
+called `my_venv`, you would type:
+
+.. code-block:: console
+
+   $ python3 -m venv my_venv
+
+Don't forget that the `$` stands for the command prompt: you don't
+type it. This command will create the folder `my_venv` and various
+subfolders containing things like the Python program itself and space
+for any packages which you install in the venv. If there was already a
+file or folder called `my_venv` in the current folder then you'll get
+an error, so make sure you choose a new name.
+
+A venv doesn't usually contain any particularly valuable data, so you
+should regard them as essentially disposable. In particular, if
+something goes wrong when creating a venv, just delete it and start
+again. In the bash or zsh shells you would type:
+
+.. code-block:: console
+
+   $ rm -rf my_venv
+
+.. warning::
+
+   `rm -rf` will delete its argument and all its subdirectories
+   without further prompts or warnings. There is no undo operation.
+   Be very careful about what you delete.
+
+Using a venv
+~~~~~~~~~~~~
+
+If you run Python from the terminal, then the simplest way to use the
+venv is to source its activate script. If using bash or zsh on Mac or
+Linux you would type:
+
+.. code-block:: console
+
+   $ source my_venv/bin/activate
+
+while using bash on Windows you would type:
+
+.. code-block:: console
+
+   $ source my_venv/Scripts/activate
+
+Obviously you would use the folder name of your venv instead of
+`my_venv`. In either case, your command prompt will change to indicate
+that you are now using the venv. It might look something like:
+
+.. code-block:: console
+
+   (my_venv) $
+
+Any subsequent invocations of Python commands such as `python3` will
+now use the version from the venv, with access to whatever packages
+you have installed in that venv. If you are using a terminal shell
+other than bash or zsh, then see the :mod:`venv` package documentation
+for the correct activation command.
+
+.. hint::
+
+   Venv activation is just for one terminal session. You need to
+   activate the venv every time you open a new terminal.  If you find
+   that Python can't find your packages or tests, then the first thing
+   to check is whether you remembered to activate the venv.
+
+.. note::
+
+   Put something in here about how to use venvs from whichever IDE we're using.
+
+Installing Python packages
+--------------------------
+
+Suppose we've created and activated a venv, and now there's a Python
+package we'd like to have access to. Installation of Python packages
+is handled by :doc:`pip:index`. Pip has many usage options, which
+enable a large number of different installation
+configurations. However for most users most of the time, a few simple
+pip commmands suffice. As with :term:`venv` creation, package
+installation is best accomplished from the terminal and not from
+within Python itself. Don't forget to activate the venv!
+
+Installing packages from PyPI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`PyPI <https://pypi.org>`_ is the Python Package Index. It is the
+official download location for publicly released Python packages which
+aren't themselves a part of the built in :doc:`Python Standard Library
+<python:library/index>`. Many important mathematical packages
+including :mod:`numpy` and `sympy <https://www.sympy.org>`_ are
+distributed from PyPI. Suppose your venv doesn't have :mod:`numpy`
+installed and you need it. You would install it with the following
+terminal command:
+
+.. code-block:: console
+
+   (my_venv) $ python3 -m pip install numpy
+
+It is also possible to invoke pip directly using the command `pip3`,
+but there are some circumstances where that might result in pip using
+the wrong Python installation. The approach used here is safer.
+
+Python packages may depend on other Python packages, so it's quite
+likely that pip will install more packages than those you directly
+asked for. This is necessary if those packages are to actually work.
+
+Pip can also be used to upgrade a package to the latest version:
+
+.. code-block:: console
+
+   (my_venv) $ python3 -m pip install --upgrade numpy
+
+
+Installing a package from local code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Another important case is where the Python package exists in files
+(hopefully a git repository!) on your local computer. This is usually
+the case where you are developing the package yourself. In this case
+you would type:
+
+.. code-block:: console
+
+   (my_venv) $ python3 -m pip install -e folder/
+
+replacing `folder` with the name of the top level folder of your
+repository: the folder containing `setup.py`. The option flag `-e`
+tells pip to install the package in 'editable' mode. This means that
+instead of copying the package files to your venv's Python packages
+directory, symbolic links will be created. This means that any changes
+that you make to your package will show up the next time the package
+is imported in a new Python process, avoiding the need to reinstall
+the package every time you change it.
+
+.. warning::
+
+   If you edit a package, even one installed in editable mode, an
+   already running Python process which has already imported that
+   package will not notice the change. This is a common cause of
+   confusion for users who are editing packages and testing them using
+   an interactive Python tool such as IPython or a Jupyter Notebook. A
+   major advantage of a Python script is that a new Python process is
+   started every time the script is run, so the packages used are
+   guaranteed to be up to date.
 
 Testing frameworks
 ------------------
@@ -437,3 +651,13 @@ Glossary
     program
        A text file containing a sequence of Python statements to be
        executed. In Python, program and script are synonymous.
+
+    venv
+    virtual environment
+       A lightweight private Python installation with its own set of
+       Python packages installed.
+
+
+.. rubric:: Footnotes
+
+.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`_
