@@ -302,4 +302,5 @@ intersphinx_mapping = {'python': ('http://docs.python.org/3/', None),
                        'matplotlib': ('http://matplotlib.org/', None),
                        'setuptools': ('https://setuptools.readthedocs.io/en/latest/', None),
                        'pip': ('https://pip.pypa.io/en/stable/', None),
-                       'sympy': ('https://docs.sympy.org/latest', None)}
+                       'sympy': ('https://docs.sympy.org/latest', None),
+                       'pytest': ('https://docs.pytest.org/en/latest/', None)}

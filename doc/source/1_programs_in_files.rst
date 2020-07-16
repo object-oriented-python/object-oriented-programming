@@ -57,8 +57,8 @@ your home directory, then you would type the following:
 
 .. code-block:: console
 
-   ~ $ cd src
-   src $ python3 hello.py
+   $ cd src
+   $ python3 hello.py
 
 The dollar sign is the command prompt. Its different on some systems,
 for example it's often a greater than sign (`>`). The text to the left
@@ -623,6 +623,80 @@ the package every time you change it.
 
 Testing frameworks
 ------------------
+
+Attempting to establish whether a program correctly implements the
+intended algorithm is core to effective programming, and programmers
+often spend more time correcting bugs than writing new code. We will
+turn to the question of how to debug in :numref:`debugging`. However,
+right from the start we need test the code we right, so we will cover
+the practical details of including tests in your code here.
+
+There are a number of Python packages which support code testing. The
+concepts are largely similar so rather than get bogged down in the
+details of multiple frameworks, we will introduce :doc:`pytest
+<pytest:index>`, which is one of the most widely used.
+
+Pytest tests
+~~~~~~~~~~~~
+
+A Pytest test is simply a function whose name starts with `test_`. In
+the simplest case the function has no arguments. Pytest will call each
+such function in turn. If the function executes without error then the
+test is taken to have passed, while if an error occurs then the test
+has failed. This behaviour might at first seem surpising - we don't
+just want the code to run, it has to get the right answer. However,
+thinking about it the other way around, we certainly want the test to
+fail if an error occurs. It's also very easy to arrange things such
+that an error occurs when the wrong answer is reached. This is most
+readily achieved using :ref:`the assert statement <python:assert>`.
+This simply consists of `assert` followed
+by a Python expression. If the expression is true then execution just
+continues, but if it's false then an error occurs. For example:
+
+.. code-block:: ipython3
+
+   In [1]: assert 1 == 0
+   ---------------------------------------------------------------------------
+   AssertionError                            Traceback (most recent call last)
+   <ipython-input-1-e99f91a18d62> in <module>
+   ----> 1 assert 1 == 0
+
+   AssertionError:
+
+Pytest files
+~~~~~~~~~~~~
+
+Pytest looks for tests in files whose name starts with `test_` and
+ends with `.py`. Continuing with our Fibonacci example, we might
+create a file called `test_fibonacci.py` containing:
+
+.. code-block:: python3
+
+   from fibonacci import fib
+
+   def test_fibonacci_values():
+
+       for i, f in enumerate([1, 1, 2, 3, 5, 8]):
+           assert fib(i+1) == f
+
+These files don't themselves form part of the package, instead they
+are usually gathered in a separate tests directory. For example::
+
+    fibonacci
+    ├── fibonacci
+    │   ├── __init__.py
+    │   └── fibonacci.py
+    ├── tests
+    │   └── test_fibonacci.py
+    └── setup.py
+
+We can then invoke the tests from the shell:
+
+.. code-block:: console
+
+   $ cd fibonacci
+   $ py.test tests
+
 
 
 Glossary

@@ -1,3 +1,5 @@
+.. _debugging:
+
 Errors, exceptions, and debugging
 =================================
 
@@ -379,6 +381,29 @@ Raising and handling exceptions
 
 Creating new exception classes
 ..............................
+
+
+Testing code
+------------
+
+However,
+before we get there it's essential to introduce the concept of testing
+and its implementation.
+
+Testing as a science
+~~~~~~~~~~~~~~~~~~~~
+
+At this stage, it's informative to remind ourselves of the distinction
+between logical truth in the mathematical sense, and experimentally
+established knowledge in the scientific sense. A theorem is the
+deductive consequence of its assumptions. So long as the logic is
+valid, we can be assured that the theorem will be true in all
+circumstances. Conversely, in science there is no such absolute
+certainty. A scientist states a hypothesis, and then conducts
+experiments which are designed in such a way that particular outcomes
+would demonstrate that the hypothesis is false. If a suitably
+exhaustive set of experiments is conducted then the scientists
+confidence in the hypothesis 
 
 
 Glossary
