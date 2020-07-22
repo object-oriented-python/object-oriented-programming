@@ -379,7 +379,7 @@ to extract names from submodules that are supposed to be directly
 accessed by users of the package. 
 
 For example, suppose that `module_1` contains a function
-`my_func`. Then the top level `__init__.py` in `my_package` contain
+`my_func`. Then the top level `__init__.py` in `my_package` might contain
 the line:
 
 .. code-block:: python3
@@ -694,11 +694,51 @@ We can then invoke the tests from the shell:
 
 .. code-block:: console
 
-   $ cd fibonacci
-   $ py.test tests
+    $ cd fibonacci
+    $ py.test tests
+    ========================== test session starts ===========================
+    platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+    rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
+    collected 1 item                                                         
 
+    tests/test_fibonacci.py .                                          [100%]
 
+    =========================== 1 passed in 0.01s ============================
 
+The single dot indicates that we passed the one test in
+`test_fibonacci.py`. Had we made an error in our code, we would
+instead see something like:
+
+.. code-block:: console
+
+    $ py.test tests
+    ========================== test session starts ===========================
+    platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+    rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
+    collected 1 item                                                         
+
+    tests/test_fibonacci.py F                                          [100%]
+
+    ================================ FAILURES ================================
+    _________________________ test_fibonacci_values __________________________
+
+        def test_fibonacci_values():
+
+            for i, f in enumerate([1, 1, 2, 3, 5, 8]):
+    >           assert fib(i+1) == f
+    E           assert 2 == 1
+    E            +  where 2 = fib((1 + 1))
+
+    tests/test_fibonacci.py:6: AssertionError
+    ======================== short test summary info =========================
+    FAILED tests/test_fibonacci.py::test_fibonacci_values - assert 2 == 1
+    =========================== 1 failed in 0.12s ============================
+
+Here we can seee an `F` after `tests/test_fibonacci.py` indicating
+that the test failed, and we see some output detailing what went
+wrong. We will learn how to interpret this output in :numref:`debugging`.
+
+    
 Glossary
 --------
 

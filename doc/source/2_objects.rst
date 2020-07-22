@@ -620,16 +620,23 @@ Glossary
  .. glossary::
     :sorted:
 
+    abstraction
+       A mathematical object with a limited set of defined
+       properties. For the purposes of the abstraction, any other
+       properties that an object may have are disregarded.
+
     attribute
        A value encapsulated in another object, such as a
        :term:`class`. Attributes are accessed using dot syntax, so if
        `b` is an attribute of `a` then its value is accessed using the
        syntax `a.b`.
 
-    instance
-       An object of a particular class. `a` is an instance of
-       :class:`MyClass` means that `a` has class `MyClass`. We will
-       return to this concept when we learn about inheritance.
+    class
+    type
+       An abstraction defined by a set of possible values, and a set
+       of operators valid for objects of that type. :keyword:`Class
+       <class>` and :class:`type` are essentially synonymous, though
+       the two words have different roles in Python code.
 
     constructor
        The :meth:`__init__` method of a :term:`class`. The constructor
@@ -637,6 +644,11 @@ Glossary
        responsible for setting up the object. The constructor modifies
        `self` in place: constructors never return a value.
 
+    instance
+       An object of a particular class. `a` is an instance of
+       :class:`MyClass` means that `a` has class `MyClass`. We will
+       return to this concept when we learn about :ref:`inheritance <inheritance>`.
+       
     method
        A function defined within a :keyword:`class`. If `a` is an
        instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then

@@ -84,16 +84,15 @@ other human language). Similarly, style guides exist for programming
 languages. In some languages the preferred style can vary
 significantly from project to project, and there can be vigorous
 disagreement between factions about fine points of style, such as
-whether or not an opening curly bracket should start on a new line
-(Google it, it's as bizarre as it sounds). Fortunately, the Python
-community has an essentially unified and very widely followed set of
-conventions. These are codified in one of the Python standards
-documents, `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_
-[#pep]_. PEP 8 isn't all that long and it is worth taking the time to
-read. Not every rule in PEP 8 is reproduced in this chapter, though
-many of the most commonly encountered ones are. Conversely, PEP 8 is
-rather narrowly concerned with code layout rules while this chapter
-roams more widely.
+whether or not an opening curly bracket should start on a new
+line. Fortunately, the Python community has an essentially unified and
+very widely followed set of conventions. These are codified in one of
+the Python standards documents, `PEP 8
+<https://www.python.org/dev/peps/pep-0008/>`_ [#pep]_. PEP 8 isn't all
+that long and it is worth taking the time to read. Not every rule in
+PEP 8 is reproduced in this chapter, though many of the most commonly
+encountered ones are. Conversely, PEP 8 is rather narrowly concerned
+with code layout rules while this chapter roams more widely.
 
 flake8
 ......
