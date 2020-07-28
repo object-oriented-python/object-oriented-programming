@@ -621,7 +621,7 @@ Glossary
     :sorted:
 
     abstraction
-       A mathematical object with a limited set of defined
+       A mathematical concept with a limited set of defined
        properties. For the purposes of the abstraction, any other
        properties that an object may have are disregarded.
 
