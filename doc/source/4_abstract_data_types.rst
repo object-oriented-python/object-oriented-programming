@@ -159,7 +159,7 @@ relationship between the two is shown in :numref:`list_stack`.
        stack operation, but often useful.   
 
 Separation of concerns
-======================
+----------------------
 
 At first sight, discussions of abstract data types can seem like a
 complication of what, at the end of the day, are just operations on
@@ -202,25 +202,52 @@ tasks.
 
 
 Algorithmic complexity
-======================
+----------------------
 
 The second reason that understanding abstract data types is important
 is that a good implementation of a well designed abstract data type
-will have well defined performance characteristics. For example, in the
-Python :class:`list` implementation, all of all of the stack operations
-are, on average, :math:`O(1)`. This means that each of pushing,
-popping, and peeking has an approximately fixed cost that does not
-depend on the current size of the stack. This does not obviously have
-to be the case, especially for the push and pop operations, which
-modify the stack. :numref:`badstack` provides an implementation of a
-stack in which the data is stored as a Python :class:`tuple`. 
+will have well defined performance characteristics. In particular the
+optimal algorithmic complexity, expressed in big 'O' notation, of
+operations on abstract data types will be known. Recall the definition
+of big 'O':
 
-.. note::
+.. _bigO:
 
-   Not finished.
+.. proof:definition:: :math:`O`
 
+   Let `f`, `g`, be real-valued functions. Then:
 
-The separation of an abstract data type from its 
+   .. math::
+
+      f(n) = O(g(n)) \textrm{ as } n\rightarrow \infty
+
+   if there exists :math:`M>0` and `N>0` such that:
+
+   .. math::
+
+      n>N\, \Rightarrow\, |f(n)| < M g(n).
+
+We use :math:`n` rather than :math:`x` as the independent variable,
+because we are primarily interested in characterising the number of
+primitive operations or the amount of memory that an algorithm will
+use as a function of the number of objects stored in the relevant
+abstract data type.
+
+For example, in the Python :class:`list` implementation, all of all of
+the stack operations are, on average, :math:`O(1)`. This means that
+each of pushing, popping, and peeking has an approximately fixed cost
+that does not depend on the current size of the stack. This does not
+obviously have to be the case, especially for the push and pop
+operations, which modify the stack. :numref:`badstack` provides an
+implementation of a stack in which the data is stored as a Python
+:class:`tuple`. Here, every time item is pushed onto or popped from
+the stack, a new copy of the :class:`tuple` has to be made. This
+touches every one of the :math:`n` items currently in the stack, and
+therefore costs :math:`O(n)` operations. It is often useful to
+distinguish between time complexity, which is an indication of the
+number of operations required to execute an algorithm, and space
+complexity, which measures the peak memory usage of an algorithm or
+data structure.
 
 .. _badstack:
 
@@ -244,29 +271,196 @@ The separation of an abstract data type from its
        def peek(self):
            return self.data[-1]
 
+:numref:`bigO` is a particular case of the big `O` notation which you
+may already have seen in numerical analysis. However, there the limit
+is taken as the independent variable approaches 0. This difference of
+context between computer science and numerical analysis is sometimes
+confusing, particularly since both disciplines conventionally leave
+out the limit. It's worth keeping in mind that the difference, because
+a numerical algorithm with :math:`O(h^4)` error is really rather good,
+since `h` is small, but an algorithm with :math:`O(n^4)` cost is very
+expensive indeed!
+
+Amortised complexity and worst case complexity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The actual implementation of a :class:`list` is of a contiguous
+sequence of locations in memory, each of which can hold a reference to
+a Python object. How, then, can appending an item to a list work? The
+next location in memory might already be in use for some other
+data. The obvious naïve implementation would be to allocate a new
+contiguous block of memory, one location longer than the previous one,
+and copy the existing values into that before placing the appended
+value in the final location. This amounts to the approach in
+:numref:`badstack`, with the result that appending an item to a list
+would have a time complexity of :math:`O(n)`.
+
+In fact, this is not how Python lists are implemented. Instead of only
+allocating the exact amount of memory needed, Python allocates a bit
+more and keeps track of how many memory locations are currently in use
+to implement the list. Only when all the current memory locations are
+full does a further append operation cause Python to allocate more
+memory. The amount of memory allocated is approximately proportional
+to the current length of the list. That is, if the current list length
+is :math:`n` then the new memory allocation will be of size
+approximately :math:`kn` for some :math:`k>1`.
+
+.. note::
+
+   Need diagrams of how a dynamic array works here.
+
+What does this memory allocation strategy mean for the computational
+complexity of appending items to the list? There are two cases. If
+there is a spare location for the appended value, then a reference to
+the value is simply inserted into that location. The cost of this does
+not depend on the current length of the list, so it's :math:`O(1)`. If
+all of the allocated memory locations are now in use then a new chunk
+of memory is allocated and the existing values are copied there. This
+is an :math:`O(n)` operation. However, this :math:`O(n)` operation
+only occurs when the list has to be extended. How often is that?
+Suppose the list has just been reallocated (at a cost of
+:math:`O(n)`). The new memory allocation is :math:`kn` large, but we've
+aready used :math:`n` locations so we get :math:`(k-1)n` more cheap
+:math:`O(1)` append operations before we have to reallocate
+again. :math:`(k-1)n = O(n)` so this means that adding :math:`O(n)`
+items to the list costs:
+
+.. math::
+
+   \underbrace{O(n)}_{\textrm{reallocation}} + \underbrace{O(n)\times O(1)}_{O(n) \textrm{ cheap appends.}} = O(n)
+
+If appending :math:`O(n)` items to a list has a time complexity of
+:math:`O(n)`, it follows that the cost of appending one item to a
+list, averaged over a suitably large number of operations, is
+:math:`O(1)`. This measure of complexity, in which the cost of
+occasional expensive operations is considered averaged over a large
+number of operations, is called :term:`amortised complexity`. In
+contrast, the occasional list append operation is an example of the
+:term:`worst case complexity` of the algorithm. Appending an item to a
+list has an amortised time complexity of :math:`O(1)` but a worst case
+time complexity of :math:`O(n)`.
+
+
 Some more abstract data types
-=============================
+-----------------------------
            
-Stacks
-~~~~~~
+Queue and deque
+~~~~~~~~~~~~~~~
+
+A :term:`queue` is, like a :term:`stack`, an ordered sequence of
+objects. The difference is that the only accessible item in the
+sequence is the *earliest* added. Items can be added to the back of
+the queue and taken from the front. As with a stack, the optimal
+implementations of item insertion and removal are :math:`O(1)`.
+
+A :term:`deque` (Double Ended QUEue) is a generalisation of a queue to
+permit adding and removing items at either end. Indeed, the observant
+reader will note that a stack is also a special case of a
+deque. Python's standard library contains the
+:class:`collections.deque` class, providing a simple and efficient
+implementation of a deque.
+
+.. note::
+
+   A good exercise would be to implement a deque using a list as a
+   ring buffer.
 
 
 Linked lists
 ~~~~~~~~~~~~
 
+One disadvantage of a deque (and hence of a stack or queue) is that
+inserting an object into the middle of the sequence is often an
+:math:`O(n)` operation, because on average half of the items in the
+sequence need to be shuffled to make space. A linked list provides a
+mechanism for avoiding this. A singly linked list is a collection of
+links. Each link contains a reference to a data item, and a reference
+to the next link. Starting from the first link in a list, it is
+possible to move along the list by following the references to
+successive further links. A new item can be inserted at the current
+point in the list by creating a new link, pointing the link reference
+of the new link to the next link, and pointing the link reference of
+the current link to the new link.
 
-The iterator pattern
-====================
+.. note::
+
+   diagram of linked list insertion here.
+
+.. code-block: python3
+   :caption: A simple singly linked list implementation.
+
+   class Link:
+      def __init__(self, value, next=None):
+         self.value = value
+         self.next = next
+
+      def insert(self, link):
+         '''Insert a new link after the current one.'''
+
+         link.next = self.next
+         self.next = link
+
+Linked lists tend to have advantages where data is sparse. For
+example, our implementation of a :class:`Polynomial` in
+:numref:`objects` would represent :math:`x^{100} + 1` very
+inefficiently, with 98 zeroes. Squaring this polynomial would cause
+tens of thousands of operations, almost all of them on
+zeroes. Conversely, if we implemented polynomials with linked lists of
+terms, this squaring operation would take the handful of operations we
+expect.
+
+A doubly linked list differs from a singly linked list in that each
+link contains links both to the next link and to the previous
+one. This enables the list to be traversed both forwards and
+backwards.
+
+Sets
+~~~~
+
+Dictionaries
+~~~~~~~~~~~~
+
+
+The iterator protocol
+=====================
 
 The abstract data types we have considered here are collections of
 objects, and one common abstract operation which is applicable to
 collections is to iterate over them. That is to say, to loop over the
 objects in the collection and perform some action for each one. This
 operation is sufficiently common that Python provides a special syntax
-for it, the for loop. 
+for it, the :ref:`for loop <python:for>`. You will already be very
+familiar with looping over sequences such as lists:
 
+.. code-block:: ipython3
 
+   In [1]: for planet in ["World", "Mars", "Venus"]:
+      ...:     print(f"Hello {planet}")
+      ...:
+   Hello World
+   Hello Mars
+   Hello Venus
 
+Python offers a useful abstraction of this concept. By implementing
+the correct :term:`special methods <special method>`, a container
+class can provide the ability to be iterated over. This is a great
+example of abstraction in action: the user doesn't need to know or
+care how a particular container is implemented and therefore how to
+find all of its contents.
+
+There are two :term:`special methods <special method>` required for
+iteration. Neither take any arguments. The first, :func:`__iter__`,
+needs to be implemented by the container type. Its role is to return
+an object which implements iteration. This could be the container
+itself, or it could be a special iteration object (for example because
+it is necessary to store a number recording where the iteration is up
+to).
+
+The object returned by :func:`__iter__` needs to itself implement
+:func:`__iter__` (for exampe it could simply `return self`). In
+addition, it needs to implement the :func:`__next__` method. This is
+called by Python repeatedly to obtain the next object in the iteration
+sequence.
            
 Glossary
 ========
@@ -278,7 +472,19 @@ Glossary
        A mathematical :term:`type`, defined independently of any
        concrete implementation in code.
 
-    pipe
+    algorithmic complexity
+       A measure of the number of operations (time complexity) or
+       amount of storage (space complexity) required by an algorithm
+       or data structure. Algorithmic complexity is usually stated in
+       terms of a bound given in big 'O' notation.
+
+    amortised complexity
+       The average complexity of an algorithm considered over a suitably
+       large number of invocations of that algorithm. Amortised
+       complexity takes into account circumstances wherethe worst case
+       complexity of an algorithm is known to occur only rarely.
+
+    queue
     FIFO (first in, first out)
        an :term:`abstract data type` representing an ordered sequence
        of objects in which objects are accessed in the order in which
@@ -296,3 +502,11 @@ Glossary
        an :term:`abstract data type` representing an ordered sequence
        of objects, in which only the most recently added object can be
        directly accessed.
+
+    worst case complexity    
+       An upper bound on the :term:`algorithmic complexity` of an
+       algorithm. Many algorithms have a relatively low algorithmic
+       complexity most of the times they are run, but for some inputs
+       are much more complex. :term:`amortised complexity` is a
+       mechanism for taking into account the frequency at which the
+       worst case complexity can be expected to occur.
