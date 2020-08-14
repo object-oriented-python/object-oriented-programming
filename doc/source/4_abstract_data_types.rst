@@ -17,6 +17,9 @@ concrete realisations of a mathematical idea.
    An *abstract data type* is a purely mathematical :term:`type`,
    defined independently of its concrete realisation as code.
 
+That said, it will frequently be helpful in understanding abstract
+data types to refer to the ways in which they might be implemented.
+
 
 Stacks
 ------
@@ -360,11 +363,6 @@ deque. Python's standard library contains the
 :class:`collections.deque` class, providing a simple and efficient
 implementation of a deque.
 
-.. note::
-
-   A good exercise would be to implement a deque using a list as a
-   ring buffer.
-
 
 Linked lists
 ~~~~~~~~~~~~
@@ -386,19 +384,21 @@ the current link to the new link.
 
    diagram of linked list insertion here.
 
+.. _linked_list:
+   
 .. code-block: python3
    :caption: A simple singly linked list implementation.
 
    class Link:
-      def __init__(self, value, next=None):
-         self.value = value
-         self.next = next
+       def __init__(self, value, next=None):
+          self.value = value
+          self.next = next
 
-      def insert(self, link):
-         '''Insert a new link after the current one.'''
+       def insert(self, link):
+          '''Insert a new link after the current one.'''
 
-         link.next = self.next
-         self.next = link
+          link.next = self.next
+          self.next = link
 
 Linked lists tend to have advantages where data is sparse. For
 example, our implementation of a :class:`Polynomial` in
@@ -414,6 +414,11 @@ link contains links both to the next link and to the previous
 one. This enables the list to be traversed both forwards and
 backwards.
 
+A :term:`deque`, and therefore a :term:`stack` or a :term:`queue` can
+be implemented using a linked list, however the constant creation of
+new link objects is typically less efficient than implementations
+based on ring buffers.
+
 Sets
 ~~~~
 
@@ -422,7 +427,7 @@ Dictionaries
 
 
 The iterator protocol
-=====================
+---------------------
 
 The abstract data types we have considered here are collections of
 objects, and one common abstract operation which is applicable to
@@ -460,10 +465,103 @@ The object returned by :func:`__iter__` needs to itself implement
 :func:`__iter__` (for exampe it could simply `return self`). In
 addition, it needs to implement the :func:`__next__` method. This is
 called by Python repeatedly to obtain the next object in the iteration
-sequence.
+sequence. Once the sequence is exhausted, subsequent calls to
+:func:`__next__` should raise the built in :class:`StopIteration`
+exception. This tells Python that the iteration is over. This
+arrangement is called the iterator protocol, and it's further
+documented in the :ref:`official Python documentation <typeiter>`.
+
+.. hint::
+
+   :class:`StopIteration` is a good example of an :term:`exception`
+   which does not indicate an error. The end of the set of things to
+   be iterated over does not indicate that something has gone wrong,
+   but it is an exception to the usual behaviour of :func:`__next__`,
+   which Python needs to handle in a different way from simply
+   returning the next item.
+
+Let's suppose we want to make the linked list in :numref:`linked_list`
+iterable. We'll need to make another object to keep track of where we
+are in the list at each point in the
+iteration. :numref:`iterating_linked_list` shows the code. The helper
+class :class:`LinkIterator` is never seen by the user, it's just there
+to keep track of the iteration.
+
+.. _iterating_linked_list:
+
+.. code-block:: python3
+    :caption: A simple linked list implementation that supports the iterator protocol.
+
+    class Link:
+        def __init__(self, value, next=None):
+            self.value = value
+            self.next = next
+
+        def insert(self, link):
+            '''Insert a new link after the current one.'''
+
+            link.next = self.next
+            self.next = link
+
+        def __iter__(self):
+            return LinkIterator(self)
+
+
+    class LinkIterator:
+        def __init__(self, link):
+            self.here = link
+
+        def __iter__():
+            return self
+        
+        def __next__(self):
+            if self.here:
+                next = self.here
+                self.here = self.here.next
+                return next.value
+            else:
+                raise StopIteration
+
+As a trivial example, we can set up a short linked list and iterate over it, printing its values:
+
+.. code-block:: ipython3
+
+   In [3]: linked_list = Link(1, Link(2, Link(3)))
+
+   In [4]: for l in linked_list: 
+   ...:     print(l)
+   ...:
+   1
+   2
+   3
+
+Indeed, since Python now knows how to iterate over our linked list,
+converting it to a sequence type such as a :class:`tuple` will now work
+automatically:
+
+.. code-block:: ipython3
+
+   In [5]: tuple(linked_list)
+   Out[5]: (1, 2, 3)
+
+.. note::
+
+   A simple iterator exercise would be to make an iterator which
+   returns the Fibonacci numbers. Obviously this iterator never
+   terminates!
+
+.. note::
+
+   As a stack exercise, have the students implement a reverse Polish calculator.
+   
+.. note::
+
+   An exercise here should be to implement a deque using a ring
+   buffer, reallocating exponentially as it grows and shrinks, and
+   make it iterable.
            
 Glossary
-========
+--------
 
  .. glossary::
     :sorted:
@@ -484,9 +582,15 @@ Glossary
        complexity takes into account circumstances wherethe worst case
        complexity of an algorithm is known to occur only rarely.
 
+    deque
+       A double ended queue. An :term:`abstract data type`
+       representing an ordered sequence in which objects can be added
+       or removed at either end. A deque is a generalisation of both a
+       :term:`stack` and a :term:`queue`.
+
     queue
     FIFO (first in, first out)
-       an :term:`abstract data type` representing an ordered sequence
+       An :term:`abstract data type` representing an ordered sequence
        of objects in which objects are accessed in the order in which
        they were added.
 
@@ -499,7 +603,7 @@ Glossary
 
     stack
     LIFO (last in, first out)
-       an :term:`abstract data type` representing an ordered sequence
+       An :term:`abstract data type` representing an ordered sequence
        of objects, in which only the most recently added object can be
        directly accessed.
 

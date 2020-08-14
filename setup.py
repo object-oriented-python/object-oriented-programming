@@ -7,5 +7,5 @@ setup(name='oo-programming-exercises',
       author="David Ham",
       author_email="david.ham@imperial.ac.uk",
       #url="https://finite-element.github.io/",
-      packages=[],
+      packages=[fibonacci],
       scripts=glob('scripts/*'))
