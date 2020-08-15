@@ -317,15 +317,183 @@ the names! Do, by all means, use Greek or other language variable
 names where this will make the relationship between the maths and the
 code obvious, but write out the Greek letter name in Roman
 letters. For example, `theta` is a very good name for a variable
-representing an angle. Capital greek letters are sometimes represented
+representing an angle. Capital Greek letters are sometimes represented
 by capitalising the first letter of the Roman word, but take care to
 avoid situations where this might be confused for a class name.
 
-Parsimony and simplicity
+Parsimony and modularity
 ------------------------
+
+Good programming style is primarily about making programmes easy to
+understand. One of the key limitations of understanding is the sheer
+number of objects that the reader can keep in their short term memory
+at once. Without diverting into the psychology literature, this is
+only a couple of handfuls of values at most. This means that the
+largest amount of code that a reader can actively reason about is
+limited to a few operations on a few variables. As a programmer, there
+are two tools at your disposal to achieve this. The first is to be
+parsimonious and not introduce unnecessary temporary variables. The
+second is to use abstractions such as classes and function interfaces
+to split the problem up into small pieces, so that each individual
+function or method is small enough for a reader to understand.
+
+.. note::
+
+   Put in an example here of some horrific code that can be radically simplified.
+
+Use comprehensions
+..................
+
+It is very common to write loops to populate collection objects with
+values. For example, we might make a list of the first 10 square
+numbers for further use:
+
+.. container:: badcode
+
+    .. code-block:: python3
+
+       squares = []
+       for i in range(10):
+           squares.append((i+1)**2)
+
+This is a fairly typical, if simple, example. It takes three lines of
+code: one to initialise the list, one to loop, and one to add the
+values to the list. Alternatively, if we had used a :ref:`list
+comprehension <tut-listcomps>`, all three steps would have been subsumed into a single
+operation:
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+       squares = [(i+1)**2 for i in range(10)]
+
+At least for fairly simple operations, comprehensions are almost
+always easier for the reader to understand than loops. In addition to
+lists, comprehensions are also available for :ref:`sets <tut-sets>`
+and :ref:`dictionaries <tut-dictionaries>`.
 
 Redundant logical expressions
 .............................
+
+One exceptionally common failure of parsimony is to write expressions of the following form:
+
+.. container:: badcode
+
+   .. code-block:: python3
+
+       if var == True:
+
+To see the problem with this statement, let's write out its truth table:
+
+===== =============
+`var` `var == True`
+===== =============
+T     T
+F     F
+===== =============
+
+In other words, the expressions `var` and `var == True` are logically
+equivalent (at least assuming `var` is a :ref:`boolean value <bltin-boolean-values>`), so it would
+have been more parsimonious to write:
+
+.. container:: goodcode
+
+   .. code-block:: python3
+
+      if var:
+
+Similarly:
+
+.. container:: badcode
+
+   .. code-block:: python3
+
+      if var == False:
+
+is frowned upon by programmers in favour of:
+
+.. container:: goodcode
+
+   .. code-block:: python3
+
+       if not var:
+
+Finally, the use of :ref:`else <else>` (or :ref:`elif <elif>`) can reduce the number
+of logical expressions that the reader has to read and
+understand. This means that:
+
+.. container:: badcode
+
+    .. code-block:: python3
+
+       if var:
+           # Some code
+       if not var:
+           # Some other code
+
+should be avoided in favour of:
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+       if var:
+           # Some code
+       else:
+           # Some other code.
+
+In addition to having fewer logical operations which the reader needs
+to understand, the `if...else` version explicitly ties
+the two cases together as alternatives, which is an additional aid to
+understanding.
+
+Use the fact that every object is True or False
+...............................................
+
+Every Python object is logically either :data:`True` or :data:`False` according to the
+following rules:
+
+1. None is False.
+
+2. Zero is False, all other numerical values are True.
+
+3. An empty collection is False, any other container is true. For
+   example, an empty list is False, but the list `[0, 0]` is True.
+
+4. The null string `""` is False, a string containing any characters is True.
+
+5. A user-defined class is True unless:
+
+   a. It defines the :meth:`~object.__bool__` :term:`special
+      method`. In this case the truth value is whatever this method
+      returns.
+
+   b. It doesn't define :meth:`~object.__bool__` but does define
+      :meth:`~object.__len__`. In this case the object is False if the
+      length is zero, and True otherwise.
+
+These rules are laid out formally in :ref:`the Python documentation
+<truth>`. One way that they can be used to write simpler, clearer code
+is in the very common case of code that should only execute if a
+collection object actually contains something. In that case, this form
+of test is to be preferred:
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+       if mysequence:
+           # Some code using mysequence
+
+instead of:
+
+.. container:: badcode
+
+    .. code-block:: python3
+
+       if len(mysequence) > 0:
+           # Some code using mysequence
 
 
 Comments
@@ -373,7 +541,7 @@ simpler alternative strategy is actually invalid.
 
 
 Docstrings
-..........
+----------
 
 There is one enormous exception to the rule that comments should be
 used only sparingly: docstrings. Docstrings (a portmanteau of
@@ -384,6 +552,20 @@ have to concern themselves with how it is implemented. They should
 therefore not need to read the code in order to understand how to use
 it. 
 
+Glossary
+--------
+
+ .. glossary::
+    :sorted:
+
+    modularity
+       The design principle that programs should be broken into small,
+       easily understandable units, which communicate with each other
+       through clearly specified interfaces.
+
+    parsimony
+       The design principle that unnecessary code, names, and objects
+       should be avoided.
 
 .. rubric:: Footnotes
 

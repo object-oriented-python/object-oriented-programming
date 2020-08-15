@@ -324,6 +324,18 @@ pre, code {
     border-bottom: 2px solid #c6c9cb;
 }
 
+.badcode .highlight pre {
+    background: #fafafa url(dialog-wrong.png) no-repeat 10px 8px;
+    background-position: right;
+    border-left: 8px solid #ff0000;
+}
+
+.goodcode .highlight pre {
+    background: #fafafa url(dialog-right.png) no-repeat 10px 8px;
+    background-position: right;
+    border-left: 8px solid #00ff00;
+}
+
 tt {
     background-color: transparent;
     color: #222;
