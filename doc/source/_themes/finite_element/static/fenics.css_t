@@ -28,7 +28,7 @@ div.documentwrapper {
 }
 
 div.bodywrapper {
-   width: 950px;
+   max-width: 860px;
    margin-left: auto;
    margin-right: auto;
 }
@@ -489,7 +489,7 @@ div.menu li {
 
 .wrapper {
 	margin: 0 auto;
-	width: 900px;
+	max-width: 900px;
 }
 
 /* =Leader and Front Page Styles
