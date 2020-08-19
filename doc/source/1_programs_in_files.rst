@@ -15,15 +15,44 @@ typing in a web browser. As an introduction to writing code in files
 we will first consider Python scripts. We'll then move on to making
 code really reusable by creating Python modules and packages.
 
+The Python interpreter
+----------------------
+
+Before we dive into the various different ways that Python code can be
+organised and run, it's helpful to have a mental model of what it
+actually means for Python code to execute. Python is an interpreted
+language. This means that the program that runs is not made up of the
+primitive machine-level instructions that the processor in your
+computer executes. Instead, the Python program is read and executed by
+another piece of software, the Python interpreter. The Python
+interpreter takes a sequence of Python statements and performs the
+actions they specify. The Python interpreter takes care of allocating
+the required memory, and causes the right sequences of primitive
+machine-level instructions to execute on the actual hardware for your
+programme to run.
+
+The Python interpreter is the same no matter whether you use Jupyter
+notebooks, an interactive Python terminal such as IPython, or execute
+code written in Python scripts. These are all just different ways of
+providing a sequence of Python commands to the interpreter, and
+conveying the output back to the user. This means that the same Python
+code works in essentially the same way no matter how you use
+Python. The Python interpreter also sits between the Python code and
+the operating system, so for most purposes it also doesn't matter
+whether your Python program is running on Windows, Mac, Linux, or
+maybe something more exotic. Usually when we refer to Python doing
+something or responding to code in a particular way, what we mean is
+that this is what the interpreter does in those circumstances.
+
 Python scripts and text editors
 -------------------------------
 
 A Python script is simply a plain text file containing Python code. If
-we pass the file to Python, then all the code in the file will be
-executed, it's that simple. So, we need a way to create files full of
-Python code, and a way to feed them to Python. We create and edit
-Python files with a program called a text editor. A good text editor
-will help you to code by highlighting syntax, and helping with
+we pass the file to the Python interpreter, then all the code in the
+file will be executed, it's that simple. So, we need a way to create
+files full of Python code, and a way to feed them to Python. We create
+and edit Python files with a program called a text editor. A good text
+editor will help you to code by highlighting syntax, and helping with
 indentation. Some text editors also feature advanced features such as
 built-in access to documentation, or highlighting style problems in
 your code. A more fully-featured option is an Integrated Development
@@ -257,9 +286,11 @@ that renaming does not add to confusion. As a somewhat extreme
 example, should you ever type the following code, you should expect
 the wrath of your users to be without bounds:
 
-.. code-block:: python
+.. container:: badcode
 
-  from math import sin as cos, cos as sin
+   .. code-block:: python
+
+      from math import sin as cos, cos as sin
 
 It is possible to import all of the names from a module into the current namespace:
 

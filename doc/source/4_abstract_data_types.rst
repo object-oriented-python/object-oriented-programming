@@ -20,6 +20,7 @@ concrete realisations of a mathematical idea.
 That said, it will frequently be helpful in understanding abstract
 data types to refer to the ways in which they might be implemented.
 
+.. _stacks:
 
 Stacks
 ------

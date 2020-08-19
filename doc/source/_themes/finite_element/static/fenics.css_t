@@ -166,6 +166,10 @@ a, a .pre {
     word-wrap: break-word;
 }
 
+a.external, a.external .pre{
+    color: #e55d05;
+}
+
 a:hover, a:hover .pre {
     text-decoration: underline;
 }

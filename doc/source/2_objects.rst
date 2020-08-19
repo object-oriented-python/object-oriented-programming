@@ -247,19 +247,19 @@ example, if we decided to make a separate class for complex-valued
 polynomials, we might call it :class:`ComplexPolynomial`.
 
 Inside the class definition, i.e. indented inside the block, is a
-function called :meth:`__init__`. Functions defined inside a class
-definition are called :term:`methods<method>`. The :meth:`__init__` method has a
+function called :meth:`~object.__init__`. Functions defined inside a class
+definition are called :term:`methods<method>`. The :meth:`~object.__init__` method has a
 rather distinctive form of name, starting and ending with two
 underscores. Names of this format are used in the Python language for
 objects which have special meaning in the Python language. The
-:meth:`__init__` method of a class has special meaning in Python as
+:meth:`~object.__init__` method of a class has special meaning in Python as
 the :term:`constructor` of a class. When we write:
 
 .. code-block:: ipython3
 
    In [7]: f = Polynomial((0, 1, 2))
 
-This is called :term:`instantiating` an object of type
+This is called :term:`instantiating <instantiate>` an object of type
 :class:`Polynomial`. The following steps occur:
 
 1. Python creates an object of type :class:`Polynomial`.
@@ -274,13 +274,13 @@ This is called :term:`instantiating` an object of type
 Attributes
 ..........
 
-Let's now look at what happened inside the :meth:`__init__` method. We
+Let's now look at what happened inside the :meth:`~object.__init__` method. We
 have just one line::
 
   self.coefficients = coefs
 
 Remember that `self` is the object we are setting up, and coefs is the
-other parameter to :meth:`__init__`. This line of code creates a new
+other parameter to :meth:`~object.__init__`. This line of code creates a new
 name inside this :class:`Polynomial` object, called
 `coefficients`, and associates this new name with the object passed as
 the argument to the :class:`Polynomial` constructor. Names such as
@@ -297,7 +297,7 @@ the same syntax, which is what we did here:
 Methods
 .......
 
-We have already met the :term:`special method` :class:`__init__`,
+We have already met the :term:`special method` :meth:`~object.__init__`,
 which defines the class constructor. A much more typical case is an
 ordinary method, without a special underscore name. For example,
 suppose we wish to be able to access the degree of a polynomial, then
@@ -314,9 +314,9 @@ we might add a :meth:`degree` method to our class::
         return len(self.coefficients) - 1
 
 Observe that the new method is indented inside the :keyword:`class`
-block at the same level as the :meth:`__init__` method. Observe also
+block at the same level as the :meth:`~object.__init__` method. Observe also
 that it too takes `self` as its first parameter. A key difference from
-the :meth:`__init__` method is that :meth:`degree` now returns a
+the :meth:`~object.__init__` method is that :meth:`degree` now returns a
 value, as most functions do. We can now use our new method to recover
 the degree of our Polynomial.
 
@@ -363,7 +363,7 @@ have to tell it.
 
 The way we do so is using another :term:`special method`. The special
 method name for the human readable string representation of an object is
-:meth:`__str__`. It takes no arguments other than the object itself,
+:meth:`~object.__str__`. It takes no arguments other than the object itself,
 and we could define it thus::
 
     def __str__(self):
@@ -399,13 +399,13 @@ new method to our class, we can now observe the result:
    
 In fact, Python provides not one, but two :term:`special
 methods<special method>` which convert an object to a
-string. :meth:`__str__` is called by :func:`print` and also by
-:func:`str`. Its role is to provide the string representation which
+string. :meth:`~object.__str__` is called by :func:`print` and also by
+:class:`str`. Its role is to provide the string representation which
 is best understood by humans. In mathematical code, this will usually
 be the mathematical notation for the object. In contrast, the
-:meth:`__repr__` method  is called by :func:`repr` and also provides
+:meth:`~object.__repr__` method  is called by :func:`repr` and also provides
 the default string representation printed out by the Python command
-line. By convention, :meth:`__repr__` should return a string which a
+line. By convention, :meth:`~object.__repr__` should return a string which a
 user might type in order to recreate the object. For example::
 
   def __repr__(self):
@@ -414,7 +414,7 @@ user might type in order to recreate the object. For example::
 
 Notice that in order to help ensure consistency of representations we
 call :func:`repr` on the coefficients in this case, whereas in the
-:meth:`__str__` method we called :func:`str`.
+:meth:`~object.__str__` method we called :class:`str`.
 
 We can now observe the difference in the result:
 
@@ -448,7 +448,7 @@ observed that objects of some classes can be added. Is this true for
 
 Of course once again this is not so surprising since we haven't
 defined what addition of polynomials should mean. The :term:`special
-method` which defines addition is :meth:`__add__`. It takes the
+method` which defines addition is :meth:`~object.__add__`. It takes the
 object itself and  another object, and returns their sum. That is,
 when you write `a + b` in Python, then what actually happens is
 `a.__add__(b)`. 
@@ -470,9 +470,9 @@ requires two more Python features we have not yet met. One of these is
 the built in function :func:`isinstance`, which tests whether an
 object is an instance of a class. The other is the class :class:`~numbers.Number`,
 which we import from the :mod:`numbers` module. All Python numbers are
-instances of :class:`Number` so this provides a mechanism for checking
+instances of :class:`~numbers.Number` so this provides a mechanism for checking
 whether the other operand is a number. We will consider
-:func:`isinstance` and :class:`Number` in more detail when we look at
+:func:`isinstance` and :class:`~numbers.Number` in more detail when we look at
 inheritance and abstract base classes.
 
 Putting all this together, we can define polynomial addition::
@@ -535,9 +535,9 @@ Naturally, Python's inbuilt :class:`int` type knows nothing about our
 new :class:`Polynomial` class, so when we ask it to do the addition,
 it returns :obj:`NotImplemented`. We could, however, tell
 :class:`Polynomial` how to be added to an :class:`int`, and Python
-provides a mechanism for this. If the :meth:`__add__` of the left hand
+provides a mechanism for this. If the :meth:`~object.__add__` of the left hand
 operand of `+` returns :obj:`NotImplemented`, then Python tries the
-reverse addition method, called :meth:`__radd__`, on the right hand
+reverse addition method, called :meth:`~object.__radd__`, on the right hand
 operand. Because we know that polynomial addition is commutative,
 we can define this very easily::
 
@@ -594,8 +594,8 @@ able to call like functions. The solution to our challenge is that
 calling a function is an operation on an object similar to addition,
 and Python provides another :term:`special method` name for
 this. `f(x)` is mapped to `f.__call__(x)`, so any Python object with a
-:meth:`__call__` method behaves like a function, and any class
-defining a :meth:`__call__` method in effect defines a new type of
+:meth:`~object.__call__` method behaves like a function, and any class
+defining a :meth:`~object.__call__` method in effect defines a new type of
 function.
 
 Exercises
@@ -604,12 +604,12 @@ Exercises
 1. Define the subtraction, multiplication and exponentiation
    operations on the :class:`Polynomial` class.
 
-2. Implement the :meth:`__call__`  method on the :class:`Polynomial`
+2. Implement the :meth:`~object.__call__`  method on the :class:`Polynomial`
    class.
 
 3. Define a function `derivative` which takes a :class:`Polynomial`
    and returns a new :class:`Polynomial` which is its derivative. Also
-   define a :meth:`dx` on the :class:`Polynomial` class which
+   define a :meth:`dx` method on the :class:`Polynomial` class which
    returns the derivative of that :class:`Polynomial`. Rather than
    duplicating code, you should implement the function by calling the
    method.
@@ -639,7 +639,7 @@ Glossary
        the two words have different roles in Python code.
 
     constructor
-       The :meth:`__init__` method of a :term:`class`. The constructor
+       The :meth:`~object.__init__` method of a :term:`class`. The constructor
        is passed the new object as its first argument (`self`) and is
        responsible for setting up the object. The constructor modifies
        `self` in place: constructors never return a value.
@@ -648,16 +648,20 @@ Glossary
        An object of a particular class. `a` is an instance of
        :class:`MyClass` means that `a` has class `MyClass`. We will
        return to this concept when we learn about :ref:`inheritance <inheritance>`.
+
+    instantiate
+       To create an :term:`instance` of a :term:`class` by
+       calling its :term:`constructor`.
        
     method
-       A function defined within a :keyword:`class`. If `a` is an
+       A function defined within a :term:`class`. If `a` is an
        instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
        `a.foo()` is equivalent to `MyClass.foo(a)`. The first parameter
        of a method is always named `self`.
 
     pseudocode
        A description of an algorithm given in the form of a computer
-       programme but without conforming to the rules of a particular
+       program but without conforming to the rules of a particular
        programming language, and employing mathematical notation or
        plain text to express the algorithm in a human-readable form.
 
@@ -666,6 +670,6 @@ Glossary
        A method which has special meaning in the Python
        language. Special method names are used to define operations on
        a :term:`class` such as arithmetic operators, indexing, or the
-       class :term:`constructor`. See :doc:`the Python documentation
+       class :term:`constructor`. See :ref:`the Python documentation
        <specialnames>` for a technical description. Special methods
        are sometimes informally called "magic methods".

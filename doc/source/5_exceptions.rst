@@ -129,10 +129,15 @@ is a syntax error.
 Exceptions
 ----------
 
+Aside from syntax errors, which are handled directly by the 
+
 Python has many types of exception built in, and Python developers can
 define their own exceptions so there are many more defined in
 third-party packages. The :doc:`full list of built-in exceptions
 <library/exceptions>` is available in the Python documentation.
+
+Exceptions are not always errors
+................................
 
 
 Tracebacks: finding errors
@@ -205,35 +210,30 @@ One of the most basic features of a function call is that the contents
 of the function execute, and then the code which called the function
 continues on from the point of the function call, using the return
 value of the function in place of the call. Let's think about what
-happens when this happens. Before calling the function, there is a
+happens when this occurs. Before calling the function, there is a
 large amount of information which describes the context of the current
 program execution. For example, there are all of the module, function,
 and variable names which are in scope, and there is the record of
 which instruction is next to be executed. This collection of
 information about the current execution context is called a
-:term:`stack frame`.
-
-When a function is called, the Python interpreter creates a new stack
-frame containing the local execution context of that
-function. Importantly, the new stack frame contains a reference back
-to the stack frame from which the function was called. This enables
-execution of the calling routine to continue when the newly called
-function returns. Because functions can call functions which call
-functions and so on in a nearly limitless sequence, there can be a
-number of stack frames in existence at any time. These form a sequence
-back from the current function which is being executed, through the
-function which called it, through the function that called that one
-and so forth until the very first stack frame. This frame contains the
-execution context for the Python script that the user ran, or for the
-iPython shell or Jupyter notebook the user was typing into in the case
-where the user worked interactively.
-
-The trail of stack frames from the currently executing statement all
-the way back to the user script or command line is an example of a
-type of data structure called a :term:`stack`, which we will study in
-more detail later. Consequently, the term for this collection of stack
-frames is the :term:`call stack`. It is also sometimes called the
+:term:`stack frame`. We learned about :term:`stacks <stack>` in
+:numref:`stacks`, and the term "stack frame" is not a coincidence. The
+Python interpreter maintains a :term:`stack` of stack frames called
+the :term:`call stack`. It is also sometimes called the
 :term:`execution stack` or :term:`interpreter stack`.
+
+The first frame on the stack contains the execution context for the
+Python script that the user ran, or for the iPython shell or Jupyter
+notebook the user was typing into in the case where the user worked
+interactively. When a function is called, the Python interpreter
+creates a new stack frame containing the local execution context of
+that function and pushes it onto the call stack. When that function
+returns, its stack frame is popped from the call stack, leaving the
+interpreter to continue at the next instruction in the stack frame
+from which the function was called. Because functions can call
+functions which call functions and so on in a nearly limitless
+sequence, there can be a number of stack frames in existence at any
+time. 
 
 .. note::
 
@@ -341,6 +341,17 @@ Glossary
         current item on the stack is the currently executing function,
         while the deepest item is the stack frame corresponding to the
         user script or interpreter.
+
+    syntax
+        The set of rules which define what is a well-formed Python
+        statement. For example the rule that statements which start
+        blocks must end with a colon (:) is a syntax rule.
+
+    syntax error
+        The :term:`exception` which occurs when a statement violates
+        the :term:`syntax` rules of Python. Mismatched brackets,
+        missing commas, and incorrect indentation are all examples of
+        syntax errors.
 
     traceback
     stack trace
