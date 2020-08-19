@@ -455,19 +455,19 @@ care how a particular container is implemented and therefore how to
 find all of its contents.
 
 There are two :term:`special methods <special method>` required for
-iteration. Neither take any arguments. The first, :func:`__iter__`,
+iteration. Neither take any arguments. The first, :meth:`~container.__iter__`,
 needs to be implemented by the container type. Its role is to return
 an object which implements iteration. This could be the container
 itself, or it could be a special iteration object (for example because
 it is necessary to store a number recording where the iteration is up
 to).
 
-The object returned by :func:`__iter__` needs to itself implement
-:func:`__iter__` (for exampe it could simply `return self`). In
-addition, it needs to implement the :func:`__next__` method. This is
+The object returned by :meth:`~container.__iter__` needs to itself implement
+:meth:`~iterator.__iter__` (for example it could simply `return self`). In
+addition, it needs to implement the :meth:`~iterator.__next__` method. This is
 called by Python repeatedly to obtain the next object in the iteration
 sequence. Once the sequence is exhausted, subsequent calls to
-:func:`__next__` should raise the built in :class:`StopIteration`
+:meth:`~iterator.__next__` should raise the built in :class:`StopIteration`
 exception. This tells Python that the iteration is over. This
 arrangement is called the iterator protocol, and it's further
 documented in the :ref:`official Python documentation <typeiter>`.
@@ -477,7 +477,7 @@ documented in the :ref:`official Python documentation <typeiter>`.
    :class:`StopIteration` is a good example of an :term:`exception`
    which does not indicate an error. The end of the set of things to
    be iterated over does not indicate that something has gone wrong,
-   but it is an exception to the usual behaviour of :func:`__next__`,
+   but it is an exception to the usual behaviour of :meth:`~iterator.__next__`,
    which Python needs to handle in a different way from simply
    returning the next item.
 
