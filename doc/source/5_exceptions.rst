@@ -5,7 +5,7 @@ Errors and exceptions
 
 It is a sight familiar to every programmer: instead of producing the
 desired result, the screen is filled with seemingly unintelligible
-garbage because an error has occured. Producing errors is an
+garbage because an error has occurred. Producing errors is an
 unavoidable part of programming, so learning to understand and correct
 them is an essential part of learning to program.
 
@@ -39,7 +39,7 @@ error:
 
     ZeroDivisionError: float division by zero
 
-An important rule in iterpreting Python errors, the reasons for which we will
+An important rule in interpreting Python errors, the reasons for which we will
 return to, is to always read the error message from the bottom up. In
 this case, the last line contains the name of the exception which has
 been raised :obj:`ZeroDivisionError`, followed by a colon, followed by
@@ -67,7 +67,7 @@ exception. In programming languages, as with human languages, the
 syntax is the set of rules which defines which expressions are
 well-formed. Notice that the earlier lines of a syntax error appear
 somewhat different to those of the previous exception. Almost all
-exceptions occur because the interpreter attempts to evaluate an
+exceptions occur because the interpreter attempts to evaluate a
 statement or expression and encounters a problem. Syntax errors are a
 special case: when a syntax error occurs, the interpreter can't even
 get as far as attempting to evaluate because the sequence of
@@ -76,7 +76,7 @@ Python. This does, however, have one advantage, which is that the
 error message shows the precise point in the line at which the Python
 interpreter found a problem. This is indicated by the caret symbol
 (`^`). In this case, the reason that the expression doesn't make any
-sense is that the modulo operator (`%`) is not a permissable second
+sense is that the modulo operator (`%`) is not a permissible second
 operand to multiplication (`*`), so the Python interpreter places the
 caret under the modulo operator.
 
@@ -117,7 +117,7 @@ the following code would be completely valid:
 
 This means that the :term:`Python interpreter` can only know that something is
 wrong when it sees `print`, because `print` cannot follow `2` in a
-tuple constructor. The interpreter therefore reports that the `print`
+tuple constructor. The interpreter, therefore, reports that the `print`
 is a syntax error.
 
 .. hint::
@@ -166,7 +166,7 @@ Tracebacks: finding errors
 
 The errors we have looked at so far have all been located in the top
 level of code either typed directly into iPython or executed in a
-script. However what happens if an error occurs in a function call, or
+script. However, what happens if an error occurs in a function call or
 even several functions down? Consider the following code, which uses
 the :class:`~polynomial.Polynomial` class from
 :numref:`chapter %s <objects>`:
@@ -181,7 +181,7 @@ the :class:`~polynomial.Polynomial` class from
     bx + a
 
 So, perhaps surprisingly, we are able to define a polynomial whose
-coefficents are letters, and we can even print the resulting
+coefficients are letters, and we can even print the resulting
 object. However, if we attempt to add this polynomial to the number 1,
 we are in trouble:
 
@@ -208,7 +208,7 @@ we are in trouble:
     TypeError: can only concatenate str (not "int") to str
 
 This is a much larger error message than those we have previously
-encountered, however the same principles apply. We start by reading
+encountered, however, the same principles apply. We start by reading
 the last line. This tells us that the error was a :class:`TypeError`
 caused by attempting to concatenate (add) an integer to a
 string. Where did this error occur? This is a more involved question

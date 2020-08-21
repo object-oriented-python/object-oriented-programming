@@ -3,7 +3,7 @@
 Objects and abstraction
 =======================
 
-In this chapter we will take a first look at the representation of
+In this chapter, we will take a first look at the representation of
 abstract mathematical objects and operations as data objects in a
 computer program.
 
@@ -51,10 +51,10 @@ we add an integer to a string?
   TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
 In this error, Python is complaining that `+` does not make sense if
-the items being added (the "operands") are a in integer and a
+the items being added (the "operands") are an integer and a
 string. This makes our understanding of "suitably defined" more
 concrete: clearly some pairs of objects can be added and others
-can't. However, we should be careful in the conclusions we draw. We
+can't. However, we should be careful about the conclusions we draw. We
 might be tempted to believe that we can add two values if they are of
 the same type. However, if we try this with a pair of sets then we're
 also in trouble:
@@ -102,7 +102,7 @@ An abstraction is a purely mathematical concept, but it is one which
 maps to one or more concrete realisations in code. Sometimes the
 abstract mathematical concept and its concrete realisation match so
 perfectly that it is difficult to distinguish the two. In those
-circumstances we usually conflate the terminology for the abstraction
+circumstances, we usually conflate the terminology for the abstraction
 and the code object. "Type" is one such example, and we turn to that
 now.
 
@@ -146,7 +146,7 @@ of `int`?
   Out[1]: type 
 
 So :class:`int` is the type of integer objects, and is itself an
-object with type :class:`type`. That rather invites the question what
+object with type :class:`type`. That rather invites the question of what
 is the type of :class:`type`?
 
 .. code-block:: ipython3
@@ -158,7 +158,7 @@ This actually makes perfect sense, because :class:`type` is simply the
 type of types.
 
 We will return to types in much more detail later. At this stage, the
-take home message is that essentially everything you will encounter in
+take-home message is that essentially everything you will encounter in
 Python is an object, and every object has a type.
 
 .. note::
@@ -194,7 +194,7 @@ one variable. That is to say, functions of the form:
 
 The set of all polynomials is a well-defined (though infinite) set of
 different values, with a number of well-defined properties. For
-example we can add and multiply polynomials, resulting in a new
+example, we can add and multiply polynomials, resulting in a new
 polynomial. We can also evaluate a polynomial for a particular value
 of :eq:`x`, which would result in a real value.
 
@@ -202,7 +202,7 @@ This is the mathematical abstraction of a polynomial. How would we
 represent this abstraction in Python code? A polynomial is
 characterised by its set of coefficients, so we could in principle
 represent a polynomial as a :class:`tuple` of coefficient
-values. However, addition of tuples is concatenation, and
+values. However, the addition of tuples is concatenation, and
 multiplication of two tuples isn't even defined, so this would be a
 very poor representation of the mathematics: a polynomial represented
 as a tuple of coefficients would not behave the way a mathematician
@@ -241,7 +241,7 @@ The :ref:`class definition <python:class>` statement opens a new block, so
 just like a :ref:`function definition <function>`, it starts with
 the keyword, followed by the name of the class we are defining, and
 ends with a colon. User-defined classes in Python (i.e. classes not
-built in to the language) usually have CapWords names. This means
+built into the language) usually have CapWords names. This means
 that all the words in the name a run together without spaces. For
 example, if we decided to make a separate class for complex-valued
 polynomials, we might call it :class:`ComplexPolynomial`.
@@ -355,7 +355,7 @@ object. What happens if we print a :class:`Polynomial`?
    <Polynomial object at 0x104960dd0>
 
 This is less than useful. By default, Python just prints the class of
-the object, and the memory address at which this particular object is
+the object and the memory address at which this particular object is
 stored. This is, however, not so surprising if we think about the
 situation in a little more depth. How was Python supposed to know what
 sort of string representation makes sense for this object? We will
@@ -388,7 +388,7 @@ and we could define it thus::
 
 This slightly longer piece of code results from the fact that the
 linear and constant terms in a polynomial are usually represented
-slightly differently from the higher order terms. Having added this
+slightly differently from the higher-order terms. Having added this
 new method to our class, we can now observe the result:
       
 .. code-block:: ipython3
@@ -446,15 +446,15 @@ observed that objects of some classes can be added. Is this true for
 
    TypeError: unsupported operand type(s) for +: 'Polynomial' and 'Polynomial'
 
-Of course once again this is not so surprising since we haven't
+Of course, once again this is not so surprising since we haven't
 defined what addition of polynomials should mean. The :term:`special
 method` which defines addition is :meth:`~object.__add__`. It takes the
-object itself and  another object, and returns their sum. That is,
+object itself and another object and returns their sum. That is
 when you write `a + b` in Python, then what actually happens is
 `a.__add__(b)`. 
 
 Before we define our addition method, we first need to consider what
-other objects it might make sense to add to a polynomial. Obviously we
+other objects it might make sense to add to a polynomial. Obviously, we
 should be able to add two polynomials, but it also makes sense to add
 a number to a polynomial. In either case, the result will be a new
 polynomial, with coefficients equal to the sum of those of the
@@ -554,7 +554,7 @@ previously problematic operation:
    In [3]: print(1 + a)                                                                                               
    x^3 + 2x + 2
 
-Of course addition is not the only arithmetic operator one might wish
+Of course, addition is not the only arithmetic operator one might wish
 to overload. A fully featured polynomial class will, at the very
 minimum, need subtraction, multiplication (by a scalar or another
 polynomial) and exponentiation by an integer power. The combination of

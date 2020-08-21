@@ -11,7 +11,7 @@ writing code which is designed to be used by other people. If the
 intention is to write mathematical building blocks out of which more
 complex algorithms can be constructed, then we need a different way of
 storing code: one which is accessible in more automated ways than
-typing in a web browser. As an introduction to writing code in files
+typing in a web browser. As an introduction to writing code in files,
 we will first consider Python scripts. We'll then move on to making
 code really reusable by creating Python modules and packages.
 
@@ -27,7 +27,7 @@ computer executes. Instead, the Python program is read and executed by
 another piece of software, the Python interpreter. The Python
 interpreter takes a sequence of Python statements and performs the
 actions they specify. The Python interpreter takes care of allocating
-the required memory, and causes the right sequences of primitive
+the required memory and causes the right sequences of primitive
 machine-level instructions to execute on the actual hardware for your
 programme to run.
 
@@ -38,9 +38,9 @@ providing a sequence of Python commands to the interpreter, and
 conveying the output back to the user. This means that the same Python
 code works in essentially the same way no matter how you use
 Python. The Python interpreter also sits between the Python code and
-the operating system, so for most purposes it also doesn't matter
+the operating system, so for most purposes, it also doesn't matter
 whether your Python program is running on Windows, Mac, Linux, or
-maybe something more exotic. Usually when we refer to Python doing
+maybe something more exotic. Usually, when we refer to Python doing
 something or responding to code in a particular way, what we mean is
 that this is what the interpreter does in those circumstances.
 
@@ -52,7 +52,7 @@ we pass the file to the Python interpreter, then all the code in the
 file will be executed, it's that simple. So, we need a way to create
 files full of Python code, and a way to feed them to Python. We create
 and edit Python files with a program called a text editor. A good text
-editor will help you to code by highlighting syntax, and helping with
+editor will help you to code by highlighting syntax and helping with
 indentation. Some text editors also feature advanced features such as
 built-in access to documentation, or highlighting style problems in
 your code. A more fully-featured option is an Integrated Development
@@ -69,7 +69,7 @@ A first Python script
 
 Tradition dictates that the first stand-alone program one writes in
 any language simply prints out the string `Hello World`. Using a text
-editor we create a file which we'll call `hello.py` containing just
+editor, we create a file which we'll call `hello.py` containing just
 the following line of Python code:
 
 .. code-block:: python
@@ -90,13 +90,13 @@ your home directory, then you would type the following:
    $ python3 hello.py
 
 The dollar sign is the command prompt. Its different on some systems,
-for example it's often a greater than sign (`>`). The text to the left
+for example, it's often a greater than sign (`>`). The text to the left
 of the command prompt might also be different depending on which
 terminal program you are using on which operating system, but we are
 only concerned with the commands to the right of the prompt. The first
 of these, `cd` (*change directory*) switches the current folder to
 `src`. The second command actually runs the Python interpreter on
-`hello.py`. Deepending on what is installed on your computer, it might
+`hello.py`. Depending on what is installed on your computer, it might
 also be possible to leave off the `3` at the end of `python3`, however
 on some systems the plain `python` command is still linked to the old
 version 2 of Python, so it's better to be explicit and type
@@ -111,7 +111,7 @@ When to use scripts
 ~~~~~~~~~~~~~~~~~~~
 
 The key advantage of a script is that it is repeatable: it can be
-executed again and exactly the same commands will execute. Writing
+executed again, and exactly the same commands will execute. Writing
 scripts is an absolutely essential programming discipline in any
 circumstance where you might want to know what you did and, possibly,
 do it again. For example, suppose you have a project in a
@@ -119,7 +119,7 @@ computational statistics course, in which you need to apply a complex
 sequence of operations to a dataset and then plot some resulting
 quantities. You could simply do this in an interactive Python session,
 but you are then totally dependent on your memory as to what
-you did. If you make a mistake then you *might* notice an error in the
+you did. If you make a mistake, then you *might* notice an error in the
 final result, but you will almost certainly not recall the inadvertent
 mistake that led to it.
 
@@ -140,7 +140,7 @@ When not to use scripts
 
 The one thing that scripts can do is run. This makes them an
 exceptional tool for reproducing calculations. However, as
-mathematicians and programmers we are also interested in building
+mathematicians and programmers, we are also interested in building
 tools which users can combine together in different ways. We also want
 to make functions and other code objects which can be reused in
 different contexts to perform more complex computations. Functions and
@@ -227,7 +227,7 @@ quote one of the key developers of the Python language:
 .. note::
 
    :term:`Namespaces <namespace>` may look unfamiliar at first, but
-   actually they are such a natural concept that you have been working
+   actually, they are such a natural concept that you have been working
    with them for as long as you have used a computer, without even
    thinking about it. This is because folders are simply namespaces
    for files. Each filename can exist only once in each folder, and
@@ -282,7 +282,7 @@ comes to our rescue again:
    from cmath import sin as csin, cos as ccos
 
 Renaming on import is a double-edged sword. You must always take care
-that renaming does not add to confusion. As a somewhat extreme
+that renaming does not add to the confusion. As a somewhat extreme
 example, should you ever type the following code, you should expect
 the wrath of your users to be without bounds:
 
@@ -420,7 +420,7 @@ the line:
 The result of this would be that the user of `my_package` would be
 able to access `my_func` as `my_package.my_func` (though
 `my_package.module_1.my_func` would also work). This sort of
-arrangement is provides a mechanism for the programmer to arrange the
+arrangement provides a mechanism for the programmer to arrange the
 internal module structure of a package in a logical way while still
 providing users with direct access to the most important or most
 frequently used features.
@@ -451,7 +451,7 @@ installable, we need to provide Python with a bit more information
 about the package. This information is contained in a Python module
 which must be called `setup.py`. This file isn't part of the package
 and does not go in the package folder. Instead, it should be placed in
-the top level folder of your git repository, so that the Python
+the top-level folder of your git repository, so that the Python
 package installer will be able to find it.
 
 At the very least, `setup.py` should contain the following:
@@ -476,7 +476,7 @@ will return a list of folders containing `__init__.py`.
 
 This very simple `setup.py` will suffice for packages that you only
 intend to use yourself. Should you wish to publish packages for use by
-other people then you'll need to add some more information to the
+other people, then you'll need to add some more information to the
 file. The canonical guide to this is the `Python packaging user guide
 <https://packaging.python.org/tutorials/packaging-projects/>`_.
 
@@ -487,7 +487,7 @@ Before we move on to actually installing packages, we need to give a
 little thought to where the packages are to be installed. We could
 simply install packages into the Python installation on our
 computer. This can be a reasonable approach if all you want to do is
-run code from the default versions of public packages. However it has
+run code from the default versions of public packages. However, it has
 a number of limitations. Basically, a Python installation is a single
 :term:`namespace` for packages, so if two different projects you are
 working on need two different versions of the same package, you're out
@@ -499,7 +499,7 @@ Python virtual environments, or venvs, are separate namespaces within
 a Python installation. They have their own Python command and
 collection of packages. Effectively they behave like their own
 separate Python installation, except that most of the core Python
-files are shared so a venv takes rather little additional space.
+files are shared, so a venv takes rather little additional space.
 
 Creating a venv
 ~~~~~~~~~~~~~~~
@@ -552,7 +552,7 @@ while using bash on Windows you would type:
 
    $ source my_venv/Scripts/activate
 
-Obviously you would use the folder name of your venv instead of
+Obviously, you would use the folder name of your venv instead of
 `my_venv`. In either case, your command prompt will change to indicate
 that you are now using the venv. It might look something like:
 
@@ -584,8 +584,8 @@ Suppose we've created and activated a venv, and now there's a Python
 package we'd like to have access to. Installation of Python packages
 is handled by :doc:`pip:index`. Pip has many usage options, which
 enable a large number of different installation
-configurations. However for most users most of the time, a few simple
-pip commmands suffice. As with :term:`venv` creation, package
+configurations. However, for most users most of the time, a few simple
+pip commands suffice. As with :term:`venv` creation, package
 installation is best accomplished from the terminal and not from
 within Python itself. Don't forget to activate the venv!
 
@@ -594,7 +594,7 @@ Installing packages from PyPI
 
 `PyPI <https://pypi.org>`_ is the Python Package Index. It is the
 official download location for publicly released Python packages which
-aren't themselves a part of the built in :doc:`Python Standard Library
+aren't themselves a part of the built-in :doc:`Python Standard Library
 <python:library/index>`. Many important mathematical packages
 including :mod:`numpy` and `sympy <https://www.sympy.org>`_ are
 distributed from PyPI. Suppose your venv doesn't have :mod:`numpy`
@@ -625,14 +625,14 @@ Installing a package from local code
 
 Another important case is where the Python package exists in files
 (hopefully a git repository!) on your local computer. This is usually
-the case where you are developing the package yourself. In this case
+the case where you are developing the package yourself. In this case,
 you would type:
 
 .. code-block:: console
 
    (my_venv) $ python3 -m pip install -e folder/
 
-replacing `folder` with the name of the top level folder of your
+replacing `folder` with the name of the top-level folder of your
 repository: the folder containing `setup.py`. The option flag `-e`
 tells pip to install the package in 'editable' mode. This means that
 instead of copying the package files to your venv's Python packages
@@ -659,7 +659,7 @@ Attempting to establish whether a program correctly implements the
 intended algorithm is core to effective programming, and programmers
 often spend more time correcting bugs than writing new code. We will
 turn to the question of how to debug in :numref:`debugging`. However,
-right from the start we need test the code we right, so we will cover
+right from the start, we need to test the code we write, so we will cover
 the practical details of including tests in your code here.
 
 There are a number of Python packages which support code testing. The
@@ -671,18 +671,18 @@ Pytest tests
 ~~~~~~~~~~~~
 
 A Pytest test is simply a function whose name starts with `test_`. In
-the simplest case the function has no arguments. Pytest will call each
-such function in turn. If the function executes without error then the
+the simplest case, the function has no arguments. Pytest will call each
+such function in turn. If the function executes without error, then the
 test is taken to have passed, while if an error occurs then the test
-has failed. This behaviour might at first seem surpising - we don't
+has failed. This behaviour might at first seem surprising - we don't
 just want the code to run, it has to get the right answer. However,
 thinking about it the other way around, we certainly want the test to
 fail if an error occurs. It's also very easy to arrange things such
 that an error occurs when the wrong answer is reached. This is most
 readily achieved using :ref:`the assert statement <python:assert>`.
 This simply consists of `assert` followed
-by a Python expression. If the expression is true then execution just
-continues, but if it's false then an error occurs. For example:
+by a Python expression. If the expression is true, then execution just
+continues, but if it's false, then an error occurs. For example:
 
 .. code-block:: ipython3
 
@@ -765,7 +765,7 @@ instead see something like:
     FAILED tests/test_fibonacci.py::test_fibonacci_values - assert 2 == 1
     =========================== 1 failed in 0.12s ============================
 
-Here we can seee an `F` after `tests/test_fibonacci.py` indicating
+Here we can see an `F` after `tests/test_fibonacci.py` indicating
 that the test failed, and we see some output detailing what went
 wrong. We will learn how to interpret this output in :numref:`debugging`.
 
