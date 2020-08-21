@@ -17,22 +17,22 @@ Consider the following definition of the limit of a function :math:`f` at a poin
       \lim_{x\rightarrow c} f(x) = L \iff \forall \delta > 0,\ \exists \epsilon > 0,\ |x - c| < \epsilon \Rightarrow |f(x) - L| < \delta
 
 This is a perfectly valid definition of a limit: you could use it to
-go on and derive all the analysis you have learned so far. However you
+go on and derive all the analysis you have learned so far. However, you
 would confuse yourself and your readers horribly, because I have
 swapped the roles of :math:`\delta` and :math:`\epsilon` in the
 definition. The formal properties of mathematical objects do not
 depend on the names we give them or, often, on how we lay out formulae
-on a page. However mathematics is designed to be read by humans with
+on a page. However, mathematics is designed to be read by humans with
 their habit-forming, pattern-matching brains. So if everyone adopts
 similar conventions for how to write down mathematics, everyone
 schooled in those conventions will find that mathematics easier to
-understand. This is vitally important, because understanding
-mathematics is *hard*. Non-standard notation makes it doubly hard,
+understand. This is vitally important because understanding
+mathematics is *hard*. Non-standard notation makes it doubly hard
 because the reader has to consciously remember the meaning of all the
 symbols. Conversely, once a reader has learned the notational
 conventions for a field of mathematics, the meanings of the symbols
 become natural and don't require conscious thought. This leaves all
-the available brain power to concentrate on the mathematical content
+the available brainpower to concentrate on the mathematical content
 at hand.
 
 You might at first think that this logic does not apply to computer
@@ -40,8 +40,8 @@ programs. After all, a computer program is read by another computer
 program, and is not understood but rather acted on
 mechanically. Surely it doesn't matter how it looks or what symbols
 you use, so long as it's correct, and possibly fast? This entirely
-understandable sentiment has aflicted almost all programmers at some
-point or another, and typically has got them into more or less serious
+understandable sentiment has afflicted almost all programmers at some
+point or another and typically has got them into more or less serious
 difficulty before they realised that it's completely wrong.
 
 In reality, a computer program is frequently read. Indeed, code is
@@ -49,14 +49,14 @@ typically read many more times than it is written or changed. Most
 obviously, programmers read code in order to understand its functionality,
 and in order to work out what is wrong with the code when it fails to
 produce the correct results. Reading code is very much like reading
-mathematics, because a computer program is nothing but a realisation
-of mathematical algorithms. Consequently the observation that maths
+mathematics because a computer program is nothing but a realisation
+of mathematical algorithms. Consequently, the observation that maths
 can be very hard to read carries over to code, and therefore the need
 to make code as easy to understand as possible also applies
 here. Another analogy that carries over from mathematics is that very
 often it's one's own work that one is trying to understand and
 correct. This ought to create a very strong incentive to write very
-clear code adhering to all the conventions, because the poor
+clear code adhering to all the conventions because the poor
 individual who has to read your work to find the bugs might very well
 be you!
 
@@ -71,7 +71,7 @@ principles that apply more or less regardless of the language employed
 or the sort of programming being undertaken. Good programming style,
 like good writing style, is a skill learned through experience and
 through receiving feedback on the code you write, and it is not the
-intention of this chapter to produce an exhaustive guide. However it
+intention of this chapter to produce an exhaustive guide. However, it
 is useful to introduce some of the key concepts, rules and conventions
 in a more formal way.
 
@@ -79,9 +79,9 @@ PEP 8
 -----
 
 Publishers, journals, and institutions often have style guides
-designed to instill a certain uniformity in the use of English (or
-other human language). Similarly, style guides exist for programming
-languages. In some languages the preferred style can vary
+designed to instil a certain uniformity in the use of English (or
+other human languages). Similarly, style guides exist for programming
+languages. In some languages, the preferred style can vary
 significantly from project to project, and there can be vigorous
 disagreement between factions about fine points of style, such as
 whether or not an opening curly bracket should start on a new
@@ -89,7 +89,7 @@ line. Fortunately, the Python community has an essentially unified and
 very widely followed set of conventions. These are codified in one of
 the Python standards documents, `PEP 8
 <https://www.python.org/dev/peps/pep-0008/>`_ [#pep]_. PEP 8 isn't all
-that long and it is worth taking the time to read. Not every rule in
+that long, and it is worth taking the time to read. Not every rule in
 PEP 8 is reproduced in this chapter, though many of the most commonly
 encountered ones are. Conversely, PEP 8 is rather narrowly concerned
 with code layout rules while this chapter roams more widely.
@@ -140,7 +140,7 @@ Blank lines
    line. Similarly, functions defined inside other functions are
    separated from surrounding code by a single blank line.
 3. Statements within functions usually follow on the immediate next
-   line, except that logical groups of statements can be separated by
+   line, except that logical groups of statements, can be separated by
    single blank lines. Think of each statement as a sentence following
    on from the previous, with blank lines used to divide the function
    into short paragraphs.
@@ -229,7 +229,7 @@ Names
 
 Programs are full of names. Variables, classes, functions,
 modules: much, perhaps most, of the text of a program is made up of
-names. The choice of names therefore has a massive impact on the
+names. The choice of names, therefore, has a massive impact on the
 readability of a program. There are two aspects to naming
 conventions. One is a set of rules about the formatting of names: when
 to use capitals, when underscores and so on. This is covered by PEP 8
@@ -268,7 +268,7 @@ non-public methods and attributes
   If a method or attribute is not intended to be directly accessed
   from outside the class, it should have a name starting with an
   underscore. This provides a clear distinction between the public
-  interface of a class, and its internal implementation.
+  interface of a class and its internal implementation.
 
 Choosing names
 ..............
@@ -281,7 +281,7 @@ should names be short to create readable code, or long and descriptive
 to clarify their meaning?
 
 A good answer to this dilemma is that local variables should have
-short names. These are often the most frequently occuring variables on
+short names. These are often the most frequently occurring variables on
 a line of code, which makes the statement more
 intelligible. Should a reader be unclear what a variable stands for,
 the definition of a local variable will not be very far
@@ -295,7 +295,7 @@ Follow the mathematics
 Remember that the key objective of code style conventions is to make
 it easier for readers to understand the code. If the code implements a
 mathematical algorithm, then it's quite likely that readers of that
-code will have at least a passing acquantence with that area of
+code will have at least a passing acquaintance with that area of
 mathematics. You will therefore greatly help their intuition for what
 your code does if the names in the code match the mathematical
 conventions for the same concepts. You can use underscores to hint at
@@ -306,10 +306,10 @@ transformation.
 
 As an exception to the rules about variable case, it is a good idea to
 use single capital letter names in circumstances where they would be
-used in the maths, for example to name a matrix.
+used in the maths, for example, to name a matrix.
 
 Mathematicians often use Greek letters as variable names,
-occasionally they venture further afield and use Cyrilic or Hebrew
+occasionally they venture further afield and use Cyrillic or Hebrew
 letters. Python does allow for variable names written in other
 alphabets, but these are hard to type on many keyboards. Someone
 trying to fix bugs in your code will curse you if they can't even type
@@ -334,7 +334,7 @@ limited to a few operations on a few variables. As a programmer, there
 are two tools at your disposal to achieve this. The first is to be
 parsimonious and not introduce unnecessary temporary variables. The
 second is to use abstractions such as classes and function interfaces
-to split the problem up into small pieces, so that each individual
+to split the problem up into small pieces so that each individual
 function or method is small enough for a reader to understand.
 
 .. note::
@@ -501,7 +501,7 @@ Comments
 
 Comments are non-code text included in programs to help explain what
 they do. Since comments exist to aid understanding, some programmers
-come to the conclusion that more comments implies more
+come to the conclusion that more comments imply more
 understanding. Indeed, some programmers are even taught that every
 line of code should have a comment. This could not be more wrong!
 
@@ -514,7 +514,7 @@ thought-through code by writing about it is unlikely to remedy the
 situation.
 
 A further severe problem with comments is that they can easily become
-out of date. If a piece of code is modified, it is all to easy for the
+out of date. If a piece of code is modified, it is all too easy for the
 programmer to neglect to update accompanying comments. The result is
 comments which explain one thing, code which does something else, and
 exceptionally baffled readers.
@@ -536,7 +536,7 @@ Comment why, not what
 Even where a comment is unavoidable, it should still usually be
 obvious *what* it is that code does. It is far more likely to be
 justifiable to include a comment about *why* a particular approach is
-taken. For example it might be worth commenting why an apparently
+taken. For example, it might be worth commenting why an apparently
 simpler alternative strategy is actually invalid.
 
 
@@ -548,8 +548,8 @@ used only sparingly: docstrings. Docstrings (a portmanteau of
 "documentation strings") are comments at the start of modules,
 classes, and functions which describe public interfaces. The entire
 point of a public interface is that the programmer using it should not
-have to concern themselves with how it is implemented. They should
-therefore not need to read the code in order to understand how to use
+have to concern themselves with how it is implemented. They should,
+therefore, not need to read the code in order to understand how to use
 it. 
 
 Glossary
