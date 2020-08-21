@@ -5,7 +5,7 @@ Abstract data types
 
 In :numref:`objects`, we introduced the concept of :term:`type` as an
 :term:`abstraction` comprising a set of possible values, and a set of
-operations. All types in Python are abstractions in this sense,
+operations. All types in Python are abstractions in this sense
 because we deal with them in terms of their defined properties rather
 than their actual implementation. However, it can also be useful to
 define purely mathematical types, distinct from their concrete
@@ -29,7 +29,7 @@ Possibly the simplest abstract data type which is not synonymous with
 a Python type is the :term:`stack`. A stack is a sequence of objects
 in which only the most recently added object is accessible. The image
 to have in mind is a stack of plates on a spring-loaded holder of the
-type found in many university or workplace canteens. Each time a
+type found in many universities or workplace canteens. Each time a
 plate is added to the stack, the whole pile is *pushed* down to keep
 the top of the stack in place. If the top plate is removed, then the
 whole stack *pops* back up. An alternative name for a stack is
@@ -57,7 +57,7 @@ mathematical operations without using operator priority or brackets in
 order to determine the order of operations. This makes the
 implementation of reverse Polish notation arithmetic particularly
 simple. Reverse Polish calculators require fewer button pushes for
-complex calculations, and were popular in the 1970s. They are still
+complex calculations and were popular in the 1970s. They are still
 available, most famously from HP. In a more current example, the
 PostScript language used to describe documents for printers is reverse
 Polish.
@@ -70,7 +70,7 @@ and a stack. Each number encountered in the expression is pushed onto
 the stack, while each operator pops the right number of arguments off
 the stack and pushes the result onto the stack. At the end of the
 calculation, the result of the calculation is on the top of the stack.
-:numref:`rpcalc` shows :term:`pseudocode`, for as reverse Polish
+:numref:`rpcalc` shows :term:`pseudocode`, for a reverse Polish
 calculator.
 
 .. _rpcalc:
@@ -183,13 +183,13 @@ This is an example of a fundamental computer science concept called
 :term:`separation of concerns`. Separation of concerns is a design
 principle that underpins much of what is considered to be good
 practice in programming. The idea is to divide larger tasks into
-smaller units each responsible for doing one thing (addressing one
+smaller units, each responsible for doing one thing (addressing one
 concern). Different units communicate with each other using
-mathematically well defined interfaces. This makes the internal design
+mathematically well-defined interfaces. This makes the internal design
 of each unit more-or-less independent of the other units. Why is this
 important? There are two key reasons. The first is that in
 programming, as in maths, complexity is the enemy of
-understanding. Directly addressing a large and compex problem is
+understanding. Directly addressing a large and complex problem is
 likely to result in a large and complex piece of code which nobody
 understands. Such a program will almost inevitably produce the wrong
 answer, and finding out what is wrong will be exceptionally difficult.
@@ -210,7 +210,7 @@ Algorithmic complexity
 
 The second reason that understanding abstract data types is important
 is that a good implementation of a well designed abstract data type
-will have well defined performance characteristics. In particular the
+will have well-defined performance characteristics. In particular, the
 optimal algorithmic complexity, expressed in big 'O' notation, of
 operations on abstract data types will be known. Recall the definition
 of big 'O':
@@ -237,7 +237,7 @@ primitive operations or the amount of memory that an algorithm will
 use as a function of the number of objects stored in the relevant
 abstract data type.
 
-For example, in the Python :class:`list` implementation, all of all of
+For example, in the Python :class:`list` implementation, all of 
 the stack operations are, on average, :math:`O(1)`. This means that
 each of pushing, popping, and peeking has an approximately fixed cost
 that does not depend on the current size of the stack. This does not
@@ -275,13 +275,13 @@ data structure.
        def peek(self):
            return self.data[-1]
 
-:numref:`bigO` is a particular case of the big `O` notation which you
+:numref:`bigO` is a particular case of the big `O` notation, which you
 may already have seen in numerical analysis. However, there the limit
 is taken as the independent variable approaches 0. This difference of
 context between computer science and numerical analysis is sometimes
 confusing, particularly since both disciplines conventionally leave
 out the limit. It's worth keeping in mind that the difference, because
-a numerical algorithm with :math:`O(h^4)` error is really rather good,
+a numerical algorithm with :math:`O(h^4)` error is really rather good
 since `h` is small, but an algorithm with :math:`O(n^4)` cost is very
 expensive indeed!
 
@@ -318,8 +318,8 @@ complexity of appending items to the list? There are two cases. If
 there is a spare location for the appended value, then a reference to
 the value is simply inserted into that location. The cost of this does
 not depend on the current length of the list, so it's :math:`O(1)`. If
-all of the allocated memory locations are now in use then a new chunk
-of memory is allocated and the existing values are copied there. This
+all of the allocated memory locations are now in use, then a new chunk
+of memory is allocated, and the existing values are copied there. This
 is an :math:`O(n)` operation. However, this :math:`O(n)` operation
 only occurs when the list has to be extended. How often is that?
 Suppose the list has just been reallocated (at a cost of
@@ -341,7 +341,7 @@ occasional expensive operations is considered averaged over a large
 number of operations, is called :term:`amortised complexity`. In
 contrast, the occasional list append operation is an example of the
 :term:`worst case complexity` of the algorithm. Appending an item to a
-list has an amortised time complexity of :math:`O(1)` but a worst case
+list has an amortised time complexity of :math:`O(1)` but a worst-case
 time complexity of :math:`O(n)`.
 
 
@@ -373,7 +373,7 @@ inserting an object into the middle of the sequence is often an
 :math:`O(n)` operation, because on average half of the items in the
 sequence need to be shuffled to make space. A linked list provides a
 mechanism for avoiding this. A singly linked list is a collection of
-links. Each link contains a reference to a data item, and a reference
+links. Each link contains a reference to a data item and a reference
 to the next link. Starting from the first link in a list, it is
 possible to move along the list by following the references to
 successive further links. A new item can be inserted at the current
@@ -467,7 +467,7 @@ The object returned by :meth:`~container.__iter__` needs to itself implement
 addition, it needs to implement the :meth:`~iterator.__next__` method. This is
 called by Python repeatedly to obtain the next object in the iteration
 sequence. Once the sequence is exhausted, subsequent calls to
-:meth:`~iterator.__next__` should raise the built in :class:`StopIteration`
+:meth:`~iterator.__next__` should raise the built-in :class:`StopIteration`
 exception. This tells Python that the iteration is over. This
 arrangement is called the iterator protocol, and it's further
 documented in the :ref:`official Python documentation <typeiter>`.
