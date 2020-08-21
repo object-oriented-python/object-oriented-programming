@@ -21,7 +21,7 @@ in a programming language which either don't have a well-defined
 meaning, or which just don't amount to a meaningful statement within
 the rules of the language. A mathematician confronting an undefined
 mathematical expression can do little else than throw up their hands
-and ask the author what they meant. The Python interpreter, upon
+and ask the author what they meant. The :term:`Python interpreter`, upon
 encountering code which has no defined meaning, responds similarly,
 though rather than raising its non-existent hands, it raises an
 exception. It is then up to the programmer to divine what to do next.
@@ -94,7 +94,7 @@ occurs. Consider the following code:
     print(a)
 
 The error here is a missing closing bracket on the first line, however
-the error message which the Python interpeter prints when this code is run is:
+the error message which the :term:`Python interpeter` prints when this code is run is:
 
 .. code-block:: python3
 
@@ -115,7 +115,7 @@ the following code would be completely valid:
          )
     print(a)
 
-This means that the Python interpreter can only know that something is
+This means that the :term:`Python interpreter` can only know that something is
 wrong when it sees `print`, because `print` cannot follow `2` in a
 tuple constructor. The interpreter therefore reports that the `print`
 is a syntax error.
@@ -129,16 +129,37 @@ is a syntax error.
 Exceptions
 ----------
 
-Aside from syntax errors, which are handled directly by the 
+Aside from syntax errors, which are handled directly by the
+interpreter, errors occur when Python code is executed and something
+goes wrong. In these cases the Python code in which the problem is
+encountered must signal this to the interpreter. It does this using a
+special kind of object called an :term:`exception`. When an exception
+occurs, the interpreter stops executing the usual sequence of Python
+commands. Unless the programmer has taken special measures, to which
+we will return in :numref:`handling_exceptions`, the execution will
+cease and an error message will result. 
 
-Python has many types of exception built in, and Python developers can
-define their own exceptions so there are many more defined in
-third-party packages. The :doc:`full list of built-in exceptions
-<library/exceptions>` is available in the Python documentation.
+Because there are many things that can go wrong, Python has many types
+of exception built in. For example, if we attempt to access the number
+2 position in a tuple with only two entries, then an
+:class:`IndexError` occurs:
 
-Exceptions are not always errors
-................................
+.. code-block:: ipython3
 
+    In [1]: (0, 1)[2]
+    ---------------------------------------------------------------------------
+    IndexError                                Traceback (most recent call last)
+    <ipython-input-1-def0bb43ba85> in <module>
+    ----> 1 (0, 1)[2]
+
+    IndexError: tuple index out of range
+
+The exception type provides some indication as
+to what has gone wrong, and there is usually also an error message and
+sometimes more data to help diagnose the problem. The :doc:`full list
+of built-in exceptions <library/exceptions>` is available in the
+Python documentation. Python developers can define their own
+exceptions so there are many more defined in third-party packages.
 
 Tracebacks: finding errors
 --------------------------
@@ -319,6 +340,11 @@ Raising and handling exceptions
 
 Creating new exception classes
 ..............................
+
+
+Exceptions are not always errors
+................................
+
 
 Glossary
 --------

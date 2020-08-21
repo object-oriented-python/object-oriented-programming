@@ -789,6 +789,9 @@ Glossary
     package
        A grouping of related :term:`modules` into a single importable unit.
 
+    Python interpreter
+       The piece of software which interprets and executes Python commands. 
+
     scope
        The scope of a name is the section of code for which that name is valid.
 
