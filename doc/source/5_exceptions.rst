@@ -142,7 +142,7 @@ cease and an error message will result.
 Because there are many things that can go wrong, Python has many types
 of exception built in. For example, if we attempt to access the number
 2 position in a tuple with only two entries, then an
-:class:`IndexError` occurs:
+:class:`IndexError` exception occurs:
 
 .. code-block:: ipython3
 
@@ -299,7 +299,7 @@ occured. The traceback for this frame starts:
 
 This indicates that the frame describes code in the file
 `polynomial.py` (which on the author's computer is located in the
-folder `~/docs/object-oriented-programming/src/`). Specifically, the
+folder `~~/docs/object-oriented-programming/src/`). Specifically, the
 stack frame describes the execution of the :meth:`__add__` method,
 which is the :term:`special method` responsible for polynomial
 addition. The lines below this show the line on which execution
@@ -314,8 +314,8 @@ addition :term:`special method`, :meth:`__radd__`. On line 59 :meth:`__radd__` c
 Finally, the top stack frame corresponds to the command that the user
 typed in iPython. This stack frame looks a little different from the
 others. For starters, instead of the file name there is the string
-`<ipython-input-5-141816221609>`. This is simply the Python
-interpreter's internal name for a notional "file" containing one line
+`<ipython-input-5-141816221609>`. This is simply the :term:`Python
+interpreter`'s internal name for a notional "file" containing one line
 of iPython input. Similarly, because the line the user typed is not in
 any function, the interpreter treats it as code written in the top
 level of an unnamed module called `<module>`. Finally, because the
@@ -331,12 +331,40 @@ line of the iPython session.
    bottom up. However, the ultimate cause of the problem is likely to
    be further up the :term:`call stack`, so don't stop reading at the
    bottom frame!
-   
 
-
+.. _handling_exceptions:
 
 Raising and handling exceptions
 -------------------------------
+
+Thus far we've noticed that an exception occurs when something goes
+wrong in a program, and that the :term:`Python interpreter` will stop
+at that point and print out a :term:`traceback`. We'll now examine the
+process by which an exception occurs, and look at how to handle
+exceptions without the program coming to a halt.
+
+An exception is triggered using the :keyword:`raise` keyword. For
+example, suppose we want to ensure that the input to our Fibonacci
+function is an integer. All Python integers are :term:`instances
+<instance>` of :class:`numbers.Integral`, so we can check this and
+raise :class:`TypeError` if the input is not an integer:
+
+.. code-block:: python3
+
+   from numbers import Integral
+
+   def typesafe_fib(n):
+       """Return the n-th Fibonacci number, raising an exception if a
+       non-integer is passed as n."""
+       if not isinstance(n, Integral):
+              raise TypeError
+       if n == 0:
+           return 0
+       elif n == 1:
+           return 1
+       else:
+           return fib(n-2) + fib(n-1)
+
 
 Creating new exception classes
 ..............................
