@@ -211,7 +211,7 @@ htmlhelp_basename = 'Finiteelementcoursedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_engine = 'luatex'
+latex_engine = 'lualatex'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').

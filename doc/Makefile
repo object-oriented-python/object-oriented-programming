@@ -52,12 +52,13 @@ clean:
 	rm -rf $(BUILDDIR)/*
 
 apidoc: $(GENERATED_FILES)
-	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../src -o source/ -f -T
+	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../example_code -o source/ -f -T
+	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../fibonacci -o source/ -f -T
 
 #webgit:
 #	git clone git@github.com:finite-element/finite-element.github.io.git webgit
 
-html: # apidoc # webgit latexpdf
+html: apidoc # webgit latexpdf
 	rm webgit/* || true
 	rm -rf $(BUILDDIR)/doctrees || true
 	rm $(BUILDDIR)/html || rm -rf $(BUILDDIR)/html

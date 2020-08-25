@@ -244,9 +244,9 @@ the :term:`call stack`. It is also sometimes called the
 :term:`execution stack` or :term:`interpreter stack`.
 
 The first frame on the stack contains the execution context for the
-Python script that the user ran, or for the iPython shell or Jupyter
-notebook the user was typing into in the case where the user worked
-interactively. When a function is called, the Python interpreter
+Python script that the user ran or, in the case where the user worked
+interactively, for the iPython shell or Jupyter notebook into which
+the user was typing. When a function is called, the Python interpreter
 creates a new stack frame containing the local execution context of
 that function and pushes it onto the call stack. When that function
 returns, its stack frame is popped from the call stack, leaving the
@@ -254,7 +254,7 @@ interpreter to continue at the next instruction in the stack frame
 from which the function was called. Because functions can call
 functions which call functions and so on in a nearly limitless
 sequence, there can be a number of stack frames in existence at any
-time. 
+time.
 
 .. note::
 
