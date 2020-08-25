@@ -196,7 +196,7 @@ The set of all polynomials is a well-defined (though infinite) set of
 different values, with a number of well-defined properties. For
 example, we can add and multiply polynomials, resulting in a new
 polynomial. We can also evaluate a polynomial for a particular value
-of :eq:`x`, which would result in a real value.
+of :math:`x`, which would result in a real value.
 
 This is the mathematical abstraction of a polynomial. How would we
 represent this abstraction in Python code? A polynomial is

@@ -33,8 +33,8 @@ type found in many universities or workplace canteens. Each time a
 plate is added to the stack, the whole pile is *pushed* down to keep
 the top of the stack in place. If the top plate is removed, then the
 whole stack *pops* back up. An alternative name for a stack is
-a :term:`LIFO` (last in, first out), because the last object added to
-the stack is the first object retrieved (contrast :term:`FIFO`).
+a :term:`LIFO (last in, first out)`, because the last object added to
+the stack is the first object retrieved (contrast :term:`FIFO <FIFO (first in, first out)>`).
 
 Recall that a :term:`type` is defined by a set of possible values and
 a set of operations. A stack is an ordered sequence of objects (of any

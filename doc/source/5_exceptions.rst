@@ -346,10 +346,22 @@ exceptions without the program coming to a halt.
 An exception is triggered using the :keyword:`raise` keyword. For
 example, suppose we want to ensure that the input to our Fibonacci
 function is an integer. All Python integers are :term:`instances
-<instance>` of :class:`numbers.Integral`, so we can check this and
-raise :class:`TypeError` if the input is not an integer:
+<instance>` of :class:`numbers.Integral`, so we can check this. If we
+find a non-integer type then the consequence should be a
+:class:`TypeError`. This is achieved by *raising* the appropriate
+exception, using the :keyword:`raise` statement. The keyword
+:keyword:`raise` is followed by the exception. Almost all exceptions
+take a string argument, which is the error message to be printed. In
+:numref:`typesafe_fib`, we inform the user that we were expecting an
+integer rather than the type actually provided.
+
+.. _typesafe_fib:
 
 .. code-block:: python3
+   :emphasize-lines: 6,7,8
+   :caption: A version of the Fibbonacci function which raises an
+             exception if a non-integer type is passed as the
+             argument.
 
    from numbers import Integral
 
@@ -357,7 +369,8 @@ raise :class:`TypeError` if the input is not an integer:
        """Return the n-th Fibonacci number, raising an exception if a
        non-integer is passed as n."""
        if not isinstance(n, Integral):
-              raise TypeError
+              raise TypeError(
+                     f"fib expects an integer, not a {type(n).__name__}")
        if n == 0:
            return 0
        elif n == 1:
@@ -365,13 +378,158 @@ raise :class:`TypeError` if the input is not an integer:
        else:
            return fib(n-2) + fib(n-1)
 
+If we now pass a non-integer value to this function, we observe the following:
+
+
+.. code-block:: ipython3
+
+    In [2]: typesafe_fib(1.5)
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-2-c3aeb16193d4> in <module>
+    ----> 1 typesafe_fib(1.5)
+
+    ~/docs/object-oriented-programming/fibonacci/fibonacci.py in typesafe_fib(n)
+         14        non-integer is passed as n."""
+         15        if not isinstance(n, Integral):
+    ---> 16               raise TypeError(
+         17                      f"fib expects an integer, not a {type(n).__name__}")
+         18        if n == 0:
+
+    TypeError: fib expects an integer, not a float
+
+This is exactly what we have come to expect: execution has stopped and
+we see a :term:`traceback`. Notice that the final line is the error
+message that we passed to :class:`TypeError`. The only difference
+between this and the previous errors we have seen is that the bottom
+:term:`stack frame` explicitly shows the exception being raised, while
+previously the stack showed a piece of code where an error had
+occured. This minor difference has to do with whether the particular
+piece of code where the exception occured is written in Python, or is
+written in a language such as C and called from Python. This
+distinction is of negligible importance for our current purposes.
+
+.. note::
+
+   An exceptionally common mistake that programmers make when first
+   trying to work with exceptions is to write:
+
+   .. container:: badcode
+
+      .. code-block:: python3
+
+      return Exception
+
+   instead of:
+
+   .. container:: goodcode
+
+   .. code-block:: python3
+
+         raise Exception
+
+   This mistake is the result of a confusion about what
+   :keyword:`return` and :keyword:`raise` do. :keyword:`return` means
+   "the function is finished, here is the result". :keyword:`raise`
+   means "something exceptional happened, execution is stopping
+   without a result".
+
+Handling exceptions
+...................
+
+So far we have seen several different sorts of exception, how to raise
+them, and how to understand the resulting :term:`traceback`. The
+:term:`traceback` is very helpful if the exception was caused by a bug
+in our code, so that we need to understand and correct the
+error. However, sometimes an exception is a valid result of a valid
+input, and we just need the program to do something out of the
+ordinary to deal with the situation. For example, Euclid's algorithm
+for finding the greatest common divisor of :math:`a` and :math:`b` can
+very nearly be written recursively as:
+
+.. code-block:: python
+
+   def gcd(a, b):
+       return gcd(b, a % b)
+
+This works right up to the point where `b` becomes zero, at which
+point we should stop the recursion and return `a`. What actually
+happens if we run this code? Let's try:
+
+.. code-block:: ipython
+
+       In [5]: gcd(10, 12)
+    ---------------------------------------------------------------------------
+    ZeroDivisionError                         Traceback (most recent call last)
+    <ipython-input-5-d0750d9f2658> in <module>
+    ----> 1 gcd(10, 12)
+
+    <ipython-input-4-1ab7512041a6> in gcd(a, b)
+          1 def gcd(a, b):
+    ----> 2     return gcd(b, a % b)
+
+    <ipython-input-4-1ab7512041a6> in gcd(a, b)
+          1 def gcd(a, b):
+    ----> 2     return gcd(b, a % b)
+
+    <ipython-input-4-1ab7512041a6> in gcd(a, b)
+          1 def gcd(a, b):
+    ----> 2     return gcd(b, a % b)
+
+    <ipython-input-4-1ab7512041a6> in gcd(a, b)
+          1 def gcd(a, b):
+    ----> 2     return gcd(b, a % b)
+
+    ZeroDivisionError: integer division or modulo by zero
+
+Notice how the recursive call to :func:`gcd` causes several
+:term:`stack frames <stack frame>` that look the same. That makes
+sense: Euclid's algorithm runs until `b` is zero, and then we get a
+:class:`ZeroDivisionError` because modulo zero is undefined. To
+complete this function, what we need to do is to tell Python to stop
+at the :class:`ZeroDivisionError` and return `a`
+instead. :numref:`gcd` illustrates how this can be achieved.
+
+.. _gcd:
+
+.. code-block:: python3
+    :caption: A recursive implementation of Euclid's algorithm which
+              catches the :class:`ZeroDivisionError` to implement the
+              base case.
+    :emphasize-lines: 2,4,5
+
+    def gcd(a, b):
+        try:
+            return gcd(b, a % b)
+        except ZeroDivisionError:
+            return a
+
+The new structure here is the :keyword:`try`... :keyword:`except`
+block. The :keyword:`try` keyword defines a block of code, in this
+case just containing `return gcd(b, a % b)`. The :keyword:`except` is
+optionally followed by an exception class, or a tuple of exception
+classes. This case, the :keyword:`except` is only followed by the
+:class:`ZeroDivisionError` class. What this means is that if a
+:class:`ZeroDivisionError` is raised by any of the code inside the
+:keyword:`try` block then, instead of execution halting and a
+:term:`traceback` being printed, the code inside the :keyword:`except`
+block is run.
+
+In the example here, this means that once `b` is zero, instead of
+`gcd` being called a further time, a is returned. If we run this
+version of :func:`gcd` then we have, as we might expect:
+
+.. code-block:: ipython3
+
+    In [2]: gcd(10, 12)
+    Out[2]: 2
 
 Creating new exception classes
-..............................
+------------------------------
 
 
 Exceptions are not always errors
-................................
+--------------------------------
 
 
 Glossary

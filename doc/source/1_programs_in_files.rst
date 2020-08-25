@@ -787,7 +787,7 @@ Glossary
        themselves named, so they can be nested (`namespace.inner_namespace.name`).
 
     package
-       A grouping of related :term:`modules` into a single importable unit.
+       A grouping of related :term:`modules <module>` into a single importable unit.
 
     Python interpreter
        The piece of software which interprets and executes Python commands. 
