@@ -88,7 +88,7 @@ calculator.
            operand2 = stack.pop()
            operand1 = stack.pop()
            stack.push(operand1 operator operand2)
-   return stack.pop()  
+   return stack.pop()
 
 Notice that we pop the second operand before the first. This is
 because :math:`4\ 2\ -` means :math:`4 - 2`, not :math:`2 - 4`.
@@ -162,7 +162,7 @@ relationship between the two is shown in :numref:`list_stack`.
    * -
      - `len(my_list)`
      - Return the number of items on the stack. Not strictly required
-       stack operation, but often useful.   
+       stack operation, but often useful.
 
 Separation of concerns
 ----------------------
@@ -204,7 +204,7 @@ object with the required methods. They do not have to reason about all
 the ways in which that object might be used. By learning to think
 about programming in terms of abstract types and objects, you will
 become a better programmer who can address more complex programming
-tasks. 
+tasks.
 
 
 Algorithmic complexity
@@ -239,7 +239,7 @@ primitive operations or the amount of memory that an algorithm will
 use as a function of the number of objects stored in the relevant
 abstract data type.
 
-For example, in the Python :class:`list` implementation, all of 
+For example, in the Python :class:`list` implementation, all of
 the stack operations are, on average, :math:`O(1)`. This means that
 each of pushing, popping, and peeking has an approximately fixed cost
 that does not depend on the current size of the stack. This does not
@@ -439,7 +439,7 @@ time complexity of :math:`O(n)`.
       
 Some more abstract data types
 -----------------------------
-           
+
 Queue and deque
 ~~~~~~~~~~~~~~~
 
@@ -602,6 +602,7 @@ Sets
 Dictionaries
 ~~~~~~~~~~~~
 
+.. _iterator_protocol:
 
 The iterator protocol
 ---------------------
@@ -650,12 +651,14 @@ documented in the :ref:`official Python documentation <typeiter>`.
 
 .. hint::
 
-   :class:`StopIteration` is a good example of an :term:`exception`
-   which does not indicate an error. The end of the set of things to
-   be iterated over does not indicate that something has gone wrong,
-   but it is an exception to the usual behaviour of :meth:`~iterator.__next__`,
-   which Python needs to handle in a different way from simply
-   returning the next item.
+   Raising exceptions is the subject of :numref:`raising_exceptions`,
+   to which we will turn presently. Fur current purposes, it is
+   sufficient to know that iteration is halted when :meth:`~iterator.__next__`
+   executes this line of code:
+
+.. code-block:: python3
+
+      raise StopIteration
 
 Let's suppose we want to make the linked list in :numref:`linked_list`
 iterable. We'll need to make another object to keep track of where we
@@ -690,8 +693,8 @@ to keep track of the iteration.
 
         def __iter__():
             return self
-        
-        def __next__(self):
+
+    def __next__(self):
             if self.here:
                 next = self.here
                 self.here = self.here.next
@@ -813,13 +816,13 @@ automatically:
 .. note::
 
    As a stack exercise, have the students implement a reverse Polish calculator.
-   
+
 .. note::
 
    An exercise here should be to implement a deque using a ring
    buffer, reallocating exponentially as it grows and shrinks, and
    make it iterable.
-           
+
 Glossary
 --------
 
@@ -839,7 +842,7 @@ Glossary
     amortised complexity
        The average complexity of an algorithm considered over a suitably
        large number of invocations of that algorithm. Amortised
-       complexity takes into account circumstances wherethe worst case
+       complexity takes into account circumstances where the worst case
        complexity of an algorithm is known to occur only rarely.
 
     deque
@@ -867,7 +870,7 @@ Glossary
        of objects, in which only the most recently added object can be
        directly accessed.
 
-    worst case complexity    
+    worst case complexity
        An upper bound on the :term:`algorithmic complexity` of an
        algorithm. Many algorithms have a relatively low algorithmic
        complexity most of the times they are run, but for some inputs

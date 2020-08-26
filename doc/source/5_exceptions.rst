@@ -30,7 +30,7 @@ Let's take a look at what Python does in response to a simple
 error:
 
 .. code-block:: ipython3
-  
+
     In [3]: 0./0.
     ---------------------------------------------------------------------------
     ZeroDivisionError                         Traceback (most recent call last)
@@ -56,7 +56,7 @@ Now consider the case of an expression that doesn't make mathematical sense:
 
 .. code-block:: ipython3
 
-    In [5]: 3 * %  
+    In [5]: 3 * %
       File "<ipython-input-5-442f22cdc61f>", line 1
         3 * %
             ^
@@ -137,7 +137,7 @@ special kind of object called an :term:`exception`. When an exception
 occurs, the interpreter stops executing the usual sequence of Python
 commands. Unless the programmer has taken special measures, to which
 we will return in :numref:`handling_exceptions`, the execution will
-cease and an error message will result. 
+cease and an error message will result.
 
 Because there are many things that can go wrong, Python has many types
 of exception built in. For example, if we attempt to access the number
@@ -195,14 +195,14 @@ we are in trouble:
 
     ~/docs/object-oriented-programming/src/polynomial.py in __radd__(self, other)
          57     def __radd__(self, other):
-         58 
+         58
     ---> 59         return self + other
 
     ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
-         38 
+         38
          39         if isinstance(other, Number):
     ---> 40             return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
-         41 
+         41
          42         elif isinstance(other, Polynomial):
 
     TypeError: can only concatenate str (not "int") to str
@@ -276,14 +276,14 @@ Let's return to the traceback for our erroneous polynomial addition:
 
     ~/docs/object-oriented-programming/src/polynomial.py in __radd__(self, other)
          57     def __radd__(self, other):
-         58 
+         58
     ---> 59         return self + other
 
     ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
-         38 
+         38
          39         if isinstance(other, Number):
     ---> 40             return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
-         41 
+         41
          42         elif isinstance(other, Polynomial):
 
     TypeError: can only concatenate str (not "int") to str
@@ -332,16 +332,15 @@ line of the iPython session.
    be further up the :term:`call stack`, so don't stop reading at the
    bottom frame!
 
-.. _handling_exceptions:
+.. _raising_exceptions:
 
-Raising and handling exceptions
--------------------------------
+Raising exceptions
+------------------
 
 Thus far we've noticed that an exception occurs when something goes
 wrong in a program, and that the :term:`Python interpreter` will stop
 at that point and print out a :term:`traceback`. We'll now examine the
-process by which an exception occurs, and look at how to handle
-exceptions without the program coming to a halt.
+process by which an exception occurs.
 
 An exception is triggered using the :keyword:`raise` keyword. For
 example, suppose we want to ensure that the input to our Fibonacci
@@ -418,13 +417,13 @@ distinction is of negligible importance for our current purposes.
 
       .. code-block:: python3
 
-      return Exception
+         return Exception
 
    instead of:
 
    .. container:: goodcode
 
-   .. code-block:: python3
+      .. code-block:: python3
 
          raise Exception
 
@@ -434,8 +433,10 @@ distinction is of negligible importance for our current purposes.
    means "something exceptional happened, execution is stopping
    without a result".
 
+.. _handling_exceptions:
+
 Handling exceptions
-...................
+-------------------
 
 So far we have seen several different sorts of exception, how to raise
 them, and how to understand the resulting :term:`traceback`. The
@@ -484,7 +485,7 @@ happens if we run this code? Let's try:
 
 Notice how the recursive call to :func:`gcd` causes several
 :term:`stack frames <stack frame>` that look the same. That makes
-sense: Euclid's algorithm runs until `b` is zero, and then we get a
+sense: :func:`gcd` calls itself until `b` is zero, and then we get a
 :class:`ZeroDivisionError` because modulo zero is undefined. To
 complete this function, what we need to do is to tell Python to stop
 at the :class:`ZeroDivisionError` and return `a`
@@ -524,12 +525,75 @@ version of :func:`gcd` then we have, as we might expect:
     In [2]: gcd(10, 12)
     Out[2]: 2
 
-Creating new exception classes
-------------------------------
+Except clauses
+..............
+
+Let's look in a little more detail at how :keyword:`except` works.
+
+Else and finally
+................
+
+Exception handling and the call stack
+.....................................
+
+An :keyword:`except` block will handle any exception raised in the
+preceding :keyword:`try` block. The :keyword:`try` block can, of
+course, contain any code at all. In particular it might contain
+function calls which themselves may well call further functions. This
+means that an exception might occur several :term:`stack frames <stack
+frame>` down the :term:`call stack` from the :keyword:`try`
+clause. Indeed, some of the functions called might themselves contain
+:keyword:`try` blocks with the result that an exception is raised at a
+point which is ultimately inside several :keyword:`try` blocks.
+
+The :term:`Python interpreter` deals with this situation by starting
+from the current :term:`stack frame` and working upwards, a process
+known as *unwinding the stack*. In pseudocode, the alogrithm is:
+
+.. code-block:: python3
+
+   while call stack not empty:
+       if current execution point is in a try block \
+               with an except matching the current exception:
+           execution continues in the except block
+       else:
+           pop the current stack frame off the call stack
+
+   # Call stack is now empty
+   print traceback and exit
+..
+   Creating new exception classes
+   ------------------------------
+
+   Python provides a wide range of exceptions, and usually the right
+   thing to do when writing code that might need to raise an exception is
+   to peruse the :ref:`list of built-in exceptions <bltin-exceptions>`
+   and choose the one which best matches the circumstances. However,
+   sometimes there is no good match, or it might be that the programmer
+   wants user code to be able to catch exactly this exception without the
+   risk that some other operation will raise the same exception and be
+   caught by mistake. In this case, it is necessary to create a new type
+   of exception.
 
 
 Exceptions are not always errors
 --------------------------------
+
+This chapter is called "Errors and exceptions", so it is appropriate
+to finish by drawing attention to the distinction between these two
+concepts. While user errors and bugs in programs typically result in
+an exception being raised, it is not the case that all exceptions
+result from errors. The name "exception" means what it says, it is an
+event whose occurance requires an exception to the normal sequence of
+execution.
+
+The :class:`StopIteration` exception which we encoutered in
+:numref:`iterator_protocol` is a good example of an :term:`exception`
+which does not indicate an error. The end of the set of things to be
+iterated over does not indicate that something has gone wrong, but it
+is an exception to the usual behaviour of :meth:`~iterator.__next__`,
+which Python needs to handle in a different way from simply returning
+the next item.
 
 
 Glossary
@@ -538,13 +602,14 @@ Glossary
  .. glossary::
     :sorted:
 
-    stack frame
-        An object encapsulating the set of variables which define the
-        execution of a Python script or function. This information
-        includes the code being executed, all the local and gobal
-        names which are visible, the last instruction that was
-        executed, and a reference to the stack frame which called this
-        function.
+    exception
+        An object representing an out of the ordinary event which has
+        occured during the execution of some Python code. When an
+        exception is :ref:`raised <raising_exceptions>` the
+        :term:`Python interpreter` doesn't continue to execute the
+        following line of code. Instead, the exception is either
+        :ref:`handled <handling_exceptions>` or execution stips and a
+        :ref:`traceback` is printed.
 
     call stack
     execution stack
@@ -553,6 +618,14 @@ Glossary
         current item on the stack is the currently executing function,
         while the deepest item is the stack frame corresponding to the
         user script or interpreter.
+
+    stack frame
+        An object encapsulating the set of variables which define the
+        execution of a Python script or function. This information
+        includes the code being executed, all the local and gobal
+        names which are visible, the last instruction that was
+        executed, and a reference to the stack frame which called this
+        function.
 
     syntax
         The set of rules which define what is a well-formed Python
@@ -572,7 +645,7 @@ Glossary
         shows a few lines of code around the current execution point
         in each :term:`stack frame`, with the current frame at the
         bottom and the outermost frame at the top.
-      
+
 .. rubric:: Footnotes
 
 

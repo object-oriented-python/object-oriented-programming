@@ -135,7 +135,7 @@ Python concept of type goes much further, as we discover if we call
 
 So `1` is an object of type :class:`int`, which means that it comes with all of
 Python's operations for integer arithmetic. :func:`abs`, on the other hand,
-is a builtin function, so its defining operation is that it can be
+is a built-in function, so its defining operation is that it can be
 called on one or more suitable arguments (for example `abs(1)`). If
 every object has a type, what about types themselves? What is the type
 of `int`?
@@ -598,6 +598,18 @@ this. `f(x)` is mapped to `f.__call__(x)`, so any Python object with a
 defining a :meth:`~object.__call__` method in effect defines a new type of
 function.
 
+Encapsulation
+-------------
+
+The property that objects have of bundling up data and methods in a
+more-or-less opaque object with which other code can interact without
+concerning itself with the internal details of the object is called
+:term:`encapsulation`. Encapsulation is one of the core concepts in
+object-oriented programming. In particular, encapsulation is key to
+creating single objects representing high level mathematical
+abstractions whose concrete realisation in code may require many
+pieces of data and a large number of complex functions.
+
 Exercises
 ---------
 
@@ -644,6 +656,10 @@ Glossary
        responsible for setting up the object. The constructor modifies
        `self` in place: constructors never return a value.
 
+    encapsulation
+       The bundling up of attributes and methods into an object which
+       can be dealt with as a single unit.
+
     instance
        An object of a particular class. `a` is an instance of
        :class:`MyClass` means that `a` has class `MyClass`. We will
@@ -654,10 +670,11 @@ Glossary
        calling its :term:`constructor`.
        
     method
+    instance method
        A function defined within a :term:`class`. If `a` is an
        instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
        `a.foo()` is equivalent to `MyClass.foo(a)`. The first parameter
-       of a method is always named `self`.
+       of an instance method is always named `self`.
 
     pseudocode
        A description of an algorithm given in the form of a computer
