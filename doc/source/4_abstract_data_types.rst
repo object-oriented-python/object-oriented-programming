@@ -374,7 +374,6 @@ approximately :math:`kn` for some :math:`k>1`.
 	    ];
     }
    
-
 What does this memory allocation strategy mean for the computational
 complexity of appending items to the list? There are two cases. If
 there is a spare location for the appended value, then a reference to
