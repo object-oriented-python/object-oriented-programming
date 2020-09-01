@@ -48,6 +48,8 @@ it from the stack.
 
    Put a diagram illustrating stack operations here.
 
+.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJyFk8tugzAQRff5ipG7bUVwSLNAdNF8QpdRVLnYARTkQcaoqqr8e2dIoDzyYGN57rmDuR6-SkyPulAZ_C4AggBq45sKCntA2lvU5jM3RZZ7SGC1jKkmPrxKjwJ2KZboqIxO2czsY_h_gqBq6ryHoaOTM_sMNZeNbk1T-C49g-_RBGPFLHtARj0qnkL1qleRIKjXQ3lfX29u61iN279LfkgmNXPYVJyujHjbxXbJjSqnRUdR-ilazbCQEYiYDvXQ4_PC9Rb2iFDyst48tB6wcT5vveRpvesNLbd9PCHeNalvnAFlNRxK_B5F_PLWjUg8rdP5drX_KU0iLFrD8YzSZ2t7CxNoylyGauDmuzm74ba9g7oxY2Uw0Cz1F3mlxUUadAAxUzi-K9-4pY65qgwFKjT6WuyHPwcZt7NXnv4AYBn78Q
+   :scale: 50%
 
 An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
