@@ -314,6 +314,66 @@ approximately :math:`kn` for some :math:`k>1`.
 .. note::
 
    Need diagrams of how a dynamic array works here.
+   
+.. graphviz::
+   :align: center
+
+    digraph g {
+    	    bgcolor="#ffffff00" # RGBA (with alpha)
+	    graph [
+	    rankdir = "LR"
+	    ];
+	    node [
+	    fontsize = "16"
+	    shape = "ellipse"
+	    ];
+	    edge [
+	    ];
+	    
+	    subgraph cluster_0 {
+	    		style="ellipse, dashed";
+	    		bgcolor="#CD5C5C";
+	    "node0" [
+	    label = "<f0> A| 2 | 3| 5| 7 | 11 |e<f1>"
+	    shape = "record"
+	    ];
+	    }
+	    
+	    subgraph cluster_3 {
+	    		style="ellipse, dashed";
+	    		bgcolor="#2E8B57";
+	    		
+	    "node1" [
+	    label = "<f0> B| 2 | 3| 5| 7 | 11 | | | | | |<f1>"
+	    shape = "record"
+	    ];
+	    
+	    "node3" [
+	    label = "<f0> A| 2 | 3| 5| 7 | 11 | | | | | |<f1>"
+	    shape = "record"
+	    ];
+	    }
+	    
+	    subgraph cluster_1 {
+	    		style="ellipse, dashed";
+	    		bgcolor="lightgray";
+	    "node2" [
+	    label = "<f0> | | | | | |e<f1>"
+	    shape = "record"
+	    ];
+	    }
+	    
+	    "node0":f0 -> "node1":f0 [
+	    id = 0
+	    ];
+	    "node0":f1 -> "node2":f0 [
+	    id = 1
+	    ];
+	    "node1":f0 -> "node3":f0 [
+	    id = 2
+	    ];
+    }
+   
 
 What does this memory allocation strategy mean for the computational
 complexity of appending items to the list? There are two cases. If
