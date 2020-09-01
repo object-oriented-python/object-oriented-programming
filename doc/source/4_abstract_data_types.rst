@@ -318,8 +318,8 @@ approximately :math:`kn` for some :math:`k>1`.
 .. graphviz::
    :align: center
 
-    digraph g {
-    	    bgcolor="#ffffff00" # RGBA (with alpha)
+    digraph dl {
+    	bgcolor="#ffffff00" # RGBA (with alpha)
 	    graph [
 	    rankdir = "LR"
 	    ];
@@ -406,7 +406,38 @@ contrast, the occasional list append operation is an example of the
 list has an amortised time complexity of :math:`O(1)` but a worst-case
 time complexity of :math:`O(n)`.
 
+.. note::
 
+   Not sure if you want this? Shows the byte usage of the array. If so, 
+   I will update the IPython call numbers. 
+   
+.. code-block:: python
+
+	import sys
+
+	def byteSize(n):
+		data = []
+		for i in range(n):
+		a = len(data)
+		b = sys.getsizeof(data)
+		print(f"Length:{a}; Size of bytes:{b}")
+		data.append(i)
+		
+.. code-block:: ipython3
+
+    In [1]: n = 10
+    In [2]: byteSize(n)
+   	Length:0; Size of bytes:72
+	Length:1; Size of bytes:104
+	Length:2; Size of bytes:104
+	Length:3; Size of bytes:104
+	Length:4; Size of bytes:104
+	Length:5; Size of bytes:136
+	Length:6; Size of bytes:136
+	Length:7; Size of bytes:136
+	Length:8; Size of bytes:136
+	Length:9; Size of bytes:200
+      
 Some more abstract data types
 -----------------------------
            
@@ -443,6 +474,90 @@ point in the list by creating a new link, pointing the link reference
 of the new link to the next link, and pointing the link reference of
 the current link to the new link.
 
+.. graphviz::
+   :align: center
+
+	digraph ll {
+		bgcolor="#ffffff00"
+		graph [
+		rankdir = "TB"
+		];
+		node [
+		fontsize = "16"
+		];
+		edge [
+		];
+
+		subgraph cluster_1 {
+				style="ellipse, dashed";
+				bgcolor="lightgray";
+
+		"node_init" [
+		label = "first"
+		shape = "record"
+		];
+
+		"node0" [
+		label = "<f0> A| next| 1 <f1>"
+		shape = "record"
+		];
+
+		 "node1" [
+		label = "<f0> B| next| 1 <f1>"
+		shape = "record"
+		];
+
+		"node2" [
+		label = "<f0> C| next| 1 <f1>"
+		shape = "record"
+		];
+		
+		 "node3" [
+		label = "<f0> D| null| 1 <f1>"
+		shape = "record"
+		];
+
+		}
+
+		subgraph cluster_2 {
+				style="ellipse, dashed";
+				bgcolor="#2E8B57";
+		
+		"node4" [
+		label = "<f0> E| next|_ <f1>"
+		shape = "record"
+		];
+		}
+
+		"node_init":f1 -> "node0":f0 [
+		id = 0
+		];
+		
+		"node0":f1 -> "node1":f0 [
+		id = 1
+		];
+		"node1":f1 -> "node2":f0 [
+		id = 2
+		label ="old link"
+		];
+		
+		"node2":f1 -> "node3":f0 [
+		id = 3
+		];
+
+		"node1":f1 -> "node4":f0 [
+		id = 4
+		label ="new link"
+		style= "dashed"
+		];
+
+		"node4":f1 -> "node2":f0 [
+		id = 5
+		style= "dashed"
+		];
+		 
+	}
+	
 .. note::
 
    diagram of linked list insertion here.
