@@ -37,7 +37,8 @@ extensions = [
     'sphinxcontrib.proof',
     'sphinxcontrib.bibtex',
     'IPython.sphinxext.ipython_console_highlighting',
-    'IPython.sphinxext.ipython_directive'
+    'IPython.sphinxext.ipython_directive',
+    'sphinx.ext.graphviz'
 ]
 # Both the class’ and the __init__ method’s docstring are concatenated and
 # inserted into the class definition
@@ -208,6 +209,8 @@ html_use_smartypants = True
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Finiteelementcoursedoc'
 
+# -- GraphViz configuration -----------------------------------------------
+graphviz_output_format = 'svg'
 
 # -- Options for LaTeX output ---------------------------------------------
 
