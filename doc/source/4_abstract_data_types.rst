@@ -727,6 +727,89 @@ automatically:
    returns the Fibonacci numbers. Obviously this iterator never
    terminates!
 
+.. raw:: html
+
+   <details>
+   <summary><a>Solution</a></summary>
+    
+.. code-block:: python
+
+	class Fibonacci():
+		
+		def __init__(self):		
+			self.current_num = 0
+			self.next_num = 1
+		
+		def __iter__(self):
+			return self
+		
+		def __next__(self):
+		
+			next_num = self.current_num + self.next_num
+			self.current_num = self.next_num
+			self.next_num = next_num
+			
+			return self.current_num
+		
+.. code-block:: python
+
+	# just temporary - not sure how you want to include solutions etc.
+	seq = Fibonacci()
+	count = 0
+	for num in seq:
+		print(num)
+		count += 1
+		if count == 10:
+		    break
+
+.. raw:: html
+
+   </details>
+   
+.. note::
+
+   We could also get them to modify the class above to terminate
+
+.. raw:: html
+
+   <details>
+   <summary><a>Solution</a></summary>
+   
+.. code-block:: python
+
+	class FibonacciSeq():
+		
+		def __init__(self, nums):		    
+		    self.counter = nums
+		    self.current_num = 0
+		    self.next_num = 1
+		    
+		def __iter__(self):
+		    return self
+		
+		def __next__(self):
+		    
+		    if self.counter == 0:		      
+		        raise StopIteration
+		    
+		    self.counter -= 1
+		    next_num = self.current_num + self.next_num
+		    self.current_num = self.next_num
+		    self.next_num = next_num
+		    
+		    return self.current_num
+		    
+.. code-block:: python
+
+	seq = FibonacciSeq(10)
+
+	for num in seq:
+		print(num)
+
+.. raw:: html
+
+   </details>
+   
 .. note::
 
    As a stack exercise, have the students implement a reverse Polish calculator.
