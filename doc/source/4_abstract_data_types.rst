@@ -550,7 +550,7 @@ the current link to the new link.
 		style= "dashed"
 		];
 
-		"node4":f1 -> "node2":f0 [
+		"node4":f1 -> "node3":f0 [
 		id = 5
 		style= "dashed"
 		];
