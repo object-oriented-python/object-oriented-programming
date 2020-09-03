@@ -48,7 +48,7 @@ it from the stack.
 
    Put a diagram illustrating stack operations here.
 
-.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJyFk8tugzAQRff5ipG7bUVwSLNAdNF8QpdRVLnYARTkQcaoqqr8e2dIoDzyYGN57rmDuR6-SkyPulAZ_C4AggBq45sKCntA2lvU5jM3RZZ7SGC1jKkmPrxKjwJ2KZboqIxO2czsY_h_gqBq6ryHoaOTM_sMNZeNbk1T-C49g-_RBGPFLHtARj0qnkL1qleRIKjXQ3lfX29u61iN279LfkgmNXPYVJyujHjbxXbJjSqnRUdR-ilazbCQEYiYDvXQ4_PC9Rb2iFDyst48tB6wcT5vveRpvesNLbd9PCHeNalvnAFlNRxK_B5F_PLWjUg8rdP5drX_KU0iLFrD8YzSZ2t7CxNoylyGauDmuzm74ba9g7oxY2Uw0Cz1F3mlxUUadAAxUzi-K9-4pY65qgwFKjT6WuyHPwcZt7NXnv4AYBn78Q
+.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJyFk89Og0AQh-99isl61WARggnBg-gTeGwag7D8ScnOZllijOm7OwMFgbaUC9mZ74Plt8NXjekhq5ICfjcAjgONtK2GSuVIa4WZ_CxlVZQWInh6DKkmPmySHgTsUqzRUBlNogq5D-H_chzdNuUIw0BHPXsPDZdl1klLeJU-g9doglEzyw643oiKO_f9-dUPBEFjf-uu92l5tY960ovf_NiPqUetwmCrOVrX4-WQ2Sk0qhw3A0XRp6gyhoXrgQhpRzcdW1ZmVNgRW5dvfnBTzbE1tuxccjrXD-h23ePxsKZNbWskJCqDvMbvWb4PL8N8hMs67W_X2J9aRkKhkhzPLHpWuyNYQEvmNFETmw-mt-G6PkDDjHFnMs3c6k_xgs_1iQtiXubULnxaTM8qEy0pR5GhbcR--kOQGJ-97PgHifL5cg
    :scale: 50%
 
 An example: reverse Polish notation
@@ -523,7 +523,7 @@ the current link to the new link.
 		shape = "record"
 		];
 
-		}
+		
 
 		subgraph cluster_2 {
 				style="ellipse, dashed";
@@ -554,11 +554,11 @@ the current link to the new link.
 
 		"node1":f1 -> "node5":f0 [
 		id = 4
-		label ="new link"
+		label =" new link"
 		style= "dashed"
 		];
 
-		"node5":f1 -> "node3":f0 [
+		"node5":f1 -> "node2":f0 [
 		id = 5
 		style= "dashed"
 		];
@@ -567,6 +567,7 @@ the current link to the new link.
         id = 6
         style = dashed
 		];
+	}
 	}
 	
 .. note::
