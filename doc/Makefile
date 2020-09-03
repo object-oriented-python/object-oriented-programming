@@ -55,17 +55,17 @@ apidoc: $(GENERATED_FILES)
 	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../example_code -o source/ -f -T
 	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../fibonacci -o source/ -f -T
 
-#webgit:
-#	git clone git@github.com:finite-element/finite-element.github.io.git webgit
+webgit:
+	git clone git@github.com:object-oriented-python/object-oriented-python.github.io.git webgit
 
-html: apidoc # webgit latexpdf
+html: apidoc webgit # latexpdf
 	rm webgit/* || true
 	rm -rf $(BUILDDIR)/doctrees || true
 	rm $(BUILDDIR)/html || rm -rf $(BUILDDIR)/html
 	install -d $(BUILDDIR)
-	# ln -s $(PWD)/webgit $(BUILDDIR)/html
+	ln -s $(PWD)/webgit $(BUILDDIR)/html
 	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	# cp $(BUILDDIR)/latex/Finiteelementcourse.pdf $(BUILDDIR)/html
+	#cp $(BUILDDIR)/latex/Finiteelementcourse.pdf $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
