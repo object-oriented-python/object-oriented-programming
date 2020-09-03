@@ -257,25 +257,27 @@ data structure.
 
 .. _badstack:
 
-.. code-block:: python3
-   :caption: A poorly designed stack implementation in which push and pop cost
-             :math:`O(n)` operations, where :math:`n` is the current
-             number of objects on the stack.
+.. container:: badcode
 
-   class BadStack:
-       def __init__(self):
-           self.data = ()
+    .. code-block:: python3
+       :caption: A poorly designed stack implementation in which push and pop cost
+                 :math:`O(n)` operations, where :math:`n` is the current
+                 number of objects on the stack.
 
-       def push(self, value):
-           self.data += (value,)
+       class BadStack:
+           def __init__(self):
+               self.data = ()
 
-       def pop(self):
-           value = self.data[-1]
-           self.data = self.data[:-1]
-           return value
+           def push(self, value):
+               self.data += (value,)
 
-       def peek(self):
-           return self.data[-1]
+           def pop(self):
+               value = self.data[-1]
+               self.data = self.data[:-1]
+               return value
+
+           def peek(self):
+               return self.data[-1]
 
 :numref:`bigO` is a particular case of the big `O` notation, which you
 may already have seen in numerical analysis. However, there the limit
@@ -492,27 +494,32 @@ the current link to the new link.
 				bgcolor="lightgray";
 
 		"node_init" [
-		label = "first"
-		shape = "record"
-		];
-
-		"node0" [
 		label = "<f0> A| next| 1 <f1>"
 		shape = "record"
 		];
 
-		 "node1" [
+		"node0" [
 		label = "<f0> B| next| 1 <f1>"
 		shape = "record"
 		];
 
-		"node2" [
+		"node1" [
 		label = "<f0> C| next| 1 <f1>"
+		shape = "record"
+		];
+
+		"node2" [
+		label = "<f0> D| next| 1 <f1>"
 		shape = "record"
 		];
 		
 		 "node3" [
-		label = "<f0> D| null| 1 <f1>"
+		label = "<f0> E| next| 1 <f1>"
+		shape = "record"
+		];
+
+		 "node4" [
+		label = "None"
 		shape = "record"
 		];
 
@@ -522,8 +529,8 @@ the current link to the new link.
 				style="ellipse, dashed";
 				bgcolor="#2E8B57";
 		
-		"node4" [
-		label = "<f0> E| next|_ <f1>"
+		"node5" [
+		label = "<f0> F| next|_ <f1>"
 		shape = "record"
 		];
 		}
@@ -535,6 +542,7 @@ the current link to the new link.
 		"node0":f1 -> "node1":f0 [
 		id = 1
 		];
+        
 		"node1":f1 -> "node2":f0 [
 		id = 2
 		label ="old link"
@@ -544,17 +552,21 @@ the current link to the new link.
 		id = 3
 		];
 
-		"node1":f1 -> "node4":f0 [
+		"node1":f1 -> "node5":f0 [
 		id = 4
 		label ="new link"
 		style= "dashed"
 		];
 
-		"node4":f1 -> "node3":f0 [
+		"node5":f1 -> "node3":f0 [
 		id = 5
 		style= "dashed"
 		];
-		 
+
+        "node3":f1 -> "node4":f1 [
+        id = 6
+        style = dashed
+		];
 	}
 	
 .. note::
@@ -656,8 +668,8 @@ documented in the :ref:`official Python documentation <typeiter>`.
    sufficient to know that iteration is halted when :meth:`~iterator.__next__`
    executes this line of code:
 
-.. code-block:: python3
-
+   .. code-block:: python3
+                   
       raise StopIteration
 
 Let's suppose we want to make the linked list in :numref:`linked_list`
