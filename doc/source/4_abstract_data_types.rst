@@ -384,7 +384,7 @@ approximately :math:`kn` for some :math:`k>1`.
 	    		style="ellipse, dashed";
 	    		bgcolor="#CD5C5C";
 	    "node0" [
-	    label = "<f0> A| 2 | 3| 5| 7 | 11 |e<f1>"
+	    label = "<f0> 2 | 3| 5| 7 |e<f1>"
 	    shape = "record"
 	    ];
 	    }
@@ -394,33 +394,29 @@ approximately :math:`kn` for some :math:`k>1`.
 	    		bgcolor="#2E8B57";
 	    		
 	    "node1" [
-	    label = "<f0> B| 2 | 3| 5| 7 | 11 | | | | | |<f1>"
+	    label = "<f0> 2 | 3| 5| 7 | <f1>| | | <f2>"
 	    shape = "record"
+
 	    ];
 	    
 	    "node3" [
-	    label = "<f0> A| 2 | 3| 5| 7 | 11 | | | | | |<f1>"
+	    label = "<f0> 2 | 3| 5| 7| <f1> 11| <f2> 13| | <f3>"
 	    shape = "record"
 	    ];
 	    }
-	    
-	    subgraph cluster_1 {
-	    		style="ellipse, dashed";
-	    		bgcolor="lightgray";
-	    "node2" [
-	    label = "<f0> | | | | | |e<f1>"
-	    shape = "record"
-	    ];
-	    }
-	    
+		    
 	    "node0":f0 -> "node1":f0 [
 	    id = 0
 	    ];
-	    "node0":f1 -> "node2":f0 [
-	    id = 1
-	    ];
-	    "node1":f0 -> "node3":f0 [
+
+	    "node1":f0 -> "node3":f1 [
 	    id = 2
+		label = "append 11"
+	    ];
+
+		"node1":f0 -> "node3":f2 [
+	    id = 2
+		label = "append 13"
 	    ];
     }
    
@@ -526,7 +522,97 @@ the current link to the new link.
 .. graphviz::
    :align: center
 
-	
+    digraph ll {
+		bgcolor="#ffffff00"
+		graph [
+		rankdir = "TB"
+		];
+		node [
+		fontsize = "16"
+		];
+		edge [
+		];
+
+		subgraph cluster_1 {
+				style="ellipse, dashed";
+				bgcolor="lightgray";
+
+		"node_init" [
+		label = "<f0> A| next| 1 <f1>"
+		shape = "record"
+		];
+
+		"node0" [
+		label = "<f0> B| next| 1 <f1>"
+		shape = "record"
+		];
+
+		"node1" [
+		label = "<f0> C| next| 1 <f1>"
+		shape = "record"
+		];
+
+		"node2" [
+		label = "<f0> D| next| 1 <f1>"
+		shape = "record"
+		];
+		
+		 "node3" [
+		label = "<f0> E| next| 1 <f1>"
+		shape = "record"
+		];
+
+		 "node4" [
+		label = "None"
+		shape = "record"
+		];
+
+		
+
+		subgraph cluster_2 {
+				style="ellipse, dashed";
+				bgcolor="#2E8B57";
+		
+		"node5" [
+		label = "<f0> F| next|_ <f1>"
+		shape = "record"
+		];
+		}
+
+		"node_init":f1 -> "node0":f0 [
+		id = 0
+		];
+		
+		"node0":f1 -> "node1":f0 [
+		id = 1
+		];
+        
+		"node1":f1 -> "node2":f0 [
+		id = 2
+		label ="old link"
+		];
+		
+		"node2":f1 -> "node3":f0 [
+		id = 3
+		];
+
+		"node1":f1 -> "node5":f0 [
+		id = 4
+		label =" new link"
+		style= "dashed"
+		];
+
+		"node5":f1 -> "node2":f0 [
+		id = 5
+		style= "dashed"
+		];
+
+        "node3":f1 -> "node4":f1 [
+        id = 6
+        style = dashed
+		];
+	   }
+   }
 	
 .. note::
 
@@ -700,18 +786,7 @@ automatically:
    A simple iterator exercise would be to make an iterator which
    returns the Fibonacci numbers. Obviously this iterator never
    terminates!
-
-.. code-block:: python
-
-	seq = FibonacciSeq(10)
-
-	for num in seq:
-		print(num)
-
-.. raw:: html
-
-   </details>
-   
+ 
 .. note::
 
    As a stack exercise, have the students implement a reverse Polish calculator.
