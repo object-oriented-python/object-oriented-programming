@@ -48,9 +48,57 @@ it from the stack.
 
    Put a diagram illustrating stack operations here.
 
-.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJyFk89Og0AQh-99isl61WARggnBg-gTeGwag7D8ScnOZllijOm7OwMFgbaUC9mZ74Plt8NXjekhq5ICfjcAjgONtK2GSuVIa4WZ_CxlVZQWInh6DKkmPmySHgTsUqzRUBlNogq5D-H_chzdNuUIw0BHPXsPDZdl1klLeJU-g9doglEzyw643oiKO_f9-dUPBEFjf-uu92l5tY960ovf_NiPqUetwmCrOVrX4-WQ2Sk0qhw3A0XRp6gyhoXrgQhpRzcdW1ZmVNgRW5dvfnBTzbE1tuxccjrXD-h23ePxsKZNbWskJCqDvMbvWb4PL8N8hMs67W_X2J9aRkKhkhzPLHpWuyNYQEvmNFETmw-mt-G6PkDDjHFnMs3c6k_xgs_1iQtiXubULnxaTM8qEy0pR5GhbcR--kOQGJ-97PgHifL5cg
-   :scale: 50%
+.. blockdiag::
 
+      blockdiag stack{
+      // setup info
+      node_height = 30;
+      "Stack" [color = orange];           //push
+      "Stack " [color=orange, stacked];   //push
+      "Stack  " [color=orange, stacked];  //push
+      "Stack   " [color=orange, stacked]; //pop
+      "push 24" [color="#2E8B57"]; 
+      "push 12" [color="#2E8B57"]; 
+      "push 57" [color="#2E8B57"]; 
+      "pop" [color="#CD5C5C"];
+      group{
+      24;
+      color =  orange
+      }
+
+      group second{
+      "24 "; 12;
+      color =  orange
+      }
+
+      group third{
+      "24  "; "12 "; 57;
+      color =  orange
+      }
+
+      group fourth{
+      "12  "; "57 ";
+      color =  orange
+      }
+
+      // structure and flow
+      "push 24" -> "Stack";
+      "push 24" -> 24 [style="none"];
+
+      "push 12" -> "12" [style="none"];
+      "push 12" -> "Stack ";
+
+      "push 57" -> "12 " [style="none"];
+      "push 57" -> "Stack  ";
+      
+      "Stack" -> "pop" [style="none"];
+      "pop" -> "Stack   ";
+      "pop" -> "57 "[style="none"];
+
+      C [shape = "dots"]
+      "Stack " -> C [style="none"];
+      }
+   
 An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

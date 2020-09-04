@@ -38,7 +38,8 @@ extensions = [
     'sphinxcontrib.bibtex',
     'IPython.sphinxext.ipython_console_highlighting',
     'IPython.sphinxext.ipython_directive',
-    'sphinx.ext.graphviz'
+    'sphinx.ext.graphviz',
+    'sphinxcontrib.blockdiag'
 ]
 # Both the class’ and the __init__ method’s docstring are concatenated and
 # inserted into the class definition
@@ -211,6 +212,11 @@ htmlhelp_basename = 'Finiteelementcoursedoc'
 
 # -- GraphViz configuration -----------------------------------------------
 graphviz_output_format = 'svg'
+
+# Fontpath for blockdiag (truetype font)
+# blockdiag_fontpath = '/usr/share/fonts/truetype/ipafont/ipagp.ttf'
+blockdiag_html_image_format = 'svg'
+blockdiag_latex_image_format = 'pdf'
 
 # -- Options for LaTeX output ---------------------------------------------
 
