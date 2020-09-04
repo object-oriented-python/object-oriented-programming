@@ -5,3 +5,4 @@ __pycache__
 doc/build/*
 .DS_Store
 *.egg-info/
+doc/webgit

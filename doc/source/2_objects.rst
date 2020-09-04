@@ -613,12 +613,12 @@ pieces of data and a large number of complex functions.
 Exercises
 ---------
 
-Obtain the skeleton code for these exercises from `here <fixme>`. 
+Obtain the skeleton code for these exercises from `GitHub classroom <fixme>`_. 
 The skeleton code contains a :mod:`polynomial` package with a version of 
 the :class:`Polynomial` class.
 
-1. Define the equality (:func:`~object.__eq__`), subtraction (:func:`~object.__sub__`),
-   multiplication (:func:`~object.__mul__`) and exponentiation (:func:`~object.__pow__`)
+1. Define the equality (:meth:`~object.__eq__`), subtraction (:meth:`~object.__sub__`),
+   multiplication (:meth:`~object.__mul__`) and exponentiation (:meth:`~object.__pow__`)
    operations on the :class:`Polynomial` class.
 
 2. Implement the :meth:`~object.__call__`  method on the :class:`Polynomial`

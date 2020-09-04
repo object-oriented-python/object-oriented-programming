@@ -1,3 +1,5 @@
+.. _introduction:
+
 Introduction: abstraction in mathematics and programming
 ========================================================
 
@@ -60,3 +62,86 @@ and abstraction as they occur in Python. Furthermore, we will do so
 from a mathematician's perspective, understanding programming as a
 process of defining and manipulating mathematical objects, and
 scientifically testing and debugging the results.
+
+How to do this course
+---------------------
+
+Programming, like mathematics, is a practical, problem solving discipline. It's
+not possible to learn to program just by reading notes and watching lectures. To
+learn to program you need to put the content of the course into practice by
+writing code. The structure of this course is designed to help you to really
+understand new concepts in programming by putting them into practice. Each week,
+we run through the same cycle:
+
+1. Read the notes
+2. Watch the videos
+3. Do the quiz
+4. Write the code
+
+The notes
+.........
+
+All of the new material we cover in this course is presented in the notes. They
+always the starting point for your work. Each chapter will introduce new
+concepts in programming, often tied back to related mathematical concepts, and
+always illustraded by practical code examples. Python has excellent `official
+online documentation <https://docs.python.org/3/>`_, and we link to that
+throughout the text. External links show up in orange while :ref:`internal links
+to other parts of the notes <introduction>` are red. Sometimes we introduce
+counterexamples: illustrations of code errors or bad implementation ideas. These
+will be flagged with a big red cross:
+
+.. container:: badcode
+
+    .. code-block:: python3
+
+        print "Hello World"
+
+Conversely, if it's necessary in context to highlight which approach is the
+correct one, the code will come with a big green tick:
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+        print("Hello World")
+
+At the end of each chapter there is a glossary containing key new concepts
+introduced in that chapter. Always check the glossary and convince yourself that
+you understand all the terms introduced there, this is a good check on whether
+you have understood the chapter as a whole. However, there is more to learning
+new concepts than just the vocabulary, so don't be tempted to skip reading the
+chapter and just jumping to the glossary!
+
+The chapters broadly alternate between introducing new programming concepts,
+such as :ref:`objects`, :ref:`abstract data types`, or :ref:`inheritance`, and
+covering various aspects of the craft of programming, such as :ref:`style`,
+:ref:`debugging`. In this way the course combines specific programming knowledge
+with more general coding skills.
+
+The videos
+..........
+
+Throughout the notes are links to videos. These aren't typical lecture videos in
+that they're not primarily focussed on delivering the new ideas in the course.
+In particular, the videos don't set out to duplicate the delivery of the
+material in the notes. Instead, the videos focus on putting the concepts into
+practice, often by showing live coding sessions. Usually you'll want to watch
+the video for a given section *after* reading the corresponding notes.
+
+The quizes
+..........
+
+Towards the end of each chapter is a link back to a quiz on Imperial's
+Blackboard system. The quizes are designed to allow you to convince yourself
+that you've understood the material in the chapter. Sometimes they will simply
+be multiple choice questions testing your understanding of the material, but
+sometimes you will need to open up Python and try things out in order to work
+out the right answer.
+
+The exercises
+.............
+
+
+
+
