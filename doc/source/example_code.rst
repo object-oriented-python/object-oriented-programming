@@ -1,0 +1,45 @@
+example\_code package
+=====================
+
+Submodules
+----------
+
+example\_code.euclid module
+---------------------------
+
+.. automodule:: example_code.euclid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+example\_code.hello module
+--------------------------
+
+.. automodule:: example_code.hello
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+example\_code.linked\_list module
+---------------------------------
+
+.. automodule:: example_code.linked_list
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+example\_code.polynomial module
+-------------------------------
+
+.. automodule:: example_code.polynomial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: example_code
+   :members:
+   :undoc-members:
+   :show-inheritance:

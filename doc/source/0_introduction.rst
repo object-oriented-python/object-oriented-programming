@@ -52,7 +52,7 @@ programmer of mathematics and other software. Applied well, objects
 and abstraction produce software which is easier to write, easier to
 understand, easier to debug and easier to extend. Indeed, as with
 abstraction in mathematics, abstraction in coding is a form of
-constructive laziness: it simultaniously allows the mathematician to
+constructive laziness: it simultaneously allows the mathematician to
 achieve more and do less work.
 
 This course is a second course in programming, building a previously
@@ -84,7 +84,7 @@ The notes
 All of the new material we cover in this course is presented in the notes. They
 always the starting point for your work. Each chapter will introduce new
 concepts in programming, often tied back to related mathematical concepts, and
-always illustraded by practical code examples. Python has excellent `official
+always illustrated by practical code examples. Python has excellent `official
 online documentation <https://docs.python.org/3/>`_, and we link to that
 throughout the text. External links show up in orange while :ref:`internal links
 to other parts of the notes <introduction>` are red. Sometimes we introduce
@@ -129,15 +129,15 @@ material in the notes. Instead, the videos focus on putting the concepts into
 practice, often by showing live coding sessions. Usually you'll want to watch
 the video for a given section *after* reading the corresponding notes.
 
-The quizes
-..........
+The quizzes
+...........
 
 Towards the end of each chapter is a link back to a quiz on Imperial's
-Blackboard system. The quizes are designed to allow you to convince yourself
+Blackboard system. The quizzes are designed to allow you to convince yourself
 that you've understood the material in the chapter. Sometimes they will simply
 be multiple choice questions testing your understanding of the material, but
 sometimes you will need to open up Python and try things out in order to work
-out the right answer. The quizes do not contribute to your module grade, but how
+out the right answer. The quizzes do not contribute to your module grade, but how
 well you are doing on them is an indication of your progress on the module.
 
 The exercises
@@ -200,13 +200,13 @@ Git for Windows can be downloaded from the `official Git website
 <https://git-scm.com/download/win>`_.
 
 Visual Studio Code can be downloaded from `Microsoft
-<https://code.visualstudio.com>`_.
+<https://code.visualstudio.com>`__.
 
 MacOS
 .....
 
 MacOS comes with Python3, but unfortunately it's a broken version. Usually the
-best option is to install the package manager `Homebrew <https://brew.sh>`_ and
+best option is to install the package manager `Homebrew <https://brew.sh>`__ and
 use that to install Python (and Git). In order to do this, you'll need to open a
 terminal. This is a program which comes with MacOS and enables you to run other
 programs by typing text commands. Press ⌘ + `space` to open Spotlight Search,
@@ -228,7 +228,7 @@ the terminal window:
 Once again, you finish by pressing the return key (⏎).
 
 To install Visual Studio Code, follow the instructions on the `Microsoft website
-<https://code.visualstudio.com/docs/setup/mac>`_.
+<https://code.visualstudio.com/docs/setup/mac>`__.
 
 Linux
 .....
@@ -274,7 +274,7 @@ On other distributions the command will be different. The simplest option is to
 search online for how to install git on your distribution.
 
 In order to install Visual Studio code you simply follow the instructions on the
-`Microsoft website <https://code.visualstudio.com/download>`_.
+`Microsoft website <https://code.visualstudio.com/download>`__.
 
 
 

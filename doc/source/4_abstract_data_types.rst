@@ -1,4 +1,4 @@
-
+.. _abstract_data_types:
 
 Abstract data types
 ===================
