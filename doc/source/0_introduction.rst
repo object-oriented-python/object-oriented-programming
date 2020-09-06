@@ -137,11 +137,13 @@ Blackboard system. The quizes are designed to allow you to convince yourself
 that you've understood the material in the chapter. Sometimes they will simply
 be multiple choice questions testing your understanding of the material, but
 sometimes you will need to open up Python and try things out in order to work
-out the right answer.
+out the right answer. The quizes do not contribute to your module grade, but how
+well you are doing on them is an indication of your progress on the module.
 
 The exercises
 .............
 
-
+As we've already noted, really learning to program better is only achieved by
+writing code. The core of each week's activities is therefore to ß
 
 
