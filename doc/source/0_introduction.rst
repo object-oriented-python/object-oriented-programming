@@ -157,6 +157,125 @@ range of inputs. Tests like this provide immediate feedback and enable you to
 know how you are doing without having to wait for code to be submitted and
 marked.
 
+Getting help
+............
+
+.. note::
+
+    Write this bit once the interaction format is finalised.
+
+Writing an issue report
+.......................
+
+.. note::
+
+    Write this bit.
+
+Assessment
+..........
+
+
+Obtaining the right software tools
+----------------------------------
+
+In order to do this module, you'll need some core software tools. As the module
+proceeds we'll also install several more Python packages, but you don't need to
+install those right now. The core tools you will need are:
+
+    1. Python version 3.6 or later.
+    2. Git (the revision control system we're going to use).
+    3. A Python-aware text editor. Visual Studio Code is recommended, and all
+       the instructions in this course will assume that this is what you are using.
+
+Windows
+.......
+
+If you already have Python (3.6 or later) installed, for example because you
+have installed Anaconda then this is likely to be fine. Otherwise, Python for
+Windows can be obtained from the `official Python website
+<https://www.python.org/downloads/>`_. Simply click on the download button and
+follow the instructions.
+
+Git for Windows can be downloaded from the `official Git website
+<https://git-scm.com/download/win>`_.
+
+Visual Studio Code can be downloaded from `Microsoft
+<https://code.visualstudio.com>`_.
+
+MacOS
+.....
+
+MacOS comes with Python3, but unfortunately it's a broken version. Usually the
+best option is to install the package manager `Homebrew <https://brew.sh>`_ and
+use that to install Python (and Git). In order to do this, you'll need to open a
+terminal. This is a program which comes with MacOS and enables you to run other
+programs by typing text commands. Press ⌘ + `space` to open Spotlight Search,
+and type `terminal` followed by return. Now copy the following line and paste it
+into the terminal:
+
+.. code-block:: console
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    
+and press the return key (⏎). Enter your Mac user password when asked and
+Homebrew will install. Next install Python 3 and git by typing the following in
+the terminal window:
+
+.. code-block:: console
+
+    brew install python git
+
+Once again, you finish by pressing the return key (⏎).
+
+To install Visual Studio Code, follow the instructions on the `Microsoft website
+<https://code.visualstudio.com/docs/setup/mac>`_.
+
+Linux
+.....
+
+If you are running a fairly recent version of Linux then you almost certainly
+have a suitable Python installed already, and may also have git installed. Open
+a terminal (the way you do this depends a little on distribution, but if you're
+a Linux user we'll assume you know how to do this). At the terminal prompt run
+this command:
+
+.. code-block:: console
+
+    python --version
+
+so long as it shows at least version 3.6 you should be fine. If an earlier
+version is shown then you'll need to either update your distribution, or search
+online for how to install a more recent Python. The method will vary from
+distribution to distribution so we can't provide a general solution.
+
+Next, type the following command in the terminal:
+
+.. code-block:: console
+
+    git --version
+
+So long as this actually returns a version number everything is probably fine
+(we don't need a particularly new git). If you get an error that git is not
+found then you'll need to install it using the package manager for your
+distribution. For example, if you are running Ubuntu or another Debian-based
+distribution, the command would be:
+
+.. code-block:: console
+
+    sudo apt-get install git
+
+while on RedHat-distributions such as Fedora or CentOS, the command would be:
+
+.. code-block:: console
+
+    sudo dnf install git-all
+
+On other distributions the command will be different. The simplest option is to
+search online for how to install git on your distribution.
+
+In order to install Visual Studio code you simply follow the instructions on the
+`Microsoft website <https://code.visualstudio.com/download>`_.
+
 
 
 
