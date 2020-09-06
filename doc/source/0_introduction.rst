@@ -144,6 +144,19 @@ The exercises
 .............
 
 As we've already noted, really learning to program better is only achieved by
-writing code. The core of each week's activities is therefore to ß
+writing code. The core of each week's activities is therefore to put the new
+concepts and programming structures you've learned into practice. The
+programming exercises are given at the end of each chapter, just before the
+glossary. Each time there will be a skeleton code available from GitHub
+Classroom (we'll introduce that in :numref:`github_classroom`) which provides
+the starting point. Sometimes you might be asked to complete a piece of code
+while on other occasions you'll need to write a whole Python module from
+scratch. Each set of exercises will come with a matching set of tests. These are
+small programs which check whether your code produces the correct responses to a
+range of inputs. Tests like this provide immediate feedback and enable you to
+know how you are doing without having to wait for code to be submitted and
+marked.
+
+
 
 
