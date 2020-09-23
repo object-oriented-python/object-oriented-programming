@@ -341,6 +341,24 @@ function or method is small enough for a reader to understand.
 
    Put in an example here of some horrific code that can be radically simplified.
 
+.. container:: badcode
+
+   .. code-block:: python3
+
+         result = []
+
+         for _ in range(1, 9999):
+            if _ % 1 == 0 and _ % 2 == 0 and _ % 3 == 0 and _ % 4 == 0 and _ % 5 == 0 and _ % 6 == 0 and _ % 7 == 0:
+               result.append(_)
+         print(result)
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+         result = [num for num in range(1, 9999) if all(num % x == 0 for x in range(1, 8))]
+         print(result)
+
 Use comprehensions
 ..................
 
@@ -386,12 +404,14 @@ One exceptionally common failure of parsimony is to write expressions of the fol
 
 To see the problem with this statement, let's write out its truth table:
 
-===== =============
-`var` `var == True`
-===== =============
-T     T
-F     F
-===== =============
+.. rst-class:: center-align-center-col
+      
+   ===== =============
+   `var` `var == True`
+   ===== =============
+   T     T
+   F     F
+   ===== =============
 
 In other words, the expressions `var` and `var == True` are logically
 equivalent (at least assuming `var` is a :ref:`boolean value <bltin-boolean-values>`), so it would
