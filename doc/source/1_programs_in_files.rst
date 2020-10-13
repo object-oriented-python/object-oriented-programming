@@ -425,7 +425,7 @@ internal module structure of a package in a logical way while still
 providing users with direct access to the most important or most
 frequently used features.
 
-The eagle-eyed reader will have noticed the extra `.` in front of
+The eagle-eyed reader will have noticed the extra . in front of
 `.module_1`. This marks this import as a *relative import*. In other
 words, in looking for `module_1.py`, Python should look for files in
 the same folder as the module where the import statement occurs,
@@ -444,15 +444,14 @@ reader that the import is from the current package.
 Making packages installable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order for the :ref:`import statement <python:import>` to work,
-Python needs to know about the package being imported. This is
-achieved by installing the package. In order to make a package
-installable, we need to provide Python with a bit more information
-about the package. This information is contained in a Python module
-which must be called `setup.py`. This file isn't part of the package
-and does not go in the package folder. Instead, it should be placed in
-the top-level folder of your git repository, so that the Python
-package installer will be able to find it.
+In order for the :ref:`import statement <python:import>` to work, Python needs
+to know that the package being imported exists, and where to find it. This is
+achieved by *installing* the package. In order to make a package installable, we
+need to provide Python with a bit more information about it. This
+information is contained in a Python module which must be called `setup.py`.
+This file isn't part of the package and does not go in the package folder.
+Instead, it should be placed in the top-level folder of your git repository, so
+that the Python package installer will be able to find it.
 
 At the very least, `setup.py` should contain the following:
 
@@ -697,9 +696,9 @@ continues, but if it's false, then an error occurs. For example:
 Pytest files
 ~~~~~~~~~~~~
 
-Pytest looks for tests in files whose name starts with `test_` and
-ends with `.py`. Continuing with our Fibonacci example, we might
-create a file called `test_fibonacci.py` containing:
+Pytest looks for tests in files whose name starts with :file:`test_` and
+ends with :file:`.py`. Continuing with our Fibonacci example, we might
+create a file called :file:`test_fibonacci.py` containing:
 
 .. code-block:: python3
 
