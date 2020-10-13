@@ -276,6 +276,17 @@ search online for how to install git on your distribution.
 In order to install Visual Studio code you simply follow the instructions on the
 `Microsoft website <https://code.visualstudio.com/download>`__.
 
+Working with revision control
+-----------------------------
 
+In this section we'll introduce the revision control system Git to the extent to
+which we'll need it in this module, and show how to use it in conjunction with
+Visual Studio Code. This is not a comprehensive Git introduction, and readers
+are invited to take a little more time to undertake the excellent `Git tutorial
+<https://swcarpentry.github.io/git-novice/>`__ tutorial from `Software Carpentry
+<https://software-carpentry.org>`__.
 
+What is revision control, and why should you care?
+..................................................
 
+The best way to understand 

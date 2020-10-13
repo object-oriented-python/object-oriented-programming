@@ -613,7 +613,7 @@ pieces of data and a large number of complex functions.
 Exercises
 ---------
 
-Obtain the skeleton code for these exercises from `GitHub classroom <fixme>`_. 
+Obtain the skeleton code for these exercises from `GitHub classroom <https://classroom.github.com/a/iuV3u6ch>`_. 
 The skeleton code contains a :mod:`polynomial` package with a version of 
 the :class:`Polynomial` class.
 
