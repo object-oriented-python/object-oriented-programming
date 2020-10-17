@@ -638,32 +638,36 @@ Glossary
     :sorted:
 
     abstraction
-       A mathematical concept with a limited set of defined
-       properties. For the purposes of the abstraction, any other
-       properties that an object may have are disregarded.
+        A mathematical concept with a limited set of defined
+        properties. For the purposes of the abstraction, any other
+        properties that an object may have are disregarded.
 
     attribute
-       A value encapsulated in another object, such as a
-       :term:`class`. Attributes are accessed using dot syntax, so if
-       `b` is an attribute of `a` then its value is accessed using the
-       syntax `a.b`.
+        A value encapsulated in another object, such as a
+        :term:`class`. Attributes are accessed using dot syntax, so if
+        `b` is an attribute of `a` then its value is accessed using the
+        syntax `a.b`.
 
     class
     type
-       An abstraction defined by a set of possible values, and a set
-       of operators valid for objects of that type. :keyword:`Class
-       <class>` and :class:`type` are essentially synonymous, though
-       the two words have different roles in Python code.
+        An abstraction defined by a set of possible values, and a set
+        of operators valid for objects of that type. :keyword:`Class
+        <class>` and :class:`type` are essentially synonymous, though
+        the two words have different roles in Python code.
 
     constructor
-       The :meth:`~object.__init__` method of a :term:`class`. The constructor
-       is passed the new object as its first argument (`self`) and is
-       responsible for setting up the object. The constructor modifies
-       `self` in place: constructors never return a value.
+        The :meth:`~object.__init__` method of a :term:`class`. The constructor
+        is passed the new object as its first argument (`self`) and is
+        responsible for setting up the object. The constructor modifies
+        `self` in place: constructors never return a value.
 
     encapsulation
-       The bundling up of attributes and methods into an object which
-       can be dealt with as a single unit.
+        The bundling up of attributes and methods into an object which
+        can be dealt with as a single unit.
+
+    infix operator
+        A mathematical operator whose symbol is written between its arguments.
+        Examples include addition, subtraction, division and multiplication. 
 
     instance
        An object of a particular class. `a` is an instance of

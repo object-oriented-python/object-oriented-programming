@@ -22,9 +22,9 @@ class Element:
 
 
 class CyclicGroup:
-    '''A cyclic group represented by integer addition modulo the group size.'''
-    def __init__(self, size):
-        self.size = size
+    '''A cyclic group represented by integer addition modulo group order.'''
+    def __init__(self, order):
+        self.order = order
 
     def _validate(self, value):
         '''Ensure that value is a legitimate element value in this group.'''
@@ -33,14 +33,14 @@ class CyclicGroup:
                              f" in the range [0, {self.size})")
 
     def operation(self, a, b):
-        return (a + b) % self.size
+        return (a + b) % self.order
 
     def __call__(self, value):
         '''Provide a convenient way to create elements of this group.'''
         return Element(self, value)
 
     def __str__(self):
-        return f"C{self.size}"
+        return f"C{self.order}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({repr(self.size)})"
+        return f"{self.__class__.__name__}({repr(self.order)})"

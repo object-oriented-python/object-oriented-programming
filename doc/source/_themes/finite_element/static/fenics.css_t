@@ -328,6 +328,21 @@ pre, code {
     border-bottom: 2px solid #c6c9cb;
 }
 
+
+div.linenodiv {
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+
+.linenos pre {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 10px;
+    margin: 0;
+    border-top: 2px solid #c6c9cb;
+    border-bottom: 2px solid #c6c9cb;
+}
+
 .badcode .highlight pre {
     background: #fafafa url(dialog-wrong.png) no-repeat 10px 8px;
     background-position: right;
