@@ -93,8 +93,8 @@ representing groups, and objects representing elements. We'll lay out one
 possible configuration, which helpfully involves both inheritance and
 composition, as well as parametrisation of objects and delegation of methods.
 
-Basic design considerations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cyclic groups
+~~~~~~~~~~~~~
 
 Let's start with the cyclic groups of order :math:`n`. These are isomorphic to
 the integers modulo :math:`n`, a property which we can use to create our
@@ -186,7 +186,134 @@ minimal characterisation of a group will suffice.
 
 :numref:`cyclic_group` shows an implementation of our minimal conception of
 cyclic groups. Before considering it in any detail let's try it out to observe
-the concrete effects of the classes. 
+the concrete effects of the classes:
+
+.. code-block:: ipython3
+
+    In [1]: from example_code.groups_basic import CyclicGroup
+
+    In [2]: C = CyclicGroup(5)
+
+    In [3]: print(C(3) * C(4))
+    2_C5
+
+We observe that we are able to create the cyclic group of order 5. Due to the
+definition of the :meth:`__call__` :term:`special method` at line 35, we are
+then able to create elements of the group by calling the group object. The group
+operation then has the expected effect:
+
+.. math::
+
+    3_{C_5} \cdot 4_{C_5} &\equiv (3 + 4) \operatorname{mod} 5\\
+    &= 2\\ 
+    &\equiv 2_{C_5}
+
+Finally, if we attempt to make a group element with a value which is not an
+integer between 0 and 5, an exception is raised.
+
+.. code-block:: ipython3
+
+    In [4]: C(1.5)
+    ---------------------------------------------------------------------------
+    ValueError                                Traceback (most recent call last)
+    <ipython-input-4-a5d8472d4486> in <module>
+    ----> 1 C(1.5)
+
+    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py in __call__(self, value)
+        38     def __call__(self, value):
+        39         '''Provide a convenient way to create elements of this group.'''
+    ---> 40         return Element(self, value)
+        41 
+        42     def __str__(self):
+
+    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py in __init__(self, group, value)
+        4 class Element:
+        5     def __init__(self, group, value):
+    ----> 6         group._validate(value)
+        7         self.group = group
+        8         self.value = value
+
+    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py in _validate(self, value)
+        30         '''Ensure that value is a legitimate element value in this group.'''
+        31         if not (isinstance(value, Integral) and 0 <= value < self.order):
+    ---> 32             raise ValueError("Element value must be an integer"
+        33                              f" in the range [0, {self.order})")
+        34 
+
+    ValueError: Element value must be an integer in the range [0, 5)
+
+We've seen :term:`composition` here: on line 4
+:class:`~example_code.groups_basic.Element`, is associated with a group object.
+This is a classic *has a* relationship: an element has a group. We might have
+attempted to construct this the other way around with classes having elements,
+however this would have immediately hit the issue that elements have exactly one
+group, while a group might have an unlimited number of elements. Object
+composition is typically most successful when the relationship is uniquely
+defined.
+
+General linear groups
+~~~~~~~~~~~~~~~~~~~~~
+
+We still haven't encountered inheritance, though. Where does that come into the
+story? Well first we'll need to introduce at least one more family of groups.
+For no other reason than convenience, let's choose :math:`G_n`, the general
+linear group of degree :math:`n`. The elements of this group can be
+represented as :math:`n\times n` invertible square matrices. At least to the
+extent that real numbers can be represented on a computer, we can implement this
+group as follows:
+
+.. code-block:: python3
+    :caption: A basic implementation of the general linear group of a given
+              degree.
+    :name: general_linear_group
+    :linenos:
+
+    class GeneralLinearGroup:
+        '''The general linear group represented by degree x degree matrices.'''
+        def __init__(self, degree):
+            self.degree = degree
+
+        def _validate(self, value):
+            '''Ensure that value is a legitimate element value in this group.'''
+            value = np.asarray(value)
+            if not (value.shape == (self.degree, self.degree)):
+                raise ValueError("Element value must be a "
+                                 f"{self.degree} x {self.degree}"
+                                 "square array.")
+
+        def operation(self, a, b):
+            return a @ b
+
+        def __call__(self, value):
+            '''Provide a convenient way to create elements of this group.'''
+            return Element(self, value)
+
+        def __str__(self):
+            return f"G{self.degree}"
+
+        def __repr__(self):
+            return f"{self.__class__.__name__}({repr(self.degree)})"
+
+We won't illustrate the operation of this class, though the reader is welcome to
+:keyword:`import` the :mod:`example_code.groups_basic` module and experiment.
+Instead, we simply note that this code is very, very similar to the
+implementation of :class:`~example_code.groups_basic.CyclicGroup` in
+:numref:`cyclic_group`. The only functionally important differences are the
+definitions of the :meth:`_validate` and :meth:`operation` methods.
+`self.order` is also renamed as `self.degree`, and `C` is replaced by `G` in the
+string representation. It remains the case that there is a large amount of
+code repetition between classes. For the reasons we touched on in
+:numref:`repetition`, this is a highly undesirable state of affairs.
+
+Inheritance
+-----------
+
+Suppose, instead of copying much of the same code, we had a prototype
+:class:`Group` class, and :class:`CyclicGroup` and :class:`GeneralLinearGroup`
+simply specified the ways in which they differ from the prototype. This would
+avoid the issues associated with repeating code, and would make it obvious how
+the different group implementations differ. This is exactly what inheritance
+does. 
 
 Glossary
 --------
@@ -215,7 +342,7 @@ Glossary
       classes. 
 
    parent class
-      A class from which another class, referred to as a :term:`child class`
+      A class from which another class, referred to as a :term:`child class`,
       inherits.
 
    subclass

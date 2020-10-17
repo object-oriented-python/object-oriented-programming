@@ -1,4 +1,4 @@
-.. _style.rst
+.. _style.rst:
 
 A matter of style
 =================
@@ -337,9 +337,9 @@ second is to use abstractions such as classes and function interfaces
 to split the problem up into small pieces so that each individual
 function or method is small enough for a reader to understand.
 
-.. note::
-
-   Put in an example here of some horrific code that can be radically simplified.
+As a (somewhat contrived) example, assume that you need to create a list of all
+the positive integers less than 9999 which are divisible by all the numbers up
+to seven. You could write this in 5 difficult to understand lines:
 
 .. container:: badcode
 
@@ -348,16 +348,19 @@ function or method is small enough for a reader to understand.
          result = []
 
          for _ in range(1, 9999):
-            if _ % 1 == 0 and _ % 2 == 0 and _ % 3 == 0 and _ % 4 == 0 and _ % 5 == 0 and _ % 6 == 0 and _ % 7 == 0:
-               result.append(_)
-         print(result)
+            if _ % 1 == 0 and _ % 2 == 0 and _ % 3 == 0 and _ % 4 == 0 \
+                and _ % 5 == 0 and _ % 6 == 0 and _ % 7 == 0:
+                    result.append(_)
+
+
+Much better would be to write a single more abstract but simpler line:
 
 .. container:: goodcode
 
     .. code-block:: python3
 
          result = [num for num in range(1, 9999) if all(num % x == 0 for x in range(1, 8))]
-         print(result)
+
 
 Use comprehensions
 ..................
@@ -514,6 +517,35 @@ instead of:
 
        if len(mysequence) > 0:
            # Some code using mysequence
+
+.. _repetition:
+
+Avoid repetitition
+..................
+
+Programmers very frequently need to do *nearly* the same thing over and over.
+One obvious way to do this is to write code for the first case, then copy and
+paste the code for subsequent cases, making changes as required. There are a
+number of significant problems with this approach. First, it multiplies the
+amount of code that a reader has to understand, and does so in a particularly
+pernicious way. A reader will effectively have to play "spot the difference"
+between the different code versions, and hope they don't miss something. Second,
+it makes it incredibly easy for to get confused about which version of the code
+a programmer is supposed to be working on. There are few things more frustrating
+than attempting to fix a bug and repeatedly seeing that nothing changes, only to
+discover hours (or days) later that you have been working on the wrong piece of
+nearly-identical code. Finally, lets suppose that a bug is fixed - what happens
+to the near-identical clones of that code? The chance is very high that the bug
+stays unfixed in those versions thereby creating yet another spot the difference
+puzzle for the next person encountering a bug.
+
+Abstractions are essentially tools for removing harmful repetition. For example,
+it may be possible to bundle up the repeated code in a function or class, and to
+encode the differences between versions in the :term:`parameters <parameter>` to
+the function or class constructor. If the differences between the versions of
+the code require different code, as opposed to different values of some
+quantities, then it may be possible to use :term:`inheritance` to avoid
+repetition. We will return to this in :numref:`Chapter %s<inheritance>`.
 
 
 Comments

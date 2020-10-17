@@ -12,10 +12,10 @@ example\_code.euclid module
    :undoc-members:
    :show-inheritance:
 
-example\_code.groups module
----------------------------
+example\_code.groups\_basic module
+----------------------------------
 
-.. automodule:: example_code.groups
+.. automodule:: example_code.groups_basic
    :members:
    :undoc-members:
    :show-inheritance:

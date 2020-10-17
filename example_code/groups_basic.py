@@ -1,4 +1,5 @@
 from numbers import Integral
+import numpy as np
 
 
 class Element:
@@ -28,9 +29,9 @@ class CyclicGroup:
 
     def _validate(self, value):
         '''Ensure that value is a legitimate element value in this group.'''
-        if not (isinstance(value, Integral) and 0 <= value < self.size):
+        if not (isinstance(value, Integral) and 0 <= value < self.order):
             raise ValueError("Element value must be an integer"
-                             f" in the range [0, {self.size})")
+                             f" in the range [0, {self.order})")
 
     def operation(self, a, b):
         return (a + b) % self.order
@@ -44,3 +45,30 @@ class CyclicGroup:
 
     def __repr__(self):
         return f"{self.__class__.__name__}({repr(self.order)})"
+
+
+class GeneralLinearGroup:
+    '''The general linear group represented by degree x degree matrices.'''
+    def __init__(self, degree):
+        self.degree = degree
+
+    def _validate(self, value):
+        '''Ensure that value is a legitimate element value in this group.'''
+        value = np.asarray(value)
+        if not (value.shape == (self.degree, self.degree)):
+            raise ValueError("Element value must be a "
+                             f"{self.degree} x {self.degree}"
+                             "square array.")
+
+    def operation(self, a, b):
+        return a @ b
+
+    def __call__(self, value):
+        '''Provide a convenient way to create elements of this group.'''
+        return Element(self, value)
+
+    def __str__(self):
+        return f"G{self.degree}"
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({repr(self.degree)})"
