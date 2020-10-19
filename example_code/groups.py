@@ -29,7 +29,7 @@ class Group:
     def __init__(self, n):
         '''Args:
             n: The primary group parameter, such as order or degree. The
-              precise meaning of n changes from subclass to subclass.
+            precise meaning of n changes from subclass to subclass.
         '''
         self.n = n
 

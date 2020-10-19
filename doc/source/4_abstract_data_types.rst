@@ -617,11 +617,10 @@ the current link to the new link.
 .. note::
 
    diagram of linked list insertion here.
-
-.. _linked_list:
    
 .. code-block: python3
    :caption: A simple singly linked list implementation.
+   :name: linked_list
 
    class Link:
        def __init__(self, value, next=None):

@@ -242,7 +242,7 @@ integer between 0 and 5, an exception is raised.
 
     ValueError: Element value must be an integer in the range [0, 5)
 
-:numbref:`cyclic_group` illustrates :term:`composition`: on line 4
+:numref:`cyclic_group` illustrates :term:`composition`: on line 4
 :class:`~example_code.groups_basic.Element`, is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
 attempted to construct this the other way around with classes having elements,
@@ -443,7 +443,7 @@ single attribute that is common to all objects of this class. This is called a
 
     Come back and explain class attributes in more detail.
 
-.. _runtime_attributes::
+.. _runtime_attributes:
 
 Attributes resolve at runtime
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -511,7 +511,7 @@ value `"C"`.
 
     need a good example for overriding methods and calling the superclass method.
 
-.. _abstract_base_classes::
+.. _abstract_base_classes:
 
 Abstract base classes
 ---------------------
@@ -554,7 +554,7 @@ Glossary
 --------
 
 .. glossary::
-   :sorted:
+    :sorted:
 
     child class
         A class which :term:`inherits <inheritance>` directly from one or more
@@ -586,6 +586,6 @@ Glossary
 
     subclass
         A class `A` is a subclass of the class `B` if `A` inherits from `B` either
-        directly or indirectly. That is, if `B` is a :term:`parent <parent
-        class>`, grandparent, great grandparent or further ancestor of `A`.
+        directly or indirectly. That is, if `B` is a :term:`parent <parent class>`, 
+        grandparent, great grandparent or further ancestor of `A`.
 

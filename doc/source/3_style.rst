@@ -1,4 +1,4 @@
-.. _style.rst:
+.. _style:
 
 A matter of style
 =================

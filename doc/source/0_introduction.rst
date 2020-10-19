@@ -114,9 +114,11 @@ new concepts than just the vocabulary, so don't be tempted to skip reading the
 chapter and just jumping to the glossary!
 
 The chapters broadly alternate between introducing new programming concepts,
-such as :ref:`objects`, :ref:`abstract data types`, or :ref:`inheritance`, and
-covering various aspects of the craft of programming, such as :ref:`style`,
-:ref:`debugging`. In this way the course combines specific programming knowledge
+such as :ref:`objects <objects>`, :ref:`abstract data types
+<abstract_data_types>`, or :ref:`inheritance <inheritance>`, and
+covering various aspects of the craft of programming, such as :ref:`style
+<inheritance>` and 
+:ref:`debugging <debugging>`. In this way the course combines specific programming knowledge
 with more general coding skills.
 
 The videos
@@ -147,15 +149,14 @@ As we've already noted, really learning to program better is only achieved by
 writing code. The core of each week's activities is therefore to put the new
 concepts and programming structures you've learned into practice. The
 programming exercises are given at the end of each chapter, just before the
-glossary. Each time there will be a skeleton code available from GitHub
-Classroom (we'll introduce that in :numref:`github_classroom`) which provides
-the starting point. Sometimes you might be asked to complete a piece of code
-while on other occasions you'll need to write a whole Python module from
-scratch. Each set of exercises will come with a matching set of tests. These are
-small programs which check whether your code produces the correct responses to a
-range of inputs. Tests like this provide immediate feedback and enable you to
-know how you are doing without having to wait for code to be submitted and
-marked.
+glossary. Each time there will be a skeleton code available from
+:fons:ref:`GitHub Classroom <github_classroom_exercise>` which provides the starting
+point. Sometimes you might be asked to complete a piece of code while on other
+occasions you'll need to write a whole Python module from scratch. Each set of
+exercises will come with a matching set of tests. These are small programs which
+check whether your code produces the correct responses to a range of inputs.
+Tests like this provide immediate feedback and enable you to know how you are
+doing without having to wait for code to be submitted and marked.
 
 Getting help
 ............
@@ -187,106 +188,14 @@ install those right now. The core tools you will need are:
     3. A Python-aware text editor. Visual Studio Code is recommended, and all
        the instructions in this course will assume that this is what you are using.
 
-Windows
-.......
+The Faculty of Natural Sciences at Imperial has centralised instructions for
+installing all of these tools, and we'll follow those. 
 
-If you already have Python (3.6 or later) installed, for example because you
-have installed Anaconda then this is likely to be fine. Otherwise, Python for
-Windows can be obtained from the `official Python website
-<https://www.python.org/downloads/>`_. Simply click on the download button and
-follow the instructions.
+Python 
+......
 
-Git for Windows can be downloaded from the `official Git website
-<https://git-scm.com/download/win>`_.
-
-Visual Studio Code can be downloaded from `Microsoft
-<https://code.visualstudio.com>`__.
-
-MacOS
-.....
-
-MacOS comes with Python3, but unfortunately it's a broken version. Usually the
-best option is to install the package manager `Homebrew <https://brew.sh>`__ and
-use that to install Python (and Git). In order to do this, you'll need to open a
-terminal. This is a program which comes with MacOS and enables you to run other
-programs by typing text commands. Press ⌘ + `space` to open Spotlight Search,
-and type `terminal` followed by return. Now copy the following line and paste it
-into the terminal:
-
-.. code-block:: console
-
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    
-and press the return key (⏎). Enter your Mac user password when asked and
-Homebrew will install. Next install Python 3 and git by typing the following in
-the terminal window:
-
-.. code-block:: console
-
-    brew install python git
-
-Once again, you finish by pressing the return key (⏎).
-
-To install Visual Studio Code, follow the instructions on the `Microsoft website
-<https://code.visualstudio.com/docs/setup/mac>`__.
-
-Linux
-.....
-
-If you are running a fairly recent version of Linux then you almost certainly
-have a suitable Python installed already, and may also have git installed. Open
-a terminal (the way you do this depends a little on distribution, but if you're
-a Linux user we'll assume you know how to do this). At the terminal prompt run
-this command:
-
-.. code-block:: console
-
-    python --version
-
-so long as it shows at least version 3.6 you should be fine. If an earlier
-version is shown then you'll need to either update your distribution, or search
-online for how to install a more recent Python. The method will vary from
-distribution to distribution so we can't provide a general solution.
-
-Next, type the following command in the terminal:
-
-.. code-block:: console
-
-    git --version
-
-So long as this actually returns a version number everything is probably fine
-(we don't need a particularly new git). If you get an error that git is not
-found then you'll need to install it using the package manager for your
-distribution. For example, if you are running Ubuntu or another Debian-based
-distribution, the command would be:
-
-.. code-block:: console
-
-    sudo apt-get install git
-
-while on RedHat-distributions such as Fedora or CentOS, the command would be:
-
-.. code-block:: console
-
-    sudo dnf install git-all
-
-On other distributions the command will be different. The simplest option is to
-search online for how to install git on your distribution.
-
-In order to install Visual Studio code you simply follow the instructions on the
-`Microsoft website <https://code.visualstudio.com/download>`__.
-
-Working with revision control
------------------------------
-
-In this section we'll introduce the revision control system Git to the extent to
-which we'll need it in this module, and show how to use it in conjunction with
-Visual Studio Code. This is not a comprehensive Git introduction, and readers
-are invited to take a little more time to undertake the excellent `Git tutorial
-<https://swcarpentry.github.io/git-novice/>`__ tutorial from `Software Carpentry
-<https://software-carpentry.org>`__.
-
-What is revision control, and why should you care?
-..................................................
-
-The best way to understand 
+Follow the :fons:ref:`FoNS Python instructions <python>`. We will exclusively
+use :fons:ref:`virtual environments <python_virtual_environments>` so for Mac and Linux users, it doesn't matter at
+all whether you use Python from Anaconda or from another source. Mac users
+should note, though that the built-in Python will not do, so you should use
+either Homebrew or Anaconda.

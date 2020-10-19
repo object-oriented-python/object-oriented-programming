@@ -28,7 +28,7 @@ tab completion, and better-formatted tracebacks, `ipdb
 friendlier command line to the same set of debugger commands as
 :mod:`pdb`. We will therefore generally use :mod:`ipdb`, but in the
 few circumstances where only :mod:`pdb` is available, its usage is
-very similar.
+very similar. Finally, IDEs come with built-in support for debuggers.
 
 Obtaining :mod:`ipdb`
 .....................
