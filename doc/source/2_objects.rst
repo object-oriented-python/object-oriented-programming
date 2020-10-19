@@ -646,7 +646,7 @@ Glossary
         A value encapsulated in another object, such as a
         :term:`class`. Attributes are accessed using dot syntax, so if
         `b` is an attribute of `a` then its value is accessed using the
-        syntax `a.b`.
+        syntax `a.b`. :term:`Methods <method>` are a special case of attributes.
 
     class
     type
@@ -660,6 +660,10 @@ Glossary
         is passed the new object as its first argument (`self`) and is
         responsible for setting up the object. The constructor modifies
         `self` in place: constructors never return a value.
+
+    data attribute
+        An :term:`attribute` which is not a :term:`method`. As the name
+        suggests, these are used to store data in an object.
 
     encapsulation
         The bundling up of attributes and methods into an object which

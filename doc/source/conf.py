@@ -39,7 +39,8 @@ extensions = [
     'IPython.sphinxext.ipython_console_highlighting',
     'IPython.sphinxext.ipython_directive',
     'sphinx.ext.graphviz',
-    'sphinxcontrib.blockdiag'
+    'sphinxcontrib.blockdiag',
+    'sphinx.ext.napoleon'
 ]
 # Both the class’ and the __init__ method’s docstring are concatenated and
 # inserted into the class definition

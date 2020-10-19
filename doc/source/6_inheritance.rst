@@ -97,18 +97,18 @@ Cyclic groups
 ~~~~~~~~~~~~~
 
 Let's start with the cyclic groups of order :math:`n`. These are isomorphic to
-the integers modulo :math:`n`, a property which we can use to create our
-implementation. We're going to eventually want to make different types of
-groups, so we're going to need to carefully consider what changes from group to
-group, and what is the same. The first thing that we observe is that different
-cyclic groups differ only by their order, so we could quite easily have a single
-cyclic group class, and set the order when we :term:`instantiate` it. This is
-pretty common: groups often come in families defined by some sort of size
-parameter. A group is defined by what values its elements can take, and the
+the integers under addition modulo :math:`n`, a property which we can use to
+create our implementation. We're going to eventually want to make different
+types of groups, so we're going to need to carefully consider what changes from
+group to group, and what is the same. The first thing that we observe is that
+different cyclic groups differ only by their order, so we could quite easily
+have a single cyclic group class, and set the order when we :term:`instantiate`
+it. This is pretty common: groups often come in families defined by some sort of
+size parameter. A group is defined by what values its elements can take, and the
 group operation. We might therefore be tempted to think that we need to define a
 cyclic group element type which can take the relevant values and which
-implements the group operation. This would be
-unfortunate for at least two reasons:
+implements the group operation. This would be unfortunate for at least two
+reasons:
 
 1. Because each group needs several elements, need a different element *type*
    for each *instance* of a cyclic group. The number of classes needed would grow very fast!
@@ -242,7 +242,7 @@ integer between 0 and 5, an exception is raised.
 
     ValueError: Element value must be an integer in the range [0, 5)
 
-We've seen :term:`composition` here: on line 4
+:numbref:`cyclic_group` illustrates :term:`composition`: on line 4
 :class:`~example_code.groups_basic.Element`, is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
 attempted to construct this the other way around with classes having elements,
@@ -250,6 +250,13 @@ however this would have immediately hit the issue that elements have exactly one
 group, while a group might have an unlimited number of elements. Object
 composition is typically most successful when the relationship is uniquely
 defined.
+
+This code also demonstrates :term:`delegation`. In order to avoid having to
+define different element classes for different groups, the element class does
+not in substance implement either value validation, or the group operation.
+Instead, at line 3, validation is delegated to the group by calling
+:meth:`group._validate` and at line 10 the implementation of the group operation
+is delegated to the group by calling :meth:`self.group.operation`.
 
 General linear groups
 ~~~~~~~~~~~~~~~~~~~~~
@@ -315,44 +322,239 @@ avoid the issues associated with repeating code, and would make it obvious how
 the different group implementations differ. This is exactly what inheritance
 does. 
 
+.. code-block:: python3
+    :caption: Implementation of a base class for a generic group, and subclasses
+        for the cyclic groups and general linear groups.
+    :name: groups_inheritance
+    :linenos:
+
+    class Group:
+        '''A base class containing methods common to many groups.
+
+        Each subclass represents a family of parametrised groups.'''
+        def __init__(self, n):
+            '''Args:
+                n: The primary group parameter, such as order or degree. The
+                precise meaning of n changes from subclass to subclass.
+            '''
+            self.n = n
+
+        def __call__(self, value):
+            '''Provide a convenient way to create elements of this group.'''
+            return Element(self, value)
+
+        def __str__(self):
+            return f"{self.notation}{self.n}"
+
+        def __repr__(self):
+            return f"{self.__class__.__name__}({repr(self.n)})"
+
+
+    class CyclicGroup(Group):
+        '''A cyclic group represented by integer addition modulo n.'''
+        notation = "C"
+
+        def _validate(self, value):
+            '''Ensure that value is a legitimate element value in this group.'''
+            if not (isinstance(value, Integral) and 0 <= value < self.n):
+                raise ValueError("Element value must be an integer"
+                                f" in the range [0, {self.n})")
+
+        def operation(self, a, b):
+            return (a + b) % self.n
+
+
+    class GeneralLinearGroup(Group):
+        '''The general linear group represented by n x n matrices.'''
+        notation = "G"
+
+        def _validate(self, value):
+            '''Ensure that value is a legitimate element value in this group.'''
+            value = np.asarray(value)
+            if not (value.shape == (self.n, self.n)):
+                raise ValueError("Element value must be a "
+                                f"{self.n} x {self.n} square array.")
+
+        def operation(self, a, b):
+            return a @ b
+
+:numref:`groups_inheritance` shows a new implementation of
+:class:`~example_code.groups.CyclicGroup` and
+:class:`~example_code.groups.GeneralLinearGroup`. These are functionally
+equivalent to those presented in :numref:`cyclic_group` and
+:numref:`general_linear_group` but have all the repeated code removed. The code
+common to both families of groups is instead placed in the
+:class:`~example_code.groups.Group` class. In the following sections we will
+highlight the features of this code which make this work.
+
+Inheritance syntax
+~~~~~~~~~~~~~~~~~~
+
+Look again at the definition of :class:`~example_code.groups.CyclicGroup` on
+line 23:
+
+.. code-block:: python3
+    :lineno-start: 23
+
+    class CyclicGroup(Group):    
+
+This differs from the previous class definitions we've seen in that the
+name of the class we're defining, :class:`CyclicGroup` is followed by another
+class name in brackets, :class:`Group`. This :term:`syntax` is how inheritance
+is defined. It means that :class:`CyclicGroup` is a :term:`child class` of
+:class:`Group`. The effect of this is that any :term:`attribute` defined on the
+:term:`parent` class is also defined (is *inherited*) on the child class. In
+this case, :class:`CyclicGroup` does not define :meth:`__init__`,
+:meth:`__call__`, :meth:`__str__` or :meth:`__repr__`. If and when any of those
+:term:`methods <method>` are called, it is the methods from the parent class,
+:class:`Group` which are used. This is the mechanism that enables methods to be
+shared by different classes. In this case,
+:class:`~example_code.groups.CyclicGroup` and
+:class:`~example_code.groups.GeneralLinearGroup` share these methods. A user
+could also define another class which inherited from
+:class:`~example_code.groups.Group`, for example to implement another family of
+groups.
+
+Class attributes
+~~~~~~~~~~~~~~~~
+
+At line 25 of :numref:`groups_inheritance`, the name `notation` is
+assigned to:
+
+.. code-block:: python3
+    :lineno-start: 25
+
+    notation = "C"
+
+This is also different from our previous experience: usually if we
+want to set a value on an object then we do so from inside a method, and we set
+a :term:`data attribute` on the current instance, `self`, using the syntax:
+
+.. code-block:: python3
+
+    self.notation = "C"
+
+This more familiar code sets an instance attribute. In other words, an attribute
+specific to each object of the class. Our new version of the code instead sets a
+single attribute that is common to all objects of this class. This is called a
+:term:`class attribute`.
+
+.. note::
+
+    Come back and explain class attributes in more detail.
+
+Attributes resolve at runtime
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Consider the :meth:`__str__` method: 
+
+.. code-block:: python3
+    :lineno-start: 16
+
+    def __str__(self):
+        return f"{self.notation}{self.n}"
+
+This code uses `self.notation`, but this attribute isn't defined anywhere on
+:class:`~example_code.groups.Group`. Why doesn't this cause an
+:class:`AttributeError` to be raised? One answer is that it indeed would if we
+were to instantiate :class:`Group` itself:
+
+.. code-block:: ipython3
+
+    In [1]: from example_code.groups import Group
+
+    In [2]: g = Group(1)
+
+    In [3]: print(g)
+    ---------------------------------------------------------------------------
+    AttributeError                            Traceback (most recent call last)
+    <ipython-input-3-e1cdc681402c> in <module>
+    ----> 1 print(g)
+
+    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups.py in __str__(self)
+        39 
+        40     def __str__(self):
+    ---> 41         return f"{self.notation}{self.n}"
+        42 
+        43     def __repr__(self):
+
+    AttributeError: 'Group' object has no attribute 'notation'
+
+In fact, :class:`Group` is never supposed to be instantiated, it plays the role
+of an :term:`abstract base class`. In other words, it's role is to provide
+functionality to classes that inherit from it, rather than to be the type of
+objects itself. We will return to this in more detail in
+:numref:`abstract_base_classes`.
+
+However, if we instead instantiate :class:`~example_code.groups.CyclicGroup`
+then everything works:
+
+.. code-block:: ipython3
+
+    In [1]: from example_code.groups import CyclicGroup
+
+    In [2]: g = CyclicGroup(1)
+
+    In [3]: print(g)
+    C1
+
+The reason is that the code in methods is only executed when that method is
+called, and the object `self` is the actual concrete class instance, with all of
+the attributes that are defined for it. In this case, even though
+:meth:`__str__` is defined on :class:`Group`, `self` has type
+:class:`CyclicGroup`, and therefore `self.notation` is well-defined and has the
+value `"C"`. 
+
+..note::
+
+    need a good example for overriding methods and calling the superclass method.
+
+.. note:: 
+
+    Quiz exercise giving a bunch complicated inheritance pattern and asking what
+    various things print.
+
+.. note:: 
+
+    One exercise will be to implement another family of groups by importing and
+    inheriting from :class:`~example_code.groups.Group`.
+
 Glossary
 --------
 
 .. glossary::
    :sorted:
 
-   child class
-      A class which :term:`inherits <inheritance>` directly from one or more
-      :term:`parent classes <parent class>`. The child class automatically has
-      all of the :term:`methods <method>` of the parent classes, unless it
-      declares its own methods with the same names. 
+    child class
+        A class which :term:`inherits <inheritance>` directly from one or more
+        :term:`parent classes <parent class>`. The child class automatically has
+        all of the :term:`methods <method>` of the parent classes, unless it
+        declares its own methods with the same names.
 
-   composition
-      The process of making a more complex object from other objects by
-      including the constituent objects as attributes of the more composite
-      object. Composition can be characterised by a *has a* relationship, in
-      contrast to :term:`inheritance`, which embodies an *is a* relationship.
+    class attribute
+        An :term:`attribute` which is declared directly on a :term:`class`.
+        All instances of a class see the same value of a class attribute.
 
-   delegation
-      A design pattern in which an object avoids implementing a
-      :term:`method` by instead calling a method on another object. 
+    composition
+        The process of making a more complex object from other objects by
+        including the constituent objects as attributes of the more composite
+        object. Composition can be characterised by a *has a* relationship, in
+        contrast to :term:`inheritance`, which embodies an *is a* relationship.
 
-   inheritance
-      The process of making a new class by extending one or more existing
-      classes. 
+    delegation
+        A design pattern in which an object avoids implementing a
+        :term:`method` by instead calling a method on another object. 
 
-   parent class
-      A class from which another class, referred to as a :term:`child class`,
-      inherits.
+    inheritance
+        The process of making a new class by extending one or more existing
+        classes. 
 
-   subclass
-      A class `A` is a subclass of the class `B` if `A` inherits from `B` either
-      directly or indirectly. That is, if `B` is a :term:`parent <parent
-      class>`, grandparent, great grandparent or further ancestor of `A`.
+    parent class
+        A class from which another class, referred to as a :term:`child class`,
+        inherits.
 
-   subclass
-      A :term:`class` derived from another :term:`class` by
-      inheritance. The :term:`methods <method>` and
-      :term:`attributes` of the :term:`parent class(es) <parent
-      class>` are automatically available on the :term:`subclass`
-      unless it overrides them.
+    subclass
+        A class `A` is a subclass of the class `B` if `A` inherits from `B` either
+        directly or indirectly. That is, if `B` is a :term:`parent <parent
+        class>`, grandparent, great grandparent or further ancestor of `A`.
+
