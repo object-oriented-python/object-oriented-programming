@@ -443,6 +443,8 @@ single attribute that is common to all objects of this class. This is called a
 
     Come back and explain class attributes in more detail.
 
+.. _runtime_attributes::
+
 Attributes resolve at runtime
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -505,9 +507,38 @@ the attributes that are defined for it. In this case, even though
 :class:`CyclicGroup`, and therefore `self.notation` is well-defined and has the
 value `"C"`. 
 
-..note::
+.. note::
 
     need a good example for overriding methods and calling the superclass method.
+
+.. _abstract_base_classes::
+
+Abstract base classes
+---------------------
+
+We observed in :numref:`runtime_attributes` that the
+:class:`~example_code.groups.Group` class isn't itself a complete implementation
+of a mathematical group. Instead it is only intended to be used as a
+:term:`parent class` for classes implementing actual groups. Those child classes
+are responsible for filling out the additional details required to make a
+working implementation. In the case of `Group`, the child classes have to
+implement :attr:`notation`, :meth:`_validation`, and :meth:`operation`, with the
+right interfaces. 
+
+How would a programmer who wants to implement a new family of groups know to
+implement this one attribute and two methods, with these particular interfaces?
+In a simple case like this, they could probably infer what was needed by
+studying the source code of :class:`Group` and its two subclasses. However "just
+work it out from context" is not a particularly robust mechanism and will
+quickly become infeasible for larger, more complex classes. 
+
+Instead of leaving it to the programmer to figure out, it would be preferable if
+:class:`Group` specified the missing parts to be filled out, including the
+required interfaces. We call such
+classes :term:`abstract base classes <abstract base class>`. They are abstract
+in the sense that the interface is specified but the implementation omitted. 
+
+
 
 .. note:: 
 
