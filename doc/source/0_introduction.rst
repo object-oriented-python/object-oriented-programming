@@ -111,7 +111,7 @@ introduced in that chapter. Always check the glossary and convince yourself that
 you understand all the terms introduced there, this is a good check on whether
 you have understood the chapter as a whole. However, there is more to learning
 new concepts than just the vocabulary, so don't be tempted to skip reading the
-chapter and just jumping to the glossary!
+chapter and just jump to the glossary!
 
 The chapters broadly alternate between introducing new programming concepts,
 such as :ref:`objects <objects>`, :ref:`abstract data types
@@ -158,8 +158,25 @@ check whether your code produces the correct responses to a range of inputs.
 Tests like this provide immediate feedback and enable you to know how you are
 doing without having to wait for code to be submitted and marked.
 
+Assessment
+..........
+
+The weekly quiz and exercises are not assessable: they are formative activities
+designed to help you learn the module. Instead, the module will be assessed by
+two controlled programming assessments, effectively programming exams. The
+instructions and skeleton code for these will be released at a fixed time on
+GitHub Classroom, and the code which you have committed to GitHub by the end of
+the allotted time will be marked.
+
+The programming exercises will be similar to the weekly exercises in the course,
+and may include new programmes to write from specification, modifications or
+extensions to be made to code which is provided, and debugging exercises in
+which defective code is provided which you need to correct. Marks will be
+allocated both for the functional correctness of the code written, and for
+good style and following Python coding conventions.
+
 Getting help
-............
+------------
 
 .. note::
 
@@ -168,13 +185,29 @@ Getting help
 Writing an issue report
 .......................
 
+It is very likely that you will get stuck and need help during this module.
+Going forward, it is also likely that you will at some point find a programming
+problem you can't solve, or will find what you believe to be a bug in a piece of
+software you rely on. In these circumstances, you need to be able to ask for
+help, in writing, in some sort of online forum. There is a skill to doing this,
+and doing it well will help others to help you - which radically increases the
+chance that you will quickly get a solution to your problem. 
+
+Anatomy of an issue
+...................
+
+Title 
+~~~~~
+
+The title of the issue, which might go in the subject line of an email or a
+forum post, should be a very short (10 word) outline of the key problem you
+observe. Examples might include:
+
+
+
 .. note::
 
     Write this bit.
-
-Assessment
-..........
-
 
 Obtaining the right software tools
 ----------------------------------
@@ -188,14 +221,70 @@ install those right now. The core tools you will need are:
     3. A Python-aware text editor. Visual Studio Code is recommended, and all
        the instructions in this course will assume that this is what you are using.
 
-The Faculty of Natural Sciences at Imperial has centralised instructions for
-installing all of these tools, and we'll follow those. 
+The Faculty of Natural Sciences at Imperial has 
+:doc:`centralised instructions for installing all of these tools <fons:index>`, and we'll follow those. 
 
 Python 
 ......
 
-Follow the :fons:ref:`FoNS Python instructions <python>`. We will exclusively
-use :fons:ref:`virtual environments <python_virtual_environments>` so for Mac and Linux users, it doesn't matter at
+Follow the :doc:`FoNS Python instructions <fons:python>`. We will exclusively
+use :fons:ref:`virtual environments <python_virtual_environments>` so it doesn't matter at
 all whether you use Python from Anaconda or from another source. Mac users
 should note, though that the built-in Python will not do, so you should use
 either Homebrew or Anaconda.
+
+.. note::
+
+    The example code in the exercises uses :ref:`f-strings <tut-f-strings>`
+    which were introduced in Python 3.6, so the code will not work in earlier
+    versions of Python.
+
+Git
+...
+
+Git is a revision control system. Revision control systems enable you to keep
+track of the different versions of a piece of code as you work on them, and to
+have these versions on different computers as well as backed up in the cloud. We
+will use Git and GitHub classroom as a mechanism for distributing, working with
+and submitting code exercises.
+
+.. warning::
+
+    When you come to the assessable programming tests that make up 100% of the
+    assessment for this module, the code will be distributed and submitted using
+    Git. It is therefore essential that you incorporate Git into your day to day
+    workflow so that when you come to the test, it's second nature. You will not
+    receive marks for test answers that are not committed and pushed.
+
+Visual Studio Code
+..................
+
+Visual Studio Code is a Python-aware Integrated Development Environment (IDE).
+This means that it incorporates editing files with other programming features
+such as :ref:`debugging`, Git support, and built-in :ref:`terminal
+<terminal-vscode>`. Visual Studio Code also provides an incredibly useful remote
+collaborative coding feature called Live Share. This will be very useful for
+getting remote help from an instructor. 
+
+Exercises
+---------
+
+.. proof:exercise::
+    
+    Install Python using  the :doc:`FoNS Python installation instructions <fons:python>`.
+
+.. proof:exercise::
+
+    Install Git and work through the entire Git, GitHub, and GitHub Classroom tutorial on the :doc:`FoNS Git instructions webpage <fons:git>`.
+
+.. proof:exercise::
+
+    Install Visual Studio Code using the :doc:`FoNS Visual Studio Code
+    installation instructions <fons:vscode>`.
+    
+.. proof:exercise::
+
+    With one or two friends from the class, follow the  
+    :ref:`Live Share instructions <vscode-liveshare>`. 
+    Ensure that each of you can start a Live Share session and have the other
+    successfully join, and that all of you can edit files.
