@@ -94,7 +94,7 @@ occurs. Consider the following code:
     print(a)
 
 The error here is a missing closing bracket on the first line, however
-the error message which the :term:`Python interpeter` prints when this code is run is:
+the error message which the :term:`Python interpreter` prints when this code is run is:
 
 .. code-block:: python3
 
@@ -604,12 +604,12 @@ Glossary
 
     exception
         An object representing an out of the ordinary event which has
-        occured during the execution of some Python code. When an
+        occurred during the execution of some Python code. When an
         exception is :ref:`raised <raising_exceptions>` the
         :term:`Python interpreter` doesn't continue to execute the
         following line of code. Instead, the exception is either
         :ref:`handled <handling_exceptions>` or execution stips and a
-        :ref:`traceback` is printed.
+        :term:`traceback` is printed.
 
     call stack
     execution stack

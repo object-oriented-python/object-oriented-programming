@@ -403,7 +403,7 @@ name of the class we're defining, :class:`CyclicGroup` is followed by another
 class name in brackets, :class:`Group`. This :term:`syntax` is how inheritance
 is defined. It means that :class:`CyclicGroup` is a :term:`child class` of
 :class:`Group`. The effect of this is that any :term:`attribute` defined on the
-:term:`parent` class is also defined (is *inherited*) on the child class. In
+:term:`parent class` is also defined (is *inherited*) on the child class. In
 this case, :class:`CyclicGroup` does not define :meth:`__init__`,
 :meth:`__call__`, :meth:`__str__` or :meth:`__repr__`. If and when any of those
 :term:`methods <method>` are called, it is the methods from the parent class,

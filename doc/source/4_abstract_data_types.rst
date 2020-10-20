@@ -618,7 +618,7 @@ the current link to the new link.
 
    diagram of linked list insertion here.
    
-.. code-block: python3
+.. code-block:: python3
    :caption: A simple singly linked list implementation.
    :name: linked_list
 
