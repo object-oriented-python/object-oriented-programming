@@ -291,7 +291,7 @@ Let's return to the traceback for our erroneous polynomial addition:
 This shows information about a :term:`call stack` comprising three
 :term:`stack frames <stack frame>`. Look first at the bottom-most
 frame, which corresponds to the function in which the exception
-occured. The traceback for this frame starts:
+occurred. The traceback for this frame starts:
 
 .. code-block:: ipython3
 
@@ -358,7 +358,7 @@ integer rather than the type actually provided.
 
 .. code-block:: python3
    :emphasize-lines: 6,7,8
-   :caption: A version of the Fibbonacci function which raises an
+   :caption: A version of the Fibonacci function which raises an
              exception if a non-integer type is passed as the
              argument.
 
@@ -403,8 +403,8 @@ message that we passed to :class:`TypeError`. The only difference
 between this and the previous errors we have seen is that the bottom
 :term:`stack frame` explicitly shows the exception being raised, while
 previously the stack showed a piece of code where an error had
-occured. This minor difference has to do with whether the particular
-piece of code where the exception occured is written in Python, or is
+occurred. This minor difference has to do with whether the particular
+piece of code where the exception occurred is written in Python, or is
 written in a language such as C and called from Python. This
 distinction is of negligible importance for our current purposes.
 
@@ -548,7 +548,7 @@ point which is ultimately inside several :keyword:`try` blocks.
 
 The :term:`Python interpreter` deals with this situation by starting
 from the current :term:`stack frame` and working upwards, a process
-known as *unwinding the stack*. In pseudocode, the alogrithm is:
+known as *unwinding the stack*. In pseudocode, the algorithm is:
 
 .. code-block:: python3
 
@@ -567,7 +567,7 @@ known as *unwinding the stack*. In pseudocode, the alogrithm is:
 
    Python provides a wide range of exceptions, and usually the right
    thing to do when writing code that might need to raise an exception is
-   to peruse the :ref:`list of built-in exceptions <bltin-exceptions>`
+   to peruse the :ref:`list of built-in exceptions <builtin-exceptions>`
    and choose the one which best matches the circumstances. However,
    sometimes there is no good match, or it might be that the programmer
    wants user code to be able to catch exactly this exception without the
@@ -584,10 +584,10 @@ to finish by drawing attention to the distinction between these two
 concepts. While user errors and bugs in programs typically result in
 an exception being raised, it is not the case that all exceptions
 result from errors. The name "exception" means what it says, it is an
-event whose occurance requires an exception to the normal sequence of
+event whose occurrence requires an exception to the normal sequence of
 execution.
 
-The :class:`StopIteration` exception which we encoutered in
+The :class:`StopIteration` exception which we encountered in
 :numref:`iterator_protocol` is a good example of an :term:`exception`
 which does not indicate an error. The end of the set of things to be
 iterated over does not indicate that something has gone wrong, but it
@@ -608,7 +608,7 @@ Glossary
         exception is :ref:`raised <raising_exceptions>` the
         :term:`Python interpreter` doesn't continue to execute the
         following line of code. Instead, the exception is either
-        :ref:`handled <handling_exceptions>` or execution stips and a
+        :ref:`handled <handling_exceptions>` or execution stops and a
         :term:`traceback` is printed.
 
     call stack
@@ -622,7 +622,7 @@ Glossary
     stack frame
         An object encapsulating the set of variables which define the
         execution of a Python script or function. This information
-        includes the code being executed, all the local and gobal
+        includes the code being executed, all the local and global
         names which are visible, the last instruction that was
         executed, and a reference to the stack frame which called this
         function.

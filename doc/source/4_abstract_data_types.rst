@@ -431,7 +431,7 @@ is an :math:`O(n)` operation. However, this :math:`O(n)` operation
 only occurs when the list has to be extended. How often is that?
 Suppose the list has just been reallocated (at a cost of
 :math:`O(n)`). The new memory allocation is :math:`kn` large, but we've
-aready used :math:`n` locations so we get :math:`(k-1)n` more cheap
+already used :math:`n` locations so we get :math:`(k-1)n` more cheap
 :math:`O(1)` append operations before we have to reallocate
 again. :math:`(k-1)n = O(n)` so this means that adding :math:`O(n)`
 items to the list costs:

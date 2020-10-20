@@ -235,7 +235,7 @@ conventions. One is a set of rules about the formatting of names: when
 to use capitals, when underscores and so on. This is covered by PEP 8
 and we reproduce some of the important rules below. The second aspect
 is the choice of the letter, word, or words that make up a name. This
-is much more a matter of judgment, though there are guiding principles
+is much more a matter of judgement, though there are guiding principles
 that greatly help with clarity.
 
 PEP 8 name conventions

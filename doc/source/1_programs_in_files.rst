@@ -264,7 +264,7 @@ between to end points is now accessible as :func:`np.linspace
 
 A second option is to import particular names from a module directly
 into the current namespace. For example, if we planned to use the
-fuctions :func:`math.sin` and :func:`math.cos` a lot in our script, we
+functions :func:`math.sin` and :func:`math.cos` a lot in our script, we
 might use the following import statement:
 
 .. code-block:: python
