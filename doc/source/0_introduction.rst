@@ -414,6 +414,151 @@ are many reasons why screenshots are inferior to copying and pasting the text:
 The only time when it is appropriate to include a screenshot is when the output
 is graphical and you need to illustrate why something looks wrong.
 
+Writing an issue report in Markdown on Piazza
+.............................................
+
+Web fora are often optimised for making prose easy to read, so the forum will do
+things like change indentation or the location of linebreaks in order to make a
+nice paragraph of text in whichever area is available on the reader's screen.
+This is great for prose, but absolutely disastrous for code or computer output,
+because changing the linebreaks and other whitespace turns carefully formatted
+information into scrambled junk. To overcome this, it is necessary to tell the
+forum which parts of the text are prose, which are code, and possibly other
+information (for example, you might want to add a mathematical formula). 
+
+In order to support this, many web fora support some form of markup language. A
+markup language represents the structure of the contents of a body of text by
+inserting special instructions, called markup, into the text. You've already
+learned one of these systems, because `LaTeX <https://www.latex-project.org>`__ is a markup system. The notes for
+this course are written in `reStructuredText <https://docutils.readthedocs.io/en/sphinx-docs/user/rst/quickstart.html>`__,
+which is another markup language. Many web fora, notably Piazza and GitHub, use
+variants of another markup language called Markdown (computer scientists are
+regrettably fond of poor puns when naming projects). Since we use Piazza in this
+course we'll look at how to use a little Markdown to make your issue reports
+much more readable. It's important to know that Markdown is not a standardised
+language, so the exact functionality available depends somewhat on which forum
+you are using Markdown for. For example GitHub doesn't support typesetting maths
+from Markdown.
+
+Setting the Piazza editor to Markdown
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you create a new post or reply to an existing one on Piazza, the editor
+which opens presents three options. Some, but not all, of the code formatting
+and highlighting functionality is available via the :code:`Rich text editor`
+option, which is a graphical editor more similar to Microsoft Word, so it's
+better to choose :code:`Markdown editor`. 
+
+.. image:: images/piazza_editor_choice.png
+    :width: 50%
+    :align: center
+    :alt: Image of Piazza web editor options with Markdown editor selected.
+
+Including code, input, and output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Code, commands you type at the terminal prompt, and output printed in the
+terminal or in IPython are treated almost exactly the same way. The best
+approach is to use what Markdown calls a "fenced code block". This means that
+you put the code between "fences" comprising three backquotes on a
+line by themselves. For example::
+
+    ```
+    $ cd myfolder
+    $ python myscript.py
+    ```
+
+If the code in question is written in a language that the Markdown interpreter
+knows about, and this is indicated at the end of the first fence, then the
+syntax will be highlighted to make it easier to read::
+
+    ```python3
+    print("Hello World!")
+    ```
+
+This results in something like:
+
+.. code-block:: python3
+
+    print("Hello World!")
+
+Similarly, you can mark the first fence with `ipython3` to indicate that the
+code following is copied and pasted from an IPython command line. If you need to
+include code inline in text, then you just contain it in single backquotes:
+`\`some_code\``.
+
+Including mathematics
+~~~~~~~~~~~~~~~~~~~~~
+
+Any text contained between delimiters comprising double dollar signs will be
+passed to LaTeX and rendered as maths. For example, `$$x^2$$` will be rendered
+as :math:`x^2`. 
+
+Including links
+~~~~~~~~~~~~~~~
+
+Just dumping URLs into the text often results in hard to read code. Instead,
+Markdown enables you to write the link text in square brackets followed by the
+URL in round brackets. So `[the Markdown Cheat
+Sheet](https://www.markdownguide.org/cheat-sheet/)` becomes `the Markdown Cheat
+Sheet <https://www.markdownguide.org/cheat-sheet/>`__.
+
+
+More advanced Markdown
+~~~~~~~~~~~~~~~~~~~~~~
+
+There are many other Markdown features that can be useful in longer posts, and
+there are many resources about Markdown available online. `The Markdown Guide
+<https://www.markdownguide.org>`__ is a good place to start.
+
+An example issue report
+.......................
+
+A fairly short and simple issue report which includes all of the relevant
+information, might be written in Markdown as follows. The title, which we omit
+from the Markdown because it would be typed in a separate box on Piazza, might
+be something like "Python square function returns wrong answer." 
+
+.. code-block:: markdown
+
+    I wrote a function to square its input. I expected to see the
+    square of the input but I see the wrong answer.
+
+    The following code is in the file `square.py`:
+
+    ```python3
+    def square(x):
+        return x^2
+    ```
+
+    I try out this function in iPython and observe the wrong answers:
+
+    ```ipython3
+    In [1]: from square import square
+
+    In [2]: square(2)
+    Out[2]: 0
+
+    In [3]: square(3)
+    Out[3]: 1
+
+    In [4]: square(4)
+    Out[4]: 6
+    ```
+
+    I would expect to see 4, 9, 16 respectively. I do not understand what is
+    going wrong.
+
+This results in the following, much more readable, post on Piazza:
+
+.. image:: images/piazza_issue.png
+
+.. note::
+
+    The point of this example is to illustrate how to write an issue report.
+    However, you do actually know enough Python from your previous introductory
+    course to work out what's wrong with the code here. Can you see what the
+    problem is?
 
 
 Exercises

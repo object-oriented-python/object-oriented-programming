@@ -758,6 +758,8 @@ div.proof {
 	border-left-style: none;
 	padding: 10px 10px 10px 10px;
 	background: #eeeeee;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 div.figure {
