@@ -64,24 +64,44 @@ with Git.
 
    Fill in more details once it becomes apparent which editors we'll be using.
 
+.. note:: Text files
+
+    You are doubtless familiar with the concept of a file stored in a folder on
+    your computer. You will also be aware that there are many different types of
+    file, more or less related to the type of data they contain and the programs
+    which created them. Files fall into two important categories, binary files
+    and text files. A binary file is a stream of data whose contents make
+    sense under the rules of the application which created it, but not
+    otherwise. Word documents, PDFs, and JPEGs are examples of binary files.
+    Plain text files are files which, as the name suggests, consist of a string
+    of characters. Anyone looking at the content of a text file can
+    understand it, so long as they understand the human or computer language in
+    which it is written. LaTeX source files and Python scripts are examples of
+    text files. This matters when you come to edit these files. Text files are
+    edited using a text editor, or an IDE. Usually you can use whichever text
+    editor you like, though some will have better support for writing some
+    computer languages than others. Importantly, you can't edit text files in a
+    program such as Microsoft Word and expect to end up with something usable.
+
+
 A first Python script
 ~~~~~~~~~~~~~~~~~~~~~
 
 Tradition dictates that the first stand-alone program one writes in
 any language simply prints out the string `Hello World`. Using a text
-editor, we create a file which we'll call `hello.py` containing just
+editor, we create a file which we'll call :file:`hello.py` containing just
 the following line of Python code:
 
 .. code-block:: python
 
    print("Hello World")
 
-The `.py` file extension is not strictly required for Python scripts,
+The :file:`.py` file extension is not strictly required for Python scripts,
 but it can be useful as it will cause most text editors to recognise
-the file as a Python file. Having remembered to save `hello.py` to
+the file as a Python file. Having remembered to save :file:`hello.py` to
 disk from the text editor, we can now run the program. Open a
 terminal, and change to the folder (directory) where you saved
-`hello.py`. For example, if `hello.py` is in the directory `src` in
+:file:`hello.py`. For example, if :file:`hello.py` is in the directory :file:`src` in
 your home directory, then you would type the following:
 
 .. code-block:: console
@@ -95,13 +115,13 @@ of the command prompt might also be different depending on which
 terminal program you are using on which operating system, but we are
 only concerned with the commands to the right of the prompt. The first
 of these, `cd` (*change directory*) switches the current folder to
-`src`. The second command actually runs the Python interpreter on
-`hello.py`. Depending on what is installed on your computer, it might
+:file:`src`. The second command actually runs the Python interpreter on
+:file:`hello.py`. Depending on what is installed on your computer, it might
 also be possible to leave off the `3` at the end of `python3`, however
 on some systems the plain `python` command is still linked to the old
 version 2 of Python, so it's better to be explicit and type
-`python3`. When we press the `enter` key after the last line above,
-our tiny Python script `hello.py` runs and the following is displayed:
+`python3`. When we press the :kbd:`enter` key after the last line above,
+our tiny Python script :file:`hello.py` runs and the following is displayed:
 
 .. code-block:: console
 
@@ -157,14 +177,14 @@ Modules
 -------
 
 A module is, like a script, a plain text file containing Python
-code. Modules must have names ending in `.py`. So far, that's
+code. Modules must have names ending in :file:`.py`. So far, that's
 identical to a script. Indeed, it's sometimes possible (though not
 always advisable) to use the same file as both a script and a
 module. The difference between a script and a module lies in how it is
 used. A script is run, which means that a new Python interpreter
 starts, executes the commands in the script, and then
 exits. Conversely, a module is imported into a running Python
-session. For example, suppose we create a file `fibonacci.py`
+session. For example, suppose we create a file :file:`fibonacci.py`
 containing the following simple function:
 
 .. code-block:: python
@@ -179,7 +199,7 @@ containing the following simple function:
            return fib(n-2) + fib(n-1)
 
 If I now run IPython in the folder containing my new file
-`fibonacci.py` then I will be able to import the :mod:`fibonacci`
+:file:`fibonacci.py` then I will be able to import the :mod:`fibonacci`
 module, and use the function :func:`fib`:
 
 .. code-block:: ipython3
@@ -188,7 +208,7 @@ module, and use the function :func:`fib`:
    In [2]: fibonacci.fib(3)
    Out[2]: 2
 
-Notice that we do not include the `.py` suffix when we import a
+Notice that we do not include the :file:`.py` suffix when we import a
 module. Importing a module provides access to whatever it
 contains. This is a key tool in building up algorithms out of
 components: we import the components we need at each stage of our
@@ -342,15 +362,15 @@ descending line connects the folder name to the files and folders it
 contains. Let's walk through these files and folders to understand how
 they make up the Python package.
 
-`my_git_repo`
+:file:`my_git_repo`
     This is not really a part of the package at all, but the
-    `my_package` folder needs to be in some folder, and this is a
+    :file:`my_package` folder needs to be in some folder, and this is a
     reminder that all your work should be in a revision control system
-    such as `git <https://git-scm.org>`_. It would be usual for
+    such as :ref:`git <fons:git>`. It would be usual for
     package folders to be contained immediately in the top level of
     the repository, in the manner shown here.
 
-`my_package`
+:file:`my_package`
     This is the actual package. The name of this folder sets the
     package name, so if you really made a package folder with this
     name, then you would type:
@@ -361,25 +381,25 @@ they make up the Python package.
 
     to access the package.
 
-`__init__.py`
+:file:`__init__.py`
     Every package must contain a file with *exactly* this name. This is
-    how Python recognises that a folder is a package. `__init__.py`
+    how Python recognises that a folder is a package. :file:`__init__.py`
     can be an empty file, or it can contain code to populate the top
     level :term:`namespace` of the package. See :numref:`importing_packages` below.
 
-`module_1.py`, `module_2.py`
+:file:`module_1.py`, :file:`module_2.py`
     These are just Python :term:`modules <module>`. If the user imports
     `my_package` using the line above then these modules will appear
     as `my_package.module_1` and `my_package.module_2` respectively.
 
-`subpackage`
+:file:`subpackage`
     Packages can contain packages. A subpackage is just a folder
-    containing a file `__init__.py`. It can also contain modules and
+    containing a file :file:`__init__.py`. It can also contain modules and
     further subpackages.
 
-`setup.py`
+:file:`setup.py`
     This file is outside the package directory and is not
-    actually a part of the package. The role of `setup.py` will be
+    actually a part of the package. The role of :file:`setup.py` will be
     covered in :numref:`installable_packages`.
 
 .. _importing_packages:
@@ -403,14 +423,14 @@ keyword still apply, so:
 would import the name `module_3` straight into the current local
 namespace.
 
-The file `__init__.py` is itself a module and will be imported when
-the package is imported. However, names defined in `__init__.py` will
+The file :file:`__init__.py` is itself a module and will be imported when
+the package is imported. However, names defined in :file:`__init__.py` will
 appear directly in the namespace of the package. This is usually used
 to extract names from submodules that are supposed to be directly
 accessed by users of the package. 
 
 For example, suppose that `module_1` contains a function
-`my_func`. Then the top level `__init__.py` in `my_package` might contain
+`my_func`. Then the top level :file:`__init__.py` in `my_package` might contain
 the line:
 
 .. code-block:: python3
@@ -427,7 +447,7 @@ frequently used features.
 
 The eagle-eyed reader will have noticed the extra . in front of
 `.module_1`. This marks this import as a *relative import*. In other
-words, in looking for `module_1.py`, Python should look for files in
+words, in looking for :file:`module_1.py`, Python should look for files in
 the same folder as the module where the import statement occurs,
 instead of looking for an external package called `module_1`. We could
 have equivalently written:
@@ -448,12 +468,12 @@ In order for the :ref:`import statement <python:import>` to work, Python needs
 to know that the package being imported exists, and where to find it. This is
 achieved by *installing* the package. In order to make a package installable, we
 need to provide Python with a bit more information about it. This
-information is contained in a Python module which must be called `setup.py`.
+information is contained in a Python script which must be called :file:`setup.py`.
 This file isn't part of the package and does not go in the package folder.
 Instead, it should be placed in the top-level folder of your git repository, so
 that the Python package installer will be able to find it.
 
-At the very least, `setup.py` should contain the following:
+At the very least, :file:`setup.py` should contain the following:
 
 .. code-block:: python3
 
@@ -471,110 +491,29 @@ function records metadata such as the installation name to be given to
 your whole set of packages, and the version. It also needs to know
 about all of the packages in the current repository, but this can be
 automated with the :func:`~setuptools.find_packages` function, which
-will return a list of folders containing `__init__.py`.
+will return a list of folders containing a file named :file:`__init__.py`.
 
-This very simple `setup.py` will suffice for packages that you only
+This very simple :file:`setup.py` will suffice for packages that you only
 intend to use yourself. Should you wish to publish packages for use by
 other people, then you'll need to add some more information to the
 file. The canonical guide to this is the `Python packaging user guide
 <https://packaging.python.org/tutorials/packaging-projects/>`_.
 
-Python venvs
-------------
+Setting up a Python environment for this course
+-----------------------------------------------
 
-Before we move on to actually installing packages, we need to give a
-little thought to where the packages are to be installed. We could
-simply install packages into the Python installation on our
-computer. This can be a reasonable approach if all you want to do is
-run code from the default versions of public packages. However, it has
-a number of limitations. Basically, a Python installation is a single
-:term:`namespace` for packages, so if two different projects you are
-working on need two different versions of the same package, you're out
-of luck. Similarly, if you are working on changes to a package, you
-probably don't want your half-finished experimental work to be the
-package that your other projects use.
-
-Python virtual environments, or venvs, are separate namespaces within
-a Python installation. They have their own Python command and
-collection of packages. Effectively they behave like their own
-separate Python installation, except that most of the core Python
-files are shared, so a venv takes rather little additional space.
-
-Creating a venv
-~~~~~~~~~~~~~~~
-
-The most straightforward way to create a venv is on the terminal
-command line, not from within Python itself. This is accomplished
-using Python's :mod:`venv` package. For example, to create a venv
-called `my_venv`, you would type:
-
-.. code-block:: console
-
-   $ python3 -m venv my_venv
-
-Don't forget that the `$` stands for the command prompt: you don't
-type it. This command will create the folder `my_venv` and various
-subfolders containing things like the Python program itself and space
-for any packages which you install in the venv. If there was already a
-file or folder called `my_venv` in the current folder then you'll get
-an error, so make sure you choose a new name.
-
-A venv doesn't usually contain any particularly valuable data, so you
-should regard them as essentially disposable. In particular, if
-something goes wrong when creating a venv, just delete it and start
-again. In the bash or zsh shells you would type:
-
-.. code-block:: console
-
-   $ rm -rf my_venv
-
-.. warning::
-
-   `rm -rf` will delete its argument and all its subdirectories
-   without further prompts or warnings. There is no undo operation.
-   Be very careful about what you delete.
-
-Using a venv
-~~~~~~~~~~~~
-
-If you run Python from the terminal, then the simplest way to use the
-venv is to source its activate script. If using bash or zsh on Mac or
-Linux you would type:
-
-.. code-block:: console
-
-   $ source my_venv/bin/activate
-
-while using bash on Windows you would type:
-
-.. code-block:: console
-
-   $ source my_venv/Scripts/activate
-
-Obviously, you would use the folder name of your venv instead of
-`my_venv`. In either case, your command prompt will change to indicate
-that you are now using the venv. It might look something like:
-
-.. code-block:: console
-
-   (my_venv) $
-
-Any subsequent invocations of Python commands such as `python3` will
-now use the version from the venv, with access to whatever packages
-you have installed in that venv. If you are using a terminal shell
-other than bash or zsh, then see the :mod:`venv` package documentation
-for the correct activation command.
+During this course, we're going to create, edit, and install a whole bunch of
+Python packages. In order to have a predictable programming environment in which
+the experiments we're doing don't interfere with anything outside the course for
+which we might be using Python, and conversely to ensure that nothing we've
+installed elsewhere interferes with how we're doing the course, we'll do
+everything in a Python :term:`virtual environment`, or :term:`venv`. You should read up on Python
+virtual environments on the :ref:`Faculty of Natural Sciences Python installation
+page <fons:python_virtual_environments>`.
 
 .. hint::
 
-   Venv activation is just for one terminal session. You need to
-   activate the venv every time you open a new terminal.  If you find
-   that Python can't find your packages or tests, then the first thing
-   to check is whether you remembered to activate the venv.
-
-.. note::
-
-   Put something in here about how to use venvs from whichever IDE we're using.
+   Don't forget that you need to activate the venv in every new :ref:`terminal <fons:terminal>` session.
 
 Installing Python packages
 --------------------------
@@ -632,7 +571,7 @@ you would type:
    (my_venv) $ python3 -m pip install -e folder/
 
 replacing `folder` with the name of the top-level folder of your
-repository: the folder containing `setup.py`. The option flag `-e`
+repository: the folder containing :file:`setup.py`. The option flag `-e`
 tells pip to install the package in 'editable' mode. This means that
 instead of copying the package files to your venv's Python packages
 directory, symbolic links will be created. This means that any changes
@@ -768,7 +707,43 @@ Here we can see an `F` after `tests/test_fibonacci.py` indicating
 that the test failed, and we see some output detailing what went
 wrong. We will learn how to interpret this output in :numref:`debugging`.
 
-    
+Writing code to a specified interface
+-------------------------------------
+
+Creating more capable programmes depends completely on being able to interface
+different pieces of code. You will write code which calls code written by other
+people, and others will call code written by you. This can only work if the
+caller and the callee agree exactly on the interface: what are the names of the
+:term:`packages <package>`, :term:`modules <module>` and functions being
+called. How many arguments do they take? What are the names of the
+:term:`keyword parameters`? Computer languages are notoriously pedantic about such
+things: they have no capability to simply read through small differences as a
+human would. You have doubtless already encountered the frustrating situation of
+spending extended periods repeatedly getting errors until you realised that
+something has to be spelt slightly differently, or that you used a capital
+letter where you should have used a lower case one. 
+
+What changes as you move on to write code which will be called by other code is
+that this need for precision and pedantry now flows in both directions. Not only
+do you need to call other code using precisely the correct interface, you also
+need to provide precisely the correct interface to the code that will call you.
+This will be the case all the way through this course as the tests for each
+exercise will call your code. The exercises will specify what the correct
+interface is, either in the exercise question itself, or through the skeleton
+code which is provided.
+
+Your code needs to follow exactly the specification in the exercise: all the
+right names, accepting arguments of the correct type and so on. If it does not,
+then the tests will simply fail. Changing the tests to suit your preferred
+interface is not an acceptable answer, your code needs to comply with the
+interface specified in the tests [#interface_errors]_.
+
+This requirement to code to a published specification is not an artifact of the
+testing framework: it is often the case that code written in a research or
+business setting needs to conform with a standard or other published interface
+exactly to create the sort of interoperability we've been discussing. Learning
+to code to specification is therefore an important programming skill.
+
 Glossary
 --------
 
@@ -804,7 +779,70 @@ Glossary
        A lightweight private Python installation with its own set of
        Python packages installed.
 
+Exercises
+---------
+
+.. note::
+
+    Put a link to the first week quiz here.
+
+.. proof:exercise::
+
+    Follow the :ref:`instructions on the Faculty of Natural Sciences Python
+    installation page <fons:python_folders>` to create the folder structure
+    you will use for this course on your computer. Start with an overall folder
+    for the module, and create a virtual environment in that module.
+
+.. note::
+
+    The first GitHub classroom assignment for this module will be released at
+    the start of term.
+
+.. proof:exercise::
+
+    Accept the `first Github Classroom assignment for this module
+    <https://fix.me>`__ and clone it into your course folder. The assignment
+    repository just contains a :file:`README` and some tests. Your job in the
+    following exercises will be to populate it with the remaining content.
+
+.. proof:exercise::
+
+    Create a new Python :term:`package` named :mod:`math_utils` containing a
+    :term:`module` called :mod:`primes`. In the :mod:`primes` module define a
+    function :func:`isprime` which takes in a single integer argument and
+    returns `True` or `False` depending on whether or not the argument is prime.
+    There is no need to be sophisticated in the algorithm used to check for
+    primeness, simply checking whether the number is zero modulo any of the
+    integers less than its square root will be fine.
+
+    .. hint::
+
+        The Python modulo operator is `%`. For example:
+
+        .. code-block:: ipython3
+
+            In [1]: 4 % 3
+            Out[1]: 1
+
+.. proof:exercise::
+
+    Following :numref:`installable_packages`, create a :file:`setup.py` file in
+    your exercise repository, so that the :mod:`math_utils` :term:`package` is
+    installable.
+
+.. proof:exercise::
+
+    Add an :keyword:`import` to :file:`math_utils.__init__.py` so that the following
+    code will work:
+
+    .. code-block:: python3
+
+        from math_utils import isprime
 
 .. rubric:: Footnotes
 
 .. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`_
+
+.. [#interface_errors] Of course if you find a case where it appears that the
+   tests don't honour the interface published in the exercise, you should raise
+   an issue reporting this.

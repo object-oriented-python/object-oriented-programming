@@ -1,5 +1,6 @@
 from numbers import Number
 
+
 class Polynomial:
 
     def __init__(self, coefs):
@@ -17,7 +18,7 @@ class Polynomial:
 
         # It is conventional to omit factors of 1.
         str1 = lambda n: '' if n == 1 else str(n)
-        
+
         # Process the higher degree terms in reverse order.
         for d in range(self.degree(), 1, -1):
             if coefs[d]:
@@ -35,20 +36,23 @@ class Polynomial:
         return "Polynomial(" + repr(self.coefficients) + ")"
 
     def __add__(self, other):
-        
+
         if isinstance(other, Number):
-            return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
-        
+            return Polynomial((self.coefficients[0] + other,)
+                              + self.coefficients[1:])
+
         elif isinstance(other, Polynomial):
-            # Work out how many coefficient places the two polynomials have in common.
+            # Work out how many coefficient places the two polynomials have in
+            # common.
             common = min(self.degree(), other.degree()) + 1
             # Sum the common coefficient positions.
             coefs = tuple(a + b for a, b in zip(self.coefficients[:common],
                                                 other.coefficients[:common]))
-            
-            # Append the high degree coefficients from the higher degree summand.
+
+            # Append the high degree coefficients from the higher degree
+            # summand.
             coefs += self.coefficients[common:] + other.coefficients[common:]
-            
+
             return Polynomial(coefs)
 
         else:

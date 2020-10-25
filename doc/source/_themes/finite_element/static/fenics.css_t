@@ -328,6 +328,13 @@ pre, code {
     border-bottom: 2px solid #c6c9cb;
 }
 
+kbd {
+    background-color: #eaeaea;
+    border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 
 div.linenodiv {
     border-top: 2px solid rgba(255, 255, 255, 0);

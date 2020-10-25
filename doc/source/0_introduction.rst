@@ -150,7 +150,7 @@ writing code. The core of each week's activities is therefore to put the new
 concepts and programming structures you've learned into practice. The
 programming exercises are given at the end of each chapter, just before the
 glossary. Each time there will be a skeleton code available from
-:fons:ref:`GitHub Classroom <github_classroom_exercise>` which provides the starting
+ref:`GitHub Classroom <fons:github_classroom_exercise>` which provides the starting
 point. Sometimes you might be asked to complete a piece of code while on other
 occasions you'll need to write a whole Python module from scratch. Each set of
 exercises will come with a matching set of tests. These are small programs which
