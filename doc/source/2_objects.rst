@@ -5,7 +5,8 @@ Objects and abstraction
 
 In this chapter, we will take a first look at the representation of
 abstract mathematical objects and operations as data objects in a
-computer program.
+computer program. We will learn about what it means for data objects to have
+a :term:`type`, and how to create new types using the :keyword:`class` keyword.
 
 Abstraction in action
 ---------------------
@@ -25,7 +26,7 @@ defined", and what is "sum"? For example:
   In [3]: print(a + b)                                           
   3
 
-You're unlikely to be surprised that Python can add integers. On the
+You're unlikely to be surprised that Python can add :ref:`integers <typesnumeric>`. On the
 other hand:
   
 .. code-block:: ipython3
@@ -36,7 +37,7 @@ other hand:
   'frog'
 
 So the meaning of `+` depends on what is being added. What happens if
-we add an integer to a string?
+we add an integer to a :ref:`string <textseq>`?
 
 .. code-block:: ipython3
 
@@ -56,7 +57,7 @@ string. This makes our understanding of "suitably defined" more
 concrete: clearly some pairs of objects can be added and others
 can't. However, we should be careful about the conclusions we draw. We
 might be tempted to believe that we can add two values if they are of
-the same type. However, if we try this with a pair of sets then we're
+the same type. However, if we try this with a pair of :ref:`sets <types-set>` then we're
 also in trouble:
 
 .. code-block:: ipython3
@@ -72,8 +73,8 @@ also in trouble:
   TypeError: unsupported operand type(s) for +: 'set' and 'set'
   
 Conversely we might suspect that two values can be added only if they are of the same
-type. However it is perfectly legal to add an integer and a floating
-point value:
+type. However it is perfectly legal to add an integer and a :ref:`floating
+point value <typesnumeric>`:
 
 .. code-block:: ipython3
    
@@ -135,7 +136,7 @@ Python concept of type goes much further, as we discover if we call
 
 So `1` is an object of type :class:`int`, which means that it comes with all of
 Python's operations for integer arithmetic. :func:`abs`, on the other hand,
-is a built-in function, so its defining operation is that it can be
+is a :doc:`built-in function <library/functions>`, so its defining operation is that it can be
 called on one or more suitable arguments (for example `abs(1)`). If
 every object has a type, what about types themselves? What is the type
 of `int`?
@@ -202,7 +203,7 @@ This is the mathematical abstraction of a polynomial. How would we
 represent this abstraction in Python code? A polynomial is
 characterised by its set of coefficients, so we could in principle
 represent a polynomial as a :class:`tuple` of coefficient
-values. However, the addition of tuples is concatenation, and
+values. However, the addition of tuples is :term:`concatenation`, and
 multiplication of two tuples isn't even defined, so this would be a
 very poor representation of the mathematics: a polynomial represented
 as a tuple of coefficients would not behave the way a mathematician
@@ -242,7 +243,7 @@ just like a :ref:`function definition <function>`, it starts with
 the keyword, followed by the name of the class we are defining, and
 ends with a colon. User-defined classes in Python (i.e. classes not
 built into the language) usually have CapWords names. This means
-that all the words in the name a run together without spaces. For
+that all the words in the name are capitalised and run together without spaces. For
 example, if we decided to make a separate class for complex-valued
 polynomials, we might call it :class:`ComplexPolynomial`.
 
@@ -263,13 +264,18 @@ This is called :term:`instantiating <instantiate>` an object of type
 :class:`Polynomial`. The following steps occur:
 
 1. Python creates an object of type :class:`Polynomial`.
-2. The :class:`__init__` :term:`special method` of :class:`Polynomial`
+2. The :meth:`~object.__init__` :term:`special method` of :class:`Polynomial`
    is called. The new :class:`Polynomial` object is passed as the
    first parameter (`self`), and the :class:`tuple` `(0, 1, 2)` is passed
-   as second parameter (`coefs`).
-3. The name `f` in the surrounding scope is associated with the
+   as the second parameter (`coefs`).
+3. The name `f` in the surrounding :term:`scope` is associated with the
    :class:`Polynomial`.
 
+.. note::
+
+    Notice that :meth:`Polynomial.__init__` doesn't return anything. The role of
+    :meth:`~object.__init__` is to set up the object, `self`; it is not to return a
+    value. :meth:`~object.__init__` never returns a value.
 
 Attributes
 ..........
@@ -293,6 +299,11 @@ the same syntax, which is what we did here:
    In [8]: f.coefficients
    Out[8]: (0, 1, 2)
 
+Attributes can be given any name which is allowed for a Python name in general -
+which is to say sequences of letters, numbers and underscores starting with a
+letter or an underscore. Special significance attaches to names starting with an
+underscore, so these should be avoided in your own names unless you intend to
+create a private attribute.
 
 Methods
 .......
@@ -328,16 +339,19 @@ the degree of our Polynomial.
 
 To clarify the role of the `self` parameter it helps to understand
 that `f.degree()` is just a short way of writing
-`Polynomial.degree(f)`.
+`Polynomial.degree(f)`. Like attributes, methods can have any allowed Python
+name. Attributes and methods on an object form part of the same
+:term:`namespace`, so you can't have an attribute and a method with the same
+name. If you try, then the name will be overwritten with whichever was defined
+later, so that will be the one which is accessed.
 
 .. note::
 
-   The object itself is always passed as the first argument to a
-   :term:`method`. Technically, it is possible to name the first
-   parameter any legal Python name, but there is a **very** strong
-   convention that the first parameter to any method of a class
-   instance is called `self`. **Never, ever** name this parameter
-   anything other than `self`, or you will confuse every Python
+   The object itself is always passed as the first argument to a :term:`method`.
+   Technically, it is possible to name the first parameter any legal Python
+   name, but there is a **very** strong convention that the first parameter to
+   any :term:`instance method` is called `self`. **Never, ever** name this
+   parameter anything other than `self`, or you will confuse every Python
    programmer who reads your code!
 
 String representations of objects
@@ -363,8 +377,16 @@ have to tell it.
 
 The way we do so is using another :term:`special method`. The special
 method name for the human readable string representation of an object is
-:meth:`~object.__str__`. It takes no arguments other than the object itself,
-and we could define it thus::
+:meth:`~object.__str__`. It takes no arguments other than the object itself.
+:numref:`polynomial_str` provides one possible implementation of this method.
+
+.. code-block:: python3
+    :linenos:
+    :caption: An implementation of the string representation of a
+        :class:`Polynomial`. This takes into account the usual conventions for
+        writing polynomials, including writing the highest degree terms first, and
+        omitting zero terms and unit coefficients.
+    :name: polynomial_str
 
     def __str__(self):
 
@@ -475,7 +497,12 @@ whether the other operand is a number. We will consider
 :func:`isinstance` and :class:`~numbers.Number` in more detail when we look at
 inheritance and abstract base classes.
 
-Putting all this together, we can define polynomial addition::
+Putting all this together, :numref:`polynomial_add` defines polynomial addition.
+
+.. code-block:: ipython3
+    :linenos:
+    :caption: An implementation of addition for :class:`Polynomial`.
+    :name: polynomial_add
 
     def __add__(self, other):
         
@@ -655,6 +682,11 @@ Glossary
         <class>` and :class:`type` are essentially synonymous, though
         the two words have different roles in Python code.
 
+    concatenation
+        The combination of two :ref:`sequences <typesseq>` by creating a new sequence containing
+        all of the items in the first sequence, followed by all of the items in
+        the second sequence. For example `(1, 2) + (3, 4)` is `(1, 2, 3, 4)`. 
+
     constructor
         The :meth:`~object.__init__` method of a :term:`class`. The constructor
         is passed the new object as its first argument (`self`) and is
@@ -700,6 +732,7 @@ Glossary
        A method which has special meaning in the Python
        language. Special method names are used to define operations on
        a :term:`class` such as arithmetic operators, indexing, or the
-       class :term:`constructor`. See :ref:`the Python documentation
+       class :term:`constructor`. Special methods have names starting and ending
+       with a double underscore (`__`). See :ref:`the Python documentation
        <specialnames>` for a technical description. Special methods
        are sometimes informally called "magic methods".
