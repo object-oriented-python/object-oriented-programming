@@ -195,7 +195,7 @@ Python
 ......
 
 Follow the :doc:`FoNS Python instructions <fons:python>`. We will exclusively
-use :fons:ref:`virtual environments <python_virtual_environments>` so it doesn't matter at
+use :ref:`virtual environments <fons:python_virtual_environments>` so it doesn't matter at
 all whether you use Python from Anaconda or from another source. Mac users
 should note, though that the built-in Python will not do, so you should use
 either Homebrew or Anaconda.

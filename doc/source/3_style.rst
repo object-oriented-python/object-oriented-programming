@@ -155,26 +155,110 @@ White space within lines
    before a closing bracket. This is because the role of brackets is
    to group their contents, so it's confusing to visually separate the
    bracket from the contents.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            ( 1, 2) # Space after opening bracket.
+            (1, 2 ) # Space after closing bracket.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+        
+            (1, 2) # No space between brackets and contents.
+
 2. Similarly, don't put a space between the function name and the
    opening round bracket of a function call, or between a variable
    name and the opening square bracket of an index. In each of these
    cases, the opening bracket belongs to the object, so it's confusing
    to insert space between the object name and the bracket.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            my_function (1) # Space between function name and bracket.
+            x [0] # Space between variable name and index square bracket.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            my_function(1)
+            x[0]
+ 
 3. Put a space after a comma but not before it, exactly like you would
    in writing prose. Following the convention that everyone is used to
    from writing aids understanding. Where a trailing comma comes right
    before a closing bracket, then don't put a space. The rule that
    there are no spaces before a closing bracket is more important.
-4. Put exactly one space on each side of an assignment (`=`) and an
-   augmented assignment (`+=`, `-=`, etc.). In an assignment
+
+     .. container:: badcode
+
+        .. code-block:: python3
+
+            (1,2,3) # Spaces missing after commas.
+            (1 ,2 ,3) # Spurious spaces before commas.
+            (1, ) # Space before closing bracket.
+
+     .. container:: goodcode
+
+        .. code-block:: python3
+
+            (1, 2, 3) # Spaces after commas.
+            (1,) # No space before closing bracket.
+
+4. Put exactly one space on each side of an :ref:`assignment <assignment>` (`=`) and an
+   :ref:`augmented assignment <augassign>` (`+=`, `-=`, etc.). In an assignment
    statement, the most important distinction is between the left and
    right hand sides of the assignment, so adding space here aids the
    reader.
-5. Put exactly one space before and after the lowest priority
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            x=1 # Missing spaces around equals sign.
+            x+=1 # Missing spaces around augmented addition operator.
+
+            frog = 2
+            cat  = 3 # Additional space before equals sign.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            x = 1
+            x += 1
+
+            frog = 2
+            cat = 3
+
+5. Do not put a space either before or after the equals sign of a :ref:`keyword
+   argument <tut-keywordargs>`. In this case, grouping the parameter name and
+   the argument is more important. Also creates a visual distinction between
+   assignment statements and keyword arguments.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            myfunction(arg1 = val1, arg2 = val2) # Spaces around equals signs.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            myfunction(arg1=val1, arg2=val2)
+
+
+6. Put exactly one space before and after the lowest priority
    mathematical operators in an expression. This has the effect of
    visually separating the terms of an expression, as we
    conventionally do in mathematics.
-6. **Never, ever** have blank spaces at the end of a line, even a blank
+7. **Never, ever** have blank spaces at the end of a line, even a blank
    line. These tend to get changed by editors, which results in lots
    of spurious differences between otherwise identical code. This can
    make the difference between two commits of a file very hard to read

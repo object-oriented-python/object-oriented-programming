@@ -670,7 +670,7 @@ We can then invoke the tests from the shell:
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
     collected 1 item                                                         
 
-    tests/test_fibonacci.py .                                          [100%]
+     .                                          [100%]
 
     =========================== 1 passed in 0.01s ============================
 
@@ -706,6 +706,37 @@ instead see something like:
 Here we can see an `F` after `tests/test_fibonacci.py` indicating
 that the test failed, and we see some output detailing what went
 wrong. We will learn how to interpret this output in :numref:`debugging`.
+
+Additional useful pytest tricks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It can be useful to run a specific test file, which is achieved simply by naming
+that file as the argument to py.test. For example:
+
+.. code-block:: console
+
+    $ py.test tests/test_fibonacci.py
+
+It is even possible to select an individual test to run, using a double colon
+`::` followed by the test name:
+
+.. code-block:: console
+
+    $ py.test tests/test_fibonacci.py::test_fibonacci_values
+
+Often if one test fails then the same problem in your code will cause a whole
+series of tests to fail, resulting in a very long list of error messages which
+is hard to read. A useful tool in this circumstance is the `-x` option, which
+tells pytest to stop after the first test fail. For example:
+
+.. code-block:: console
+
+    $ py.test -x test
+
+The tests are usually arranged in increasing order of sophistication, so the
+earlier tests are likely to catch the most basic errors in your code. For this
+reason, it is usually the best policy to try to fix the first error first, and
+only move onto the next problem when the previous test passes.
 
 Writing code to a specified interface
 -------------------------------------
