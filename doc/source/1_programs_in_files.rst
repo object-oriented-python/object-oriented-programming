@@ -800,8 +800,8 @@ Exercises
 
 .. proof:exercise::
 
-    Accept the `first Github Classroom assignment for this module
-    <https://fix.me>`__ and clone it into your course folder. The assignment
+    Accept the :doc:`first Github Classroom assignment for this module
+    <not_released>` and clone it into your course folder. The assignment
     repository just contains a :file:`README` and some tests. Your job in the
     following exercises will be to populate it with the remaining content.
 

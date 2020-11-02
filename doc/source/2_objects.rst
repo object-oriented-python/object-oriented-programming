@@ -225,7 +225,10 @@ a very simple implementation::
 
         self.coefficients = coefs
 
-Executing this code in a Python interpreter would enable us to create
+We'll interpret the :math:`i`-th coefficient as the coefficient of :math:`x^i`.
+This will simplify the program logic, but take care because mathematicians
+usually write coefficients from largest power of :math:`x` to smallest, and this
+is the opposite of that. Executing this code in a Python interpreter would enable us to create
 a simple polynomial, and inspect its coefficients:
 
 .. code-block:: ipython3
@@ -495,7 +498,7 @@ which we import from the :mod:`numbers` module. All Python numbers are
 instances of :class:`~numbers.Number` so this provides a mechanism for checking
 whether the other operand is a number. We will consider
 :func:`isinstance` and :class:`~numbers.Number` in more detail when we look at
-inheritance and abstract base classes.
+:ref:`inheritance <inheritance>` and :ref:`abstract base classes <abstract_base_classes>`.
 
 Putting all this together, :numref:`polynomial_add` defines polynomial addition.
 
@@ -636,27 +639,6 @@ object-oriented programming. In particular, encapsulation is key to
 creating single objects representing high level mathematical
 abstractions whose concrete realisation in code may require many
 pieces of data and a large number of complex functions.
-
-Exercises
----------
-
-Obtain the skeleton code for these exercises from `GitHub classroom <https://classroom.github.com/a/iuV3u6ch>`_. 
-The skeleton code contains a :mod:`polynomial` package with a version of 
-the :class:`Polynomial` class.
-
-1. Define the equality (:meth:`~object.__eq__`), subtraction (:meth:`~object.__sub__`),
-   multiplication (:meth:`~object.__mul__`) and exponentiation (:meth:`~object.__pow__`)
-   operations on the :class:`Polynomial` class.
-
-2. Implement the :meth:`~object.__call__`  method on the :class:`Polynomial`
-   class.
-
-3. Define a function `derivative` which takes a :class:`Polynomial`
-   and returns a new :class:`Polynomial` which is its derivative. Also
-   define a :meth:`dx` method on the :class:`Polynomial` class which
-   returns the derivative of that :class:`Polynomial`. Rather than
-   duplicating code, you should implement the function by calling the
-   method.
    
 Glossary
 --------
@@ -736,3 +718,60 @@ Glossary
        with a double underscore (`__`). See :ref:`the Python documentation
        <specialnames>` for a technical description. Special methods
        are sometimes informally called "magic methods".
+
+Exercises
+---------
+
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+The skeleton code contains a :mod:`polynomial` package with a version of 
+the :class:`Polynomial` class.
+
+.. proof:exercise::
+
+    Implement the following operations on the Polynomial class. 
+
+    1. Equality (:meth:`~object.__eq__`). Two polynomials compare equal if their
+       coefficients are equal.
+    2. Subtraction (:meth:`~object.__sub__` and :meth:`~object.__rsub__`).
+    3. Multiplication by another polynomial, and by a scalar
+       (:meth:`~object.__mul__` and :meth:`~object.__rmul__`).
+    4. Exponentiation by a positive integer power (:meth:`~object.__pow__`). It
+       may be useful to know that all integers are instances of
+       :class:`numbers.Integral`.
+    5. Polynomial evaluation at a scalar value (:meth:`~object.__call__`).
+
+.. proof:exercise::
+
+    Define a function `derivative` in :file:`polynomial.py` which takes a
+    :class:`Polynomial` and returns a new :class:`Polynomial` which is its
+    derivative. Also define a :meth:`dx` method on the :class:`Polynomial` class
+    which returns the derivative of that :class:`Polynomial`. Rather than
+    duplicating code, you should implement the function by calling the method.
+
+.. proof:exercise::
+
+    Inside the exercise repository for this week, create a new :mod:`shape`
+    package containing a :mod:`circle` module. 
+    
+    1. Create a :class:`Circle` class
+       whose :term:`constructor` takes two user parameters, `centre` and `radius`.
+       `centre` should be a length 2 sequence containing the two-dimensional
+       coordinates of the centre, while `radius` is the radius of the circle.
+    2. Add an :ref:`import <modules>` statement to :file:`shape.__init__.py` so
+       that the following code works:
+
+       .. code-block:: python3
+
+          from shape import Circle
+    
+    3. Implement the :meth:`~object.__contains__` :term:`special method` on the
+       :class:`Circle` class so that it returns `True` if a point (represented
+       by a length 2 sequence of coordinates) lies inside the circle. For
+       example, the following code should print `True`.
+
+       .. code-block:: python3
+
+          from shape import Circle
+          c = Circle((1., 0.), 2)
+          print((0.5, 0.5) in c)
+        
