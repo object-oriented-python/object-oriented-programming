@@ -258,6 +258,20 @@ White space within lines
    mathematical operators in an expression. This has the effect of
    visually separating the terms of an expression, as we
    conventionally do in mathematics.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            y = 3*x**2+4*x+5 # No spaces around +
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            y = 3*x**2 + 4*x + 5
+
+
 7. **Never, ever** have blank spaces at the end of a line, even a blank
    line. These tend to get changed by editors, which results in lots
    of spurious differences between otherwise identical code. This can
@@ -285,12 +299,30 @@ Line breaks
    of the previous line. (If you look closely, this is also the rule
    that most publishers of maths books use).
 
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            my_function(first_term + # Trailing + operator.
+                        second_term +
+                        third_term)
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            my_function(first_term
+                        + second_term # Leading + operator
+                        + third_term)
+
 Indentation
 ...........
 
-1. Indentation is *always* by four spaces per indentation level. If
-   your text editor is not set to create 4 spaces per indentation
-   level, Google how to change it!
+1. Indentation is *always* by four spaces per indentation level. Usually
+   Python-aware text editors are good at enforcing this, and this is basically
+   true of Visual Studio Code. If you're using a text editor which doesn't
+   indent by four spaces (especially if it uses :kbd:`tab` characters for indentation)
+   then Google how to change it to four spaces!
 2. When indenting continuation lines inside brackets, there are two
    options, usually depending on how many characters are already on
    the line before the opening bracket:
@@ -300,12 +332,30 @@ Indentation
       the opening bracket, so that the first items on each line start
       exactly under each other. The closing bracket comes on the same
       line as the final item.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            capitals = {"France": "Paris",
+                        "China": "Beijing", # First character one place right of {
+                        "Australia": "Canberra"} # } at the end of the line.
+
    b. With the opening bracket as the last item on the first
       line. Subsequent lines are indented more than the first line but
       the same as each other. The closing bracket comes on a new line,
       and is either indented to the same level as the first line, or
       to the subsequent lines (but be consistent in nearby code about
       which).
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            capitals = { # First line ends with {
+                "Central African Republic": "Bangui", # Next line indented.
+                "Trinidad and Tobago": "Port of Spain", # Indented to match.
+                } # Indented to match.
 
 
 Names
@@ -330,13 +380,33 @@ advanced cases that we are unlikely to encounter in the short term,
 but the most important rules are short and clear:
 
 class names
-  Class names use the CapWords convention: each word in a name is
-  capitalised and words are concatenated, without underscores between.
+    Class names use the CapWords convention: each word in a name is
+    capitalised and words are concatenated, without underscores between.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            my_class # No capitals, underscore between words.
+            myClass # Missing leading capital.
+            My_Class # Underscore between words.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            MyClass
 
 exception names
-  Exceptions are classes, so the rules for class names apply with the
-  addition that exceptions that designate errors should end in
-  `Error`.
+    Exceptions are classes, so the rules for class names apply with the
+    addition that exceptions that designate errors should end in
+    `Error`.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            PolynomialDivisionError # For example to indicate indivisibility.
 
 function, variable, and module names
   Almost all names other than classes are usually written in all
@@ -405,8 +475,8 @@ representing an angle. Capital Greek letters are sometimes represented
 by capitalising the first letter of the Roman word, but take care to
 avoid situations where this might be confused for a class name.
 
-Parsimony and modularity
-------------------------
+Parsimony
+---------
 
 Good programming style is primarily about making programmes easy to
 understand. One of the key limitations of understanding is the sheer
@@ -561,24 +631,24 @@ Use the fact that every object is True or False
 Every Python object is logically either :data:`True` or :data:`False` according to the
 following rules:
 
-1. None is False.
+1. :data:`None` is :data:`False`.
 
-2. Zero is False, all other numerical values are True.
+2. Zero is :data:`False`, all other numerical values are :data:`True`.
 
-3. An empty collection is False, any other container is true. For
-   example, an empty list is False, but the list `[0, 0]` is True.
+3. An empty collection is :data:`False`, any other container is :data:`True`. For
+   example, an empty list is :data:`False`, but the list `[0, 0]` is :data:`True`.
 
-4. The null string `""` is False, a string containing any characters is True.
+4. The null string `""` is :data:`False`, a string containing any characters is :data:`True`.
 
-5. A user-defined class is True unless:
+5. A user-defined class is :data:`True` unless:
 
    a. It defines the :meth:`~object.__bool__` :term:`special
       method`. In this case the truth value is whatever this method
       returns.
 
    b. It doesn't define :meth:`~object.__bool__` but does define
-      :meth:`~object.__len__`. In this case the object is False if the
-      length is zero, and True otherwise.
+      :meth:`~object.__len__`. In this case the object is :data:`False` if the
+      length is zero, and :data:`True` otherwise.
 
 These rules are laid out formally in :ref:`the Python documentation
 <truth>`. One way that they can be used to write simpler, clearer code
@@ -675,6 +745,39 @@ justifiable to include a comment about *why* a particular approach is
 taken. For example, it might be worth commenting why an apparently
 simpler alternative strategy is actually invalid.
 
+PEP8 rules for comments
+.......................
+
+Comments start with a single :file:`#` followed by a single space. 
+:term:`Inline comments` are separated from the code by at least two spaces.
+
+.. container:: badcode
+
+    .. code-block:: python3
+
+        self.count += 1# No space between code and comment.
+
+        self.count += 1  #No space between # and comment text.
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+        self.count += 1  # Two spaces before #, one after.
+
+Each line of a block comment starts with a single :file:`#` indented to the same level as a
+normal line of code. The :file:`#` is followed by a single space, unless a
+particular piece of comment should be indented with respect to the paragraph it
+is in, in which case additional spaces are allowed.
+
+.. container:: goodcode
+
+    .. code-block:: python3
+
+        if somecondition(data):
+            # Comment indented to the same level as the contents of the if
+            # block.
+
 
 Docstrings
 ----------
@@ -688,11 +791,127 @@ have to concern themselves with how it is implemented. They should,
 therefore, not need to read the code in order to understand how to use
 it. 
 
+The :term:`Python interpreter` has special support for docstrings. When a user
+calls :func:`help` on an :term:`object` (including a function or :term:`method`)
+then any docstring on that object is used as the body of the resulting help
+message. Docstrings are also understood by the Python documentation generation
+system, `Sphinx <https://www.sphinx-doc.org/en/master/>`__. This enables
+documentation webpages to be automatically generated from Python code. The
+Python documentation in this course is generated by this system. For example,
+recall that we met the function :func:`~fibonacci.fibonacci.fib`, which
+calculates Fibonacci numbers, in :numref:`modules`. We can ask
+:func:`~fibonacci.fibonacci.fib` for its documentation:
+
+.. code-block:: ipython3
+
+    In [1]: import fibonacci
+    In [2]: help(fibonacci.fib)
+
+The following is displayed:
+
+    Help on function fib in module fibonacci.fibonacci:
+
+    fib(n)
+        Return the n-th Fibonacci number.
+
+There is also a specific IPython help extension, which also works in Jupyter
+notebooks (because they are related projects). Appending a question mark
+:kbd:`?` to an object name prints a slightly different version of the help information:
+
+.. code-block:: ipython3
+
+    In [3]: fibonacci.fib?
+    Signature: fibonacci.fib(n)
+    Docstring: Return the n-th Fibonacci number.
+    File:      ~/docs/principles_of_programming/object-oriented-programming/fibonacci/fibonacci.py
+    Type:      function
+
+Finally, the same information is used in the :func:`web documentation
+<fibonacci.fibonacci.fib>`. Notice that the :term:`function signature` is not a
+part of the docstring. Python is capable of extracting the signature of the
+function and adding it into the documentation without the programmer having to
+manually add it to the docstring.
+
+Where to use docstrings
+.......................
+
+Every public module, class, function, and method should have a docstring.
+"Public" in this context means any code which is intended to be accessed from
+outside the :ref:`module <modules>` in which it is defined.
+
+Docstring conventions
+.....................
+
+Python itself doesn't know anything about docstring contents, it will simply
+display the docstring when you ask for help. However, other tools such as those
+that generate websites from documentation depend on you following the
+conventions.
+
+By convention, docstrings are delimited by three double quote characters. 
+
+Short docstrings
+................
+
+Simple functions which take one or two arguments can be documented with a single
+line docstring which simply says what the function does. The Fibonacci example above
+is a typical case. The single line should be an imperative sentence and end with
+a full stop.
+
+.. container:: badcode
+
+    .. code-block:: python3
+
+        def fib(n):
+            "Return the n-th Fibonacci number" # Single quotes, missing full stop.
+
+        def fib(n):
+            """Returns the n-th Fibonacci number.""" # Sentence not imperative.
+
+        def fib(n):
+            """fib(n)
+            Return the n-th Fibonacci number.""" # Don't include the function signature.
+
+Long docstrings
+...............
+
+Conversely, a more complex object will require much more information in its
+docstring. Consider :func:`numpy.array` (click on the link for the documentation). The web documentation,
+also generated from the docstring, needs to cover 5 parameters, and detail the
+return type. It also contains several examples, references to other functions,
+and an explanatory note. This is an example of very good documentation.
+
+There is no official standard for the layout of a long docstring, but there are
+two project or institution-based conventions that are recognised by the web
+documentation system. One from `Google
+<https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`__
+and the other from the `Numpy
+<https://numpydoc.readthedocs.io/en/latest/format.html>`__ project. You should
+consistently use one of these styles across a whole project. Clearly if you are
+contributing code to an existing project then you should follow their style.
+
+
 Glossary
 --------
 
  .. glossary::
     :sorted:
+
+    block comment
+        A comment which is the only text on one or more lines of code. Block
+        comments are typically used to describe the code that follows them.
+
+    docstring
+        A literal :class:`string <str>` included at the start of a module, class or
+        function which documents that code object.
+
+    function signature
+        The signature of a function is the name of the function and the
+        arguments that it takes. The function signature is the basic information
+        needed in order to know how to call that function.
+
+    inline comment
+        A comment which follows active code on a line. Inline comments are used
+        to make a very brief clarification of the code on that line.
 
     modularity
        The design principle that programs should be broken into small,
