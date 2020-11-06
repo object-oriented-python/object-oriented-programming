@@ -17,6 +17,8 @@ concrete realisations of a mathematical idea.
    An *abstract data type* is a purely mathematical :term:`type`,
    defined independently of its concrete realisation as code.
 
+Abstract data types enable the programmer to reason about algorithms and their
+cost separately from the task of implementing them.
 That said, it will frequently be helpful in understanding abstract
 data types to refer to the ways in which they might be implemented.
 
@@ -37,18 +39,24 @@ a :term:`LIFO (last in, first out)`, because the last object added to
 the stack is the first object retrieved (contrast :term:`FIFO <FIFO (first in, first out)>`).
 
 Recall that a :term:`type` is defined by a set of possible values and
-a set of operations. A stack is an ordered sequence of objects (of any
-type) with the operations `push` to add a new object to the sequence,
+a set of operations. The value of stack is an ordered sequence of objects of any
+type. The operations are `push` to add a new object to the sequence,
 and `pop` to return the most recently added object, and remove it from
-the sequence. It is also common to add an additional operation of
+the sequence. :numref:`stackdiag` shows these operations. It is also common to add an additional operation of
 `peek`, which returns the most recently added object without removing
 it from the stack.
 
 .. note::
 
-   Put a diagram illustrating stack operations here.
+   The stack operations in the diagram are wrong. The stack is back to front and
+   the wrong value is popped.
+
+.. _stackdiag:
 
 .. blockdiag::
+    :caption: Cartoon of a sequence of stack operations. First 24, 12, 57 are
+        pushed, then 57 is popped.
+
 
       blockdiag stack{
       // setup info
@@ -261,9 +269,9 @@ Algorithmic complexity
 The second reason that understanding abstract data types is important
 is that a good implementation of a well designed abstract data type
 will have well-defined performance characteristics. In particular, the
-optimal algorithmic complexity, expressed in big 'O' notation, of
+optimal algorithmic complexity, expressed in big :math:`O` notation, of
 operations on abstract data types will be known. Recall the definition
-of big 'O':
+of big :math:`O`:
 
 .. _bigO:
 
@@ -327,15 +335,18 @@ data structure.
            def peek(self):
                return self.data[-1]
 
-:numref:`bigO` is a particular case of the big `O` notation, which you
-may already have seen in numerical analysis. However, there the limit
-is taken as the independent variable approaches 0. This difference of
-context between computer science and numerical analysis is sometimes
-confusing, particularly since both disciplines conventionally leave
-out the limit. It's worth keeping in mind that the difference, because
-a numerical algorithm with :math:`O(h^4)` error is really rather good
-since `h` is small, but an algorithm with :math:`O(n^4)` cost is very
-expensive indeed!
+
+.. note::
+
+    :numref:`Definition %s <bigO>` is a particular case of the big `O` notation, which you may
+    already have seen in numerical analysis. The distinction is that in
+    analysing algorithmic complexity, the limit is taken as :math:`n` approaches
+    infinity, while in numerical analysis the independent variable approaches 0.
+    This difference between two closely related fields is often confusing,
+    particularly since both disciplines conventionally leave out the limit. It's
+    worth keeping in mind that the difference, because a numerical algorithm
+    with :math:`O(h^4)` error is really rather good since `h` is small, but an
+    algorithm with :math:`O(n^4)` cost is very expensive indeed!
 
 Amortised complexity and worst case complexity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -359,14 +370,18 @@ full does a further append operation cause Python to allocate more
 memory. The amount of memory allocated is approximately proportional
 to the current length of the list. That is, if the current list length
 is :math:`n` then the new memory allocation will be of size
-approximately :math:`kn` for some :math:`k>1`.
-
-.. note::
-
-   Need diagrams of how a dynamic array works here.
+approximately :math:`kn` for some :math:`k>1`. This concrete data structure is
+called a :term:`dynamic array`. :numref:`dynamicarray` illustrates its operation.
    
+.. _dynamicarray:
+
 .. graphviz::
-   :align: center
+    :caption: A dynamic array implementation of a :class:`list`. The existing
+        memory buffer is full, so when 11 is appended to the list, a larger
+        buffer is created and the whole list is copied into it. When 13 is
+        subsequently appended to the list, there is still space in the buffer so
+        it is not necessary to copy the whole list.
+    :align: center
 
     digraph dl {
     	bgcolor="#ffffff00" # RGBA (with alpha)
@@ -384,7 +399,7 @@ approximately :math:`kn` for some :math:`k>1`.
 	    		style="ellipse, dashed";
 	    		bgcolor="#CD5C5C";
 	    "node0" [
-	    label = "<f0> 2 | 3| 5| 7 |e<f1>"
+	    label = "<f0> 2 | 3| 5| 7 |e <f1>"
 	    shape = "record"
 	    ];
 	    }
@@ -394,27 +409,27 @@ approximately :math:`kn` for some :math:`k>1`.
 	    		bgcolor="#2E8B57";
 	    		
 	    "node1" [
-	    label = "<f0> 2 | 3| 5| 7 | <f1>| | | <f2>"
+	    label = "<f0> 2 | 3| 5| 7 | <f1> 11| | | <f2>"
 	    shape = "record"
 
 	    ];
+        }
+	    subgraph cluster_4 {
+	    		style="ellipse, dashed";
+	    		bgcolor="#2E8B57";
 	    
 	    "node3" [
 	    label = "<f0> 2 | 3| 5| 7| <f1> 11| <f2> 13| | <f3>"
 	    shape = "record"
 	    ];
 	    }
-		    
-	    "node0":f0 -> "node1":f0 [
-	    id = 0
-	    ];
 
-	    "node1":f0 -> "node3":f1 [
+	    "node0":f0 -> "node1":f0 [
 	    id = 2
 		label = "append 11"
 	    ];
 
-		"node1":f0 -> "node3":f2 [
+		"node1":f0 -> "node3":f0 [
 	    id = 2
 		label = "append 13"
 	    ];
@@ -451,43 +466,65 @@ contrast, the occasional list append operation is an example of the
 list has an amortised time complexity of :math:`O(1)` but a worst-case
 time complexity of :math:`O(n)`.
 
-.. note::
+We can use Python's :term:`introspection` capabilities to illustrate how the
+dynamic allocation of space for a list works as the list is appended. The
+:func:`sys.getsizeof` function returns the amount of computer memory that an
+object consumes. The function in :numref:`byte_size` uses this to diagnose the memory
+consumption of progressively longer lists, and :numref:`byte_size` demonstrates
+this.
 
-   Not sure if you want this? Shows the byte usage of the array. If so, 
-   I will update the IPython call numbers. 
-   
-.. code-block:: python
+.. _byte_size:
 
-	import sys
+.. code-block:: python3
+    :caption: Code to progressively lengthen a :class:`list` and observe the
+        impact on its memory consumption. This function is available as
+        :func:`example_code.linked_list.byte_size`.
+    :linenos:
 
-	def byteSize(n):
-		data = []
-		for i in range(n):
-		a = len(data)
-		b = sys.getsizeof(data)
-		print(f"Length:{a}; Size of bytes:{b}")
-		data.append(i)
-		
+    import sys
+
+    def byte_size(n):
+        """Print the size in bytes of lists up to length n."""
+        data = []
+        for i in range(n):
+            a = len(data)
+            b = sys.getsizeof(data)
+            print(f"Length:{a}; Size in bytes:{b}")
+            data.append(i)
+	
+.. _byte_size_demo:
+
 .. code-block:: ipython3
+    :caption: The memory consumption of lists of length 0 to 19. We can infer
+        that the list is reallocated at lengths 1, 5, 9, and 17.
 
-    In [1]: n = 10
-    In [2]: byteSize(n)
-   	Length:0; Size of bytes:72
-	Length:1; Size of bytes:104
-	Length:2; Size of bytes:104
-	Length:3; Size of bytes:104
-	Length:4; Size of bytes:104
-	Length:5; Size of bytes:136
-	Length:6; Size of bytes:136
-	Length:7; Size of bytes:136
-	Length:8; Size of bytes:136
-	Length:9; Size of bytes:200
-      
-Some more abstract data types
------------------------------
+    In [1]: from example_code.linked_list import byte_size
 
-Queue and deque
-~~~~~~~~~~~~~~~
+    In [2]: byte_size(20)
+    Length:0; Size in bytes:56
+    Length:1; Size in bytes:88
+    Length:2; Size in bytes:88
+    Length:3; Size in bytes:88
+    Length:4; Size in bytes:88
+    Length:5; Size in bytes:120
+    Length:6; Size in bytes:120
+    Length:7; Size in bytes:120
+    Length:8; Size in bytes:120
+    Length:9; Size in bytes:184
+    Length:10; Size in bytes:184
+    Length:11; Size in bytes:184
+    Length:12; Size in bytes:184
+    Length:13; Size in bytes:184
+    Length:14; Size in bytes:184
+    Length:15; Size in bytes:184
+    Length:16; Size in bytes:184
+    Length:17; Size in bytes:256
+    Length:18; Size in bytes:256
+    Length:19; Size in bytes:256
+
+
+Queues and deques
+-----------------
 
 A :term:`queue` is, like a :term:`stack`, an ordered sequence of
 objects. The difference is that the only accessible item in the
@@ -502,6 +539,41 @@ deque. Python's standard library contains the
 :class:`collections.deque` class, providing a simple and efficient
 implementation of a deque.
 
+Ring buffers
+~~~~~~~~~~~~
+
+How might one go about implementing a deque? A dynamic array allows values to be
+appended with :math:`O(1)` complexity, but doesn't offer an efficient mechanism
+for prepending values. One might think that the natural solution for this would
+be to create a double-ended dynamic array: a buffer with spare space at each
+end. Unfortunately this is not optimally efficient in the case where the deque
+is used to implement a queue of approximately constant length. In that case,
+values are consistently added at one end of the data structure and removed from
+the other. Even in the case of a double-ended dynamic array, the buffer space at
+the append end of the queue will constantly run out, necessitating an expensive
+copy operation. The solution is to use a dynamic array, but to logically join up
+its ends, so that the first position in the buffer follows on from the last.
+Only in the case where all positions in the buffer are full would the buffer be
+reallocated.
+
+.. figure:: images/ring_buffer.*
+    
+    An implementation of a deque in a ring buffer, with queue
+    operations illustrating its operation. 
+    
+    Objects are added to the end of the
+    buffer and removed from its start. 
+    
+    At step 7, the contents of the buffer
+    wrap around: the queue at this stage contains `D, E, F`. 
+    
+    At step 9 there is
+    insufficient space in the buffer to append `G`, so new space is allocated
+    and the buffer's contents copied to the start of the new buffer. 
+
+
+Some more abstract data types
+-----------------------------
 
 Linked lists
 ~~~~~~~~~~~~
@@ -747,10 +819,10 @@ to keep track of the iteration.
         def __init__(self, link):
             self.here = link
 
-        def __iter__():
+        def __iter__(self):
             return self
 
-    def __next__(self):
+        def __next__(self):
             if self.here:
                 next = self.here
                 self.here = self.here.next

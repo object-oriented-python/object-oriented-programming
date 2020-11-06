@@ -1,3 +1,6 @@
+import sys
+
+
 class Link:
     def __init__(self, value, next=None):
         self.value = value
@@ -17,7 +20,7 @@ class LinkIterator:
     def __init__(self, link):
         self.here = link
 
-    def __iter__():
+    def __iter__(self):
         return self
 
     def __next__(self):
@@ -27,3 +30,13 @@ class LinkIterator:
             return next.value
         else:
             raise StopIteration
+
+
+def byte_size(n):
+    """Print the size in bytes of lists up to length n."""
+    data = []
+    for i in range(n):
+        a = len(data)
+        b = sys.getsizeof(data)
+        print(f"Length:{a}; Size in bytes:{b}")
+        data.append(i)
