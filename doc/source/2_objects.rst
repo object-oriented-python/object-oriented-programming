@@ -728,7 +728,7 @@ the :class:`Polynomial` class.
 
 .. proof:exercise::
 
-    Implement the following operations on the Polynomial class. 
+    Implement the following operations on the :class:`Polynomial` class. 
 
     1. Equality (:meth:`~object.__eq__`). Two polynomials compare equal if their
        coefficients are equal.

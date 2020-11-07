@@ -136,6 +136,7 @@ calculator.
 .. code-block:: python3
    :caption: Pseudocode for a reverse Polish calculator implemented
              using a :term:`stack`
+   :linenos:
 
    for item in inputs:
        if item is number:
@@ -319,6 +320,7 @@ data structure.
        :caption: A poorly designed stack implementation in which push and pop cost
                  :math:`O(n)` operations, where :math:`n` is the current
                  number of objects on the stack.
+       :linenos:
 
        class BadStack:
            def __init__(self):
@@ -553,23 +555,22 @@ the other. Even in the case of a double-ended dynamic array, the buffer space at
 the append end of the queue will constantly run out, necessitating an expensive
 copy operation. The solution is to use a dynamic array, but to logically join up
 its ends, so that the first position in the buffer follows on from the last.
-Only in the case where all positions in the buffer are full would the buffer be
-reallocated.
+Only in the case where all positions in the buffer are full will the buffer be
+reallocated. This data structure is called a ring buffer. 
+
+.. _ring_buffer:
 
 .. figure:: images/ring_buffer.*
     
-    An implementation of a deque in a ring buffer, with queue
+    An implementation of a ring buffer, with queue
     operations illustrating its operation. 
-    
-    Objects are added to the end of the
-    buffer and removed from its start. 
-    
-    At step 7, the contents of the buffer
-    wrap around: the queue at this stage contains `D, E, F`. 
-    
-    At step 9 there is
-    insufficient space in the buffer to append `G`, so new space is allocated
-    and the buffer's contents copied to the start of the new buffer. 
+
+:numref:`ring_buffer` shows a ring buffer being used as a queue. At each step,
+an object is appended to the end of the queue, or removed from its start. At
+step 7, the contents of the buffer wrap around: the queue at this stage contains
+`D, E, F`. At step 9 there is insufficient space in the buffer to append `G`, so
+new space is allocated and the buffer's contents copied to the start of the new
+buffer. 
 
 
 Some more abstract data types
@@ -578,20 +579,27 @@ Some more abstract data types
 Linked lists
 ~~~~~~~~~~~~
 
-One disadvantage of a deque (and hence of a stack or queue) is that
-inserting an object into the middle of the sequence is often an
-:math:`O(n)` operation, because on average half of the items in the
-sequence need to be shuffled to make space. A linked list provides a
-mechanism for avoiding this. A singly linked list is a collection of
-links. Each link contains a reference to a data item and a reference
-to the next link. Starting from the first link in a list, it is
-possible to move along the list by following the references to
-successive further links. A new item can be inserted at the current
-point in the list by creating a new link, pointing the link reference
-of the new link to the next link, and pointing the link reference of
-the current link to the new link.
+One disadvantage of a deque (and hence of a stack or queue) is that inserting an
+object into the middle of the sequence is often an :math:`O(n)` operation,
+because on average half of the items in the sequence need to be shuffled to make
+space. A linked list provides a mechanism for avoiding this. A singly linked
+list is a collection of links. Each link contains a reference to a data item and
+a reference to the next link. Starting from the first link in a list, it is
+possible to move along the list by following the references to successive
+further links. A new item can be inserted at the current point in the list by
+creating a new link, pointing the link reference of the new link to the next
+link, and pointing the link reference of the current link to the new link.
+:numref:`linked_list_dia` shows this process, while :numref:`linked_list` shows
+a minimal implementation of a linked list in Python. Notice that there is no
+object for the list itself: a linked list is simply a linked set of links. Some
+linked list implementations do store an object for the list itself, in order to
+record convenient information such as the list length, but it's not strictly necessary.
+
+.. _linked_list_dia:
 
 .. graphviz::
+   :caption: Diagram of a linked list. A new link containing the value `F` is
+        being inserted between the link with value `C` and that with value `D`.
    :align: center
 
     digraph ll {
@@ -686,13 +694,10 @@ the current link to the new link.
 	   }
    }
 	
-.. note::
-
-   diagram of linked list insertion here.
-   
 .. code-block:: python3
    :caption: A simple singly linked list implementation.
    :name: linked_list
+   :linenos:
 
    class Link:
        def __init__(self, value, next=None):
@@ -706,7 +711,7 @@ the current link to the new link.
           self.next = link
 
 Linked lists tend to have advantages where data is sparse. For
-example, our implementation of a :class:`Polynomial` in
+example, our implementation of a :class:`~example_code.polynomial.Polynomial` in
 :numref:`objects` would represent :math:`x^{100} + 1` very
 inefficiently, with 98 zeroes. Squaring this polynomial would cause
 tens of thousands of operations, almost all of them on
@@ -723,12 +728,6 @@ A :term:`deque`, and therefore a :term:`stack` or a :term:`queue` can
 be implemented using a linked list, however the constant creation of
 new link objects is typically less efficient than implementations
 based on ring buffers.
-
-Sets
-~~~~
-
-Dictionaries
-~~~~~~~~~~~~
 
 .. _iterator_protocol:
 
@@ -759,13 +758,12 @@ example of abstraction in action: the user doesn't need to know or
 care how a particular container is implemented and therefore how to
 find all of its contents.
 
-There are two :term:`special methods <special method>` required for
-iteration. Neither take any arguments. The first, :meth:`~container.__iter__`,
-needs to be implemented by the container type. Its role is to return
-an object which implements iteration. This could be the container
-itself, or it could be a special iteration object (for example because
-it is necessary to store a number recording where the iteration is up
-to).
+There are two :term:`special methods <special method>` required for iteration.
+Neither take any arguments beyond the object itself. The first,
+:meth:`~container.__iter__`, needs to be implemented by the container type. Its
+role is to return an object which implements iteration. This could be the
+container itself, or it could be a special iteration object (for example because
+it is necessary to store a number recording where the iteration is up to).
 
 The object returned by :meth:`~container.__iter__` needs to itself implement
 :meth:`~iterator.__iter__` (for example it could simply `return self`). In
@@ -798,7 +796,9 @@ to keep track of the iteration.
 .. _iterating_linked_list:
 
 .. code-block:: python3
-    :caption: A simple linked list implementation that supports the iterator protocol.
+    :caption: A simple linked list implementation that supports the iterator
+        protocol.
+    :linenos:
 
     class Link:
         def __init__(self, value, next=None):
@@ -851,22 +851,6 @@ automatically:
 
    In [5]: tuple(linked_list)
    Out[5]: (1, 2, 3)
-
-.. note::
-
-   A simple iterator exercise would be to make an iterator which
-   returns the Fibonacci numbers. Obviously this iterator never
-   terminates!
- 
-.. note::
-
-   As a stack exercise, have the students implement a reverse Polish calculator.
-
-.. note::
-
-   An exercise here should be to implement a deque using a ring
-   buffer, reallocating exponentially as it grows and shrinks, and
-   make it iterable.
 
 Glossary
 --------
@@ -922,3 +906,68 @@ Glossary
        are much more complex. :term:`amortised complexity` is a
        mechanism for taking into account the frequency at which the
        worst case complexity can be expected to occur.
+
+Exercises
+---------
+
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+
+.. proof:exercise::
+
+    In this week's skeleton repository, create a :term:`package` called
+    :mod:`adt_examples` with a :term:`module` called
+    :mod:`adt_examples.fibonacci`. Create a class :class:`Fib` implementing the
+    iterator protocol which returns the Fibonacci numbers. In other words, the
+    following code should print the `Fibonacci` numbers under 100:
+
+    .. code-block:: python3
+
+        from adt_examples.fibonacci import Fib
+
+        for n in Fib():
+            print(n)
+            if n >= 100:
+                break
+
+    Obviously the Fibonacci sequence is infinite, so your iterator will never
+    raise :class:`StopIteration`.
+
+.. proof:exercise::
+
+    In this week's skeleton repository, create a :term:`module`
+    :mod:`adt_examples.rpcalc` containing a class :class:`RPCalc` implementing a
+    reverse Polish calculator. The calculator should have the following methods:
+
+    :meth:`push`
+        This should take a single argument. If it is a number then it should be
+        pushed onto the calculator's internal stack. If it is a string for a
+        recognised operator, then the appropriate number of operands should be
+        popped from the internal stack, the result pushed back on the stack.
+        Your calculator should support the following operators: `"+"`, `"-"`,
+        `"*"`, `"/"`, `"sin"`, `"cos"`. The method should not return anything.
+
+    :meth:`pop`
+        This method, which takes no arguments, should pop the top item on the
+        internal stack and return it. 
+
+    :meth:`peek`
+        This method, which takes no arguments, should return the top item on the
+        internal stack without popping it.
+
+    :meth:`__len__`
+        This is the :meth:`~object.__len__` :term:`special method`, which takes no
+        arguments but returns the length of the object. In this case, the length
+        of the calculator is defined to be the number of items on its internal stack.
+
+.. proof:exercise::
+
+    In this week's skeleton repository, create a :term:`module`
+    :mod:`adt_examples.deque` containing a class :class:`Deque` implementing a
+    :term:`deque`. Your implementation should contain a ring buffer implemented
+    as a Python list. 
+
+.. note::
+
+   An exercise here should be to implement a deque using a ring
+   buffer, reallocating exponentially as it grows and shrinks, and
+   make it iterable.
