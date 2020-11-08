@@ -18,9 +18,16 @@ concrete realisations of a mathematical idea.
    defined independently of its concrete realisation as code.
 
 Abstract data types enable the programmer to reason about algorithms and their
-cost separately from the task of implementing them.
-That said, it will frequently be helpful in understanding abstract
-data types to refer to the ways in which they might be implemented.
+cost separately from the task of implementing them. In contrast, we can also
+define the concrete realisation of a data type:
+
+.. proof:definition:: Data structure
+
+    A *data structure* describes the concrete implementation of a data type:
+    which data is stored, in what order, and how it is interpreted.
+
+In understanding abstract data types, it is often useful to think about the data
+structures which could be used to implement them.
 
 .. _stacks:
 
@@ -572,12 +579,8 @@ step 7, the contents of the buffer wrap around: the queue at this stage contains
 new space is allocated and the buffer's contents copied to the start of the new
 buffer. 
 
-
-Some more abstract data types
------------------------------
-
 Linked lists
-~~~~~~~~~~~~
+------------
 
 One disadvantage of a deque (and hence of a stack or queue) is that inserting an
 object into the middle of the sequence is often an :math:`O(n)` operation,
@@ -852,6 +855,37 @@ automatically:
    In [5]: tuple(linked_list)
    Out[5]: (1, 2, 3)
 
+Other abstract data types
+-------------------------
+
+Here we have introduced in some detail a few relatively simple abstract data
+types that illustrate the distinction between the mathematical properties of a
+type and the concrete details of its implementation. There are many other
+abstract data types, some of which you will have already met, and we will
+encouter a few more in this course. For context, here are a few other examples.
+
+set
+    A set is an unordered collection of objects with the property that objects
+    that compare equal can only occur once in the set. Inserting or accessing a
+    set member is an :math:`O(1)` operation. Python provides the
+    :class:`set` built in class as an implementation.
+
+dictionary or map
+    A generalised function in which unique (up to equality) keys are mapped to
+    arbitrary values. Again, insertion and deletion cost :math:`O(1)`
+    operations. The Python :class:`dict` type is an implementation.
+
+graph
+    A general relation between a set and itself defined by a set of values and a
+    set of edges, where each edge connects exactly two vertices. Graphs can be
+    used to describe very general relationships among data.
+
+tree
+    A particular sort of graph in which edges have a direction (a from and a to
+    node), and each node is the origin of at most one edge. Trees can be used to
+    describe many types of structured relationship. We will show how trees and
+    related structures can be used in symbolic maths in :numref:`trees`.
+
 Glossary
 --------
 
@@ -859,53 +893,70 @@ Glossary
     :sorted:
 
     abstract data type
-       A mathematical :term:`type`, defined independently of any
-       concrete implementation in code.
+        A mathematical :term:`type`, defined independently of any
+        concrete implementation in code. Contrast :term:`data structure`
 
     algorithmic complexity
-       A measure of the number of operations (time complexity) or
-       amount of storage (space complexity) required by an algorithm
-       or data structure. Algorithmic complexity is usually stated in
-       terms of a bound given in big 'O' notation.
+        A measure of the number of operations (time complexity) or
+        amount of storage (space complexity) required by an algorithm
+        or data structure. Algorithmic complexity is usually stated in
+        terms of a bound given in big 'O' notation.
 
     amortised complexity
-       The average complexity of an algorithm considered over a suitably
-       large number of invocations of that algorithm. Amortised
-       complexity takes into account circumstances where the worst case
-       complexity of an algorithm is known to occur only rarely.
+        The average complexity of an algorithm considered over a suitably
+        large number of invocations of that algorithm. Amortised
+        complexity takes into account circumstances where the worst case
+        complexity of an algorithm is known to occur only rarely.
+
+    data structure
+        The concrete implementation of a data type in code. The data structure
+        is the organisation of the actual information in the computer's memory
+        or on disk. Contrast :term:`abstract data type`.
 
     deque
-       A double ended queue. An :term:`abstract data type`
-       representing an ordered sequence in which objects can be added
-       or removed at either end. A deque is a generalisation of both a
-       :term:`stack` and a :term:`queue`.
+        A double ended queue. An :term:`abstract data type`
+        representing an ordered sequence in which objects can be added
+        or removed at either end. A deque is a generalisation of both a
+        :term:`stack` and a :term:`queue`.
+
+    dynamic array
+        A :term:`data structure` for efficiently storing a variable length
+        sequence of values. A fixed length piece of memory, called a buffer, is reserved for the
+        sequence. If the number of items exceeds the size of the buffer then a
+        larger buffer is reserved, the contents of the sequence are copied over,
+        and the original buffer is returned to the system.
 
     queue
     FIFO (first in, first out)
-       An :term:`abstract data type` representing an ordered sequence
-       of objects in which objects are accessed in the order in which
-       they were added.
+        An :term:`abstract data type` representing an ordered sequence
+        of objects in which objects are accessed in the order in which
+        they were added.
+
+    ring buffer
+        A generalisation of a :term:`dynamic array` in which two ends of the
+        memory buffer are considered connected in order to enable the sequence
+        to be efficiently lengthened or shortened at either end.
 
     separation of concerns
-       A design principle under which individual components each
-       address a specific well defined need and communicate through
-       well defined interfaces with other components. Separation of
-       concerns enables reasoning about one part of a problem
-       independently of other parts.
+        A design principle under which individual components each
+        address a specific well defined need and communicate through
+        well defined interfaces with other components. Separation of
+        concerns enables reasoning about one part of a problem
+        independently of other parts.
 
     stack
     LIFO (last in, first out)
-       An :term:`abstract data type` representing an ordered sequence
-       of objects, in which only the most recently added object can be
-       directly accessed.
+        An :term:`abstract data type` representing an ordered sequence
+        of objects, in which only the most recently added object can be
+        directly accessed.
 
     worst case complexity
-       An upper bound on the :term:`algorithmic complexity` of an
-       algorithm. Many algorithms have a relatively low algorithmic
-       complexity most of the times they are run, but for some inputs
-       are much more complex. :term:`amortised complexity` is a
-       mechanism for taking into account the frequency at which the
-       worst case complexity can be expected to occur.
+        An upper bound on the :term:`algorithmic complexity` of an
+        algorithm. Many algorithms have a relatively low algorithmic
+        complexity most of the times they are run, but for some inputs
+        are much more complex. :term:`amortised complexity` is a
+        mechanism for taking into account the frequency at which the
+        worst case complexity can be expected to occur.
 
 Exercises
 ---------
@@ -938,8 +989,8 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
     :mod:`adt_examples.rpcalc` containing a class :class:`RPCalc` implementing a
     reverse Polish calculator. The calculator should have the following methods:
 
-    :meth:`push`
-        This should take a single argument. If it is a number then it should be
+    :obj:`push(n)`
+        This takes a single argument. If it is a number then it should be
         pushed onto the calculator's internal stack. If it is a string for a
         recognised operator, then the appropriate number of operands should be
         popped from the internal stack, the result pushed back on the stack.
@@ -963,11 +1014,61 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
 
     In this week's skeleton repository, create a :term:`module`
     :mod:`adt_examples.deque` containing a class :class:`Deque` implementing a
-    :term:`deque`. Your implementation should contain a ring buffer implemented
-    as a Python list. 
+    :term:`deque`. Your implementation should use a ring buffer implemented
+    as a Python list. When the :class:`Deque` is instantiated, the ring buffer
+    should have space for a few items. When it runs out of space it should
+    double in size. It should also halve in size when it drops to only about 40%
+    full. 
 
-.. note::
+    Implement the following methods:
 
-   An exercise here should be to implement a deque using a ring
-   buffer, reallocating exponentially as it grows and shrinks, and
-   make it iterable.
+    :obj:`append(x)`
+        Append `x` to the end of the :class:`Deque`
+
+    :obj:`appendleft(x)`
+        Append `x` to the start of the :class:`Deque`
+    
+    :meth:`pop`
+        Remove the last item in the :class:`Deque` and return it. 
+
+    :meth:`popleft`
+        Remove the first item in the :class:`Deque` and return it.
+
+    :meth:`peek`
+        Return the last item in the :class:`Deque` without removing it.
+
+    :meth:`peekleft`
+        Return the last item in the :class:`Deque` without removing it.
+
+    :meth:`__len__`
+        The :meth:`~object.__len__` :term:`special method`. This should return
+        the number of items currently in the :class:`Deque`.
+
+    :meth:`_size`
+        This should return the current length of the ring buffer, including both
+        occupied and empty spaces.
+
+    In addition to the above methods, you should ensure that :class:`Deque`
+    implements the iterator protocol. This should return the items in the queue,
+    starting from the end, and working backwards. Iterating over the
+    :class:`Deque` should not modify the :class:`Deque`.
+
+    .. hint::
+
+        You can create a list of length 10 (for example) containing only
+        :data:`None` using the following syntax:
+
+        .. code-block:: python3
+
+            l = [None] * 10
+
+    .. hint::
+
+        When removing an item from the :class:`Deque`, it is important to
+        actually overwrite the place in the ring buffer occupied by that item,
+        perhaps with `None`. Failing to do so can cause a program to "leak"
+        memory (i.e. fail to free memory that is no longer needed).
+
+    .. note::
+
+        You may not use :class:`collections.deque` to implement this exercise.
