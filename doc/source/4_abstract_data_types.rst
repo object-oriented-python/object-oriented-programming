@@ -1038,7 +1038,7 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
         Return the last item in the :class:`Deque` without removing it.
 
     :meth:`peekleft`
-        Return the last item in the :class:`Deque` without removing it.
+        Return the first item in the :class:`Deque` without removing it.
 
     :meth:`__len__`
         The :meth:`~object.__len__` :term:`special method`. This should return
