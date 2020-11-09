@@ -60,6 +60,14 @@ example\_code.square module
    :undoc-members:
    :show-inheritance:
 
+example\_code.try\_except module
+--------------------------------
+
+.. automodule:: example_code.try_except
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

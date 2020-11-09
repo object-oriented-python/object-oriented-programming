@@ -24,7 +24,7 @@ mathematical expression can do little else than throw up their hands
 and ask the author what they meant. The :term:`Python interpreter`, upon
 encountering code which has no defined meaning, responds similarly,
 though rather than raising its non-existent hands, it raises an
-exception. It is then up to the programmer to divine what to do next.
+:term:`exception`. It is then up to the programmer to divine what to do next.
 
 Let's take a look at what Python does in response to a simple
 error:
@@ -47,7 +47,9 @@ a descriptive string providing more information about what has gone
 wrong. In this case, that more or less says the same as the exception
 name, but that won't be the case for all exceptions. The four lines
 above the exception are called a traceback. We'll return to
-interpreting tracebacks presently.
+interpreting tracebacks presently. In this case the error is easy to interpret
+and understand: the code divided the :class:`float` value `0.` by another zero,
+and this does not have a well-defined result in Python's arithmetic system.
 
 Syntax errors
 .............
@@ -67,7 +69,7 @@ exception. In programming languages, as with human languages, the
 syntax is the set of rules which defines which expressions are
 well-formed. Notice that the earlier lines of a syntax error appear
 somewhat different to those of the previous exception. Almost all
-exceptions occur because the interpreter attempts to evaluate a
+exceptions occur because the :term:`Python interpreter` attempts to evaluate a
 statement or expression and encounters a problem. Syntax errors are a
 special case: when a syntax error occurs, the interpreter can't even
 get as far as attempting to evaluate because the sequence of
@@ -83,7 +85,7 @@ caret under the modulo operator.
 Even though the Python interpreter will highlight the point at which
 the syntax doesn't make sense, this might not quite actually be the
 point at which you made the mistake. In particular, failing to finish
-a line of code will result in the interpreter assuming that the
+a line of code will often result in the interpreter assuming that the
 expression continues on the next line of program text, resulting in
 the syntax error appearing to be one line later than it really
 occurs. Consider the following code:
@@ -210,7 +212,7 @@ we are in trouble:
 This is a much larger error message than those we have previously
 encountered, however, the same principles apply. We start by reading
 the last line. This tells us that the error was a :class:`TypeError`
-caused by attempting to concatenate (add) an integer to a
+caused by attempting to :term:`concatenate` (add) an integer to a
 string. Where did this error occur? This is a more involved question
 than it may first appear, and the rest of the error message above is
 designed to help us answer this question. This type of error message
@@ -258,8 +260,7 @@ time.
 
 .. note::
 
-   FIXME: put in an illustration of a call stack here. Probably an
-   animation.
+   FIXME: Do a video using the XCode debugger to show the call stack.
 
 Interpreting tracebacks
 .......................
@@ -328,7 +329,7 @@ line of the iPython session.
 
    The proximate cause of the error will be in the last :term:`stack
    frame` printed, so always read the :term:`traceback` from the
-   bottom up. However, the ultimate cause of the problem is likely to
+   bottom up. However, the ultimate cause of the problem may
    be further up the :term:`call stack`, so don't stop reading at the
    bottom frame!
 
@@ -357,31 +358,34 @@ integer rather than the type actually provided.
 .. _typesafe_fib:
 
 .. code-block:: python3
-   :emphasize-lines: 6,7,8
-   :caption: A version of the Fibonacci function which raises an
+    :emphasize-lines: 6,7,8
+    :caption: A version of the Fibonacci function which raises an
              exception if a non-integer type is passed as the
              argument.
+    :linenos:
 
-   from numbers import Integral
 
-   def typesafe_fib(n):
-       """Return the n-th Fibonacci number, raising an exception if a
-       non-integer is passed as n."""
-       if not isinstance(n, Integral):
-              raise TypeError(
-                     f"fib expects an integer, not a {type(n).__name__}")
-       if n == 0:
-           return 0
-       elif n == 1:
-           return 1
-       else:
-           return fib(n-2) + fib(n-1)
+    from numbers import Integral
+
+    def typesafe_fib(n):
+        """Return the n-th Fibonacci number, raising an exception if a
+        non-integer is passed as n."""
+        if not isinstance(n, Integral):
+                raise TypeError(
+                        f"fib expects an integer, not a {type(n).__name__}")
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fib(n-2) + fib(n-1)
 
 If we now pass a non-integer value to this function, we observe the following:
 
 
 .. code-block:: ipython3
 
+    In [1]: from fibonacci import typesafe_fib
     In [2]: typesafe_fib(1.5)
     ---------------------------------------------------------------------------
     TypeError                                 Traceback (most recent call last)
@@ -498,6 +502,7 @@ instead. :numref:`gcd` illustrates how this can be achieved.
               catches the :class:`ZeroDivisionError` to implement the
               base case.
     :emphasize-lines: 2,4,5
+    :linenos:
 
     def gcd(a, b):
         try:
@@ -528,10 +533,95 @@ version of :func:`gcd` then we have, as we might expect:
 Except clauses
 ..............
 
-Let's look in a little more detail at how :keyword:`except` works.
+Let's look in a little more detail at how :keyword:`except` works. The full
+version of the except statement takes a tuple of exception classes. If an
+exception is raised matching any of the exceptions in that tuple then the code
+in the except block is executed. 
+
+It's also possible to have more than one :keyword:`except` block following a
+single :keyword:`try` statement. In this case, the first except block for which
+the exception matches the list of exceptions is executed. For example:
+
+.. code-block:: ipython
+
+    In [1]: try:
+        ...:     0./0
+        ...: except TypeError, KeyError:
+        ...:     print("Type error")
+        ...: except ZeroDivisionError:
+        ...:     print("Zero division error")
+        ...: 
+    Zero division error
+
 
 Else and finally
 ................
+
+It can also be useful to execute some code only if an exception is not raised.
+This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else <try>` clause after a
+:keyword:`try` block is caused only if no exception was raised. 
+
+It is also sometimes useful to be able to execute some code no matter what
+happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
+then this code will be executed whether or not an exception was raised. This
+plethora of variants on the :keyword:`try` block can get a little confusing, so
+a practical example may help. :numref:`except_demo` prints out a different
+message for each type of clause. 
+
+.. code-block:: python3
+    :caption: A demonstration of all the clauses of the :keyword:`try block`.
+    :linenos:
+
+    def except_demo(n):
+        """A simple demonstration of all the clauses of a :keyword:`try` block."""
+
+        print(f"Attempting division by {n}")
+        try:
+            print(0./n)
+        except ZeroDivisionError:
+            print("Zero division")
+        except TypeError:
+            print(f"Can't divide by a {type(n).__name__}.")
+        else:
+            print("Division successful.")
+        finally:
+            print("Finishing up.")
+
+If we execute :func:`~example_code.try_except.except_demo` for a variety of
+arguments, we can observe this complete :keyword:`try` block in action. First,
+we provide an input which is a valid divisor:
+
+.. code-block:: ipython3
+
+    In [1]: from example_code.try_except import except_demo
+    In [2]: except_demo(1)
+    Attempting division by 1
+    0.0
+    Division successful.
+    Finishing up.
+
+Here we can see the output of the division, the :keyword:`else <try>` block, and
+the :keyword:`finally` block. Next we divide by zero:
+
+.. code-block:: ipython3
+
+    In [3]: except_demo(0)
+    Attempting division by 0
+    Zero division
+    Finishing up.
+
+This caused a :class:`ZeroDivisionError`, which was caught by the first
+:keyword:`except` clause. Since an exception was raised, the the :keyword:`else
+<try>` block is not executed, but the :keyword:`finally` block still executes.
+Similarly, if we attempt to divide by a string, we are caught by the second
+:keyword:`except` clause:
+
+.. code-block:: ipython3
+
+    In [4]: except_demo("frog")
+    Attempting division by frog
+    Can't divide by a str.
+    Finishing up.
 
 Exception handling and the call stack
 .....................................
@@ -561,6 +651,7 @@ known as *unwinding the stack*. In pseudocode, the algorithm is:
 
    # Call stack is now empty
    print traceback and exit
+
 ..
    Creating new exception classes
    ------------------------------

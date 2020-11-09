@@ -16,20 +16,18 @@ class Polynomial:
         coefs = self.coefficients
         terms = []
 
-        # It is conventional to omit factors of 1.
-        str1 = lambda n: '' if n == 1 else str(n)
-
-        # Process the higher degree terms in reverse order.
-        for d in range(self.degree(), 1, -1):
-            if coefs[d]:
-                terms.append(str1(coefs[d]) + "x^" + str(d))
-        # Degree 1 and 0 terms conventionally have different representation.
-        if self.degree() > 0 and coefs[1]:
-            terms.append(str1(coefs[1]) + "x")
+        # Degree 0 and 1 terms conventionally have different representation.
         if coefs[0]:
             terms.append(str(coefs[0]))
+        if self.degree() > 0 and coefs[1]:
+            terms.append(f"{coefs[1]}x")
 
-        return " + ".join(terms) or "0"
+        # Remaining terms look like cx^d, though factors of 1 are dropped.
+        terms += [f"{'' if c == 1 else c}x^{d}"
+                  for d, c in enumerate(coefs[2:], start=2) if c]
+
+        # Sum polynomial terms from high to low exponent.
+        return " + ".join(reversed(terms)) or "0"
 
     def __repr__(self):
 
