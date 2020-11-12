@@ -24,14 +24,15 @@ very interested to hear from anyone interested in using it to teach.
    :numbered:
    :maxdepth: 2
 
-   0_introduction.rst
-   1_programs_in_files.rst
-   2_objects.rst
-   3_style.rst
-   4_abstract_data_types.rst
-   5_exceptions.rst
-   6_inheritance.rst
-   7_debugging.rst
-   8_trees_and_directed_acyclic_graphs.rst
-   42_advanced_python_scripting.rst
+   1_introduction.rst
+   2_programs_in_files.rst
+   3_objects.rst
+   4_style.rst
+   5_abstract_data_types.rst
+   6_exceptions.rst
+   7_midterm.rst
+   8_inheritance.rst
+   9_debugging.rst
+   10_trees_and_directed_acyclic_graphs.rst
+   11_further_object-oriented_features.rst
    zbibliography
