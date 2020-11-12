@@ -922,6 +922,15 @@ Glossary
        The design principle that unnecessary code, names, and objects
        should be avoided.
 
+Exercises
+---------
+
+.. note::
+
+    TBC. We don't actually want a whole week of exercises on style. We want to do
+    more creation of classes and objects, but somehow requiring nontrivial
+    compliance with style rules.
+
 .. rubric:: Footnotes
 
 .. [#pep] PEP stands for "Python Enhancement Proposal". PEPs describe

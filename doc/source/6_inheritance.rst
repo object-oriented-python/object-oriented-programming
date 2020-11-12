@@ -6,9 +6,9 @@ Inheritance and composition
 A key feature of abstractions is composability: the ability to make a
 complex object or operation out of several components. We can compose
 objects by simply making one object a :term:`attribute` of another
-object. This combines objects in a "has a" relationship. For example
+object. This combines objects in a *has a* relationship. For example
 the :class:`Polynomial` class introduced in :numref:`chapter %s
-<objects>` has a :class:`tuple` of coefficients. Object composition of
+<objects>` *has a* :class:`tuple` of coefficients. Object composition of
 this sort is a core part of :term:`encapsulation`.
 
 Another way of composing abstractions is to make a new :term:`class`
@@ -130,7 +130,7 @@ infix operators that Python supports. We'll chose `*`, which is possibly the
 closest match among Python's operators. One could easily envisage a more
 complete implementation of a group, with support for group properties such as
 generators and element features such as inverses. But our objective here is to
-develop an understanding of object relations, rather than of algebra, so this
+develop an understanding of class relations, rather than of algebra, so this
 minimal characterisation of a group will suffice. 
 
 .. code-block:: python3
@@ -509,46 +509,41 @@ value `"C"`.
 
 .. note::
 
-    need a good example for overriding methods and calling the superclass method.
+    need a good example for overriding methods and calling the superclass
+    method.
+    
+.. note::
 
-.. _abstract_base_classes:
+    Cover defining new types of exception here.
 
-Abstract base classes
----------------------
+.. 
+    .. _abstract_base_classes:
 
-We observed in :numref:`runtime_attributes` that the
-:class:`~example_code.groups.Group` class isn't itself a complete implementation
-of a mathematical group. Instead it is only intended to be used as a
-:term:`parent class` for classes implementing actual groups. Those child classes
-are responsible for filling out the additional details required to make a
-working implementation. In the case of `Group`, the child classes have to
-implement :attr:`notation`, :meth:`_validation`, and :meth:`operation`, with the
-right interfaces. 
+    Abstract base classes
+    ---------------------
 
-How would a programmer who wants to implement a new family of groups know to
-implement this one attribute and two methods, with these particular interfaces?
-In a simple case like this, they could probably infer what was needed by
-studying the source code of :class:`Group` and its two subclasses. However "just
-work it out from context" is not a particularly robust mechanism and will
-quickly become infeasible for larger, more complex classes. 
+    We observed in :numref:`runtime_attributes` that the
+    :class:`~example_code.groups.Group` class isn't itself a complete implementation
+    of a mathematical group. Instead it is only intended to be used as a
+    :term:`parent class` for classes implementing actual groups. Those child classes
+    are responsible for filling out the additional details required to make a
+    working implementation. In the case of `Group`, the child classes have to
+    implement :attr:`notation`, :meth:`_validation`, and :meth:`operation`, with the
+    right interfaces. 
 
-Instead of leaving it to the programmer to figure out, it would be preferable if
-:class:`Group` specified the missing parts to be filled out, including the
-required interfaces. We call such
-classes :term:`abstract base classes <abstract base class>`. They are abstract
-in the sense that the interface is specified but the implementation omitted. 
+    How would a programmer who wants to implement a new family of groups know to
+    implement this one attribute and two methods, with these particular interfaces?
+    In a simple case like this, they could probably infer what was needed by
+    studying the source code of :class:`Group` and its two subclasses. However "just
+    work it out from context" is not a particularly robust mechanism and will
+    quickly become infeasible for larger, more complex classes. 
 
+    Instead of leaving it to the programmer to figure out, it would be preferable if
+    :class:`Group` specified the missing parts to be filled out, including the
+    required interfaces. We call such
+    classes :term:`abstract base classes <abstract base class>`. They are abstract
+    in the sense that the interface is specified but the implementation omitted. 
 
-
-.. note:: 
-
-    Quiz exercise giving a bunch complicated inheritance pattern and asking what
-    various things print.
-
-.. note:: 
-
-    One exercise will be to implement another family of groups by importing and
-    inheriting from :class:`~example_code.groups.Group`.
 
 Glossary
 --------
@@ -569,7 +564,7 @@ Glossary
     composition
         The process of making a more complex object from other objects by
         including the constituent objects as attributes of the more composite
-        object. Composition can be characterised by a *has a* relationship, in
+        object. Composition can be characterised as a *has a* relationship, in
         contrast to :term:`inheritance`, which embodies an *is a* relationship.
 
     delegation
@@ -577,15 +572,60 @@ Glossary
         :term:`method` by instead calling a method on another object. 
 
     inheritance
-        The process of making a new class by extending one or more existing
+        The process of making a new class by extending or modifying one or more existing
         classes. 
 
     parent class
         A class from which another class, referred to as a :term:`child class`,
-        inherits.
+        inherits. Inheritance can be characterised as an *is a* relationship, in
+        contrast to :term:`composition`, which embodies an *has a* relationship.
 
     subclass
         A class `A` is a subclass of the class `B` if `A` inherits from `B` either
         directly or indirectly. That is, if `B` is a :term:`parent <parent class>`, 
         grandparent, great grandparent or further ancestor of `A`.
 
+Exercises
+---------
+
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+
+.. proof:exercise::
+
+    The symmetric group of order `n` is the group whose members are all the
+    permutations of `n` symbols and whose group operation is the composition of
+    those permutations: :math:`a \cdot b = a(b)`.
+
+    In this week's skeleton code repository, create package called :mod:`groups`
+    containing a module called :mod:`symmetric_groups`. Define a new class
+    :class:`SymmetricGroup` which inherits from
+    :class:`example_code.groups.Group` and implements the symmetric group of
+    order `n`. You will need to implement the group operation and the validation
+    of group element values. Group elements can be represented by sequences
+    containing permutations of the integers from 0 to `n-1`. You will find it
+    advantageous to :term:`cast` these permutations to :func:`numpy.array`
+    because the indexing rules for that type mean that the group operation can
+    simply be implemented by indexing the first permutation with the second:
+    `a[b]`.
+
+    You will also need to set the :term:`class attribute` `notation`. For this
+    group, this should take the value `S`.
+    
+    .. hint::
+
+        You will need to :term:`import` :class:`example_code.groups.Group`.
+
+    .. hint::
+
+        In implementing element validation, the builtin function :func:`sorted`
+        is likely to be useful.
+
+.. note:: 
+
+    Quiz exercise giving a bunch complicated inheritance pattern and asking what
+    various things print.
+
+.. note:: 
+
+    One exercise will be to implement another family of groups by importing and
+    inheriting from :class:`~example_code.groups.Group`.
