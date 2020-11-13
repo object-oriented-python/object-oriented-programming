@@ -1,10 +1,13 @@
-Advanced Python scripting
-=========================
+Further object-oriented features
+================================
 
-Shebang lines
-~~~~~~~~~~~~~
+Decorators
+~~~~~~~~~~
 
+Abstract classes
+~~~~~~~~~~~~~~~~
 
-Working with command line arguments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Abstract base classes
+~~~~~~~~~~~~~~~~~~~~~
+
 
