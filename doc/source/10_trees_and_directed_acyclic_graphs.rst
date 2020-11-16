@@ -138,6 +138,8 @@ and the target nodes of the edges emerging from a node are referred to as its
         c -> g 
     }
 
+Tree nodes with no children are called *leaf nodes*.
+
 Tree traversal
 --------------
 
@@ -377,7 +379,63 @@ Expression trees
 ----------------
 
 One important application of trees is in representing arithmetic expressions.
-Consider the expression :math:`2 \times 3 + 4^{(5 + 6)}`.  
+Consider the expression :math:`2 \times y + 4^{(5 + x)}`. Suppose, further, that
+we want to represent this on a computer in such a way that we can perform
+mathematical operations: evaluation, differentiation, expansion, and
+simplification. How would we do this? Well, thanks to the rules for order of
+operations, this expression forms a hierarchy from the operators to be evaluated
+first, down to the last one. :numref:`expr_tree` shows a tree representation for
+our mathematical expression. The evaluation rule for trees of this type is a
+postorder traversal, first the leaf nodes are evaluated, then their parents and
+so on up until finally the addition at the root node is evaluated.
+
+.. _expr_tree:
+
+.. graphviz::
+    :caption: Expression tree for the expression :math:`2 \times y + 4^{(5 + x)}`.
+
+    strict digraph{
+        a [label="+"];
+        b [label="⨉"];
+        c [label="pow"];
+        2;
+        y [font="italic"];
+        a->b
+        a->c
+        b->{2 y}
+        c->4
+        d[label="+"]
+        c->d
+        d->5
+        x [font="italic"]
+        d->x   
+    }
+
+We will first consider how to construct trees like this, then consider the
+question of the operations we could implement on them.
+
+An expression tree class hierarchy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The nodes of an expression tree don't just have different values, they have
+different :term:`type`. That is to say, the meaning of operations changes
+between, say :math:`+` and :math:`2`. For example the evaluation rule for these
+nodes will be different, as will the differentiation rule. At the same time, all
+the nodes are still expressions and will share many common features. This is a
+textbook case of inheritance. There should be a most general class, covering all
+types of expression nodes, and then more specialised node types should inherit
+from this. The most basic distinction is between *operators*, which have at least
+one operand (represented by a child node), and *terminals*, which have no
+children. In practice, it will result in simpler, more elegant code if terminals
+actually have an empty tuple of operands rather than none at all. This
+facilitates writing, for example, tree visitors which loop over all of the
+children of a node.
+
+Single dispatch functions
+-------------------------
+
+Expressions as :term:`DAGs <DAG>`
+---------------------------------
 
 Glossary
 --------
