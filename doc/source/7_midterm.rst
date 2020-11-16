@@ -3,7 +3,7 @@ Midterm test preparation
 
 This week you will take a programming test worth 20% of the course. The format
 of this test is deliberately similar to the programming exam in May that makes
-up the other 80% of the course. This test therefore provides both some feedback
+up the other 80% of the assessment. This test therefore provides both some feedback
 on how you are progressing in the course, and an opportunity to practice for the
 end of term exam. This is a programming module, so the midterm test will consist
 of programming exercises. The content which will be examined in the test is
@@ -68,12 +68,12 @@ along, and therefore avoid any unfortunate misconfiguration surprises in the
 test.
 
 This is a test of programming as a whole, so using git correctly is a part of
-the test. This has a few components:
+the test. This has some consequences for how you should go about the test:
 
 1. Commit *and* push your work as you go along. Do not rely on committing once
    at the end of the test. You will be marked on what you have pushed to GitHub
    at the end of the test period. If the first time that you try to push
-   something to GitHub is at the end of the hour, and something goes wrong then
+   something to GitHub is at the end of the hour, and something goes wrong, then
    you will receive 0% for the test, because you will not have pushed any
    answers.
 2. Don't forget to `git add` any files you need to create. If you don't add them
