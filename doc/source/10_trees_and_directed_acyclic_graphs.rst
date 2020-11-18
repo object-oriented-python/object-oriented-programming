@@ -4,7 +4,7 @@ Trees and directed acyclic graphs
 =================================
 
 The :term:`abstract data types <abstract data type>` that we met in
-:numref:`abstract_data_types` were all fairly simple sequences of objects that
+:numref:`Chapter %s <abstract_data_types>` were all fairly simple sequences of objects that
 were extensible in different ways. If that were all the sum total of abstract
 data types then the reader might reasonably wonder what all the fuss is about.
 In this chapter we'll look at :term:`trees <tree>` and :term:`directed acyclic
@@ -206,18 +206,18 @@ example, we can represent the tree in :numref:`tree_image` using:
 The reader might immediately observe that serialised trees can be a little hard
 to read! This is the reason that trees are often represented by diagrams.
 
-The splat operator
-~~~~~~~~~~~~~~~~~~
+The splat and double splat operators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before we go on to traverse the tree we have created, we need to digress ever so
 slightly in order to explain a new piece of syntax. At line 5 of
 :numref:`treenode`, the second parameter to
 :meth:`~example_code.graphs.TreeNode.__init__` is given as `*children`. The
 character `*` in this case is the argument packing operator, also known as the
-*splat* operator. When used in the parameter list of a function, splat takes
-all of the remaining arguments provided by the caller and packs them up in a
-tuple. In this case, this enables any number of child nodes to be specified for
-each node. 
+*splat* operator [#splat]_. When used in the parameter list of a function, splat takes all
+of the remaining :term:`positional arguments <argument>` provided by
+the caller and packs them up in a tuple. In this case, this enables any number
+of child nodes to be specified for each node. 
 
 The splat operator can also be used when calling a function. In that case it
 acts as a sequence unpacking operator, turning a sequence into separate
@@ -243,6 +243,47 @@ but different from:
 
     In [4]: print(a)
     (1, 2, 3)
+
+The double splat operator, `**` plays a similar role to the single splat
+operator, but packs and unpacks :term:`keyword arguments <argument>` instead of
+positional arguments. When used in the :term:`parameter` list of a function,
+`**` gathers all of the keyword arguments that the caller passes, other than any
+which are explicitly named in the interface. The result is a :class:`dict` whose
+keys are the argument names, and whose values are the arguments.
+:numref:`kwarg_packing` demonstrates the argument packing function of `**`,
+while :numref:`kwarg_unpacking` shows the unpacking function.
+
+.. _kwarg_packing:
+
+.. code-block:: ipython3
+    :caption: An illustration of keyword argument packing. All of the keyword
+        arguments are packed into the dictionary :data:`kwargs`, except for `b`,
+        because that explicitly appears in the parameter list of :func:`fn`.
+
+    In [1]: def fn(a, b, **kwargs):
+    ...:     print("a:", a)
+    ...:     print("b:", b)
+    ...:     print("kwargs:", kwargs)
+    ...: 
+
+    In [2]: fn(1, f=3, b=2, g="hello")
+    a: 1
+    b: 2
+    kwargs: {'f': 3, 'g': 'hello'}
+
+.. _kwarg_unpacking:
+
+.. code-block:: ipython3
+    :caption: Keyword argument unpacking. Notice that the arguments matching the
+        explicitly named keywords are unpacked, while the remainder are repacked
+        into the `**kwargs` parameter.
+
+    In [3]: kw = {"a": "mary", "b": "had", "c": "a", "d": "little", "e": "lamb"}
+
+    In [4]: fn(**kw)
+    a: mary
+    b: had
+    kwargs: {'c': 'a', 'd': 'little', 'e': 'lamb'}
 
 Traversing :class:`~example_code.graphs.TreeNode`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -327,6 +368,8 @@ one for itself.
 What about preorder traversal? This time we need a little more code (not much)
 as :numref:`preorder_recursive` shows.
 
+.. preorder_recursive
+
 .. code-block:: python3
     :caption: The simple preorder visitor from
         :func:`example_code.graphs.previsitor`.
@@ -379,7 +422,7 @@ Expression trees
 ----------------
 
 One important application of trees is in representing arithmetic expressions.
-Consider the expression :math:`2 \times y + 4^{(5 + x)}`. Suppose, further, that
+Consider the expression :math:`2y + 4^{(5 + x)}`. Suppose, further, that
 we want to represent this on a computer in such a way that we can perform
 mathematical operations: evaluation, differentiation, expansion, and
 simplification. How would we do this? Well, thanks to the rules for order of
@@ -392,7 +435,7 @@ so on up until finally the addition at the root node is evaluated.
 .. _expr_tree:
 
 .. graphviz::
-    :caption: Expression tree for the expression :math:`2 \times y + 4^{(5 + x)}`.
+    :caption: Expression tree for the expression :math:`2y + 4^{(5 + x)}`.
 
     strict digraph{
         a [label="+"];
@@ -431,8 +474,206 @@ actually have an empty tuple of operands rather than none at all. This
 facilitates writing, for example, tree visitors which loop over all of the
 children of a node.
 
+.. graphviz::
+    :caption: Inheritance diagram for a very basic symbolic language. Each box
+        represents a class, with the arrows showing inheritance relationships. Note that
+        the edges in such diagrams conventionally point from the child class to the
+        parent class, because its the child class that refers to the parent. The
+        parent does not refer to the child.
+
+    strict digraph{
+        node [
+            shape = "record"
+            ]
+        
+        edge [
+            arrowtail = "empty";
+            dir = "back";
+            ]
+        
+        Expression -> Terminal
+        Terminal -> Number
+        Terminal -> Symbol
+        
+        Expression -> Operator
+        Operator -> Add
+        Operator -> Mul
+        Operator -> Sub
+        Operator -> Div
+        Operator -> Pow
+    }
+
+Let's consider what would be needed at each layer of the hierarchy.
+:class:`Expression` should implement everything that is the same for all nodes. What
+will that comprise? 
+
+:meth:`__init__`
+    The constuctor will take a :class:`tuple` of operands, since every
+    expression has operands (even if terminals have zero operands).
+
+:meth:`~object.__add__`, :meth:`~object.__sub__`, :meth:`~object.__mul__`, :meth:`~object.__truediv__`, :meth:`~object.__pow__`  
+    Implementing the special methods for arithmetic is necessary for expressions
+    to exhibit the correct symbolic mathematical behaviour. We met this idea
+    already in :numref:`object_arithmetic`. Arithmetic operations involving
+    symbolic expressions return other symbolic expressions. For example if `a`
+    and `b` are expressions then `a + b` is simply `Add(a, b)`. The fact that
+    these rules are the same for all expressions indicates that they should be
+    implemented on the base class :class:`Expression`. 
+    
+    Just as was the case when we implemented the
+    :class:`~example_code.polynomial.Polynomial` class, it will be necessary to
+    do something special when one of the operands is a number. In this case, the
+    right thing to do is to turn the number into an expression by instantiating a
+    :class:`Number` with it as a value. Once this has been done, the number is
+    just another :class:`Expression` obeying the same arithmetic rules as other
+    expressions.
+    
+Let's now consider :class:`Operator`. The operations for creating string
+representations can be implemented here, because they will be the same for all
+operators but different for terminals. 
+
+:meth:`~object.__repr__`
+    Remember that this is the canonical string representation, and is usually
+    the code that could be passed to the :term:`Python interpreter` to construct
+    the object. Something like the following would work:
+
+    .. code-block:: python3
+    
+        def __repr__(self):
+            return self.__class__.__name__ + repr(self.operands)
+
+    This approch is valid because the string representation of a :class:`tuple`
+    is a pair of round brackets containing the string representation of each
+    item in the tuple.
+
+:meth:`~object.__str__`
+    This is the human-readable string output, using :term:`infix` operators, so
+    in the example above we would expect to see `2*y + 4^(5 + x)` This looks
+    sort of straightforward, simply associate the correct symbol with each
+    operator class as a :term:`class attribute` and place the string
+    representation of the operands on either side. 
+    
+    The challenge is to correctly include the brackets. In order to do this, it
+    is necessary to associate with every expression class a :term:`class
+    attribute` whose value is a number giving an operator precedence to that
+    class. For example, the priority of :class:`Mul` should be higher than
+    :class:`Add`. A full list of operators in precedence order is available in
+    :ref:`the official Python documentation <operator-summary>`. An operand
+    :math:`a` of an operator :math:`o` needs to be placed in brackets if the
+    precedence of :math:`a` is lower than the precedence of :math:`o`.
+
+Individual operator classes therefore need to define very little, just two
+:term:`class attributes`, one for the operator precedence, and one to set the
+symbol when printing the operator.
+
+Let's now consider :class:`Terminal`. What does it need to set?
+
+:meth:`~object.__init__`
+    The :term:`constructor` for :class:`Expression` assumes that an expression is
+    defined by a series of operands. Terminals have an empty list of operands
+    but do have something that other expressions lack, a value. In the case of
+    :term:`Number`, this is a number, while for :term:`Symbol` the value is a
+    string (usually a single character). :class:`Terminal` therefore needs its
+    own :meth:`__init__` which will take a value argument.
+    :class:`Terminal.__init__` still has to call the :term:`superclass`
+    constructor in order to ensure that the operands tuple is initialised.
+
+:meth:`~object.__repr__` and :meth:`~object.__str__`
+    The string representations of :class:`Terminal` are straightforward, simply
+    return `repr(self.value)` and `str(self.value)` respectively. Note that in
+    order for  :meth:`Operator.__str__` to function correctly, :class:`Terminal`
+    will need to advertise its operator precedence. The reader should think
+    carefully about what the precedence of a :class:`Terminal` should be.
+
+The two :class:`Terminal` subclasses need to do very little other than identify
+themselves. The only functionality they might provide would be to override
+:meth:`~object.__init__` to check that their value is a :class:`numbers.Number`
+in the case of :class:`Number` and a :class:`str` in the case of :class:`Symbol`.
+
+Operations on expression trees
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Many operations on expression trees can be implemented using tree visitors, most
+frequently by visiting the tree in postorder. An example is
+expression evaluation. The user provides a :class:`dict` mapping symbol names to
+numerical values, and we proceed from leaf nodes upwards. Every :class:`Symbol`
+is replaced by a numerical value from the dictionary, every :class:`Number`
+stands for itself, and every :class:`Operator` performs the appropriate
+computation on its operands (which are now guaranteed to be numbers). 
+
+The leaf-first order of execution makes this a postorder tree visitor, but what
+is the visitor function? It seems we need a different function for every
+:class:`type` of expression node we encounter. It turns out that this is exactly
+what is required, and Python provides this functionality in the form of the
+single dispatch function.
+
 Single dispatch functions
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In all of the cases we have encountered so far, there is a unique mapping from
+the name of a function to the code implementing that function. That is, no
+matter what arguments are passed to a function, the same code will execute (so
+long as the right number of arguments are passed). A single dispatch function is
+not like this. Instead, calling a single function name causes different function
+code to execute, depending on the type of the first argument [#single]_.
+
+Let's construct a single dispatch function to evaluate a :class:`Expression`.
+The first step is to define what the function should do in the case where we
+know nothing about the class of the object we are evaluating.
+
+.. code-block:: python3
+    :caption: A :term:`single dispatch function` implementing the evaluation of
+        a single :class:`Expression` node. The implementation of the expressions
+        language itself, in the :mod:`expressions` module is :ref:`left as an
+        exercise <ex_expr>`.
+    :linenos:
+
+    from functools import singledispatch
+    import expressions
+
+
+    @singledispatch
+    def evaluate(expr, *o, map={}):
+        raise NotImplementedError(
+            f"Cannot evaluate a {type(expr).__name__}")
+
+
+    @evaluate.register(expressions.Number)
+    def _(expr, *o, map={}):
+        return expr.value
+
+
+    @evaluate.register(expressions.Symbol)
+    def _(expr, *o, map={}):
+        return map[expr.value]
+
+
+    @evaluate.register(expressions.Add)
+    def _(expr, *o, map={}):
+        return o[0] + o[1]
+
+
+    @evaluate.register(expressions.Sub)
+    def _(expr, *o, map={}):
+        return o[0] - o[1]
+
+
+    @evaluate.register(expressions.Mul)
+    def _(expr, *o, map={}):
+        return o[0] * o[1]
+
+
+    @evaluate.register(expressions.Div)
+    def _(expr, *o, map={}):
+        return o[0] / o[1]
+
+
+    @evaluate.register(expressions.Pow)
+    def _(expr, *o, map={}):
+        return o[0] ** o[1]
+
+
+
 
 Expressions as :term:`DAGs <DAG>`
 ---------------------------------
@@ -460,8 +701,29 @@ Glossary
 Exercises
 ---------
 
+.. _ex_expr:
+
+.. proof:exercise::
+
+    .. note::
+
+        Get the student to implement the expressions language.
+
 .. rubric:: Footnotes
 
 .. [#tree_def] This definition of a tree matches computer science usage and is
     the relevant one for the applications we will study. There is a slightly
     different definition of a tree common in mathematical graph theory.
+
+.. [#splat] Python language pedants will observe that strictly speaking neither
+    `*` nor `**` are operators, and that they are simply an unnamed syntax for
+    argument packing and unpacking. This is both correct and unhelpful, since it
+    is useful in many contexts to be able to give a name to the `*` and `**`
+    symbols when used in this way.
+
+.. [#single] The *single* in *single dispatch* indicates that the
+    choice of function implementation is made on the basis of the type of one
+    argument, typically the first. Multiple dispatch, in which the function
+    implementation is chosen on the basis of multiple function arguments, is
+    also possible, and is a key feature of `the Julia programming language
+    <https://julialang.org>`_. 

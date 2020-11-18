@@ -447,6 +447,7 @@ We can now observe the difference in the result:
    In [3]: f                                                                                                          
    Out[3]: Polynomial((1, 2, 0, 4, 5))
 
+.. _object_arithmetic:
 
 Defining arithmetic options on objects
 ......................................
