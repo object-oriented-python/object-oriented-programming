@@ -1,5 +1,9 @@
 .. _style:
 
+False if src_petsc4py_exists and args.honour_petsc_dir else True
+
+modifiable default keyword arguments.
+
 A matter of style
 =================
 

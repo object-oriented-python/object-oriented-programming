@@ -261,10 +261,10 @@ while :numref:`kwarg_unpacking` shows the unpacking function.
         because that explicitly appears in the parameter list of :func:`fn`.
 
     In [1]: def fn(a, b, **kwargs):
-    ...:     print("a:", a)
-    ...:     print("b:", b)
-    ...:     print("kwargs:", kwargs)
-    ...: 
+       ...:     print("a:", a)
+       ...:     print("b:", b)
+       ...:     print("kwargs:", kwargs)
+       ...: 
 
     In [2]: fn(1, f=3, b=2, g="hello")
     a: 1
@@ -284,6 +284,23 @@ while :numref:`kwarg_unpacking` shows the unpacking function.
     a: mary
     b: had
     kwargs: {'c': 'a', 'd': 'little', 'e': 'lamb'}
+
+Combining the splat and double splat operators, it is possible to write a
+function that will accept any combination of positional and keyword arguments.
+This is often useful if the function is intended to pass these arguments through
+to another function, without knowing anything about that inner function. For
+example:
+
+.. code-block:: python3
+
+    def fn(*args, **kwargs):
+        ...
+        a =  inner_fn(*args, **kwargs)
+        ...
+
+The names `*args` and `**kwargs` are the conventional names in
+cases where nothing more specific is known about the parameters in question.
+    
 
 Traversing :class:`~example_code.graphs.TreeNode`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -617,9 +634,7 @@ long as the right number of arguments are passed). A single dispatch function is
 not like this. Instead, calling a single function name causes different function
 code to execute, depending on the type of the first argument [#single]_.
 
-Let's construct a single dispatch function to evaluate a :class:`Expression`.
-The first step is to define what the function should do in the case where we
-know nothing about the class of the object we are evaluating.
+.. _tree_evaluate:
 
 .. code-block:: python3
     :caption: A :term:`single dispatch function` implementing the evaluation of
@@ -633,45 +648,77 @@ know nothing about the class of the object we are evaluating.
 
 
     @singledispatch
-    def evaluate(expr, *o, map={}):
+    def evaluate(expr, *o, **kwargs):
+        """Evaluate an expression.
+
+        Parameters
+        ----------
+        expr: Expression
+            The expression to be evaluated.
+        *o: numbers.Number
+            The results of evaluating the operands of expr.
+        **kwargs:
+            Any keyword arguments required to evaluate specific types of expression.
+        symbol_map: dict
+            A dictionary mapping Symbol names to numerical values, for example:
+
+            {'x': 1}
+        """
         raise NotImplementedError(
             f"Cannot evaluate a {type(expr).__name__}")
-
+    
 
     @evaluate.register(expressions.Number)
-    def _(expr, *o, map={}):
+    def _(expr, *o, **kwargs):
         return expr.value
 
 
     @evaluate.register(expressions.Symbol)
-    def _(expr, *o, map={}):
-        return map[expr.value]
+    def _(expr, *o, symbol_map, **kwargs):
+        return symbol_map[expr.value]
 
 
     @evaluate.register(expressions.Add)
-    def _(expr, *o, map={}):
+    def _(expr, *o, **kwargs):
         return o[0] + o[1]
 
 
     @evaluate.register(expressions.Sub)
-    def _(expr, *o, map={}):
+    def _(expr, *o, **kwargs):
         return o[0] - o[1]
 
 
     @evaluate.register(expressions.Mul)
-    def _(expr, *o, map={}):
+    def _(expr, *o, **kwargs):
         return o[0] * o[1]
 
 
     @evaluate.register(expressions.Div)
-    def _(expr, *o, map={}):
+    def _(expr, *o, **kwargs):
         return o[0] / o[1]
 
 
     @evaluate.register(expressions.Pow)
-    def _(expr, *o, map={}):
+    def _(expr, *o, **kwargs):
         return o[0] ** o[1]
 
+:numref:`tree_evaluate` shows a single dispatch function for a visitor function
+which evaluates a :class:`Expression`. Start with lines 6-19. These define a
+function :func:`~example_code/expression_tools/evaluate` which will be used in
+the default case, that is, in the case where the :class:`type` of the first
+argument doesn't match any of the other implementations of
+:func:`~example_code/expression_tools/evaluate`. In this case, the first
+argument is the expression that we're evaluating, so if the type doesn't match
+then this means that we don't know how to evaluate this object, and the only
+course of action available is to throw an :term:`exception`.
+
+The new feature that we haven't met before occurs on line 5.
+:func:`functools.singledispatch` turns a function into
+a single dispatch function. The `@` symbol marks
+:func:`~functools.singledispatch` as a :term:`decorator`. We'll return to them
+in :numref:`decorators`. For the moment, we just need to know that
+`@singledispatch` turns the function it precedes into a single dispatch
+function.
 
 
 

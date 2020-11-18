@@ -12,6 +12,14 @@ example\_code.euclid module
    :undoc-members:
    :show-inheritance:
 
+example\_code.expression\_tools module
+--------------------------------------
+
+.. automodule:: example_code.expression_tools
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 example\_code.graphs module
 ---------------------------
 
