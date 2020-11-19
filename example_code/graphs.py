@@ -51,7 +51,7 @@ def postvisitor(tree, fn):
     fn: function(node, *fn_children)
         A function to be applied at each node. The function should take the
         node to be visited as its first argument, and the results of visiting
-        its parent as any further arguments.
+        its children as any further arguments.
     '''
 
     return fn(tree, *(postvisitor(c, fn) for c in tree.children))

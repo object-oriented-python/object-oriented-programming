@@ -4,12 +4,12 @@ import expressions
 
 @singledispatch
 def evaluate(expr, *o, **kwargs):
-    """Evaluate an expression.
+    """Evaluate an expression node.
 
     Parameters
     ----------
     expr: Expression
-        The expression to be evaluated.
+        The expression node to be evaluated.
     *o: numbers.Number
         The results of evaluating the operands of expr.
     **kwargs:
@@ -57,3 +57,25 @@ def _(expr, *o, **kwargs):
 @evaluate.register(expressions.Pow)
 def _(expr, *o, **kwargs):
     return o[0] ** o[1]
+
+
+def postvisitor(expr, fn, **kwargs):
+    '''Traverse an Expression in postorder applying a function to every node.
+
+    Parameters
+    ----------
+    expr: Expression
+        The expression to be visited.
+    fn: function(node, *o, **kwargs)
+        A function to be applied at each node. The function should take the
+        node to be visited as its first argument, and the results of visiting
+        its operands as any further positional arguments. Any additional
+        information that the visitor requires can be passed in as keyword
+        arguments.
+    **kwargs:
+        Any additional keyword arguments to be passed to fn.
+    '''
+
+    return fn(expr,
+              *(postvisitor(c, fn, **kwargs) for c in expr.operands),
+              **kwargs)

@@ -335,7 +335,7 @@ We'll consider postorder traversal first, as it's the easier to implement.
         fn: function(node, *fn_children)
             A function to be applied at each node. The function should take the
             node to be visited as its first argument, and the results of visiting
-            its parent as any further arguments.
+            its children as any further arguments.
         '''
 
         return fn(tree, *(postvisitor(c, fn) for c in tree.children))
@@ -543,7 +543,9 @@ will that comprise?
     right thing to do is to turn the number into an expression by instantiating a
     :class:`Number` with it as a value. Once this has been done, the number is
     just another :class:`Expression` obeying the same arithmetic rules as other
-    expressions.
+    expressions. The need to accommodate operations between symbolic expressions
+    and numbers also implies that it will also be necessary to implement the
+    :term:`special functions` for reversed arithmetic operations.
     
 Let's now consider :class:`Operator`. The operations for creating string
 representations can be implemented here, because they will be the same for all
@@ -649,12 +651,12 @@ code to execute, depending on the type of the first argument [#single]_.
 
     @singledispatch
     def evaluate(expr, *o, **kwargs):
-        """Evaluate an expression.
+        """Evaluate an expression node.
 
         Parameters
         ----------
         expr: Expression
-            The expression to be evaluated.
+            The expression node to be evaluated.
         *o: numbers.Number
             The results of evaluating the operands of expr.
         **kwargs:
@@ -704,15 +706,15 @@ code to execute, depending on the type of the first argument [#single]_.
 
 :numref:`tree_evaluate` shows a single dispatch function for a visitor function
 which evaluates a :class:`Expression`. Start with lines 6-19. These define a
-function :func:`~example_code/expression_tools/evaluate` which will be used in
+function :func:`~example_code.expression_tools.evaluate` which will be used in
 the default case, that is, in the case where the :class:`type` of the first
 argument doesn't match any of the other implementations of
-:func:`~example_code/expression_tools/evaluate`. In this case, the first
+:func:`~example_code.expression_tools.evaluate`. In this case, the first
 argument is the expression that we're evaluating, so if the type doesn't match
 then this means that we don't know how to evaluate this object, and the only
 course of action available is to throw an :term:`exception`.
 
-The new feature that we haven't met before occurs on line 5.
+The new feature that we haven't met before appears on line 5.
 :func:`functools.singledispatch` turns a function into
 a single dispatch function. The `@` symbol marks
 :func:`~functools.singledispatch` as a :term:`decorator`. We'll return to them
@@ -720,10 +722,142 @@ in :numref:`decorators`. For the moment, we just need to know that
 `@singledispatch` turns the function it precedes into a single dispatch
 function.
 
+Next we turn our attention to the implementation of evaluation for the different
+expression types. Look first at lines 26-28, which provide the evaluation of
+:class:`Number` nodes. The function body is trivial: the evaluation of a
+:class:`Number` is simply its value. The function interface is more interesting.
+Notice that the function name is given as `_`. This is the Python convention for
+a name which will never be used. This function will never be called by its
+declared name. Instead, look at the decorator on line 26. The single dispatch
+function :func:`~example_code.expression_tools.evaluate` has a :term:`method`
+:meth:`register`. When used as a decorator, the :meth:`register` method of a
+single dispatch function registers the function that follows as implementation
+for the :keyword:`class` given as an argument to :meth:`register`. On this
+occasion, this is :class:`expressions.Number`.
+
+Now look at lines 31-33. These contain the implementation of
+:func:`~example_code.expression_tools.evaluate` for :class:`expressions.Symbol`.
+In order to evaluate a symbol, we depend on the mapping from symbol names to
+numerical values that has been passed in. 
+
+Finally, look at lines 36-38. These define the evaluation visitor for addition.
+This works simply by adding the results of evaluating the two operands of
+:class:`expressions.Add`. The evaluation visitors for the other operators follow
+*mutatis mutandis*.
+
+An expanded tree visitor
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The need to provide the `symbol_map` parameter to the
+:class:`expressions.Symbol` evaluation visitor means that the postorder visitor
+in :numref:`postorder_recursive` is not quite up to the task.
+:numref:`postorder_recursive_kwargs` extends the tree visitor to pass arbitrary
+keyword arguments through to the visitor function.
+
+.. _postorder_recursive_kwargs:
+
+.. code-block:: python3
+    :caption: A recursive tree visitor that passes any keyword arguments
+        through to the visitor function. We also account for the name changes
+        between :class:`~example_code.graphs.TreeNode` and :class:`Expression`.
+    :linenos:
+
+    def postvisitor(expr, fn, **kwargs):
+        '''Traverse an Expression in postorder applying a function to every node.
+
+        Parameters
+        ----------
+        expr: Expression
+            The expression to be visited.
+        fn: function(node, *o, **kwargs)
+            A function to be applied at each node. The function should take the
+            node to be visited as its first argument, and the results of visiting
+            its operands as any further positional arguments. Any additional
+            information that the visitor requires can be passed in as keyword
+            arguments.
+        **kwargs:
+            Any additional keyword arguments to be passed to fn.
+        '''
+
+        return fn(expr,
+                  *(postvisitor(c, fn, **kwargs) for c in expr.operands),
+                  **kwargs)
 
 
-Expressions as :term:`DAGs <DAG>`
----------------------------------
+Assuming we have an implementation of our simple expression language, we are now
+in a position to try out our expression evaluator:
+
+.. code-block:: ipython3
+
+    In [1]: from expressions import Symbol
+
+    In [2]: from example_code.expression_tools import evaluate, postvisitor
+
+    In [3]: x = Symbol('x')
+
+    In [4]: y = Symbol('y')
+
+    In [5]: expr = 3*x + 2**(y/5) - 1
+
+    In [6]: print(expr)
+    3 ⨉ x + 2 ^ (y / 5) - 1
+
+    In [7]: postvisitor(expr, evaluate, symbol_map={'x': 1.5, 'y': 10})
+    Out[7]: 7.5
+
+
+:term:`DAGs <DAG>` and non-recursive tree visitors
+--------------------------------------------------
+
+If we treat an expression as a tree, then any repeated subexpressions will be
+duplicated in the tree. Consider, for example, :math:`x^2 + 3/x^2`. If we create
+a tree of this expression, then :math:`x^2` will occur twice, and any operation
+that we perform on :math:`x^2` will have to be done twice. If, on the other hand, we
+treat the expression as a more general :term:`directed acyclic graph`, then the
+single subexpression :math:`x^2` can have multiple parents, and so can appear as
+an operand more than once. :numref:`tree_vs_dag` illustrates this situation.
+
+.. _tree_vs_dag:
+
+.. graphviz::
+    :caption: :term:`Tree <tree>` (left) and :term:`DAG` (right) representations
+        of the expression :math:`x^2 + 3/x^2`. Notice that the :term:`DAG`
+        representation avoids the duplication of the :math:`x^2` term.
+
+    strict digraph{
+        a1 [label="+"]
+        pow1 [label="^"]
+        x1 [label="x"]
+        n1 [label="2"]
+        a1 -> pow1
+        pow1 -> x1
+        pow1 -> n1
+        m1 [label="/"]
+        n0 [label=3]
+        pow2 [label="^"]
+        x2 [label="x"]
+        n2 [label="2"]
+        a1 -> m1
+        m1 -> n0
+        m1 -> pow2
+        pow2 -> x2
+        pow2 -> n2
+
+        a3 [label="+", ordering="out"]
+        pow3 [label="^"]
+        x3 [label="x"]
+        n3 [label="2"]
+        a3 -> pow3
+        
+        pow3 -> x3
+        pow3 -> n3
+        m3 [label="/", ordering="out"]
+        n4 [label=3]
+        a3 -> m3
+        m3 -> n4
+        m3 -> pow3
+
+    }
 
 Glossary
 --------
