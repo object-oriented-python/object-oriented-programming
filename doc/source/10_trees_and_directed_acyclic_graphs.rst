@@ -805,9 +805,27 @@ in a position to try out our expression evaluator:
     In [7]: postvisitor(expr, evaluate, symbol_map={'x': 1.5, 'y': 10})
     Out[7]: 7.5
 
+Avoiding recursion
+------------------
 
-:term:`DAGs <DAG>` and non-recursive tree visitors
---------------------------------------------------
+The recursive tree visitors we have written require very few lines of code, and
+very succinctly express the algorithm they represent. However, in most
+programming languages (including Python), recursion is a relatively inefficient
+process. The reason for this is that it creates a deep :term:`call stack`
+requiring a new :term:`stack frame` for every level of recursion. In extreme
+cases, this can exceed Python's limit on recursion depth and result in a
+:class:`RecursionError`. 
+
+In order to avoid this, we can think a little more about what a recursive
+function actually does. In fact, a recursive function is using the :term:`call
+stack` to control the order in which operations are evaluated. We could do the
+same using a :term:`stack` to store which tree nodes still need processing.
+There are a number of ways to do this, but one particular algorithm emerges if
+we wish to be able to represent expressions not only as trees but as more
+general :term:`directed acyclic graphs <DAG>`. 
+
+Representing expressions as :term:`DAGs <DAG>`
+----------------------------------------------
 
 If we treat an expression as a tree, then any repeated subexpressions will be
 duplicated in the tree. Consider, for example, :math:`x^2 + 3/x^2`. If we create
@@ -815,7 +833,7 @@ a tree of this expression, then :math:`x^2` will occur twice, and any operation
 that we perform on :math:`x^2` will have to be done twice. If, on the other hand, we
 treat the expression as a more general :term:`directed acyclic graph`, then the
 single subexpression :math:`x^2` can have multiple parents, and so can appear as
-an operand more than once. :numref:`tree_vs_dag` illustrates this situation.
+an operand more than once. :numref:`tree_vs_dag` illustrates this distinction.
 
 .. _tree_vs_dag:
 
@@ -858,6 +876,15 @@ an operand more than once. :numref:`tree_vs_dag` illustrates this situation.
         m3 -> pow3
 
     }
+
+The difference between a tree and a DAG may seem small in the tiny exampes we
+can print on our page, but realistic applications of computer algebra can easily
+create expressions with thousands or tens of thousands of terms, with multiply
+nested expressions. The repetition of common terms, and therefore data size and
+computational cost, induced by the tree representation is exponential in the
+depth of nesting. This can easily make the difference between a computation that
+completes in a fraction of a second, and one which takes hours to complete or
+which exhausts the computer's memory and therefore fails to complete at all!
 
 Glossary
 --------
