@@ -435,6 +435,8 @@ the depth in the tree of every node:
 Observe here that the node visitor order is different from the postvisitor, and
 that we successfully diagnosed the depth of each node.
 
+.. _expr_trees::
+
 Expression trees
 ----------------
 
@@ -822,7 +824,7 @@ stack` to control the order in which operations are evaluated. We could do the
 same using a :term:`stack` to store which tree nodes still need processing.
 There are a number of ways to do this, but one particular algorithm emerges if
 we wish to be able to represent expressions not only as trees but as more
-general :term:`directed acyclic graphs <DAG>`. 
+general :term:`directed acyclic graphs <DAG>`.
 
 Representing expressions as :term:`DAGs <DAG>`
 ----------------------------------------------
@@ -877,14 +879,124 @@ an operand more than once. :numref:`tree_vs_dag` illustrates this distinction.
 
     }
 
-The difference between a tree and a DAG may seem small in the tiny exampes we
+The difference between a tree and a DAG may seem small in the tiny examples we
 can print on our page, but realistic applications of computer algebra can easily
-create expressions with thousands or tens of thousands of terms, with multiply
-nested expressions. The repetition of common terms, and therefore data size and
+create expressions with thousands or tens of thousands of terms, in which larger
+common subexpressions themselves contain multiple instances of smaller
+subexpressions. The repetition of common terms, and therefore data size and
 computational cost, induced by the tree representation is exponential in the
 depth of nesting. This can easily make the difference between a computation that
 completes in a fraction of a second, and one which takes hours to complete or
 which exhausts the computer's memory and therefore fails to complete at all!
+
+Building expression :term:`DAGs <DAG>`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using somewhat more complex data structures, it is possible to create
+expressions that automatically result in :term:`DAGs <DAG>` rather than
+:term:`trees <tree>`.  That is beyond the scope of this course, but we can
+construct expression DAGs using our existing tools, at the expense of a little
+extra code. Take as an example the expression we used above: :math:`x^2 +
+3/x^2`. If we write:
+
+.. code-block:: ipython3
+
+    In [1]: from expressions import Symbol
+
+    In [2]: x = Symbol('x')
+
+    In [3]: expr = x**2 + 3/x**2
+
+then each occurrence of `x**2` creates a separate :class:`Expression` object and
+we have a tree. However, if we instead write:
+
+.. code-block:: ipython3
+
+    In [1]: from expressions import Symbol
+
+    In [2]: x = Symbol('x')
+
+    In [3]: x2 = x**2
+
+    In [4]: expr = x2 + 3/x2
+
+then we now have a DAG in which the two occurrences of the :math:`x^2` term
+refer to the same `x**2` object.
+
+:term:`DAG` visitors
+~~~~~~~~~~~~~~~~~~~~
+
+Even if we represent an expression as a DAG rather than a tree, the simple
+recursive tree visitors we have used thusfar will undo all of our good work,
+because common subexpressions will be visited via each parent expression, rather
+than just once. This compounds the disadvantages of recursive visitors that we
+discussed above. Instead, we can construct a postorder DAG visitor using a
+:term:`stack` to replace the recursion in keeping track of what to evaluate
+next, and a :class:`dict` to record the nodes we have already visited, and the
+results of visiting them. :numref:`nonrecursive_postvisit` illustrates one such
+algorithm.
+
+.. _nonrecursive_postvisit::
+
+.. code-block:: python3
+    :caption: Pythonic pseudocode for a non-recursive postorder :term:`DAG` visitor.
+    :linenos:
+
+    def visit(expr, visitor):
+        stack = []
+        visited = {}
+        push expr onto stack
+        while stack:
+            e = pop from stack
+            unvisited_children = []
+            for o in e.operands:
+                if o not in visited:
+                    push o onto unvisited_children
+
+            if unvisited_children:
+                push e onto stack # Not ready to visit this node yet.
+                # Need to visit children before e. 
+                push all unvisted_children onto stack
+            else:
+                # Any children of e have been visited, so we can visit it.
+                visited[e] = visitor(e, *(visited(o) for o in e.operands))
+        
+        # When the stack is empty, we have visited every subexpression,
+        # including expr itself.
+        return visited[expr]
+    
+.. note::
+
+    Every operation we have defined on a symbolic mathematical expression
+    defined as a :term:`tree` or a :term:`DAG` has produced a new :term:`tree`
+    or :term:`DAG` as a result. This matches mathematical convention: operations
+    produce new expressions, they don't change their inputs. This is an
+    important design principle of symbolic mathematical software. The confusion
+    that frequently results from modifying symbolic expressions in-place far
+    outweighs any possible advantage of not creating new objects.
+
+Differentiation as an expression visitor
+----------------------------------------
+
+In :numref:`expr_trees` we showed how a tree visitor could implement the
+evaluation of a symbolic expression. You might very well protest that if the
+only thing you wanted to do was evaluate arithmetic expressions then you could
+have just written a Python function and avoided a lot of code. In fact, almost
+any algebraic manipulation that you could conduct with pen and paper can be
+automated using expression visitors. We will illustrate this by sketching how
+differentiation can be achieved using a visitor function.
+
+Let's first consider terminals. Numbers are easy: the derivative of any number
+with respect to any symbol is simply 0. Symbols are nearly as straightforward.
+The derivative of a symbol with respect to itself is 1, while the derivative of
+a symbol with respect to any other symbol is 0. Because terminals have no
+operands, the implementation of differentiation when visiting a terminal is
+particularly easy. Note that the symbol with respect to which we are
+differentiating will need to be passed in to the visitor. This can be achieved
+with a keyword argument in a manner analogous to `tree_map` in
+:numref:`tree_evaluate`.
+
+The differentiation of operators 
 
 Glossary
 --------
