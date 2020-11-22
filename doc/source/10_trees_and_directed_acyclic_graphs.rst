@@ -459,7 +459,7 @@ so on up until finally the addition at the root node is evaluated.
     strict digraph{
         a [label="+"];
         b [label="⨉"];
-        c [label="pow"];
+        c [label="^"];
         2;
         y [font="italic"];
         a->b
@@ -475,6 +475,8 @@ so on up until finally the addition at the root node is evaluated.
 
 We will first consider how to construct trees like this, then consider the
 question of the operations we could implement on them.
+
+.. _expr_hierarchy:
 
 An expression tree class hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -531,13 +533,14 @@ will that comprise?
     expression has operands (even if terminals have zero operands).
 
 :meth:`~object.__add__`, :meth:`~object.__sub__`, :meth:`~object.__mul__`, :meth:`~object.__truediv__`, :meth:`~object.__pow__`  
-    Implementing the special methods for arithmetic is necessary for expressions
-    to exhibit the correct symbolic mathematical behaviour. We met this idea
-    already in :numref:`object_arithmetic`. Arithmetic operations involving
-    symbolic expressions return other symbolic expressions. For example if `a`
-    and `b` are expressions then `a + b` is simply `Add(a, b)`. The fact that
-    these rules are the same for all expressions indicates that they should be
-    implemented on the base class :class:`Expression`. 
+    Implementing the :term:`special methods <special method>` for arithmetic is
+    necessary for expressions to exhibit the correct symbolic mathematical
+    behaviour. We met this idea already in :numref:`object_arithmetic`.
+    Arithmetic operations involving symbolic expressions return other symbolic
+    expressions. For example if `a` and `b` are expressions then `a + b` is
+    simply `Add(a, b)`. The fact that these rules are the same for all
+    expressions indicates that they should be implemented on the base class
+    :class:`Expression`. 
     
     Just as was the case when we implemented the
     :class:`~example_code.polynomial.Polynomial` class, it will be necessary to
@@ -547,7 +550,7 @@ will that comprise?
     just another :class:`Expression` obeying the same arithmetic rules as other
     expressions. The need to accommodate operations between symbolic expressions
     and numbers also implies that it will also be necessary to implement the
-    :term:`special functions` for reversed arithmetic operations.
+    :term:`special methods <special method>` for reversed arithmetic operations.
     
 Let's now consider :class:`Operator`. The operations for creating string
 representations can be implemented here, because they will be the same for all
@@ -569,7 +572,7 @@ operators but different for terminals.
 
 :meth:`~object.__str__`
     This is the human-readable string output, using :term:`infix` operators, so
-    in the example above we would expect to see `2*y + 4^(5 + x)` This looks
+    in the example above we would expect to see `2 * y + 4 ^ (5 + x)` This looks
     sort of straightforward, simply associate the correct symbol with each
     operator class as a :term:`class attribute` and place the string
     representation of the operands on either side. 
@@ -577,7 +580,7 @@ operators but different for terminals.
     The challenge is to correctly include the brackets. In order to do this, it
     is necessary to associate with every expression class a :term:`class
     attribute` whose value is a number giving an operator precedence to that
-    class. For example, the priority of :class:`Mul` should be higher than
+    class. For example, the precedence of :class:`Mul` should be higher than
     :class:`Add`. A full list of operators in precedence order is available in
     :ref:`the official Python documentation <operator-summary>`. An operand
     :math:`a` of an operator :math:`o` needs to be placed in brackets if the
@@ -996,7 +999,31 @@ differentiating will need to be passed in to the visitor. This can be achieved
 with a keyword argument in a manner analogous to `tree_map` in
 :numref:`tree_evaluate`.
 
-The differentiation of operators 
+The differentiation of operators is achieved by an applying the chain rule. For
+an binary operator :math:`\odot`, with operands :math:`o_0` and :math:`o_1`, the
+chain rule is given by:
+
+.. math::
+    :label:
+
+    \frac{\partial\, (o_0 \odot o_1)}{\partial x} = 
+    \frac{\partial o_0}{\partial x} \frac{\partial\, (o_0 \odot o_1)}{\partial o_0}
+    + \frac{\partial o_1}{\partial x} \frac{\partial\, (o_0 \odot o_1)}{\partial o_1}
+
+For example if the operator is multiplication, then:
+
+.. math::
+    :label:
+
+    \frac{\partial\, o_0 o_1}{\partial o_0} = o_1
+
+and the product rule follows immediately. Similarly, the sum and quotient
+rules for differentiation are simply special cases of the chain rule. This means
+that the particular implementation of differentiation for a given
+:class:`Operator` subclass simply encodes the version of the chain rule for that
+operator. This will require the original operands to the operator, which are
+available from the operator object itself, and the results of differentiating
+the operands, which are given by the `*o` argument to the visitor function.
 
 Glossary
 --------
@@ -1004,30 +1031,88 @@ Glossary
  .. glossary::
     :sorted:
     
+    child node
+        The children of a node in a :term:`DAG` are the targets of the edges
+        emerging from that node. In this context, the node from which these
+        edges emanate is called the :term:`parent node`.
+
     directed acyclic graph
     DAG
         A :term:`graph` in which the edges are directed (i.e. the edges point from
         one vertex to another) and where there are no cycles of edges.
+
+    edge
+        A connection between two nodes in a :term:`graph`. In a directed graph,
+        the edges have an orientation, from a source node to a target node.
 
     graph
         An :term:`abstract data type` comprising a set of nodes or vertices
         :math:`V` and a set of edges :math:`E` each of which connects two vertices.
 
     tree
-        A :term:`directed acyclic graph` in which every vertex is the target of at
+        A :term:`DAG` in which every vertex is the target of at
         most one edge.
 
+    graph visitor
+        A function which iterates over all of the nodes of a graph, calling
+        calling a visitor function for each node. 
+
+    leaf node
+        A node in a :term:`DAG` with no :term:`children <child node>`.
+
+    parent node
+        From the perspective of a :term:`child node`, the source of an incoming edge.
+
+    preorder traversal
+        A :term:`visitor <graph visitor>` for a :term:`DAG` in which each parent
+        node is visited *before* its :term:`children <child node>`.
+
+    postorder traversal
+        A :term:`visitor <graph visitor>` for a :term:`DAG` in
+        which the each parent node is visited *after* its :term:`children <child
+        node>`.
+ 
+    root node
+        A node in a :term:`DAG` with no :term:`parent <parent node>`.
+
+    single dispatch function
+        A function with a single name but multiple implementations. The
+        implementation which executes when the function is called is chosen
+        based on the :class:`type` of the first argument to the function. The
+        :func:`functools.singledispatch` function facilitates the creation of
+        single dispatch functions.
 
 Exercises
 ---------
+
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
 
 .. _ex_expr:
 
 .. proof:exercise::
 
-    .. note::
+    In the skeleton repository for this week, create a :term:`package`
+    :mod:`expressions` which implements the class hierarchy in
+    :numref:`expr_hierarchy`. When implementing :meth:`~object.__str__`, use the
+    symbols `+`, `-`, `*`, `/`, and `^`. The names :class:`Symbol`,
+    :class:`Number`, :class:`Add`, :class:`Sub`, :class:`Mul`, :class:`Div`, and
+    :class:`Pow` should be directly importable in the :mod:`expressions` :term:`namespace`. 
+    
+.. proof:exercise::
 
-        Get the student to implement the expressions language.
+    Write a function importable as :func:`expressions.postvisitor` with the same
+    interface as :numref:`postorder_recursive`. Your implementation, however,
+    should not be recursive, and should only visit repeated subexpressions once,
+    no matter how many times they occur in the expression.
+
+.. proof:exercise::
+
+    Write a :term:`single dispatch function` importable as
+    :func:`expressions.differentiate` which has the correct interface to be
+    passed to :func:`expressions.postvisitor` or
+    :func:`example.code.graphs.postvisitor` and which differentiates the
+    expression provided with respect to a symbol whose name is passed as the
+    string :term:`keyword argument <argument>` `var`.
 
 .. rubric:: Footnotes
 
