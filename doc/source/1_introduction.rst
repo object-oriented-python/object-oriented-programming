@@ -55,7 +55,7 @@ abstraction in mathematics, abstraction in coding is a form of
 constructive laziness: it simultaneously allows the mathematician to
 achieve more and do less work.
 
-This course is a second course in programming, building a previously
+This is a second course in programming, building a previously
 acquired basic understanding of programming in Python. In covering
 more advanced programming, we will pay particular attention to objects
 and abstraction as they occur in Python. Furthermore, we will do so
@@ -81,15 +81,17 @@ we run through the same cycle:
 The notes
 .........
 
-All of the new material we cover in this course is presented in the notes. They
-always the starting point for your work. Each chapter will introduce new
-concepts in programming, often tied back to related mathematical concepts, and
-always illustrated by practical code examples. Python has excellent `official
-online documentation <https://docs.python.org/3/>`_, and we link to that
-throughout the text. External links show up in orange while :ref:`internal links
-to other parts of the notes <introduction>` are red. Sometimes we introduce
-counterexamples: illustrations of code errors or bad implementation ideas. These
-will be flagged with a big red cross:
+All of the new material we cover in this course is presented in these notes.
+Each chapter contains the material for one week of term, so in week :math:`n`,
+you work through chapter :math:`n`. The notes always the starting point for your work.
+Each chapter will introduce new concepts in programming, often tied back to
+related mathematical concepts, and always illustrated by practical code
+examples. Python has excellent `official online documentation
+<https://docs.python.org/3/>`_, and we link to that throughout the text.
+External links show up in orange while :ref:`internal links to other parts of
+the notes <introduction>` are red. Sometimes we introduce counterexamples:
+illustrations of code errors or bad implementation ideas. These will be flagged
+with a big red cross:
 
 .. container:: badcode
 
@@ -117,8 +119,7 @@ The chapters broadly alternate between introducing new programming concepts,
 such as :ref:`objects <objects>`, :ref:`abstract data types
 <abstract_data_types>`, or :ref:`inheritance <inheritance>`, and
 covering various aspects of the craft of programming, such as :ref:`style
-<inheritance>` and 
-:ref:`debugging <debugging>`. In this way the course combines specific programming knowledge
+<inheritance>` and :ref:`debugging <debugging>`. In this way the course combines specific programming knowledge
 with more general coding skills.
 
 The videos
@@ -150,7 +151,7 @@ writing code. The core of each week's activities is therefore to put the new
 concepts and programming structures you've learned into practice. The
 programming exercises are given at the end of each chapter, just before the
 glossary. Each time there will be a skeleton code available from
-ref:`GitHub Classroom <fons:github_classroom_exercise>` which provides the starting
+:ref:`GitHub Classroom <fons:github_classroom_exercise>` which provides the starting
 point. Sometimes you might be asked to complete a piece of code while on other
 occasions you'll need to write a whole Python module from scratch. Each set of
 exercises will come with a matching set of tests. These are small programs which
@@ -158,17 +159,34 @@ check whether your code produces the correct responses to a range of inputs.
 Tests like this provide immediate feedback and enable you to know how you are
 doing without having to wait for code to be submitted and marked.
 
+.. note::
+
+    Solutions to exercises will not be issued. The notes and accompanying
+    example code contain examples of the same programming constructs that the
+    exercises require you to implement, and the tests provide a mechanism to
+    know when you have a correct answer. There are also help mechanisms via the
+    course forum and the lab sessions. Issuing solutions to problems would
+    simply encourage students to study the solutions rather than write code, and
+    the only way to learn to program is to write code.
+
 Assessment
 ..........
 
 The weekly quiz and exercises are not assessable: they are formative activities
 designed to help you learn the module. Instead, the module will be assessed by
-two controlled programming assessments, effectively programming exams. The
-instructions and skeleton code for these will be released at a fixed time on
-GitHub Classroom, and the code which you have committed to GitHub by the end of
-the allotted time will be marked.
+two controlled programming assessments, effectively programming exams. The first
+programming assessment will be held in week 7 and will be worth 20% of the
+marks for the course. This provides an opportunity to receive feedback in the
+middle of the term, and is a practice for the main exam. The :ref:`course contents for
+week 7 <midterm>` will comprise practice programming exercises for this midterm test.
+The second programming assessment will be held in the main May exam period and
+will count for the other 80% of the course.
 
-The programming exercises will be similar to the weekly exercises in the course,
+The instructions and skeleton code for the programming exercises will be
+released at a fixed time on GitHub Classroom, and the code which you have
+committed to GitHub by the end of the allotted time will be marked.
+
+The exam questions will be similar to the weekly exercises in the course,
 and may include new programmes to write from specification, modifications or
 extensions to be made to code which is provided, and debugging exercises in
 which defective code is provided which you need to correct. Marks will be
@@ -302,7 +320,7 @@ which code failed
     large amounts of code to issues, it's difficult for helpers to work with, or
     even to run in exactly the same way you did. It's much better to be able to
     point to a complete repository. Of course an even better approach is to construct a
-    :ref:`minimal failing example <deugging-mfe>`. 
+    :ref:`minimal failing example <debugging-mfe>`.
 
 what did you actually do?
     This is one point where running code from the terminal is a major advantage,
@@ -316,6 +334,15 @@ what did you actually do?
 It's important that the description of what you did is strictly a factual
 historical record. This is not the time to speculate about what you think is
 going wrong, we'll get to that bit. Here you're strictly repeating what you did.
+
+.. note::
+
+    Please avoid posting substantially complete solutions to programming
+    exercises into the course forum. Instead, ensure that you have :ref:`pushed
+    your work to Github <fons:commit_push>`, and then post the :ref:`git commit
+    hash <fons:git-hash>`. This will enable the lecturer or TA to find your
+    code. It is still important to include all of the other components of the
+    issue report.
 
 Observed result
 ...............
@@ -519,7 +546,7 @@ information, might be written in Markdown as follows. The title, which we omit
 from the Markdown because it would be typed in a separate box on Piazza, might
 be something like "Python square function returns wrong answer." 
 
-.. code-block:: markdown
+.. code-block:: md
 
     I wrote a function to square its input. I expected to see the
     square of the input but I see the wrong answer.
@@ -563,6 +590,12 @@ This results in the following, much more readable, post on Piazza:
 
 Exercises
 ---------
+
+This week's exercises are designed to ensure that you are set up with the core
+tools that you will need for the rest of the module. Exceptionally, there is no
+quiz this week as we haven't yet started with the substantive contents of the
+module. Nonetheless, this week's exercises are an important baseline. Skipping
+them is likely to result in you having to play catchup in the coming weeks.
 
 .. proof:exercise::
     

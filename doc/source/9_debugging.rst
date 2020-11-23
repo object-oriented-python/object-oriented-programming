@@ -60,6 +60,11 @@ Invoking the debugger on a running program
 Debugging strategy
 ------------------
 
+.. _debugging-mfe:
+
+Creating a minimal failing example
+..................................
+
 .. _bisection-debugging:
 
 Bisection debugging

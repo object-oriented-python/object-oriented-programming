@@ -39,7 +39,7 @@ conveying the output back to the user. This means that the same Python
 code works in essentially the same way no matter how you use
 Python. The Python interpreter also sits between the Python code and
 the operating system, so for most purposes, it also doesn't matter
-whether your Python program is running on Windows, Mac, Linux, or
+whether your Python program is running on Windows, macOS, Linux, or
 maybe something more exotic. Usually, when we refer to Python doing
 something or responding to code in a particular way, what we mean is
 that this is what the interpreter does in those circumstances.
@@ -60,9 +60,12 @@ Environment (IDE). IDEs combine an editor with a Python interpreter to
 run your code, a debugger and often other features such as integration
 with Git.
 
-.. note::
-
-   Fill in more details once it becomes apparent which editors we'll be using.
+During this course, it will be assumed that you're using the IDE Microsoft
+Visual Studio Code. You don't have to do so, and if you have a strong preference
+for another text editor or IDE then you are welcome to use it. That said, if
+your text editor does not have a collaborative editing facility equivalent to
+Visual Studo Code's Live Share, then you are likely to need to use Visual Studio
+Code when you ask for help so that the helper can share your editor session.
 
 .. note:: Text files
 

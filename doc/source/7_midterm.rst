@@ -1,3 +1,5 @@
+.. _midterm:
+
 Midterm test preparation
 ========================
 
