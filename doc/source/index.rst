@@ -35,4 +35,6 @@ very interested to hear from anyone interested in using it to teach.
    9_debugging.rst
    10_trees_and_directed_acyclic_graphs.rst
    11_further_object-oriented_features.rst
+   
+..
    zbibliography

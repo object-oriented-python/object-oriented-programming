@@ -1,9 +1,5 @@
 .. _style:
 
-False if src_petsc4py_exists and args.honour_petsc_dir else True
-
-modifiable default keyword arguments.
-
 A matter of style
 =================
 
@@ -413,20 +409,62 @@ exception names
             PolynomialDivisionError # For example to indicate indivisibility.
 
 function, variable, and module names
-  Almost all names other than classes are usually written in all
-  lower case, with underscores separating words. Even proper nouns are
-  usually spelt with lower case letters to avoid being confused with
-  class names.
+    Almost all names other than classes are usually written in all
+    lower case, with underscores separating words. Even proper nouns are
+    usually spelt with lower case letters to avoid being confused with
+    class names.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            def Euler  # Don't capitalise function names.
+            MaxRadius = 10.  # No CamelCase.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+        
+            def euler  # Lower case, even for names.
+            max_radius = 10.  # Separate words with _.
 
 method parameters
-  The first parameter to an instance method is the class
-  itself. *Always and without exception* name this parameter `self`.
+    The first parameter to an :term:`instance method` is the class
+    itself. *Always and without exception* name this parameter `self`.
+
+    .. container:: badcode
+
+        .. code-block:: python3
+
+            class MyClass:
+
+                def __init__(instance, arg1, arg2):
+                ...
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            class MyClass:
+
+                def __init__(self, arg1, arg2):
+                ...
+
 
 non-public methods and attributes
-  If a method or attribute is not intended to be directly accessed
-  from outside the class, it should have a name starting with an
-  underscore. This provides a clear distinction between the public
-  interface of a class and its internal implementation.
+    If a method or attribute is not intended to be directly accessed
+    from outside the class, it should have a name starting with an
+    underscore. This provides a clear distinction between the public
+    interface of a class and its internal implementation.
+
+    .. container:: goodcode
+
+        .. code-block:: python3
+
+            class MyClass:
+
+                def _internal_method(self, arg1):
+                ...
 
 Choosing names
 ..............
@@ -511,7 +549,7 @@ to seven. You could write this in 5 difficult to understand lines:
                     result.append(_)
 
 
-Much better would be to write a single more abstract but simpler line:
+It would be much better to write a single more abstract but simpler line:
 
 .. container:: goodcode
 
@@ -703,7 +741,7 @@ encode the differences between versions in the :term:`parameters <parameter>` to
 the function or class constructor. If the differences between the versions of
 the code require different code, as opposed to different values of some
 quantities, then it may be possible to use :term:`inheritance` to avoid
-repetition. We will return to this in :numref:`Chapter %s<inheritance>`.
+repetition. We will return to this in :numref:`week %s<inheritance>`.
 
 
 Comments
@@ -819,7 +857,7 @@ The following is displayed:
         Return the n-th Fibonacci number.
 
 There is also a specific IPython help extension, which also works in Jupyter
-notebooks (because they are related projects). Appending a question mark
+notebooks (IPython and Jupyter are related projects). Appending a question mark
 :kbd:`?` to an object name prints a slightly different version of the help information:
 
 .. code-block:: ipython3
@@ -928,6 +966,13 @@ Glossary
 
 Exercises
 ---------
+
+.. note:: 
+
+    Use this example in the exercises or quiz:
+
+    False if src_petsc4py_exists and args.honour_petsc_dir else True
+
 
 .. note::
 

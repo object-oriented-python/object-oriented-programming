@@ -3,9 +3,9 @@
 Objects and abstraction
 =======================
 
-In this chapter, we will take a first look at the representation of
+This week we will take a first look at the representation of
 abstract mathematical objects and operations as data objects in a
-computer program. We will learn about what it means for data objects to have
+computer program. We will learn about what it means for objects to have
 a :term:`type`, and how to create new types using the :keyword:`class` keyword.
 
 Abstraction in action
@@ -52,7 +52,7 @@ we add an integer to a :ref:`string <textseq>`?
   TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
 In this error, Python is complaining that `+` does not make sense if
-the items being added (the "operands") are an integer and a
+the items being added (the :term:`operands`) are an integer and a
 string. This makes our understanding of "suitably defined" more
 concrete: clearly some pairs of objects can be added and others
 can't. However, we should be careful about the conclusions we draw. We
@@ -112,7 +112,7 @@ Types
 
 In the previous section, we observed that addition may or may not be
 defined, depending on what the types of its operands are. In doing so,
-we skirted the question of what it means for a code object to have
+we skirted the question of what it means for an object to have
 type.
 
 .. proof:definition::
@@ -146,7 +146,7 @@ of `int`?
   In [1]: type(int)                                        
   Out[1]: type 
 
-So :class:`int` is the type of integer objects, and is itself an
+We see that :class:`int` is the type of integer objects, and is itself an
 object with type :class:`type`. That rather invites the question of what
 is the type of :class:`type`?
 
@@ -433,11 +433,15 @@ user might type in order to recreate the object. For example::
 
   def __repr__(self):
   
-      return "Polynomial(" + repr(self.coefficients) + ")"
+      return self.__class__.__name__ + "(" + repr(self.coefficients) + ")"
 
-Notice that in order to help ensure consistency of representations we
-call :func:`repr` on the coefficients in this case, whereas in the
-:meth:`~object.__str__` method we called :class:`str`.
+`self.__class__.__name__` simply evaluates to the class name, in this case
+`Polynomial`. This is better than hard-coding the class name because, as we will
+see in :numref:`week %s <inheritance>`, this implementation of
+:meth:`~object.__repr__` might well end up being inherited by a class with a
+different name. Notice that in order to help ensure consistency of
+representations we call :func:`repr` on the coefficients in this case, whereas
+in the :meth:`~object.__str__` method we called :class:`str`.
 
 We can now observe the difference in the result:
 
@@ -473,7 +477,7 @@ observed that objects of some classes can be added. Is this true for
 Of course, once again this is not so surprising since we haven't
 defined what addition of polynomials should mean. The :term:`special
 method` which defines addition is :meth:`~object.__add__`. It takes the
-object itself and another object and returns their sum. That is
+object itself and another object and returns their sum. That is,    
 when you write `a + b` in Python, then what actually happens is
 `a.__add__(b)`. 
 
@@ -497,7 +501,8 @@ which we import from the :mod:`numbers` module. All Python numbers are
 instances of :class:`~numbers.Number` so this provides a mechanism for checking
 whether the other operand is a number. We will consider
 :func:`isinstance` and :class:`~numbers.Number` in more detail when we look at
-:ref:`inheritance <inheritance>` and :ref:`abstract base classes <abstract_base_classes>`.
+:ref:`inheritance <inheritance>` and :ref:`abstract base classes
+<abstract_base_classes>`.
 
 Putting all this together, :numref:`polynomial_add` defines polynomial addition.
 
@@ -687,36 +692,41 @@ Glossary
         Examples include addition, subtraction, division and multiplication. 
 
     instance
-       An object of a particular class. `a` is an instance of
-       :class:`MyClass` means that `a` has class `MyClass`. We will
-       return to this concept when we learn about :ref:`inheritance <inheritance>`.
+        An object of a particular class. `a` is an instance of
+        :class:`MyClass` means that `a` has class `MyClass`. We will
+        return to this concept when we learn about :ref:`inheritance <inheritance>`.
 
     instantiate
-       To create an :term:`instance` of a :term:`class` by
-       calling its :term:`constructor`.
+        To create an :term:`instance` of a :term:`class` by
+        calling its :term:`constructor`.
        
     method
     instance method
-       A function defined within a :term:`class`. If `a` is an
-       instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
-       `a.foo()` is equivalent to `MyClass.foo(a)`. The first parameter
-       of an instance method is always named `self`.
+        A function defined within a :term:`class`. If `a` is an
+        instance of :class:`MyClass`, and :class:`MyClass` has a :meth:`foo` method then
+        `a.foo()` is equivalent to `MyClass.foo(a)`. The first parameter
+        of an instance method is always named `self`.
+
+    operands
+        The input values to an operator. For example the operands to `+` are the
+        numbers being added (the summands), while the operands to exponentiation
+        are the base and exponent.
 
     pseudocode
-       A description of an algorithm given in the form of a computer
-       program but without conforming to the rules of a particular
-       programming language, and employing mathematical notation or
-       plain text to express the algorithm in a human-readable form.
+        A description of an algorithm given in the form of a computer
+        program but without conforming to the rules of a particular
+        programming language, and employing mathematical notation or
+        plain text to express the algorithm in a human-readable form.
 
     special method
     magic method
-       A method which has special meaning in the Python
-       language. Special method names are used to define operations on
-       a :term:`class` such as arithmetic operators, indexing, or the
-       class :term:`constructor`. Special methods have names starting and ending
-       with a double underscore (`__`). See :ref:`the Python documentation
-       <specialnames>` for a technical description. Special methods
-       are sometimes informally called "magic methods".
+        A method which has special meaning in the Python
+        language. Special method names are used to define operations on
+        a :term:`class` such as arithmetic operators, indexing, or the
+        class :term:`constructor`. Special methods have names starting and ending
+        with a double underscore (`__`). See :ref:`the Python documentation
+        <specialnames>` for a technical description. Special methods
+        are sometimes informally called "magic methods".
 
 Exercises
 ---------
@@ -738,6 +748,11 @@ the :class:`Polynomial` class.
        may be useful to know that all integers are instances of
        :class:`numbers.Integral`.
     5. Polynomial evaluation at a scalar value (:meth:`~object.__call__`).
+
+    .. note::
+
+        Don't forget to commit and push your changes, and make sure that the
+        tests pass on GitHub!
 
 .. proof:exercise::
 

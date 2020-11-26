@@ -3,7 +3,7 @@
 Abstract data types
 ===================
 
-In :numref:`objects`, we introduced the concept of :term:`type` as an
+In :numref:`week %s <objects>`, we introduced the concept of :term:`type` as an
 :term:`abstraction` comprising a set of possible values, and a set of
 operations. All types in Python are abstractions in this sense
 because we deal with them in terms of their defined properties rather

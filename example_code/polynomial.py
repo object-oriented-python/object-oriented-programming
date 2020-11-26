@@ -31,7 +31,7 @@ class Polynomial:
 
     def __repr__(self):
 
-        return "Polynomial(" + repr(self.coefficients) + ")"
+        return self.__class__.__name__ + "(" + repr(self.coefficients) + ")"
 
     def __add__(self, other):
 

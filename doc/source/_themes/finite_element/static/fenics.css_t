@@ -219,6 +219,14 @@ div.body h6 {
     margin-bottom: 1.6em;
 }
 
+h1 .section-number::before {
+    content: "Week ";
+}
+
+.toctree-l1 > a::before {
+    content: "Week ";
+}
+
 a.headerlink {
     color: #1b61d6;
     font-size: 12px;

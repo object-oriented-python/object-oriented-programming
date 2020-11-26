@@ -1,7 +1,7 @@
 Programs in files
 ===================
 
-This chapter is about how to combine pieces of code into larger units,
+This week we will start to learn how to combine pieces of code into larger units,
 and how to package up your code so that you or others can do the same. 
 You will previously have written Python code in Jupyter notebooks, and
 possibly used an interactive Python environment such as
@@ -272,7 +272,7 @@ quite long and cumbersome, which is particularly inconvenient if names
 are to be used frequently or in the middle of formulae: you probably
 don't really want to write :func:`math.sin` in every trig formula you
 ever write. One alternative is to rename the module on import. This is
-achieved using the keyword `as` in an import statement. For example,
+achieved using the keyword :keyword:`as <import>` in an import statement. For example,
 it is usual to import the numerical Python module :mod:`numpy` in the
 following way:
 
@@ -734,12 +734,21 @@ tells pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
-    $ py.test -x test
+    $ py.test -x tests
 
 The tests are usually arranged in increasing order of sophistication, so the
 earlier tests are likely to catch the most basic errors in your code. For this
 reason, it is usually the best policy to try to fix the first error first, and
 only move onto the next problem when the previous test passes.
+
+.. note::
+
+    The exercise repositories in this course will usually contain a
+    :file:`tests` directory full of tests that check that you have correctly
+    implemented the week's exercises. You should get in the habit of running the
+    tests as you work through the exercises, as they are designed not just to
+    pass if your code is correct, but to provide feedback as to what might be
+    going wrong if your code contains errors.
 
 Writing code to a specified interface
 -------------------------------------
@@ -827,6 +836,15 @@ Exercises
     you will use for this course on your computer. Start with an overall folder
     for the module, and create a virtual environment in that module.
 
+.. proof:exercise::
+
+    Visit the `GitHub repository for these notes
+    <https://github.com/object-oriented-python/object-oriented-programming>`_.
+    Clone that git repository into your course folder, and install the Python
+    package it contains into your virtual environment. Check that it has
+    installed correctly by running IPython, importing :mod:`fibonacci` and
+    trying out :func:`fibonacci.fib <fibonacci.fibonacci.fib>`.
+
 .. note::
 
     The first GitHub classroom assignment for this module will be released at
@@ -857,6 +875,14 @@ Exercises
 
             In [1]: 4 % 3
             Out[1]: 1
+
+    .. note:: 
+
+        After this and every exercise in which you write code, ensure that you
+        add any new files to git, commit all of your changes, and push to
+        GitHub. Then ensure that the tests pass on GitHub. For more information
+        about how to do any of these, refer back the :ref:`Faculty of Natural Sciences
+        Git instructions <github_classroom_exercise>`.
 
 .. proof:exercise::
 
