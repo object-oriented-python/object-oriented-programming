@@ -737,8 +737,15 @@ Glossary
         in each :term:`stack frame`, with the current frame at the
         bottom and the outermost frame at the top.
 
-.. rubric:: Footnotes
+Exercises
+---------
 
+.. proof:exercise::
+
+    Write Newton-raphson iteration and raise exceptions if it fails. Fall back
+    to bisection?
+
+.. rubric:: Footnotes
 
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.

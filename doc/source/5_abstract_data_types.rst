@@ -118,7 +118,7 @@ An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reverse Polish notation, or postfix notation, is a way of writing
-mathematical operations without using operator priority or brackets in
+mathematical operations without using operator precedence or brackets in
 order to determine the order of operations. This makes the
 implementation of reverse Polish notation arithmetic particularly
 simple. Reverse Polish calculators require fewer button pushes for
@@ -225,7 +225,7 @@ relationship between the two is shown in :numref:`list_stack`.
        unchanged.
    * -
      - `len(my_list)`
-     - Return the number of items on the stack. Not strictly required
+     - Return the number of items on the stack. Not a strictly required
        stack operation, but often useful.
 
 Separation of concerns
@@ -347,15 +347,15 @@ data structure.
 
 .. note::
 
-    :numref:`Definition %s <bigO>` is a particular case of the big `O` notation, which you may
-    already have seen in numerical analysis. The distinction is that in
-    analysing algorithmic complexity, the limit is taken as :math:`n` approaches
-    infinity, while in numerical analysis the independent variable approaches 0.
-    This difference between two closely related fields is often confusing,
-    particularly since both disciplines conventionally leave out the limit. It's
-    worth keeping in mind that the difference, because a numerical algorithm
-    with :math:`O(h^4)` error is really rather good since `h` is small, but an
-    algorithm with :math:`O(n^4)` cost is very expensive indeed!
+    You may already have seen big O notation in numerical analysis. The
+    distinction is that in analysing algorithmic complexity, the limit is taken
+    as :math:`n` approaches infinity, while in numerical analysis the
+    independent variable approaches 0. This difference between two closely
+    related fields is often confusing, particularly since both disciplines
+    conventionally leave out the limit. It's worth keeping in mind that the
+    difference, because a numerical algorithm with :math:`O(h^4)` error is
+    really rather good since `h` is small, but an algorithm with :math:`O(n^4)`
+    cost is very expensive indeed!
 
 Amortised complexity and worst case complexity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -379,7 +379,7 @@ full does a further append operation cause Python to allocate more
 memory. The amount of memory allocated is approximately proportional
 to the current length of the list. That is, if the current list length
 is :math:`n` then the new memory allocation will be of size
-approximately :math:`kn` for some :math:`k>1`. This concrete data structure is
+approximately :math:`kn` for some :math:`k>1`. This :term:`data structure` is
 called a :term:`dynamic array`. :numref:`dynamicarray` illustrates its operation.
    
 .. _dynamicarray:
@@ -470,7 +470,7 @@ list, averaged over a suitably large number of operations, is
 :math:`O(1)`. This measure of complexity, in which the cost of
 occasional expensive operations is considered averaged over a large
 number of operations, is called :term:`amortised complexity`. In
-contrast, the occasional list append operation is an example of the
+contrast, the occasional reallocate and copy operation is an example of the
 :term:`worst case complexity` of the algorithm. Appending an item to a
 list has an amortised time complexity of :math:`O(1)` but a worst-case
 time complexity of :math:`O(n)`.
@@ -557,7 +557,7 @@ for prepending values. One might think that the natural solution for this would
 be to create a double-ended dynamic array: a buffer with spare space at each
 end. Unfortunately this is not optimally efficient in the case where the deque
 is used to implement a queue of approximately constant length. In that case,
-values are consistently added at one end of the data structure and removed from
+values are consistently added at one end of the :term:`data structure` and removed from
 the other. Even in the case of a double-ended dynamic array, the buffer space at
 the append end of the queue will constantly run out, necessitating an expensive
 copy operation. The solution is to use a dynamic array, but to logically join up
@@ -867,13 +867,13 @@ encouter a few more in this course. For context, here are a few other examples.
 set
     A set is an unordered collection of objects with the property that objects
     that compare equal can only occur once in the set. Inserting or accessing a
-    set member is an :math:`O(1)` operation. Python provides the
+    set member has :math:`O(1)` :term:`amortised complexity`. Python provides the
     :class:`set` built in class as an implementation.
 
 dictionary or map
     A generalised function in which unique (up to equality) keys are mapped to
     arbitrary values. Again, insertion and deletion cost :math:`O(1)`
-    operations. The Python :class:`dict` type is an implementation.
+    operations on average. The Python :class:`dict` type is an implementation.
 
 graph
     A general relation between a set and itself defined by a set of values and a
@@ -981,7 +981,8 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
                 break
 
     Obviously the Fibonacci sequence is infinite, so your iterator will never
-    raise :class:`StopIteration`.
+    raise :class:`StopIteration`. Make sure that calculating the next number is
+    always a :math:`O(1)` operation: don't recalculate from 1 each time.
 
 .. proof:exercise::
 
@@ -991,7 +992,7 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
 
     :obj:`push(n)`
         This takes a single argument. If it is a number then it should be
-        pushed onto the calculator's internal stack. If it is a string for a
+        pushed onto the calculator's internal stack. If it is the string for a
         recognised operator, then the appropriate number of operands should be
         popped from the internal stack, the result pushed back on the stack.
         Your calculator should support the following operators: `"+"`, `"-"`,
