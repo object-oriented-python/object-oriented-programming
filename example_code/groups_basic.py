@@ -34,6 +34,7 @@ class CyclicGroup:
                              f" in the range [0, {self.order})")
 
     def operation(self, a, b):
+        '''The group operation is addition modulo n.'''
         return (a + b) % self.order
 
     def __call__(self, value):
@@ -61,6 +62,7 @@ class GeneralLinearGroup:
                              "square array.")
 
     def operation(self, a, b):
+        '''The group operation is matrix multiplication.'''
         return a @ b
 
     def __call__(self, value):

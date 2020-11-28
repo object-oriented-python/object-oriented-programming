@@ -129,7 +129,7 @@ operation. Group theorists often use a dot, but we need to choose one of the
 infix operators that Python supports. We'll chose `*`, which is possibly the
 closest match among Python's operators. One could easily envisage a more
 complete implementation of a group, with support for group properties such as
-generators and element features such as inverses. But our objective here is to
+generators and element features such as inverses. Our objective here is to
 develop an understanding of class relations, rather than of algebra, so this
 minimal characterisation of a group will suffice. 
 
@@ -148,7 +148,7 @@ minimal characterisation of a group will suffice.
         def __mul__(self, other):
             '''Use * to represent the group operation.'''
             return Element(self.group,
-                        self.group.operation(self.value,
+                           self.group.operation(self.value,
                                                 other.value))
 
         def __str__(self):
@@ -168,7 +168,7 @@ minimal characterisation of a group will suffice.
             '''Ensure that value is a legitimate element value in this group.'''
             if not (isinstance(value, Integral) and 0 <= value < self.size):
                 raise ValueError("Element value must be an integer"
-                                f" in the range [0, {self.size})")
+                                 f" in the range [0, {self.size})")
 
         def operation(self, a, b):
             return (a + b) % self.order
@@ -203,6 +203,7 @@ then able to create elements of the group by calling the group object. The group
 operation then has the expected effect:
 
 .. math::
+    :label:
 
     3_{C_5} \cdot 4_{C_5} &\equiv (3 + 4) \operatorname{mod} 5\\
     &= 2\\ 
@@ -333,9 +334,12 @@ does.
 
         Each subclass represents a family of parametrised groups.'''
         def __init__(self, n):
-            '''Args:
-                n: The primary group parameter, such as order or degree. The
-                precise meaning of n changes from subclass to subclass.
+            '''
+            Parameters
+            ----------
+                n: int
+                    The primary group parameter, such as order or degree. The
+                    precise meaning of n changes from subclass to subclass.
             '''
             self.n = n
 
@@ -361,6 +365,7 @@ does.
                                 f" in the range [0, {self.n})")
 
         def operation(self, a, b):
+            '''The group operation is addition modulo n.'''
             return (a + b) % self.n
 
 
@@ -373,9 +378,11 @@ does.
             value = np.asarray(value)
             if not (value.shape == (self.n, self.n)):
                 raise ValueError("Element value must be a "
-                                f"{self.n} x {self.n} square array.")
+                                f"{self.n} x {self.n}"
+                                "square array.")
 
         def operation(self, a, b):
+            '''The group operation is matrix multiplication.'''
             return a @ b
 
 :numref:`groups_inheritance` shows a new implementation of
@@ -391,10 +398,10 @@ Inheritance syntax
 ~~~~~~~~~~~~~~~~~~
 
 Look again at the definition of :class:`~example_code.groups.CyclicGroup` on
-line 23:
+line 26:
 
 .. code-block:: python3
-    :lineno-start: 23
+    :lineno-start: 26
 
     class CyclicGroup(Group):    
 
@@ -418,11 +425,11 @@ groups.
 Class attributes
 ~~~~~~~~~~~~~~~~
 
-At line 25 of :numref:`groups_inheritance`, the name `notation` is
+At line 28 of :numref:`groups_inheritance`, the name `notation` is
 assigned to:
 
 .. code-block:: python3
-    :lineno-start: 25
+    :lineno-start: 28
 
     notation = "C"
 
@@ -483,10 +490,10 @@ were to instantiate :class:`Group` itself:
     AttributeError: 'Group' object has no attribute 'notation'
 
 In fact, :class:`Group` is never supposed to be instantiated, it plays the role
-of an :term:`abstract base class`. In other words, it's role is to provide
+of an :term:`abstract class`. In other words, it's role is to provide
 functionality to classes that inherit from it, rather than to be the type of
 objects itself. We will return to this in more detail in
-:numref:`abstract_base_classes`.
+:numref:`abstract_classes`.
 
 However, if we instead instantiate :class:`~example_code.groups.CyclicGroup`
 then everything works:
@@ -506,6 +513,11 @@ the attributes that are defined for it. In this case, even though
 :meth:`__str__` is defined on :class:`Group`, `self` has type
 :class:`CyclicGroup`, and therefore `self.notation` is well-defined and has the
 value `"C"`. 
+
+Calling parent class methods
+----------------------------
+
+Suppose we have a simple class defining a rectangle: 
 
 .. note::
 

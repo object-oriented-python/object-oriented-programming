@@ -3,7 +3,16 @@ import numpy as np
 
 
 class Element:
+    '''An element of the specified group.'''
     def __init__(self, group, value):
+        '''
+        Parameters
+        ----------
+        group: Group
+            The group of which this is an element.
+        value:
+            The value of this entity. Valid values depend on the group.
+        '''
         group._validate(value)
         self.group = group
         self.value = value
@@ -27,9 +36,12 @@ class Group:
 
     Each subclass represents a family of parametrised groups.'''
     def __init__(self, n):
-        '''Args:
-            n: The primary group parameter, such as order or degree. The
-            precise meaning of n changes from subclass to subclass.
+        '''
+        Parameters
+        ----------
+            n: int
+                The primary group parameter, such as order or degree. The
+                precise meaning of n changes from subclass to subclass.
         '''
         self.n = n
 
@@ -55,6 +67,7 @@ class CyclicGroup(Group):
                              f" in the range [0, {self.n})")
 
     def operation(self, a, b):
+        '''The group operation is addition modulo n.'''
         return (a + b) % self.n
 
 
@@ -71,4 +84,5 @@ class GeneralLinearGroup(Group):
                              "square array.")
 
     def operation(self, a, b):
+        '''The group operation is matrix multiplication.'''
         return a @ b
