@@ -547,7 +547,7 @@ the exception matches the list of exceptions is executed. For example:
     In [1]: try:
         ...:     0./0
         ...: except TypeError, KeyError:
-        ...:     print("Type error")
+        ...:     print("Type or key error")
         ...: except ZeroDivisionError:
         ...:     print("Zero division error")
         ...: 
@@ -626,7 +626,7 @@ Similarly, if we attempt to divide by a string, we are caught by the second
 Exception handling and the call stack
 .....................................
 
-An :keyword:`except` block will handle any exception raised in the
+An :keyword:`except` block will handle any matching exception raised in the
 preceding :keyword:`try` block. The :keyword:`try` block can, of
 course, contain any code at all. In particular it might contain
 function calls which themselves may well call further functions. This
@@ -740,10 +740,64 @@ Glossary
 Exercises
 ---------
 
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+
+.. note::
+
+    Put some Byzantine stack trace example in here.
+
 .. proof:exercise::
 
-    Write Newton-raphson iteration and raise exceptions if it fails. Fall back
-    to bisection?
+    The Newton-Raphson method is an iterative method for approximately solving
+    equations of the form :math:`f(x)=0`. Starting from an initial guess, a
+    series of (hopefully convergent) approximations to the solution is computed:
+
+    .. math::
+
+        x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+
+    The iteration concludes successfully if :math:`|f(x_{n+1})| < \epsilon` for some
+    user-specified tolerance :math:`\epsilon>0`. The sequence is not guaranteed
+    to converge for all combinations of function and starting point, so the
+    iteration should fail if :math:`n` exceeds a user-specified number of
+    iterations.
+    
+    The skeleton code for this week contains a function
+    :func:`nonlinear_solvers.solvers.newton-raphson` which takes as arguments a
+    function, its derivative and a starting point for the iteration. It can also
+    optionally be passed a value for :math:`\epsilon` and a maximum number of
+    iterations to execute. Implement this function. If the iteration succeeds
+    then the last iterate, :math:`x_{n+1}`, should be returned. 
+
+    :mod:`nonlinear_solvers.solvers` also defines an exception,
+    :class:`ConvergenceError`. If the Newton-Raphson iteration exceeds the
+    number of iterations allowed then this exception should be raised, with an
+    appropriate error message.
+    
+.. proof:exercise::
+
+    The bisection method is a slower but more robust iterative solver. It requires a
+    function :math:`f` and two starting points :math:`x_0` and :math:`x_1` such
+    that :math:`f(x_0)` and :math:`f(x_1)` differ in sign. At each stage of the
+    iteration, the function is evaluated at the midpoint of the current points
+    :math:`x^* = (x_0 + x_1)/2`. If :math:`|\,f(x^*)|<\epsilon` then the iteration
+    terminates successfully. Otherwise, :math:`x^*` replaces :math:`x_0` if
+    :math:`f(x_0)` and :math:`f(x^*)` have the same sign, and replaces
+    :math:`x_1` otherwise.
+
+    Implement :func:`nonlinear_solvers.solvers.bisection`. As before, if the
+    iteration succeeds then return the last value of :math:`x`. If the maximum
+    number of iterations is exceeded, raise :class:`ConvergenceError` with a
+    suitable error message. The bisection method has a further failure mode. If
+    :math:`f(x_0)` and :math:`f(x_1)` do not differ in sign then your code
+    should raise :class:`ValueError` with a suitable message.
+
+.. proof:exercise::
+
+    Implement the function :func:`nonlinear_solvers.solvers.solve`. This code
+    should first attempt to solve :math:`f(x)=0` using your Newton-Raphson
+    function. If that fails it should catch the exception and instead try using
+    your bisection function.
 
 .. rubric:: Footnotes
 
