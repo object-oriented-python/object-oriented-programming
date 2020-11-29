@@ -517,13 +517,73 @@ value `"C"`.
 Calling parent class methods
 ----------------------------
 
-Suppose we have a simple class defining a rectangle: 
+.. _rectangle_class:
 
-.. note::
+.. code-block:: python3
+    :caption: The elementary rectangle class from :mod:`example_code.shapes`.
+    :linenos:
 
-    need a good example for overriding methods and calling the superclass
-    method.
-    
+    class Rectangle:
+
+        def __init__(self, length, width):
+            self.length = length
+            self.width = width
+
+        def area(self):
+            return self.length * self.width
+
+        def __repr__(self):
+            return f"{self.__class__.__name__}{self.length, self.width!r}"
+
+:numref:`rectangle_class` shows a basic implementation of a class describing a
+rectangle. We might also want a class defining a square. Rather than redefining
+everything from scratch, we might choose to :term:`inherit <inheritance>` from
+:class:`~example_code.shapes.Rectangle` by defining a square as a rectangle
+whose length and width are equal. The :term:`constructor` for our new class
+will, naturally, just take a single `length` parameter. However the
+:meth:`~example_code.shapes.Rectangle.area` method that we will inherit expects
+both `self.length` and `self.width` to be defined. We could simply define both
+length and width in :meth:`Square.__init__`, but this is exactly the sort of
+copy and paste code that inheritance is supposed to avoid. If the parameters to
+:meth:`Rectangle.__init__` were to be changed at some future point, then having
+`self.length` and `self.width` defined in two separate places is likely to lead
+to very confusing bugs. 
+
+Instead, we would like to have :meth:`Square.__init__` call
+:meth:`Rectangle.__init__` and pass the same value for both length and width. It
+is perfectly possible to directly call :meth:`Rectangle.__init__`, but this
+breaks the style rule that we should not repeat ourselves: if :class:`Square`
+already inherits from :class:`~example_code.shapes.Rectangle` then it should not
+be necessary to restate that inheritance by explicitly naming the :term:`parent
+class`. Fortunately, python provides the functionality we need in the form of
+the :func:`super` function. :numref:`square_class` demonstrates its application.
+
+.. _square_class:
+
+.. code-block:: python3
+    :caption: :class:`example_code.shapes.Square` inherits from
+        :class:`~example_code.shapes.Rectangle` and calls the latter's
+        :term:`constructor` using :func:`super`.
+    :linenos:
+
+    class Square(Rectangle):
+
+        def __init__(self, length):
+            super().__init__(length, length)
+
+        def __repr__(self):
+            return f"{self.__class__.__name__}({self.length!r})"
+
+The :func:`super` function returns a version of the current object in which none
+of the :term:`methods <method>` have been overridden by the current
+:term:`class`. This has the effect that the :term:`superclasses <superclass>` of
+the current class are searched in increasing inheritance order until a matching
+method name is found, and this method is then called. This provides a safe
+mechanism for calling parent class methods in a way that responds appropriately
+if someone later comes backs and rewrites the inheritance relationships of the
+classes involved.
+
+
 .. note::
 
     Cover defining new types of exception here.
@@ -595,7 +655,13 @@ Glossary
     subclass
         A class `A` is a subclass of the class `B` if `A` inherits from `B` either
         directly or indirectly. That is, if `B` is a :term:`parent <parent class>`, 
-        grandparent, great grandparent or further ancestor of `A`.
+        grandparent, great grandparent or further ancestor of `A`. Contrast
+        :term:`superclass`.
+
+    superclass
+        A class `A` is a superclass of the class `B` if `B` inherits from `A` either
+        directly or indirectly. That is, if `B` is a :term:`subclass` of `A`.
+        
 
 Exercises
 ---------
@@ -604,7 +670,7 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
 
 .. proof:exercise::
 
-    The symmetric group of order `n` is the group whose members are all the
+    The symmetric group over `n` symbols is the group whose members are all the
     permutations of `n` symbols and whose group operation is the composition of
     those permutations: :math:`a \cdot b = a(b)`.
 

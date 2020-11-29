@@ -68,6 +68,14 @@ example\_code.polynomial module
    :undoc-members:
    :show-inheritance:
 
+example\_code.shapes module
+---------------------------
+
+.. automodule:: example_code.shapes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 example\_code.square module
 ---------------------------
 
