@@ -652,19 +652,6 @@ known as *unwinding the stack*. In pseudocode, the algorithm is:
    # Call stack is now empty
    print traceback and exit
 
-..
-   Creating new exception classes
-   ------------------------------
-
-   Python provides a wide range of exceptions, and usually the right
-   thing to do when writing code that might need to raise an exception is
-   to peruse the :ref:`list of built-in exceptions <builtin-exceptions>`
-   and choose the one which best matches the circumstances. However,
-   sometimes there is no good match, or it might be that the programmer
-   wants user code to be able to catch exactly this exception without the
-   risk that some other operation will raise the same exception and be
-   caught by mistake. In this case, it is necessary to create a new type
-   of exception.
 
 
 Exceptions are not always errors

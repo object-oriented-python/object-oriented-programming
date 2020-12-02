@@ -580,13 +580,22 @@ of the :term:`methods <method>` have been overridden by the current
 the current class are searched in increasing inheritance order until a matching
 method name is found, and this method is then called. This provides a safe
 mechanism for calling parent class methods in a way that responds appropriately
-if someone later comes backs and rewrites the inheritance relationships of the
+if someone later comes back and rewrites the inheritance relationships of the
 classes involved.
 
+Creating new exception classes
+------------------------------
 
-.. note::
-
-    Cover defining new types of exception here.
+Python provides a wide range of :term:`exceptions <exception>`, and usually the
+right thing to do when writing code that might need to raise an exception is to
+peruse the :ref:`list of built-in exceptions <builtin-exceptions>` and choose
+the one which best matches the circumstances. However, sometimes there is no
+good match, or it might be that the programmer wants user code to be able to
+catch exactly this exception without the risk that some other operation will
+raise the same exception and be caught by mistake. In this case, it is necessary
+to create a new type of exception. A new exception will be an object which
+behaves in most respects like other exceptions, except that it's a new
+:term:`class` and may behave differently in particular circumstances. 
 
 .. 
     .. _abstract_base_classes:
