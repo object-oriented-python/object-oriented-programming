@@ -793,3 +793,23 @@ div.figure {
 }
 
 span.strikethrough { text-decoration: line-through; }
+
+.vimeo {
+  position: relative;
+  padding-bottom: 57%;
+  height: 0;
+  overflow: hidden;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vimeo iframe,
+.vimeo object,
+.vimeo embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

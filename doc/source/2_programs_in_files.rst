@@ -15,8 +15,91 @@ typing in a web browser. As an introduction to writing code in files,
 we will first consider Python scripts. We'll then move on to making
 code really reusable by creating Python modules and packages.
 
+Setting up a Python environment for this course
+-----------------------------------------------
+
+.. dropdown:: Video: setting up your virtual environment.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/486546635"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`_
+
+
+During this course, we're going to create, edit, and install a whole bunch of
+Python packages. In order to have a predictable programming environment in which
+the experiments we're doing don't interfere with anything outside the course for
+which we might be using Python, and conversely to ensure that nothing we've
+installed elsewhere interferes with how we're doing the course, we'll do
+everything in a Python :term:`virtual environment`, or :term:`venv`. You should read up on Python
+virtual environments on the :ref:`Faculty of Natural Sciences Python installation
+page <fons:python_virtual_environments>`.
+
+.. hint::
+
+   Don't forget that you need to activate the venv in every new :ref:`terminal <fons:terminal>` session.
+
+Installing Python packages
+--------------------------
+
+Suppose we've created and activated a venv, and now there's a Python
+package we'd like to have access to. Installation of Python packages
+is handled by :doc:`pip:index`. Pip has many usage options, which
+enable a large number of different installation
+configurations. However, for most users most of the time, a few simple
+pip commands suffice. As with :term:`venv` creation, package
+installation is best accomplished from the terminal and not from
+within Python itself. Don't forget to activate the venv!
+
+Installing packages from PyPI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`PyPI <https://pypi.org>`_ is the Python Package Index. It is the
+official download location for publicly released Python packages which
+aren't themselves a part of the built-in :doc:`Python Standard Library
+<python:library/index>`. Many important mathematical packages
+including :mod:`numpy` and `sympy <https://www.sympy.org>`_ are
+distributed from PyPI. Suppose your venv doesn't have :mod:`numpy`
+installed and you need it. You would install it with the following
+terminal command:
+
+.. code-block:: console
+
+   (my_venv) $ python3 -m pip install numpy
+
+It is also possible to invoke pip directly using the command `pip3`,
+but there are some circumstances where that might result in pip using
+the wrong Python installation. The approach used here is safer.
+
+Python packages may depend on other Python packages, so it's quite
+likely that pip will install more packages than those you directly
+asked for. This is necessary if those packages are to actually work.
+
+Pip can also be used to upgrade a package to the latest version:
+
+.. code-block:: console
+
+   (my_venv) $ python3 -m pip install --upgrade numpy
+
 The Python interpreter
 ----------------------
+
+.. dropdown:: Video: a first Python script.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/486557682"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`_
 
 Before we dive into the various different ways that Python code can be
 organised and run, it's helpful to have a mental model of what it
@@ -43,6 +126,7 @@ whether your Python program is running on Windows, macOS, Linux, or
 maybe something more exotic. Usually, when we refer to Python doing
 something or responding to code in a particular way, what we mean is
 that this is what the interpreter does in those circumstances.
+
 
 Python scripts and text editors
 -------------------------------
@@ -501,65 +585,6 @@ intend to use yourself. Should you wish to publish packages for use by
 other people, then you'll need to add some more information to the
 file. The canonical guide to this is the `Python packaging user guide
 <https://packaging.python.org/tutorials/packaging-projects/>`_.
-
-Setting up a Python environment for this course
------------------------------------------------
-
-During this course, we're going to create, edit, and install a whole bunch of
-Python packages. In order to have a predictable programming environment in which
-the experiments we're doing don't interfere with anything outside the course for
-which we might be using Python, and conversely to ensure that nothing we've
-installed elsewhere interferes with how we're doing the course, we'll do
-everything in a Python :term:`virtual environment`, or :term:`venv`. You should read up on Python
-virtual environments on the :ref:`Faculty of Natural Sciences Python installation
-page <fons:python_virtual_environments>`.
-
-.. hint::
-
-   Don't forget that you need to activate the venv in every new :ref:`terminal <fons:terminal>` session.
-
-Installing Python packages
---------------------------
-
-Suppose we've created and activated a venv, and now there's a Python
-package we'd like to have access to. Installation of Python packages
-is handled by :doc:`pip:index`. Pip has many usage options, which
-enable a large number of different installation
-configurations. However, for most users most of the time, a few simple
-pip commands suffice. As with :term:`venv` creation, package
-installation is best accomplished from the terminal and not from
-within Python itself. Don't forget to activate the venv!
-
-Installing packages from PyPI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`PyPI <https://pypi.org>`_ is the Python Package Index. It is the
-official download location for publicly released Python packages which
-aren't themselves a part of the built-in :doc:`Python Standard Library
-<python:library/index>`. Many important mathematical packages
-including :mod:`numpy` and `sympy <https://www.sympy.org>`_ are
-distributed from PyPI. Suppose your venv doesn't have :mod:`numpy`
-installed and you need it. You would install it with the following
-terminal command:
-
-.. code-block:: console
-
-   (my_venv) $ python3 -m pip install numpy
-
-It is also possible to invoke pip directly using the command `pip3`,
-but there are some circumstances where that might result in pip using
-the wrong Python installation. The approach used here is safer.
-
-Python packages may depend on other Python packages, so it's quite
-likely that pip will install more packages than those you directly
-asked for. This is necessary if those packages are to actually work.
-
-Pip can also be used to upgrade a package to the latest version:
-
-.. code-block:: console
-
-   (my_venv) $ python3 -m pip install --upgrade numpy
-
 
 Installing a package from local code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
