@@ -263,6 +263,18 @@ shortly.
 Modules
 -------
 
+.. dropdown:: Video: a first Python module.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/486845755"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`_
+
 A module is, like a script, a plain text file containing Python
 code. Modules must have names ending in :file:`.py`. So far, that's
 identical to a script. Indeed, it's sometimes possible (though not
@@ -421,6 +433,19 @@ is in :ref:`the official Python documentation. <python:import>`
 
 Packages
 --------
+
+.. dropdown:: Video: a first Python package.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/487003753"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`_
+
 
 Modules are the principal mechanism for storing code which is intended
 to be used by other code. However, putting all of the code for a
@@ -620,6 +645,19 @@ the package every time you change it.
 
 Testing frameworks
 ------------------
+
+.. dropdown:: Video: introducing Pytest.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/486987209"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`_
+
 
 Attempting to establish whether a program correctly implements the
 intended algorithm is core to effective programming, and programmers
@@ -867,8 +905,14 @@ Exercises
     <https://github.com/object-oriented-python/object-oriented-programming>`_.
     Clone that git repository into your course folder, and install the Python
     package it contains into your virtual environment. Check that it has
-    installed correctly by running IPython, importing :mod:`fibonacci` and
-    trying out :func:`fibonacci.fib <fibonacci.fibonacci.fib>`.
+    installed correctly by installing pytest, and running:
+
+    .. code-block:: console
+
+        $ pytest tests/test_fibonacci.py
+
+    You could also run iPython,  import :mod:`fibonacci` and try out
+    :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
 
 .. note::
 

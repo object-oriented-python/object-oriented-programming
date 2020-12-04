@@ -358,6 +358,14 @@ div.linenodiv {
     border-bottom: 2px solid #c6c9cb;
 }
 
+div.badcode {
+    padding-left: 0px;
+}
+
+div.goodcode {
+    padding-left: 0px;
+}
+
 .badcode .highlight pre {
     background: #fafafa url(dialog-wrong.png) no-repeat 10px 8px;
     background-position: right;
