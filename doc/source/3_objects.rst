@@ -451,12 +451,103 @@ We can now observe the difference in the result:
    In [3]: f                                                                                                          
    Out[3]: Polynomial((1, 2, 0, 4, 5))
 
+.. _object_equality:
+
+Object equality
+...............
+
+When are two objects equal? For built-in types Python has equality rules which
+broadly match the mathematical identities that you might expect. For example,
+two numbers of different types are equal if their numerical value is equal:
+
+.. code-block:: ipython3
+
+    In [1]: 2 == 2.0
+    Out[1]: True
+
+    In [2]: 2.0 == 2 + 0j
+    Out[2]: True
+
+Similarly, intrinsic sequence types are equal when their contents are equal:
+
+.. code-block:: ipython3
+
+    In [3]: (0, 1, "f") == (0., 1+0j, 'f')
+    Out[3]: True
+
+    In [4]: (0, 1, "f") == (0., 1+0j, 'g')
+    Out[4]: False
+
+    In [5]: (0, 1, "f") == (0., 1+0j)
+    Out[5]: False
+
+This mathematically pleasing state of affairs doesn't, however, automatically
+carry over to new classes. We might expect that two identically defined
+polynomials might compare equal:
+
+.. code-block:: ipython3
+
+    In [6]: from example_code.polynomial import Polynomial
+
+    In [7]: a = Polynomial((1, 0, 1))
+
+    In [8]: b = Polynomial((1, 0, 1))
+
+    In [9]: a == b
+    Out[9]: False
+
+The reason for this is obvious when one thinks about it: Python has no way to
+know when two instances of a new class should be considered equal. Instead, it
+falls back to comparing the unique identity of every object. This is accessible
+using the built-in function :func:`id`:
+
+.. code-block:: ipython3
+
+    In [10]: id(a)
+    Out[10]: 4487083344
+
+    In [11]: id(b)
+    Out[11]: 4488256096
+
+This is a perfectly well-defined equality operator, but not a very
+mathematically useful one. Fortunately, Python allows us to define a more useful
+equality operator using the :meth:`~object.__eq__` :term:`special method`. This
+takes the current object and the object it is being compared to, and returns
+:data:`True` or :data:`False` depending on whether the objects should be
+considered equal. When we write `a == b` in Python, what actually happens is
+`a.__eq__(b)`.
+
+A basic implementation of :meth:`~object.__eq__` that checks that the other
+object is a :class:`~example-code.polynomials.Polynomial` with the same
+coefficients is:
+
+.. code-block:: python3
+
+    def __eq__(self, other):
+
+        return isinstance(other, Polynomial) and \
+            self.coefficients == other.coefficients
+
+Equipped with this method, :class:`~example-code.polynomials.Polynomial`
+equality now behaves as we might expect.
+
+.. code-block:: ipython3
+
+    In [1]: from example_code.polynomial import Polynomial
+
+    In [2]: a = Polynomial((1, 0, 1))
+
+    In [3]: b = Polynomial((1, 0, 1))
+
+    In [4]: a == b
+    Out[4]: True
+
 .. _object_arithmetic:
 
 Defining arithmetic options on objects
 ......................................
 
-It's all very well to be able to print out our polynomial objects, but
+It's all very well to be able to compare our polynomial objects, but
 we won't really have captured the mathematical abstraction involved
 unless we have at least some mathematical operations. We have already
 observed that objects of some classes can be added. Is this true for
@@ -739,15 +830,13 @@ the :class:`Polynomial` class.
 
     Implement the following operations on the :class:`Polynomial` class. 
 
-    1. Equality (:meth:`~object.__eq__`). Two polynomials compare equal if their
-       coefficients are equal.
-    2. Subtraction (:meth:`~object.__sub__` and :meth:`~object.__rsub__`).
-    3. Multiplication by another polynomial, and by a scalar
+    1. Subtraction (:meth:`~object.__sub__` and :meth:`~object.__rsub__`).
+    2. Multiplication by another polynomial, and by a scalar
        (:meth:`~object.__mul__` and :meth:`~object.__rmul__`).
-    4. Exponentiation by a positive integer power (:meth:`~object.__pow__`). It
+    3. Exponentiation by a positive integer power (:meth:`~object.__pow__`). It
        may be useful to know that all integers are instances of
        :class:`numbers.Integral`.
-    5. Polynomial evaluation at a scalar value (:meth:`~object.__call__`).
+    4. Polynomial evaluation at a scalar value (:meth:`~object.__call__`).
 
     .. note::
 

@@ -33,6 +33,11 @@ class Polynomial:
 
         return self.__class__.__name__ + "(" + repr(self.coefficients) + ")"
 
+    def __eq__(self, other):
+
+        return isinstance(other, Polynomial) and \
+            self.coefficients == other.coefficients
+
     def __add__(self, other):
 
         if isinstance(other, Number):
