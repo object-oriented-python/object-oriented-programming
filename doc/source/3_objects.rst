@@ -175,6 +175,19 @@ Python is an object, and every object has a type.
 Defining new types
 ------------------
 
+.. dropdown:: Video: a first class
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/488143930"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f8b07554-16ea-47b8-bf19-ac8a010af0f6>`_
+
 Python has a rich set of :doc:`built-in types
 <library/stdtypes>`. These form powerful building blocks for the
 language, but one very soon finds mathematical abstractions which do
@@ -311,6 +324,19 @@ create a private attribute.
 Methods
 .......
 
+.. dropdown:: Video: defining methods
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/488273256"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=613249ca-71b8-4f3b-8db9-ac8a0166aa42>`_
+
 We have already met the :term:`special method` :meth:`~object.__init__`,
 which defines the class constructor. A much more typical case is an
 ordinary method, without a special underscore name. For example,
@@ -359,6 +385,20 @@ later, so that will be the one which is accessed.
 
 String representations of objects
 .................................
+
+.. dropdown:: Video: printing classes
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/488275072"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b30db20c-1224-41b7-a5f2-ac8a01680608>`_
+
 
 Remember that a key reason for defining new classes is to enable users
 to reason about the resulting objects at a higher mathematical level. An
@@ -456,6 +496,19 @@ We can now observe the difference in the result:
 Object equality
 ...............
 
+.. dropdown:: Video: object equality and test driven development
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/488981397"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=821e53ec-d2c8-43a6-bb16-ac8c01045f31>`_
+
 When are two objects equal? For built-in types Python has equality rules which
 broadly match the mathematical identities that you might expect. For example,
 two numbers of different types are equal if their numerical value is equal:
@@ -465,7 +518,7 @@ two numbers of different types are equal if their numerical value is equal:
     In [1]: 2 == 2.0
     Out[1]: True
 
-    In [2]: 2.0 == 2 + 0j
+    In [2]: 2.0 == 2+0j
     Out[2]: True
 
 Similarly, intrinsic sequence types are equal when their contents are equal:
@@ -546,6 +599,19 @@ equality now behaves as we might expect.
 
 Defining arithmetic options on objects
 ......................................
+
+.. dropdown:: Video: object equality and test driven development
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/489009900"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=727c5b9a-bf61-480e-912e-ac8c01045f09>`_
 
 It's all very well to be able to compare our polynomial objects, but
 we won't really have captured the mathematical abstraction involved
