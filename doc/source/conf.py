@@ -316,3 +316,4 @@ intersphinx_mapping = {'python': ('http://docs.python.org/3/', None),
                        'sympy': ('https://docs.sympy.org/latest', None),
                        'pytest': ('https://docs.pytest.org/en/latest/', None),
                        'fons': ('https://imperial-fons-computing.github.io', None)}
+

@@ -266,6 +266,8 @@ getting remote help from an instructor.
 Getting help
 ------------
 
+.. _issue-report:
+
 Writing an issue report
 .......................
 
@@ -615,7 +617,8 @@ them is likely to result in you having to play catchup in the coming weeks.
 
 .. proof:exercise::
 
-    Install Git and work through the entire Git, GitHub, and GitHub Classroom tutorial on the :doc:`FoNS Git instructions webpage <fons:git>`.
+    Install Git and work through the entire Git, GitHub, and GitHub Classroom
+    tutorial on the :doc:`FoNS Git instructions webpage <fons:git>`.
 
 .. proof:exercise::
 

@@ -173,7 +173,7 @@ an arithmetic expression.
    * - `6 2 / 2 4 ** +`
      - `()`
      -
-   * - `6 / 2 4 ** +`
+   * - `2 / 2 4 ** +`
      - `(6)`
      - `push`
    * - `/ 2 4 ** +`
@@ -275,7 +275,7 @@ Algorithmic complexity
 ----------------------
 
 The second reason that understanding abstract data types is important
-is that a good implementation of a well designed abstract data type
+is that a good implementation of a well-designed abstract data type
 will have well-defined performance characteristics. In particular, the
 optimal algorithmic complexity, expressed in big :math:`O` notation, of
 operations on abstract data types will be known. Recall the definition
