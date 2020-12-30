@@ -588,7 +588,7 @@ Creating new exception classes
 
 Python provides a wide range of :term:`exceptions <exception>`, and usually the
 right thing to do when writing code that might need to raise an exception is to
-peruse the :ref:`list of built-in exceptions <builtin-exceptions>` and choose
+peruse the :doc:`list of built-in exceptions <library/exceptions>` and choose
 the one which best matches the circumstances. However, sometimes there is no
 good match, or it might be that the programmer wants user code to be able to
 catch exactly this exception without the risk that some other operation will
@@ -690,17 +690,17 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
     order `n`. You will need to implement the group operation and the validation
     of group element values. Group elements can be represented by sequences
     containing permutations of the integers from 0 to `n-1`. You will find it
-    advantageous to :term:`cast` these permutations to :func:`numpy.array`
-    because the indexing rules for that type mean that the group operation can
-    simply be implemented by indexing the first permutation with the second:
-    `a[b]`.
+    advantageous to convert these permutations to :func:`numpy.array` using
+    :func:`numpy.asarray` because the indexing rules for that type mean that the
+    group operation can simply be implemented by indexing the first permutation
+    with the second: `a[b]`.
 
     You will also need to set the :term:`class attribute` `notation`. For this
     group, this should take the value `S`.
     
     .. hint::
 
-        You will need to :term:`import` :class:`example_code.groups.Group`.
+        You will need to :keyword:`import` :class:`example_code.groups.Group`.
 
     .. hint::
 

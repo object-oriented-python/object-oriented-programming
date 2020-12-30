@@ -385,7 +385,7 @@ one for itself.
 What about preorder traversal? This time we need a little more code (not much)
 as :numref:`preorder_recursive` shows.
 
-.. preorder_recursive
+.. _preorder_recursive:
 
 .. code-block:: python3
     :caption: The simple preorder visitor from
@@ -435,7 +435,7 @@ the depth in the tree of every node:
 Observe here that the node visitor order is different from the postvisitor, and
 that we successfully diagnosed the depth of each node.
 
-.. _expr_trees::
+.. _expr_trees:
 
 Expression trees
 ----------------
@@ -571,11 +571,11 @@ operators but different for terminals.
     item in the tuple.
 
 :meth:`~object.__str__`
-    This is the human-readable string output, using :term:`infix` operators, so
-    in the example above we would expect to see `2 * y + 4 ^ (5 + x)` This looks
-    sort of straightforward, simply associate the correct symbol with each
-    operator class as a :term:`class attribute` and place the string
-    representation of the operands on either side. 
+    This is the human-readable string output, using :term:`infix operators
+    <infix operator>`, so in the example above we would expect to see 
+    `2 * y + 4 ^ (5 + x)` This looks sort of straightforward, simply associate the correct
+    symbol with each operator class as a :term:`class attribute` and place the
+    string representation of the operands on either side. 
     
     The challenge is to correctly include the brackets. In order to do this, it
     is necessary to associate with every expression class a :term:`class
@@ -587,8 +587,8 @@ operators but different for terminals.
     precedence of :math:`a` is lower than the precedence of :math:`o`.
 
 Individual operator classes therefore need to define very little, just two
-:term:`class attributes`, one for the operator precedence, and one to set the
-symbol when printing the operator.
+:term:`class attributes <class attribute>`, one for the operator precedence, and
+one to set the symbol when printing the operator.
 
 Let's now consider :class:`Terminal`. What does it need to set?
 
@@ -596,7 +596,7 @@ Let's now consider :class:`Terminal`. What does it need to set?
     The :term:`constructor` for :class:`Expression` assumes that an expression is
     defined by a series of operands. Terminals have an empty list of operands
     but do have something that other expressions lack, a value. In the case of
-    :term:`Number`, this is a number, while for :term:`Symbol` the value is a
+    :class:`Number`, this is a number, while for :class:`Symbol` the value is a
     string (usually a single character). :class:`Terminal` therefore needs its
     own :meth:`__init__` which will take a value argument.
     :class:`Terminal.__init__` still has to call the :term:`superclass`
@@ -939,7 +939,7 @@ next, and a :class:`dict` to record the nodes we have already visited, and the
 results of visiting them. :numref:`nonrecursive_postvisit` illustrates one such
 algorithm.
 
-.. _nonrecursive_postvisit::
+.. _nonrecursive_postvisit:
 
 .. code-block:: python3
     :caption: Pythonic pseudocode for a non-recursive postorder :term:`DAG` visitor.
@@ -1028,7 +1028,7 @@ the operands, which are given by the `*o` argument to the visitor function.
 Glossary
 --------
 
- .. glossary::
+.. glossary::
     :sorted:
     
     child node

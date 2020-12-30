@@ -28,7 +28,7 @@ Setting up a Python environment for this course
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`_
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`__
 
 
 During this course, we're going to create, edit, and install a whole bunch of
@@ -59,11 +59,11 @@ within Python itself. Don't forget to activate the venv!
 Installing packages from PyPI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`PyPI <https://pypi.org>`_ is the Python Package Index. It is the
+`PyPI <https://pypi.org>`__ is the Python Package Index. It is the
 official download location for publicly released Python packages which
 aren't themselves a part of the built-in :doc:`Python Standard Library
 <python:library/index>`. Many important mathematical packages
-including :mod:`numpy` and `sympy <https://www.sympy.org>`_ are
+including :mod:`numpy` and `sympy <https://www.sympy.org>`__ are
 distributed from PyPI. Suppose your venv doesn't have :mod:`numpy`
 installed and you need it. You would install it with the following
 terminal command:
@@ -99,7 +99,7 @@ The Python interpreter
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`_
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
 
 Before we dive into the various different ways that Python code can be
 organised and run, it's helpful to have a mental model of what it
@@ -273,7 +273,7 @@ Modules
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`_
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
 
 A module is, like a script, a plain text file containing Python
 code. Modules must have names ending in :file:`.py`. So far, that's
@@ -444,7 +444,7 @@ Packages
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`_
+    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
 
 
 Modules are the principal mechanism for storing code which is intended
@@ -596,7 +596,7 @@ At the very least, :file:`setup.py` should contain the following:
        packages=find_packages(),
    )
 
-`Setuptools <https://setuptools.readthedocs.io/en/latest/index.html>`_
+`Setuptools <https://setuptools.readthedocs.io/en/latest/index.html>`__
 is a Python package which exists to help with the packaging and
 installation of Python packages. The :func:`~setuptools.setup`
 function records metadata such as the installation name to be given to
@@ -609,7 +609,7 @@ This very simple :file:`setup.py` will suffice for packages that you only
 intend to use yourself. Should you wish to publish packages for use by
 other people, then you'll need to add some more information to the
 file. The canonical guide to this is the `Python packaging user guide
-<https://packaging.python.org/tutorials/packaging-projects/>`_.
+<https://packaging.python.org/tutorials/packaging-projects/>`__.
 
 Installing a package from local code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -657,7 +657,7 @@ Testing frameworks
             allowfullscreen></iframe>
 
     Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`_
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
 
 Attempting to establish whether a program correctly implements the
 intended algorithm is core to effective programming, and programmers
@@ -822,7 +822,7 @@ people, and others will call code written by you. This can only work if the
 caller and the callee agree exactly on the interface: what are the names of the
 :term:`packages <package>`, :term:`modules <module>` and functions being
 called. How many arguments do they take? What are the names of the
-:term:`keyword parameters`? Computer languages are notoriously pedantic about such
+:term:`keyword parameters <parameter>`? Computer languages are notoriously pedantic about such
 things: they have no capability to simply read through small differences as a
 human would. You have doubtless already encountered the frustrating situation of
 spending extended periods repeatedly getting errors until you realised that
@@ -902,7 +902,7 @@ Exercises
 .. proof:exercise::
 
     Visit the `GitHub repository for these notes
-    <https://github.com/object-oriented-python/object-oriented-programming>`_.
+    <https://github.com/object-oriented-python/object-oriented-programming>`__.
     Clone that git repository into your course folder, and install the Python
     package it contains into your virtual environment. Check that it has
     installed correctly by installing pytest, and running:
@@ -970,7 +970,7 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`_
+.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`__
 
 .. [#interface_errors] Of course if you find a case where it appears that the
    tests don't honour the interface published in the exercise, you should raise

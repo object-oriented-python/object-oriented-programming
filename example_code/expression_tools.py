@@ -66,7 +66,7 @@ def postvisitor(expr, fn, **kwargs):
     ----------
     expr: Expression
         The expression to be visited.
-    fn: function(node, *o, **kwargs)
+    fn: `function(node, *o, **kwargs)`
         A function to be applied at each node. The function should take the
         node to be visited as its first argument, and the results of visiting
         its operands as any further positional arguments. Any additional

@@ -926,6 +926,10 @@ Glossary
         larger buffer is reserved, the contents of the sequence are copied over,
         and the original buffer is returned to the system.
 
+    introspection
+        The ability to inspect the implementation of a program from inside that
+        program while it is running.   
+        
     queue
     FIFO (first in, first out)
         An :term:`abstract data type` representing an ordered sequence

@@ -212,7 +212,7 @@ we are in trouble:
 This is a much larger error message than those we have previously
 encountered, however, the same principles apply. We start by reading
 the last line. This tells us that the error was a :class:`TypeError`
-caused by attempting to :term:`concatenate` (add) an integer to a
+caused by attempting to :term:`concatenate <concatenation>` (add) an integer to a
 string. Where did this error occur? This is a more involved question
 than it may first appear, and the rest of the error message above is
 designed to help us answer this question. This type of error message
@@ -568,8 +568,10 @@ plethora of variants on the :keyword:`try` block can get a little confusing, so
 a practical example may help. :numref:`except_demo` prints out a different
 message for each type of clause. 
 
+.. _except_demo:
+
 .. code-block:: python3
-    :caption: A demonstration of all the clauses of the :keyword:`try block`.
+    :caption: A demonstration of all the clauses of the :keyword:`try` block.
     :linenos:
 
     def except_demo(n):

@@ -791,7 +791,7 @@ PEP8 rules for comments
 .......................
 
 Comments start with a single :file:`#` followed by a single space. 
-:term:`Inline comments` are separated from the code by at least two spaces.
+:term:`Inline comments <inline comment>` are separated from the code by at least two spaces.
 
 .. container:: badcode
 
