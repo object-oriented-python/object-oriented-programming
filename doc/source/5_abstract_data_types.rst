@@ -92,7 +92,7 @@ it from the stack.
       }
 
       group fourth{
-      "12  "; "57 ";
+      "24   "; "12  ";
       color =  orange
       }
 
@@ -108,7 +108,7 @@ it from the stack.
       
       "Stack" -> "pop" [style="none"];
       "pop" -> "Stack   ";
-      "pop" -> "57 "[style="none"];
+      "pop" -> "12  "[style="none"];
 
       C [shape = "dots"]
       "Stack " -> C [style="none"];
