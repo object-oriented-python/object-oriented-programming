@@ -540,9 +540,11 @@ Including links
 
 Just dumping URLs into the text often results in hard to read code. Instead,
 Markdown enables you to write the link text in square brackets followed by the
-URL in round brackets. So `[the Markdown Cheat
-Sheet](https://www.markdownguide.org/cheat-sheet/)` becomes `the Markdown Cheat
-Sheet <https://www.markdownguide.org/cheat-sheet/>`__.
+URL in round brackets. So::
+
+    [the Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+
+becomes `the Markdown Cheat Sheet <https://www.markdownguide.org/cheat-sheet/>`__.
 
 
 More advanced Markdown

@@ -378,6 +378,16 @@ div.goodcode {
     border-left: 8px solid #00ff00;
 }
 
+div.quiz {
+    border-top: 2px solid #e55d05;
+    border-bottom: 2px solid #e55d05;
+    padding: 10px 10px 10px 10px;
+    background: #fac7a5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: auto;
+}
+
 tt {
     background-color: transparent;
     color: #222;

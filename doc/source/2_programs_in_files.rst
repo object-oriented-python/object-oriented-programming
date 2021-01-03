@@ -350,12 +350,7 @@ quote one of the key developers of the Python language:
    with them for as long as you have used a computer, without even
    thinking about it. This is because folders are simply namespaces
    for files. Each filename can exist only once in each folder, and
-   you can nest folders inside folders. Indeed, "directory" is an
-   older synonym for "folder" and makes the link to namespaces much
-   clearer: a folder or directory is just a list of named files in the
-   same way that a telephone directory is a list of named phone
-   numbers.
-
+   you can nest folders inside folders. 
 
 Other forms of import
 ~~~~~~~~~~~~~~~~~~~~~
@@ -510,7 +505,7 @@ they make up the Python package.
     further subpackages.
 
 :file:`setup.py`
-    This file is outside the package directory and is not
+    This file is outside the package folder and is not
     actually a part of the package. The role of :file:`setup.py` will be
     covered in :numref:`installable_packages`.
 
@@ -627,7 +622,7 @@ replacing `folder` with the name of the top-level folder of your
 repository: the folder containing :file:`setup.py`. The option flag `-e`
 tells pip to install the package in 'editable' mode. This means that
 instead of copying the package files to your venv's Python packages
-directory, symbolic links will be created. This means that any changes
+folder, symbolic links will be created. This means that any changes
 that you make to your package will show up the next time the package
 is imported in a new Python process, avoiding the need to reinstall
 the package every time you change it.
@@ -715,7 +710,7 @@ create a file called :file:`test_fibonacci.py` containing:
            assert fib(i+1) == f
 
 These files don't themselves form part of the package, instead they
-are usually gathered in a separate tests directory. For example::
+are usually gathered in a separate tests folder. For example::
 
     fibonacci
     ├── fibonacci
@@ -807,7 +802,7 @@ only move onto the next problem when the previous test passes.
 .. note::
 
     The exercise repositories in this course will usually contain a
-    :file:`tests` directory full of tests that check that you have correctly
+    :file:`tests` folder full of tests that check that you have correctly
     implemented the week's exercises. You should get in the habit of running the
     tests as you work through the exercises, as they are designed not just to
     pass if your code is correct, but to provide feedback as to what might be
@@ -888,9 +883,12 @@ Glossary
 Exercises
 ---------
 
-.. note::
+.. panels::
+    :card: quiz shadow
 
-    Put a link to the first week quiz here.
+    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_23985_1&content_id=_2048601_1
+        :text: This week's quiz
+        :classes: stretched-link 
 
 .. proof:exercise::
 
