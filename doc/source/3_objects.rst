@@ -888,6 +888,14 @@ Glossary
 Exercises
 ---------
 
+.. panels::
+    :card: quiz shadow
+
+    .. link-button:: https://bb.imperial.ac.uk/webapps/blackboard/content/launchAssessment.jsp?course_id=_23985_1&content_id=_2049499_1&mode=view
+        :text: This week's quiz
+        :classes: stretched-link 
+
+
 Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
 The skeleton code contains a :mod:`polynomial` package with a version of 
 the :class:`Polynomial` class.
