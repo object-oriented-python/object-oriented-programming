@@ -94,16 +94,24 @@ PEP 8 is reproduced in this chapter, though many of the most commonly
 encountered ones are. Conversely, PEP 8 is rather narrowly concerned
 with code layout rules while this chapter roams more widely.
 
-flake8
-......
+Linters
+.......
 
-One of the helpful characteristics of PEP 8 is that many of its
-strictures can be enforced automatically by a computer
-program. Indeed, many Python editors can be configured to highlight
-violations of PEP 8 visually in the editing window. Alternatively, one
-can run a stand-alone program which will read Python source files and
-create reports of (many of) the PEP 8 violations they contain. One
-such program is called flake8. Running flake8 on all of the source
+One of the helpful characteristics of PEP 8 is that many of its strictures can
+be enforced automatically by a computer program. Programs that automatically
+check programming style are called linters. Lint are the little fibres that tend
+to stick to clothes, especially suit jackets, and make them ugly. So a linter is
+a program that finds the little ugly things in your code.
+
+Originally, you ran the linter with your source file as an input, and it produced
+a report as an output, listing all of the problems it found in your code. You
+can still run a linter like this, and it's very useful as an automated check
+that the code committed to git is clean. However, Python-aware editors are often
+able to run a linter for you, and display the results by highlighting code or
+lines of code with problem. The effect is very like the highlighting of spelling
+and grammar problems in many word processors and email clients.
+
+One such program is called flake8. Running flake8 on all of the source
 code in a project, preferably automatically on every commit, is an
 excellent mechanism for keeping a project's code in PEP 8
 conformance. Indeed, without a mechanism like this, there is a strong
@@ -917,10 +925,11 @@ Long docstrings
 ...............
 
 Conversely, a more complex object will require much more information in its
-docstring. Consider :func:`numpy.array` (click on the link for the documentation). The web documentation,
-also generated from the docstring, needs to cover 5 parameters, and detail the
-return type. It also contains several examples, references to other functions,
-and an explanatory note. This is an example of very good documentation.
+docstring. Consider :func:`numpy.array` (click on the link for the
+documentation). The web documentation, also generated from the docstring, needs
+to cover 5 parameters, and detail the return type. It also contains several
+examples, references to other functions, and an explanatory note. This is an
+example of very good documentation.
 
 There is no official standard for the layout of a long docstring, but there are
 two project or institution-based conventions that are recognised by the web
@@ -966,6 +975,11 @@ Glossary
 
 Exercises
 ---------
+
+.. proof:exercise::
+
+    Configure your Python editor to use flake8.
+
 
 .. note:: 
 
