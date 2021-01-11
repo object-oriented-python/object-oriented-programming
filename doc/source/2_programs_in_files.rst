@@ -664,7 +664,12 @@ the practical details of including tests in your code here.
 There are a number of Python packages which support code testing. The
 concepts are largely similar so rather than get bogged down in the
 details of multiple frameworks, we will introduce :doc:`pytest
-<pytest:index>`, which is one of the most widely used.
+<pytest:index>`, which is one of the most widely used. Pytest is simply a Python
+package, so you can install it into your current environment using:
+
+.. code-block:: console
+
+    $ python3 -m pip install pytest
 
 Pytest tests
 ~~~~~~~~~~~~
@@ -725,7 +730,7 @@ We can then invoke the tests from the shell:
 .. code-block:: console
 
     $ cd fibonacci
-    $ py.test tests
+    $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -741,7 +746,7 @@ instead see something like:
 
 .. code-block:: console
 
-    $ py.test tests
+    $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -772,18 +777,18 @@ Additional useful pytest tricks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It can be useful to run a specific test file, which is achieved simply by naming
-that file as the argument to py.test. For example:
+that file as the argument to pytest. For example:
 
 .. code-block:: console
 
-    $ py.test tests/test_fibonacci.py
+    $ pytest tests/test_fibonacci.py
 
 It is even possible to select an individual test to run, using a double colon
 `::` followed by the test name:
 
 .. code-block:: console
 
-    $ py.test tests/test_fibonacci.py::test_fibonacci_values
+    $ pytest tests/test_fibonacci.py::test_fibonacci_values
 
 Often if one test fails then the same problem in your code will cause a whole
 series of tests to fail, resulting in a very long list of error messages which
@@ -792,7 +797,7 @@ tells pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
-    $ py.test -x tests
+    $ pytest -x tests
 
 The tests are usually arranged in increasing order of sophistication, so the
 earlier tests are likely to catch the most basic errors in your code. For this
@@ -886,7 +891,7 @@ Exercises
 .. panels::
     :card: quiz shadow
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_23985_1&content_id=_2048601_1
+    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
         :text: This week's quiz
         :classes: stretched-link 
 
@@ -932,7 +937,14 @@ Exercises
     returns `True` or `False` depending on whether or not the argument is prime.
     There is no need to be sophisticated in the algorithm used to check for
     primeness, simply checking whether the number is zero modulo any of the
-    integers less than its square root will be fine.
+    integers less than its square root will be fine. Test your code by running
+    the following in your week 2 exercise repository:
+
+    .. code-block:: console
+
+        $ pytest tests/test__exercise_2_4.py
+
+    Then push your code to GitHub and check that the tests pass there too.
 
     .. hint::
 
@@ -956,6 +968,10 @@ Exercises
     Following :numref:`installable_packages`, create a :file:`setup.py` file in
     your exercise repository, so that the :mod:`math_utils` :term:`package` is
     installable.
+
+    Pytest can't easily test installability for you, so once you have managed to
+    install your package yourself, commit and push to github to check that the
+    tests there are also able to install your package.
 
 .. proof:exercise::
 

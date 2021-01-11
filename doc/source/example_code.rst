@@ -76,6 +76,14 @@ example\_code.shapes module
    :undoc-members:
    :show-inheritance:
 
+example\_code.simple\_classes module
+------------------------------------
+
+.. automodule:: example_code.simple_classes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 example\_code.square module
 ---------------------------
 
