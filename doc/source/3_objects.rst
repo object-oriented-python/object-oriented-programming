@@ -600,7 +600,7 @@ equality now behaves as we might expect.
 Defining arithmetic options on objects
 ......................................
 
-.. dropdown:: Video: object equality and test driven development
+.. dropdown:: Video: polynomial addition.
 
     .. container:: vimeo
 
