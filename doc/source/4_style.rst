@@ -3,6 +3,20 @@
 A matter of style
 =================
 
+.. dropdown:: Video: why style?
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/499766703"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3572d8ea-5635-4b1a-9243-acae0150ddf8>`__
+
+
 The value of convention
 -----------------------
 
@@ -97,6 +111,20 @@ with code layout rules while this chapter roams more widely.
 Linters
 .......
 
+.. dropdown:: Video: installing and using a linter.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/499770130"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=91c271e4-a61f-493c-a725-acae015273d5>`__
+
+
 One of the helpful characteristics of PEP 8 is that many of its strictures can
 be enforced automatically by a computer program. Programs that automatically
 check programming style are called linters. Lint are the little fibres that tend
@@ -117,6 +145,23 @@ excellent mechanism for keeping a project's code in PEP 8
 conformance. Indeed, without a mechanism like this, there is a strong
 tendency for programmers to cut style corners, with the effect that
 the code in a project becomes harder and harder to read and work with.
+
+Installing flake8
+.................
+
+Flake8 is a Python package, which can be installed using pip. Make sure you've
+activated your :term:`virtual environment` and then run:
+
+.. code-block:: console
+
+    $ python3 -m pip install flake8
+
+This is enough to run flake8 on the command line, however you will probably want
+to set up your editor to highlight flake8 incompatibilities in your source. For
+visual studio code, first open the command palette by typing :kbd:`control` +
+:kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
+"Python: Select Linter" to bring up the list of available linters, and select
+"flake8" from the dropdown list. The video above shows this process.
 
 Code layout
 -----------
@@ -978,8 +1023,11 @@ Exercises
 
 .. proof:exercise::
 
-    Configure your Python editor to use flake8.
+    Install flake8 and configure your Python editor to use flake8.
 
+    .. note:: 
+    
+        The test should check that flake8 is importable.
 
 .. note:: 
 
