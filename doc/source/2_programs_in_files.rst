@@ -917,15 +917,10 @@ Exercises
     You could also run iPython,  import :mod:`fibonacci` and try out
     :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
 
-.. note::
-
-    The first GitHub classroom assignment for this module will be released at
-    the start of term.
-
 .. proof:exercise::
 
-    Accept the :doc:`first Github Classroom assignment for this module
-    <not_released>` and clone it into your course folder. The assignment
+    Accept the `first Github Classroom assignment for this module
+    <https://classroom.github.com/a/VltGa-Xl>`__ and clone it into your course folder. The assignment
     repository just contains a :file:`README` and some tests. Your job in the
     following exercises will be to populate it with the remaining content.
 
