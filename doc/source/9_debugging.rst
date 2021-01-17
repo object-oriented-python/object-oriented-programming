@@ -39,7 +39,7 @@ Python package so you can install it with:
 
 .. code-block:: console
 
-   $ python3 -m pip install ipdb
+   $ python -m pip install ipdb
 
 Postmortem debugging
 ....................

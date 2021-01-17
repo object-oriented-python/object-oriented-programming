@@ -154,7 +154,7 @@ activated your :term:`virtual environment` and then run:
 
 .. code-block:: console
 
-    $ python3 -m pip install flake8
+    $ python -m pip install flake8
 
 This is enough to run flake8 on the command line, however you will probably want
 to set up your editor to highlight flake8 incompatibilities in your source. For
