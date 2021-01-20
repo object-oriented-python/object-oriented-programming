@@ -951,4 +951,11 @@ the :class:`Polynomial` class.
           from shape import Circle
           c = Circle((1., 0.), 2)
           print((0.5, 0.5) in c)
+
+.. proof:exercise::
+
+    Make the :mod:`circle` and :mod:`polynomial` packages installable. As with
+    last week's exercise, pytest can't test this so you'll need to push to
+    GitHub and check that the autograding tests pass there.
+
         
