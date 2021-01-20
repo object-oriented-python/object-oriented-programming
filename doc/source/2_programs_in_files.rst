@@ -946,7 +946,7 @@ Exercises
 
     .. code-block:: console
 
-        $ pytest tests/test__exercise_2_4.py
+        $ pytest tests/test_exercise_2_4.py
 
     Then push your code to GitHub and check that the tests pass there too.
 
