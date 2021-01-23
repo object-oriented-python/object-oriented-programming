@@ -2,27 +2,35 @@
 import os
 import github  # Install pygithub
 import git     # Install gitpython
-from argparse import ArgumentParser, RawDescriptionHelpFormatter
+from argparse import ArgumentParser
 import subprocess
 import sys
 
-parser = ArgumentParser(description="""Helper script to mark finite element assignments.""")
-
-parser.add_argument("--update", action="store_true", help="Update all student repositories.")
+parser = ArgumentParser(
+    description="""Helper script to mark finite element assignments.""")
+parser.add_argument(
+    "--update", action="store_true", help="Update all student repositories.")
+parser.add_argument(
+    "--push-masters", action="store_true",
+    help="Push the master branch of all student repos to the instructor repo.")
 parser.add_argument("--checkout", type=str, action="store", metavar=("REPO"),
-                        help="checkout finite-element/fe-2018-REPO.")
+                    help="checkout finite-element/fe-%d-REPO." % 0)
 parser.add_argument("--test", action="store_true", help="Execute tests")
 parser.add_argument("-x", action="store_true", help="Stop on first test fail")
+parser.add_argument("--week", type=str, action="store", required=True,
+                    help="Week whose repositories should be cloned.")
 args = parser.parse_args()
 
 repo = git.Repo(".")
 
 if args.update:
     g = github.Github(os.environ["GITHUB_OAUTH"])
-    org = g.get_organization("finite-element")
+    org = g.get_organization("Imperial-MATH50009")
+    count = 0
 
     for r in org.get_repos():
-        if r.name.startswith("fe-2018"):
+        if r.name.startswith("exercises-week-%s" % args.week):
+            count += 1
             uname = r.name[8:]
             print("Looking for remote %s" % uname)
             try:
@@ -33,11 +41,25 @@ if args.update:
                 remote = repo.create_remote(uname, r.ssh_url)
             print("Fetching")
             remote.fetch()
+    print(f"{count} repos found.")
+
+if args.push_masters:
+    g = github.Github(os.environ["GITHUB_OAUTH"])
+    org = g.get_organization("finite-element")
+
+    remote = repo.remote(instructor)
+
+    for r in org.get_repos():
+        if r.name.startswith("fe-%d" % year):
+            uname = r.name[8:]
+            print("Pushing master for remote %s" % uname)
+            remote.push("remotes/{0}/master:refs/heads/{0}-master".format(uname))
+
 
 if args.checkout:
     user = args.checkout
     print("Checking out head for %s" % user)
-    head = repo.create_head(user, commit = "/%s/implementation" % user)
+    head = repo.create_head(user, commit="/%s/implementation" % user)
     repo.head.reference = head
     repo.head.reset(working_tree=True)
     print("success")
