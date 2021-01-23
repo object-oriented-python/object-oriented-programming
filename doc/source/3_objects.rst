@@ -891,12 +891,12 @@ Exercises
 .. panels::
     :card: quiz shadow
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/blackboard/content/launchAssessment.jsp?course_id=_23985_1&content_id=_2049499_1&mode=view
+    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
         :text: This week's quiz
         :classes: stretched-link 
 
 
-Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+Obtain the `skeleton code for these exercises from GitHub Classroom <https://classroom.github.com/a/mElLR0AD>`__. 
 The skeleton code contains a :mod:`polynomial` package with a version of 
 the :class:`Polynomial` class.
 
