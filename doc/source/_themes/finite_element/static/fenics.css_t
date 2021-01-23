@@ -800,6 +800,7 @@ div.figure {
     border: 1px solid #000;
     padding: 0px;
     padding-top: 14px;
+    background-color: white;
 }
 
 .figure p.caption {

@@ -999,7 +999,24 @@ game is a grid of squares, like an infinite piece of graph paper (though we'll
 only work with finite boards, since our computers have finite memory). Each cell
 on the board is either alive (value 1) or dead (value 0). The only human
 interaction is to set the initial state of every square on the board to either
-alive or dead. The game then proceeds as a series of 
+alive or dead. The game then proceeds as a series of steps. At each step the new
+state of the board is calculated according to these rules:
+
+0. The neighbours of a square are the 8 immediately surrounding squares.
+1. Any square with exactly 3 live neighbours on the old board is live on the new
+   board.
+2. Any square which is alive on the old board and has exactly 2 live neighbours
+   on the old board remains alive on the new board.
+3. All other squares on the new board are dead.
+
+Using only these three rules, an amazingly complex array of behaviour can be
+generated, depending only on the pattern of cells which starts off alive.
+For example there are patterns of cells which are fixed, called "rocks",
+"gliders" that fly across the board and "oscillators" which repeatedly switch
+between a few states. It's simultaneously a fun toy and an important piece of
+mathematics. For example, it's possible to prove that any algorithm that can be
+executed on any computer can be represented by a suitable pattern of game of
+life cells, and running the game will execute the algorithm.
  
 Glossary
 --------
@@ -1044,18 +1061,148 @@ Exercises
     
         The test should check that flake8 is importable.
 
+The :doc:`skeleton code for this week's exercises on GitHub Classroom
+<not_released>` contains a package :mod:`life` which implements Conway's Game of
+Life. Accept the assignment, and clone the repository. Install the package in
+editable mode. This will also install some additional packages that the
+:mod:`life` package depends on. This is achieved using an additional argument to
+:func:`setuptools.setup`.
+
+.. code-block:: python3
+    :caption: `setup.py` for the :mod:`life` package. The `install_requires`
+        parameter is used to install other packages that :mod:`life` needs.
+
+    from setuptools import setup, find_packages
+    setup(
+        name="life",
+        version="0.1",
+        packages=find_packages(),
+        install_requires=[
+            "matplotlib",
+            "scipy",
+            "numpy"
+        ]
+    )
+
+A couple of example scripts are provided which demonstrate the game of life.
+This one shows a glider flying across the board:
+
+.. code-block:: console
+
+    $ python scripts/glider.py
+
+Running the script will pop up a window showing the board. If Visual Studio Code
+is in full screen mode then that pop-up might appear on a different screen. It's
+therefore a good idea to unmaximise Visual Studio Code before running the
+script.
+
+This script shows a `glider gun
+<https://en.wikipedia.org/wiki/Gun_(cellular_automaton)>`__, which generates a
+neverending sequence of gliders:
+
+.. code-block:: console
+
+    $ python scripts/glider_gun.py
+
+.. proof:exercise:: 
+
+    The author of the :mod:`life` package had clearly never heard of PEP8: the
+    style of the code is awful. Fix the style in the package so that there are
+    no flake8 errors.
+
+.. proof:exercise::
+
+    .. figure:: images/glider.png
+        :height: 10em
+        :align: right
+
+        An upright glider, live squares in black.
+
+    A pattern such as a glider clearly maintains its behaviour if translated,
+    reflected or rotated.
+
+    1.  Add a class :class:`Pattern` to :mod:`life.life`. The :term:`constructor` should
+        take in a :mod:`numpy` array containing a pattern of 1s and 0s, and
+        assign it to the :term:`attribute` `grid`.
+    2.  Add :class:`Pattern` to the :keyword:`import` statement in
+        :mod:`life.__init__`. 
+
+    .. figure:: images/glider_v.png
+        :height: 10em
+        :align: right
+
+        Vertically flipped glider.
+
+    3.  Add a :term:`method` :meth:`flip_vertical` which returns a new
+        :class:`Pattern` whose rows are in reversed order, so that the pattern
+        is upside down.
+
+        .. hint::
+
+            A slice of the form `::-1` returns that dimension of an array in
+            reverse order.
+
+    .. figure:: images/glider_h.png
+        :height: 10em
+        :align: right
+
+        Horizontally flipped glider.
+
+    4.  Add a :term:`method` :meth:`flip_horizontal` which returns a new
+        :class:`Pattern` whose rows are in reversed order, so that the pattern
+        is reversed left-right.
+
+    .. figure:: images/glider_t.png
+        :height: 10em
+        :align: right
+
+        Transposed glider.
+
+    5.  Add a :term:`method` :meth:`flip_diag` which returns a new pattern which
+        is the transpose of the original.
+    6.  Add a :term:`method` :meth:`rotate` with a :term:`parameter` `n`.
+        This should return a new :class:`Pattern` which is the original pattern
+        rotated through `n` right angles anticlockwise.
+
+        .. hint::
+
+            A rotation is the composition of a transpose and a reflection.
+
+    .. figure:: images/glider_r.png
+        :height: 10em
+        :align: center
+
+        Gliders rotated by 1, 2, and 3 right angles anticlockwise.
+
+
+.. proof:exercise::
+
+    Add a method :meth:`insert` to the :class:`Game` class. This should take two
+    paramaters, a :class:`Pattern` and a pair of integers representing a square
+    on the game board. The method should modify the game board so as to insert
+    the pattern provided at a location centred on the location given by the pair
+    of integers.
+
+    .. figure:: images/glider_inserted.png
+        :width: 60%
+        :align: center
+
+        A glider inserted at the location (2, 5) (highlighted in orange).
+
+Once you have completed the exercises, the third script provided will work. This
+sets up two gliders which collide and eventually turn into a pattern of six
+oscillating blinkers:
+
+.. code-block:: console
+
+    $ python scripts/two_gliders.py
+
 .. note:: 
 
-    Use this example in the exercises or quiz:
+    Use this example in the quiz:
 
     False if src_petsc4py_exists and args.honour_petsc_dir else True
 
-
-.. note::
-
-    TBC. We don't actually want a whole week of exercises on style. We want to do
-    more creation of classes and objects, but somehow requiring nontrivial
-    compliance with style rules.
 
 .. rubric:: Footnotes
 
