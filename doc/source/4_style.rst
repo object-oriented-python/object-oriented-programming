@@ -985,7 +985,22 @@ and the other from the `Numpy
 consistently use one of these styles across a whole project. Clearly if you are
 contributing code to an existing project then you should follow their style.
 
+A brief diversion into cellular automata
+----------------------------------------
 
+We'll now take a brief diversion into a completely different area of
+mathematics: cellular automata. This is entirely irrelevant to the contents of
+this course, except that it provides a useful and, hopefully, interesting basis
+for this week's exercises. `The game of life
+<https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>`__ is a mathematical
+system invented by the mathematician `John Horton Conway FRS
+<https://en.wikipedia.org/wiki/John_Horton_Conway>`__ in 1970. The board of the
+game is a grid of squares, like an infinite piece of graph paper (though we'll
+only work with finite boards, since our computers have finite memory). Each cell
+on the board is either alive (value 1) or dead (value 0). The only human
+interaction is to set the initial state of every square on the board to either
+alive or dead. The game then proceeds as a series of 
+ 
 Glossary
 --------
 
