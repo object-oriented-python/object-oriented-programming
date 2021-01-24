@@ -53,7 +53,7 @@ You might at first think that this logic does not apply to computer
 programs. After all, a computer program is read by another computer
 program, and is not understood but rather acted on
 mechanically. Surely it doesn't matter how it looks or what symbols
-you use, so long as it's correct, and possibly fast? This entirely
+you use, so long as it's correct and, possibly, fast? This entirely
 understandable sentiment has afflicted almost all programmers at some
 point or another and typically has got them into more or less serious
 difficulty before they realised that it's completely wrong.
@@ -70,13 +70,13 @@ to make code as easy to understand as possible also applies
 here. Another analogy that carries over from mathematics is that very
 often it's one's own work that one is trying to understand and
 correct. This ought to create a very strong incentive to write very
-clear code adhering to all the conventions because the poor
+clear code adhering to all the conventions, because the poor
 individual who has to read your work to find the bugs might very well
 be you!
 
 Just as in mathematics, programming has a whole set of conventions
-which sit on top of the formal requirements of a programming language,
-and largely exist in order to make the code easier for all programmers
+which sit on top of the formal requirements of a programming language.
+These exist in order to make the code easier for all programmers
 to read. Some of these rules, typically the more formulaic ones about
 matters such as code layout and naming conventions, are somewhat
 different in different programming languages. Others, most especially
@@ -139,14 +139,14 @@ able to run a linter for you, and display the results by highlighting code or
 lines of code with problem. The effect is very like the highlighting of spelling
 and grammar problems in many word processors and email clients.
 
-One such program is called flake8. Running flake8 on all of the source
+One such program is called Flake8. Running Flake8 on all of the source
 code in a project, preferably automatically on every commit, is an
 excellent mechanism for keeping a project's code in PEP 8
 conformance. Indeed, without a mechanism like this, there is a strong
 tendency for programmers to cut style corners, with the effect that
 the code in a project becomes harder and harder to read and work with.
 
-Installing flake8
+Installing Flake8
 .................
 
 Flake8 is a Python package, which can be installed using pip. Make sure you've
@@ -156,12 +156,63 @@ activated your :term:`virtual environment` and then run:
 
     $ python -m pip install flake8
 
-This is enough to run flake8 on the command line, however you will probably want
+This is enough to run Flake8 on the command line, however you will probably want
 to set up your editor to highlight flake8 incompatibilities in your source. For
 visual studio code, first open the command palette by typing :kbd:`control` +
 :kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
 "Python: Select Linter" to bring up the list of available linters, and select
 "flake8" from the dropdown list. The video above shows this process.
+
+How to tell Flake8 to shut up
+.............................
+
+Near the top of PEP 8 is the following heading:
+
+.. 
+
+    A foolish consistency is the hobgoblin of little minds.
+
+What this refers to is that just religiously following PEP 8 is not enough to
+produce highly readable code. Indeed, sometimes the rules might induce you do to
+something which makes no sense at all. In those cases, one should step outside
+PEP 8. This is a dangerous licence to take, and it is important to point out that
+this does not mean that a programmer should ignore PEP 8 merely because they
+disagree with a particular convention. Breaking PEP 8 is something you should do
+only when you really have to.
+
+In the rare cases where it is necessary to break PEP 8, Flake8 turns into a
+problem. It doesn't know anything of the judgement call that the programmer has
+made, and so will complain about the offending code. For example, we have
+learned that it is frequently desirable to import names in the
+:file:`__init__.py` file of a :term:`package` in order to include them in the
+package's top level :term:`namespace`. The problem with this is that these names
+are not used inside the :file:`__init__.py` file so Flake8 will complain that
+this is an unnecessary import.
+
+The way to suppress linter errors is using a special comment at the end of the
+line which causes the error. For example, :file:`fibonacci/__init__.py` contains
+the following line:
+
+.. code-block:: python3
+
+    from .fibonacci import fib
+
+This causes the following Flake8 error:
+
+.. code-block:: console
+
+    $ flake8 fibonacci
+    fibonacci/__init__.py:1:1: F401 '.fibonacci.fib' imported but unused
+
+We suppress this error by adding this comment:
+
+.. code-block:: python3
+
+    from .fibonacci import fib  # noqa F401
+
+The comment starts with the keyword `noqa`, which stands for "no questions
+asked" and then gives the error code which is to be ignored for this line. This
+can be found in the Flake8 output.
 
 Code layout
 -----------
@@ -548,7 +599,7 @@ code will have at least a passing acquaintance with that area of
 mathematics. You will therefore greatly help their intuition for what
 your code does if the names in the code match the mathematical
 conventions for the same concepts. You can use underscores to hint at
-subscripts, just like in LaTeX: for example if you write a function
+subscripts, just like in LaTeX. For example, if you write a function
 which changes coordinates, then `x_old` and `x_new` are likely to be
 good names for the coordinate vector before and after the
 transformation.
@@ -569,6 +620,16 @@ letters. For example, `theta` is a very good name for a variable
 representing an angle. Capital Greek letters are sometimes represented
 by capitalising the first letter of the Roman word, but take care to
 avoid situations where this might be confused for a class name.
+
+Enforcing name conventions in Flake8
+....................................
+
+The core Flake8 package does not enforce the PEP 8 naming conventions, but there
+is a plugin which does so. Simply install the :mod:`pep8-naming` package.
+
+.. code-block:: console
+
+    $ python -m pip install pep8-naming  
 
 Parsimony
 ---------
@@ -718,7 +779,7 @@ should be avoided in favour of:
 In addition to having fewer logical operations which the reader needs
 to understand, the `if...else` version explicitly ties
 the two cases together as alternatives, which is an additional aid to
-understanding.
+comprehension.
 
 Use the fact that every object is True or False
 ...............................................
@@ -840,8 +901,8 @@ justifiable to include a comment about *why* a particular approach is
 taken. For example, it might be worth commenting why an apparently
 simpler alternative strategy is actually invalid.
 
-PEP8 rules for comments
-.......................
+PEP 8 rules for comments
+........................
 
 Comments start with a single :file:`#` followed by a single space. 
 :term:`Inline comments <inline comment>` are separated from the code by at least two spaces.
@@ -942,7 +1003,7 @@ display the docstring when you ask for help. However, other tools such as those
 that generate websites from documentation depend on you following the
 conventions.
 
-By convention, docstrings are delimited by three double quote characters. 
+By convention, docstrings are delimited by three double quote characters (`"""`). 
 
 Short docstrings
 ................
@@ -966,6 +1027,14 @@ a full stop.
             """fib(n)
             Return the n-th Fibonacci number.""" # Don't include the function signature.
 
+.. container:: goodcode
+
+    .. code-block:: python3
+
+        def fib(n):
+            """Return the n-th Fibonacci number."""
+
+
 Long docstrings
 ...............
 
@@ -976,14 +1045,45 @@ to cover 5 parameters, and detail the return type. It also contains several
 examples, references to other functions, and an explanatory note. This is an
 example of very good documentation.
 
-There is no official standard for the layout of a long docstring, but there are
-two project or institution-based conventions that are recognised by the web
-documentation system. One from `Google
+There is no widely used official standard for the layout of a long docstring,
+but there are two project or institution-based conventions that are recognised
+by the web documentation system. One from `Google
 <https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`__
 and the other from the `Numpy
 <https://numpydoc.readthedocs.io/en/latest/format.html>`__ project. You should
 consistently use one of these styles across a whole project. Clearly if you are
 contributing code to an existing project then you should follow their style.
+
+Enforcing docstring conventions in Flake8
+.........................................
+
+The core Flake8 package does not enforce docstring conventions, but there is an
+additional package :mod:`flake8-docstrings` which will do this for you. This is
+installed using:
+
+.. code-block:: console
+
+    $ python -m pip install flake8-docstrings
+
+Because there is more than one convention for long docstrings, this package
+needs a little bit of configuration. You can select the docstring convention on
+the command line:
+
+.. code-block:: console
+
+    $ flake8 --docstring-convention numpy
+
+or by saving the configuration option in a config file. For example you can add
+a file :file:`setup.cfg` alongside :file:`setup.py` at the top of your git
+repository, and include the following:
+
+.. code-block:: python3
+
+    [flake8]
+    docstring-convention=numpy
+
+Alternative specifications for docstring conventions that are supported are
+`google` and `pep257`.
 
 A brief diversion into cellular automata
 ----------------------------------------
@@ -1003,11 +1103,11 @@ alive or dead. The game then proceeds as a series of steps. At each step the new
 state of the board is calculated according to these rules:
 
 0. The neighbours of a square are the 8 immediately surrounding squares.
-1. Any square with exactly 3 live neighbours on the old board is live on the new
-   board.
-2. Any square which is alive on the old board and has exactly 2 live neighbours
-   on the old board remains alive on the new board.
-3. All other squares on the new board are dead.
+1. Any square with exactly 3 live neighbours at the old step is live at the new
+   step.
+2. Any square which is alive at the old step and has exactly 2 live neighbours
+   at the old step remains alive at the new step.
+3. All other squares on the board at the new step are dead.
 
 Using only these three rules, an amazingly complex array of behaviour can be
 generated, depending only on the pattern of cells which starts off alive.
@@ -1017,6 +1117,14 @@ between a few states. It's simultaneously a fun toy and an important piece of
 mathematics. For example, it's possible to prove that any algorithm that can be
 executed on any computer can be represented by a suitable pattern of game of
 life cells, and running the game will execute the algorithm.
+
+.. figure:: images/glider_gun.png
+    :align: center
+    :width: 40%
+
+    Snapshot of the Game of Life at one step. The black squares are live and the
+    white ones are dead. Two gliders can be seen moving across the board at (25,
+    12) and (33, 19).
  
 Glossary
 --------
@@ -1055,11 +1163,8 @@ Exercises
 
 .. proof:exercise::
 
-    Install flake8 and configure your Python editor to use flake8.
-
-    .. note:: 
-    
-        The test should check that flake8 is importable.
+    Install flake8, pep8-naming, and flake8-docstrings.
+    Configure your Python editor to use flake8.
 
 The :doc:`skeleton code for this week's exercises on GitHub Classroom
 <not_released>` contains a package :mod:`life` which implements Conway's Game of
@@ -1106,9 +1211,12 @@ neverending sequence of gliders:
 
 .. proof:exercise:: 
 
-    The author of the :mod:`life` package had clearly never heard of PEP8: the
+    The author of the :mod:`life` package had clearly never heard of PEP 8: the
     style of the code is awful. Fix the style in the package so that there are
-    no flake8 errors.
+    no Flake8 errors. Among other things, you will need to write docstrings for
+    all of the methods. The configuration file in the skeleton code sets the
+    convention to Numpy, but actually you should only need short docstrings in
+    this case so this won't make a difference.
 
 .. proof:exercise::
 
@@ -1178,7 +1286,7 @@ neverending sequence of gliders:
 .. proof:exercise::
 
     Add a method :meth:`insert` to the :class:`Game` class. This should take two
-    paramaters, a :class:`Pattern` and a pair of integers representing a square
+    parameters, a :class:`Pattern` and a pair of integers representing a square
     on the game board. The method should modify the game board so as to insert
     the pattern provided at a location centred on the location given by the pair
     of integers.

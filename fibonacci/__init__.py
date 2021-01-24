@@ -1,1 +1,1 @@
-from .fibonacci import fib # noqa F401
+from .fibonacci import fib  # noqa F401
