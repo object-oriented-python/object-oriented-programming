@@ -934,7 +934,7 @@ the :class:`Polynomial` class.
        whose :term:`constructor` takes two user parameters, `centre` and `radius`.
        `centre` should be a length 2 sequence containing the two-dimensional
        coordinates of the centre, while `radius` is the radius of the circle.
-    2. Add an :ref:`import <modules>` statement to :file:`shape.__init__.py` so
+    2. Add an :ref:`import <modules>` statement to :file:`shape/__init__.py` so
        that the following code works:
 
        .. code-block:: python3
