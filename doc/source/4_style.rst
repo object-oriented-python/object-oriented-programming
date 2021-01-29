@@ -1173,12 +1173,12 @@ Exercises
     Install flake8, pep8-naming, and flake8-docstrings.
     Configure your Python editor to use flake8.
 
-The :doc:`skeleton code for this week's exercises on GitHub Classroom
-<not_released>` contains a package :mod:`life` which implements Conway's Game of
-Life. Accept the assignment, and clone the repository. Install the package in
-editable mode. This will also install some additional packages that the
-:mod:`life` package depends on. This is achieved using an additional argument to
-:func:`setuptools.setup`.
+The `skeleton code for this week's exercises on GitHub Classroom
+<https://classroom.github.com/a/GCKdXtVA>`__ contains a package :mod:`life`
+which implements Conway's Game of Life. Accept the assignment, and clone the
+repository. Install the package in editable mode. This will also install some
+additional packages that the :mod:`life` package depends on. This is achieved
+using an additional argument to :func:`setuptools.setup`.
 
 .. code-block:: python3
     :caption: `setup.py` for the :mod:`life` package. The `install_requires`
