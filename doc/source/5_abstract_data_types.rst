@@ -82,17 +82,17 @@ it from the stack.
       }
 
       group second{
-      "24 "; 12;
+      12; "24 ";
       color =  orange
       }
 
       group third{
-      "24  "; "12 "; 57;
+      57 ;"12 "; "24  ";
       color =  orange
       }
 
       group fourth{
-      "24   "; "12  ";
+      "12  "; "24   ";
       color =  orange
       }
 
@@ -135,7 +135,7 @@ and a stack. Each number encountered in the expression is pushed onto
 the stack, while each operator pops the right number of arguments off
 the stack and pushes the result onto the stack. At the end of the
 calculation, the result of the calculation is on the top of the stack.
-:numref:`rpcalc` shows :term:`pseudocode`, for a reverse Polish
+:numref:`rpcalc` shows :term:`pseudocode` for a reverse Polish
 calculator.
 
 .. _rpcalc:
@@ -1020,10 +1020,10 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
     In this week's skeleton repository, create a :term:`module`
     :mod:`adt_examples.deque` containing a class :class:`Deque` implementing a
     :term:`deque`. Your implementation should use a ring buffer implemented
-    as a Python list. When the :class:`Deque` is instantiated, the ring buffer
-    should have space for a few items. When it runs out of space it should
-    double in size. It should also halve in size when it drops to only about 40%
-    full. 
+    as a Python list. In order to make things somewhat simpler, we will use a
+    fixed size ring buffer, which doesn't grow and shrink with the queue. The
+    :term:`constructor` of your :class:`Deque` should take a single integer
+    argument which is the size of the list you will use as your ring buffer.
 
     Implement the following methods:
 
@@ -1049,23 +1049,22 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
         The :meth:`~object.__len__` :term:`special method`. This should return
         the number of items currently in the :class:`Deque`.
 
-    :meth:`_size`
-        This should return the current length of the ring buffer, including both
-        occupied and empty spaces.
-
     In addition to the above methods, you should ensure that :class:`Deque`
     implements the iterator protocol. This should return the items in the queue,
-    starting from the end, and working backwards. Iterating over the
+    starting from the first to the last. Iterating over the
     :class:`Deque` should not modify the :class:`Deque`.
 
     .. hint::
 
-        You can create a list of length 10 (for example) containing only
+        You can create a list of length `n` containing only
         :data:`None` using the following syntax:
 
         .. code-block:: python3
 
-            l = [None] * 10
+            l = [None] * n
+
+        The modulo operator, `%` and integer division operator `//` are also likely
+        to be very useful.
 
     .. hint::
 
