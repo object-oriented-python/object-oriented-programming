@@ -34,6 +34,20 @@ structures which could be used to implement them.
 Stacks
 ------
 
+.. dropdown:: Video: stacks as an abstract data type.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/506479213"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b014e13a-82ca-4a57-ac7f-acc000e64349>`__.
+
+
 Possibly the simplest abstract data type which is not synonymous with
 a Python type is the :term:`stack`. A stack is a sequence of objects
 in which only the most recently added object is accessible. The image
@@ -52,11 +66,6 @@ and `pop` to return the most recently added object, and remove it from
 the sequence. :numref:`stackdiag` shows these operations. It is also common to add an additional operation of
 `peek`, which returns the most recently added object without removing
 it from the stack.
-
-.. note::
-
-   The stack operations in the diagram are wrong. The stack is back to front and
-   the wrong value is popped.
 
 .. _stackdiag:
 
@@ -273,6 +282,20 @@ tasks.
 
 Algorithmic complexity
 ----------------------
+
+.. dropdown:: Video: dynamic arrays and algorithmic complexity.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/506479208"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=516115a0-b13d-4693-951b-acc000e642ff>`__.
+
 
 The second reason that understanding abstract data types is important
 is that a good implementation of a well-designed abstract data type
@@ -535,6 +558,20 @@ this.
 Queues and deques
 -----------------
 
+.. dropdown:: Video: deques and ring buffers.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/506710190"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5ba7fde3-8ca9-48e2-b66b-acc100bd1953>`__.
+
+
 A :term:`queue` is, like a :term:`stack`, an ordered sequence of
 objects. The difference is that the only accessible item in the
 sequence is the *earliest* added. Items can be added to the back of
@@ -581,6 +618,20 @@ buffer.
 
 Linked lists
 ------------
+
+
+.. dropdown:: Video: linked lists.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/506743244"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f37ae26c-a39a-4757-bc0d-acc100eec588>`__.
 
 One disadvantage of a deque (and hence of a stack or queue) is that inserting an
 object into the middle of the sequence is often an :math:`O(n)` operation,
@@ -736,6 +787,20 @@ based on ring buffers.
 
 The iterator protocol
 ---------------------
+
+.. dropdown:: Video: the iterator protocol.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/506743250"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d1b2b176-066a-4d68-aa01-acc100eec5c6>`__.
+
 
 The abstract data types we have considered here are collections of
 objects, and one common abstract operation which is applicable to
