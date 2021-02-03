@@ -1,4 +1,4 @@
-from src.linked_list import Link
+from example_code.linked_list import Link
 
 
 def test_linked_list():
