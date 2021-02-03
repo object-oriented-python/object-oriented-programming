@@ -375,7 +375,7 @@ data structure.
     as :math:`n` approaches infinity, while in numerical analysis the
     independent variable approaches 0. This difference between two closely
     related fields is often confusing, particularly since both disciplines
-    conventionally leave out the limit. It's worth keeping in mind that the
+    conventionally leave out the limit. It's worth keeping in mind the
     difference, because a numerical algorithm with :math:`O(h^4)` error is
     really rather good since `h` is small, but an algorithm with :math:`O(n^4)`
     cost is very expensive indeed!
@@ -1029,6 +1029,14 @@ Glossary
 
 Exercises
 ---------
+
+.. panels::
+    :card: quiz shadow
+
+    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2077681_1&mode=cpview
+        :text: This week's quiz
+        :classes: stretched-link 
+
 
 Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
 
