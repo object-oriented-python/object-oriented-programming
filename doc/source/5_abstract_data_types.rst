@@ -1038,15 +1038,17 @@ Exercises
         :classes: stretched-link 
 
 
-Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom
+<not_released>`. You will also need to install the pytest-timeout package.
 
 .. proof:exercise::
 
     In this week's skeleton repository, create a :term:`package` called
     :mod:`adt_examples` with a :term:`module` called
-    :mod:`adt_examples.fibonacci`. Create a class :class:`Fib` implementing the
-    iterator protocol which returns the Fibonacci numbers. In other words, the
-    following code should print the `Fibonacci` numbers under 100:
+    :mod:`adt_examples.fibonacci`. Make the package installable and install in
+    editable mode. Create a class :class:`Fib` implementing the iterator
+    protocol which returns the Fibonacci numbers. In other words, the following
+    code should print the `Fibonacci` numbers under 100:
 
     .. code-block:: python3
 

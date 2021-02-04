@@ -752,7 +752,7 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
     iterations.
     
     The skeleton code for this week contains a function
-    :func:`nonlinear_solvers.solvers.newton-raphson` which takes as arguments a
+    :func:`nonlinear_solvers.solvers.newton_raphson` which takes as arguments a
     function, its derivative and a starting point for the iteration. It can also
     optionally be passed a value for :math:`\epsilon` and a maximum number of
     iterations to execute. Implement this function. If the iteration succeeds
