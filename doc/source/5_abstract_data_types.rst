@@ -1038,8 +1038,8 @@ Exercises
         :classes: stretched-link 
 
 
-Obtain the :doc:`skeleton code for these exercises from GitHub classroom
-<not_released>`. You will also need to install the pytest-timeout package.
+Obtain the `skeleton code for these exercises from GitHub classroom
+<https://classroom.github.com/a/eHigwP_C>`__. You will also need to install the pytest-timeout package.
 
 .. proof:exercise::
 

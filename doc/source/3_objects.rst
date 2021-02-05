@@ -919,7 +919,7 @@ the :class:`Polynomial` class.
 
 .. proof:exercise::
 
-    Define a function `derivative` in :file:`polynomial.py` which takes a
+    Define a function `derivative` in :file:`polynomials.py` which takes a
     :class:`Polynomial` and returns a new :class:`Polynomial` which is its
     derivative. Also define a :meth:`dx` method on the :class:`Polynomial` class
     which returns the derivative of that :class:`Polynomial`. Rather than
