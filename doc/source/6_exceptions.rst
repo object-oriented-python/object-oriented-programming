@@ -3,6 +3,21 @@
 Errors and exceptions
 =====================
 
+.. dropdown:: Video: errors and exceptions.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/509280820"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d58d4c55-6216-4deb-be70-acc7015033f4>`__.
+
+
+
 It is a sight familiar to every programmer: instead of producing the
 desired result, the screen is filled with seemingly unintelligible
 garbage because an error has occurred. Producing errors is an
@@ -166,6 +181,20 @@ exceptions so there are many more defined in third-party packages.
 Tracebacks: finding errors
 --------------------------
 
+.. dropdown:: Video: tracebacks.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/509280880"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f3f8a555-31c8-41e3-a176-acc701503469>`__.
+
+
 The errors we have looked at so far have all been located in the top
 level of code either typed directly into iPython or executed in a
 script. However, what happens if an error occurs in a function call or
@@ -224,6 +253,19 @@ the call stack.
 The call stack
 ..............
 
+.. dropdown:: Video: the call stack.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/509281576"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cab860f1-ff35-4402-afe9-acc701503419>`__.
+
 A Python program is a sequence of Python statements, which are
 executed in a sequence determined by the flow control logic of the
 program itself. Each statement contains zero or more function calls [#function]_,
@@ -257,10 +299,6 @@ from which the function was called. Because functions can call
 functions which call functions and so on in a nearly limitless
 sequence, there can be a number of stack frames in existence at any
 time.
-
-.. note::
-
-   FIXME: Do a video using the XCode debugger to show the call stack.
 
 Interpreting tracebacks
 .......................
@@ -337,6 +375,20 @@ line of the iPython session.
 
 Raising exceptions
 ------------------
+
+.. dropdown:: Video: raising an exception.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/509492490"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d0b05710-bbb8-47b4-9afa-acc8011e7635>`__.
+
 
 Thus far we've noticed that an exception occurs when something goes
 wrong in a program, and that the :term:`Python interpreter` will stop
@@ -442,6 +494,20 @@ distinction is of negligible importance for our current purposes.
 Handling exceptions
 -------------------
 
+.. dropdown:: Video: handling exceptions.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/509492495"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=25f14034-34a1-44ec-83f7-acc8011e76a0>`__.
+
+
 So far we have seen several different sorts of exception, how to raise
 them, and how to understand the resulting :term:`traceback`. The
 :term:`traceback` is very helpful if the exception was caused by a bug
@@ -532,6 +598,19 @@ version of :func:`gcd` then we have, as we might expect:
 
 Except clauses
 ..............
+
+.. dropdown:: Video: further exception handling.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/509492496"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0d7840de-17b2-4268-b079-acc8011e7660>`__.
 
 Let's look in a little more detail at how :keyword:`except` works. The full
 version of the except statement takes a tuple of exception classes. If an
