@@ -52,3 +52,55 @@
 
 `Lebesgue_Measure`
 
+.. code-block:: ipython3
+
+    ---------------------------------------------------------------------------
+    ZeroDivisionError                         Traceback (most recent call last)
+    ~/traceback.py in <module>
+        15 
+        16 
+    ---> 17 print(b(5, 2, 0))
+
+    ~/traceback.py in b(x, y, z)
+        5 def b(x, y, z):
+        6     s = a(x, y)
+    ----> 7     t = c(s, z)
+        8     return t
+        9 
+
+    ~/traceback.py in c(x, y)
+        11 def c(x, y):
+        12     if x > y:
+    ---> 13         return c(x-1, y)
+        14     return a(x, y)
+        15 
+
+    ~/traceback.py in c(x, y)
+        11 def c(x, y):
+        12     if x > y:
+    ---> 13         return c(x-1, y)
+        14     return a(x, y)
+        15 
+
+    ~/traceback.py in c(x, y)
+        11 def c(x, y):
+        12     if x > y:
+    ---> 13         return c(x-1, y)
+        14     return a(x, y)
+        15 
+
+    ~/traceback.py in c(x, y)
+        12     if x > y:
+        13         return c(x-1, y)
+    ---> 14     return a(x, y)
+        15 
+        16 
+
+    ~/traceback.py in a(x, y)
+        1 def a(x, y):
+    ----> 2     return x/y
+        3 
+        4 
+        5 def b(x, y, z):
+
+    ZeroDivisionError: float division by zero

@@ -20,10 +20,12 @@ Test format
 -----------
 
 The final exam will be two hours long and comprise 4 questions, each of which
-will be marked out of 20. The midterm test will be one hour long, so to keep the
-question format consistent with the final exam, there will be two questions.
-Each question will be subdivided into identified parts with a specified number
-of marks associated with each.
+will be marked out of 20. The midterm test will be 40 minutes long, so to keep
+the question format consistent with the final exam, there will a single
+question. The extra 10 minutes is to give you some flexibility, because in the
+final exam you could spend more time on some questions than others. The
+question will be subdivided into identified parts with a specified number of
+marks associated with each.
 
 The test will work using GitHub Classroom. The link to accept the test
 "assignment" will be distributed at the start time of the test, simultaneously in the
@@ -50,7 +52,7 @@ sufficient. A full marks answer to a question will be functionally correct, have
 optimal :term:`algorithmic complexity`, and be elegant and readable. The tests
 provided are an aid to writing correct code: passing the tests does not prove
 that your answer is correct. For example, your code could produce the correct
-output in the cases test but nonetheless fail to implement the specification in
+output in the cases tested but nonetheless fail to implement the specification in
 the question. For the avoidance of doubt, a correct answer is one which
 correctly implements the specification, not simply one which passes the tests
 provided. 
@@ -63,11 +65,11 @@ half of the marks available for a question.
 Using git in the test
 ---------------------
 
-You should clone the test repository into the folder you created for the course,
-just like you have been doing for the exercise repositories. This will help
-ensure that you are programming in the same environment you have been using all
-along, and therefore avoid any unfortunate misconfiguration surprises in the
-test.
+You should accept the test from GitHub classroom, and clone the test repository
+into the folder you created for the course, just like you have been doing for
+the exercise repositories. This will help ensure that you are programming in
+the same environment you have been using all along, and therefore avoid any
+unfortunate misconfiguration surprises in the test.
 
 This is a test of programming as a whole, so using git correctly is a part of
 the test. This has some consequences for how you should go about the test:
@@ -75,7 +77,7 @@ the test. This has some consequences for how you should go about the test:
 1. Commit *and* push your work as you go along. Do not rely on committing once
    at the end of the test. You will be marked on what you have pushed to GitHub
    at the end of the test period. If the first time that you try to push
-   something to GitHub is at the end of the hour, and something goes wrong, then
+   something to GitHub is at the end of the test time, and something goes wrong, then
    you will receive 0% for the test, because you will not have pushed any
    answers.
 2. Don't forget to `git add` any files you need to create. If you don't add them
@@ -105,7 +107,7 @@ Once you've gone through the previous exercises, you should attempt the practice
 questions here. Each of these is a question similar in format and length to the
 questions on the exam. Just like on the exam, the question is specified in the
 :file:`README.rst` file in the exercise repository. When you first attempt each
-of these exercises, you should set yourself a 30 minute timer and see what you
+of these exercises, you should set yourself a 40 minute timer and see what you
 can get done (and committed and pushed!) in the time you would have in the test.
 After that, if you haven't finished, then go on and finish the exercise.
 Programming is a practical discipline, and finishing one exercise will make you
