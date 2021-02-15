@@ -104,3 +104,8 @@
         5 def b(x, y, z):
 
     ZeroDivisionError: float division by zero
+
+
+.. code-block:: python3
+
+    assert math.isclose(calc.peek(), answer, rel_tol=1.e-5), \
