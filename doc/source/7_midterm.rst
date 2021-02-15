@@ -116,4 +116,19 @@ faster and more capable when you attempt the next one.
 Exercises
 ---------
 
-The practice test exercises will be released here in week 6.
+.. proof:exercise::
+
+    Obtain the `first practice problem from GitHub Classroom
+    <https://classroom.github.com/a/wNgTuHeo>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+.. note::
+
+    Do not forget to commit and push as you go. Do not leave this until the end
+    of the test.
+
+.. proof:exercise::
+
+    Obtain the `second practice problem from GitHub Classroom
+    <https://classroom.github.com/a/fQmijiXp>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
