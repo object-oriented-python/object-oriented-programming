@@ -132,3 +132,36 @@ Exercises
     Obtain the `second practice problem from GitHub Classroom
     <https://classroom.github.com/a/fQmijiXp>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
+
+Midterm test instructions
+-------------------------
+
+1.  The midterm test will start at 0900 UTC (London time) on Friday 26 February 2021 and will run for 40
+    minutes. Students with additional time will be contacted about this separately.
+2.  The test will take the form of a GitHub classroom assignment, just like all of
+    the exercises. The URL to accept the assignment will be posted at the start
+    of the test on the `module Team <https://teams.microsoft.com/l/team/19%3ae96b9a199b15419281f55f454d240249%40thread.tacv2/conversations?groupId=1b12939c-d8c9-4e4d-a291-0ff35d57869f&tenantId=2b897507-ee8c-4575-830b-4f8267c3d307>`__, as Blackboard announcement, and posted on
+    Piazza. Of these, the Team is the most instant form of communication so you
+    are advised to look there and use the other sources as a backup.
+3.  The test instructions are in the :file:`README.md` in the repository.
+    GitHub will show this to you on the repository website. The instructions
+    are very similar to those for the practice problems above, so you should
+    make sure you have tried those in advance of the test.
+4.  You submit your work by committing and pushing to the repository on GitHub
+    created when you accept the GitHub Classroom assignment. You must commit and
+    push as you go along. **There is no additional upload time at the end of the test period.**
+5.  If you have a problem during the midterm test, you should post a question
+    `on Piazza <https://piazza.com/class/kjob8in6eox1bp>`__. During the test,
+    Piazza will be configured so that student posts can only be seen by the
+    instructors. Other than this difference you should follow `the instructions
+    on what to do in case of problems <_static/If_you_have_a_problem.pdf>`__ 
+    provided by the maths exams office in their
+    email of 11 February. In particular, if those instructions require you to
+    `email the exam team <mailto:maths.exams@imperial.ac.uk>`__ after the test
+    then you should do so. Posting on Piazza is only a mechanism for getting
+    immediate help during the exam.
+6.  The usual `academic integrity rules for remote assessments <_static/Academic_Integrity.pdf>`__ 
+    apply. In
+    particular, you may consult any resource published on the internet, but you may
+    not seek help from anyone else, whether in person, by email, chat message,
+    forum post or any other means.
