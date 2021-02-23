@@ -27,7 +27,7 @@ class Element:
         return f"{self.value}_{self.group}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}" \
+        return f"{type(self).__name__}" \
                f"({repr(self.group), repr(self.value)})"
 
 
@@ -53,7 +53,7 @@ class Group:
         return f"{self.notation}{self.n}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({repr(self.n)})"
+        return f"{type(self).__name__}({repr(self.n)})"
 
 
 class CyclicGroup(Group):

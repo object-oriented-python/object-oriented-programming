@@ -18,7 +18,7 @@ class Element:
         return f"{self.value}_{self.group}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}" \
+        return f"{type(self).__name__}" \
                f"({repr(self.group), repr(self.value)})"
 
 
@@ -45,7 +45,7 @@ class CyclicGroup:
         return f"C{self.order}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({repr(self.order)})"
+        return f"{type(self).__name__}({repr(self.order)})"
 
 
 class GeneralLinearGroup:
@@ -73,4 +73,4 @@ class GeneralLinearGroup:
         return f"G{self.degree}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({repr(self.degree)})"
+        return f"{type(self).__name__}({repr(self.degree)})"

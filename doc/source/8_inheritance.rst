@@ -7,7 +7,7 @@ A key feature of abstractions is composability: the ability to make a
 complex object or operation out of several components. We can compose
 objects by simply making one object a :term:`attribute` of another
 object. This combines objects in a *has a* relationship. For example
-the :class:`Polynomial` class introduced in :numref:`chapter %s
+the :class:`~example_code.polynomial.Polynomial` class introduced in :numref:`chapter %s
 <objects>` *has a* :class:`tuple` of coefficients. Object composition of
 this sort is a core part of :term:`encapsulation`.
 
@@ -78,7 +78,7 @@ It turns out that :func:`issubclass` is reflexive (classes are subclasses of the
 This means that, in a manner analogous to subset inclusion, the
 :term:`subclass` relationship forms a partial order on the set of all
 classes. This relationship defines another core mechanism for creating a new
-class from existing classes, :term:`inheritance`. If one class is a subclass of
+class from existing classes: :term:`inheritance`. If one class is a subclass of
 another then we say that it inherits from that class. Where composition defines
 a *has a* relationship, inheritance defines an *is a* relationship.
 
@@ -110,10 +110,10 @@ cyclic group element type which can take the relevant values and which
 implements the group operation. This would be unfortunate for at least two
 reasons:
 
-1. Because each group needs several elements, need a different element *type*
+1. Because each group needs several elements, we would need a different element *type*
    for each *instance* of a cyclic group. The number of classes needed would grow very fast!
-2. Adding a new family of groups would require adding both a group class and a
-   set of element classes. On grounds of simplicity and robustness, always key considerations,
+2. Adding a new family of groups would require us to add both a group class and a
+   set of element classes. On the basis of :term:`parsimony`,
    we would much prefer to only add one class in order to add a new family of
    groups.
    
@@ -155,7 +155,7 @@ minimal characterisation of a group will suffice.
             return f"{self.value}_{self.group}"
 
         def __repr__(self):
-            return f"{self.__class__.__name__}" \
+            return f"{type(self).__name__}" \
                 f"({repr(self.group), repr(self.value)})"
 
 
@@ -181,7 +181,7 @@ minimal characterisation of a group will suffice.
             return f"C{self.order}"
 
         def __repr__(self):
-            return f"{self.__class__.__name__}({repr(self.order)})"
+            return f"{type(self).__name__}({repr(self.order)})"
 
 
 :numref:`cyclic_group` shows an implementation of our minimal conception of
@@ -198,7 +198,7 @@ the concrete effects of the classes:
     2_C5
 
 We observe that we are able to create the cyclic group of order 5. Due to the
-definition of the :meth:`__call__` :term:`special method` at line 35, we are
+definition of the :meth:`~object.__call__` :term:`special method` at line 35, we are
 then able to create elements of the group by calling the group object. The group
 operation then has the expected effect:
 
@@ -300,7 +300,7 @@ group as follows:
             return f"G{self.degree}"
 
         def __repr__(self):
-            return f"{self.__class__.__name__}({repr(self.degree)})"
+            return f"{type(self).__name__}({repr(self.degree)})"
 
 We won't illustrate the operation of this class, though the reader is welcome to
 :keyword:`import` the :mod:`example_code.groups_basic` module and experiment.
@@ -337,9 +337,9 @@ does.
             '''
             Parameters
             ----------
-                n: int
-                    The primary group parameter, such as order or degree. The
-                    precise meaning of n changes from subclass to subclass.
+            n: int
+                The primary group parameter, such as order or degree. The
+                precise meaning of n changes from subclass to subclass.
             '''
             self.n = n
 
@@ -351,7 +351,7 @@ does.
             return f"{self.notation}{self.n}"
 
         def __repr__(self):
-            return f"{self.__class__.__name__}({repr(self.n)})"
+            return f"{type(self).__name__}({repr(self.n)})"
 
 
     class CyclicGroup(Group):
@@ -446,10 +446,6 @@ specific to each object of the class. Our new version of the code instead sets a
 single attribute that is common to all objects of this class. This is called a
 :term:`class attribute`.
 
-.. note::
-
-    Come back and explain class attributes in more detail.
-
 .. _runtime_attributes:
 
 Attributes resolve at runtime
@@ -512,7 +508,31 @@ called, and the object `self` is the actual concrete class instance, with all of
 the attributes that are defined for it. In this case, even though
 :meth:`__str__` is defined on :class:`Group`, `self` has type
 :class:`CyclicGroup`, and therefore `self.notation` is well-defined and has the
-value `"C"`. 
+value `"C"`.
+
+Parametrising over class
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+When we create a class, there is always the possibility that someone will come
+along later and create a subclass of it. It is therefore an important design
+principle to avoid doing anything which might cause a problem in a subclass.
+One important example of this is anywhere where it is assumed that the class of
+:data:`self` is in fact the current class and not some subclass of it. For this
+reason, it is almost always a bad idea to explicitly use the name of the
+current class inside its definition. Instead, we should use the fact that
+`type(self)` returns the type (i.e. class) of the current object. It is for
+this reason that we typically use the formula `type(self).__name__` in the
+:meth:`~object.__repr__` method of an object. A similar procedure applies if we
+need to create another object of the same class as the current object. For
+example, one might create the next larger :class:`~example_code.groups.Group`
+than the current one with:
+
+.. code-block:: python3
+
+    type(self)(self.n+1)
+
+Observe that since `type(self)` is a :term:`class`, we can :term:`instantiate`
+it by calling it.
 
 Calling parent class methods
 ----------------------------
@@ -533,7 +553,7 @@ Calling parent class methods
             return self.length * self.width
 
         def __repr__(self):
-            return f"{self.__class__.__name__}{self.length, self.width!r}"
+            return f"{type(self).__name__}{self.length, self.width!r}"
 
 :numref:`rectangle_class` shows a basic implementation of a class describing a
 rectangle. We might also want a class defining a square. Rather than redefining
@@ -572,7 +592,7 @@ the :func:`super` function. :numref:`square_class` demonstrates its application.
             super().__init__(length, length)
 
         def __repr__(self):
-            return f"{self.__class__.__name__}({self.length!r})"
+            return f"{type(self).__name__}({self.length!r})"
 
 The :func:`super` function returns a version of the current object in which none
 of the :term:`methods <method>` have been overridden by the current
@@ -593,9 +613,27 @@ the one which best matches the circumstances. However, sometimes there is no
 good match, or it might be that the programmer wants user code to be able to
 catch exactly this exception without the risk that some other operation will
 raise the same exception and be caught by mistake. In this case, it is necessary
-to create a new type of exception. A new exception will be an object which
-behaves in most respects like other exceptions, except that it's a new
-:term:`class` and may behave differently in particular circumstances. 
+to create a new type of exception. 
+
+A new exception will be a new :term:`class` which inherits from another
+exception class. In most cases, the only argument that the exception
+:term:`constructor` takes is an error message, and the base :class:`Exception`
+class already takes this. This means that the subclass definition may only need
+to define the new class. Now, a class definition is a Python block and, as a
+matter of :term:`syntax`, a block cannot be empty. Fortunately, the Python
+language caters for this situation with the :keyword:`pass` statement, which
+simply does nothing. For example, suppose we need to be able to distinguish the
+:class:`ValueError` which occurs in entity validation from other occurrences of
+:class:`ValueError`. For example it might be advantageous to enable a user to
+catch exactly these errors. In this case, we're still talking about some form
+of value error, so we'll want our new error class to inherit from
+:class:`ValueError`. We could achieve this as follows:
+
+.. code-block:: python3
+
+    class GroupValidationError(ValueError):
+        pass
+
 
 .. 
     .. _abstract_base_classes:
