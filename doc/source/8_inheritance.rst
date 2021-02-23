@@ -707,12 +707,52 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
         In implementing element validation, the builtin function :func:`sorted`
         is likely to be useful.
 
+
+.. proof:exercise::
+
+    The objective of this exercise is to create subclasses of the built-in
+    :class:`set` class which are only valid for values which pass a certain
+    test. For example, one might have a set which can only contain integers.
+
+    1. In this week's repository, create a package called :mod:`sets` containing a
+       module `verified_sets`. Create a subclass of the inbuilt :class:`set`,
+       :class:`sets.verified_sets.VerifiedSet`. :class:`VerifiedSet` will itself 
+       be the parent of other classes which have particular verification rules.
+
+    2. Give :class:`VerifiedSet` a method :meth:`_verify` which takes a single
+       value. In the case of :class:`VerifiedSet`, :meth:`_verify` should
+       unconditionally raise :class:`NotImplementedError`. Subclasses of
+       :class:`VerifiedSet` will override this method to do something more useful.
+
+    3. For each :class:`set` method which adds items to the set,
+       :class:`VerifiedSet` will need to have its own version which calls
+       :meth:`_verify` on each item, before calling the appropriate superclass
+       method in order to actually insert the value(s). The methods which add
+       items to a set are :meth:`~frozenset.add`, :meth:`~frozenset.update`, and
+       :meth:`~frozenset.symmetric_difference_update`. 
+
+    4. For those methods which create a new set, :class:`VerifiedSet` will also
+       need to :term:`instantiate` a new object, so that the method returns a subclass of
+       :class:`VerifiedSet` instead of a plain :class:`set`.  The methods to which
+       this applies are :meth:`~frozenset.union`, :meth:`~frozenset.intersection`,
+       :meth:`~frozenset.difference`, :meth:`~frozenset.symmetric_difference`, and
+       :meth:`~frozenset.copy`.
+
+    5. Create a subclass of :class:`VerifiedSet` called :class:`IntSet` in which
+       only integers (i.e. instances of :class:`numbers.Integral`) are allowed.
+       On encountering a non-integer :meth:`IntSet._verify` should raise
+       :class:`TypeError` with an error message of the following form. For example
+       if an attempt were made to add a string to the set, the message would be
+       "IntSet expected an integer, got a str.".
+
+    6. Create a subclass of :class:`VerifiedSet` called :class:`UniqueSet` into
+       which values can only be added if they are not already in the set. You
+       should create a new exception :class:`UniquenessError`, a subclass of
+       :class:`KeyError`. :class:`UniqueSet._verify` should raise this if an
+       operation would add a duplicate value to the :class:`UniqueSet`.
+
 .. note:: 
 
     Quiz exercise giving a bunch complicated inheritance pattern and asking what
     various things print.
 
-.. note:: 
-
-    One exercise will be to implement another family of groups by importing and
-    inheriting from :class:`~example_code.groups.Group`.
