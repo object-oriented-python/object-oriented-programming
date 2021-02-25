@@ -5,6 +5,7 @@ import git     # Install gitpython
 from argparse import ArgumentParser
 import subprocess
 import sys
+import datetime
 
 parser = ArgumentParser(
     description="""Helper script to mark finite element assignments.""")
@@ -21,6 +22,8 @@ parser.add_argument("--week", type=str, action="store", required=True,
                     help="Week whose repositories should be cloned.")
 parser.add_argument("--midterm", action="store_true",
                     help="Retrieve midterm submissions.")
+parser.add_argument("--check-midterm", action="store_true",
+                    help="Check datestamps on midterm submissions.")
 args = parser.parse_args()
 
 repo = git.Repo(".")
@@ -60,7 +63,6 @@ if args.push_midterm:
     marking_repo = org.get_repo("midterm-marking")
     marking_repos = {pull.title for pull in marking_repo.get_pulls()}
 
-
     for r in org.get_repos():
         if r.name.startswith("midterm-test-cards"):
             uname = r.name[19:]
@@ -75,6 +77,17 @@ if args.push_midterm:
                                          base=f"{uname}-feedback",
                                          head=f"{uname}-main",
                                          draft=False)
+
+
+if args.check_midterm:
+
+    cutoff = datetime.datetime(2021, 2, 26, 9, 40, tzinfo=datetime.timezone.utc)
+
+    for r in repo.refs:
+        if r.path.split("/")[3] == "main" \
+          and r.commit.committed_datetime > cutoff:
+            print(f"{r.name} committed at {r.commit.committed_datetime.isoformat()}.")
+
 
 if args.checkout:
     user = args.checkout
