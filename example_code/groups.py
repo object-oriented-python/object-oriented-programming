@@ -24,9 +24,11 @@ class Element:
                                             other.value))
 
     def __str__(self):
+        """Return a string of the form value_group."""
         return f"{self.value}_{self.group}"
 
     def __repr__(self):
+        """Return the canonical string representation of the element."""
         return f"{type(self).__name__}" \
                f"({repr(self.group), repr(self.value)})"
 
