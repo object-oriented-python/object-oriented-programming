@@ -258,13 +258,13 @@ div.note {
 	background: #e1ecfe url(dialog-note.png) no-repeat 10px 8px;
 }
 
-#fe-utils-package #id1 {
+#example-code-package #id1 {
     display: none;
 }
 
-#fe-utils-package h2 {
+#example-code-package h2 {
     background-color: #fafafa;                   
-    border: 2px solid #41075B;
+    border: 2px solid #c52b03;
 	border-right-style: none;
 	border-left-style: none;
 	padding: 10px 20px 10px 60px;
@@ -274,7 +274,7 @@ div.note {
     margin: 0;
 }
 
-#fe-utils-package div.section>dl,
+#example-code-package div.section>dl,
 #plotting-scripts div.section {
     border: 2px solid #ddd;
 	border-right-style: none;

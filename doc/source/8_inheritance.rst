@@ -787,7 +787,7 @@ Glossary
 Exercises
 ---------
 
-Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/VXIC_gES>`__. 
 
 .. proof:exercise::
 
@@ -866,9 +866,3 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
        should create a new exception :class:`UniquenessError`, a subclass of
        :class:`KeyError`. :class:`UniqueSet._verify` should raise this if an
        operation would add a duplicate value to the :class:`UniqueSet`.
-
-.. note:: 
-
-    Quiz exercise giving a bunch complicated inheritance pattern and asking what
-    various things print.
-
