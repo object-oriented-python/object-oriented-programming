@@ -46,9 +46,9 @@ class Group:
 
     Parameters
     ----------
-        n: int
-            The primary group parameter, such as order or degree. The
-            precise meaning of n changes from subclass to subclass.
+    n: int
+        The primary group parameter, such as order or degree. The
+        precise meaning of n changes from subclass to subclass.
     """
 
     def __init__(self, n):
@@ -60,7 +60,7 @@ class Group:
 
     def __str__(self):
         """Return a string in the form symbol then group parameter."""
-        return f"{self.notation}{self.n}"
+        return f"{self.symbol}{self.n}"
 
     def __repr__(self):
         """Return the canonical string representation of the element."""
@@ -70,7 +70,7 @@ class Group:
 class CyclicGroup(Group):
     """A cyclic group represented by integer addition modulo n."""
 
-    notation = "C"
+    symbol = "C"
 
     def _validate(self, value):
         """Ensure that value is a legitimate element value in this group."""
@@ -89,7 +89,7 @@ class CyclicGroup(Group):
 class GeneralLinearGroup(Group):
     """The general linear group represented by n x n matrices."""
 
-    notation = "G"
+    symbol = "G"
 
     def _validate(self, value):
         """Ensure that value is a legitimate element value in this group."""

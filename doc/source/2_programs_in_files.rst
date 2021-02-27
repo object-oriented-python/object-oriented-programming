@@ -911,6 +911,8 @@ Exercises
     you will use for this course on your computer. Start with an overall folder
     for the module, and create a virtual environment in that module.
 
+.. _course_repo:
+
 .. proof:exercise::
 
     Visit the `GitHub repository for these notes
