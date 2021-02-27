@@ -795,17 +795,17 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
     permutations of `n` symbols and whose group operation is the composition of
     those permutations: :math:`a \cdot b = a(b)`.
 
-    In this week's skeleton code repository, create package called :mod:`groups`
-    containing a module called :mod:`symmetric_groups`. Define a new class
-    :class:`SymmetricGroup` which inherits from
+    In this week's skeleton code repository, create package called
+    :mod:`groups` containing a module called :mod:`symmetric_groups`. Define a
+    new class :class:`SymmetricGroup` which inherits from
     :class:`example_code.groups.Group` and implements the symmetric group of
-    order `n`. You will need to implement the group operation and the validation
-    of group element values. Group elements can be represented by sequences
-    containing permutations of the integers from 0 to `n-1`. You will find it
-    advantageous to convert these permutations to :func:`numpy.array` using
-    :func:`numpy.asarray` because the indexing rules for that type mean that the
-    group operation can simply be implemented by indexing the first permutation
-    with the second: `a[b]`.
+    order `n`. You will need to implement the group operation and the
+    validation of group element values. Group elements can be represented by
+    sequences containing permutations of the integers from 0 to `n-1`. You will
+    find it advantageous to represent these permutations as
+    :class:`numpy.ndarray` because the indexing rules for that type mean that
+    the group operation can simply be implemented by indexing the first
+    permutation with the second: `a[b]`.
 
     You will also need to set the :term:`class attribute` :attr:`symbol`. For this
     group, this should take the value `S`.
