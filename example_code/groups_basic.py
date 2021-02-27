@@ -1,3 +1,5 @@
+"""A module implementing the basic functionality of mathematical groups."""
+
 from numbers import Integral
 import numpy as np
 
@@ -12,6 +14,7 @@ class Element:
     value:
         The individual element value.
     """
+
     def __init__(self, group, value):
         group._validate(value)
         self.group = group
@@ -35,6 +38,7 @@ class Element:
 
 class CyclicGroup:
     """A cyclic group represented by integer addition modulo group order."""
+
     def __init__(self, order):
         self.order = order
 
@@ -47,7 +51,8 @@ class CyclicGroup:
     def operation(self, a, b):
         """Perform the group operation on two values.
 
-        The group operation is addition modulo n."""
+        The group operation is addition modulo n.
+        """
         return (a + b) % self.order
 
     def __call__(self, value):
@@ -65,6 +70,7 @@ class CyclicGroup:
 
 class GeneralLinearGroup:
     """The general linear group represented by degree x degree matrices."""
+
     def __init__(self, degree):
         self.degree = degree
 
@@ -79,7 +85,8 @@ class GeneralLinearGroup:
     def operation(self, a, b):
         """Perform the group operation on two values.
 
-        The group operation is matrix multiplication."""
+        The group operation is matrix multiplication.
+        """
         return a @ b
 
     def __call__(self, value):
