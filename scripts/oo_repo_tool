@@ -80,13 +80,71 @@ if args.push_midterm:
 
 
 if args.check_midterm:
+    import pandas as pd
 
-    cutoff = datetime.datetime(2021, 2, 26, 9, 40, tzinfo=datetime.timezone.utc)
+    cutoff = datetime.datetime(2021, 2, 26, 9, 43, tzinfo=datetime.timezone.utc)
+
+    cloned = {}
 
     for r in repo.refs:
-        if r.path.split("/")[3] == "main" \
-          and r.commit.committed_datetime > cutoff:
-            print(f"{r.name} committed at {r.commit.committed_datetime.isoformat()}.")
+        if "-main" in r.path.split("/")[2]:
+            continue
+        if "-feedback" in r.path.split("/")[2]:
+            continue
+        if r.path.split("/")[2] == "midterm-marking":
+            continue
+        gituser = r.path.split("/")[2]
+        branch = r.path.split("/")[3]
+        try:
+            cloned[gituser][branch] = r
+        except KeyError:
+            cloned[gituser] = {}
+            cloned[gituser][branch] = r
+
+    for gituser, repos in cloned.items():
+        this = cloned[gituser]
+        this["attempted"] = \
+             this["main"].commit != this["feedback"].commit
+        this["late"] = this["main"].commit.committed_datetime > cutoff
+        this["submit_time"] = this["main"].commit.committed_datetime.astimezone().time().isoformat("seconds")
+
+    enrolled = pd.read_excel(os.environ["VIRTUAL_ENV"] + "/../midterm_admin/Students_taking_midterm.xlsx")
+    roster = pd.read_csv(os.environ["VIRTUAL_ENV"] + "/../midterm_admin/classroom_roster.csv")
+    imp_gh = dict(zip(map(str.lower, roster['identifier']), roster['github_username']))
+
+    out = {
+        "FirstName": [],
+        "LastName": [],
+        "Username": [],
+        "GitHub": [],
+        "Accessed": [],
+        "Attempted": [],
+        "Submit_time": [],
+        "Late": [],
+    }
+
+    for given, family, uname in zip(enrolled["FirstName"],
+                                    enrolled["LastName"],
+                                    map(str.lower, enrolled["Username"])):
+        out["FirstName"].append(given)
+        out["LastName"].append(family)
+        out["Username"].append(uname)
+        try:
+            this = cloned[imp_gh[uname]]
+        except KeyError:
+            out["GitHub"].append("")
+            out["Accessed"].append(False)
+            out["Attempted"].append(False)
+            out["Submit_time"].append("")
+            out["Late"].append(False)
+        else:
+            out["GitHub"].append(imp_gh[uname])
+            out["Accessed"].append(True)
+            out["Attempted"].append(this["attempted"])
+            out["Submit_time"].append(this["submit_time"])
+            out["Late"].append(this["late"])
+
+    df = pd.DataFrame(out).to_excel("MATH50009_midterm_attempts.xlsx")
 
 
 if args.checkout:
