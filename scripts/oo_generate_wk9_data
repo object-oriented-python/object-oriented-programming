@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+import pandas as pd
+import names
+import random
+from random import randint
+from random_word import RandomWords
+import datetime
+
+firstnames, surnames = zip(*[names.get_full_name().split()
+                             for i in range(150)])
+
+uset = set()
+usernames = []
+gitnames = []
+uname = None
+for f, s in zip(firstnames, surnames):
+    while not uname or uname in uset:
+        uname = f[0] + s[0] + str(randint(1, 20)) + "18"
+    usernames.append(uname)
+    uset.add(uname)
+
+students = pd.DataFrame({
+    "FirstName": firstnames,
+    "Surname": surnames,
+    "Username": usernames
+    })
+students.to_csv("students.csv", index=False)
+
+r = RandomWords()
+
+for f, s, u in zip(firstnames, surnames, usernames):
+    i = randint(1, 3)
+    if i == 1:
+        gitnames.append(u.lower())
+    elif i == 2:
+        gitnames.append(f"{f}-{randint(1, 100)}")
+    else:
+        gitnames.append(r.get_random_word(includePartOfSpeech="noun"))
+
+ug = list(zip(usernames, gitnames))
+random.shuffle(ug)
+usernames, gitnames = zip(*ug)
+usernames = map(str.lower, usernames[:-10])
+gitnames = list(gitnames[:-10])
+
+gitmap = pd.DataFrame({
+    "ImperialID": usernames,
+    "GitHubID": gitnames
+    }
+)
+
+gitmap.to_csv("gitnames.csv", index=False)
+
+random.shuffle(gitnames)
+gitnames = gitnames[:-10]
+
+time = []
+timezones = [datetime.timezone(datetime.timedelta(hours=h))
+             for h in (0, 1, 8)]
+
+submissiontimes = []
+
+for g in gitnames:
+    if randint(1, 10) == 1:
+        submissiontimes.append(None)
+    else:
+        submissiontimes.append(str(datetime.time(
+            14, randint(15, 50), randint(0, 59), 00,
+            tzinfo=timezones[randint(0, 2)])))
+
+pd.DataFrame({
+    "User": gitnames,
+    "SubmissionTime": submissiontimes
+}).to_csv("submissions.csv")
