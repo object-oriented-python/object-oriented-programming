@@ -3,6 +3,42 @@
 Debugging and testing
 =====================
 
+In :ref:`week 6 <errors_and_exceptions>` we learned about :term:`exceptions
+<exception>` and how to read the :term:`traceback` that is printed when an
+unhandled exception is raised. This week we will look at other tools and
+techniques that we can use to understand what is wrong with a piece of code,
+and therefore how to fix it. Before we do that, we'll take a quick look at
+pandas. 
+
+Pandas
+------
+
+If you have just excitedly clicked on the link for this section hoping for
+some material on cute furry animals from China then, regrettably, you are in
+for a disappointment. `Pandas <https://pandas.pydata.org>`__ is a Python
+package which supports data analysis in Python. It's introduced here partly
+because it's a very useful tool for applied mathematicians and statisticians
+who need to work with real data, and partly because it's a convenient somewhat
+larger library on which to practice tools and techniques for debugging.
+
+At the core of pandas is the :class:`~pandas.DataFrame` class, which is
+a two-dimensional dataset somewhat analogous to a spreadsheet. Unlike, for
+example, a :class:`numpy.ndarray`, a :class:`~pandas.DataFrame` is not indexed
+by a pair of numbers, but is instead organised as a collection of named
+one-dimensional :class:`pandas.Series` of data. One can think of a
+:class:`pandas.Series` as a column of data with a title. This perhaps best
+illustrated with an example.
+
+
+
+.. note::
+
+    This is not a course about data processing. Pandas is capable of working
+    with very large data sets, but the techniques here are chosen for
+    readability and not performance. If you want to use Pandas on data sets
+    with more than a few thousand entries, you will need to consider techniques
+    beyond those used here.
+
 Using a debugger
 ----------------
 

@@ -292,5 +292,6 @@ intersphinx_mapping = {
     'pip': ('https://pip.pypa.io/en/stable/', None),
     'sympy': ('https://docs.sympy.org/latest', None),
     'pytest': ('https://docs.pytest.org/en/latest/', None),
-    'fons': ('https://imperial-fons-computing.github.io', None)
+    'fons': ('https://imperial-fons-computing.github.io', None),
+    'pandas': ('http://pandas.pydata.org/docs/', None)
 }
