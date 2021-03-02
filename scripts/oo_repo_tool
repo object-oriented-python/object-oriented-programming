@@ -18,15 +18,25 @@ parser.add_argument("--checkout", type=str, action="store", metavar=("REPO"),
                     help="checkout finite-element/fe-%d-REPO." % 0)
 parser.add_argument("--test", action="store_true", help="Execute tests")
 parser.add_argument("-x", action="store_true", help="Stop on first test fail")
-parser.add_argument("--week", type=str, action="store", required=True,
+parser.add_argument("--week", type=str, action="store",
                     help="Week whose repositories should be cloned.")
 parser.add_argument("--midterm", action="store_true",
                     help="Retrieve midterm submissions.")
 parser.add_argument("--check-midterm", action="store_true",
                     help="Check datestamps on midterm submissions.")
+parser.add_argument("--impose-deadline", action="store_true",
+                    help="Create a branch pointing at the latest legal submission.")
+parser.add_argument("--pull-requests", action="store_true",
+                    help="Create marking pull requests.")
+
 args = parser.parse_args()
 
 repo = git.Repo(".")
+
+
+def commit_time(commit):
+    return commit.committed_datetime.astimezone().time().isoformat("seconds")
+
 
 if args.update or args.midterm:
     g = github.Github(os.environ["GITHUB_OAUTH"])
@@ -66,6 +76,7 @@ if args.push_midterm:
     for r in org.get_repos():
         if r.name.startswith("midterm-test-cards"):
             uname = r.name[19:]
+            markname = uname.split("-")[0]
             print("Pushing main for remote %s" % uname)
             remote.push("remotes/{0}/main:refs/heads/{0}-main".format(uname))
             print("Pushing feedback for remote %s" % uname)
@@ -78,11 +89,32 @@ if args.push_midterm:
                                          head=f"{uname}-main",
                                          draft=False)
 
+cutoff = datetime.datetime(2021, 2, 26, 9, 42, tzinfo=datetime.timezone.utc)
+
+if args.impose_deadline:
+    # Note this is designed to be run from within the marking repo.
+    for r in repo.refs:
+        try:
+            branchname = r.path.split("/")[3]
+        except IndexError:
+            continue
+        if "-main" not in branchname:
+            continue
+        username = "-".join(branchname.split("-")[:-1])
+        c = r.commit
+        while c.committed_datetime > cutoff:
+            c = c.parents[0]
+        print(f"{username}: last commit {commit_time(r.commit)}"
+              f" mark commit {commit_time(c)}")
+        try:
+            repo.create_head(username+"-mark", commit=c)
+        except OSError:
+            print(f"Not moving {username}-mark.")
+        print(f"Pushing {username}-mark")
+        repo.remote().push(username+"-mark")
 
 if args.check_midterm:
     import pandas as pd
-
-    cutoff = datetime.datetime(2021, 2, 26, 9, 43, tzinfo=datetime.timezone.utc)
 
     cloned = {}
 
@@ -106,7 +138,7 @@ if args.check_midterm:
         this["attempted"] = \
              this["main"].commit != this["feedback"].commit
         this["late"] = this["main"].commit.committed_datetime > cutoff
-        this["submit_time"] = this["main"].commit.committed_datetime.astimezone().time().isoformat("seconds")
+        this["submit_time"] = commit_time(this["main"].commit)
 
     enrolled = pd.read_excel(os.environ["VIRTUAL_ENV"] + "/../midterm_admin/Students_taking_midterm.xlsx")
     roster = pd.read_csv(os.environ["VIRTUAL_ENV"] + "/../midterm_admin/classroom_roster.csv")
@@ -146,6 +178,35 @@ if args.check_midterm:
 
     df = pd.DataFrame(out).to_excel("MATH50009_midterm_attempts.xlsx")
 
+if args.pull_requests:
+    g = github.Github(os.environ["GITHUB_OAUTH"])
+    org = g.get_organization("Imperial-MATH50009")
+
+    remote = repo.remote()
+    marking_repo = org.get_repo("midterm-marking")
+    existing_pulls = {pull.head.ref for pull in marking_repo.get_pulls()}
+
+    for r in repo.refs:
+        if r.name.startswith("origin") and r.name.endswith("main"):
+            uname = r.name.split("/")[1][:-5]
+            if f"{uname}-mark" in existing_pulls:
+                print(f"skipping {uname}")
+                continue
+            
+            print(uname)
+            marking_repo.create_pull(title=uname,
+                                         body="Midterm marking.",
+                                         base=f"{uname}-feedback",
+                                         head=f"{uname}-mark",
+                                         draft=False)
+
+if args.assign_markers:
+    g = github.Github(os.environ["GITHUB_OAUTH"])
+    org = g.get_organization("Imperial-MATH50009")
+
+    remote = repo.remote()
+    marking_repo = org.get_repo("midterm-marking")
+
 
 if args.checkout:
     user = args.checkout
@@ -154,6 +215,7 @@ if args.checkout:
     repo.head.reference = head
     repo.head.reset(working_tree=True)
     print("success")
+
 
 if args.test:
     os.environ["PYTHONPATH"] = repo.working_tree_dir
