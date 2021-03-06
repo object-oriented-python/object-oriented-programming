@@ -1,3 +1,5 @@
+.. _programs_files:
+
 Programs in files
 ===================
 
