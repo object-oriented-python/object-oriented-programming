@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+"""Create a report of when students submitted a test."""
+import pandas as pd
+import os
+
+
+def read_data(filename):
+    """Read in CSV files from the data folder."""
+    pd.read_csv(os.path.join(
+        os.path.dirname(__file__), "..", "data", filename))
+
+
+class_list = read_data("students.csv")
+submissions = read_data("submissions.csv")
+git_names = read_data("submissions.csv")
+
+# Create a mapping from Imperial usernames to GitHub names.
+name_map = {imperial: git
+            for imperial, git in zip(git_names["ImperialID", "GitHubID"])}
+
+# Map GitHub names to submission times.
+submissions_map = {
+    git: time for git, time in zip(git_names["User", "SubmissionTime"])
+}
+
+# For each student in the class, find their submission time.
+submission_times = [submissions_map[name_map[id]]
+                    for id in class_list["Username"]]
+submission_times = pd.Series(submission_times, name="SubmissionTimes")
+
+report = pd.DataFrame([class_list["Firstname"],
+                       class_list["Surname"],
+                       class_list["Username"],
+                       submission_times])
+
+print("Report complete.")
