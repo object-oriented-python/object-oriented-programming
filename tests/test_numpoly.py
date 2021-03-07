@@ -1,5 +1,6 @@
 """Basic proof of life check for numpoly."""
 
+
 def test_numpoly():
     import numpoly
     x = numpoly.symbols("x")
