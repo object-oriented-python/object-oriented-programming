@@ -3,7 +3,7 @@ import os
 
 
 def test_pandas_fail():
-    data = pd.from_csv(os.path.join(os.path.dirname(__file__),
+    data = pd.read_csv(os.path.join(os.path.dirname(__file__),
                        "..", "data", "students.csv"))
 
     usernames = data["UIDs"]
