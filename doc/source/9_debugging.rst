@@ -145,6 +145,19 @@ called pdbpp.
 Using a graphical debugger
 --------------------------
 
+.. dropdown:: Video: using a graphical debugger.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/520604326"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ab1c83e9-d1c8-42d1-821e-ace4010ae319>`__.
+
 The simplest way to understand a graphical debugger is to see it in action, so
 this section is provided by video rather than text. Microsoft also provide
 documentation on `using the Python debugger in Visual Studio Code
@@ -152,6 +165,19 @@ documentation on `using the Python debugger in Visual Studio Code
 
 Invoking a command-line debugger
 --------------------------------
+
+.. dropdown:: Video: command line debuggers.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/520605730"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f9dd4578-b7af-4208-8b04-ace4010bf486>`__.
 
 A command-line debugger, by its very nature, is somewhat easier to explain in
 text than is a graphical debugger. Command-line debuggers are both stand-alone
@@ -414,6 +440,20 @@ well-posed.
 Debugging tactics
 -----------------
 
+.. dropdown:: Video: minimal failing examples and bisection.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/520604328"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4f499827-2cce-4cbf-8a2e-ace4010ad8df>`__.
+
+
 .. _debugging-mfe:
 
 Creating a minimal failing example
@@ -592,7 +632,7 @@ set up the bisection we run:
 
 .. code-block:: console
 
-    $ git bisect 66a10d5d374de796827ac3152f0c507a46b73d60 HEAD -- 
+    $ git bisect HEAD 66a10d5d374de796827ac3152f0c507a46b73d60 -- 
 
 Obviously you replace the commit ID with your starting point. ``HEAD`` is a git
 shorthand for the current state of the repository, so it's a suitable end point
@@ -640,8 +680,6 @@ most recent commit.
     ``main`` branch before you start fixing the bug.
 
 
-
-
 Glossary
 --------
 
@@ -658,6 +696,11 @@ Glossary
         program. This enables the state of the program to be examined
         to determine the cause of problems.
 
+    minimal failing example
+        The shortest piece of code which exhibits a particular bug. A true
+        minimal failing example contains no code which can be removed without
+        the bug disappearing.
+
     postmortem debugging
         Running a :term:`debugger` on a piece of code after an exception has
         occurred (i.e. after the program has "died").
@@ -666,3 +709,53 @@ Glossary
         A bug which occurs in the current version of a program which did not
         occur in a previous version. The functionality of the software has
         "gone backwards".
+
+Exercises
+---------
+
+The exercises work a little differently this week, because the objective is not
+to write code but to practice debugging techniques. The quiz is not on
+BlackBoard but is instead a Google form, because that offers instant feedback.
+You should work through the the exercises and quiz together. For most of exercises,
+there are quiz questions which you will be able to answer if you are
+successfully able to do the exercise.
+
+Obtain the `skeleton code for these exercises from GitHub classroom
+<https://classroom.github.com/a/mi6I-jcG>`__.
+
+.. panels::
+    :card: quiz shadow
+
+    .. link-button:: https://forms.gle/cL5eZycNC9Js19uL7
+        :text: This week's quiz
+        :classes: stretched-link 
+
+.. proof:exercise:: Debugging python code
+
+    The skeleton code contains a Python script :file:`scripts/tests_report`.
+    Run this script under the Visual Studio code debugger and answer the quiz
+    questions about what you find.
+    
+.. proof:exercise:: Minimal failing example
+
+    In the file :file:`scripts/tests_report_mfe.py` construct a :term:`minimal failing
+    example` which exhibits the error you discovered in the previous section.
+    Your minimal failing example should contain one import and one other line
+    of code. :file:`tests/test_mfe.py` is a pytest test for this exercise.
+
+.. proof:exercise:: Bisection
+
+    The Unified Form Language (UFL) is a computer symbolic algebra package used to
+    represent partial differential equations in software applying a numerical
+    technique called the finite element method. Clone the `course fork of the
+    UFL repository <https://github.com/object-oriented-python/ufl>`__. At some
+    point in the past, the following code worked:
+
+    .. code-block:: python3
+
+        import ufl
+        argyris = ufl.FiniteElement("Argyris", degree=6, cell=ufl.triangle)
+
+    Use `git bisect` to identify the first commit at which this code failed,
+    and the last commit at which it worked, and answer the corresponding quiz
+    questions.
