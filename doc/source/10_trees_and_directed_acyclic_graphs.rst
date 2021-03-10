@@ -529,7 +529,7 @@ Let's consider what would be needed at each layer of the hierarchy.
 will that comprise? 
 
 :meth:`__init__`
-    The constuctor will take a :class:`tuple` of operands, since every
+    The constructor will take a :class:`tuple` of operands, since every
     expression has operands (even if terminals have zero operands).
 
 :meth:`~object.__add__`, :meth:`~object.__sub__`, :meth:`~object.__mul__`, :meth:`~object.__truediv__`, :meth:`~object.__pow__`  
