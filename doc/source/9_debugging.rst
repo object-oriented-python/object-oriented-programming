@@ -631,7 +631,7 @@ set up the bisection we run:
 
 .. code-block:: console
 
-    $ git bisect HEAD 66a10d5d374de796827ac3152f0c507a46b73d60 -- 
+    $ git bisect start 66a10d5d374de796827ac3152f0c507a46b73d60 HEAD -- 
 
 Obviously you replace the commit ID with your starting point. ``HEAD`` is a git
 shorthand for the current state of the repository, so it's a suitable end point
