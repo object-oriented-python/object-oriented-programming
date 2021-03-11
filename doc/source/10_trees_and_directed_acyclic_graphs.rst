@@ -57,8 +57,8 @@ huge range of interconnected networks. :numref:`graph` illustrates a simple exam
 
 .. proof:definition:: Directed graph
 
-    A *directed graph* is a graph in which the edges have a direction associated
-    with them. In other words each edge point *from* one node (the *source*)
+    A *directed graph* is a graph in which the pair of nodes forming each edge
+    is ordered. In other words each edge points *from* one node (the *source*)
     and *to* another (the *target*).
 
 :numref:`digraph` shows a directed graph with similar topology to the previous example.
@@ -1000,7 +1000,7 @@ with a keyword argument in a manner analogous to `tree_map` in
 :numref:`tree_evaluate`.
 
 The differentiation of operators is achieved by an applying the chain rule. For
-an binary operator :math:`\odot`, with operands :math:`o_0` and :math:`o_1`, the
+a binary operator :math:`\odot`, with operands :math:`o_0` and :math:`o_1`, the
 chain rule is given by:
 
 .. math::
@@ -1085,7 +1085,9 @@ Glossary
 Exercises
 ---------
 
-Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_released>`. 
+Obtain the :doc:`skeleton code for these exercises from GitHub classroom
+<not_released>`. You should also update your clone of the course repository to
+ensure you have the latest version of the :mod:`example_code` package.
 
 .. _ex_expr:
 
@@ -1113,6 +1115,11 @@ Obtain the :doc:`skeleton code for these exercises from GitHub classroom <not_re
     :func:`example.code.graphs.postvisitor` and which differentiates the
     expression provided with respect to a symbol whose name is passed as the
     string :term:`keyword argument <argument>` `var`.
+
+    As a simplification, the tests will assume that `var` does not appear in an
+    exponent. As an extension, you could consider that case too, but you'd
+    probably need to extend your symbolic language to include the natural
+    logarithm as a symbolic function.
 
 .. rubric:: Footnotes
 
