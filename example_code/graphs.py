@@ -41,7 +41,7 @@ def previsitor(tree, fn, fn_parent=None):
         previsitor(child, fn, fn_out)
 
 
-def postvisitor(tree, fn):
+def postvisitor(tree, fn, **kwargs):
     '''Traverse tree in postorder applying a function to every node.
 
     Parameters
@@ -54,4 +54,5 @@ def postvisitor(tree, fn):
         its children as any further arguments.
     '''
 
-    return fn(tree, *(postvisitor(c, fn) for c in tree.children))
+    return fn(tree,
+              *(postvisitor(c, fn, **kwargs) for c in tree.children), **kwargs)
