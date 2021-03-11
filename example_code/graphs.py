@@ -41,18 +41,23 @@ def previsitor(tree, fn, fn_parent=None):
         previsitor(child, fn, fn_out)
 
 
-def postvisitor(tree, fn, **kwargs):
-    '''Traverse tree in postorder applying a function to every node.
+def postvisitor(expr, fn, **kwargs):
+    '''Traverse an Expression in postorder applying a function to every node.
 
     Parameters
     ----------
-    tree: TreeNode
-        The tree to be visited.
-    fn: `function(node, *fn_children)`
+    expr: Expression
+        The expression to be visited.
+    fn: function(node, *o, **kwargs)
         A function to be applied at each node. The function should take the
         node to be visited as its first argument, and the results of visiting
-        its children as any further arguments.
+        its operands as any further positional arguments. Any additional
+        information that the visitor requires can be passed in as keyword
+        arguments.
+    **kwargs:
+        Any additional keyword arguments to be passed to fn.
     '''
 
-    return fn(tree,
-              *(postvisitor(c, fn, **kwargs) for c in tree.children), **kwargs)
+    return fn(expr,
+              *(postvisitor(c, fn, **kwargs) for c in expr.operands),
+              **kwargs)
