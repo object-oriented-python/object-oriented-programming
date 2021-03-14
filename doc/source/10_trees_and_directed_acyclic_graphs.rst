@@ -1140,11 +1140,12 @@ Glossary
         single dispatch functions.
 
 Exercises
----------
+--------
 
-Obtain the :doc:`skeleton code for these exercises from GitHub classroom
-<not_released>`. You should also update your clone of the course repository to
-ensure you have the latest version of the :mod:`example_code` package.
+Obtain the `skeleton code for these exercises from GitHub classroom
+<https://classroom.github.com/a/DVDJ8r1y>`__. You should also update your clone
+of the course repository to ensure you have the latest version of the
+:mod:`example_code` package.
 
 .. _ex_expr:
 
