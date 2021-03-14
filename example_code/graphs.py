@@ -13,7 +13,6 @@ class TreeNode:
     children:
         The TreeNodes which are the children of this node.
     """
-
     def __init__(self, value, *children):
         self.value = value
         self.children = tuple(children)
@@ -46,22 +45,16 @@ def previsitor(tree, fn, fn_parent=None):
         previsitor(child, fn, fn_out)
 
 
-def postvisitor(expr, fn, **kwargs):
-    """Traverse an Expression in postorder applying a function to every node.
+def postvisitor(tree, fn):
+    """Traverse tree in postorder applying a function to every node.
 
     Parameters
     ----------
-    expr: Expression
-        The expression to be visited.
-    fn: function(node, *o, **kwargs)
+    tree: TreeNode
+        The tree to be visited.
+    fn: function(node, *fn_children)
         A function to be applied at each node. The function should take the
         node to be visited as its first argument, and the results of visiting
-        its operands as any further positional arguments. Any additional
-        information that the visitor requires can be passed in as keyword
-        arguments.
-    **kwargs:
-        Any additional keyword arguments to be passed to fn.
+        its children as any further arguments.
     """
-    return fn(expr,
-              *(postvisitor(c, fn, **kwargs) for c in expr.operands),
-              **kwargs)
+    return fn(tree, *(postvisitor(c, fn) for c in tree.children))

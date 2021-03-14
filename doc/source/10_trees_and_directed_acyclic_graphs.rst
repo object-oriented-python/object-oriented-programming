@@ -22,6 +22,118 @@ a lot of code, and instead focus on the mathematical structure of the objects in
 question. When we come to the exercises, you will then take a little more
 responsibility for translating the maths into code.
 
+The splat and double splat operators
+------------------------------------
+
+.. dropdown:: Video: splat and double splat.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/523477744"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2cb93382-321b-4af6-8d5e-aceb0123103d>`__.
+
+
+Before we go on to write code for trees and their traversal,  we need to
+digress ever so slightly in order to explain a new piece of syntax. We're going
+to want to write  functions that can take a variable number of arguments. For
+example, we're going to want the :term:`constructor` of a tree node object to
+be able to take a variable number of children. We can do this by writing the
+relevant parameter as `*children`. The character `*` in this case is the
+argument packing operator, also known as the *splat* operator [#splat]_. When
+used in the parameter list of a function, splat takes all of the remaining
+:term:`positional arguments <argument>` provided by the caller and packs them
+up in a tuple. In this case, this enables any number of child nodes to be
+specified for each node. 
+
+The splat operator can also be used when calling a function. In that case it
+acts as a sequence unpacking operator, turning a sequence into separate
+arguments. For example:
+
+.. code-block:: ipython3
+
+    In [1]: a = (1, 2, 3)
+
+    In [2]: print(*a)
+    1 2 3
+
+which is identical to:
+
+.. code-block:: ipython3
+
+    In [3]: print(1, 2, 3)
+    1 2 3
+
+but different from: 
+
+.. code-block:: ipython3
+
+    In [4]: print(a)
+    (1, 2, 3)
+
+The double splat operator, `**` plays a similar role to the single splat
+operator, but packs and unpacks :term:`keyword arguments <argument>` instead of
+positional arguments. When used in the :term:`parameter` list of a function,
+`**` gathers all of the keyword arguments that the caller passes, other than any
+which are explicitly named in the interface. The result is a :class:`dict` whose
+keys are the argument names, and whose values are the arguments.
+:numref:`kwarg_packing` demonstrates the argument packing function of `**`,
+while :numref:`kwarg_unpacking` shows the unpacking function.
+
+.. _kwarg_packing:
+
+.. code-block:: ipython3
+    :caption: An illustration of keyword argument packing. All of the keyword
+        arguments are packed into the dictionary :data:`kwargs`, except for `b`,
+        because that explicitly appears in the parameter list of :func:`fn`.
+
+    In [1]: def fn(a, b, **kwargs):
+       ...:     print("a:", a)
+       ...:     print("b:", b)
+       ...:     print("kwargs:", kwargs)
+       ...: 
+
+    In [2]: fn(1, f=3, b=2, g="hello")
+    a: 1
+    b: 2
+    kwargs: {'f': 3, 'g': 'hello'}
+
+.. _kwarg_unpacking:
+
+.. code-block:: ipython3
+    :caption: Keyword argument unpacking. Notice that the arguments matching the
+        explicitly named keywords are unpacked, while the remainder are repacked
+        into the `**kwargs` parameter.
+
+    In [3]: kw = {"a": "mary", "b": "had", "c": "a", "d": "little", "e": "lamb"}
+
+    In [4]: fn(**kw)
+    a: mary
+    b: had
+    kwargs: {'c': 'a', 'd': 'little', 'e': 'lamb'}
+
+Combining the splat and double splat operators, it is possible to write a
+function that will accept any combination of positional and keyword arguments.
+This is often useful if the function is intended to pass these arguments through
+to another function, without knowing anything about that inner function. For
+example:
+
+.. code-block:: python3
+
+    def fn(*args, **kwargs):
+        ...
+        a =  inner_fn(*args, **kwargs)
+        ...
+
+The names `*args` and `**kwargs` are the conventional names in
+cases where nothing more specific is known about the parameters in question.
+
+
 Some definitions
 ----------------
 
@@ -140,8 +252,21 @@ and the target nodes of the edges emerging from a node are referred to as its
 
 Tree nodes with no children are called *leaf nodes*.
 
-Tree traversal
---------------
+Data structures for trees
+-------------------------
+
+.. dropdown:: Tree data structures.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/523477713"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5477e1b1-1040-4a07-97a5-aceb01230fc6>`__.
 
 Unlike the sequence types we have previously met, trees are not linear objects.
 If we wish to iterate through every node in the tree then we have a choices to
@@ -168,25 +293,28 @@ become apparent that it is not always possible to do so.
     :linenos:
 
     class TreeNode:
-        '''A basic tree implementation.
+        """A basic tree implementation.
 
-        Observe that a tree is simply a collection of connected TreeNodes.'''
+        Observe that a tree is simply a collection of connected TreeNodes.
+
+        Parameters
+        ----------
+        value:
+            An arbitrary value associated with this node.
+        children:
+            The TreeNodes which are the children of this node.
+        """
+
         def __init__(self, value, *children):
-            '''
-            Parameters
-            ----------
-            value:
-                An arbitrary value associated with this node.
-            children:
-                The TreeNodes which are the children of this node.
-            '''
             self.value = value
             self.children = tuple(children)
 
         def __repr__(self):
-            return f"{self.__class__.__name__}{(self.value,) + self.children}"
+            """Return the canonical string representation."""
+            return f"{type(self).__name__}{(self.value,) + self.children}"
 
         def __str__(self):
+            """Serialise the tree recursively as parent -> (children)."""
             childstring = ", ".join(map(str, self.children))
             return f"{self.value!s} -> ({childstring})"
 
@@ -206,104 +334,21 @@ example, we can represent the tree in :numref:`tree_image` using:
 The reader might immediately observe that serialised trees can be a little hard
 to read! This is the reason that trees are often represented by diagrams.
 
-The splat and double splat operators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Before we go on to traverse the tree we have created, we need to digress ever so
-slightly in order to explain a new piece of syntax. At line 5 of
-:numref:`treenode`, the second parameter to
-:meth:`~example_code.graphs.TreeNode.__init__` is given as `*children`. The
-character `*` in this case is the argument packing operator, also known as the
-*splat* operator [#splat]_. When used in the parameter list of a function, splat takes all
-of the remaining :term:`positional arguments <argument>` provided by
-the caller and packs them up in a tuple. In this case, this enables any number
-of child nodes to be specified for each node. 
-
-The splat operator can also be used when calling a function. In that case it
-acts as a sequence unpacking operator, turning a sequence into separate
-arguments. For example:
-
-.. code-block:: ipython3
-
-    In [1]: a = (1, 2, 3)
-
-    In [2]: print(*a)
-    1 2 3
-
-which is identical to:
-
-.. code-block:: ipython3
-
-    In [3]: print(1, 2, 3)
-    1 2 3
-
-but different from: 
-
-.. code-block:: ipython3
-
-    In [4]: print(a)
-    (1, 2, 3)
-
-The double splat operator, `**` plays a similar role to the single splat
-operator, but packs and unpacks :term:`keyword arguments <argument>` instead of
-positional arguments. When used in the :term:`parameter` list of a function,
-`**` gathers all of the keyword arguments that the caller passes, other than any
-which are explicitly named in the interface. The result is a :class:`dict` whose
-keys are the argument names, and whose values are the arguments.
-:numref:`kwarg_packing` demonstrates the argument packing function of `**`,
-while :numref:`kwarg_unpacking` shows the unpacking function.
-
-.. _kwarg_packing:
-
-.. code-block:: ipython3
-    :caption: An illustration of keyword argument packing. All of the keyword
-        arguments are packed into the dictionary :data:`kwargs`, except for `b`,
-        because that explicitly appears in the parameter list of :func:`fn`.
-
-    In [1]: def fn(a, b, **kwargs):
-       ...:     print("a:", a)
-       ...:     print("b:", b)
-       ...:     print("kwargs:", kwargs)
-       ...: 
-
-    In [2]: fn(1, f=3, b=2, g="hello")
-    a: 1
-    b: 2
-    kwargs: {'f': 3, 'g': 'hello'}
-
-.. _kwarg_unpacking:
-
-.. code-block:: ipython3
-    :caption: Keyword argument unpacking. Notice that the arguments matching the
-        explicitly named keywords are unpacked, while the remainder are repacked
-        into the `**kwargs` parameter.
-
-    In [3]: kw = {"a": "mary", "b": "had", "c": "a", "d": "little", "e": "lamb"}
-
-    In [4]: fn(**kw)
-    a: mary
-    b: had
-    kwargs: {'c': 'a', 'd': 'little', 'e': 'lamb'}
-
-Combining the splat and double splat operators, it is possible to write a
-function that will accept any combination of positional and keyword arguments.
-This is often useful if the function is intended to pass these arguments through
-to another function, without knowing anything about that inner function. For
-example:
-
-.. code-block:: python3
-
-    def fn(*args, **kwargs):
-        ...
-        a =  inner_fn(*args, **kwargs)
-        ...
-
-The names `*args` and `**kwargs` are the conventional names in
-cases where nothing more specific is known about the parameters in question.
-    
-
 Traversing :class:`~example_code.graphs.TreeNode`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. dropdown:: Video: tree traversal.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/523477719"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=69b00d45-077d-46ff-933c-aceb01231001>`__.
 
 A function which traverses a tree is often called a tree visitor, because it
 visits every node in the tree. What does it do when it visits? Well it could do
@@ -326,7 +371,7 @@ We'll consider postorder traversal first, as it's the easier to implement.
     :linenos:
 
     def postvisitor(tree, fn):
-        '''Traverse tree in postorder applying a function to every node.
+        """Traverse tree in postorder applying a function to every node.
 
         Parameters
         ----------
@@ -336,8 +381,7 @@ We'll consider postorder traversal first, as it's the easier to implement.
             A function to be applied at each node. The function should take the
             node to be visited as its first argument, and the results of visiting
             its children as any further arguments.
-        '''
-
+        """
         return fn(tree, *(postvisitor(c, fn) for c in tree.children))
 
 :numref:`postorder_recursive` implements this visitor. Notice that there is only
@@ -393,7 +437,7 @@ as :numref:`preorder_recursive` shows.
     :linenos:
 
     def previsitor(tree, fn, fn_parent=None):
-        '''Traverse tree in preorder applying a function to every node.
+        """Traverse tree in preorder applying a function to every node.
 
         Parameters
         ----------
@@ -403,8 +447,7 @@ as :numref:`preorder_recursive` shows.
             A function to be applied at each node. The function should take the
             node to be visited as its first argument, and the result of visiting
             its parent as the second.
-        '''
-
+        """
         fn_out = fn(tree, fn_parent)
 
         for child in tree.children:
@@ -499,7 +542,7 @@ children of a node.
     :caption: Inheritance diagram for a very basic symbolic language. Each box
         represents a class, with the arrows showing inheritance relationships. Note that
         the edges in such diagrams conventionally point from the child class to the
-        parent class, because its the child class that refers to the parent. The
+        parent class, because it's the child class that refers to the parent. The
         parent does not refer to the child.
 
     strict digraph{
@@ -564,7 +607,7 @@ operators but different for terminals.
     .. code-block:: python3
     
         def __repr__(self):
-            return self.__class__.__name__ + repr(self.operands)
+            return type(self).__name__ + repr(self.operands)
 
     This approch is valid because the string representation of a :class:`tuple`
     is a pair of round brackets containing the string representation of each
@@ -616,6 +659,19 @@ in the case of :class:`Number` and a :class:`str` in the case of :class:`Symbol`
 
 Operations on expression trees
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. dropdown:: Video: evaluating expressions.
+
+    .. container:: vimeo
+
+        .. raw:: html
+
+            <iframe src="https://player.vimeo.com/video/523478799"
+            frameborder="0" allow="autoplay; fullscreen"
+            allowfullscreen></iframe>
+
+    Imperial students can also `watch this video on Panopto
+    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=88f9564a-73c9-4760-8f48-aceb01230f9b>`__.
 
 Many operations on expression trees can be implemented using tree visitors, most
 frequently by visiting the tree in postorder. An example is
@@ -763,8 +819,10 @@ keyword arguments through to the visitor function.
 
 .. code-block:: python3
     :caption: A recursive tree visitor that passes any keyword arguments
-        through to the visitor function. We also account for the name changes
-        between :class:`~example_code.graphs.TreeNode` and :class:`Expression`.
+        through to the visitor function. This is available as 
+        :func:`example_code.expression_tools.post_visitor`. We also account 
+        for the name changes between :class:`~example_code.graphs.TreeNode` 
+        and :class:`Expression`.
     :linenos:
 
     def postvisitor(expr, fn, **kwargs):
@@ -783,7 +841,6 @@ keyword arguments through to the visitor function.
         **kwargs:
             Any additional keyword arguments to be passed to fn.
         '''
-
         return fn(expr,
                   *(postvisitor(c, fn, **kwargs) for c in expr.operands),
                   **kwargs)
@@ -942,7 +999,7 @@ algorithm.
 .. _nonrecursive_postvisit:
 
 .. code-block:: python3
-    :caption: Pythonic pseudocode for a non-recursive postorder :term:`DAG` visitor.
+    :caption: Pythonic :term:`pseudocode` for a non-recursive postorder :term:`DAG` visitor.
     :linenos:
 
     def visit(expr, visitor):
@@ -1103,7 +1160,7 @@ ensure you have the latest version of the :mod:`example_code` package.
 .. proof:exercise::
 
     Write a function importable as :func:`expressions.postvisitor` with the same
-    interface as :numref:`postorder_recursive`. Your implementation, however,
+    interface as :numref:`postorder_recursive_kwargs`. Your implementation, however,
     should not be recursive, and should only visit repeated subexpressions once,
     no matter how many times they occur in the expression.
 
@@ -1112,7 +1169,7 @@ ensure you have the latest version of the :mod:`example_code` package.
     Write a :term:`single dispatch function` importable as
     :func:`expressions.differentiate` which has the correct interface to be
     passed to :func:`expressions.postvisitor` or
-    :func:`example.code.graphs.postvisitor` and which differentiates the
+    :func:`example_code.expression_tools.postvisitor` and which differentiates the
     expression provided with respect to a symbol whose name is passed as the
     string :term:`keyword argument <argument>` `var`.
 
