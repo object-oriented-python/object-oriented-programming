@@ -561,10 +561,10 @@ were to instantiate :class:`Group` itself:
         65     def __repr__(self):
 
 In fact, :class:`Group` is never supposed to be instantiated, it plays the role
-of an :term:`abstract class`. In other words, it's role is to provide
+of an :term:`abstract base class`. In other words, it's role is to provide
 functionality to classes that inherit from it, rather than to be the type of
 objects itself. We will return to this in more detail in
-:numref:`abstract_classes`.
+:numref:`abstract_base_classes`.
 
 However, if we instead instantiate :class:`~example_code.groups.CyclicGroup`
 then everything works:

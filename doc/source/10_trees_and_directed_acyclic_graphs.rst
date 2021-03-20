@@ -4,7 +4,7 @@ Trees and directed acyclic graphs
 =================================
 
 The :term:`abstract data types <abstract data type>` that we met in
-:numref:`Chapter %s <abstract_data_types>` were all fairly simple sequences of objects that
+:numref:`Week %s <abstract_data_types>` were all fairly simple sequences of objects that
 were extensible in different ways. If that were all the sum total of abstract
 data types then the reader might reasonably wonder what all the fuss is about.
 In this chapter we'll look at :term:`trees <tree>` and :term:`directed acyclic
