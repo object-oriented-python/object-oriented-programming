@@ -540,6 +540,40 @@ Glossary
 Exercises
 ---------
 
+Obtain the `skeleton code for these exercises from GitHub classroom
+<>`__. 
+
+.. proof:exercise::
+
+    The objective of this exercise is to write a :term:`decorator` which logs
+    whenever the decorated function is called. This sort of decorator could be
+    very useful in debugging code. Create the decorator in the
+    `log_decorator.log_decorator` module and ensure it is importable as
+    `log_decorator.log_call`. The decorator should be applicable to functions
+    taking any combination of arguments.
+    
+    The logging itself should be accomplished using
+    the built-in `logging` module by calling :func:`logging.info` and passing
+    the logging message.
+
+    The logging message should comprise the function name (accessible using the
+    `__name__` attribute), followed by round brackets containing first the
+    :func:`repr` of the positional arguments, followed by the key=value pairs
+    the keyword arguments.
+
+.. proof:exercise::
+
+    The :mod:`groups.groups` module in the skeleton code is the new version
+    introduced above, using an :term:`abstract base class`. The
+    `log_decorator.log_call` :term:`decorator` has been applied to the
+    :math:`Group._validate` :term:`abstract method`. However, even once you
+    have implemented this decorator, it never gets called. Your challenge is to
+    modify :mod:`groups.groups` so that the decorator is called every time a
+    subclass :meth:`_validate` method is called, but **without** moving or
+    duplicating `@log_call`.
+
+
+
 Exam preparation
 ----------------
 

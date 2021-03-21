@@ -64,7 +64,7 @@ class Group(ABC):
 
     @abstractmethod
     def _validate(self, value):
-        """Ensure that value is a legitimate element value in this group."""
+        """Ensure that value is a legitimate element value in this Group."""
         pass
 
     @abstractmethod
