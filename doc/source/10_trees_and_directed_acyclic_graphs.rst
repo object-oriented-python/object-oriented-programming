@@ -1140,7 +1140,7 @@ Glossary
         single dispatch functions.
 
 Exercises
---------
+---------
 
 Obtain the `skeleton code for these exercises from GitHub classroom
 <https://classroom.github.com/a/DVDJ8r1y>`__. You should also update your clone

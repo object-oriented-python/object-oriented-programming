@@ -36,6 +36,14 @@ example\_code.groups module
    :undoc-members:
    :show-inheritance:
 
+example\_code.groups\_abc module
+--------------------------------
+
+.. automodule:: example_code.groups_abc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 example\_code.groups\_basic module
 ----------------------------------
 
