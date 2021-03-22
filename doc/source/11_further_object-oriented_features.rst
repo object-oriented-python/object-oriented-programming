@@ -594,12 +594,12 @@ Obtain the `skeleton code for these exercises from GitHub classroom
     
     The logging itself should be accomplished using
     the built-in `logging` module by calling :func:`logging.info` and passing
-    the logging message.
+    the log message.
 
-    The logging message should comprise the function name (accessible using the
-    `__name__` attribute), followed by round brackets containing first the
-    :func:`repr` of the positional arguments, followed by the key=value pairs
-    the keyword arguments.
+    The log message should comprise the string "Calling: " followed by the
+    function name (accessible using the `__name__` attribute), followed by
+    round brackets containing first the :func:`repr` of the positional
+    arguments, followed by the key=value pairs the keyword arguments.
 
 .. proof:exercise::
 
