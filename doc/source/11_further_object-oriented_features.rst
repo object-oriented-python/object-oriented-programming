@@ -581,7 +581,7 @@ Exercises
 ---------
 
 Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/qTArFlxP    >`__. 
+<https://classroom.github.com/a/qTArFlxP>`__. 
 
 .. proof:exercise::
 
@@ -654,11 +654,90 @@ people attend then I will also run a group Q & A session.
 Practice questions
 ~~~~~~~~~~~~~~~~~~
 
-Some specifically-designed practice questions will be released at about the end
-of term. In addition to this, there are a lot of very good exercises in
+Some specifically-designed practice questions are presented below. In addition to this, there are a lot of very good exercises in
 chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
 with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
 You can access that book by logging in with your Imperial credentials.
+
+The first two questions are in exam format. 
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/HdgipMxw>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This exercise is fully set up as an exam question, including provisional
+        points on the autotests. It should be doable in 30 minutes, though the
+        level of programming is a little more basic than the exam questions.
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/6usAsES4>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This exercise is at the level of an exam question, though longer. An
+        actual exam question would be pruned back to be achievable in 30
+        minutes. Here the complete exercise is presented because the main thing
+        you need to do is practice programming, and cutting out material
+        doesn't help with that. Marks are not given as the question is the
+        wrong length, so dividing 20 marks over the question would just be
+        misleading
+
+In addition to these exam-style questions, you can also usefully practice
+programming by going beyond the specification of the exercises in the course.
+The following exercises are just ideas for how to do that. They do not come
+with additional code or tests.
+
+.. proof:exercise::
+
+    Extend the :class:`Polynomial` class from :numref:`Week %s <objects>` to
+    support polynomial division. Polynomial division results in a quotient and
+    a remainder, so you might choose to implement :meth:`~object.__floordiv__`
+    to return the quotient and :meth:`~object.__mod__` to return the remainder,
+    in a manner analogous to integer division. You might also implement
+    :meth:`~object.__truediv__` and have it return the quotient if the
+    polynomial division is exact, but raise :class:`ValueError` if there is a
+    remainder.
+
+    .. hint::
+
+        Don't forget that repeating code is poor style, so you might need a
+        helper method to implement the actual polynomial division.
+    
+.. proof:exercise::
+
+    Extend the :class:`Deque` class from :numref:`Week %s
+    <abstract_data_types>` to automatically resize the ring buffer by a
+    proportion of its length when it is full, and when it becomes too empty.
+    You can check the behaviour of your implementation against
+    :class:`collections.deque`.
+
+.. proof:exercise::
+
+    For a real challenge, extend the groups implementation from :numref:`Week
+    %s <inheritance>` to support taking the quotient of two groups. What do the
+    values and validation of a quotient group look like in code? You could
+    implement :meth:`~object.__truediv__` on :class:`Group` to provide the user
+    interface.
+
+.. proof:exercise::
+
+    Write additional single dispatch visitor functions to extend the
+    capabilities of the symbolic algebra system you wrote in :numref:`Week %s
+    <trees>`. You could, for example, write a visitor which performs
+    cancellation of expressions involving 1 or 0. You could implement expansion
+    of brackets according to distributive laws. Finally you could canonicalise
+    commutative operators such as `+` and `*` so that, for example `1 + x` is
+    mapped to `x + 1`. Doing this over multiple layers of the tree
+    (transforming `1 + 2*x + 3*x**2` to `3*x**2 + 2*x + 1` is an additional
+    challenge.
+
 
 .. rubric:: Footnotes
 
