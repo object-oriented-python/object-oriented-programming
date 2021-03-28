@@ -735,7 +735,7 @@ with additional code or tests.
     of brackets according to distributive laws. Finally you could canonicalise
     commutative operators such as `+` and `*` so that, for example `1 + x` is
     mapped to `x + 1`. Doing this over multiple layers of the tree
-    (transforming `1 + 2*x + 3*x**2` to `3*x**2 + 2*x + 1` is an additional
+    (for example, transforming `1 + 2*x + 3*x**2` to `3*x**2 + 2*x + 1`) is an additional
     challenge.
 
 
