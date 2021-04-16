@@ -56,7 +56,7 @@ apidoc: $(GENERATED_FILES)
 	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) sphinx-apidoc ../fibonacci -o source/ -f -T
 
 webgit:
-	git clone git@github.com:object-oriented-python/object-oriented-python.github.io.git webgit
+	git clone git@github.com:oxmmscpython/oxmmscpython.github.io.git webgit
 
 html: apidoc webgit # latexpdf
 	rm webgit/* || true
