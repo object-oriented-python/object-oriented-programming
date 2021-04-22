@@ -5,9 +5,9 @@ Programs in files
 
 This week we will start to learn how to combine pieces of code into larger units,
 and how to package up your code so that you or others can do the same. 
-You will previously have written Python code in Jupyter notebooks, and
+You might previously have written Python code in Jupyter notebooks, and
 possibly used an interactive Python environment such as
-iPython. Jupyter notebooks are an excellent platform for writing and
+iPython. Such Jupyter notebooks are an excellent platform for writing and
 documenting short pieces of code. However, they are much less good for
 writing code which is designed to be used by other people. If the
 intention is to write mathematical building blocks out of which more
@@ -38,7 +38,7 @@ the experiments we're doing don't interfere with anything outside the course for
 which we might be using Python, and conversely to ensure that nothing we've
 installed elsewhere interferes with how we're doing the course, we'll do
 everything in a Python :term:`virtual environment`, or :term:`venv`. You should read up on Python
-virtual environments on the :ref:`Faculty of Natural Sciences Python installation
+virtual environments on the :ref:`Python installation
 page <fons:python_virtual_environments>`.
 
 .. hint::
@@ -892,13 +892,6 @@ Glossary
 
 Exercises
 ---------
-
-.. panels::
-    :card: quiz shadow
-
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
 
 .. proof:exercise::
 

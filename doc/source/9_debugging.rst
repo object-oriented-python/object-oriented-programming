@@ -707,8 +707,8 @@ Exercises
 ---------
 
 The exercises work a little differently this week, because the objective is not
-to write code but to practice debugging techniques. The quiz is not on
-BlackBoard but is instead a Google form, because that offers instant feedback.
+to write code but to practice debugging techniques. There is a quiz on a Google form,
+because that offers instant feedback.
 You should work through the the exercises and quiz together. For most of exercises,
 there are quiz questions which you will be able to answer if you are
 successfully able to do the exercise.

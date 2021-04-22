@@ -16,7 +16,7 @@ Introduction: abstraction in mathematics and programming
 .. note::
 
     In the video above, please ignore Dr Ham's comments regarding assessment, quizzes, the Piazza forum, and
-    the mideterm in week 7.
+    the midterm in week 7.
     The live lab sessions for the Oxford course will take place on Tuesdays at 09:00 each week.
 
 A core tool of mathematics is to define abstract objects and the
@@ -201,7 +201,7 @@ The Faculty of Natural Sciences at Imperial has
 Python 
 ......
 
-Follow the :doc:`FoNS Python instructions <fons:python>`. We will exclusively
+Follow the :doc:`Python instructions <fons:python>`. We will exclusively
 use :ref:`virtual environments <fons:python_virtual_environments>` so it doesn't matter at
 all whether you use Python from Anaconda or from another source. Mac users
 should note, though that the built-in Python will not suffice, so you should use

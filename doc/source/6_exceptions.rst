@@ -796,13 +796,6 @@ Glossary
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
-
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2083792_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
-
 Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
 
 .. proof:exercise::
