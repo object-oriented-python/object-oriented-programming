@@ -488,16 +488,16 @@ them is likely to result in you having to play catchup in the coming weeks.
 
 .. proof:exercise::
     
-    Install Python using  the :doc:`FoNS Python installation instructions <fons:python>`.
+    Install Python using  the :doc:`Python installation instructions <fons:python>`.
 
 .. proof:exercise::
 
     Install Git and work through the entire Git, GitHub, and GitHub Classroom
-    tutorial on the :doc:`FoNS Git instructions webpage <fons:git>`.
+    tutorial on the :doc:`Git instructions webpage <fons:git>`.
 
 .. proof:exercise::
 
-    Install Visual Studio Code using the :doc:`FoNS Visual Studio Code
+    Install Visual Studio Code using the :doc:`Visual Studio Code
     installation instructions <fons:vscode>`.
     
 .. proof:exercise::
