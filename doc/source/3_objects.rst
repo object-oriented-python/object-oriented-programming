@@ -879,7 +879,7 @@ Exercises
 ---------
 
 
-Obtain the `skeleton code for these exercises from GitHub Classroom <https://classroom.github.com/a/mElLR0AD>`__. 
+Obtain the `skeleton code for these exercises from GitHub Classroom <https://classroom.github.com/a/mCAM3f_B>`__. 
 The skeleton code contains a :mod:`polynomial` package with a version of 
 the :class:`Polynomial` class.
 

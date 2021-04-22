@@ -895,7 +895,7 @@ Exercises
 
 .. proof:exercise::
 
-    Follow the :ref:`instructions on the Faculty of Natural Sciences Python
+    Follow the :ref:`instructions on the Imperial College London Python
     installation page <fons:python_folders>` to create the folder structure
     you will use for this course on your computer. Start with an overall folder
     for the module, and create a virtual environment in that module.
