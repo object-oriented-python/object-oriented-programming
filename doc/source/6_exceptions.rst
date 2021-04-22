@@ -13,8 +13,6 @@ Errors and exceptions
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d58d4c55-6216-4deb-be70-acc7015033f4>`__.
 
 
 
@@ -191,8 +189,6 @@ Tracebacks: finding errors
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f3f8a555-31c8-41e3-a176-acc701503469>`__.
 
 
 The errors we have looked at so far have all been located in the top
@@ -263,8 +259,6 @@ The call stack
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cab860f1-ff35-4402-afe9-acc701503419>`__.
 
 A Python program is a sequence of Python statements, which are
 executed in a sequence determined by the flow control logic of the
@@ -386,8 +380,6 @@ Raising exceptions
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d0b05710-bbb8-47b4-9afa-acc8011e7635>`__.
 
 
 Thus far we've noticed that an exception occurs when something goes
@@ -504,8 +496,6 @@ Handling exceptions
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=25f14034-34a1-44ec-83f7-acc8011e76a0>`__.
 
 
 So far we have seen several different sorts of exception, how to raise
@@ -609,8 +599,6 @@ Except clauses
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0d7840de-17b2-4268-b079-acc8011e7660>`__.
 
 Let's look in a little more detail at how :keyword:`except` works. The full
 version of the except statement takes a tuple of exception classes. If an

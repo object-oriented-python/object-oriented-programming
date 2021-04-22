@@ -13,8 +13,6 @@ Inheritance and composition
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d744e96d-14d7-4e51-9b67-acd900dc916f>`__.
 
 
 A key feature of abstractions is composability: the ability to make a
@@ -109,8 +107,6 @@ An example from group theory
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8931fde6-f808-4e6f-9526-acd901069280>`__.
 
 
 In order to illustrate how composition and inheritance work, let's suppose that
@@ -317,8 +313,6 @@ General linear groups
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8686b42d-415f-4122-82c5-acda00e39b9c>`__.
 
 
 We still haven't encountered inheritance, though. Where does that come into the

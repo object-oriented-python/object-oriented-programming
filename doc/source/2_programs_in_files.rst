@@ -30,7 +30,6 @@ Setting up a Python environment for this course
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`__
 
 
 During this course, we're going to create, edit, and install a whole bunch of
@@ -101,7 +100,6 @@ The Python interpreter
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
 
 Before we dive into the various different ways that Python code can be
 organised and run, it's helpful to have a mental model of what it
@@ -284,7 +282,6 @@ Modules
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
 
 A module is, like a script, a plain text file containing Python
 code. Modules must have names ending in :file:`.py`. So far, that's
@@ -450,7 +447,6 @@ Packages
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
 
 
 Modules are the principal mechanism for storing code which is intended
@@ -662,8 +658,6 @@ Testing frameworks
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
 
 Attempting to establish whether a program correctly implements the
 intended algorithm is core to effective programming, and programmers

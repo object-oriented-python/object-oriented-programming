@@ -13,7 +13,9 @@ Introduction: abstraction in mathematics and programming
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ee8cae7f-1b42-4db3-adc0-ac840144de53>`_
+.. note::
+
+    Please ignore Dr Ham's comments regarding assessment in the video above.
 
 A core tool of mathematics is to define abstract objects and the
 operations which apply to them. This approach defines all the basic

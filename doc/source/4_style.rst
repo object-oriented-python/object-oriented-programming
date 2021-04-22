@@ -13,8 +13,6 @@ A matter of style
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3572d8ea-5635-4b1a-9243-acae0150ddf8>`__
 
 
 The value of convention
@@ -121,8 +119,6 @@ Linters
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=91c271e4-a61f-493c-a725-acae015273d5>`__
 
 
 One of the helpful characteristics of PEP 8 is that many of its strictures can

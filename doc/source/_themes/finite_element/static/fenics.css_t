@@ -220,11 +220,11 @@ div.body h6 {
 }
 
 h1 .section-number::before {
-    content: "Week ";
+    content: "Chapter ";
 }
 
 .toctree-l1 > a::before {
-    content: "Week ";
+    content: "Chapter ";
 }
 
 a.headerlink {

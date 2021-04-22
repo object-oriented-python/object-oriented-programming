@@ -24,10 +24,38 @@ This course is a fork of the MATH50009 Principles of Programming course
 prepared by `David A. Ham <https://www.imperial.ac.uk/people/david.ham>`_,
 offered to mathematics undergraduates at
 Imperial College London. Dr Farrell is very grateful to Dr Ham for his kind and
-generous assistance in this matter.
+generous assistance in this matter. The videos recorded by Dr Ham sometimes refer to Imperial-specific
+matters such as assessments; please ignore these.
 
-Please read the introductory chapter for information on how to
-go about doing the module week by week.
+The Imperial term is longer than the Oxford one (which is only 8 weeks long).
+Oxford students should therefore read the chapters and do the exercises
+in the following weeks:
+
+.. list-table:: Chapters per week
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Week of term
+     - Chapters
+   * - Week 1
+     - Chapters 1 and 2
+   * - Week 2
+     - Chapter 3
+   * - Week 3
+     - Chapter 4
+   * - Week 4
+     - Chapter 5
+   * - Week 5
+     - Chapter 6
+   * - Week 6
+     - Chapter 7
+   * - Week 7
+     - Chapter 8
+   * - Week 8
+     - Chapter 9
+
+Please read the introductory chapter for more information on how to
+go about doing the course.
 
 .. toctree::
    :numbered:
@@ -39,11 +67,9 @@ go about doing the module week by week.
    4_style.rst
    5_abstract_data_types.rst
    6_exceptions.rst
-   7_midterm.rst
    8_inheritance.rst
    9_debugging.rst
    10_trees_and_directed_acyclic_graphs.rst
-   11_further_object-oriented_features.rst
    
 ..
    zbibliography

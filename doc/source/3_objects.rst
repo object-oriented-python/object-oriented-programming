@@ -185,8 +185,6 @@ Defining new types
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f8b07554-16ea-47b8-bf19-ac8a010af0f6>`__
 
 Python has a rich set of :doc:`built-in types
 <library/stdtypes>`. These form powerful building blocks for the
@@ -334,8 +332,6 @@ Methods
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=613249ca-71b8-4f3b-8db9-ac8a0166aa42>`__
 
 We have already met the :term:`special method` :meth:`~object.__init__`,
 which defines the class constructor. A much more typical case is an
@@ -396,8 +392,6 @@ String representations of objects
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b30db20c-1224-41b7-a5f2-ac8a01680608>`__
 
 
 Remember that a key reason for defining new classes is to enable users
@@ -506,8 +500,6 @@ Object equality
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=821e53ec-d2c8-43a6-bb16-ac8c01045f31>`__
 
 When are two objects equal? For built-in types Python has equality rules which
 broadly match the mathematical identities that you might expect. For example,
@@ -610,8 +602,6 @@ Defining arithmetic options on objects
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=727c5b9a-bf61-480e-912e-ac8c01045f09>`__
 
 It's all very well to be able to compare our polynomial objects, but
 we won't really have captured the mathematical abstraction involved

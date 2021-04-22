@@ -44,8 +44,6 @@ Stacks
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b014e13a-82ca-4a57-ac7f-acc000e64349>`__.
 
 
 Possibly the simplest abstract data type which is not synonymous with
@@ -293,8 +291,6 @@ Algorithmic complexity
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=516115a0-b13d-4693-951b-acc000e642ff>`__.
 
 
 The second reason that understanding abstract data types is important
@@ -568,8 +564,6 @@ Queues and deques
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5ba7fde3-8ca9-48e2-b66b-acc100bd1953>`__.
 
 
 A :term:`queue` is, like a :term:`stack`, an ordered sequence of
@@ -630,8 +624,6 @@ Linked lists
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d1b2b176-066a-4d68-aa01-acc100eec5c6>`__.
 
 One disadvantage of a deque (and hence of a stack or queue) is that inserting an
 object into the middle of the sequence is often an :math:`O(n)` operation,
@@ -798,8 +790,6 @@ The iterator protocol
             frameborder="0" allow="autoplay; fullscreen"
             allowfullscreen></iframe>
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f37ae26c-a39a-4757-bc0d-acc100eec588>`__.
 
 
 The abstract data types we have considered here are collections of
