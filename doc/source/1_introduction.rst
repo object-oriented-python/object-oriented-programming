@@ -173,7 +173,7 @@ doing without having to wait for code to be submitted and marked.
     example code contain examples of the same programming constructs that the
     exercises require you to implement, and the tests provide a mechanism to
     know when you have a correct answer. There are also help mechanisms via the
-    course forum and the lab sessions.
+    Teams channel and the lab sessions.
 
 Assessment
 ..........
