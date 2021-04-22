@@ -70,6 +70,7 @@ go about doing the course.
    8_inheritance.rst
    9_debugging.rst
    10_trees_and_directed_acyclic_graphs.rst
+   11_assessment
    
 ..
    zbibliography
