@@ -13,14 +13,21 @@
          
       \mainmatter
 
-This is the online textbook for MATH50009 Principles of Programming, a second
-year object oriented programming module offered to mathematics undergraduates at
-Imperial College London. Read the introductory chapter for information on how to
-go about doing the module week by week.
 
-If you're not taking the module at Imperial, you should nonetheless feel free to
-use this material to learn object-oriented programming in Python. I would be
-very interested to hear from anyone interested in using it to teach.
+This is the online textbook for the Oxford course on Python in Scientific
+Computing, offered to MSc students on the MSc in Mathematical Modelling and
+Scientific Computing, and to DPhil students. The lecturer for this course
+is `Patrick E. Farrell <https://pefarrell.org>`_. Please address all
+questions about the course to Dr Farrell.
+
+This course is a fork of the MATH50009 Principles of Programming course
+prepared by `David A. Ham <https://www.imperial.ac.uk/people/david.ham>`_,
+offered to mathematics undergraduates at
+Imperial College London. Dr Farrell is very grateful to Dr Ham for his kind and
+generous assistance in this matter.
+
+Please read the introductory chapter for information on how to
+go about doing the module week by week.
 
 .. toctree::
    :numbered:

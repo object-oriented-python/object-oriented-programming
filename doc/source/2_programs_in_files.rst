@@ -933,7 +933,7 @@ Exercises
 .. proof:exercise::
 
     Accept the `first Github Classroom assignment for this module
-    <https://classroom.github.com/a/VltGa-Xl>`__ and clone it into your course folder. The assignment
+    <https://classroom.github.com/a/gJ5cd5wM>`__ and clone it into your course folder. The assignment
     repository just contains a :file:`README` and some tests. Your job in the
     following exercises will be to populate it with the remaining content.
 
