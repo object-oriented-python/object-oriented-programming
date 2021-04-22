@@ -15,7 +15,9 @@ Introduction: abstraction in mathematics and programming
 
 .. note::
 
-    Please ignore Dr Ham's comments regarding assessment in the video above.
+    In the video above, please ignore Dr Ham's comments regarding assessment, quizzes, the Piazza forum, and
+    the mideterm in week 7.
+    The live lab sessions for the Oxford course will take place on Tuesdays at 09:00 each week.
 
 A core tool of mathematics is to define abstract objects and the
 operations which apply to them. This approach defines all the basic
@@ -69,9 +71,14 @@ abstraction in mathematics, abstraction in coding is a form of
 constructive laziness: it simultaneously allows the mathematician to
 achieve more and do less work.
 
-This is a second course in programming, building a previously
-acquired basic understanding of programming in Python. In covering
-more advanced programming, we will pay particular attention to objects
+This is primarily intended as a second course in programming.
+We won't teach basic Python syntax; instead, our aim is to make
+you a better programmer. If you have never encountered Python
+syntax before, don't worry; so long as you have programmed in
+any other popular language, you will get the hang of it very
+quickly.
+
+In covering more advanced programming, we will pay particular attention to objects
 and abstraction as they occur in Python. Furthermore, we will do so
 from a mathematician's perspective, understanding programming as a
 process of defining and manipulating mathematical objects, and
@@ -89,15 +96,13 @@ we run through the same cycle:
 
 1. Read the notes
 2. Watch the videos
-3. Do the quiz
-4. Write the code
+3. Write the code
 
 The notes
 .........
 
 All of the new material we cover in this course is presented in these notes.
-Each chapter contains the material for one week of term, so in week :math:`n`,
-you work through chapter :math:`n`. The notes always the starting point for your work.
+The notes always the starting point for your work.
 Each chapter will introduce new concepts in programming, often tied back to
 related mathematical concepts, and always illustrated by practical code
 examples. Python has excellent `official online documentation
@@ -146,17 +151,6 @@ material in the notes. Instead, the videos focus on putting the concepts into
 practice, often by showing live coding sessions. Usually you'll want to watch
 the video for a given section *after* reading the corresponding notes.
 
-The quizzes
-...........
-
-Towards the end of each chapter is a link back to a quiz on Imperial's
-Blackboard system. The quizzes are designed to allow you to convince yourself
-that you've understood the material in the chapter. Sometimes they will simply
-be multiple choice questions testing your understanding of the material, but
-sometimes you will need to open up Python and try things out in order to work
-out the right answer. The quizzes do not contribute to your module grade, but how
-well you are doing on them is an indication of your progress on the module.
-
 The exercises
 .............
 
@@ -179,33 +173,14 @@ doing without having to wait for code to be submitted and marked.
     example code contain examples of the same programming constructs that the
     exercises require you to implement, and the tests provide a mechanism to
     know when you have a correct answer. There are also help mechanisms via the
-    course forum and the lab sessions. Issuing solutions to problems would
-    simply encourage students to study the solutions rather than write code, and
-    the only way to learn to program is to write code.
+    course forum and the lab sessions.
 
 Assessment
 ..........
 
 The weekly quiz and exercises are not assessable: they are formative activities
-designed to help you learn the module. Instead, the module will be assessed by
-two controlled programming assessments, effectively programming exams. The first
-programming assessment will be held in week 7 and will be worth 20% of the
-marks for the course. This provides an opportunity to receive feedback in the
-middle of the term, and is a practice for the main exam. The :ref:`course contents for
-week 7 <midterm>` will comprise practice programming exercises for this midterm test.
-The second programming assessment will be held in the main May exam period and
-will count for the other 80% of the course.
-
-The instructions and skeleton code for the programming exercises will be
-released at a fixed time on GitHub Classroom, and the code which you have
-committed to GitHub by the end of the allotted time will be marked.
-
-The exam questions will be similar to the weekly exercises in the course,
-and may include new programmes to write from specification, modifications or
-extensions to be made to code which is provided, and debugging exercises in
-which defective code is provided which you need to correct. Marks will be
-allocated both for the functional correctness of the code written, and for
-good style and following Python coding conventions.
+designed to help you learn the module. For Oxford students, the assessment for
+the course will be finalised shortly.
 
 
 Obtaining the right software tools
@@ -229,7 +204,7 @@ Python
 Follow the :doc:`FoNS Python instructions <fons:python>`. We will exclusively
 use :ref:`virtual environments <fons:python_virtual_environments>` so it doesn't matter at
 all whether you use Python from Anaconda or from another source. Mac users
-should note, though that the built-in Python will not do, so you should use
+should note, though that the built-in Python will not suffice, so you should use
 either Homebrew or Anaconda.
 
 .. note::
@@ -249,21 +224,20 @@ and submitting code exercises.
 
 .. warning::
 
-    When you come to the assessable programming tests that make up 100% of the
-    assessment for this module, the code will be distributed and submitted using
+    When you come to real programming tasks in science and industry,
+    the code will be distributed and managed using
     Git. It is therefore essential that you incorporate Git into your day to day
-    workflow so that when you come to the test, it's second nature. You will not
-    receive marks for test answers that are not committed and pushed.
+    workflow for this course.
 
 Visual Studio Code
 ..................
 
 Visual Studio Code is a Python-aware Integrated Development Environment (IDE).
 This means that it incorporates editing files with other programming features
-such as :ref:`debugging`, Git support, and built-in :ref:`terminal
+such as :ref:`debugging`, Git support, and a built-in :ref:`terminal
 <terminal-vscode>`. Visual Studio Code also provides an incredibly useful remote
 collaborative coding feature called Live Share. This will be very useful for
-getting remote help from an instructor. 
+getting remote help from the lecturer. 
 
 Getting help
 ------------
@@ -353,10 +327,10 @@ going wrong, we'll get to that bit. Here you're strictly repeating what you did.
 
 .. note::
 
-    Please avoid posting substantially complete solutions to programming
-    exercises into the course forum. Instead, ensure that you have :ref:`pushed
+    When getting help with an exercise,
+    ensure that you have :ref:`pushed
     your work to Github <fons:commit_push>`, and then post the :ref:`git commit
-    hash <fons:git-hash>`. This will enable the lecturer or TA to find your
+    hash <fons:git-hash>`. This will enable the lecturer to find your
     code. It is still important to include all of the other components of the
     issue report.
 
@@ -457,114 +431,16 @@ are many reasons why screenshots are inferior to copying and pasting the text:
 The only time when it is appropriate to include a screenshot is when the output
 is graphical and you need to illustrate why something looks wrong.
 
-Writing an issue report in Markdown on Piazza
-.............................................
-
-Web fora are often optimised for making prose easy to read, so the forum will do
-things like change indentation or the location of linebreaks in order to make a
-nice paragraph of text in whichever area is available on the reader's screen.
-This is great for prose, but absolutely disastrous for code or computer output,
-because changing the linebreaks and other whitespace turns carefully formatted
-information into scrambled junk. To overcome this, it is necessary to tell the
-forum which parts of the text are prose, which are code, and possibly other
-information (for example, you might want to add a mathematical formula). 
-
-In order to support this, many web fora support some form of markup language. A
-markup language represents the structure of the contents of a body of text by
-inserting special instructions, called markup, into the text. You've already
-learned one of these systems, because `LaTeX <https://www.latex-project.org>`__ is a markup system. The notes for
-this course are written in `reStructuredText <https://docutils.readthedocs.io/en/sphinx-docs/user/rst/quickstart.html>`__,
-which is another markup language. Many web fora, notably Piazza and GitHub, use
-variants of another markup language called Markdown (computer scientists are
-regrettably fond of poor puns when naming projects). Since we use Piazza in this
-course we'll look at how to use a little Markdown to make your issue reports
-much more readable. It's important to know that Markdown is not a standardised
-language, so the exact functionality available depends somewhat on which forum
-you are using Markdown for. For example GitHub doesn't support typesetting maths
-from Markdown.
-
-Setting the Piazza editor to Markdown
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When you create a new post or reply to an existing one on Piazza, the editor
-which opens presents three options. Some, but not all, of the code formatting
-and highlighting functionality is available via the :code:`Rich text editor`
-option, which is a graphical editor more similar to Microsoft Word, so it's
-better to choose :code:`Markdown editor`. 
-
-.. image:: images/piazza_editor_choice.png
-    :width: 50%
-    :align: center
-    :alt: Image of Piazza web editor options with Markdown editor selected.
-
-Including code, input, and output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Code, commands you type at the terminal prompt, and output printed in the
-terminal or in IPython are treated almost exactly the same way. The best
-approach is to use what Markdown calls a "fenced code block". This means that
-you put the code between "fences" comprising three backquotes on a
-line by themselves. For example::
-
-    ```
-    $ cd myfolder
-    $ python myscript.py
-    ```
-
-If the code in question is written in a language that the Markdown interpreter
-knows about, and this is indicated at the end of the first fence, then the
-syntax will be highlighted to make it easier to read::
-
-    ```python3
-    print("Hello World!")
-    ```
-
-This results in something like:
-
-.. code-block:: python3
-
-    print("Hello World!")
-
-Similarly, you can mark the first fence with `ipython3` to indicate that the
-code following is copied and pasted from an IPython command line. If you need to
-include code inline in text, then you just contain it in single backquotes:
-`\`some_code\``.
-
-Including mathematics
-~~~~~~~~~~~~~~~~~~~~~
-
-Any text contained between delimiters comprising double dollar signs will be
-passed to LaTeX and rendered as maths. For example, `$$x^2$$` will be rendered
-as :math:`x^2`. 
-
-Including links
-~~~~~~~~~~~~~~~
-
-Just dumping URLs into the text often results in hard to read code. Instead,
-Markdown enables you to write the link text in square brackets followed by the
-URL in round brackets. So::
-
-    [the Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
-
-becomes `the Markdown Cheat Sheet <https://www.markdownguide.org/cheat-sheet/>`__.
-
-
-More advanced Markdown
-~~~~~~~~~~~~~~~~~~~~~~
-
-There are many other Markdown features that can be useful in longer posts, and
-there are many resources about Markdown available online. `The Markdown Guide
-<https://www.markdownguide.org>`__ is a good place to start.
 
 An example issue report
 .......................
 
 A fairly short and simple issue report which includes all of the relevant
-information, might be written in Markdown as follows. The title, which we omit
-from the Markdown because it would be typed in a separate box on Piazza, might
-be something like "Python square function returns wrong answer." 
+information, might be written in Markdown as follows.
 
 .. code-block:: md
+
+    Python square function returns wrong answer
 
     I wrote a function to square its input. I expected to see the
     square of the input but I see the wrong answer.
@@ -594,15 +470,10 @@ be something like "Python square function returns wrong answer."
     I would expect to see 4, 9, 16 respectively. I do not understand what is
     going wrong.
 
-This results in the following, much more readable, post on Piazza:
-
-.. image:: images/piazza_issue.png
-
 .. note::
 
     The point of this example is to illustrate how to write an issue report.
-    However, you do actually know enough Python from your previous introductory
-    course to work out what's wrong with the code here. Can you see what the
+    However, you might actually know enough Python to work out what's wrong with the code here. Can you see what the
     problem is?
 
 
