@@ -796,7 +796,7 @@ Glossary
 Exercises
 ---------
 
-Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
+Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/7vIFHsIm>`__. 
 
 .. proof:exercise::
 

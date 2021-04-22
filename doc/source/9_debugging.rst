@@ -714,7 +714,7 @@ there are quiz questions which you will be able to answer if you are
 successfully able to do the exercise.
 
 Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/mi6I-jcG>`__.
+<https://classroom.github.com/a/gzdA3yg1>`__.
 
 .. panels::
     :card: quiz shadow

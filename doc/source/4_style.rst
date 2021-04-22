@@ -1163,7 +1163,7 @@ Exercises
     Configure your Python editor to use flake8.
 
 The `skeleton code for this week's exercises on GitHub Classroom
-<https://classroom.github.com/a/GCKdXtVA>`__ contains a package :mod:`life`
+<https://classroom.github.com/a/AkcoAOIj>`__ contains a package :mod:`life`
 which implements Conway's Game of Life. Accept the assignment, and clone the
 repository. Install the package in editable mode. This will also install some
 additional packages that the :mod:`life` package depends on. This is achieved

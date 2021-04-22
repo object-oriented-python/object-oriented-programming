@@ -1021,7 +1021,7 @@ Exercises
 ---------
 
 Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/eHigwP_C>`__. You will also need to install the pytest-timeout package.
+<https://classroom.github.com/a/VZ0NlgBg>`__. You will also need to install the pytest-timeout package.
 
 .. proof:exercise::
 
