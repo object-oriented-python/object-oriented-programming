@@ -59,7 +59,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Object oriented programming in Python for mathematicians'
 author = u'David A. Ham'
-copyright = u'2019-2021, David A. Ham'
+copyright = u'2019-2021, David A. Ham. Modified by Patrick E. Farrell'
 
 mathjax_path = \
     "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" # noqa 501
