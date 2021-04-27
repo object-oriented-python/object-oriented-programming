@@ -4,6 +4,14 @@ example\_code package
 Submodules
 ----------
 
+example\_code.addable module
+----------------------------
+
+.. automodule:: example_code.addable
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 example\_code.euclid module
 ---------------------------
 

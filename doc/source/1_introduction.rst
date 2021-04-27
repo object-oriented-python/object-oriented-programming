@@ -5,13 +5,8 @@ Introduction: abstraction in mathematics and programming
 
 .. dropdown:: Video introduction.
 
-    .. container:: vimeo
-
-        .. raw:: html
-
-            <iframe src="https://player.vimeo.com/video/486106801"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
+    .. vimeo:: 486106801
+        :width: 100%
 
     Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ee8cae7f-1b42-4db3-adc0-ac840144de53>`_
 
