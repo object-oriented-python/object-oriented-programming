@@ -12,16 +12,12 @@ Decorators
 
 .. dropdown:: Video: decorators.
 
-    .. container:: vimeo
+    .. vimeo:: 526946976
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/526946976"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f1d61410-4200-42e5-92c4-acf2011de8ab>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f1d61410-4200-42e5-92c4-acf2011de8ab>`__.
 
 
 In :numref:`Week %s <trees>` we encountered the
@@ -209,16 +205,12 @@ Abstract base classes
 
 .. dropdown:: Video: Abstract base classes.
 
-    .. container:: vimeo
+    .. vimeo:: 526947635
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/526947635"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f4678a69-731c-45fe-bdbf-acf2011de880>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f4678a69-731c-45fe-bdbf-acf2011de880>`__.
 
 We have now on several occasions encountered classes which are not designed to
 be instantiated themselves, but merely serve as parent classes to concrete
@@ -392,16 +384,12 @@ Virtual subclasses
 
 .. dropdown:: Video: virtual subclasses.
 
-    .. container:: vimeo
+    .. vimeo:: 526947427
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/526947427"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4114bb1d-cc31-4cfc-81a6-acf2011de8d6>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4114bb1d-cc31-4cfc-81a6-acf2011de8d6>`__.
 
 We learned in :numref:`Week %s <objects>` that we can determine if a type is a
 number by checking if it is an instance of :class:`numbers.Number`. This is a

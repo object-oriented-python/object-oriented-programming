@@ -22,15 +22,11 @@ Setting up a Python environment for this course
 
 .. dropdown:: Video: setting up your virtual environment.
 
-    .. container:: vimeo
+    .. vimeo:: 486546635
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486546635"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`__
 
 
 During this course, we're going to create, edit, and install a whole bunch of
@@ -93,15 +89,11 @@ The Python interpreter
 
 .. dropdown:: Video: a first Python script.
 
-    .. container:: vimeo
+    .. vimeo:: 486557682
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486557682"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
 
 Before we dive into the various different ways that Python code can be
 organised and run, it's helpful to have a mental model of what it
@@ -276,15 +268,11 @@ Modules
 
 .. dropdown:: Video: a first Python module.
 
-    .. container:: vimeo
+.. vimeo:: 486845755
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486845755"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
 
 A module is, like a script, a plain text file containing Python
 code. Modules must have names ending in :file:`.py`. So far, that's
@@ -442,15 +430,11 @@ Packages
 
 .. dropdown:: Video: a first Python package.
 
-    .. container:: vimeo
+    .. vimeo:: 487003753
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/487003753"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
 
 
 Modules are the principal mechanism for storing code which is intended
@@ -654,16 +638,12 @@ Testing frameworks
 
 .. dropdown:: Video: introducing Pytest.
 
-    .. container:: vimeo
+    .. vimeo:: 486987209
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486987209"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
 
 Attempting to establish whether a program correctly implements the
 intended algorithm is core to effective programming, and programmers

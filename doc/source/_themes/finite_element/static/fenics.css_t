@@ -813,22 +813,21 @@ div.figure {
 
 span.strikethrough { text-decoration: line-through; }
 
-.vimeo {
-  position: relative;
-  padding-bottom: 57%;
+.video_wrapper {
+  position: relative !important;
+  padding-bottom: 57% !important;
   height: 0;
   overflow: hidden;
-  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.vimeo iframe,
-.vimeo object,
-.vimeo embed {
+.video_wrapper iframe,
+.video_wrapper object,
+.video_wrapper embed {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }

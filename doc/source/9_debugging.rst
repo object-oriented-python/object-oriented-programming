@@ -147,16 +147,12 @@ Using a graphical debugger
 
 .. dropdown:: Video: using a graphical debugger.
 
-    .. container:: vimeo
+    .. vimeo:: 520604326
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/520604326"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ab1c83e9-d1c8-42d1-821e-ace4010ae319>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ab1c83e9-d1c8-42d1-821e-ace4010ae319>`__.
 
 The simplest way to understand a graphical debugger is to see it in action, so
 this section is provided by video rather than text. Microsoft also provide
@@ -168,16 +164,12 @@ Invoking a command-line debugger
 
 .. dropdown:: Video: command line debuggers.
 
-    .. container:: vimeo
+    .. vimeo:: 520605730
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/520605730"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f9dd4578-b7af-4208-8b04-ace4010bf486>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f9dd4578-b7af-4208-8b04-ace4010bf486>`__.
 
 A command-line debugger, by its very nature, is somewhat easier to explain in
 text than is a graphical debugger. Command-line debuggers are both stand-alone
@@ -441,16 +433,12 @@ Debugging tactics
 
 .. dropdown:: Video: minimal failing examples and bisection.
 
-    .. container:: vimeo
+    .. vimeo:: 520604328
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/520604328"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4f499827-2cce-4cbf-8a2e-ace4010ad8df>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4f499827-2cce-4cbf-8a2e-ace4010ad8df>`__.
 
 
 .. _debugging-mfe:

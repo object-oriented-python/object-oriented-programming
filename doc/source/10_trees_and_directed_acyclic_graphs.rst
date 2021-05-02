@@ -27,16 +27,12 @@ The splat and double splat operators
 
 .. dropdown:: Video: splat and double splat.
 
-    .. container:: vimeo
+    .. vimeo:: 523477744
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/523477744"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2cb93382-321b-4af6-8d5e-aceb0123103d>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2cb93382-321b-4af6-8d5e-aceb0123103d>`__.
 
 
 Before we go on to write code for trees and their traversal,  we need to
@@ -257,16 +253,12 @@ Data structures for trees
 
 .. dropdown:: Tree data structures.
 
-    .. container:: vimeo
+    .. vimeo:: 523477713
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/523477713"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5477e1b1-1040-4a07-97a5-aceb01230fc6>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5477e1b1-1040-4a07-97a5-aceb01230fc6>`__.
 
 Unlike the sequence types we have previously met, trees are not linear objects.
 If we wish to iterate through every node in the tree then we have a choices to
@@ -339,16 +331,12 @@ Traversing :class:`~example_code.graphs.TreeNode`
 
 .. dropdown:: Video: tree traversal.
 
-    .. container:: vimeo
+    .. vimeo:: 523477719
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/523477719"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=69b00d45-077d-46ff-933c-aceb01231001>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=69b00d45-077d-46ff-933c-aceb01231001>`__.
 
 A function which traverses a tree is often called a tree visitor, because it
 visits every node in the tree. What does it do when it visits? Well it could do
@@ -662,16 +650,12 @@ Operations on expression trees
 
 .. dropdown:: Video: evaluating expressions.
 
-    .. container:: vimeo
+    .. vimeo:: 523478799
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/523478799"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=88f9564a-73c9-4760-8f48-aceb01230f9b>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=88f9564a-73c9-4760-8f48-aceb01230f9b>`__.
 
 Many operations on expression trees can be implemented using tree visitors, most
 frequently by visiting the tree in postorder. An example is
