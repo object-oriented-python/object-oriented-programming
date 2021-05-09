@@ -3,7 +3,7 @@
 A matter of style
 =================
 
-.. dropdown:: Video: why style?
+.. details:: Video: why style?
 
     .. vimeo:: 499766703
 
@@ -107,7 +107,7 @@ with code layout rules while this chapter roams more widely.
 Linters
 .......
 
-.. dropdown:: Video: installing and using a linter.
+.. details:: Video: installing and using a linter.
 
 
     .. vimeo:: 499770130
@@ -154,7 +154,7 @@ to set up your editor to highlight flake8 incompatibilities in your source. For
 visual studio code, first open the command palette by typing :kbd:`control` +
 :kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
 "Python: Select Linter" to bring up the list of available linters, and select
-"flake8" from the dropdown list. The video above shows this process.
+"flake8" from the details list. The video above shows this process.
 
 How to tell Flake8 to shut up
 .............................

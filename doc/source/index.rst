@@ -13,14 +13,16 @@
          
       \mainmatter
 
-This is the online textbook for MATH50009 Principles of Programming, a second
-year object oriented programming module offered to mathematics undergraduates at
-Imperial College London. Read the introductory chapter for information on how to
-go about doing the module week by week.
+.. only:: html
 
-If you're not taking the module at Imperial, you should nonetheless feel free to
-use this material to learn object-oriented programming in Python. I would be
-very interested to hear from anyone interested in using it to teach.
+   This is the online textbook for MATH50009 Principles of Programming, a second
+   year object oriented programming module offered to mathematics undergraduates at
+   Imperial College London. Read the introductory chapter for information on how to
+   go about doing the module week by week.
+
+   If you're not taking the module at Imperial, you should nonetheless feel free to
+   use this material to learn object-oriented programming in Python. I would be
+   very interested to hear from anyone interested in using it to teach.
 
 .. toctree::
    :numbered:

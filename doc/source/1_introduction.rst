@@ -3,7 +3,7 @@
 Introduction: abstraction in mathematics and programming
 ========================================================
 
-.. dropdown:: Video introduction.
+.. details:: Video introduction.
 
     .. vimeo:: 486106801
 

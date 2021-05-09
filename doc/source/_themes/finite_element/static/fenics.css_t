@@ -813,6 +813,29 @@ div.figure {
 
 span.strikethrough { text-decoration: line-through; }
 
+details {
+    background-clip: border-box;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: .25rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+    word-wrap: break-word;
+}
+
+details p {
+    padding-left: 1.5rem;
+}
+
+summary {
+    background-color: rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    margin-bottom: 0;
+    padding: 1em;
+}
+
 .video_wrapper {
   position: relative !important;
   padding-bottom: 57% !important;

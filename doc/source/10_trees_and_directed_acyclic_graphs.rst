@@ -25,7 +25,7 @@ responsibility for translating the maths into code.
 The splat and double splat operators
 ------------------------------------
 
-.. dropdown:: Video: splat and double splat.
+.. details:: Video: splat and double splat.
 
     .. vimeo:: 523477744
 
@@ -251,7 +251,7 @@ Tree nodes with no children are called *leaf nodes*.
 Data structures for trees
 -------------------------
 
-.. dropdown:: Tree data structures.
+.. details:: Tree data structures.
 
     .. vimeo:: 523477713
 
@@ -329,7 +329,7 @@ to read! This is the reason that trees are often represented by diagrams.
 Traversing :class:`~example_code.graphs.TreeNode`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. dropdown:: Video: tree traversal.
+.. details:: Video: tree traversal.
 
     .. vimeo:: 523477719
 
@@ -648,7 +648,7 @@ in the case of :class:`Number` and a :class:`str` in the case of :class:`Symbol`
 Operations on expression trees
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. dropdown:: Video: evaluating expressions.
+.. details:: Video: evaluating expressions.
 
     .. vimeo:: 523478799
 

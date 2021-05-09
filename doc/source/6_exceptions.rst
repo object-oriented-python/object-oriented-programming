@@ -3,7 +3,7 @@
 Errors and exceptions
 =====================
 
-.. dropdown:: Video: errors and exceptions.
+.. details:: Video: errors and exceptions.
 
 
     .. vimeo:: 509280820
@@ -178,7 +178,7 @@ exceptions so there are many more defined in third-party packages.
 Tracebacks: finding errors
 --------------------------
 
-.. dropdown:: Video: tracebacks.
+.. details:: Video: tracebacks.
 
     .. vimeo:: 509280880
 
@@ -246,7 +246,7 @@ the call stack.
 The call stack
 ..............
 
-.. dropdown:: Video: the call stack.
+.. details:: Video: the call stack.
 
     .. vimeo:: 509281576
 
@@ -365,7 +365,7 @@ line of the iPython session.
 Raising exceptions
 ------------------
 
-.. dropdown:: Video: raising an exception.
+.. details:: Video: raising an exception.
 
     .. vimeo:: 509492490
 
@@ -479,7 +479,7 @@ distinction is of negligible importance for our current purposes.
 Handling exceptions
 -------------------
 
-.. dropdown:: Video: handling exceptions.
+.. details:: Video: handling exceptions.
 
     .. vimeo:: 509492495
 
@@ -580,7 +580,7 @@ version of :func:`gcd` then we have, as we might expect:
 Except clauses
 ..............
 
-.. dropdown:: Video: further exception handling.
+.. details:: Video: further exception handling.
 
     .. vimeo:: 509492496
 

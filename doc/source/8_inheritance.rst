@@ -3,7 +3,7 @@
 Inheritance and composition
 ===========================
 
-.. dropdown:: Video: inheritance and composition.
+.. details:: Video: inheritance and composition.
 
     .. vimeo:: 516216973
 
@@ -95,7 +95,7 @@ a *has a* relationship, inheritance defines an *is a* relationship.
 An example from group theory
 ----------------------------
 
-.. dropdown:: Video: an example from group theory.
+.. details:: Video: an example from group theory.
 
     .. vimeo:: 516277973
 
@@ -299,7 +299,7 @@ is delegated to the group by calling :meth:`self.group.operation`.
 General linear groups
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. dropdown:: Video: inheritance.
+.. details:: Video: inheritance.
 
     .. vimeo:: 516698411
 

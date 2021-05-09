@@ -10,7 +10,7 @@ in the course so far.
 Decorators
 ----------
 
-.. dropdown:: Video: decorators.
+.. details:: Video: decorators.
 
     .. vimeo:: 526946976
 
@@ -203,7 +203,7 @@ ones. We will survey just a few here:
 Abstract base classes
 ---------------------
 
-.. dropdown:: Video: Abstract base classes.
+.. details:: Video: Abstract base classes.
 
     .. vimeo:: 526947635
 
@@ -382,7 +382,7 @@ second use of abstract base classes comes into play.
 Virtual subclasses
 ~~~~~~~~~~~~~~~~~~
 
-.. dropdown:: Video: virtual subclasses.
+.. details:: Video: virtual subclasses.
 
     .. vimeo:: 526947427
 

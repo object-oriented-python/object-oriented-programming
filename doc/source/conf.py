@@ -38,7 +38,7 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.blockdiag',
     'sphinx.ext.napoleon',
-    'sphinx_panels'
+    'sphinxcontrib.details.directive'
 ]
 # Both the class’ and the __init__ method’s docstring are concatenated and
 # inserted into the class definition
@@ -222,6 +222,13 @@ blockdiag_latex_image_format = 'pdf'
 
 latex_engine = 'lualatex'
 
+latex_use_xindy = False
+
+latex_additional_files = [
+    '_themes/finite_element/static/dialog-right.png',
+    '_themes/finite_element/static/dialog-wrong.png'
+]
+
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'a4paper',
@@ -230,8 +237,38 @@ latex_elements = {
     'pointsize': '11pt',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': r'\setcounter{MaxMatrixCols}{20}',
+    'preamble': r'''\setcounter{MaxMatrixCols}{20}
+\newcommand{\currentsummary}{}
+\newcommand{\sphinxdetailssummary}[1]{
+    \renewcommand{\currentsummary}{#1}}
+\newcommand{\sphinxcontribvimeo}[2]{\begin{quote}\protect\href{#1#2}{\currentsummary}\end{quote}}
+\usepackage{etoolbox}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\currentsphinxclass}{}
+\usepackage{calc}
+\newlength{\badcodesize}
+\renewenvironment{sphinxclass}[1]{
+    \setlength{\badcodesize}{\linewidth-.05\textwidth}
+    \renewcommand{\currentsphinxclass}{#1} % Note not safe for nested containers.
+    \ifstrequal{#1}{badcode}{\begin{minipage}{\badcodesize}}{}
+    \ifstrequal{#1}{goodcode}{\begin{minipage}{\badcodesize}}{}
+}{
+    \ifdefstring{\currentsphinxclass}{badcode}{\end{minipage}
+    \begin{minipage}{.045\textwidth}{\Huge\color{red}\ \xmark}\end{minipage}
+    
+    }{}
+    \ifdefstring{\currentsphinxclass}{goodcode}{\end{minipage}\ 
+    \begin{minipage}{.045\textwidth}{\Huge\color{green}\ \cmark}\end{minipage}
+    
+    }{}
+    \renewcommand{\currentsphinxclass}{}
+}
+''',
     'releasename': 'Edition',
+    'sphinxsetup': 'VerbatimColor={HTML}{FAFAFA}, VerbatimBorderColor={HTML}{c6c9cb}, \
+        InnerLinkColor={HTML}{c52b03}, OuterLinkColor={HTML}{e55d05}'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -284,14 +321,14 @@ numfig = True
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    'python': ('http://docs.python.org/3/', None),
-    'scipy': ('http://docs.scipy.org/doc/scipy-dev/reference/', None),
-    'numpy': ('http://docs.scipy.org/doc/numpy/', None),
-    'matplotlib': ('http://matplotlib.org/', None),
+    'python': ('https://docs.python.org/3/', None),
+    'scipy': ('https://scipy.github.io/devdocs/', None),
+    'numpy': ('https://numpy.org/doc/stable/', None),
+    'matplotlib': ('https://matplotlib.org/', None),
     'setuptools': ('https://setuptools.readthedocs.io/en/latest/', None),
     'pip': ('https://pip.pypa.io/en/stable/', None),
     'sympy': ('https://docs.sympy.org/latest', None),
     'pytest': ('https://docs.pytest.org/en/latest/', None),
     'fons': ('https://imperial-fons-computing.github.io', None),
-    'pandas': ('http://pandas.pydata.org/docs/', None)
+    'pandas': ('https://pandas.pydata.org/docs/', None)
 }

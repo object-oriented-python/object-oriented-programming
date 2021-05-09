@@ -20,7 +20,7 @@ code really reusable by creating Python modules and packages.
 Setting up a Python environment for this course
 -----------------------------------------------
 
-.. dropdown:: Video: setting up your virtual environment.
+.. details:: Video: setting up your virtual environment.
 
     .. vimeo:: 486546635
 
@@ -87,7 +87,7 @@ Pip can also be used to upgrade a package to the latest version:
 The Python interpreter
 ----------------------
 
-.. dropdown:: Video: a first Python script.
+.. details:: Video: a first Python script.
 
     .. vimeo:: 486557682
 
@@ -266,7 +266,7 @@ shortly.
 Modules
 -------
 
-.. dropdown:: Video: a first Python module.
+.. details:: Video: a first Python module.
 
 .. vimeo:: 486845755
 
@@ -428,7 +428,7 @@ is in :ref:`the official Python documentation. <python:import>`
 Packages
 --------
 
-.. dropdown:: Video: a first Python package.
+.. details:: Video: a first Python package.
 
     .. vimeo:: 487003753
 
@@ -636,7 +636,7 @@ the package every time you change it.
 Testing frameworks
 ------------------
 
-.. dropdown:: Video: introducing Pytest.
+.. details:: Video: introducing Pytest.
 
     .. vimeo:: 486987209
 

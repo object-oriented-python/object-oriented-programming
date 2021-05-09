@@ -175,7 +175,7 @@ Python is an object, and every object has a type.
 Defining new types
 ------------------
 
-.. dropdown:: Video: a first class
+.. details:: Video: a first class
 
     .. vimeo:: 488143930
 
@@ -320,7 +320,7 @@ create a private attribute.
 Methods
 .......
 
-.. dropdown:: Video: defining methods
+.. details:: Video: defining methods
 
     .. vimeo:: 488273256
 
@@ -378,7 +378,7 @@ later, so that will be the one which is accessed.
 String representations of objects
 .................................
 
-.. dropdown:: Video: printing classes
+.. details:: Video: printing classes
 
     .. vimeo:: 488275072
 
@@ -484,7 +484,7 @@ We can now observe the difference in the result:
 Object equality
 ...............
 
-.. dropdown:: Video: object equality and test driven development
+.. details:: Video: object equality and test driven development
 
     .. vimeo:: 488981397
 
@@ -584,7 +584,7 @@ equality now behaves as we might expect.
 Defining arithmetic options on objects
 ......................................
 
-.. dropdown:: Video: polynomial addition.
+.. details:: Video: polynomial addition.
 
     .. vimeo:: 489009900
 

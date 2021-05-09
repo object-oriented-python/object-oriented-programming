@@ -145,7 +145,7 @@ called pdbpp.
 Using a graphical debugger
 --------------------------
 
-.. dropdown:: Video: using a graphical debugger.
+.. details:: Video: using a graphical debugger.
 
     .. vimeo:: 520604326
 
@@ -162,7 +162,7 @@ documentation on `using the Python debugger in Visual Studio Code
 Invoking a command-line debugger
 --------------------------------
 
-.. dropdown:: Video: command line debuggers.
+.. details:: Video: command line debuggers.
 
     .. vimeo:: 520605730
 
@@ -431,7 +431,7 @@ well-posed.
 Debugging tactics
 -----------------
 
-.. dropdown:: Video: minimal failing examples and bisection.
+.. details:: Video: minimal failing examples and bisection.
 
     .. vimeo:: 520604328
 

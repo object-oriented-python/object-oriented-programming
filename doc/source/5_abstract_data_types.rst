@@ -34,7 +34,7 @@ structures which could be used to implement them.
 Stacks
 ------
 
-.. dropdown:: Video: stacks as an abstract data type.
+.. details:: Video: stacks as an abstract data type.
 
 
     .. vimeo:: 506479213
@@ -280,7 +280,7 @@ tasks.
 Algorithmic complexity
 ----------------------
 
-.. dropdown:: Video: dynamic arrays and algorithmic complexity.
+.. details:: Video: dynamic arrays and algorithmic complexity.
 
 
     .. vimeo:: 506479208
@@ -552,7 +552,7 @@ this.
 Queues and deques
 -----------------
 
-.. dropdown:: Video: deques and ring buffers.
+.. details:: Video: deques and ring buffers.
 
     .. vimeo:: 506710190
 
@@ -610,7 +610,7 @@ Linked lists
 ------------
 
 
-.. dropdown:: Video: linked lists.
+.. details:: Video: linked lists.
 
     .. vimeo:: 506743244
 
@@ -774,7 +774,7 @@ based on ring buffers.
 The iterator protocol
 ---------------------
 
-.. dropdown:: Video: the iterator protocol.
+.. details:: Video: the iterator protocol.
 
     .. vimeo:: 506743250
 
