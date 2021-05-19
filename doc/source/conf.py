@@ -126,6 +126,8 @@ proof_theorem_types = {
     "exercise": "Exercise",
 }
 
+proof_latex_parent = "chapter"
+
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -214,7 +216,7 @@ htmlhelp_basename = 'Finiteelementcoursedoc'
 graphviz_output_format = 'svg'
 
 # Fontpath for blockdiag (truetype font)
-# blockdiag_fontpath = '/usr/share/fonts/truetype/ipafont/ipagp.ttf'
+blockdiag_fontpath = '/Users/dham/Library/Fonts/Carlito-Regular.ttf'
 blockdiag_html_image_format = 'svg'
 blockdiag_latex_image_format = 'pdf'
 
@@ -250,7 +252,8 @@ latex_elements = {
 \newcommand{\currentsummary}{}
 \newcommand{\sphinxdetailssummary}[1]{
     \renewcommand{\currentsummary}{#1}}
-\newcommand{\sphinxcontribvimeo}[2]{\begin{quote}\protect\href{#1#2}{\currentsummary}\end{quote}}
+\newcommand{\sphinxcontribvimeo}[2]{%
+\protect\href{#1#2}{\currentsummary}}
 \usepackage{etoolbox}
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
