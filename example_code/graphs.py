@@ -4,7 +4,7 @@
 class TreeNode:
     """A basic tree implementation.
 
-    Observe that a tree is simply a collection of connected TreeNodes.
+    A tree is simply a collection of connected TreeNodes.
 
     Parameters
     ----------
@@ -13,6 +13,7 @@ class TreeNode:
     children:
         The TreeNodes which are the children of this node.
     """
+
     def __init__(self, value, *children):
         self.value = value
         self.children = tuple(children)

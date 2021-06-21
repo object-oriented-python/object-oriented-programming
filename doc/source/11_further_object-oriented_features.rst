@@ -738,6 +738,64 @@ with additional code or tests.
     (for example, transforming `1 + 2*x + 3*x**2` to `3*x**2 + 2*x + 1`) is an additional
     challenge.
 
+Exam instructions
+-------------------------
+
+1.  The exam will start at 0900 UTC (London time) on Monday 24 May 2021 and will run for 
+    2 hours. Students with additional time will be contacted about this separately.
+2.  The exam will take the form of a GitHub classroom assignment, just like all of
+    the exercises. The URL to accept the assignment will be posted at the start
+    of the exam on the `module Team <https://teams.microsoft.com/l/team/19%3ae96b9a199b15419281f55f454d240249%40thread.tacv2/conversations?groupId=1b12939c-d8c9-4e4d-a291-0ff35d57869f&tenantId=2b897507-ee8c-4575-830b-4f8267c3d307>`__, as Blackboard announcement, and posted on
+    Piazza. Of these, the Team is the most instant form of communication so you
+    are advised to look there and use the other sources as a backup.
+3.  The exam instructions are in the :file:`README.md` in the repository.
+    GitHub will show this to you on the repository website. The instructions
+    are very similar to those for the practice problems above, so you should
+    make sure you have tried those in advance of the exam.
+4.  There are 4 questions, each marked out of 20 marks. The exam is marked out
+    of 80 and your attempts at all four questions will count.
+5.  You submit your work by committing and pushing to the repository on GitHub
+    created when you accept the GitHub Classroom assignment. You must commit as
+    you go along, and it is strongly advisable to also push as you go. **Only commits
+    made during the exam period will count.** Please note that you do not need a
+    network connection in order to commit, so you can still do so even if you have
+    network problems.
+6.  The upload time at the end of the exam is only there to enable you to push
+    your work. **Commits made during the upload time will not be marked.**
+7.  If you have a problem during the exam, you should post a question
+    `on Piazza <https://piazza.com/class/kjob8in6eox1bp>`__. During the exam,
+    Piazza will be configured so that student posts can only be seen by the
+    instructors. Other than this difference you should follow `the instructions
+    on what to do in case of problems <_static/If_you_have_a_problem.pdf>`__ 
+    provided by the maths exams office in their
+    email of 11 February. In particular, if those instructions require you to
+    `email the exam team <mailto:maths.exams@imperial.ac.uk>`__ after the exam
+    then you should do so. Posting on Piazza is only a mechanism for getting
+    immediate help during the exam.
+8.  If you have a problem during the exam which prevents you from working, for
+    example you cannot clone the repository or your computer crashes,  then you
+    should do the following:
+
+    a. Take note of the time when the problem starts.
+    b. If possible, post `on Piazza <https://piazza.com/class/kjob8in6eox1bp>`__ to ask for help.
+       If you cannot immediately post on Piazza, do so as soon as you are able. This establishes
+       an external record of your issue.
+    c. Take note of the time when you are able to resume work.
+    d. Ensure that you commit your work before the published end time of the exam.
+    e. Having committed (and, if at all possible, pushed), continue to work past the end time of the
+       exam, committing at least every 5 minutes until you have recovered the time you lost.
+    f. Straight after the exam submit a mitigating circumstances claim explaining the situation.
+
+    It is critical that you have committed your work before the end of the original exam time, because
+    no commitments can be made during the exam that late work will be accepted. This will be decided in
+    the light of the mitigating circumstances claim.
+9.  The usual `academic integrity rules for remote assessments <_static/Academic_Integrity.pdf>`__ 
+    apply. In
+    particular, you may consult any resource published on the internet, but you may
+    not seek help from anyone else, whether in person, by email, chat message,
+    forum post or any other means.
+
+
 
 .. rubric:: Footnotes
 
