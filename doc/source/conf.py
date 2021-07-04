@@ -38,6 +38,7 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.blockdiag',
     'sphinx.ext.napoleon',
+    'sphinx_panels',
     'sphinxcontrib.details.directive'
 ]
 # Both the class’ and the __init__ method’s docstring are concatenated and
