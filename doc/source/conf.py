@@ -234,6 +234,17 @@ latex_additional_files = [
     'images/Imperial.pdf'
 ]
 
+if tags.has("book"):
+    preamble = ""
+else:
+    # Imperial lecture notes version.
+    preamble = r"""
+\usepackage{imperialmathnotes}
+\subtitle{in Python for mathematicians}
+\imperialmathnotesvolume{2}
+\edition{2021}
+"""
+
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'a4paper',
@@ -242,14 +253,9 @@ latex_elements = {
     'pointsize': '11pt',
 
     'babel': r'\usepackage[british]{babel}',
-    'maketitle': r'\imperialmathnotestitlepages',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': r'''\setcounter{MaxMatrixCols}{20}
-\usepackage{imperialmathnotes}
-\subtitle{in Python for mathematicians}
-\imperialmathnotesvolume{2}
-\edition{2021}
+    'preamble': preamble + r'''\setcounter{MaxMatrixCols}{20}
 \newcommand{\currentsummary}{}
 \newcommand{\sphinxdetailssummary}[1]{
     \renewcommand{\currentsummary}{#1}}
@@ -290,6 +296,13 @@ latex_elements = {
         warningBgColor={HTML}{fbe3e4}, \
         TitleColor={cmyk}{1,.61,0,.45}'
 }
+
+if tags.has("book"):
+    latex_elements['geometry'] = r'\usepackage[papersize={189mm,246.1mm}]{geometry}'
+    latex_elements['sphinxsetup'] += ',hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}'
+else:
+    latex_elements['maketitle'] = r'\imperialmathnotestitlepages'
+
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
