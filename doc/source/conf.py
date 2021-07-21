@@ -268,7 +268,7 @@ latex_elements = {
 \newcommand{\currentsphinxclass}{}
 \usepackage{calc}
 \newlength{\badcodesize}
-\renewenvironment{sphinxclass}[1]{
+\renewenvironment{sphinxuseclass}[1]{
     \setlength{\badcodesize}{\linewidth-.05\textwidth}
     \renewcommand{\currentsphinxclass}{#1} % Note not safe for nested containers.
     \ifstrequal{#1}{badcode}{\begin{minipage}{\badcodesize}}{}
