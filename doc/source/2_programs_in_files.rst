@@ -3,19 +3,18 @@
 Programs in files
 ===================
 
-In this chapter we will start to learn how to combine pieces of code into larger units,
-and how to package up your code so that you or others can do the same. 
-You will previously have written Python code in Jupyter notebooks, and
-possibly used an interactive Python environment such as
-iPython. Jupyter notebooks are an excellent platform for writing and
-documenting short pieces of code. However, they are much less good for
-writing code which is designed to be used by other people. If the
-intention is to write mathematical building blocks out of which more
-complex algorithms can be constructed, then we need a different way of
-storing code: one which is accessible in more automated ways than
-typing in a web browser. As an introduction to writing code in files,
-we will first consider Python scripts. We'll then move on to making
-code really reusable by creating Python modules and packages.
+In this chapter we will start to learn how to combine pieces of code into
+larger units, and how to package up your code so that you or others can do the
+same. You will previously have written Python code in Jupyter notebooks, and
+possibly used an interactive Python environment such as IPython. Jupyter
+notebooks are an excellent platform for writing and documenting short pieces of
+code. However, they are much less good for writing code which is designed to be
+used by other people. If the intention is to write mathematical building blocks
+out of which more complex algorithms can be constructed, then we need a
+different way of storing code: one which is accessible in more automated ways
+than typing in a web browser. As an introduction to writing code in files, we
+will first consider Python scripts. We'll then move on to making code really
+reusable by creating Python modules and packages.
 
 The Python interpreter
 ----------------------
@@ -29,17 +28,15 @@ The Python interpreter
         Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
 
 Before we dive into the various different ways that Python code can be
-organised and run, it's helpful to have a mental model of what it
-actually means for Python code to execute. Python is an interpreted
-language. This means that the program that runs is not made up of the
-primitive machine-level instructions that the processor in your
-computer executes. Instead, the Python program is read and executed by
-another piece of software, the Python interpreter. The Python
-interpreter takes a sequence of Python statements and performs the
-actions they specify. The Python interpreter takes care of allocating
-the required memory and causes the right sequences of primitive
-machine-level instructions to execute on the actual hardware for your
-programme to run.
+organised and run, it's helpful to have a mental model of what it actually
+means for Python code to execute. Python is an interpreted language. This means
+that the program that runs is not made up of the primitive machine-level
+instructions that the processor in your computer executes. Instead, the Python
+program is read and executed by another piece of software, the Python
+interpreter. The Python interpreter takes a sequence of Python statements and
+performs the actions they specify. The interpreter takes care of allocating the
+required memory and causes the right sequences of primitive machine-level
+instructions to execute on the actual hardware for your programme to run.
 
 The Python interpreter is the same no matter whether you use Jupyter
 notebooks, an interactive Python terminal such as IPython, or execute
@@ -62,18 +59,39 @@ a purely command line interface to the Python interpreter. You can launch a
 command line Python interface simply by running the command `python` with no
 further arguments. However, a much more user-friendly interface with features
 such as syntax highlighting, tab completion and a searchable command history is
-provided by IPython. If you're familiar with Jupyter notebooks then IPython will be
-very familiar indeed, because the Python backend to Jupyter is IPython.
+provided by IPython. If you're familiar with Jupyter notebooks then IPython
+will be very familiar indeed, because the Python backend to Jupyter is IPython.
 
-IPython is available as a package on PyPI. So, having ensured that your venv is
-active, you can install it by running:
+IPython is available as a package on PyPI. So, having ensured that our venv is
+active, we can install it by running:
 
 .. code-block:: console
 
     (my_venv) $ python -m pip install ipython
 
+IPython can now be run by simply typing:
 
+.. code-block:: console
 
+    (my_venv) $ ipython
+
+This will result in output simiar to the following:
+
+.. code-block:: ipython3
+
+    Python 3.9.4 (default, Apr  5 2021, 01:50:46) 
+    Type 'copyright', 'credits' or 'license' for more information
+    IPython 7.19.0 -- An enhanced Interactive Python. Type '?' for help.
+
+    In [1]: 
+
+Just like in a Jupyter notebook, this last line is the Python prompt at which
+you can type any Python you like. If you press return after a complete Python
+statement, the statement will execute immediately. Unlike in a Jupyter
+notebook, there is no special key combination or button to trigger execution.
+We'll use IPython from time to time to illustrate the operation of the various
+Python constructs that we'll learn about. However, our focus is on building
+larger units of code, and it is to this that we will now turn.
 
 Python scripts and text editors
 -------------------------------
@@ -91,24 +109,25 @@ Environment (IDE). IDEs combine an editor with a Python interpreter to
 run your code, a debugger and often other features such as integration
 with Git.
 
-During this course, it will be assumed that you're using the IDE Microsoft
-Visual Studio Code. You don't have to do so, and if you have a strong preference
-for another text editor or IDE then you are welcome to use it. That said, if
-your text editor does not have a collaborative editing facility equivalent to
-Visual Studo Code's Live Share, then you are likely to need to use Visual Studio
-Code when you ask for help so that the helper can share your editor session.
+One such IDE is Microsoft Visual Studio Code. This is a free and open source
+IDE with good support for Git and Python, including for debugging Python
+programmes. It also has a particularly helpful Live Share facility, which
+enables two or more programmers to work on the same piece of code at the same
+time over the internet. The descriptions presented here will assume that you
+are using Visual Studio Code, but you can, of course, use another editor or IDE
+for your Python programming.
 
 .. note:: Text files
 
     You are doubtless familiar with the concept of a file stored in a folder on
-    your computer. You will also be aware that there are many different types of
-    file, more or less related to the type of data they contain and the programs
-    which created them. Files fall into two important categories, binary files
-    and text files. A binary file is a stream of data whose contents make
-    sense under the rules of the application which created it, but not
-    otherwise. Word documents, PDFs, and JPEGs are examples of binary files.
-    Plain text files are files which, as the name suggests, consist of a string
-    of characters. Anyone looking at the content of a text file can
+    your computer. You will also be aware that there are many different types
+    of file, more or less related to the type of data they contain and the
+    programs which created them. Files fall into two important categories,
+    binary files and text files. A binary file is a stream of data whose
+    contents make sense under the rules of the application which created it,
+    but not otherwise. Word documents, PDFs, and JPEGs are examples of binary
+    files. Plain text files are files which, as the name suggests, consist of a
+    string of characters. Anyone looking at the content of a text file can
     understand it, so long as they understand the human or computer language in
     which it is written. LaTeX source files and Python scripts are examples of
     text files. This matters when you come to edit these files. Text files are
@@ -122,7 +141,7 @@ A first Python script
 ~~~~~~~~~~~~~~~~~~~~~
 
 Tradition dictates that the first stand-alone program one writes in
-any language simply prints out the string `Hello World`. Using a text
+any language simply prints out the string `Hello World`. Using an IDE or text
 editor, we create a file which we'll call :file:`hello.py` containing just
 the following line of Python code:
 
@@ -130,40 +149,33 @@ the following line of Python code:
 
    print("Hello World")
 
-The :file:`.py` file extension is not strictly required for Python scripts,
-but it can be useful as it will cause most text editors to recognise
-the file as a Python file. Having remembered to save :file:`hello.py` to
-disk from the text editor, we can now run the program. Open a
-terminal, and change to the folder (directory) where you saved
-:file:`hello.py`. For example, if :file:`hello.py` is in the directory :file:`src` in
-your home directory, then on most operating systems, you would type the following:
+The :file:`.py` file extension is not strictly required for Python scripts, but
+it can be useful as it will cause most text editors to recognise the file as a
+Python file. Having remembered to save :file:`hello.py` to disk from the text
+editor, we can now run the program. Open a terminal, and change to the folder
+(directory) where you saved :file:`hello.py`. For example, if :file:`hello.py`
+is in the directory :file:`src` in your home directory, then on most operating
+systems, you would type the following:
 
 .. code-block:: console
 
-    $ cd src
-    $ python3 hello.py
-
-on Windows you might instead need to type:
-
-.. code-block:: console
-
-    > cd src
-    > py hello.py
-
+    (my_venv) $ cd src
+    (my_venv) $ python hello.py
 
 The dollar sign is the command prompt. Its different on some systems, for
-example, it's often a greater than sign (`>`). The text to the left of the
-command prompt might also be different depending on which terminal program you
-are using on which operating system, but we are only concerned with the commands
-to the right of the prompt. The first of these, `cd` (*change directory*)
-switches the current folder to :file:`src`. The second command actually runs the
-Python interpreter on :file:`hello.py`. Depending on what is installed on your
-computer, it might also be possible to leave off the `3` at the end of
-`python3`, however on some systems the plain `python` command is still linked to
-the old version 2 of Python, so it's better to be explicit and type `python3`.
-Once we start working with Python :term:`virtual environments <virtual
-environment>`, it will always be safe to use `python` without the 3. When we
-press the :kbd:`enter` key after the last line above, our tiny Python script
+example, it's often a greater than sign (`>`) or a percent symbol (`%`). The
+text to the left of the command prompt might also be different depending on
+which terminal program you are using on which operating system, but we are only
+concerned with the commands to the right of the prompt. The first of these,
+`cd` (*change directory*) switches the current folder to :file:`src`. The
+second command actually runs the Python interpreter on :file:`hello.py`. From
+within our venv, we can be confident that `python` will refer to the right
+version of Python. If you need to run Python outside of a venv then the
+situation is a little more complex. On Linux or MacOS, you might need to type
+`python3` instead of `python`, because `python` still points at the old Python
+version 2 interpreter. On Windows, there is a convenient command `py` which
+will usually find and run the most appropriate Python. When we press the
+:kbd:`enter` key after the last line above, our tiny Python script
 :file:`hello.py` runs and the following is displayed:
 
 .. code-block:: console
@@ -192,7 +204,7 @@ you can go back over your work and find the error. A particularly
 frustrating phenomenon, often encountered shortly before a submission
 deadline, is to suddenly discover that something which used to work no
 longer does. If you took the next logical step and committed your
-scripts to a git repository, making a new commit every time you edit
+scripts to a Git repository, making a new commit every time you edit
 it, you would also be able to go back and find the point at which the
 script stopped working. We will return to this debugging technique in
 :numref:`bisection-debugging`.
@@ -221,7 +233,7 @@ Modules
 
 .. details:: Video: a first Python module.
 
-.. vimeo:: 486845755
+    .. vimeo:: 486845755
 
     .. only:: html
 
@@ -302,7 +314,7 @@ quote one of the key developers of the Python language:
    with them for as long as you have used a computer, without even
    thinking about it. This is because folders are simply namespaces
    for files. Each filename can exist only once in each folder, and
-   you can nest folders inside folders. 
+   folders can be nested inside folders. 
 
 Other forms of import
 ~~~~~~~~~~~~~~~~~~~~~
@@ -865,7 +877,7 @@ Exercises
 
 .. proof:exercise::
 
-    Accept the `first Github Classroom assignment for this module
+    Accept the `first GitHub Classroom assignment for this module
     <https://classroom.github.com/a/VltGa-Xl>`__ and clone it into your course folder. The assignment
     repository just contains a :file:`README` and some tests. Your job in the
     following exercises will be to populate it with the remaining content.
@@ -899,7 +911,7 @@ Exercises
     .. note:: 
 
         After this and every exercise in which you write code, ensure that you
-        add any new files to git, commit all of your changes, and push to
+        add any new files to Git, commit all of your changes, and push to
         GitHub. Then ensure that the tests pass on GitHub. For more information
         about how to do any of these, refer back the :ref:`Faculty of Natural Sciences
         Git instructions <github_classroom_exercise>`.
@@ -911,7 +923,7 @@ Exercises
     installable.
 
     Pytest can't easily test installability for you, so once you have managed to
-    install your package yourself, commit and push to github to check that the
+    install your package yourself, commit and push to GitHub to check that the
     tests there are also able to install your package.
 
 .. proof:exercise::

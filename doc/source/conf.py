@@ -268,6 +268,9 @@ latex_elements = {
 \newcommand{\currentsphinxclass}{}
 \usepackage{calc}
 \newlength{\badcodesize}
+\renewenvironment{sphinxnote}[1]
+  {\begin{sphinxheavybox}\sphinxstrong{#1} }{\end{sphinxheavybox}}
+\definecolor{sphinxnoteBgColor}{HTML}{e1ecfe}
 \renewenvironment{sphinxuseclass}[1]{
     \setlength{\badcodesize}{\linewidth-.05\textwidth}
     \renewcommand{\currentsphinxclass}{#1} % Note not safe for nested containers.
@@ -288,8 +291,6 @@ latex_elements = {
     'releasename': '',
     'sphinxsetup': 'VerbatimColor={HTML}{FAFAFA}, \
         VerbatimBorderColor={HTML}{c6c9cb}, \
-        InnerLinkColor={HTML}{c52b03}, \
-        OuterLinkColor={HTML}{e55d05}, \
         noteBorderColor={HTML}{7a9eec}, \
         hintBorderColor={HTML}{7a9eec}, \
         warningBorderColor={HTML}{fbc2c4}, \
@@ -302,6 +303,8 @@ if tags.has("book"):
     latex_elements['sphinxsetup'] += ',hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}'
 else:
     latex_elements['maketitle'] = r'\imperialmathnotestitlepages'
+    latex_elements['sphinxsetup'] += 'InnerLinkColor={HTML}{c52b03}, \
+        OuterLinkColor={HTML}{e55d05},'
 
 
 # Grouping the document tree into LaTeX files. List of tuples

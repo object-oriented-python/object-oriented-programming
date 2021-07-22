@@ -40,7 +40,7 @@
    10_trees_and_directed_acyclic_graphs.rst
    11_further_object-oriented_features.rst
    
-.. only:: latex
+.. only:: latex and not book
 
    .. raw:: latex
 
