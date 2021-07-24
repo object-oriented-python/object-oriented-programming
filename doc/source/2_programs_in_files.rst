@@ -209,6 +209,13 @@ it, you would also be able to go back and find the point at which the
 script stopped working. We will return to this debugging technique in
 :numref:`bisection-debugging`.
 
+.. hint::
+
+    Whenever you need to perform a calculation as a part of an assignment or
+    project, or as part of your job, **always** write a script to perform the
+    calculation and store that script under revision control. Adopting this
+    simple practice will save you enormous amounts of frustration and wasted
+    time over the course of your career.
 
 When not to use scripts
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -261,8 +268,8 @@ containing the following simple function:
        else:
            return fib(n-2) + fib(n-1)
 
-If I now run IPython in the folder containing my new file
-:file:`fibonacci.py` then I will be able to import the :mod:`fibonacci`
+If we now run IPython in the folder containing our new file
+:file:`fibonacci.py` then we will be able to import the :mod:`fibonacci`
 module, and use the function :func:`fib`:
 
 .. code-block:: ipython3
@@ -411,7 +418,12 @@ be much more logical, and much easier to work with, to split the code
 up into several files of more reasonable length. This is where
 packages come in. A Python package is a collection of module files,
 which can be imported together. The basic folder structure of a Python
-package looks like the following::
+package is shown in :numref:`package-layout`.
+
+.. _package-layout:
+
+.. code-block::
+    :caption: The file layout for a simple package.
 
     my_git_repo
     ├── my_package
@@ -474,14 +486,14 @@ they make up the Python package.
 Importing packages
 ~~~~~~~~~~~~~~~~~~
 
-The system for importing packages is the same as that described in
-:numref:`modules`, though the nested nature of packages makes the
-process somewhat more involved. Importing a package also imports all
-the modules it contains, including those in subpackages. This will
-establish a set of nested namespaces. In the example above, after
-importing :mod:`my_package`, :mod:`module_3` will be accessible as
-`my_package.subpackage.module_3`. The usual rules about the `from`
-keyword still apply, so:
+The system for importing packages is the same as that described for modules in
+:numref:`modules`, though the nested nature of packages makes the process
+somewhat more involved. Importing a package also imports all the modules it
+contains, including those in subpackages. This will establish a set of nested
+namespaces. In the example above, let's suppose we have imported
+:mod:`my_package`. :mod:`module_3` will be accessible as
+`my_package.subpackage.module_3`. The usual rules about the `from` keyword
+still apply, so:
 
 .. code-block:: python3
 
@@ -533,25 +545,30 @@ Making packages installable
 
 In order for the :ref:`import statement <python:import>` to work, Python needs
 to know that the package being imported exists, and where to find it. This is
-achieved by *installing* the package. In order to make a package installable, we
-need to provide Python with a bit more information about it. This
-information is contained in a Python script which must be called :file:`setup.py`.
-This file isn't part of the package and does not go in the package folder.
-Instead, it should be placed in the top-level folder of your git repository, so
-that the Python package installer will be able to find it.
+achieved by installing the package. In order to make a package installable, we
+need to provide Python with a bit more information about it. This information
+can be provided in a Python script which must be called :file:`setup.py`. This
+file isn't part of the package and does not go in the package folder. Instead,
+it should be placed in the top-level folder of your git repository, so that the
+Python package installer will be able to find it.
 
-At the very least, :file:`setup.py` should contain the following:
+.. _minimal-setup-py:
 
 .. code-block:: python3
+    :caption: A minimal :file:`setup.py` which will make all the Python
+        packages found in subfolders of the folder containing :file:`setup.py`
+        installable. 
 
-   from setuptools import setup, find_packages
-   setup(
-       name="my_package",
-       version="0.1",
-       packages=find_packages(),
-   )
+    from setuptools import setup, find_packages
+    setup(
+        name="my_package",
+        version="0.1",
+        packages=find_packages(),
+    )
 
-`Setuptools <https://setuptools.readthedocs.io/en/latest/index.html>`__
+:numref:`minimal-setup-py` shows a very basic :file:`setup.py` which uses
+`setuptools` to make packages installable. `Setuptools
+<https://setuptools.readthedocs.io/en/latest/index.html>`__
 is a Python package which exists to help with the packaging and
 installation of Python packages. The :func:`~setuptools.setup`
 function records metadata such as the installation name to be given to
@@ -563,15 +580,15 @@ will return a list of folders containing a file named :file:`__init__.py`.
 This very simple :file:`setup.py` will suffice for packages that you only
 intend to use yourself. Should you wish to publish packages for use by
 other people, then you'll need to add some more information to the
-file. The canonical guide to this is the `Python packaging user guide
+file. The canonical guide to this is the `Python Packaging User Guide
 <https://packaging.python.org/tutorials/packaging-projects/>`__.
 
 Installing a package from local code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another important case is where the Python package exists in files
-(hopefully a git repository!) on your local computer. This is usually
-the case where you are developing the package yourself. In this case,
+In :numref:`install-from-pypi` we learned how to use Pip to install packages
+from the online Python package repository, PyPI. However, Pip can also be used
+to install a package from a folder on your computer. In this case,
 you would type:
 
 .. code-block:: console
@@ -580,7 +597,7 @@ you would type:
 
 replacing `folder` with the name of the top-level folder of your
 repository: the folder containing :file:`setup.py`. The option flag `-e`
-tells pip to install the package in 'editable' mode. This means that
+tells Pip to install the package in 'editable' mode. This means that
 instead of copying the package files to your venv's Python packages
 folder, symbolic links will be created. This means that any changes
 that you make to your package will show up the next time the package
@@ -598,6 +615,50 @@ the package every time you change it.
    started every time the script is run, so the packages used are
    guaranteed to be up to date.
 
+Pip packages and Python packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One frequent source of confusion in making packages installable and actually
+installing them is that Pip and Python have slightly different definitions of
+what constitutes a package. A Python package, as we have just learned, is a
+folder containing (at least) a file called :file:`__init__.py`. For Pip,
+however, a package is everything that :file:`setup.py` installs. In particular,
+this can include multiple Python packages. Indeed, :numref:`minimal-setup-py`
+is sufficient to install any number of Python packages contained in subfolders
+of the folder containing :file:`setup.py`.
+
+Package dependencies
+~~~~~~~~~~~~~~~~~~~~
+
+There is one more feature of Pip packages that it is useful to introduce at
+this stage: dependencies. If you write a package and the modules in that
+package themselves import other packages, then a user will need those packages
+to be installed in their Python environment, or your package will not work. If
+those packages form part of the Python :ref:`Standard Library <library-index>`
+then you need do nothing at all since they will automatically be available.
+However, if your package depends on other packages that need to be installed
+from PyPI then steps need to be taken to ensure that your users will have the
+correct packages installed. The `install_requires` keyword argument to
+:func:`setuptools.setup` takes a list of Pip package names. Pip will install
+any of these packages that are not already available before installing the
+package itself. :numref:`dependency-setup-py` illustrates this by adding a
+dependency on :mod:`numpy`.
+
+.. _dependency-setup-py:
+
+.. code-block:: python3
+    :caption: An extension to the :file:`setup.py` from
+        :numref:`minimal-setup-py` to require that :mod:`numpy` is installed.
+
+    from setuptools import setup, find_packages
+    setup(
+        name="my_package",
+        version="0.1",
+        packages=find_packages(),
+        install_requires=["numpy"]
+    )
+
+
 Testing frameworks
 ------------------
 
@@ -610,39 +671,38 @@ Testing frameworks
         Imperial students can also `watch this video on Panopto
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
 
-Attempting to establish whether a program correctly implements the
-intended algorithm is core to effective programming, and programmers
-often spend more time correcting bugs than writing new code. We will
-turn to the question of how to debug in :numref:`debugging`. However,
-right from the start, we need to test the code we write, so we will cover
-the practical details of including tests in your code here.
+Attempting to establish whether a program correctly implements the intended
+algorithm is core to effective programming, and programmers often spend more
+time correcting bugs than writing new code. We will turn to the question of how
+to debug in :numref:`Chapter %s <debugging>`. However, right from the start, we
+need to test the code we write, so we will cover the practical details of
+including tests in your code here.
 
-There are a number of Python packages which support code testing. The
-concepts are largely similar so rather than get bogged down in the
-details of multiple frameworks, we will introduce :doc:`pytest
-<pytest:index>`, which is one of the most widely used. Pytest is simply a Python
-package, so you can install it into your current environment using:
+There are a number of Python packages which support code testing. The concepts
+are largely similar so rather than get bogged down in the details of multiple
+frameworks, we will introduce :doc:`pytest <pytest:index>`, which is one of the
+most widely used. Pytest is simply a Python package, so you can install it into
+your current environment using:
 
 .. code-block:: console
 
-    $ python -m pip install pytest
+    (my_venv) $ python -m pip install pytest
 
 Pytest tests
 ~~~~~~~~~~~~
 
-A Pytest test is simply a function whose name starts with `test_`. In
-the simplest case, the function has no arguments. Pytest will call each
-such function in turn. If the function executes without error, then the
-test is taken to have passed, while if an error occurs then the test
-has failed. This behaviour might at first seem surprising - we don't
-just want the code to run, it has to get the right answer. However,
-thinking about it the other way around, we certainly want the test to
-fail if an error occurs. It's also very easy to arrange things such
-that an error occurs when the wrong answer is reached. This is most
-readily achieved using :ref:`the assert statement <python:assert>`.
-This simply consists of `assert` followed
-by a Python expression. If the expression is true, then execution just
-continues, but if it's false, then an error occurs. For example:
+A Pytest test is simply a function whose name starts with `test_`. In the
+simplest case, the function has no arguments. Pytest will call each such
+function in turn. If the function executes without error, then the test is
+taken to have passed, while if an error occurs then the test has failed. This
+behaviour might at first seem surprising - we don't just want the code to run,
+it has to get the right answer. However, if we think about it the other way
+around, we certainly want the test to fail if an error occurs. It's also very
+easy to arrange things such that an error occurs when the wrong answer is
+reached. This is most readily achieved using :ref:`the assert statement
+<python:assert>`. This simply consists of `assert` followed by a Python
+expression. If the expression is true, then execution just continues, but if
+it's false, then an error occurs. For example:
 
 .. code-block:: ipython3
 
@@ -685,8 +745,8 @@ We can then invoke the tests from the shell:
 
 .. code-block:: console
 
-    $ cd fibonacci
-    $ pytest tests
+    (my_venv) $ cd fibonacci
+    (my_venv) $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -702,7 +762,7 @@ instead see something like:
 
 .. code-block:: console
 
-    $ pytest tests
+    (my_venv) $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -727,7 +787,9 @@ instead see something like:
 
 Here we can see an `F` after `tests/test_fibonacci.py` indicating
 that the test failed, and we see some output detailing what went
-wrong. We will learn how to interpret this output in :numref:`debugging`.
+wrong. We will learn how to interpret this output in :numref:`Chapter %s
+<errors_and_exceptions>`.
+
 
 Additional useful pytest tricks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -737,14 +799,14 @@ that file as the argument to pytest. For example:
 
 .. code-block:: console
 
-    $ pytest tests/test_fibonacci.py
+    (my_venv) $ pytest tests/test_fibonacci.py
 
 It is even possible to select an individual test to run, using a double colon
 `::` followed by the test name:
 
 .. code-block:: console
 
-    $ pytest tests/test_fibonacci.py::test_fibonacci_values
+    (my_venv) $ pytest tests/test_fibonacci.py::test_fibonacci_values
 
 Often if one test fails then the same problem in your code will cause a whole
 series of tests to fail, resulting in a very long list of error messages which
@@ -753,16 +815,16 @@ tells pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
-    $ pytest -x tests
+    (my_venv) $ pytest -x tests
 
-The tests are usually arranged in increasing order of sophistication, so the
+The tests are often arranged in increasing order of sophistication, so the
 earlier tests are likely to catch the most basic errors in your code. For this
 reason, it is usually the best policy to try to fix the first error first, and
 only move onto the next problem when the previous test passes.
 
 .. note::
 
-    The exercise repositories in this course will usually contain a
+    The exercise repositories provided here will contain a
     :file:`tests` folder full of tests that check that you have correctly
     implemented the week's exercises. You should get in the habit of running the
     tests as you work through the exercises, as they are designed not just to
@@ -772,7 +834,7 @@ only move onto the next problem when the previous test passes.
 Writing code to a specified interface
 -------------------------------------
 
-Creating more capable programmes depends completely on being able to interface
+Creating more capable programs depends completely on being able to interface
 different pieces of code. You will write code which calls code written by other
 people, and others will call code written by you. This can only work if the
 caller and the callee agree exactly on the interface: what are the names of the
@@ -786,19 +848,19 @@ something has to be spelt slightly differently, or that you used a capital
 letter where you should have used a lower case one. 
 
 What changes as you move on to write code which will be called by other code is
-that this need for precision and pedantry now flows in both directions. Not only
-do you need to call other code using precisely the correct interface, you also
-need to provide precisely the correct interface to the code that will call you.
-This will be the case all the way through this course as the tests for each
-exercise will call your code. The exercises will specify what the correct
-interface is, either in the exercise question itself, or through the skeleton
-code which is provided.
+that this need for precision and pedantry now flows in both directions. Not
+only do you need to call other code using precisely the correct interface, you
+also need to provide precisely the correct interface to the code that will call
+you. This is particularly true when working with a testing framework, as the
+tests for each exercise will call your code. The exercises will specify what
+the correct interface is, either in the exercise question itself, or through
+the skeleton code which is provided.
 
 Your code needs to follow exactly the specification in the exercise: all the
 right names, accepting arguments of the correct type and so on. If it does not,
 then the tests will simply fail. Changing the tests to suit your preferred
 interface is not an acceptable answer, your code needs to comply with the
-interface specified in the tests [#interface_errors]_.
+interface specified in the tests.
 
 This requirement to code to a published specification is not an artifact of the
 testing framework: it is often the case that code written in a research or
@@ -870,7 +932,7 @@ Exercises
 
     .. code-block:: console
 
-        $ pytest tests/test_fibonacci.py
+        (my_venv) $ pytest tests/test_fibonacci.py
 
     You could also run iPython,  import :mod:`fibonacci` and try out
     :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
@@ -895,7 +957,7 @@ Exercises
 
     .. code-block:: console
 
-        $ pytest tests/test_exercise_2_4.py
+        (my_venv) $ pytest tests/test_exercise_2_4.py
 
     Then push your code to GitHub and check that the tests pass there too.
 
@@ -938,7 +1000,3 @@ Exercises
 .. rubric:: Footnotes
 
 .. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`__
-
-.. [#interface_errors] Of course if you find a case where it appears that the
-   tests don't honour the interface published in the exercise, you should raise
-   an issue reporting this.

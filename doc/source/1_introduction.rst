@@ -287,14 +287,16 @@ page <fons:python_virtual_environments>`.
 Installing Python packages
 --------------------------
 
-Suppose we've created and activated a venv, and now there's a Python
-package we'd like to have access to. Installation of Python packages
-is handled by :doc:`pip:index`. Pip has many usage options, which
-enable a large number of different installation
-configurations. However, for most users most of the time, a few simple
-pip commands suffice. As with :term:`venv` creation, package
-installation is best accomplished from the terminal and not from
-within Python itself. Don't forget to activate the venv!
+Suppose we've created and activated a venv, and now there's a Python package
+we'd like to have access to. Installation of Python packages is handled by the
+Python package :doc:`Pip <pip:index>`, which you will usually find
+pre-installed in your Python installation. Pip has many usage options, which
+enable a large number of different installation configurations. However, for
+most users most of the time, a few simple pip commands suffice. As with
+:term:`venv` creation, package installation is best accomplished from the
+terminal and not from within Python itself. Don't forget to activate the venv!
+
+.. _install-from-pypi:
 
 Installing packages from PyPI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

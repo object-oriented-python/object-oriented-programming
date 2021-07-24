@@ -235,7 +235,16 @@ latex_additional_files = [
 ]
 
 if tags.has("book"):
-    preamble = ""
+    preamble = r"""
+% The default sphinx colouring colours a lot of links that are actually dead in
+% the book version. 
+\definecolor{internallinkcolor}{HTML}{c52b03}
+\definecolor{externallinkcolor}{HTML}{e55d05}
+%\hypersetup{linkcolor=internallinkcolor}
+\hypersetup{linkcolor=black}
+%\hypersetup{urlcolor=externallinkcolor}
+\hypersetup{urlcolor=black}
+"""
 else:
     # Imperial lecture notes version.
     preamble = r"""
@@ -271,6 +280,9 @@ latex_elements = {
 \renewenvironment{sphinxnote}[1]
   {\begin{sphinxheavybox}\sphinxstrong{#1} }{\end{sphinxheavybox}}
 \definecolor{sphinxnoteBgColor}{HTML}{e1ecfe}
+\renewenvironment{sphinxhint}[1]
+  {\begin{sphinxheavybox}\sphinxstrong{#1} }{\end{sphinxheavybox}}
+\definecolor{sphinxhintBgColor}{HTML}{e1ecfe}
 \renewenvironment{sphinxuseclass}[1]{
     \setlength{\badcodesize}{\linewidth-.05\textwidth}
     \renewcommand{\currentsphinxclass}{#1} % Note not safe for nested containers.
