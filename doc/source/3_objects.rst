@@ -623,21 +623,19 @@ a number to a polynomial. In either case, the result will be a new
 polynomial, with coefficients equal to the sum of those of the
 summands.
 
-We also need to do something in the case where a user attempts to add
-to a polynomial a value for which the operation makes no sense. For
-example, a user might accidentally attempt to add a string to a
-polynomial. In this case, the Python language specification requires
-that we return the special value
-:obj:`NotImplemented`. Differentiating between the types of operands
-requires two more Python features we have not yet met. One of these is
-the built in function :func:`isinstance`, which tests whether an
-object is an instance of a class. The other is the class :class:`~numbers.Number`,
-which we import from the :mod:`numbers` module. All Python numbers are
-instances of :class:`~numbers.Number` so this provides a mechanism for checking
-whether the other operand is a number. We will consider
-:func:`isinstance` and :class:`~numbers.Number` in more detail when we look at
-:ref:`inheritance <inheritance>` and :ref:`abstract base classes
-<abstract_base_classes>`.
+We also need to do something in the case where a user attempts to add to a
+polynomial a value for which the operation makes no sense. For example, a user
+might accidentally attempt to add a string to a polynomial. In this case, the
+Python language specification requires that we return the special value
+:obj:`NotImplemented`. Differentiating between the types of operands requires
+two more Python features we have not yet met. One of these is the built in
+function :func:`isinstance`, which tests whether an object is an instance of a
+class. The other is the class :class:`~numbers.Number`, which we import from
+the built-in :mod:`numbers` module. All Python numbers are instances of
+:class:`~numbers.Number` so this provides a mechanism for checking whether the
+other operand is a number. We will consider :func:`isinstance` and
+:class:`~numbers.Number` in more detail when we look at :ref:`inheritance
+<inheritance>` and :ref:`abstract base classes <abstract_base_classes>`.
 
 Putting all this together, :numref:`polynomial_add` defines polynomial addition.
 

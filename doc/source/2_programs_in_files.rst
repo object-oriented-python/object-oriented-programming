@@ -658,6 +658,13 @@ dependency on :mod:`numpy`.
         install_requires=["numpy"]
     )
 
+.. warning::
+
+    `install_requires` should only list packages that Pip can install from
+    PyPI. In particular, packages from the built-in Python Standard Library
+    must not be listed in `install_requires`. Listing these packages is
+    unnecessary, since they are guaranteed to be available, and will cause an
+    error because Pip will attempt (and fail) to install them from PyPI.
 
 Testing frameworks
 ------------------
@@ -824,12 +831,12 @@ only move onto the next problem when the previous test passes.
 
 .. note::
 
-    The exercise repositories provided here will contain a
-    :file:`tests` folder full of tests that check that you have correctly
-    implemented the week's exercises. You should get in the habit of running the
-    tests as you work through the exercises, as they are designed not just to
-    pass if your code is correct, but to provide feedback as to what might be
-    going wrong if your code contains errors.
+    The exercise repositories provided here will contain a :file:`tests` folder
+    full of tests that check that you have correctly implemented the week's
+    exercises. You should get in the habit of running the tests as you work
+    through the exercises, as they are designed not just to pass if your code
+    is correct, but to provide feedback as to what might be going wrong if your
+    code contains errors.
 
 Writing code to a specified interface
 -------------------------------------
@@ -840,12 +847,12 @@ people, and others will call code written by you. This can only work if the
 caller and the callee agree exactly on the interface: what are the names of the
 :term:`packages <package>`, :term:`modules <module>` and functions being
 called. How many arguments do they take? What are the names of the
-:term:`keyword parameters <parameter>`? Computer languages are notoriously pedantic about such
-things: they have no capability to simply read through small differences as a
-human would. You have doubtless already encountered the frustrating situation of
-spending extended periods repeatedly getting errors until you realised that
-something has to be spelt slightly differently, or that you used a capital
-letter where you should have used a lower case one. 
+:term:`keyword parameters <parameter>`? Computer languages are notoriously
+pedantic about such things: they have no capability to simply read through
+small differences as a human would. You have doubtless already encountered the
+frustrating situation of spending extended periods repeatedly getting errors
+until you realised that something has to be spelt slightly differently, or that
+you used a capital letter where you should have used a lower case one. 
 
 What changes as you move on to write code which will be called by other code is
 that this need for precision and pedantry now flows in both directions. Not
@@ -875,17 +882,19 @@ Glossary
     :sorted:
 
     module
-       A text file containing Python code which is accessed using the :ref:`import statement <python:import>`.
+       A text file containing Python code which is accessed using the
+       :ref:`import statement <python:import>`.
 
     namespace
-       A collection of names. Within a single namespace, each
-       name has a single defined meaning. Names in different spaces
-       can be referred to using the syntax `namespace.name` where
-       `namespace` is an name for the namespace. namespaces are
-       themselves named, so they can be nested (`namespace.inner_namespace.name`).
+       A collection of names. Within a single namespace, each name has a single
+       defined meaning. Names in different spaces can be referred to using the
+       syntax `namespace.name` where `namespace` is an name for the namespace.
+       namespaces are themselves named, so they can be nested
+       (`namespace.inner_namespace.name`).
 
     package
-       A grouping of related :term:`modules <module>` into a single importable unit.
+       A grouping of related :term:`modules <module>` into a single importable
+       unit.
 
     Python interpreter
        The piece of software which interprets and executes Python commands. 
