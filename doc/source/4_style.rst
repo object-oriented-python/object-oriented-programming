@@ -72,13 +72,14 @@ top of the formal requirements of a programming language. These exist in order
 to make the code easier for all programmers to read. Some of these rules,
 typically the more formulaic ones about matters such as code layout and naming
 conventions, are somewhat different in different programming languages. Others,
-most especially higher lever principles like parsimony and modularity, are
-universal principles that apply more or less regardless of the language
-employed or the sort of programming being undertaken. Good programming style,
-like good writing style, is a skill learned through experience and through
-receiving feedback on the code you write, and it is not the intention of this
-chapter to produce an exhaustive guide. However, it is useful to introduce some
-of the key concepts, rules and conventions in a more formal way.
+most especially higher level principles like :term:`parsimony` and
+:term:`modularity`, are universal principles that apply more or less regardless
+of the language employed or the sort of programming being undertaken. Good
+programming style, like good writing style, is a skill learned through
+experience and through receiving feedback on the code you write, and it is not
+the intention of this chapter to produce an exhaustive guide. However, it is
+useful to introduce some of the key concepts, rules and conventions in a more
+formal way.
 
 PEP 8
 -----
@@ -149,7 +150,7 @@ to set up your editor to highlight flake8 incompatibilities in your source. For
 Visual Studio Code, first open the command palette by typing :kbd:`control` +
 :kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
 "Python: Select Linter" to bring up the list of available linters, and select
-"flake8" from the details list. The video above shows this process.
+"flake8" from the details list. The video for this section shows this process.
 
 How to tell Flake8 to shut up
 .............................
@@ -161,25 +162,25 @@ Near the top of PEP 8 is the following heading:
     A foolish consistency is the hobgoblin of little minds.
 
 What this refers to is that just religiously following PEP 8 is not enough to
-produce highly readable code. Indeed, sometimes the rules might induce you do to
-something which makes no sense at all. In those cases, one should step outside
-PEP 8. This is a dangerous licence to take, and it is important to point out that
-this does not mean that a programmer should ignore PEP 8 merely because they
-disagree with a particular convention. Breaking PEP 8 is something you should do
-only when you really have to.
+produce highly readable code. Indeed, sometimes the rules might induce you do
+to something which makes no sense at all. In those cases, one should step
+outside PEP 8. This is a dangerous licence to take, and it is important to
+point out that this does not mean that a programmer should ignore PEP 8 merely
+because they disagree with a particular convention. Breaking PEP 8 is something
+you should do only when you really have to.
 
 In the rare cases where it is necessary to break PEP 8, Flake8 turns into a
 problem. It doesn't know anything of the judgement call that the programmer has
 made, and so will complain about the offending code. For example, we have
 learned that it is frequently desirable to import names in the
 :file:`__init__.py` file of a :term:`package` in order to include them in the
-package's top level :term:`namespace`. The problem with this is that these names
-are not used inside the :file:`__init__.py` file so Flake8 will complain that
-this is an unnecessary import.
+package's top level :term:`namespace`. The problem with this is that these
+names are not used inside the :file:`__init__.py` file so Flake8 will complain
+that this is an unnecessary import.
 
-The way to suppress linter errors is using a special comment at the end of the
-line which causes the error. For example, :file:`fibonacci/__init__.py` contains
-the following line:
+One way to suppress linter errors is using a special comment at the end of the
+line which causes the error. For example, :file:`fibonacci/__init__.py`
+contains the following line:
 
 .. code-block:: python3
 
@@ -201,6 +202,33 @@ We suppress this error by adding this comment:
 The comment starts with the keyword `noqa`, which stands for "no questions
 asked" and then gives the error code which is to be ignored for this line. This
 can be found in the Flake8 output.
+
+Configuring Flake8
+..................
+
+:keyword:`noqa` comments are very useful for one-off suppression of Flake8
+errors. However, it's also likely to be the case that there are some rules that
+you just don't want to apply across your whole project. This configuration can
+be achieved in the file :file:`setup.cfg`, which lives in the top of your
+Git repository alongside :file:`setup.py`. :file:`setup.cfg` can be
+used to configure a lot of different Python tools, so it stores different
+configurations in different sections. :numref:`flake8conf` shows an example
+Flake8 section. The full list of available options is presented in the `Flake8
+documentation <https://flake8.pycqa.org>`_.
+
+.. _flake8conf:
+
+.. code-block:: ini
+    :caption: A :file:`setup.cfg` Flake8 section which instructs Flake8 to
+        ignore the :file:`doc/` directory, to ignore rule `D105` (docstrings
+        for magic methods), and to add in the non-default rule `W504` (error
+        for a trailing operator at the end of a continued line).
+
+    [flake8]
+    exclude = doc
+    extend-ignore = D105
+    extend-select = W504
+
 
 Code layout
 -----------
@@ -272,7 +300,7 @@ White space within lines
         .. code-block:: python3
 
             my_function (1) # Space between function name and bracket.
-            x [0] # Space between variable name and index square bracket.
+            x [0] # Space before index square bracket.
 
     .. container:: goodcode
 
@@ -330,14 +358,14 @@ White space within lines
 
 5. Do not put a space either before or after the equals sign of a :ref:`keyword
    argument <tut-keywordargs>`. In this case, grouping the parameter name and
-   the argument is more important. Also creates a visual distinction between
+   the argument is more important. This rule also creates a visual distinction between
    assignment statements and keyword arguments.
 
     .. container:: badcode
 
         .. code-block:: python3
 
-            myfunction(arg1 = val1, arg2 = val2) # Spaces around equals signs.
+            myfunction(arg1 = val1, arg2 = val2)
 
     .. container:: goodcode
 
@@ -383,7 +411,8 @@ Line breaks
    break the lines using the implied continuation within round, square
    or curly brackets than explicitly with a backslash. This is because
    the brackets provide good visual "book ends" for the beginning and
-   end of the continuation.
+   end of the continuation. Of course this is sometimes impossible, so it is
+   occasionally necessary to use backslashes to break lines.
 3. When a mathematical operator occurs at a line break, always put the
    operator first on the next line, and not last on the first
    line. Having the second line start with a mathematical operator
@@ -430,24 +459,22 @@ Indentation
         .. code-block:: python3
 
             capitals = {"France": "Paris",
-                        "China": "Beijing", # First character one place right of {
-                        "Australia": "Canberra"} # } at the end of the line.
+                        "China": "Beijing",
+                        "Australia": "Canberra"}
 
    b. With the opening bracket as the last item on the first
       line. Subsequent lines are indented more than the first line but
       the same as each other. The closing bracket comes on a new line,
-      and is either indented to the same level as the first line, or
-      to the subsequent lines (but be consistent in nearby code about
-      which).
+      and is either indented to the same level as the first line.
 
     .. container:: goodcode
 
         .. code-block:: python3
 
-            capitals = { # First line ends with {
-                "Central African Republic": "Bangui", # Next line indented.
-                "Trinidad and Tobago": "Port of Spain", # Indented to match.
-                } # Indented to match.
+            capitals = {
+                "Central African Republic": "Bangui", 
+                "Trinidad and Tobago": "Port of Spain",
+            }
 
 
 Names
@@ -479,15 +506,15 @@ class names
 
         .. code-block:: python3
 
-            my_class # No capitals, underscore between words.
-            myClass # Missing leading capital.
-            My_Class # Underscore between words.
+            complex_polynomial # No capitals, underscore between words.
+            complexPolynomial # Missing leading capital.
+            Complex_Polynomial # Underscore between words.
 
     .. container:: goodcode
 
         .. code-block:: python3
 
-            MyClass
+            ComplexPolynomial
 
 exception names
     Exceptions are classes, so the rules for class names apply with the
@@ -657,7 +684,8 @@ It would be much better to write a single more abstract but simpler line:
 
     .. code-block:: python3
 
-         result = [num for num in range(1, 9999) if all(num % x == 0 for x in range(1, 8))]
+         result = [num for num in range(1, 9999)
+                   if all(num % x == 0 for x in range(1, 8))]
 
 
 Use comprehensions
@@ -837,13 +865,13 @@ to the near-identical clones of that code? The chance is very high that the bug
 stays unfixed in those versions thereby creating yet another spot the difference
 puzzle for the next person encountering a bug.
 
-Abstractions are essentially tools for removing harmful repetition. For example,
-it may be possible to bundle up the repeated code in a function or class, and to
-encode the differences between versions in the :term:`parameters <parameter>` to
-the function or class constructor. If the differences between the versions of
-the code require different code, as opposed to different values of some
-quantities, then it may be possible to use :term:`inheritance` to avoid
-repetition. We will return to this in :numref:`week %s<inheritance>`.
+Abstractions are essentially tools for removing harmful repetition. For
+example, it may be possible to bundle up the repeated code in a function or
+class, and to encode the differences between versions in the :term:`parameters
+<parameter>` to the function or class constructor. If the differences between
+the versions of the code require different code, as opposed to different values
+of some quantities, then it may be possible to use :term:`inheritance` to avoid
+repetition. We will return to this in :numref:`Chapter %s<inheritance>`.
 
 
 Comments
@@ -892,8 +920,9 @@ simpler alternative strategy is actually invalid.
 PEP 8 rules for comments
 ........................
 
-Comments start with a single :file:`#` followed by a single space. 
-:term:`Inline comments <inline comment>` are separated from the code by at least two spaces.
+Comments start with a single :file:`#` followed by a single space.
+:term:`Inline comments <inline comment>` are separated from the code by at
+least two spaces.
 
 .. container:: badcode
 
@@ -909,10 +938,10 @@ Comments start with a single :file:`#` followed by a single space.
 
         self.count += 1  # Two spaces before #, one after.
 
-Each line of a block comment starts with a single :file:`#` indented to the same level as a
-normal line of code. The :file:`#` is followed by a single space, unless a
-particular piece of comment should be indented with respect to the paragraph it
-is in, in which case additional spaces are allowed.
+Each line of a block comment starts with a single :file:`#` indented to the
+same level as a normal line of code. The :file:`#` is followed by a single
+space, unless a particular piece of comment should be indented with respect to
+the paragraph it is in, in which case additional spaces are allowed.
 
 .. container:: goodcode
 
@@ -960,7 +989,8 @@ The following is displayed:
 
 There is also a specific IPython help extension, which also works in Jupyter
 notebooks (IPython and Jupyter are related projects). Appending a question mark
-:kbd:`?` to an object name prints a slightly different version of the help information:
+:kbd:`?` to an object name prints a slightly different version of the help
+information:
 
 .. code-block:: ipython3
 
@@ -1006,14 +1036,16 @@ a full stop.
     .. code-block:: python3
 
         def fib(n):
-            "Return the n-th Fibonacci number" # Single quotes, missing full stop.
+            "Return the n-th Fibonacci number"  # Single quotes, no full stop.
 
         def fib(n):
-            """Returns the n-th Fibonacci number.""" # Sentence not imperative.
+            """Returns the n-th Fibonacci number."""  # Sentence not 
+                                                      # imperative.
 
         def fib(n):
             """fib(n)
-            Return the n-th Fibonacci number.""" # Don't include the function signature.
+            Return the n-th Fibonacci number."""  # Don't include the
+                                                  # function signature.
 
 .. container:: goodcode
 
@@ -1027,13 +1059,12 @@ Long docstrings
 ...............
 
 Conversely, a more complex object will require much more information in its
-docstring. Consider :func:`numpy.array` (click on the link for the
-documentation). The web documentation, also generated from the docstring, needs
-to cover 5 parameters, and detail the return type. It also contains several
-examples, references to other functions, and an explanatory note. This is an
-example of very good documentation.
+docstring. :numref:`docstring-det` shows the full docstring of the function
+:func:`numpy.linalg.det`. This covers the type and shape of the input
+parameter and return value, references to other implementations, and examples
+of usage.
 
-There is no widely used official standard for the layout of a long docstring,
+There is no single universal standard for the layout of a long docstring,
 but there are two project or institution-based conventions that are recognised
 by the web documentation system. One from `Google
 <https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`__
@@ -1041,6 +1072,54 @@ and the other from the `Numpy
 <https://numpydoc.readthedocs.io/en/latest/format.html>`__ project. You should
 consistently use one of these styles across a whole project. Clearly if you are
 contributing code to an existing project then you should follow their style.
+
+.. _docstring-det:
+
+.. code-block:: python3
+   :caption: The :term:`docstring` for :func:`numpy.linalg.det`. This is a long
+       docstring using the Numpy convention.
+
+   def det(a):
+       """
+       Compute the determinant of an array.
+
+       Parameters
+       ----------
+       a : (..., M, M) array_like
+           Input array to compute determinants for.
+       
+       Returns
+       -------
+       det : (...) array_like
+           Determinant of `a`.
+       
+       See Also
+       --------
+       slogdet : Another way to represent the determinant, more suitable
+         for large matrices where underflow/overflow may occur.
+       scipy.linalg.det : Similar function in SciPy.
+
+       Notes
+       -----
+       .. versionadded:: 1.8.0
+       Broadcasting rules apply, see the `numpy.linalg` documentation for
+       details.
+       The determinant is computed via LU factorization using the LAPACK
+       routine ``z/dgetrf``.
+
+       Examples
+       --------
+       The determinant of a 2-D array [[a, b], [c, d]] is ad - bc:
+       >>> a = np.array([[1, 2], [3, 4]])
+       >>> np.linalg.det(a)
+       -2.0 # may vary
+       Computing determinants for a stack of matrices:
+       >>> a = np.array([ [[1, 2], [3, 4]], [[1, 2], [2, 1]], [[1, 3], [3, 1]] ])
+       >>> a.shape
+       (3, 2, 2)
+       >>> np.linalg.det(a)
+       array([-2., -3., -8.])
+       """
 
 Enforcing docstring conventions in Flake8
 .........................................
@@ -1077,25 +1156,25 @@ A brief diversion into cellular automata
 ----------------------------------------
 
 We'll now take a brief diversion into a completely different area of
-mathematics: cellular automata. This is entirely irrelevant to the contents of
-this course, except that it provides a useful and, hopefully, interesting basis
-for this week's exercises. `The game of life
+mathematics: cellular automata. This is entirely irrelevant to the subject at
+hand, except that it provides a useful and, hopefully, interesting basis for
+this chapter's exercises. `The Game of Life
 <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>`__ is a mathematical
 system invented by the mathematician `John Horton Conway FRS
 <https://en.wikipedia.org/wiki/John_Horton_Conway>`__ in 1970. The board of the
 game is a grid of squares, like an infinite piece of graph paper (though we'll
-only work with finite boards, since our computers have finite memory). Each cell
-on the board is either alive (value 1) or dead (value 0). The only human
+only work with finite boards, since our computers have finite memory). Each
+cell on the board is either alive (value 1) or dead (value 0). The only human
 interaction is to set the initial state of every square on the board to either
-alive or dead. The game then proceeds as a series of steps. At each step the new
-state of the board is calculated according to these rules:
+alive or dead. The game then proceeds as a series of steps. At each step the
+new state of the board is calculated according to these rules:
 
-0. The neighbours of a square are the 8 immediately surrounding squares.
-1. Any square with exactly 3 live neighbours at the old step is live at the new
+1. The neighbours of a square are the 8 immediately surrounding squares.
+2. Any square with exactly 3 live neighbours at the old step is live at the new
    step.
-2. Any square which is alive at the old step and has exactly 2 live neighbours
+3. Any square which is alive at the old step and has exactly 2 live neighbours
    at the old step remains alive at the new step.
-3. All other squares on the board at the new step are dead.
+4. All other squares on the board at the new step are dead.
 
 Using only these three rules, an amazingly complex array of behaviour can be
 generated, depending only on the pattern of cells which starts off alive.
@@ -1108,7 +1187,7 @@ life cells, and running the game will execute the algorithm.
 
 .. figure:: images/glider_gun.png
     :align: center
-    :width: 40%
+    :width: 60%
 
     Snapshot of the Game of Life at one step. The black squares are live and the
     white ones are dead. Two gliders can be seen moving across the board at (25,
@@ -1301,12 +1380,6 @@ oscillating blinkers:
 .. code-block:: console
 
     $ python scripts/two_gliders.py
-
-.. note:: 
-
-    Use this example in the quiz:
-
-    False if src_petsc4py_exists and args.honour_petsc_dir else True
 
 
 .. rubric:: Footnotes

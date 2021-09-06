@@ -286,10 +286,10 @@ latex_elements = {
   {\begin{sphinxheavybox}\sphinxstrong{#1} }{\end{sphinxheavybox}}
 \definecolor{sphinxhintBgColor}{HTML}{e1ecfe}
 \renewenvironment{sphinxuseclass}[1]{
-    \setlength{\badcodesize}{\linewidth-.05\textwidth}
+    \setlength{\badcodesize}{\linewidth-2.5em}
     \renewcommand{\currentsphinxclass}{#1} % Note not safe for nested containers.
-    \ifstrequal{#1}{badcode}{\begin{minipage}{\badcodesize}}{}
-    \ifstrequal{#1}{goodcode}{\begin{minipage}{\badcodesize}}{}
+    \ifstrequal{#1}{badcode}{\noindent\begin{minipage}{\badcodesize}}{}
+    \ifstrequal{#1}{goodcode}{\noindent\begin{minipage}{\badcodesize}}{}
 }{
     \ifdefstring{\currentsphinxclass}{badcode}{\end{minipage}
     \begin{minipage}{.045\textwidth}{\Huge\color{red}\ \xmark}\end{minipage}
