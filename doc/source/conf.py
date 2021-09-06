@@ -264,7 +264,9 @@ latex_elements = {
     'babel': r'\usepackage[british]{babel}',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': preamble + r'''\setcounter{MaxMatrixCols}{20}
+    'preamble': preamble + r'''
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\setcounter{MaxMatrixCols}{20}
 \newcommand{\currentsummary}{}
 \newcommand{\sphinxdetailssummary}[1]{
     \renewcommand{\currentsummary}{#1}}
