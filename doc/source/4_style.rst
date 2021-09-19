@@ -1242,7 +1242,7 @@ Exercises
     Install flake8, pep8-naming, and flake8-docstrings.
     Configure your Python editor to use flake8.
 
-The `skeleton code for this week's exercises on GitHub Classroom
+The `skeleton code for this chapter's exercises on GitHub Classroom
 <https://classroom.github.com/a/GCKdXtVA>`__ contains a package :mod:`life`
 which implements Conway's Game of Life. Accept the assignment, and clone the
 repository. Install the package in editable mode. This will also install some
@@ -1296,13 +1296,14 @@ neverending sequence of gliders:
 
 .. proof:exercise::
 
-    .. figure:: images/glider.png
+    .. figure:: images/glider_flip.png
         :height: 10em
-        :align: right
+        :align: center
 
-        An upright glider, live squares in black.
+        From left to right: an upright glider, a vertically flipped glider, a
+        horizontally flipped glider, and a transposed glider.
 
-    A pattern such as a glider clearly maintains its behaviour if translated,
+    A pattern such as a glider maintains its behaviour if translated,
     reflected or rotated.
 
     1.  Add a class :class:`Pattern` to :mod:`life.life`. The :term:`constructor` should
@@ -1310,12 +1311,6 @@ neverending sequence of gliders:
         assign it to the :term:`attribute` `grid`.
     2.  Add :class:`Pattern` to the :keyword:`import` statement in
         :mod:`life.__init__`. 
-
-    .. figure:: images/glider_v.png
-        :height: 10em
-        :align: right
-
-        Vertically flipped glider.
 
     3.  Add a :term:`method` :meth:`flip_vertical` which returns a new
         :class:`Pattern` whose rows are in reversed order, so that the pattern
@@ -1326,24 +1321,13 @@ neverending sequence of gliders:
             A slice of the form `::-1` returns that dimension of an array in
             reverse order.
 
-    .. figure:: images/glider_h.png
-        :height: 10em
-        :align: right
-
-        Horizontally flipped glider.
-
     4.  Add a :term:`method` :meth:`flip_horizontal` which returns a new
         :class:`Pattern` whose rows are in reversed order, so that the pattern
         is reversed left-right.
 
-    .. figure:: images/glider_t.png
-        :height: 10em
-        :align: right
-
-        Transposed glider.
-
     5.  Add a :term:`method` :meth:`flip_diag` which returns a new pattern which
         is the transpose of the original.
+
     6.  Add a :term:`method` :meth:`rotate` with a :term:`parameter` `n`.
         This should return a new :class:`Pattern` which is the original pattern
         rotated through `n` right angles anticlockwise.
@@ -1361,21 +1345,22 @@ neverending sequence of gliders:
 
 .. proof:exercise::
 
-    Add a method :meth:`insert` to the :class:`Game` class. This should take two
-    parameters, a :class:`Pattern` and a pair of integers representing a square
-    on the game board. The method should modify the game board so as to insert
-    the pattern provided at a location centred on the location given by the pair
-    of integers.
+    Add a method :meth:`insert` to the :class:`Game` class. This should take
+    two parameters, a :class:`Pattern` and a pair of integers representing a
+    square on the game board. The method should modify the game board so as to
+    insert the pattern provided at a location centred on the location given by
+    the pair of integers.
 
     .. figure:: images/glider_inserted.png
         :width: 60%
         :align: center
 
-        A glider inserted at the location (2, 5) (highlighted in orange).
+        A glider inserted at the location (2, 5). The insertion location is
+        highlighted in orange. 
 
-Once you have completed the exercises, the third script provided will work. This
-sets up two gliders which collide and eventually turn into a pattern of six
-oscillating blinkers:
+Once you have completed the exercises, the third script provided will work.
+This sets up two gliders which collide and eventually turn into a pattern of
+six oscillating blinkers:
 
 .. code-block:: console
 

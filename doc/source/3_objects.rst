@@ -3,7 +3,7 @@
 Objects and abstraction
 =======================
 
-In this chaper we will take a first look at the representation of
+In this chapter we will take a first look at the representation of
 abstract mathematical objects and operations as data objects in a
 computer program. We will learn about what it means for objects to have
 a :term:`type`, and how to create new types using the :keyword:`class` keyword.

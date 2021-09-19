@@ -317,7 +317,8 @@ if tags.has("book"):
     latex_elements['sphinxsetup'] += ',hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}'
 else:
     latex_elements['maketitle'] = r'\imperialmathnotestitlepages'
-    latex_elements['sphinxsetup'] += 'InnerLinkColor={HTML}{c52b03}, \
+    latex_elements['sphinxsetup'] += ', \
+        InnerLinkColor={HTML}{c52b03}, \
         OuterLinkColor={HTML}{e55d05},'
 
 
