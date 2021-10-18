@@ -666,6 +666,8 @@ mechanism for calling parent class methods in a way that responds appropriately
 if someone later comes back and rewrites the inheritance relationships of the
 classes involved.
 
+.. _defining_exceptions:
+
 Creating new exception classes
 ------------------------------
 

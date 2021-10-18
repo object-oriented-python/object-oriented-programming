@@ -173,7 +173,9 @@ to what has gone wrong, and there is usually also an error message and
 sometimes more data to help diagnose the problem. The :doc:`full list
 of built-in exceptions <library/exceptions>` is available in the
 Python documentation. Python developers can define their own
-exceptions so there are many more defined in third-party packages.
+exceptions so there are many more defined in third-party packages. We will
+turn to the subject of defining new exception classes in
+:numref:`defining_exceptions`. 
 
 Tracebacks: finding errors
 --------------------------
@@ -204,10 +206,10 @@ the :class:`~polynomial.Polynomial` class from
     In [3]: print(p)
     bx + a
 
-So, perhaps surprisingly, we are able to define a polynomial whose
-coefficients are letters, and we can even print the resulting
-object. However, if we attempt to add this polynomial to the number 1,
-we are in trouble:
+Perhaps surprisingly, it turns out that we are able to define a polynomial
+whose coefficients are letters, and we can even print the resulting object.
+However, if we attempt to add this polynomial to the number 1, we are in
+trouble:
 
 .. code-block:: ipython3
 
@@ -326,7 +328,7 @@ occurred. The traceback for this frame starts:
     ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
 
 This indicates that the frame describes code in the file
-`polynomial.py` (which on the author's computer is located in the
+`polynomial.py` (which, on the author's computer, is located in the
 folder `~~/docs/object-oriented-programming/src/`). Specifically, the
 stack frame describes the execution of the :meth:`__add__` method,
 which is the :term:`special method` responsible for polynomial
@@ -489,15 +491,14 @@ Handling exceptions
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=25f14034-34a1-44ec-83f7-acc8011e76a0>`__.
 
 
-So far we have seen several different sorts of exception, how to raise
-them, and how to understand the resulting :term:`traceback`. The
-:term:`traceback` is very helpful if the exception was caused by a bug
-in our code, so that we need to understand and correct the
-error. However, sometimes an exception is a valid result of a valid
-input, and we just need the program to do something out of the
-ordinary to deal with the situation. For example, Euclid's algorithm
-for finding the greatest common divisor of :math:`a` and :math:`b` can
-very nearly be written recursively as:
+So far we have seen several different sorts of exception, how to raise them,
+and how to understand the resulting :term:`traceback`. The :term:`traceback` is
+very helpful if the exception was caused by a bug in our code, as it is a rich
+source of the information needed to understand and correct the error. However,
+sometimes an exception is a valid result of a valid input, and we just need the
+program to do something out of the ordinary to deal with the situation. For
+example, Euclid's algorithm for finding the greatest common divisor of
+:math:`a` and :math:`b` can very nearly be written recursively as:
 
 .. code-block:: python
 
@@ -592,7 +593,7 @@ Except clauses
 Let's look in a little more detail at how :keyword:`except` works. The full
 version of the except statement takes a tuple of exception classes. If an
 exception is raised matching any of the exceptions in that tuple then the code
-in the except block is executed. 
+in the except block is executed.
 
 It's also possible to have more than one :keyword:`except` block following a
 single :keyword:`try` statement. In this case, the first except block for which
@@ -609,17 +610,29 @@ the exception matches the list of exceptions is executed. For example:
         ...: 
     Zero division error
 
+.. note::
+
+    It is also possible to omit the list of exceptions after :keyword:`except`.
+    In this case, the except block will match any exception which is raised in
+    the corresponding try block. Using unconstrained except blocks like this is
+    a somewhat dangerous strategy. Usually, the except block will be designed
+    to deal with a particular type of exeptional circumstance. However, an
+    except block that catches any exception may well be triggered by a completely
+    different exception, in which case it will just make the error more
+    confusing by obscuring where the issue actually occurred.
 
 Else and finally
 ................
 
 It can also be useful to execute some code only if an exception is not raised.
-This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else <try>` clause after a
-:keyword:`try` block is caused only if no exception was raised. 
+This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else
+<try>` clause after a :keyword:`try` block is caused only if no exception was
+raised.
 
 It is also sometimes useful to be able to execute some code no matter what
 happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
-then this code will be executed whether or not an exception was raised. This
+then the code it contains will be executed if either an exception is raised and
+handled by an :keyword:`except` block, or no exception occurred. This
 plethora of variants on the :keyword:`try` block can get a little confusing, so
 a practical example may help. :numref:`except_demo` prints out a different
 message for each type of clause. 
@@ -631,7 +644,7 @@ message for each type of clause.
     :linenos:
 
     def except_demo(n):
-        """A simple demonstration of all the clauses of a :keyword:`try` block."""
+        """Demonstrate all the clauses of a `try` block."""
 
         print(f"Attempting division by {n}")
         try:
