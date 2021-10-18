@@ -13,13 +13,13 @@ Inheritance and composition
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d744e96d-14d7-4e51-9b67-acd900dc916f>`__.
 
 
-A key feature of abstractions is composability: the ability to make a
-complex object or operation out of several components. We can compose
-objects by simply making one object a :term:`attribute` of another
-object. This combines objects in a *has a* relationship. For example
-the :class:`~example_code.polynomial.Polynomial` class introduced in :numref:`chapter %s
-<objects>` *has a* :class:`tuple` of coefficients. Object composition of
-this sort is a core part of :term:`encapsulation`.
+A key feature of abstractions is :term:`composability <composition>`: the
+ability to make a complex object or operation out of several components. We can
+compose objects by simply making one object a :term:`attribute` of another
+object. This combines objects in a *has a* relationship. For example the
+:class:`~example_code.polynomial.Polynomial` class introduced in
+:numref:`chapter %s <objects>` *has a* :class:`tuple` of coefficients. Object
+composition of this sort is a core part of :term:`encapsulation`.
 
 Another way of composing abstractions is to make a new :term:`class`
 by modifying another class. Typically this is employed to make a more
@@ -169,7 +169,6 @@ minimal characterisation of a group will suffice.
         value:
             The individual element value.
         """
-
         def __init__(self, group, value):
             group._validate(value)
             self.group = group
@@ -178,8 +177,7 @@ minimal characterisation of a group will suffice.
         def __mul__(self, other):
             """Use * to represent the group operation."""
             return Element(self.group,
-                        self.group.operation(self.value,
-                                                other.value))
+                           self.group.operation(self.value, other.value))
 
         def __str__(self):
             """Return a string of the form value_group."""
@@ -192,16 +190,16 @@ minimal characterisation of a group will suffice.
 
 
     class CyclicGroup:
-        """A cyclic group represented by integer addition modulo group order."""
+        """A cyclic group represented by addition modulo group order."""
 
         def __init__(self, order):
             self.order = order
 
         def _validate(self, value):
-            """Ensure that value is a legitimate element value in this group."""
+            """Ensure that value is an allowed element value in this group."""
             if not (isinstance(value, Integral) and 0 <= value < self.order):
                 raise ValueError("Element value must be an integer"
-                                f" in the range [0, {self.order})")
+                                 f" in the range [0, {self.order})")
 
         def operation(self, a, b):
             """Perform the group operation on two values.
@@ -236,9 +234,9 @@ the concrete effects of the classes:
     2_C5
 
 We observe that we are able to create the cyclic group of order 5. Due to the
-definition of the :meth:`~object.__call__` :term:`special method` at line 35, we are
-then able to create elements of the group by calling the group object. The group
-operation then has the expected effect:
+definition of the :meth:`~object.__call__` :term:`special method` at line 35,
+we are then able to create elements of the group by calling the group object.
+The group operation then has the expected effect:
 
 .. math::
     :label:
@@ -284,8 +282,8 @@ integer between 0 and 5, an exception is raised.
 :class:`~example_code.groups_basic.Element`, is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
 attempted to construct this the other way around with classes having elements,
-however this would have immediately hit the issue that elements have exactly one
-group, while a group might have an unlimited number of elements. Object
+however this would have immediately hit the issue that elements have exactly
+one group, while a group might have an unlimited number of elements. Object
 composition is typically most successful when the relationship is uniquely
 defined.
 
@@ -293,8 +291,8 @@ This code also demonstrates :term:`delegation`. In order to avoid having to
 define different element classes for different groups, the element class does
 not in substance implement either value validation, or the group operation.
 Instead, at line 3, validation is delegated to the group by calling
-:meth:`group._validate` and at line 10 the implementation of the group operation
-is delegated to the group by calling :meth:`self.group.operation`.
+:meth:`group._validate` and at line 10 the implementation of the group
+operation is delegated to the group by calling :meth:`self.group.operation`.
 
 General linear groups
 ~~~~~~~~~~~~~~~~~~~~~
@@ -312,10 +310,10 @@ General linear groups
 We still haven't encountered inheritance, though. Where does that come into the
 story? Well first we'll need to introduce at least one more family of groups.
 For no other reason than convenience, let's choose :math:`G_n`, the general
-linear group of degree :math:`n`. The elements of this group can be
-represented as :math:`n\times n` invertible square matrices. At least to the
-extent that real numbers can be represented on a computer, we can implement this
-group as follows:
+linear group of degree :math:`n`. The elements of this group can be represented
+as :math:`n\times n` invertible square matrices. At least to the extent that
+real numbers can be represented on a computer, we can implement this group as
+follows:
 
 .. code-block:: python3
     :caption: A basic implementation of the general linear group of a given
@@ -325,12 +323,11 @@ group as follows:
 
     class GeneralLinearGroup:
         """The general linear group represented by degree x degree matrices."""
-
         def __init__(self, degree):
             self.degree = degree
 
         def _validate(self, value):
-            """Ensure that value is a legitimate element value in this group."""
+            """Ensure that value is an allowed element value in this group."""
             if not (isinstance(value, np.ndarray),
                     value.shape == (self.degree, self.degree)):
                 raise ValueError("Element value must be a "
@@ -378,8 +375,8 @@ the different group implementations differ. This is exactly what inheritance
 does. 
 
 .. code-block:: python3
-    :caption: Implementation of a base class for a generic group, and subclasses
-        for the cyclic groups and general linear groups.
+    :caption: Implementation of a base class for a generic group, and
+        subclasses for the cyclic groups and general linear groups.
     :name: groups_inheritance
     :linenos:
 
@@ -394,7 +391,6 @@ does.
             The primary group parameter, such as order or degree. The
             precise meaning of n changes from subclass to subclass.
         """
-
         def __init__(self, n):
             self.n = n
 
@@ -413,11 +409,10 @@ does.
 
     class CyclicGroup(Group):
         """A cyclic group represented by integer addition modulo n."""
-
         symbol = "C"
 
         def _validate(self, value):
-            """Ensure that value is a legitimate element value in this group."""
+            """Ensure that value is an allowed element value in this group."""
             if not (isinstance(value, Integral) and 0 <= value < self.n):
                 raise ValueError("Element value must be an integer"
                                 f" in the range [0, {self.n})")
@@ -436,7 +431,7 @@ does.
         symbol = "G"
 
         def _validate(self, value):
-            """Ensure that value is a legitimate element value in this group."""
+            """Ensure that value is an allowed element value in this group."""
             value = np.asarray(value)
             if not (value.shape == (self.n, self.n)):
                 raise ValueError("Element value must be a "
@@ -463,10 +458,10 @@ Inheritance syntax
 ~~~~~~~~~~~~~~~~~~
 
 Look again at the definition of :class:`~example_code.groups.CyclicGroup` on
-line 29:
+line 28:
 
 .. code-block:: python3
-    :lineno-start: 29
+    :lineno-start: 28
 
     class CyclicGroup(Group):    
 
@@ -490,11 +485,11 @@ groups.
 Class attributes
 ~~~~~~~~~~~~~~~~
 
-At line 32 of :numref:`groups_inheritance`, the name :attr:`symbol` is
+At line 30 of :numref:`groups_inheritance`, the name :attr:`symbol` is
 assigned to:
 
 .. code-block:: python3
-    :lineno-start: 32
+    :lineno-start: 30
 
     symbol = "C"
 
@@ -516,10 +511,10 @@ single attribute that is common to all objects of this class. This is called a
 Attributes resolve at runtime
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Consider the :meth:`__str__` method: 
+Consider the :meth:`__str__` method of :class:`~example_code.groups.Group`:
 
 .. code-block:: python3
-    :lineno-start: 16
+    :lineno-start: 19
 
     def __str__(self):
         return f"{self.symbol}{self.n}"
@@ -549,7 +544,7 @@ were to instantiate :class:`Group` itself:
         65     def __repr__(self):
 
 In fact, :class:`Group` is never supposed to be instantiated, it plays the role
-of an :term:`abstract base class`. In other words, it's role is to provide
+of an :term:`abstract base class`. In other words, its role is to provide
 functionality to classes that inherit from it, rather than to be the type of
 objects itself. We will return to this in more detail in
 :numref:`abstract_base_classes`.
@@ -638,7 +633,7 @@ is perfectly possible to directly call :meth:`Rectangle.__init__`, but this
 breaks the style rule that we should not repeat ourselves: if :class:`Square`
 already inherits from :class:`~example_code.shapes.Rectangle` then it should not
 be necessary to restate that inheritance by explicitly naming the :term:`parent
-class`. Fortunately, python provides the functionality we need in the form of
+class`. Fortunately, Python provides the functionality we need in the form of
 the :func:`super` function. :numref:`square_class` demonstrates its application.
 
 .. _square_class:

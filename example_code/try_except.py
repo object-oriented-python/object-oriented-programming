@@ -1,7 +1,7 @@
 
 
 def except_demo(n):
-    """Demonstrate all the clauses of a :keyword:`try` block."""
+    """Demonstrate all the clauses of a `try` block."""
 
     print(f"Attempting division by {n}")
     try:
