@@ -3,17 +3,18 @@
 Debugging and testing
 =====================
 
-In :ref:`week 6 <errors_and_exceptions>` we learned about :term:`exceptions
-<exception>` and how to read the :term:`traceback` that is printed when an
-unhandled exception is raised. This week we will look at other tools and
-techniques that we can use to understand what is wrong with a piece of code,
-and therefore how to fix it. Before we do that, we'll take a quick look at
-pandas. 
+In :numref:`Chapter %s <errors_and_exceptions>` we learned about
+:term:`exceptions <exception>` and how to read the :term:`traceback` that is
+printed when an unhandled exception is raised. This week we will look at other
+tools and techniques that we can use to understand what is wrong with a piece
+of code, and therefore how to fix it. Before we do that, we'll divert just
+briefly to introduce an important Python module that we'll use in a lot of the
+debugging examples.
 
 Pandas
 ------
 
-If you have just excitedly clicked on the link for this section hoping for
+If you have just excitedly turned to this section hoping for
 some material on cute furry animals from China then, regrettably, you are in
 for a disappointment. `Pandas <https://pandas.pydata.org>`__ is a Python
 package which supports data analysis in Python. It's introduced here partly
@@ -21,7 +22,7 @@ because it's a very useful tool for applied mathematicians and statisticians
 who need to work with real data, and partly because it's a convenient somewhat
 larger library on which to practice tools and techniques for debugging.
 
-At the core of pandas is the :class:`~pandas.DataFrame` class, which is
+At the core of Pandas is the :class:`~pandas.DataFrame` class, which is
 a two-dimensional dataset somewhat analogous to a spreadsheet. Unlike, for
 example, a :class:`numpy.ndarray`, a :class:`~pandas.DataFrame` is not indexed
 by a pair of numbers, but is instead organised as a collection of named
@@ -87,24 +88,25 @@ this week. Much more documentation is available on the `pandas website <https://
 
 .. note::
 
-    This is not a course about data processing. Pandas is capable of working
+    This is not a text on data processing. Pandas is capable of working
     with very large data sets, but the techniques here are chosen for
     readability and not performance. If you want to use Pandas on data sets
     with more than a few thousand entries, you will need to consider techniques
     beyond those used here.
 
-Using a debugger
-----------------
+
+Debuggers
+---------
 
 The :term:`traceback` that the Python interpreter prints when it encounters an
 untrapped exception provides a lot of information about an exception which has
 occurred, but it's not all the information available, and it might not be
-enough to work out the cause of the bug. The next tool in our forensic armoury
-is called a :term:`debugger`, which is a software tool that enables us to stop and
-examine a running program. This enables us to look at or set variables in any
-of the :term:`frames <stack frame>` on the :term:`call stack`, or even type and
-run Python code. This is exceptionally useful in determining the source of
-errors.
+enough to work out the cause of the bug. The next weapon in our forensic
+armoury is called a :term:`debugger`, which is a software tool that enables us
+to stop and examine a running, or just crashed, program. A debugger enables us
+to look at or set variables in any of the :term:`frames <stack frame>` on the
+:term:`call stack`, or even type and run Python code. This is exceptionally
+useful in determining the source of errors.
 
 Python has an inbuilt debugger, :mod:`pdb`, which is part of the Python
 standard library. This is a highly capable debugger, however its command line
@@ -129,8 +131,8 @@ easily drop into a command-line debugger from an interactive session or from a
 failed test means that it is exceptionally useful to know how to use both kinds
 of debugger.
 
-Debuggers
-.........
+Installing debuggers
+....................
 
 Other than the built-in pdb, debuggers typically come as Python packages, so to
 install all the ones mentioned so far, run:
@@ -154,10 +156,49 @@ Using a graphical debugger
         Imperial students can also `watch this video on Panopto
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ab1c83e9-d1c8-42d1-821e-ace4010ae319>`__.
 
-The simplest way to understand a graphical debugger is to see it in action, so
-this section is provided by video rather than text. Microsoft also provide
-documentation on `using the Python debugger in Visual Studio Code
-<https://code.visualstudio.com/docs/python/debugging>`__.
+Describing the use of a graphical debugger in text is problematic for at least
+two reasons. First, the details of the integration of a debugger into an
+:term:`IDE` will vary depending on the choice of debugger and IDE in question.
+That said, the concepts involved in using a debugger are essentially
+independent of the actual layout of the interface, so this section will still
+be of some use even if you intend to use different programs. Second, textual
+descriptions of graphical programs are somewhat problematic in and of
+themselves. Readers are therefore advised to watch the accompanying video
+before (and possibly instead of) reading this section. 
+
+Configuring the Visual Studio Code debugger
+...........................................
+
+There is just a little configuration needed to make running the debugger as
+seamless as possible. This is a workspace level configuration, so you'll want
+to do this in each project you work on, the first time that you need to debug a
+Python script in that project.
+
+Open the debugger controls by clicking on  the debug
+icon: |debug_icon|. Next, select `Show all automatic debug configurations` and
+choose `Add configuration` from the dropdown menu that appears. Select `Python`
+and then `Python File`. This will open an editor window containing the file
+:file:`.vscode/launch.json`. This file can be edited to configure the debugging
+process, for example to specify the folder in which the debugger should run or
+the command line arguments which should be passed to the Python script being
+debugged. However, for basic debugging purposes, the default settings are fine
+son you can close this window.
+
+
+
+Launching the Visual Studio Code debugger
+.........................................
+
+The debugger is effectively a modified Python interpreter with additional
+controls, so you start by opening the Python script you wish to debug in Visual
+Studio code. This is always the main script file, even if the error you wish to
+debug is in a different file, for example a module.
+
+
+
+.. |debug_icon| image:: images/debug_icon.png
+    :width: 4ex
+    :alt: Visual Studio Code debug button
 
 Invoking a command-line debugger
 --------------------------------
@@ -210,7 +251,7 @@ debugger is pdb, but if pdbpp is installed then it is called instead. The option
 do this is `--pdb`. However, in order to have a useful debugging session two
 other options are usually required. The first issue is that, by default, pytest
 does not print the output of tests. Using a debugger without seeing the output
-is a somewhat fruitless endevour, so we pass `-s` to have pytest print all
+is a somewhat fruitless endeavour, so we pass `-s` to have pytest print all
 output. Finally, if one test is failing then often many will, and we usually
 want to work on one test at a time. We therefore run, for example:
 
@@ -295,6 +336,7 @@ debugger commands that is enough to get started.
 
         (Pdb++) !!q
 
+
 Debugging strategy
 ------------------
 
@@ -318,7 +360,7 @@ wrong but isn't the cause of the particular problem you observe.
 
 In order to overcome the limitations of this informal approach, it is necessary
 to become much more systematic about debugging. An important part of this
-systemisation is hypothesis testing.
+systematisation is hypothesis testing.
 
 Hypothesis testing in code
 ..........................
@@ -665,7 +707,6 @@ most recent commit.
     also be somewhat confusing. In particular, make sure that you have ended
     your bisection session and that your repository is up to date with the
     ``main`` branch before you start fixing the bug.
-
 
 Glossary
 --------
