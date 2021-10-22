@@ -175,15 +175,21 @@ to do this in each project you work on, the first time that you need to debug a
 Python script in that project.
 
 Open the debugger controls by clicking on  the debug
-icon: |debug_icon|. Next, select `Show all automatic debug configurations` and
+icon (item 1 in :numref:`debug_screen`). Next, select `Show all automatic debug configurations` and
 choose `Add configuration` from the dropdown menu that appears. Select `Python`
 and then `Python File`. This will open an editor window containing the file
 :file:`.vscode/launch.json`. This file can be edited to configure the debugging
 process, for example to specify the folder in which the debugger should run or
 the command line arguments which should be passed to the Python script being
 debugged. However, for basic debugging purposes, the default settings are fine
-son you can close this window.
+so you can close this window.
 
+.. _debug_screen:
+
+.. figure:: images/debug_screen_annotated.pdf
+    :width: 100%
+
+    The Visual Studio Code debugging window with key features highlighted.
 
 
 Launching the Visual Studio Code debugger
@@ -192,13 +198,58 @@ Launching the Visual Studio Code debugger
 The debugger is effectively a modified Python interpreter with additional
 controls, so you start by opening the Python script you wish to debug in Visual
 Studio code. This is always the main script file, even if the error you wish to
-debug is in a different file, for example a module.
+debug is in a different file, for example a module. To run the script under the
+debugger, click the green "play" icon at top left (item 2 in
+:numref:`debug_screen`). This will execute the script and any output will
+appear in the visual studio code terminal. This isn't shown in
+:numref:`debug_screen`, but you would switch to the terminal output by clicking
+on the three dots in item 9 and selecting `terminal`.
 
+Breakpoints and exceptions
+..........................
 
+The script will, by default, execute to completion immediately. This doesn't
+provide any opportunity for debugging. In order to employ the debugger in a
+useful way, we need the program to stop at some point in the execution. The
+locations at which we instruct the debugger to stop are called
+:term:`breakpoints <breakpoint>`. To set a breakpoint, open the file in which
+you would like execution to stop, and move your mouse to the left of the line
+number on which you would like to set the breakpoint. A dim red circle will
+appear, as shown in item 5 of :numref:`debug_screen`. Clicking on the circle
+will set the breakpoint, and the circle will go bright red. The breakpoint will
+also appear in the list of breakpoints at the bottom left of the screen (item 8
+of :numref:`debug_screen`).
 
-.. |debug_icon| image:: images/debug_icon.png
-    :width: 4ex
-    :alt: Visual Studio Code debug button
+Next time the breakpoint is executed by the debugger, execution will stop and
+the line in question will be highlighted with the hollow yellow arrow shown as
+item 4 of :numref:`debug_screen`. The breakpoint can be removed by clicking on
+the bright red dot, or temporarily disabled by clicking on the blue tick in the
+breakpoint list (item 8 of :numref:`debug_screen`).
+
+The breakpoint list also controls whether the raising of an exception should be
+treated as a breakpoint. By default, uncaught exceptions, which is to say
+exceptions not contained in a matching :keyword:`except` clause are treated as
+breakpoints and cause execution to stop. Selecting `Raised Exceptions` will
+treat any exception as a breakpoint, even if it is subsequently caught by an
+:keyword:`except` clause.
+
+Examining variables and the stack
+---------------------------------
+
+Once the debugger is stopped on a breakpoint, you can look at all the local and
+global variables visible in the current scope by clicking on the entries in the
+box at top left (item 2 of :numref:`debug_screen`). It's also possible to
+change the view to one of the :term:`stack frames <stack frame>` higher up the
+:term:`call stack` by selecting the appropriate frame from the box at middle
+left (item 10 of :numref:`debug_screen`). You can also execute and view the
+output of any Python expression by typing it in the debug console at the bottom
+of the screen (item 9 of :numref:`debug_screen`). If the debug console is not
+currently visible, then you can select it from the options revealed by clicking
+on the three dots.
+
+Controlling execution
+---------------------
+
 
 Invoking a command-line debugger
 --------------------------------
@@ -715,8 +766,9 @@ Glossary
     :sorted:
 
     breakpoint
-        A line of code at which the debugger is instructed to
-        stop. The debugger will stop every time the breakpoint is executed.
+        A line of code or an event, such as an untrapped exception, at which
+        the debugger is instructed to stop. The debugger will stop every time
+        the breakpoint is encountered.
 
     debugger
         A piece of software which enables an interactive Python command
