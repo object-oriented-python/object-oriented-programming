@@ -161,7 +161,7 @@ two reasons. First, the details of the integration of a debugger into an
 :term:`IDE` will vary depending on the choice of debugger and IDE in question.
 That said, the concepts involved in using a debugger are essentially
 independent of the actual layout of the interface, so this section will still
-be of some use even if you intend to use different programs. Second, textual
+be of some use even if you intend to use different tools. Second, textual
 descriptions of graphical programs are somewhat problematic in and of
 themselves. Readers are therefore advised to watch the accompanying video
 before (and possibly instead of) reading this section. 
@@ -234,7 +234,7 @@ treat any exception as a breakpoint, even if it is subsequently caught by an
 :keyword:`except` clause.
 
 Examining variables and the stack
----------------------------------
+.................................
 
 Once the debugger is stopped on a breakpoint, you can look at all the local and
 global variables visible in the current scope by clicking on the entries in the
@@ -245,10 +245,37 @@ left (item 10 of :numref:`debug_screen`). You can also execute and view the
 output of any Python expression by typing it in the debug console at the bottom
 of the screen (item 9 of :numref:`debug_screen`). If the debug console is not
 currently visible, then you can select it from the options revealed by clicking
-on the three dots.
+on the three dots. The call stack is discussed in more detail in
+:numref:`call_stack`.
 
 Controlling execution
----------------------
+.....................
+
+Once execution halts at a breakpoint, the debugger provides the user with the
+ability to control the further execution of the program. 
+:numref:`debug_controls` shows the available controls and their meaning. The
+step into and step over commands (numbers 2 and 3) demand a little further
+explanation. The step over command executes the next Python instruction in the current
+file. If that instruction makes any function calls then these are executed
+immediately and, unless those function calls contain another breakpoint or
+raise an exception, the debugger will stop on the next instruction in the
+current function. The step into command will also execute the next Python
+instruction, but if a function call is encountered then the debugger will stop
+on the first instruction contained in that function.
+
+.. _debug_controls:
+
+.. figure:: images/debug_controls_annotated.pdf
+    :width: 33%
+
+    The Visual Studio Code debugging execution controls.
+
+    1. Continue execution until the next breakpoint, or the end of the script. 
+    2. Execute the next instruction, stepping *over* function calls.
+    3. Execute the next instruction, stepping *into* function calls.
+    4. Continue execution until the current function returns.
+    5. Restart executing the script starting at the beginning.
+    6. Stop executing the script and quit the debugger.
 
 
 Invoking a command-line debugger
@@ -300,11 +327,12 @@ Invoking pdbpp from a failed test
 calling a debugger at the point that a test exceptions. By default this
 debugger is pdb, but if pdbpp is installed then it is called instead. The option to
 do this is `--pdb`. However, in order to have a useful debugging session two
-other options are usually required. The first issue is that, by default, pytest
+other options are usually required. The first issue is that, by default, Pytest
 does not print the output of tests. Using a debugger without seeing the output
-is a somewhat fruitless endeavour, so we pass `-s` to have pytest print all
+is a somewhat fruitless endeavour, so we pass `-s` to have Pytest print all
 output. Finally, if one test is failing then often many will, and we usually
-want to work on one test at a time. We therefore run, for example:
+want to work on one test at a time. Passing `-x` ensures that Pytest exits
+after the first failing test. We therefore run, for example:
 
 .. code-block:: console
 
@@ -448,8 +476,8 @@ hypotheses that we can test directly. For example:
    predicted by the :term:`algorithmic complexity` of the algorithm.
 
 These lead to very specific computations that can be undertaken to
-experimentally validate the software. It's important to always remember that
-experimental validation is not a proof: it's always possible that the cases
+experimentally verify the software. It's important to always remember that
+experimental verification is not a proof: it's always possible that the cases
 which would show that the program has a bug are simply not part of the suite of
 tests being run.
 
@@ -471,14 +499,15 @@ The recipe for hypothesis-based debugging runs something like the following:
    What statements would be true were this issue not occurring. For example:
     a. Are there variables which should have a known type or value, or would
        have a known type or value in response to a different input?
-    b. Does it appear that a particular code that should have run already has
+    b. Does it appear that particular code that should have run already has
        not, or code that should not run has run?
-    c. Looking at a value which I observe to be wrong, where is the operation that
-       computes that value? Does a. or b. apply to any of the inputs to that
-       operation.
+    c. Looking at a value which is observed to be wrong, where is the operation
+       that computes that value? Does a. or b. apply to any of the inputs to
+       that operation.
 
-This process requires intuition and understanding of the problem. This is the
-least systematic part of the process. The following steps are much more systematic.
+    This process requires intuition and understanding of the problem. It is the
+    least systematic part of the process. The following steps are much more
+    systematic.
 
 2. Hypothesis testing
 
@@ -507,12 +536,13 @@ what a correctly performing program would do. Indeed, you are presumably
 writing the software because you want it to do something, and in at least some
 cases you know what that something should be. Furthermore, as soon as you write
 code, the possibility exists that it contains bugs, so it will be necessary to
-test it. People may be innocent until proven guilty, but code is presumed buggy
-until thoroughly tested. The result of this reasoning is a strategy called
-test-driven development, in which the tests that attempt to establish that a
-piece of software performs correctly are written before the software itself.
+test it. People may be innocent until proven guilty, but code must be presumed
+buggy until thoroughly tested. The result of this reasoning is a strategy
+called test-driven development, in which the tests that attempt to establish
+that a piece of software performs correctly are written before the software
+itself.
 
-Most of the exercises in this course are examples of test-driven
+Most of the exercises presented here are examples of test-driven
 development: the tests are written to the problem specification, and you then
 write code implementing the specification which you test using the tests.
 
@@ -567,7 +597,7 @@ at least now have a much smaller piece of code to ask for help with.
 Bisection debugging
 ...................
 
-Throughout this module we have used git as a mechanism for accessing and saving
+We are already familiar with git as a mechanism for accessing and saving
 code. However, revision control offers a lot more to the programmer than a
 place to keep code. In particular, one of the key benefits is the ability to go
 back to a previous version. This is particularly helpful in debugging
@@ -592,8 +622,8 @@ in the first commit, but present in the second commit. Once we have established
 this, then we know that the bug is caused by one of the (hopefully small) set
 of changes introduced in that commit.
 
-In finding a zero of an unknown function for which we have no information other
-than the ability to evaluate it, our go to algorithm is bisection. We first
+If the challenge is to find a zero of a function which we can evaluate but
+about which we know nothing else, our go-to algorithm is bisection. We first
 look back in the git history to find a commit at which the bug is not present.
 That forms the start of our bisection interval. The end of the bisection
 interval is a failing commit, such as the current state of the repository.
@@ -614,19 +644,20 @@ and fails if it is.
 Creating a test command
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-A pytest test is a perfect example of such a command, so we
-in effect write the test that we wish had existed at the time the bug slipped
-into our code. The bisection search effectively enables us to retrospectively
-introduce this test into our repository. Because we're going to be rolling back
-the state of our repository to before we created this command, this is one
-exception to the rule that you must always commit all of your work to the git
-repository. Make a copy of this command (for example the Python file containing
-the pytest test) outside your repository. For the rest of this section, we'll
-assume that you've created a pytest test in a file called :file:`bug_test.py`
-which you have placed in the folder containing your repository (if you followed
-the instructions in :numref:`week %s <programs_files>` then this folder might be
-called :file:`principles_of_programming`). With the top folder of your
-repository as the working directory, we would then run this test with:
+Since pytest provides a framework for creating programs which succeed or fail,
+one approach is write the test that we wish had existed at the time the bug
+slipped into our code. The bisection search effectively enables us to
+retrospectively introduce this test into our repository. Because we're going to
+be rolling back the state of our repository to before we created this command,
+this is one exception to the rule that you must always commit all of your work
+to the git repository. Make a copy of this command (for example the Python file
+containing the pytest test) outside your repository. For the rest of this
+section, we'll assume that you've created a pytest test in a file called
+:file:`bug_test.py` which you have placed in the folder containing your
+repository (if you followed the instructions in :numref:`Chapter %s
+<programs_files>` then this folder might be called
+:file:`principles_of_programming`). With the top folder of your repository as
+the working directory, we would then run this test with:
 
 .. code-block:: console
 
@@ -718,7 +749,7 @@ Obviously you replace the commit ID with your starting point. ``HEAD`` is a git
 shorthand for the current state of the repository, so it's a suitable end point
 in most cases. You can also substitute an explicit commit ID there. The final
 ``--`` is required and acts to distinguish the commit IDs we are providing from
-any files names that we might be passing to the command (we won't be covering
+any file names that we might be passing to the command (we won't be covering
 that case). Next we run the actual bisection:
 
 .. code-block:: console

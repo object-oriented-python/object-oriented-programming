@@ -245,6 +245,8 @@ suggests. In order to understand this message, we need to understand a
 little about how a Python program is executed, and in particular about
 the call stack.
 
+.. _call_stack:
+
 The call stack
 ..............
 
