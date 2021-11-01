@@ -4,12 +4,12 @@ Trees and directed acyclic graphs
 =================================
 
 The :term:`abstract data types <abstract data type>` that we met in
-:numref:`Week %s <abstract_data_types>` were all fairly simple sequences of objects that
-were extensible in different ways. If that were all the sum total of abstract
-data types then the reader might reasonably wonder what all the fuss is about.
-In this chapter we'll look at :term:`trees <tree>` and :term:`directed acyclic
-graphs (DAGs) <directed acyclic graph>`, which are abstract data types which
-look very different from the ones we've met so far. 
+:numref:`Chapter %s <abstract_data_types>` were all fairly simple sequences of
+objects that were extensible in different ways. If that were all the sum total
+of abstract data types then the reader might reasonably wonder what all the
+fuss is about. In this chapter we'll look at :term:`trees <tree>` and
+:term:`directed acyclic graphs (DAGs) <directed acyclic graph>`, which are
+abstract data types which look very different from the ones we've met so far. 
 
 Trees and DAGs provide some great examples of :term:`inheritance` and give us
 the chance to look at some new algorithm types. They are also the core data
@@ -106,7 +106,8 @@ while :numref:`kwarg_unpacking` shows the unpacking function.
         explicitly named keywords are unpacked, while the remainder are repacked
         into the `**kwargs` parameter.
 
-    In [3]: kw = {"a": "mary", "b": "had", "c": "a", "d": "little", "e": "lamb"}
+    In [3]: kw = {"a": "mary", "b": "had", "c": "a", "d": "little",
+                  "e": "lamb"}
 
     In [4]: fn(**kw)
     a: mary
@@ -129,17 +130,23 @@ example:
 The names `*args` and `**kwargs` are the conventional names in
 cases where nothing more specific is known about the parameters in question.
 
+.. raw:: latex
 
-Some definitions
-----------------
+    \clearpage
+
+Graph and tree definitions
+--------------------------
 
 Trees and DAGs are examples of graphs, a type of mathematical object that you
-may have met in previous courses:
+may have met in previous courses. Before moving on to define data structures
+and algorithms that work with them, it's helpful to state the relevant
+definitions. 
 
 .. proof:definition:: Graph
 
     A *graph* :math:`(V, E)` is a set :math:`V` known as the vertices or nodes,
     and a set of pairs of vertices, :math:`E`, known as the edges. 
+
 
 A graph describes connections between its vertices, and can be used to model a
 huge range of interconnected networks. :numref:`graph` illustrates a simple example.
@@ -148,7 +155,7 @@ huge range of interconnected networks. :numref:`graph` illustrates a simple exam
 
 .. graphviz::
     :caption: A graphical representation of the graph :math:`(\{a, b, c, d, e,
-        f\}, \{(a, b), (a, d), (a, f), (b, c), (b, d), (b, f), (c, e), (c, f), (d, e) \})`
+        f\},` :math:`\{(a, b), (a, d), (a, f), (b, c), (b, d), (b, f), (c, e), (c, f), (d, e) \})`
     :align: center
 
     strict graph{
@@ -163,13 +170,9 @@ huge range of interconnected networks. :numref:`graph` illustrates a simple exam
         e -- d    
     }
 
-.. proof:definition:: Directed graph
+.. raw:: latex
 
-    A *directed graph* is a graph in which the pair of nodes forming each edge
-    is ordered. In other words each edge points *from* one node (the *source*)
-    and *to* another (the *target*).
-
-:numref:`digraph` shows a directed graph with similar topology to the previous example.
+    \clearpage
 
 .. _digraph:
 
@@ -189,17 +192,30 @@ huge range of interconnected networks. :numref:`graph` illustrates a simple exam
         e -> d    
     }
 
+.. proof:definition:: Directed graph
+
+    A *directed graph* is a graph in which the pair of nodes forming each edge
+    is ordered. In other words each edge points *from* one node (the *source*)
+    and *to* another (the *target*).
+
+:numref:`digraph` shows a directed graph with similar topology to the previous example.
+
+
 .. proof:definition:: Cycle
 
     A *cycle* in a graph is a sequence of edges such that the target of each
     edge is the source of the next, and the target of the last edge is the
     source of the first.
 
+.. raw:: latex
+
+    \clearpage
+
 .. proof:definition:: Directed acyclic graph.
 
     A directed acyclic graph (DAG) is a directed graph in which there are no cycles.
 
-:numref:`dag` shows a directed acyclic graph, or DAG. The cyclic nature of the
+:numref:`dag` shows a directed acyclic graph, or DAG. The acyclic nature of the
 graph imposes a certain form of hierarchy. For example the graph formed by the
 :term:`inheritance` relationship of classes is a DAG. The hierarchy implied by a
 DAG also lends itself to similar nomenclature to that which we use for class
@@ -225,11 +241,9 @@ and the target nodes of the edges emerging from a node are referred to as its
         e -> d    
     }
 
-.. proof:definition:: Tree
+.. raw:: latex
 
-    A *tree* is a directed acyclic graph in which each node is the target of
-    exactly one edge, except for one node (the *root node*) which is not the
-    target of any edges [#tree_def]_.
+    \clearpage
 
 .. _tree_image:
 
@@ -246,12 +260,18 @@ and the target nodes of the edges emerging from a node are referred to as its
         c -> g 
     }
 
+.. proof:definition:: Tree
+
+    A *tree* is a directed acyclic graph in which each node is the target of
+    exactly one edge, except for one node (the *root node*) which is not the
+    target of any edges [#tree_def]_.
+
 Tree nodes with no children are called *leaf nodes*.
 
 Data structures for trees
 -------------------------
 
-.. details:: Tree data structures.
+.. details:: Video: Tree data structures.
 
     .. vimeo:: 523477713
 
@@ -271,7 +291,7 @@ preorder traversal
 postorder traversal
     A traversal order in which each node is always visited *after* its children.
 
-Note that neither order is unique: a node can have any number of children and
+Neither order is unique: a node can have any number of children and
 the definitions are silent on the order in which these are visited. There is
 furthermore no guarantee that the children of a node will be visited immediately
 before or after their parent, and once we look at visitors for DAGs it will
@@ -317,8 +337,11 @@ example, we can represent the tree in :numref:`tree_image` using:
 
     In [1]: from example_code.graphs import TreeNode
 
-    In [2]: tree = TreeNode("a", TreeNode("b", TreeNode("d"), TreeNode("e"), TreeNode("f")),
-       ...:                      TreeNode("c", TreeNode("g")))
+    In [2]: tree = TreeNode(
+       ...:     "a",
+       ...:     TreeNode("b", TreeNode("d"), TreeNode("e"), TreeNode("f")),
+       ...:     TreeNode("c", TreeNode("g"))
+       ...: )
 
     In [3]: print(tree)
     a -> (b -> (d -> (), e -> (), f -> ()), c -> (g -> ()))
@@ -367,22 +390,34 @@ We'll consider postorder traversal first, as it's the easier to implement.
             The tree to be visited.
         fn: function(node, *fn_children)
             A function to be applied at each node. The function should take the
-            node to be visited as its first argument, and the results of visiting
-            its children as any further arguments.
+            node to be visited as its first argument, and the results of
+            visiting its children as any further arguments.
         """
         return fn(tree, *(postvisitor(c, fn) for c in tree.children))
 
-:numref:`postorder_recursive` implements this visitor. Notice that there is only
-one line of executable code, at line 14. This recursively calls
+:numref:`postorder_recursive` implements this visitor. Notice that there is
+only one line of executable code, at line 13. This recursively calls
 :func:`~example_code.graphs.postvisitor` on all of the children of the current
 node, *before* calling :func:`fn` on the current node. As a trivial example,
-let's print out the nodes of the graph in :numref:`tree_image` in postorder:
+:numref:`linenos_postorder` prints out the nodes of the graph in
+:numref:`tree_image` in postorder.
+
+.. raw:: latex
+
+    \clearpage
+
+.. _linenos_postorder:
 
 .. code-block:: ipython3
+    :caption: A trivial postorder tree traversal which simply prints the node
+        values in order. Observe that d, e, and f are printed before b; g is
+        printed before c; and both b and c are printed before a. 
+    :linenos:
 
     In [1]: from example_code.graphs import TreeNode, postvisitor
 
-    In [2]: tree = TreeNode("a", TreeNode("b", TreeNode("d"), TreeNode("e"), TreeNode("f")),
+    In [2]: tree = TreeNode("a", TreeNode("b", TreeNode("d"), TreeNode("e"),
+       ...:                                    TreeNode("f")),
        ...:                      TreeNode("c", TreeNode("g")))
 
     In [3]: fn = lambda n, *c: print(n.value)
@@ -395,9 +430,6 @@ let's print out the nodes of the graph in :numref:`tree_image` in postorder:
     g
     c
     a
-
-Observe that d, e, and f are printed before b; g is printed before c; and both b
-and c are printed before a. 
 
 The preceding example is possibly a little too trivial,
 because we didn't at all use the result of visiting the child nodes in visiting
@@ -412,10 +444,16 @@ nodes in the tree:
     Out[6]: 7
 
 This time the visitor :func:`sums <sum>` the results from its children, and adds
-one for itself. 
+one for itself.
 
 What about preorder traversal? This time we need a little more code (not much)
-as :numref:`preorder_recursive` shows.
+as :numref:`preorder_recursive` shows. This time, we call :func:`fn` on the
+current tree node first, and then pass this result through as we recursively
+call :func:`previsitor` on the child nodes.
+
+.. raw:: latex
+
+    \clearpage
 
 .. _preorder_recursive:
 
@@ -433,15 +471,15 @@ as :numref:`preorder_recursive` shows.
             The tree to be visited.
         fn: function(node, fn_parent)
             A function to be applied at each node. The function should take the
-            node to be visited as its first argument, and the result of visiting
-            its parent as the second.
+            node to be visited as its first argument, and the result of
+            visiting its parent as the second.
         """
         fn_out = fn(tree, fn_parent)
 
         for child in tree.children:
             previsitor(child, fn, fn_out)
 
-What can we do with a preorder traversal? Well one thing is that we can measure
+What can we do with a preorder traversal? As an example, we can measure
 the depth in the tree of every node:
 
 .. code-block:: ipython3
@@ -515,16 +553,16 @@ An expression tree class hierarchy
 The nodes of an expression tree don't just have different values, they have
 different :term:`type`. That is to say, the meaning of operations changes
 between, say :math:`+` and :math:`2`. For example the evaluation rule for these
-nodes will be different, as will the differentiation rule. At the same time, all
-the nodes are still expressions and will share many common features. This is a
-textbook case of inheritance. There should be a most general class, covering all
-types of expression nodes, and then more specialised node types should inherit
-from this. The most basic distinction is between *operators*, which have at least
-one operand (represented by a child node), and *terminals*, which have no
-children. In practice, it will result in simpler, more elegant code if terminals
-actually have an empty tuple of operands rather than none at all. This
-facilitates writing, for example, tree visitors which loop over all of the
-children of a node.
+nodes will be different, as will the differentiation rule. At the same time,
+all the nodes are still expressions and will share many common features. This
+is a textbook case of :term:`inheritance`. There should be a most general
+class, covering all types of expression nodes, and then more specialised node
+types should inherit from this. The most basic distinction is between
+*operators*, which have at least one operand (represented by a child node), and
+*terminals*, which have no children. In practice, it will result in simpler,
+more elegant code if terminals actually have an empty tuple of operands rather
+than none at all. This facilitates writing, for example, tree visitors which
+loop over all of the children of a node.
 
 .. graphviz::
     :caption: Inheritance diagram for a very basic symbolic language. Each box
@@ -685,9 +723,9 @@ code to execute, depending on the type of the first argument [#single]_.
 
 .. code-block:: python3
     :caption: A :term:`single dispatch function` implementing the evaluation of
-        a single :class:`Expression` node. The implementation of the expressions
-        language itself, in the :mod:`expressions` module is :ref:`left as an
-        exercise <ex_expr>`.
+        a single :class:`Expression` node. The implementation of the
+        expressions language itself, in the :mod:`expressions` module, is
+        :ref:`left as an exercise <ex_expr>`.
     :linenos:
 
     from functools import singledispatch

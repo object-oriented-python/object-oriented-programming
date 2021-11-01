@@ -37,8 +37,8 @@ def previsitor(tree, fn, fn_parent=None):
         The tree to be visited.
     fn: function(node, fn_parent)
         A function to be applied at each node. The function should take the
-        node to be visited as its first argument, and the result of visiting
-        its parent as the second.
+        node to be visited as its first argument, and the result of
+        visiting its parent as the second.
     """
     fn_out = fn(tree, fn_parent)
 
@@ -55,7 +55,7 @@ def postvisitor(tree, fn):
         The tree to be visited.
     fn: function(node, *fn_children)
         A function to be applied at each node. The function should take the
-        node to be visited as its first argument, and the results of visiting
-        its children as any further arguments.
+        node to be visited as its first argument, and the results of
+        visiting its children as any further arguments.
     """
     return fn(tree, *(postvisitor(c, fn) for c in tree.children))
