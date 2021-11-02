@@ -664,7 +664,7 @@ Let's now consider :class:`Terminal`. What does it need to set?
 :meth:`~object.__init__`
     The :term:`constructor` for :class:`Expression` assumes that an expression is
     defined by a series of operands. Terminals have an empty list of operands
-    but do have something that other expressions lack, a value. In the case of
+    but do have something that other expressions lack: a value. In the case of
     :class:`Number`, this is a number, while for :class:`Symbol` the value is a
     string (usually a single character). :class:`Terminal` therefore needs its
     own :meth:`__init__` which will take a value argument.
@@ -719,6 +719,24 @@ long as the right number of arguments are passed). A single dispatch function is
 not like this. Instead, calling a single function name causes different function
 code to execute, depending on the type of the first argument [#single]_.
 
+:numref:`tree_evaluate` shows a single dispatch function for a visitor function
+which evaluates a :class:`Expression`. Start with lines 6-24. These define a
+function :func:`~example_code.expression_tools.evaluate` which will be used in
+the default case, that is, in the case where the :class:`type` of the first
+argument doesn't match any of the other implementations of
+:func:`~example_code.expression_tools.evaluate`. In this case, the first
+argument is the expression that we're evaluating, so if the type doesn't match
+then this means that we don't know how to evaluate this object, and the only
+course of action available is to throw an :term:`exception`.
+
+The new feature that we haven't met before appears on line 5.
+:func:`functools.singledispatch` turns a function into
+a single dispatch function. The `@` symbol marks
+:func:`~functools.singledispatch` as a :term:`decorator`. We'll return to them
+in :numref:`decorators`. For the moment, we just need to know that
+`@singledispatch` turns the function it precedes into a single dispatch
+function.
+
 .. _tree_evaluate:
 
 .. code-block:: python3
@@ -743,7 +761,8 @@ code to execute, depending on the type of the first argument [#single]_.
         *o: numbers.Number
             The results of evaluating the operands of expr.
         **kwargs:
-            Any keyword arguments required to evaluate specific types of expression.
+            Any keyword arguments required to evaluate specific types of
+            expression.
         symbol_map: dict
             A dictionary mapping Symbol names to numerical values, for example:
 
@@ -787,46 +806,28 @@ code to execute, depending on the type of the first argument [#single]_.
     def _(expr, *o, **kwargs):
         return o[0] ** o[1]
 
-:numref:`tree_evaluate` shows a single dispatch function for a visitor function
-which evaluates a :class:`Expression`. Start with lines 6-19. These define a
-function :func:`~example_code.expression_tools.evaluate` which will be used in
-the default case, that is, in the case where the :class:`type` of the first
-argument doesn't match any of the other implementations of
-:func:`~example_code.expression_tools.evaluate`. In this case, the first
-argument is the expression that we're evaluating, so if the type doesn't match
-then this means that we don't know how to evaluate this object, and the only
-course of action available is to throw an :term:`exception`.
-
-The new feature that we haven't met before appears on line 5.
-:func:`functools.singledispatch` turns a function into
-a single dispatch function. The `@` symbol marks
-:func:`~functools.singledispatch` as a :term:`decorator`. We'll return to them
-in :numref:`decorators`. For the moment, we just need to know that
-`@singledispatch` turns the function it precedes into a single dispatch
-function.
-
 Next we turn our attention to the implementation of evaluation for the different
-expression types. Look first at lines 26-28, which provide the evaluation of
+expression types. Look first at lines 27-29, which provide the evaluation of
 :class:`Number` nodes. The function body is trivial: the evaluation of a
 :class:`Number` is simply its value. The function interface is more interesting.
 Notice that the function name is given as `_`. This is the Python convention for
 a name which will never be used. This function will never be called by its
-declared name. Instead, look at the decorator on line 26. The single dispatch
+declared name. Instead, look at the decorator on line 27. The single dispatch
 function :func:`~example_code.expression_tools.evaluate` has a :term:`method`
 :meth:`register`. When used as a decorator, the :meth:`register` method of a
 single dispatch function registers the function that follows as implementation
 for the :keyword:`class` given as an argument to :meth:`register`. On this
 occasion, this is :class:`expressions.Number`.
 
-Now look at lines 31-33. These contain the implementation of
+Now look at lines 32-34. These contain the implementation of
 :func:`~example_code.expression_tools.evaluate` for :class:`expressions.Symbol`.
 In order to evaluate a symbol, we depend on the mapping from symbol names to
 numerical values that has been passed in. 
 
-Finally, look at lines 36-38. These define the evaluation visitor for addition.
+Finally, look at lines 37-39. These define the evaluation visitor for addition.
 This works simply by adding the results of evaluating the two operands of
-:class:`expressions.Add`. The evaluation visitors for the other operators follow
-*mutatis mutandis*.
+:class:`expressions.Add`. The evaluation visitors for the other operators
+follow in an analogous manner.
 
 An expanded tree visitor
 ~~~~~~~~~~~~~~~~~~~~~~~~
