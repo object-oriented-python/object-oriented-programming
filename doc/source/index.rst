@@ -34,11 +34,10 @@
    4_style.rst
    5_abstract_data_types.rst
    6_exceptions.rst
-   7_midterm.rst
-   8_inheritance.rst
-   9_debugging.rst
-   10_trees_and_directed_acyclic_graphs.rst
-   11_further_object-oriented_features.rst
+   7_inheritance.rst
+   8_debugging.rst
+   9_trees_and_directed_acyclic_graphs.rst
+   10_further_object-oriented_features.rst
    
 .. .. only:: latex and not book
 
@@ -46,7 +45,15 @@
 
       \appendix
 
-..    .. toctree::
+.. only:: latex
+
+   .. toctree::
+      :numbered:
+      :maxdepth: 2
+      
+      a1_help
+      
+
 ..       :numbered:
 ..       :maxdepth: 1
 

@@ -330,6 +330,11 @@ else:
 #   u'M345A47 Finite Elements: Analysis and Implementation',
 #   u'David A. Ham and Colin J. Cotter', 'manual'),
 # ]
+latex_documents = [
+    ('index', 'objectorientedprogramming.tex',
+     'Object oriented programming\\\\\\LARGE in Python for mathematicians',
+     'David A. Ham', 'book'),
+]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
