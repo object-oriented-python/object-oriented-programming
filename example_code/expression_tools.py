@@ -60,7 +60,7 @@ def _(expr, *o, **kwargs):
 
 
 def postvisitor(expr, fn, **kwargs):
-    '''Traverse an Expression in postorder applying a function to every node.
+    '''Visit an Expression in postorder applying a function to every node.
 
     Parameters
     ----------

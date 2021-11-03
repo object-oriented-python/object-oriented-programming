@@ -835,8 +835,9 @@ An expanded tree visitor
 The need to provide the `symbol_map` parameter to the
 :class:`expressions.Symbol` evaluation visitor means that the postorder visitor
 in :numref:`postorder_recursive` is not quite up to the task.
-:numref:`postorder_recursive_kwargs` extends the tree visitor to pass arbitrary
-keyword arguments through to the visitor function.
+:numref:`postorder_recursive_kwargs` extends the tree visitor using the double
+splat operator to pass arbitrary keyword arguments through to the visitor
+function.
 
 .. _postorder_recursive_kwargs:
 
@@ -849,7 +850,7 @@ keyword arguments through to the visitor function.
     :linenos:
 
     def postvisitor(expr, fn, **kwargs):
-        '''Traverse an Expression in postorder applying a function to every node.
+        '''Visit an Expression in postorder applying a function to every node.
 
         Parameters
         ----------
@@ -857,10 +858,10 @@ keyword arguments through to the visitor function.
             The expression to be visited.
         fn: function(node, *o, **kwargs)
             A function to be applied at each node. The function should take the
-            node to be visited as its first argument, and the results of visiting
-            its operands as any further positional arguments. Any additional
-            information that the visitor requires can be passed in as keyword
-            arguments.
+            node to be visited as its first argument, and the results of
+            visiting its operands as any further positional arguments. Any
+            additional information that the visitor requires can be passed in
+            as keyword arguments.
         **kwargs:
             Any additional keyword arguments to be passed to fn.
         '''
@@ -885,7 +886,7 @@ in a position to try out our expression evaluator:
     In [5]: expr = 3*x + 2**(y/5) - 1
 
     In [6]: print(expr)
-    3 ⨉ x + 2 ^ (y / 5) - 1
+    3 * x + 2 ^ (y / 5) - 1
 
     In [7]: postvisitor(expr, evaluate, symbol_map={'x': 1.5, 'y': 10})
     Out[7]: 7.5
@@ -913,12 +914,13 @@ Representing expressions as :term:`DAGs <DAG>`
 ----------------------------------------------
 
 If we treat an expression as a tree, then any repeated subexpressions will be
-duplicated in the tree. Consider, for example, :math:`x^2 + 3/x^2`. If we create
-a tree of this expression, then :math:`x^2` will occur twice, and any operation
-that we perform on :math:`x^2` will have to be done twice. If, on the other hand, we
-treat the expression as a more general :term:`directed acyclic graph`, then the
-single subexpression :math:`x^2` can have multiple parents, and so can appear as
-an operand more than once. :numref:`tree_vs_dag` illustrates this distinction.
+duplicated in the tree. Consider, for example, :math:`x^2 + 3/x^2`. If we
+create a tree of this expression, then :math:`x^2` will occur twice, and any
+operation that we perform on :math:`x^2` will have to be done twice. If, on the
+other hand, we treat the expression as a more general :term:`directed acyclic
+graph`, then the single subexpression :math:`x^2` can have multiple parents,
+and so can appear as an operand more than once. :numref:`tree_vs_dag`
+illustrates this distinction.
 
 .. _tree_vs_dag:
 
@@ -963,21 +965,21 @@ an operand more than once. :numref:`tree_vs_dag` illustrates this distinction.
     }
 
 The difference between a tree and a DAG may seem small in the tiny examples we
-can print on our page, but realistic applications of computer algebra can easily
-create expressions with thousands or tens of thousands of terms, in which larger
-common subexpressions themselves contain multiple instances of smaller
-subexpressions. The repetition of common terms, and therefore data size and
-computational cost, induced by the tree representation is exponential in the
-depth of nesting. This can easily make the difference between a computation that
-completes in a fraction of a second, and one which takes hours to complete or
-which exhausts the computer's memory and therefore fails to complete at all!
+can print on our page, but realistic applications of computer algebra can
+easily create expressions with thousands or tens of thousands of terms, in
+which larger common subexpressions themselves contain multiple instances of
+smaller subexpressions. The repetition of common terms, and therefore data size
+and computational cost, induced by the tree representation is exponential in
+the depth of nesting. This can easily make the difference between a computation
+that completes in a fraction of a second, and one which takes hours to complete
+or which exhausts the computer's memory and therefore fails to complete at all.
 
 Building expression :term:`DAGs <DAG>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using somewhat more complex data structures, it is possible to create
 expressions that automatically result in :term:`DAGs <DAG>` rather than
-:term:`trees <tree>`.  That is beyond the scope of this course, but we can
+:term:`trees <tree>`.  That is beyond our scope, but we can
 construct expression DAGs using our existing tools, at the expense of a little
 extra code. Take as an example the expression we used above: :math:`x^2 +
 3/x^2`. If we write:
@@ -1010,7 +1012,7 @@ refer to the same `x**2` object.
 ~~~~~~~~~~~~~~~~~~~~
 
 Even if we represent an expression as a DAG rather than a tree, the simple
-recursive tree visitors we have used thusfar will undo all of our good work,
+recursive tree visitors we have used thus far will undo all of our good work,
 because common subexpressions will be visited via each parent expression, rather
 than just once. This compounds the disadvantages of recursive visitors that we
 discussed above. Instead, we can construct a postorder DAG visitor using a
@@ -1056,7 +1058,7 @@ algorithm.
     produce new expressions, they don't change their inputs. This is an
     important design principle of symbolic mathematical software. The confusion
     that frequently results from modifying symbolic expressions in-place far
-    outweighs any possible advantage of not creating new objects.
+    outweighs any possible advantage of avoiding the creating of new objects.
 
 Differentiation as an expression visitor
 ----------------------------------------
