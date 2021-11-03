@@ -684,7 +684,7 @@ with additional code or tests.
 
 .. proof:exercise::
 
-    Extend the :class:`Polynomial` class from :numref:`Chapter` %s <objects>` to
+    Extend the :class:`Polynomial` class from :numref:`Chapter %s <objects>` to
     support polynomial division. Polynomial division results in a quotient and
     a remainder, so you might choose to implement :meth:`~object.__floordiv__`
     to return the quotient and :meth:`~object.__mod__` to return the remainder,

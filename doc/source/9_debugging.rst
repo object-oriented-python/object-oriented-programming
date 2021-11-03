@@ -411,7 +411,7 @@ debugger commands that is enough to get started.
     debugger command whose name coincides with a variable, you can do so by
     prefacing it with two exclamation marks:
      
-    .. code-block:: python3
+    .. code-block:: console
 
         (Pdb++) !!q
 

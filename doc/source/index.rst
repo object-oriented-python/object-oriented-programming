@@ -40,15 +40,15 @@
    10_trees_and_directed_acyclic_graphs.rst
    11_further_object-oriented_features.rst
    
-.. only:: latex and not book
+.. .. only:: latex and not book
 
-   .. raw:: latex
+.. raw:: latex
 
       \appendix
 
-   .. toctree::
-      :numbered:
-      :maxdepth: 1
+..    .. toctree::
+..       :numbered:
+..       :maxdepth: 1
 
-      example_code
-      fibonacci
+..       example_code
+..       fibonacci

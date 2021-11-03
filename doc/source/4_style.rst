@@ -206,7 +206,7 @@ can be found in the Flake8 output.
 Configuring Flake8
 ..................
 
-:keyword:`noqa` comments are very useful for one-off suppression of Flake8
+`noqa` comments are very useful for one-off suppression of Flake8
 errors. However, it's also likely to be the case that there are some rules that
 you just don't want to apply across your whole project. This configuration can
 be achieved in the file :file:`setup.cfg`, which lives in the top of your
