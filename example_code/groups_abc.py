@@ -64,12 +64,12 @@ class Group(ABC):
 
     @abstractmethod
     def _validate(self, value):
-        """Ensure that value is a legitimate element value in this Group."""
+        """Ensure that value is an allowed element value in this Group."""
         pass
 
     @abstractmethod
     def operation(self, a, b):
-        """Return a ⊙ b using the group operation ⊙."""
+        """Return a ∘ b using the group operation ∘."""
         pass
 
     def __call__(self, value):

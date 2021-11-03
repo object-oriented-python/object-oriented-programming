@@ -1,9 +1,9 @@
 Further object-oriented features
 ================================
 
-This week we'll tie up a few loose ends by examining in detail some programming
-concepts and Python features which we have encountered but not really studied
-in the course so far. 
+In this chapter, we'll tie up a few loose ends by examining in detail some
+programming concepts and Python features which we have encountered but not
+really studied in the preceding chapters. 
 
 .. _decorators:
 
@@ -43,7 +43,7 @@ is equivalent to:
 Decorators are therefore merely :term:`syntactic sugar`, but can be very useful
 in removing the need for boiler-plate code at the top of functions. For
 example, your code for :numref:`Exercise %s <ex_expr>` probably contains a lot
-of repeated code a lot like the following:
+of repeated code a similar to the following:
 
 .. code-block:: python3
 
@@ -84,20 +84,20 @@ instead write something like the following:
             return Add(self, other)
 
 Let's look closely at what the decorator in :numref:`eg_decorator` does. The
-decorator takes in one function, :func:`meth` an returns another one
+decorator takes in one function, :func:`meth` an returns another one,
 :func:`fn`. Notice that we let :func:`fn` take the same arguments as
 :func:`meth`. If you wanted to write a more generic decorator that worked on
 functions with different signatures, then you could define function as
 `fn(*args, **kwargs)` and pass these through to :func:`meth`.
 
 The contents of :func:`fn` are what will be executed every time :func:`meth` is
-called. So here we check the type of :data:`other` and cast it to
+called. We use this to check the type of :data:`other` and cast it to
 :class:`Number`, and then call the original :func:`meth` on the modified arguments.
 We could also execute code that acts on the value that :func:`meth` returns. To
 do this we would assign the result of :func:`meth` to a variable and then
 include more code after line 9.
 
-Finally, notice that we have wrapped `fn` in another decorator, this time
+Finally, notice that we have wrapped `fn` in another decorator,
 :func:`functools.wraps`. The purpose of this decorator is to copy the name and
 docstring from :func:`meth` to :func:`fn`. The effect of this is that if the
 user calls :func:`help` on a decorated function then they will see the name and
@@ -106,7 +106,7 @@ docstring for the original function, and not that of the decorator.
 Decorators which take arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Our :func:`make_other_expr` decorator doesn't have brackets after its name, and doesn't
+Our :obj:`make_other_expr` decorator doesn't have brackets after its name, and doesn't
 take any arguments. However :func:`functools.wraps` does have brackets, and takes a
 function name as an argument. How does this work? The answer is yet another
 wrapper function. A decorator is a function which takes a function and
@@ -119,7 +119,7 @@ way down!
 The property decorator
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Back in :numref:`Week %s <objects>`, we gave the
+Back in :numref:`Chapter %s <objects>`, we gave the
 :class:`~example_code.polynomial.Polynomial` class a
 :meth:`~example_code.polynomial.Polynomial.degree()` method:
 
@@ -142,9 +142,9 @@ This enables the following code to work:
 
 However, the empty brackets at the end of :func:`degree` are a bit clunky: why
 should we have to provide empty brackets if there are no arguments to pass?
-Indeed, this represents a failure of :term:`encapsulation`, because we
+This represents a failure of :term:`encapsulation`, because we
 shouldn't know or care from the outside whether
-meth:`~example_code.polynomial.Polynomial.degree()` is a :term:`method` or a
+:meth:`~example_code.polynomial.Polynomial.degree()` is a :term:`method` or a
 :term:`data attribute`. Indeed, the developer of the
 :mod:`~example_code.polynomial` module should be able to change that
 implementation without changing the interface. This is where the
@@ -195,7 +195,7 @@ ones. We will survey just a few here:
     eviction may take time, and that more recomputation may occur than in an
     unbounded cache.
 `functools.singledispatch`
-    We met this in :numref:`Week %s <trees>`. This decorator transforms a
+    We met this in :numref:`single_dispatch`. This decorator transforms a
     function into a :term:`single dispatch function`.
  
 .. _abstract_base_classes:
@@ -217,14 +217,14 @@ be instantiated themselves, but merely serve as parent classes to concrete
 classes which are intended to be instantiated. Examples of these classes
 include :class:`numbers.Number`, :class:`example_code.groups.Group`, and the
 :class:`Expr`, :class:`Operator`, and :class:`Terminal` classes from
-:numref:`Week %s <trees>`. These classes that are only ever parents are called
-:term:`abstract base classes <abstract base class>`. They are abstract in the
-sense that they define (some of the) properties of their children, but without
-providing full implementations of them. They are base classes in the sense that
-they are intended to be inherited from.
+:numref:`Chapter %s <trees>`. These classes that are only ever parents are
+called :term:`abstract base classes <abstract base class>`. They are abstract
+in the sense that they define (some of the) properties of their children, but
+without providing full implementations of them. They are base classes in the
+sense that they are intended to be inherited from.
 
-Abstract base classes typically fulfil two related roles, they provide
-the definition of an interface that child classes can be assumed to follow, and
+Abstract base classes typically fulfil two related roles: they provide the
+definition of an interface that child classes can be expected to follow, and
 they provide a useful way of checking that an object of a concrete class has
 particular properties.
 
@@ -292,12 +292,12 @@ provide a much more satisfactory solution to this problem. The
 
         @abstractmethod
         def _validate(self, value):
-            """Ensure that value is a legitimate element value in this group."""
+            """Ensure that value is an allowed element value in this group."""
             pass
 
         @abstractmethod
         def operation(self, a, b):
-            """Return a ⊙ b using the group operation ⊙."""
+            """Return a ∘ b using the group operation ∘."""
             pass
 
         def __call__(self, value):
@@ -391,10 +391,10 @@ Virtual subclasses
         Imperial students can also `watch this video on Panopto
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4114bb1d-cc31-4cfc-81a6-acf2011de8d6>`__.
 
-We learned in :numref:`Week %s <objects>` that we can determine if a type is a
+We learned in :numref:`Chapter %s <objects>` that we can determine if a type is a
 number by checking if it is an instance of :class:`numbers.Number`. This is a
 slightly different usage of abstract base classes. Rather than providing part
-of the implementation of, say, :class:`float`, :class:`numbers.Number` provides
+of the implementation of types such as :class:`float`, :class:`numbers.Number` provides
 a categorisation of objects into numbers and non-numbers. This aids duck
 typing, by enabling much more general type checking.
 
@@ -549,9 +549,9 @@ Glossary
     method resolution order
     MRO
         A sequence of the superclasses of the current class ordered by
-        increasing ancestry. The MRO is searched in order to find
-        implementations of :term:`methods <method>` and :term:`attributes
-        <attribute>`. 
+        increasing ancestry. The superclasses of a class are searched in method
+        resolution order  to find implementations of :term:`methods <method>`
+        and :term:`attributes <attribute>`. 
 
     syntactic sugar
         A feature of the programming language which adds no new functionality,
@@ -684,7 +684,7 @@ with additional code or tests.
 
 .. proof:exercise::
 
-    Extend the :class:`Polynomial` class from :numref:`Week %s <objects>` to
+    Extend the :class:`Polynomial` class from :numref:`Chapter` %s <objects>` to
     support polynomial division. Polynomial division results in a quotient and
     a remainder, so you might choose to implement :meth:`~object.__floordiv__`
     to return the quotient and :meth:`~object.__mod__` to return the remainder,

@@ -709,6 +709,8 @@ is the visitor function? It seems we need a different function for every
 what is required, and Python provides this functionality in the form of the
 single dispatch function.
 
+.. _single_dispatch:
+
 Single dispatch functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
