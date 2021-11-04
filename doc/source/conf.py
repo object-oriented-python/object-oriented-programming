@@ -267,11 +267,25 @@ latex_elements = {
     'preamble': preamble + r'''
 \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
 \setcounter{MaxMatrixCols}{20}
+\usepackage{tcolorbox}
+\usepackage{tikz}
 \newcommand{\currentsummary}{}
 \newcommand{\sphinxdetailssummary}[1]{
     \renewcommand{\currentsummary}{#1}}
+\newcounter{video}[chapter]
 \newcommand{\sphinxcontribvimeo}[2]{%
-\protect\href{#1#2}{\currentsummary}}
+\stepcounter{video}
+\hfill\smash{
+    \protect\href{#1#2}{
+    \begin{minipage}[b][5em][c]{5.5em}
+    \tcbox[tikznode,colframe=TitleColor,colback=TitleColor,coltext=white]{
+        \bfseries\sffamily
+        Video\\\bfseries\sffamily \thechapter.\thevideo
+        %\currentsummary
+        }
+    \end{minipage}
+    }}
+}
 \usepackage{etoolbox}
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
