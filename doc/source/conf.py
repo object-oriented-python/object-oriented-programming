@@ -265,6 +265,12 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     'preamble': preamble + r'''
+\addto\captionsbritish{\renewcommand{\figurename}{Figure\@{} }}
+\def\fnum@figure{\figurename\thefigure{}}
+
+\addto\captionsbritish{\renewcommand{\tablename}{Table }}
+\def\fnum@table{\tablename\thetable{}}
+
 \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
 \setcounter{MaxMatrixCols}{20}
 \usepackage{tcolorbox}
@@ -390,7 +396,6 @@ latex_docclass = {"manual": "book"}
 
 
 numfig = True
-
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
