@@ -273,18 +273,21 @@ latex_elements = {
 \newcommand{\sphinxdetailssummary}[1]{
     \renewcommand{\currentsummary}{#1}}
 \newcounter{video}[chapter]
+\newwrite\videolist
+\immediate\openout\videolist=videos.csv
 \newcommand{\sphinxcontribvimeo}[2]{%
 \stepcounter{video}
+\immediate\write\videolist{\thechapter.\thevideo, `\currentsummary\space <#1#2>`_}
 \hfill\smash{
-    \protect\href{#1#2}{
     \begin{minipage}[b][5em][c]{5.5em}
     \tcbox[tikznode,colframe=TitleColor,colback=TitleColor,coltext=white]{
         \bfseries\sffamily
-        Video\\\bfseries\sffamily \thechapter.\thevideo
+        \protect\href{#1#2}{\color{white}Video}\\\bfseries\sffamily
+        \protect\href{#1#2}{\color{white}\thechapter.\thevideo}
         %\currentsummary
         }
     \end{minipage}
-    }}
+    }
 }
 \usepackage{etoolbox}
 \usepackage{pifont}
