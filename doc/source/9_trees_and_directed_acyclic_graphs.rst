@@ -170,9 +170,11 @@ huge range of interconnected networks. :numref:`graph` illustrates a simple exam
         e -- d    
     }
 
-.. raw:: latex
+.. only:: book
 
-    \clearpage
+    .. raw:: latex
+
+        \clearpage
 
 .. _digraph:
 
@@ -207,9 +209,11 @@ huge range of interconnected networks. :numref:`graph` illustrates a simple exam
     edge is the source of the next, and the target of the last edge is the
     source of the first.
 
-.. raw:: latex
+.. only:: book
 
-    \clearpage
+    .. raw:: latex
+
+        \clearpage
 
 .. proof:definition:: Directed acyclic graph.
 
@@ -241,9 +245,11 @@ and the target nodes of the edges emerging from a node are referred to as its
         e -> d    
     }
 
-.. raw:: latex
+.. only:: book
 
-    \clearpage
+    .. raw:: latex
+
+        \clearpage
 
 .. _tree_image:
 
@@ -402,9 +408,11 @@ node, *before* calling :func:`fn` on the current node. As a trivial example,
 :numref:`linenos_postorder` prints out the nodes of the graph in
 :numref:`tree_image` in postorder.
 
-.. raw:: latex
+.. only:: book
 
-    \clearpage
+    .. raw:: latex
+
+        \clearpage
 
 .. _linenos_postorder:
 
@@ -451,9 +459,11 @@ as :numref:`preorder_recursive` shows. This time, we call :func:`fn` on the
 current tree node first, and then pass this result through as we recursively
 call :func:`previsitor` on the child nodes.
 
-.. raw:: latex
+.. only:: book
 
-    \clearpage
+    .. raw:: latex
+
+        \clearpage
 
 .. _preorder_recursive:
 

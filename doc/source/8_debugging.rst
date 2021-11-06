@@ -551,6 +551,12 @@ correctly. The process of creating the tests is also a very good way of
 establishing whether you understand the problem, and that specification is
 well-posed.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 Debugging tactics
 -----------------
 
