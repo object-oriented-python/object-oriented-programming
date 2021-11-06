@@ -541,103 +541,13 @@ record convenient information such as the list length, but it's not strictly nec
 
 .. _linked_list_dia:
 
-.. graphviz::
-   :caption: Diagram of a linked list. A new link containing the value `F` is
-        being inserted between the link with value `C` and that with value `D`.
-   :align: center
-   :class: textheight
+.. figure:: images/linked_list.*
 
-    digraph ll {
-		bgcolor="#ffffff00"
-		graph [
-		rankdir = "TB"
-		];
-		node [
-		fontsize = "16"
-		];
-		edge [
-		];
+     Diagram of a linked list. A new link containing the value `E` is
+     inserted between the link with value `B` and that with value `C`. First,
+     the link reference from `E` is pointed to `C` (blue dashed line). Next,
+     the link reference from `B` is pointed to `E` (red dotted line).
 
-		subgraph cluster_1 {
-				style="ellipse, dashed";
-				bgcolor="lightgray";
-
-		"node_init" [
-		label = "<f0> A| next| 1 <f1>"
-		shape = "record"
-		];
-
-		"node0" [
-		label = "<f0> B| next| 1 <f1>"
-		shape = "record"
-		];
-
-		"node1" [
-		label = "<f0> C| next| 1 <f1>"
-		shape = "record"
-		];
-
-		"node2" [
-		label = "<f0> D| next| 1 <f1>"
-		shape = "record"
-		];
-		
-		 "node3" [
-		label = "<f0> E| next| 1 <f1>"
-		shape = "record"
-		];
-
-		 "node4" [
-		label = "None"
-		shape = "record"
-		];
-
-		
-
-		subgraph cluster_2 {
-				style="ellipse, dashed";
-				bgcolor="#2E8B57";
-		
-		"node5" [
-		label = "<f0> F| next|_ <f1>"
-		shape = "record"
-		];
-		}
-
-		"node_init":f1 -> "node0":f0 [
-		id = 0
-		];
-		
-		"node0":f1 -> "node1":f0 [
-		id = 1
-		];
-        
-		"node1":f1 -> "node2":f0 [
-		id = 2
-		label ="old link"
-		];
-		
-		"node2":f1 -> "node3":f0 [
-		id = 3
-		];
-
-		"node1":f1 -> "node5":f0 [
-		id = 4
-		label =" new link"
-		style= "dashed"
-		];
-
-		"node5":f1 -> "node2":f0 [
-		id = 5
-		style= "dashed"
-		];
-
-        "node3":f1 -> "node4":f1 [
-        id = 6
-        style = dashed
-		];
-	   }
-   }
 	
 .. code-block:: python3
    :caption: A simple singly linked list implementation.
