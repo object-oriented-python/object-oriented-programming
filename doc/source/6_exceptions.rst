@@ -34,7 +34,7 @@ meaning, or which just don't amount to a meaningful statement within
 the rules of the language. A mathematician confronting an undefined
 mathematical expression can do little else than throw up their hands
 and ask the author what they meant. The :term:`Python interpreter`, upon
-encountering code which has no defined meaning, responds similarly,
+encountering code which has no defined meaning, responds similarly;
 though rather than raising its non-existent hands, it raises an
 :term:`exception`. It is then up to the programmer to divine what to do next.
 
@@ -54,11 +54,11 @@ error:
 An important rule in interpreting Python errors, the reasons for which we will
 return to, is to always read the error message from the bottom up. In
 this case, the last line contains the name of the exception which has
-been raised :obj:`ZeroDivisionError`, followed by a colon, followed by
+been raised, :obj:`ZeroDivisionError`, followed by a colon, followed by
 a descriptive string providing more information about what has gone
 wrong. In this case, that more or less says the same as the exception
 name, but that won't be the case for all exceptions. The four lines
-above the exception are called a traceback. We'll return to
+above the exception are called a :term:`traceback`. We'll return to
 interpreting tracebacks presently. In this case the error is easy to interpret
 and understand: the code divided the :class:`float` value `0.` by another zero,
 and this does not have a well-defined result in Python's arithmetic system.
