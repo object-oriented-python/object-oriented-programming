@@ -68,59 +68,10 @@ without removing it from the stack.
 
 .. _stackdiag:
 
-.. blockdiag::
-    :caption: Cartoon of a sequence of stack operations. First 24, 12, 57 are
-        pushed, then 57 is popped.
+.. figure:: images/stack.*
 
-
-      blockdiag stack{
-      // setup info
-      node_height = 30;
-      "Stack" [color = orange];           //push
-      "Stack " [color=orange, stacked];   //push
-      "Stack  " [color=orange, stacked];  //push
-      "Stack   " [color=orange, stacked]; //pop
-      "push 24" [color="#2E8B57"]; 
-      "push 12" [color="#2E8B57"]; 
-      "push 57" [color="#2E8B57"]; 
-      "pop" [color="#CD5C5C"];
-      group{
-      24;
-      color =  orange
-      }
-
-      group second{
-      12; "24 ";
-      color =  orange
-      }
-
-      group third{
-      57 ;"12 "; "24  ";
-      color =  orange
-      }
-
-      group fourth{
-      "12  "; "24   ";
-      color =  orange
-      }
-
-      // structure and flow
-      "push 24" -> "Stack";
-      "push 24" -> 24 [style="none"];
-
-      "push 12" -> "12" [style="none"];
-      "push 12" -> "Stack ";
-
-      "push 57" -> "12 " [style="none"];
-      "push 57" -> "Stack  ";
-      
-      "Stack" -> "pop" [style="none"];
-      "pop" -> "Stack   ";
-      "pop" -> "12  "[style="none"];
-
-      C [shape = "dots"]
-      "Stack " -> C [style="none"];
-      }
+    A sequence of stack operations. 24, 12, and 57. Finally the pop operation
+    removes (and would return) 57.
    
 An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,6 +159,10 @@ Implementing stacks in Python
 While it is strictly true that Python does not have a stack type, the
 :class:`list` class functions as a perfectly good stack. The
 relationship between the two is shown in :numref:`list_stack`.
+
+.. raw:: latex
+
+    \clearpage
 
 .. _list_stack:
 
@@ -401,65 +356,13 @@ called a :term:`dynamic array`. :numref:`dynamicarray` illustrates its operation
    
 .. _dynamicarray:
 
-.. graphviz::
-    :caption: A dynamic array implementation of a :class:`list`. The existing
-        memory buffer is full, so when 11 is appended to the list, a larger
-        buffer is created and the whole list is copied into it. When 13 is
-        subsequently appended to the list, there is still space in the buffer so
-        it is not necessary to copy the whole list.
-    :align: center
+.. figure:: images/dynamic_array.*
 
-    digraph dl {
-    	bgcolor="#ffffff00" # RGBA (with alpha)
-	    graph [
-	    rankdir = "LR"
-	    ];
-	    node [
-	    fontsize = "16"
-	    shape = "ellipse"
-	    ];
-	    edge [
-	    ];
-	    
-	    subgraph cluster_0 {
-	    		style="ellipse, dashed";
-	    		bgcolor="#CD5C5C";
-	    "node0" [
-	    label = "<f0> 2 | 3| 5| 7 |e <f1>"
-	    shape = "record"
-	    ];
-	    }
-	    
-	    subgraph cluster_3 {
-	    		style="ellipse, dashed";
-	    		bgcolor="#2E8B57";
-	    		
-	    "node1" [
-	    label = "<f0> 2 | 3| 5| 7 | <f1> 11| | | <f2>"
-	    shape = "record"
-
-	    ];
-        }
-	    subgraph cluster_4 {
-	    		style="ellipse, dashed";
-	    		bgcolor="#2E8B57";
-	    
-	    "node3" [
-	    label = "<f0> 2 | 3| 5| 7| <f1> 11| <f2> 13| | <f3>"
-	    shape = "record"
-	    ];
-	    }
-
-	    "node0":f0 -> "node1":f0 [
-	    id = 2
-		label = "append 11"
-	    ];
-
-		"node1":f0 -> "node3":f0 [
-	    id = 2
-		label = "append 13"
-	    ];
-    }
+    A dynamic array implementation of a :class:`list`. The existing
+    memory buffer is full, so when 11 is appended to the list, a larger
+    buffer is created and the whole list is copied into it. When 13 is
+    subsequently appended to the list, there is still space in the buffer so
+    it is not necessary to copy the whole list.
    
 What does this memory allocation strategy mean for the computational
 complexity of appending items to the list? There are two cases. If
