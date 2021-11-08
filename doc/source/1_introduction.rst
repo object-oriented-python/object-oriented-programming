@@ -3,13 +3,13 @@
 Introduction: abstraction in mathematics and programming
 ========================================================
 
-.. details:: Video introduction.
+.. .. details:: Video introduction.
 
-    .. vimeo:: 486106801
+..     .. vimeo:: 486106801
 
-    .. only:: html
+..     .. only:: html
 
-        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ee8cae7f-1b42-4db3-adc0-ac840144de53>`_
+..         Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ee8cae7f-1b42-4db3-adc0-ac840144de53>`_
 
 A core tool of mathematics is to define abstract objects and the
 operations which apply to them. This approach defines all the basic
@@ -62,145 +62,6 @@ understand, easier to debug and easier to extend. Indeed, as with
 abstraction in mathematics, abstraction in coding is a form of
 constructive laziness: it simultaneously allows the mathematician to
 achieve more and do less work.
-
-This is a second course in programming, building a previously
-acquired basic understanding of programming in Python. In covering
-more advanced programming, we will pay particular attention to objects
-and abstraction as they occur in Python. Furthermore, we will do so
-from a mathematician's perspective, understanding programming as a
-process of defining and manipulating mathematical objects, and
-scientifically testing and debugging the results.
-
-How to do this course
----------------------
-
-Programming, like mathematics, is a practical, problem solving discipline. It's
-not possible to learn to program just by reading notes and watching lectures. To
-learn to program you need to put the content of the course into practice by
-writing code. The structure of this course is designed to help you to really
-understand new concepts in programming by putting them into practice. Each week,
-we run through the same cycle:
-
-1. Read the notes
-2. Watch the videos
-3. Do the quiz
-4. Write the code
-
-The notes
-.........
-
-All of the new material we cover in this course is presented in these notes.
-Each chapter contains the material for one week of term, so in week :math:`n`,
-you work through chapter :math:`n`. The notes always the starting point for your work.
-Each chapter will introduce new concepts in programming, often tied back to
-related mathematical concepts, and always illustrated by practical code
-examples. Python has excellent `official online documentation
-<https://docs.python.org/3/>`_, and we link to that throughout the text.
-External links show up in orange while :ref:`internal links to other parts of
-the notes <introduction>` are red. Sometimes we introduce counterexamples:
-illustrations of code errors or bad implementation ideas. These will be flagged
-with a big red cross:
-
-.. container:: badcode
-
-    .. code-block:: python3
-
-        print "Hello World"
-
-Conversely, if it's necessary in context to highlight which approach is the
-correct one, the code will come with a big green tick:
-
-.. container:: goodcode
-
-    .. code-block:: python3
-
-        print("Hello World")
-
-At the end of each chapter there is a glossary containing key new concepts
-introduced in that chapter. Always check the glossary and convince yourself that
-you understand all the terms introduced there, this is a good check on whether
-you have understood the chapter as a whole. However, there is more to learning
-new concepts than just the vocabulary, so don't be tempted to skip reading the
-chapter and just jump to the glossary!
-
-The chapters broadly alternate between introducing new programming concepts,
-such as :ref:`objects <objects>`, :ref:`abstract data types
-<abstract_data_types>`, or :ref:`inheritance <inheritance>`, and
-covering various aspects of the craft of programming, such as :ref:`style
-<inheritance>` and :ref:`debugging <debugging>`. In this way the course combines specific programming knowledge
-with more general coding skills.
-
-The videos
-..........
-
-Throughout the notes are links to videos. These aren't typical lecture videos in
-that they're not primarily focussed on delivering the new ideas in the course.
-In particular, the videos don't set out to duplicate the delivery of the
-material in the notes. Instead, the videos focus on putting the concepts into
-practice, often by showing live coding sessions. Usually you'll want to watch
-the video for a given section *after* reading the corresponding notes.
-
-The quizzes
-...........
-
-Towards the end of each chapter is a link back to a quiz on Imperial's
-Blackboard system. The quizzes are designed to allow you to convince yourself
-that you've understood the material in the chapter. Sometimes they will simply
-be multiple choice questions testing your understanding of the material, but
-sometimes you will need to open up Python and try things out in order to work
-out the right answer. The quizzes do not contribute to your module grade, but how
-well you are doing on them is an indication of your progress on the module.
-
-The exercises
-.............
-
-As we've already noted, really learning to program better is only achieved by
-writing code. The core of each week's activities is therefore to put the new
-concepts and programming structures you've learned into practice. The
-programming exercises are given at the end of each chapter, just before the
-glossary. Each time there will be a skeleton code available from
-:ref:`GitHub Classroom <fons:github_classroom_exercise>` which provides the starting
-point. Sometimes you might be asked to complete a piece of code while on other
-occasions you'll need to write a whole Python module from scratch. Each set of
-exercises will come with a matching set of tests. These are small programs which
-check whether your code produces the correct responses to a range of inputs.
-Tests like this provide immediate feedback and enable you to know how you are
-doing without having to wait for code to be submitted and marked.
-
-.. note::
-
-    Solutions to exercises will not be issued. The notes and accompanying
-    example code contain examples of the same programming constructs that the
-    exercises require you to implement, and the tests provide a mechanism to
-    know when you have a correct answer. There are also help mechanisms via the
-    course forum and the lab sessions. Issuing solutions to problems would
-    simply encourage students to study the solutions rather than write code, and
-    the only way to learn to program is to write code.
-
-Assessment
-..........
-
-The weekly quiz and exercises are not assessable: they are formative activities
-designed to help you learn the module. Instead, the module will be assessed by
-two controlled programming assessments, effectively programming exams. The first
-programming assessment will be held in week 7 and will be worth 20% of the
-marks for the course. This provides an opportunity to receive feedback in the
-middle of the term, and is a practice for the main exam. The :ref:`course contents for
-week 7 <midterm>` will comprise practice programming exercises for this midterm test.
-The second programming assessment will be held in the main May exam period and
-will count for the other 80% of the course.
-
-The instructions and skeleton code for the programming exercises will be
-released at a fixed time on GitHub Classroom, and the code which you have
-committed to GitHub by the end of the allotted time will be marked.
-
-The exam questions will be similar to the weekly exercises in the course,
-and may include new programmes to write from specification, modifications or
-extensions to be made to code which is provided, and debugging exercises in
-which defective code is provided which you need to correct. Marks will be
-allocated both for the functional correctness of the code written, and for
-good style and following Python coding conventions.
-
 
 Obtaining the right software tools
 ----------------------------------
