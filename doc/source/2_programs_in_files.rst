@@ -162,11 +162,7 @@ systems, you would type the following:
     (my_venv) $ cd src
     (my_venv) $ python hello.py
 
-The dollar sign is the command prompt. Its different on some systems, for
-example, it's often a greater than sign (`>`) or a percent symbol (`%`). The
-text to the left of the command prompt might also be different depending on
-which terminal program you are using on which operating system, but we are only
-concerned with the commands to the right of the prompt. The first of these,
+The first of these commands,
 `cd` (*change directory*) switches the current folder to :file:`src`. The
 second command actually runs the Python interpreter on :file:`hello.py`. From
 within our venv, we can be confident that `python` will refer to the right
@@ -925,11 +921,6 @@ Glossary
     program
        A text file containing a sequence of Python statements to be
        executed. In Python, program and script are synonymous.
-
-    venv
-    virtual environment
-       A lightweight private Python installation with its own set of
-       Python packages installed.
 
 Exercises
 ---------
