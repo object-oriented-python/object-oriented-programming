@@ -852,7 +852,7 @@ only move onto the next problem when the previous test passes.
 
     The exercise repositories that accompany this book will contain a
     :file:`tests` folder full of tests that check that you have correctly
-    implemented the chaper's exercises. You should get in the habit of running
+    implemented the chapter's exercises. You should get in the habit of running
     the tests as you work through the exercises, as they are designed not just
     to pass if your code is correct, but to provide feedback as to what might
     be going wrong if your code contains errors.
