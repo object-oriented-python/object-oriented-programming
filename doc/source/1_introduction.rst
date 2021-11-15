@@ -58,7 +58,7 @@ therefore make you a better user of that software. The second is that
 making appropriate use of abstractions will make you a better
 programmer of mathematics and other software. Applied well, objects
 and abstraction produce software which is easier to write, easier to
-understand, easier to debug and easier to extend. Indeed, as with
+understand, easier to debug, and easier to extend. Indeed, as with
 abstraction in mathematics, abstraction in coding is a form of
 constructive laziness: it simultaneously allows the mathematician to
 achieve more and do less work.

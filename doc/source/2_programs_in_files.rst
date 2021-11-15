@@ -36,7 +36,7 @@ program is read and executed by another piece of software, the Python
 interpreter. The Python interpreter takes a sequence of Python statements and
 performs the actions they specify. The interpreter takes care of allocating the
 required memory and causes the right sequences of primitive machine-level
-instructions to execute on the actual hardware for your programme to run.
+instructions to execute on the actual hardware such that your programme runs.
 
 The Python interpreter is the same no matter whether you use Jupyter
 notebooks, an interactive Python terminal such as IPython, or execute
@@ -85,7 +85,7 @@ This will result in output simiar to the following:
 
     In [1]: 
 
-Just like in a Jupyter notebook, this last line is the Python prompt at which
+Just as in a Jupyter notebook, this last line is the Python prompt at which
 you can type any Python you like. If you press return after a complete Python
 statement, the statement will execute immediately. Unlike in a Jupyter
 notebook, there is no special key combination or button to trigger execution.
@@ -104,8 +104,8 @@ and edit Python files with a program called a text editor. A good text
 editor will help you to code by highlighting syntax and helping with
 indentation. Some text editors also feature advanced features such as
 built-in access to documentation, or highlighting style problems in
-your code. A more fully-featured option is an Integrated Development
-Environment (IDE). IDEs combine an editor with a Python interpreter to
+your code. A more fully-featured option is an :term:`integrated development
+environment` (IDE). IDEs combine an editor with a Python interpreter to
 run your code, a debugger and often other features such as integration
 with Git.
 
@@ -394,8 +394,16 @@ from the module (without any warning or error). This is a frequent
 source of confusion. For this reason, importing `*` is usually a bad
 idea.
 
-The full details of all the ways that the import statement can be used
-is in :ref:`the official Python documentation. <python:import>`
+.. only:: not book
+
+    The full details of all the ways that the import statement can be used
+    is in :ref:`the official Python Language Reference. <python:import>`
+
+.. only:: book
+
+    The full details of all the ways that the import statement can be used
+    is in the official Python Language Reference. [#import]_
+
 
 Packages
 --------
@@ -577,11 +585,22 @@ about all of the packages in the current repository, but this can be
 automated with the :func:`~setuptools.find_packages` function, which
 will return a list of folders containing a file named :file:`__init__.py`.
 
-This very simple :file:`setup.py` will suffice for packages that you only
-intend to use yourself. Should you wish to publish packages for use by
-other people, then you'll need to add some more information to the
-file. The canonical guide to this is the `Python Packaging User Guide
-<https://packaging.python.org/tutorials/packaging-projects/>`__.
+.. only:: not book
+
+    This very simple :file:`setup.py` will suffice for packages that you only
+    intend to use yourself. Should you wish to publish packages for use by other
+    people, then you'll need to provide significantly more information in
+    :file:`setup.py` and, potentially, in other places too. The canonical guide to
+    this is the `Python Packaging User Guide
+    <https://packaging.python.org/tutorials/packaging-projects/>`__.
+
+.. only:: book
+
+    This very simple :file:`setup.py` will suffice for packages that you only
+    intend to use yourself. Should you wish to publish packages for use by
+    other people, then you'll need to provide significantly more information in
+    :file:`setup.py` and, potentially, in other places too. The canonical guide
+    to this is the Python Packaging User Guide. [#packaging]_
 
 Installing a package from local code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -687,7 +706,7 @@ including tests in your code here.
 
 There are a number of Python packages which support code testing. The concepts
 are largely similar so rather than get bogged down in the details of multiple
-frameworks, we will introduce :doc:`pytest <pytest:index>`, which is one of the
+frameworks, we will introduce :doc:`Pytest <pytest:index>`, which is one of the
 most widely used. Pytest is simply a Python package, so you can install it into
 your current environment using:
 
@@ -798,11 +817,11 @@ wrong. We will learn how to interpret this output in :numref:`Chapter %s
 <errors_and_exceptions>`.
 
 
-Additional useful pytest tricks
+Additional useful Pytest tricks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It can be useful to run a specific test file, which is achieved simply by naming
-that file as the argument to pytest. For example:
+that file as the argument to Pytest. For example:
 
 .. code-block:: console
 
@@ -818,7 +837,7 @@ It is even possible to select an individual test to run, using a double colon
 Often if one test fails then the same problem in your code will cause a whole
 series of tests to fail, resulting in a very long list of error messages which
 is hard to read. A useful tool in this circumstance is the `-x` option, which
-tells pytest to stop after the first test fail. For example:
+tells Pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
@@ -831,12 +850,12 @@ only move onto the next problem when the previous test passes.
 
 .. note::
 
-    The exercise repositories provided here will contain a :file:`tests` folder
-    full of tests that check that you have correctly implemented the week's
-    exercises. You should get in the habit of running the tests as you work
-    through the exercises, as they are designed not just to pass if your code
-    is correct, but to provide feedback as to what might be going wrong if your
-    code contains errors.
+    The exercise repositories that accompany this book will contain a
+    :file:`tests` folder full of tests that check that you have correctly
+    implemented the chaper's exercises. You should get in the habit of running
+    the tests as you work through the exercises, as they are designed not just
+    to pass if your code is correct, but to provide feedback as to what might
+    be going wrong if your code contains errors.
 
 Writing code to a specified interface
 -------------------------------------
@@ -937,7 +956,7 @@ Exercises
     <https://github.com/object-oriented-python/object-oriented-programming>`__.
     Clone that git repository into your course folder, and install the Python
     package it contains into your virtual environment. Check that it has
-    installed correctly by installing pytest, and running:
+    installed correctly by installing Pytest, and running:
 
     .. code-block:: console
 
@@ -1008,4 +1027,11 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`__
+.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004)
+    <https://www.python.org/dev/peps/pep-0020/>`__ 
+
+.. [#import] `https://docs.python.org/3/reference
+    <https://docs.python.org/3/reference/simple_stmts.html#import>`__
+
+.. [#packaging] `https://packaging.python.org
+    <https://packaging.python.org/tutorials/packaging-projects/>`__ 

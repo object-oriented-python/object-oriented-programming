@@ -1,13 +1,13 @@
 Preface
 =======
 
-Computers have revolutionised mathematics, as well as the many scientific,
-engineering and economic fields in which mathematics is applied. In
-the applications of mathematics the role of computation has long been obvious
-and prominent. Now, the development of theorem proving software is increasing
-the prominence of computing in pure mathematics. What this means is that
-the ability to write computer programs is an indispensible part of the toolkit
-of a 21st century mathematician and, indeed, scientist or engineer.
+Computers have revolutionised mathematics and the many scientific, engineering
+and economic fields in which mathematics is applied. In the applications of
+mathematics the role of computation has long been obvious and prominent. Now,
+the development of theorem proving software is increasing the prominence of
+computing in pure mathematics. What this means is that the ability to write
+computer programs well is an indispensable part of the toolkit of a 21st
+century mathematician and, indeed, scientist or engineer.
 
 Regrettably, university courses in mathematics and its sibling disciplines have
 often failed to reflect this revolution in the way that mathematics is
@@ -37,9 +37,10 @@ year courses with the sole objective of teaching students to programme well.
 This book is the text for the second of these courses. Named "Principles of
 Programming", the course aims to take students with a knowledge of basic Python
 programming (functions, loops, plotting and so forth) and introduce them to
-higher level programming concepts. The course has also been taught to masters
+higher level programming concepts. The course has also been taught to master's
+students in the Mathematical Institute at the University of Oxford.
 
-The objective of this course is to graduate better programmers, so material on
+The objective of this course is to graduate better programmers. Material on
 new programming constructs and concepts is accompanied by chapters on good
 programming style, so that students learn how to write code that they and
 others can understand, and on errors, exceptions and debugging, so that
@@ -66,12 +67,19 @@ Who is this book for?
 This book is for anyone with mathematical, scientific, or engineering interests
 who would like to learn to be a more capable programmer. The mathematical
 examples assume that you know how to differentiate functions of one variable,
-but very little beyond that. This is not an introduction to basic Python: it's
-assumed that the reader knows the sort of basic Python usually covered in a
-first programming or computational methods course. In particular the reader
-will be assumed to be familiar with writing functions, variable assignments,
-loops, and list comprehensions. The reader is also assumed to have used numeric
-and string data values, as well as dictionaries, lists, and tuples.
+but very little beyond that. Where examples or exercises employ other
+mathematics, such as cellular automata in :numref:`style` and groups in
+:numref:`abstract_data_types`, enough of the mathematics will be introduced
+that the reader should be able to understand the programming concept being
+explained, without necessarily understanding all of the mathematical details of
+the example.
+
+This is not an introduction to basic Python: it's assumed that the reader knows
+the sort of basic Python usually covered in a first programming or
+computational methods course. In particular the reader will be assumed to be
+familiar with writing functions, variable assignments, loops, and list
+comprehensions. The reader is also assumed to have used numeric and string data
+values, as well as dictionaries, lists, and tuples.
 
 Many introductory Python courses exclusively use Jupyter notebooks, so nothing
 beyond that is assumed. Getting set up with a working Python installation is
