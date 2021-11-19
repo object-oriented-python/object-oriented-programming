@@ -118,6 +118,11 @@ which is a common configuration in many workplaces and university computer
 labs, then you'll only need to set up Git once for that whole cluster of
 computers.
 
+Before you start configuring Git, you'll want to make sure that you have a
+working Git installation using the instructions on the book web page: 
+`https://object-oriented-programming.github.io/install_git.html
+<https://object-oriented-programming.github.io/install_git.html>`__
+
 Your details
 ~~~~~~~~~~~~
 
@@ -259,12 +264,20 @@ register for these benefits at `https://education.github.com/benefits
 
 .. _github_classroom_exercise:
 
-Doing coursework using GitHub Classroom
----------------------------------------
+Doing exercises using GitHub or GitHub Classroom
+------------------------------------------------
 
-Some modules use GitHub Classroom to distribute, manage, and submit
-computational coursework. This is a trivial example which shows you how to
-obtain and work with Git and GitHub to do your coursework.
+The exercises in this book are available as GitHub repositories, including
+skeleton code and automated testing. The way that you use Git and GitHub to
+access and do these exercises is always the same, though there are two
+different ways of initially generating your personal exercise repository on
+GitHub, depending on whether you are doing these exercises as a part of a
+formal course which the instructor has set up using GitHub classroom, or you
+are doing the exercises by yourself in private study. If you're using GitHub
+classroom as a part of a formal course where the instructor will be using
+GitHub classroom then follow the instructions in :numref:`accept_classroom`.
+If you're working on the exercises by yourself then follow the instructiosn in
+:numref:`accept_template`.
 
 .. container:: vimeo
 
@@ -274,14 +287,17 @@ obtain and work with Git and GitHub to do your coursework.
         frameborder="0" allow="autoplay; fullscreen"
         allowfullscreen></iframe>
 
+.. _accept_classroom:
 
-Accepting the assignment
-~~~~~~~~~~~~~~~~~~~~~~~~
+Accepting the assignment on GitHub Classroom
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For each GitHub Classroom assignment, your module will provide access to a link
-that you can use to accept the assignment. In this case, there is a tiny toy
-assignment created just for this exercise. `Accept the assignment by clicking
-here <https://classroom.github.com/a/cChf4oeV>`_.
+For each exercise, your module will provide access to a link that you can use
+to accept the corresponding GitHub classroom assignment. In this case, there is
+a tiny toy assignment created just for this exercise. The assignment acceptance
+link is available on the exercises page for this book:
+`https://object-oriented-programming.github.io/edition1/exercises.html
+<https://object-oriented-programming.github.io/edition1/exercises.html>`__
 
 When you click on the assignment, if you're not already logged into your `GitHub
 <https://GitHub.com>`__ account then you will be prompted to do so. If this is
@@ -292,17 +308,46 @@ You will now be asked to accept the assignment. Do so by clicking on the large
 green button. GitHub Classroom will now create a new repository containing your
 personal copy of the assignment. You can click on the link provided to navigate
 to your new GitHub repository. You will also receive an email inviting you to
-this repository. Depending on which module you are taking, the repository might
-be in a GitHub organisation which uses Imperial's authentication system. If it
-does, then you'll be redirected to Imperial's login page and you'll need to
-enter your Imperial (not GitHub) username and password.
+this repository. You can now skip forward to :numref:`exercise_instructions`. 
 
-If we scroll down on the front page of the GitHub repository website, we see the
-README file for the repository. In this case, this gives us the instructions for
-the assignment. Depending on the module, the instructions might be somewhere
-else, such as on a module website or on Blackboard. This time, we see this:
+.. _accept_template:
+
+Accessing the exercise using the template repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you don't have an instructor who has set up GitHub Classroom exercises for
+your course then you will obtain your copy of the exercise by creating a new
+repository in your GitHub account using the template provided. To use the
+template, navigate to the exercise repository, which in this case is:
+`https://github.com/oopython-exercises/hello
+<https://github.com/oopython-exercises/hello>`__. On that page, click on the
+green button :kbd:`Use this template`. This will take you to a page which will
+ask you to choose a name for your new repository. It would be reasonable to use
+the same name as the template. In this case, :kbd:`hello`. Click on the green
+button marked :kbd:`Create repository from template`. 
+
+.. image:: images/github_template.png
+
+
+.. _exercise_instructions:
+
+The exercise instructions
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Whichever way we accessed the exercise, we now have an exercise repository. If
+we scroll down on the front page of the GitHub repository website, we see the
+README file for this repository. In this case, this gives us the instructions
+for the assignment. For most of the exercises in this course, the instructions
+will be in this book at the end of the relevant chapter. This time, we see
+this:
 
 .. image:: images/git_exercise.png
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 So what we have to do is:
 
@@ -321,7 +366,7 @@ you need a local copy on your machine (or on a remote machine that you're logged
 into) in order to work on it. This is called cloning the repository. Here
 we show how to do this using commands in the terminal, because this approach is 
 the most likely to be available on all systems.
-So, start by :ref:`opening a terminal <terminal>`. 
+Start by :ref:`opening a terminal <terminal>`. 
 
 Next, you will need the URL of your GitHub repository. On the repository
 webpage, click on the large green `Code` button on the right:
@@ -341,23 +386,24 @@ repository will download. The process should look a little like this:
 
 .. code-block:: console
 
-    $ git clone https://github.com/imperiallearn/fons-test-assignment-dham-test.git
-    Cloning into 'fons-test-assignment-dham-test'...
-    remote: Enumerating objects: 24, done.
-    remote: Counting objects: 100% (24/24), done.
-    remote: Compressing objects: 100% (18/18), done.
-    remote: Total 24 (delta 5), reused 5 (delta 0), pack-reused 0
-    Unpacking objects: 100$ (24/24), 4.04 KiB | 172.00 KiB/s, done.
-    $ 
+   $ git clone https://github.com/dham/hello.git
+   Cloning into 'hello'...
+   info: please complete authentication in your browser...
+   remote: Enumerating objects: 13, done.
+   remote: Counting objects: 100% (13/13), done.
+   remote: Compressing objects: 100% (9/9), done.
+   remote: Total 13 (delta 0), reused 11 (delta 0), pack-reused 0
+   Receiving objects: 100% (13/13), done.
+   $ 
         
 This will create a new folder in the current folder containing the repository.
 The folder will have the same name as the repository on GitHub, so in this case
-it's called `fons-test-assignment-dham-test`. The command to change the current
+it's called `hello`. The command to change the current
 folder is `cd` (for "change directory") so we now change into our repository:
 
 .. code-block:: console
 
-    $ cd fons-test-assignment-dham-test
+    $ cd hello
 
 We can now check that we're in the folder we think we're in by running the
 command `pwd` ("print working directory"):
@@ -365,10 +411,19 @@ command `pwd` ("print working directory"):
 .. code-block:: console
 
     $ pwd
-    $ /Users/dham/fons-test-assignment-dham-test
+    $ /Users/dham/hello
 
-This shows me that we're in the `fons-test-assignment-dham-test` folder in my user
+This shows me that we're in the `hello` folder in my user
 folder (`/Users/dham`), which is what I expect.
+
+.. note::
+
+    There are several other ways of cloning a GitHub repository, including over
+    ssh or using specialist graphical or command-line Git clients. Any of these
+    approaches is equally valid to the one shown here. The only approach which
+    will not work properly is to download the zip file of the repository. This
+    will download all the files and folders, but none of the data Git needs for
+    revision control.
 
 Editing `exercise.txt`
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -427,36 +482,42 @@ repository, is:
 
 .. code-block:: console
 
-    $ git status
-    On branch master
-    Your branch is up to date with 'origin/master'.
+   $ git status
+   On branch main
+   Your branch is up to date with 'origin/main'.
 
-    Changes not staged for commit:
-       (use "git add <file>..." to update what will be committed)
-       (use "git restore <file>..." to discard changes in working directory)
-    	     modified:   exercise.txt
+   Changes not staged for commit:
+     (use "git add <file>..." to update what will be committed)
+     (use "git restore <file>..." to discard changes in working directory)
+           modified:   exercise.txt
 
-    no changes added to commit (use "git add" and/or "git commit -a")
+   no changes added to commit (use "git add" and/or "git commit -a")
 
 Let's pull this apart line by line. The first line says that we're on the
-`master` branch. Branches are a somewhat more advanced feature, but here we only
-need to understand that `master` is the default name for the main place to store
+`main` branch. Branches are a somewhat more advanced feature, but here we only
+need to understand that `main` is the default name for the main place to store
 commits in a Git repository. 
 
 To understand the second line, we need to know that Git, by default, calls our
 repository on GitHub `origin`. So the second line means that, as far as Git can
 see, every commit that exists on our machine is also on GitHub, and vice versa.
 
-Next comes a blank line, we'll come back to what might appear there shortly. The
-next line says "Changes not staged for commit". This means that Git can see that
-these files have changed or have been added, but Git has not been told that they
-should be committed. Git is also very helpful in telling us what we probably
-want to do next, so we are informed that we can tell Git that we intend to
-commit a file using `git add`, or we can undo the changes in a file back to the
-last committed version using `git restore`. Finally, Git tells us that right now
-there are no changes added to commit, so we either need to use `git add` or the
-shortcut version `git commit -a`. We'll come back to the second of those
-presently, but first let's learn about `git add`.
+Next comes a blank line, we'll come back to what might appear there shortly.
+The next line says "Changes not staged for commit". This means that Git can see
+that these files have changed or have been added, but Git has not been told
+that they should be committed. Git is also very helpful in telling us what we
+probably want to do next, so we are informed that we can tell Git that we
+intend to commit a file using `git add`, or we can undo the changes in a file
+back to the last committed version using `git restore`. Finally, Git tells us
+that right now there are no changes added to commit, so we either need to use
+`git add` or the shortcut version `git commit -a`. We'll come back to the
+second of those presently, but first let's learn about `git add`.
+
+.. note::
+
+    The default branch may be called something other than `main`. In
+    particular, older repositories often have a default branch called `master`.
+    It doesn't matter what the default branch is called.
 
 Staging files for commit
 ........................
@@ -472,13 +533,13 @@ We can check what that did by running `git status`:
 
 .. code-block:: console
 
-    $ git status          
-    On branch master
-    Your branch is up to date with 'origin/master'.
+   $ git status
+   On branch main
+   Your branch is up to date with 'origin/main'.
 
-    Changes to be committed:
-      (use "git restore --staged <file>..." to unstage)
-    	modified:   exercise.txt
+   Changes to be committed:
+     (use "git restore --staged <file>..." to unstage)
+           modified:   exercise.txt
 
 The first two lines of the output are unchanged, but now we see that
 `exercise.txt` appears on the list of changes to be committed. We say that the
@@ -486,6 +547,12 @@ changes are "staged" for commit. Git once again helpfully tells us that if we
 didn't mean to do that then we should use the command `git restore --staged` to
 unstage the file. However, we did mean to stage `exercise.txt` so now we can go
 on to make the actual commit.
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. warning::
 
@@ -514,7 +581,7 @@ this with the following command:
 .. code-block:: console
 
     $ git commit -m "Changed World to Mars"
-    [master 7ad3846] Changed World to Mars
+    [main 316a22c] Changed World to Mars
      1 file changed, 1 insertion(+), 1 deletion(-)
 
 `git commit` tells Git to commit all staged files. Git always needs a message
@@ -529,14 +596,14 @@ Let's use our go to command, `git status` to see what we've done:
 .. code-block:: console
 
     $ git status
-    On branch master
-    Your branch is ahead of 'origin/master' by 1 commit.
+    On branch main
+    Your branch is ahead of 'origin/main' by 1 commit.
       (use "git push" to publish your local commits)
 
     nothing to commit, working tree clean
 
 This is now quite different from what we've seen before. We're still on branch
-master, but now we're informed that we're ahead of `origin/master` by one
+master, but now we're informed that we're ahead of `origin/main` by one
 commit. This is because we've made a commit locally on our machine, but we
 haven't yet pushed that change up to GitHub. Git helpfully informs us that we
 could remedy this situation using `git push`. Because we've committed all the
@@ -551,13 +618,13 @@ Stage and commit in a single command
 Most of the time, you will make changes to one or more files that Git already
 knows about. In these circumstances, there's a shortcut command, and it's one
 that Git already hinted to us about. Instead of separately running `git add`
-followed by `git commit`, we can use `git commit -a`. We still need to provide a
-commit message, so the equivalent to the two commands above would be:
+followed by `git commit`, we can use `git commit -a`. We still need to provide
+a commit message, so the equivalent to the two commands above would be:
 
 .. code-block:: console
 
     $ git commit -am "Changed World to Mars"
-    [master 5a4a79c] Changed World to Mars
+    [main 316a22c] Changed World to Mars
      1 file changed, 1 insertion(+), 1 deletion(-)
 
 Now if we type `git status`, we discover we are in exactly the same state as
@@ -566,8 +633,8 @@ when we type the two commands separately:
 .. code-block:: console
 
     $ git status
-    On branch master
-    Your branch is ahead of 'origin/master' by 1 commit.
+    On branch main
+    Your branch is ahead of 'origin/main' by 1 commit.
       (use "git push" to publish your local commits)
 
     nothing to commit, working tree clean
@@ -580,16 +647,16 @@ GitHub:
 
 .. code-block:: console
 
-    $ git push
-    Enumerating objects: 5, done.
-    Counting objects: 100% (5/5), done.
-    Delta compression using up to 4 threads
-    Compressing objects: 100% (2/2), done.
-    Writing objects: 100% (3/3), 280 bytes | 35.00 KiB/s, done.
-    Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
-    remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-    To https://github.com/imperiallearn/fons-test-assignment-dham-test.git
-       d91be89..5a4a79c  master -> master
+   $ git push
+   Enumerating objects: 5, done.
+   Counting objects: 100% (5/5), done.
+   Delta compression using up to 8 threads
+   Compressing objects: 100% (2/2), done.
+   Writing objects: 100% (3/3), 284 bytes | 284.00 KiB/s, done.
+   Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+   remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+   To https://github.com/dham/hello.git
+      fdc1dec..316a22c  main -> main
 
 Depending on your configuration, you might have to enter your GitHub username
 and password. The output includes quite a lot of detail that we currently don't
@@ -598,24 +665,24 @@ pushing to, and that we pushed the local master branch to the GitHub master
 branch.
 
 If we now type `git status`, we find that we are no longer ahead of
-`origin/master`:
+`origin/main`:
 
 .. code-block:: console
 
-    $ git status
-    On branch master
-    Your branch is up to date with 'origin/master'.
+   $ git status
+   On branch main
+   Your branch is up to date with 'origin/main'.
 
-    nothing to commit, working tree clean
+   nothing to commit, working tree clean
 
 If we turn back to the repository website on GitHub, we can also see that the commit has arrived:
 
 .. image:: images/github_post_commit.png
 
-Notice that we can see the commit message both in the blue bar at the top of the
-file list, and next to the file that we changed. By clicking on the `commits`
-link at the right hand side of the blue bar, we can see a list of all the
-changes that have ever happened on the master branch of our repository:
+Notice that we can see the commit message both in the bar at the top of the
+file list, and next to the file that we changed. By clicking on the little
+clock icon at the right hand side of the top bar, we can see a list of all the
+changes that have ever happened on the main branch of our repository:
 
 .. image:: images/github_commit_list.png
 

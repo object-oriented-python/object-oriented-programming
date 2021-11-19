@@ -67,13 +67,13 @@ active, we can install it by running:
 
 .. code-block:: console
 
-    (my_venv) $ python -m pip install ipython
+    (PoP_venv) $ python -m pip install ipython
 
 IPython can now be run by simply typing:
 
 .. code-block:: console
 
-    (my_venv) $ ipython
+    (PoP_venv) $ ipython
 
 This will result in output simiar to the following:
 
@@ -159,8 +159,8 @@ systems, you would type the following:
 
 .. code-block:: console
 
-    (my_venv) $ cd src
-    (my_venv) $ python hello.py
+    (PoP_venv) $ cd src
+    (PoP_venv) $ python hello.py
 
 The first of these commands,
 `cd` (*change directory*) switches the current folder to :file:`src`. The
@@ -608,7 +608,7 @@ you would type:
 
 .. code-block:: console
 
-   (my_venv) $ python -m pip install -e folder/
+   (PoP_venv) $ python -m pip install -e folder/
 
 replacing `folder` with the name of the top-level folder of your
 repository: the folder containing :file:`setup.py`. The option flag `-e`
@@ -708,7 +708,7 @@ your current environment using:
 
 .. code-block:: console
 
-    (my_venv) $ python -m pip install pytest
+    (PoP_venv) $ python -m pip install pytest
 
 Pytest tests
 ~~~~~~~~~~~~
@@ -767,8 +767,8 @@ We can then invoke the tests from the shell:
 
 .. code-block:: console
 
-    (my_venv) $ cd fibonacci
-    (my_venv) $ pytest tests
+    (PoP_venv) $ cd fibonacci
+    (PoP_venv) $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -784,7 +784,7 @@ instead see something like:
 
 .. code-block:: console
 
-    (my_venv) $ pytest tests
+    (PoP_venv) $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -821,14 +821,14 @@ that file as the argument to Pytest. For example:
 
 .. code-block:: console
 
-    (my_venv) $ pytest tests/test_fibonacci.py
+    (PoP_venv) $ pytest tests/test_fibonacci.py
 
 It is even possible to select an individual test to run, using a double colon
 `::` followed by the test name:
 
 .. code-block:: console
 
-    (my_venv) $ pytest tests/test_fibonacci.py::test_fibonacci_values
+    (PoP_venv) $ pytest tests/test_fibonacci.py::test_fibonacci_values
 
 Often if one test fails then the same problem in your code will cause a whole
 series of tests to fail, resulting in a very long list of error messages which
@@ -837,7 +837,7 @@ tells Pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
-    (my_venv) $ pytest -x tests
+    (PoP_venv) $ pytest -x tests
 
 The tests are often arranged in increasing order of sophistication, so the
 earlier tests are likely to catch the most basic errors in your code. For this
@@ -925,19 +925,23 @@ Glossary
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+Before attempting the exercises, ensure that you have obtained the software
+tools described in :numref:`tools` and set up a working folder and
+:term:`virtual environment` as described in :numref:`venv`.
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+.. .. panels::
+..     :card: quiz shadow
 
-.. proof:exercise::
+..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
+..         :text: This week's quiz
+..         :classes: stretched-link 
 
-    Follow the :ref:`instructions on the Faculty of Natural Sciences Python
-    installation page <fons:python_folders>` to create the folder structure
-    you will use for this course on your computer. Start with an overall folder
-    for the module, and create a virtual environment in that module.
+.. .. proof:exercise::
+
+..     Follow the :ref:`instructions on the Faculty of Natural Sciences Python
+..     installation page <fons:python_folders>` to create the folder structure
+..     you will use for this course on your computer. Start with an overall folder
+..     for the module, and create a virtual environment in that module.
 
 .. _course_repo:
 
@@ -951,7 +955,7 @@ Exercises
 
     .. code-block:: console
 
-        (my_venv) $ pytest tests/test_fibonacci.py
+        (PoP_venv) $ pytest tests/test_fibonacci.py
 
     You could also run iPython,  import :mod:`fibonacci` and try out
     :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
@@ -976,7 +980,7 @@ Exercises
 
     .. code-block:: console
 
-        (my_venv) $ pytest tests/test_exercise_2_4.py
+        (PoP_venv) $ pytest tests/test_exercise_2_4.py
 
     Then push your code to GitHub and check that the tests pass there too.
 

@@ -58,6 +58,7 @@
       :maxdepth: 2
       
       a1_help
+      a2_git
 
 
 ..       :numbered:

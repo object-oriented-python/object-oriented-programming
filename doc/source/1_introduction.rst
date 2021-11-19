@@ -63,6 +63,8 @@ abstraction in mathematics, abstraction in coding is a form of
 constructive laziness: it simultaneously allows the mathematician to
 achieve more and do less work.
 
+.. _tools:
+
 Obtaining the right software tools
 ----------------------------------
 
@@ -126,6 +128,8 @@ Python you use.
     The example code in the exercises uses :ref:`f-strings <tut-f-strings>`
     which were introduced in Python 3.6, so the code will not work in earlier
     versions of Python.
+
+.. _venv:
 
 Setting up a Python virtual environment
 ---------------------------------------
@@ -191,24 +195,26 @@ there then open the `View` menu and select `Terminal` to make it appear.
 
 The most straightforward way to create a venv is on the terminal
 command line, not from within Python itself. This is accomplished
-using Python's :mod:`venv` package. For example, to create a venv
-called `my_venv` on Windows, you would type:
+using Python's :mod:`venv` package. The venv has to be given a name. You will
+want this to be short, but distinctive enough that you know which venv you are
+using. For example, to create a venv
+called `PoP_venv` on Windows, you would type:
 
 .. code-block:: console
 
-    > py -m venv my_venv
+    > py -m venv PoP_venv
 
 while on Mac or Linux you would type:
 
 .. code-block:: console
 
-    $ python3 -m venv my_venv
+    $ python3 -m venv PoP_venv
 
 Don't forget that the `>` or `$` stands for the command prompt: you don't
-type it. This command will create the folder `my_venv` and various
+type it. This command will create the folder `PoP_venv` and various
 subfolders containing things like the Python program itself and space
 for any packages which you install in the venv. If there was already a
-file or folder called `my_venv` in the current folder then you'll get
+file or folder called `PoP_venv` in the current folder then you'll get
 an error, so make sure you choose a new name.
 
 .. note::
@@ -218,7 +224,7 @@ an error, so make sure you choose a new name.
     multiple Python installations on your computer then you might end up
     running the wrong one. If this happens then you will need to type the full
     path to the Python you want to use (starting with `/` on Mac or Linux or
-    `\` on Windows). Once the venv is installed and activated, it will be
+    `\\` on Windows). Once the venv is installed and activated, it will be
     sufficient to type `python` as the venv will ensure that this is the
     correct version.
 
@@ -229,7 +235,7 @@ again. In the bash or zsh shells you would type:
 
 .. code-block:: console
 
-   $ rm -rf my_venv
+   $ rm -rf PoP_venv
 
 .. warning::
 
@@ -248,27 +254,27 @@ Linux you would type:
 
 .. code-block:: console
 
-    $ source my_venv/bin/activate
+    $ source PoP_venv/bin/activate
 
 while using bash on Windows you would type:
 
 .. code-block:: console
 
-    $ source my_venv/Scripts/activate
+    $ source PoP_venv/Scripts/activate
 
 If using PowerShell on Windows then you type:
 
 .. code-block:: powershell
 
-    > .\my_venv\Scripts\activate.ps1
+    > .\PoP_venv\Scripts\activate.ps1
 
 Obviously, you would use the folder name of your venv instead of
-`my_venv`. In either case, your command prompt will change to indicate
+`PoP_venv`. In either case, your command prompt will change to indicate
 that you are now using the venv. It might look something like:
 
 .. code-block:: console
 
-   (my_venv) $
+   (PoP_venv) $
 
 Any subsequent invocations of Python commands such as `python3` will
 now use the version from the venv, with access to whatever packages
@@ -285,8 +291,16 @@ for the correct activation command.
 
         > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-    For further information, see :doc:`the official Python venv documentation
-    <library/venv>`.
+    .. only:: not book
+
+        For further information, see :doc:`the official Python venv documentation
+        <library/venv>`.
+
+    .. only:: book
+
+        For further information, see the official Python venv documentation.
+        [#venv]_
+
 
 .. hint::
 
@@ -305,13 +319,13 @@ Python package :doc:`Pip <pip:index>`, which you will usually find
 pre-installed in your Python installation. Pip has many usage options, which
 enable a large number of different installation configurations. However, for
 most users most of the time, a few simple pip commands suffice. As with
-:term:`venv` creation, package installation is best accomplished from the
+venv creation, package installation is best accomplished from the
 terminal and not from within Python itself. Don't forget to activate the venv!
 
 .. _install-from-pypi:
 
 Installing packages from PyPI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.............................
 
 `PyPI <https://pypi.org>`__ is the Python Package Index. It is the
 official download location for publicly released Python packages which
@@ -324,7 +338,7 @@ terminal command:
 
 .. code-block:: console
 
-   (my_venv) $ python -m pip install numpy
+   (PoP_venv) $ python -m pip install numpy
 
 It is also possible to invoke pip directly using the command `pip3`,
 but there are some circumstances where that might result in pip using
@@ -338,7 +352,7 @@ Pip can also be used to upgrade a package to the latest version:
 
 .. code-block:: console
 
-   (my_venv) $ python -m pip install --upgrade numpy
+   (PoP_venv) $ python -m pip install --upgrade numpy
 
 Glossary
 --------
@@ -389,3 +403,10 @@ Glossary
 ..     :ref:`Live Share instructions <vscode-liveshare>`. 
 ..     Ensure that each of you can start a Live Share session and have the other
 ..     successfully join, and that all of you can edit files.
+
+.. only:: book
+
+    .. rubric:: Footnotes
+
+    .. [#venv] `https://docs.python.org/3/library/venv.html
+        <https://docs.python.org/3/library/venv.html>`__ 
