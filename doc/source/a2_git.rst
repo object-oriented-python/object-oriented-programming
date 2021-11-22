@@ -179,16 +179,35 @@ the following line in the terminal:
 
     $ git config --global core.editor "nano -w"
 
+If you have Visual Studio Code set up to run from the terminal, then this is
+another good choice of Git editor. Run the following to check that you can run
+Visual Studio Code from the terminal:
+
+.. code-block:: console
+
+    $ code -v
+    1.62.0
+    b3318bc0524af3d74034b8bb8a64df0ccf35549a
+    x64
+
+You will almost certainly see different version information, and this is fine.
+Assuming that worked, run the following to set Visual Studio Code as your Git
+editor:
+
+.. code-block:: console
+
+    git config --global core.editor "code --wait"
+
 .. only:: not book
 
-    If you have a favourite text editor, you can set it using the `Software
-    Carpentry instructions
+    If you have a different favourite text editor, you can set it using the
+    `Software Carpentry instructions
     <https://swcarpentry.github.io/git-novice/02-setup/index.html>`_.
     
 .. only:: book
 
-    If you have a favourite text editor, you can set it using the Software
-    Carpentry instructions. [#swcarpentry_editor]_
+    If you have a different favourite text editor, you can set it using the
+    Software Carpentry instructions. [#swcarpentry_editor]_
 
 Default pull behaviour
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -425,6 +444,12 @@ folder (`/Users/dham`), which is what I expect.
     will download all the files and folders, but none of the data Git needs for
     revision control.
 
+    The instructions here focus on command line interfaces because it's a lot
+    easier to ask for help if you get stuck with a command line interface. "I
+    typed the following and this was the resulting output" is a much easier and
+    more precise way of describing a problem than attempting to explain what
+    you did in a graphical interface.
+
 Editing `exercise.txt`
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -516,7 +541,7 @@ second of those presently, but first let's learn about `git add`.
 .. note::
 
     The default branch may be called something other than `main`. In
-    particular, older repositories often have a default branch called `master`.
+    particular, older repositories often have a default branch called `main`.
     It doesn't matter what the default branch is called.
 
 Staging files for commit
@@ -548,11 +573,11 @@ didn't mean to do that then we should use the command `git restore --staged` to
 unstage the file. However, we did mean to stage `exercise.txt` so now we can go
 on to make the actual commit.
 
-.. only:: book
+.. .. only:: book
 
-    .. raw:: latex
+..     .. raw:: latex
 
-        \clearpage
+..         \clearpage
 
 .. warning::
 
@@ -603,7 +628,7 @@ Let's use our go to command, `git status` to see what we've done:
     nothing to commit, working tree clean
 
 This is now quite different from what we've seen before. We're still on branch
-master, but now we're informed that we're ahead of `origin/main` by one
+main, but now we're informed that we're ahead of `origin/main` by one
 commit. This is because we've made a commit locally on our machine, but we
 haven't yet pushed that change up to GitHub. Git helpfully informs us that we
 could remedy this situation using `git push`. Because we've committed all the
@@ -661,7 +686,7 @@ GitHub:
 Depending on your configuration, you might have to enter your GitHub username
 and password. The output includes quite a lot of detail that we currently don't
 care about, but the last two lines tell us which GitHub repository we were
-pushing to, and that we pushed the local master branch to the GitHub master
+pushing to, and that we pushed the local main branch to the GitHub main
 branch.
 
 If we now type `git status`, we find that we are no longer ahead of
@@ -713,20 +738,20 @@ better idea to grab the commit hash for the commit you want directly from the
 GitHub web interface. The most reliable way to find the commit hash is to follow
 the steps above to navigate to the commit in which you are interested. The
 commit has his the 40 character hexadecimal number on the right: in this case
-`5a4a79c81244ed278a14e239eb59c29b218d85ce`.
+`316a22cedb8627940aee7f1744297708324102f1`.
 
 
-Autograding
-~~~~~~~~~~~
+Autograding with GitHub Actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Notice in the commit list above that the final (top) commit has a green tick
 mark next to it, while the previous commit has a red cross. These marks appear
-because this exercise has autograding set up in GitHub classroom. Autograding is
-a mechanism for automatically running tests on each commit to provide immediate
-feedback as to the correctness of the work. Autograding is the generic term for
-this sort of automated testing when applied to coursework. It doesn't
-necessarily imply that you will receive marks for passing the tests. If we click
-on the green tick and then on `details`, we can see a little more information:
+because GitHub has been configured to automatically run tests on each commit to
+provide immediate feedback as to the correctness of the work. Autograding is
+the generic term for this sort of automated testing when applied to coursework.
+It doesn't necessarily imply that you will receive marks for passing the tests.
+If we click on the green tick and then on `details`, we can see a little more
+information:
 
 .. image:: images/github_autograding_pass.png
 
@@ -743,9 +768,9 @@ as to what we have done wrong:
 
 This is indeed very useful as the error tells us that the test was expecting
 "Hello Mars!" but instead found "Hello World". This is clearly a trivial
-example. The precise form of the tests and the feedback they will provide will
-vary from module to module, and will depend in particular on which programming
-language is being used.
+example, however the tests provided with the exercises in this book also
+attempt to provide useful feedback on what has gone wrong when a test is
+failed.
 
 .. rubric:: Footnotes
 
