@@ -517,6 +517,7 @@ Consider the :meth:`__str__` method of :class:`~example_code.groups.Group`:
     :lineno-start: 19
 
     def __str__(self):
+        """Return a string in the form symbol then group parameter."""
         return f"{self.symbol}{self.n}"
 
 This code uses `self.symbol`, but this attribute isn't defined anywhere on
@@ -772,7 +773,16 @@ Glossary
 Exercises
 ---------
 
-Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/VXIC_gES>`__. 
+.. only:: not book
+
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises.
 
 .. proof:exercise::
 
@@ -780,7 +790,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
     permutations of `n` symbols and whose group operation is the composition of
     those permutations: :math:`a \cdot b = a(b)`.
 
-    In this week's skeleton code repository, create package called
+    In the exercise repository, create package called
     :mod:`groups` containing a module called :mod:`symmetric_groups`. Define a
     new class :class:`SymmetricGroup` which inherits from
     :class:`example_code.groups.Group` and implements the symmetric group of
@@ -799,7 +809,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
 
         You will need to :keyword:`import` :class:`example_code.groups.Group`
         from the `object_oriented_programming` repository that you installed
-        :ref:`in week 2 <course_repo>`. You should also `git pull` in that
+        :ref:`in Chapter 2 <course_repo>`. You should also `git pull` in that
         repository in order to get any changes that have happened in the
         intervening period.
 
@@ -815,7 +825,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
     :class:`set` class which are only valid for values which pass a certain
     test. For example, one might have a set which can only contain integers.
 
-    1. In this week's repository, create a package called :mod:`sets` containing a
+    1. In the exercise repository, create a package called :mod:`sets` containing a
        module `verified_sets`. Create a subclass of the inbuilt :class:`set`,
        :class:`sets.verified_sets.VerifiedSet`. :class:`VerifiedSet` will itself 
        be the parent of other classes which have particular verification rules.
@@ -851,3 +861,8 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
        should create a new exception :class:`UniquenessError`, a subclass of
        :class:`KeyError`. :class:`UniqueSet._verify` should raise this if an
        operation would add a duplicate value to the :class:`UniqueSet`.
+
+.. rubric:: Footnotes
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

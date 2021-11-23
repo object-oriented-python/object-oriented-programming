@@ -797,17 +797,33 @@ Glossary
         in each :term:`stack frame`, with the current frame at the
         bottom and the outermost frame at the top.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+.. .. panels::
+..     :card: quiz shadow
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2083792_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2083792_1&mode=cpview
+..         :text: This week's quiz
+..         :classes: stretched-link 
 
-Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
+.. Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
+.. only:: not book
+
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises.
 
 .. proof:exercise::
 
@@ -825,7 +841,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
     iteration should fail if :math:`n` exceeds a user-specified number of
     iterations.
     
-    The skeleton code for this week contains a function
+    The skeleton code for this chapter contains a function
     :func:`nonlinear_solvers.solvers.newton_raphson` which takes as arguments a
     function, its derivative and a starting point for the iteration. It can also
     optionally be passed a value for :math:`\epsilon` and a maximum number of
@@ -866,3 +882,6 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
 
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

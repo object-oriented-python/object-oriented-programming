@@ -828,20 +828,29 @@ Glossary
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+.. .. panels::
+..     :card: quiz shadow
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2077681_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2077681_1&mode=cpview
+..         :text: This week's quiz
+..         :classes: stretched-link 
 
+.. only:: not book
 
-Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/eHigwP_C>`__. You will also need to install the pytest-timeout package.
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. You will also need to install
+    the pytest-timeout package.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises. You will also need to install the
+    pytest-timeout package.
 
 .. proof:exercise::
 
-    In this week's skeleton repository, create a :term:`package` called
+    In the exercise repository, create a :term:`package` called
     :mod:`adt_examples` with a :term:`module` called
     :mod:`adt_examples.fibonacci`. Make the package installable and install it
     in editable mode. Create a class :class:`Fib` implementing the iterator
@@ -863,7 +872,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom
 
 .. proof:exercise::
 
-    In this week's skeleton repository, create a :term:`module`
+    In the exercise repository, create a :term:`module`
     :mod:`adt_examples.rpcalc` containing a class :class:`RPCalc` implementing a
     reverse Polish calculator. The calculator should have the following methods:
 
@@ -891,7 +900,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom
 
 .. proof:exercise::
 
-    In this week's skeleton repository, create a :term:`module`
+    In the exercise repository, create a :term:`module`
     :mod:`adt_examples.deque` containing a class :class:`Deque` implementing a
     :term:`deque`. Your implementation should use a ring buffer implemented
     as a Python list. In order to make things somewhat simpler, we will use a
@@ -950,3 +959,8 @@ Obtain the `skeleton code for these exercises from GitHub classroom
     .. note::
 
         You may not use :class:`collections.deque` to implement this exercise.
+
+.. rubric:: Footnotes
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

@@ -462,7 +462,7 @@ user might type in order to recreate the object. For example::
 
 `type(self).__name__` simply evaluates to the class name, in this case
 `Polynomial`. This is better than hard-coding the class name because, as we will
-see in :numref:`week %s <inheritance>`, this implementation of
+see in :numref:`Chapter %s <inheritance>`, this implementation of
 :meth:`~object.__repr__` might well end up being inherited by a class with a
 different name. Notice that in order to help ensure consistency of
 representations we call :func:`repr` on the coefficients in this case, whereas
@@ -876,19 +876,27 @@ Glossary
 Exercises
 ---------
 
-.. only:: html
+.. .. only:: html
 
-   .. panels::
-       :card: quiz shadow
+..    .. panels::
+..        :card: quiz shadow
 
-       .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
-           :text: This week's quiz
-           :classes: stretched-link 
+..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
+..            :text: This week's quiz
+..            :classes: stretched-link 
 
+.. only:: not book
 
-Obtain the `skeleton code for these exercises from GitHub Classroom <https://classroom.github.com/a/mElLR0AD>`__. 
-The skeleton code contains a :mod:`polynomial` package with a version of 
-the :class:`Polynomial` class.
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. The skeleton code contains a
+    :mod:`polynomial` package with a version of the :class:`Polynomial` class.
+
+.. only:: book
+
+    Using the information on the `book website` [#exercise_page]_,
+    obtain the skeleton code for these exercises. The skeleton code contains a
+    :mod:`polynomial` package with a version of the :class:`Polynomial` class.
 
 .. proof:exercise::
 
@@ -909,15 +917,16 @@ the :class:`Polynomial` class.
 
 .. proof:exercise::
 
-    Define a function `derivative` in :file:`polynomials.py` which takes a
-    :class:`Polynomial` and returns a new :class:`Polynomial` which is its
-    derivative. Also define a :meth:`dx` method on the :class:`Polynomial` class
-    which returns the derivative of that :class:`Polynomial`. Rather than
-    duplicating code, you should implement the function by calling the method.
+    Define a :meth:`dx` method on the :class:`Polynomial` class which returns a
+    new :class:`Polynomial` which is the derivative of that
+    :class:`Polynomial`. Also define a function `derivative` in
+    :file:`polynomials.py` which takes a :class:`Polynomial` and returns  its
+    derivative. Rather than duplicating code, you should implement the function
+    by calling the method.
 
 .. proof:exercise::
 
-    Inside the exercise repository for this week, create a new :mod:`shape`
+    Inside the exercise repository, create a new :mod:`shape`
     package containing a :mod:`circle` module. 
     
     1. Create a :class:`Circle` class
@@ -945,7 +954,10 @@ the :class:`Polynomial` class.
 .. proof:exercise::
 
     Make the :mod:`circle` and :mod:`polynomial` packages installable. As with
-    last week's exercise, pytest can't test this so you'll need to push to
+    last chapter's exercise, Pytest can't test this so you'll need to push to
     GitHub and check that the autograding tests pass there.
 
-        
+.. rubric:: Footnotes
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

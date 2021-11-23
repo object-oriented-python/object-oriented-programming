@@ -1228,42 +1228,36 @@ Glossary
 Exercises
 ---------
 
-.. only:: html
+.. .. only:: html
 
-   .. panels::
-       :card: quiz shadow
+..    .. panels::
+..        :card: quiz shadow
 
-       .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2070388_1&mode=cpview
-           :text: This week's quiz
-           :classes: stretched-link 
+..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2070388_1&mode=cpview
+..            :text: This week's quiz
+..            :classes: stretched-link 
 
 .. proof:exercise::
 
     Install flake8, pep8-naming, and flake8-docstrings.
     Configure your Python editor to use flake8.
 
-The `skeleton code for this chapter's exercises on GitHub Classroom
-<https://classroom.github.com/a/GCKdXtVA>`__ contains a package :mod:`life`
-which implements Conway's Game of Life. Accept the assignment, and clone the
-repository. Install the package in editable mode. This will also install some
-additional packages that the :mod:`life` package depends on. This is achieved
-using an additional argument to :func:`setuptools.setup`.
+.. only:: not book
 
-.. code-block:: python3
-    :caption: `setup.py` for the :mod:`life` package. The `install_requires`
-        parameter is used to install other packages that :mod:`life` needs.
+    The skeleton code on GitHub for this chapter's exercises contains a package
+    :mod:`life` which implements Conway's Game of Life. Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. Clone the repository into
+    your working folder and install the package in editable mode.
 
-    from setuptools import setup, find_packages
-    setup(
-        name="life",
-        version="0.1",
-        packages=find_packages(),
-        install_requires=[
-            "matplotlib",
-            "scipy",
-            "numpy"
-        ]
-    )
+.. only:: book
+
+    The skeleton code on GitHub for this chapter's exercises contains a package
+    :mod:`life` which implements Conway's Game of Life. Using the information
+    on the book website [#exercise_page]_
+    obtain the skeleton code for these exercises. Clone the repository into
+    your working folder and install the package in editable mode.
+
 
 A couple of example scripts are provided which demonstrate the game of life.
 This one shows a glider flying across the board:
@@ -1349,7 +1343,9 @@ neverending sequence of gliders:
     two parameters, a :class:`Pattern` and a pair of integers representing a
     square on the game board. The method should modify the game board so as to
     insert the pattern provided at a location centred on the location given by
-    the pair of integers.
+    the pair of integers. :numref:`glider_inserted` illustrates this operation.
+
+    .. _glider_inserted:
 
     .. figure:: images/glider_inserted.png
         :width: 60%
@@ -1376,3 +1372,6 @@ six oscillating blinkers:
           such, they are usually of little interest to most Python
           users. However the PEPs having to do with style have wider
           significance.
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
