@@ -37,8 +37,7 @@ year courses with the sole objective of teaching students to programme well.
 This book is the text for the second of these courses. Named "Principles of
 Programming", the course aims to take students with a knowledge of basic Python
 programming (functions, loops, plotting and so forth) and introduce them to
-higher level programming concepts. The course has also been taught to master's
-students in the Mathematical Institute at the University of Oxford.
+higher level programming concepts.
 
 The objective of this course is to graduate better programmers. Material on
 new programming constructs and concepts is accompanied by chapters on good
@@ -68,11 +67,11 @@ This book is for anyone with mathematical, scientific, or engineering interests
 who would like to learn to be a more capable programmer. The mathematical
 examples assume that you know how to differentiate functions of one variable,
 but very little beyond that. Where examples or exercises employ other
-mathematics, such as cellular automata in :numref:`style` and groups in
-:numref:`abstract_data_types`, enough of the mathematics will be introduced
-that the reader should be able to understand the programming concept being
-explained, without necessarily understanding all of the mathematical details of
-the example.
+mathematics, such as cellular automata in :numref:`Chapter %s <style>` and
+groups in :numref:`Chapter %s <abstract_data_types>`, enough of the mathematics
+will be introduced that the reader should be able to understand the programming
+concept being explained, without necessarily understanding all of the
+mathematical details of the example.
 
 This is not an introduction to basic Python: it's assumed that the reader knows
 the sort of basic Python usually covered in a first programming or
@@ -83,9 +82,9 @@ values, as well as dictionaries, lists, and tuples.
 
 Many introductory Python courses exclusively use Jupyter notebooks, so nothing
 beyond that is assumed. Getting set up with a working Python installation is
-covered in :numref:`introduction` while the Python command line and using a
-text editor to create programmes in files are introduced from scratch in
-:numref:`programs_files`.
+covered in :numref:`Chapter %s <introduction>` while the Python command line
+and using a text editor to create programmes in files are introduced from
+scratch in :numref:`Chapter %s <programs_files>`.
 
 How to use this book
 --------------------
@@ -123,18 +122,17 @@ The exercises
 .............
 
 At the end of each chapter are exercises. These usually depend on a skeleton
-code which is available on GitHub. Sometimes you might be asked to complete a piece of code while on other
-occasions you'll need to write a whole Python module from scratch. Each set of
-exercises will come with a matching set of tests. These are small programs which
-check whether your code produces the correct responses to a range of inputs.
-Tests like this provide immediate feedback and enable you to know how you are
-doing. Links to the skeleton code for each chapter are provided at:
+code which is available on GitHub. Sometimes you might be asked to complete a
+piece of code while on other occasions you'll need to write a whole Python
+module from scratch. Each set of exercises will come with a matching set of
+tests. These are small programs which check whether your code produces the
+correct responses to a range of inputs. Tests like this provide immediate
+feedback and enable you to know how you are doing. Links to the skeleton code
+for each chapter are provided at:
 
         `https://object-oriented-programming.github.io/edition1/exercises.html
         <https://object-oriented-programming.github.io/edition1/exercises.html>`__
 
-The mechanism for accessing the exercises will be covered in
-:numref:`introduction`.
 
 Conventions employed
 --------------------

@@ -76,7 +76,7 @@ are:
     1. Python version 3.6 or later.
     2. Git (the revision control system we're going to use).
     3. A Python-aware text editor or :term:`integrated development
-       environment`. Visual Studio Code is recommended, and all the
+       environment` (IDE). Visual Studio Code is recommended, and all the
        instructions will assume that this is what you are using.
 
 .. only:: book
@@ -103,6 +103,11 @@ are:
 
     Installation instructions for these pieces of code are provided `on this
     page <https://object-oriented-programming.github.io/installation.html>`__`.
+
+This is not a course about Git, but a minimal familiarity with Git and GitHub
+will be needed in order to work with the examples. :numref:`Appendix %s <git>`
+provides an elementary introduction to these tools for readers not already
+familiar with them.
 
 Python versions
 ...............
@@ -147,7 +152,7 @@ whole bunch of Python packages. It's highly desirable have a predictable
 programming environment in which the experiments you're doing don't interfere
 with anything else for which you might be using Python, and conversely which
 remains unaffected by any packages you may have installed elsewhere. This
-separation can be achieved by doing everything in a Python :term:`virtual
+separation can be achieved by working in a Python :term:`virtual
 environment`, or :term:`venv`. 
 
 A virtual environment is a folder containing a local installation of Python
@@ -164,7 +169,7 @@ call this anything you like. On my computer this is called
 :file:`principles_of_programming`. You can create this folder using the
 Windows File Explorer, Mac Finder, or by typing the following in a terminal:
 
-.. code-block::
+.. code-block:: console
 
     $ mkdir principles_of_programming
 

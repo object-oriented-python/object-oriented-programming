@@ -5,7 +5,7 @@ Programs in files
 
 In this chapter we will start to learn how to combine pieces of code into
 larger units, and how to package up your code so that you or others can do the
-same. You will previously have written Python code in Jupyter notebooks, and
+same. You may previously have written Python code in Jupyter notebooks, and
 possibly used an interactive Python environment such as IPython. Jupyter
 notebooks are an excellent platform for writing and documenting short pieces of
 code. However, they are much less good for writing code which is designed to be
@@ -327,7 +327,7 @@ want: it clearly separates the names in the module from the names we
 have defined ourselves, and makes it very obvious to a reader where
 the names come from. The downside is that names in namespaces can be
 quite long and cumbersome, which is particularly inconvenient if names
-are to be used frequently or in the middle of formulae: you probably
+are to be used frequently or in the middle of expressions: you probably
 don't really want to write :func:`math.sin` in every trig formula you
 ever write. One alternative is to rename the module on import. This is
 achieved using the keyword :keyword:`as <import>` in an import statement. For example,
@@ -449,7 +449,7 @@ they make up the Python package.
     This is not really a part of the package at all, but the
     :file:`my_package` folder needs to be in some folder, and this is a
     reminder that all your work should be in a revision control system
-    such as :ref:`git <fons:git>`. It would be usual for
+    such as :ref:`Git <git>`. It is usual for
     package folders to be contained immediately in the top level of
     the repository, in the manner shown here.
 
@@ -927,7 +927,9 @@ Exercises
 
 Before attempting the exercises, ensure that you have obtained the software
 tools described in :numref:`tools` and set up a working folder and
-:term:`virtual environment` as described in :numref:`venv`.
+:term:`virtual environment` as described in :numref:`venv`. If you're not
+already familiar with Git and GitHub then you will also need to work through
+:numref:`Appendix %s <git>` to learn enough to do the exercises.
 
 .. .. panels::
 ..     :card: quiz shadow
@@ -943,40 +945,68 @@ tools described in :numref:`tools` and set up a working folder and
 ..     you will use for this course on your computer. Start with an overall folder
 ..     for the module, and create a virtual environment in that module.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 .. _course_repo:
 
 .. proof:exercise::
 
-    Visit the `GitHub repository for these notes
-    <https://github.com/object-oriented-python/object-oriented-programming>`__.
-    Clone that git repository into your course folder, and install the Python
-    package it contains into your virtual environment. Check that it has
-    installed correctly by installing Pytest, and running:
+    .. only:: not book
+            
+        Visit the `GitHub repository for this book
+        <https://github.com/object-oriented-python/object-oriented-programming>`__.
+        Clone that git repository into your course folder, and install the Python
+        package it contains into your virtual environment. Check that it has
+        installed correctly by installing Pytest, and running:
+
+    .. only:: book
+            
+        Visit the GitHub repository for this book. [#book_repo]_
+        Clone that git repository into your working folder, and install the Python
+        package it contains into your virtual environment. Check that it has
+        installed correctly by installing Pytest, and running:
 
     .. code-block:: console
 
         (PoP_venv) $ pytest tests/test_fibonacci.py
 
-    You could also run iPython,  import :mod:`fibonacci` and try out
+    You could also run IPython,  import :mod:`fibonacci` and try out
     :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
 
 .. proof:exercise::
 
-    Accept the `first GitHub Classroom assignment for this module
-    <https://classroom.github.com/a/VltGa-Xl>`__ and clone it into your course folder. The assignment
-    repository just contains a :file:`README` and some tests. Your job in the
-    following exercises will be to populate it with the remaining content.
+    .. only:: not book
+
+        Using the information on the `book website
+        <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+        create your first exercise repository for this module and clone it
+        into your working folder. The exercise repository just contains a
+        :file:`README` and some tests. Your job in the following exercises will be
+        to populate it with the remaining content.
+
+    .. only:: book
+
+        Using the information on the `book website` [#exercise_page]_
+        create your first exercise repository for this module and clone it
+        into your working folder. The exercise repository just contains a
+        :file:`README` and some tests. Your job in the following exercises will be
+        to populate it with the remaining content.
+
 
 .. proof:exercise::
 
     Create a new Python :term:`package` named :mod:`math_utils` containing a
     :term:`module` called :mod:`primes`. In the :mod:`primes` module define a
     function :func:`isprime` which takes in a single integer argument and
-    returns `True` or `False` depending on whether or not the argument is prime.
-    There is no need to be sophisticated in the algorithm used to check for
-    primeness, simply checking whether the number is zero modulo any of the
-    integers less than its square root will be fine. Test your code by running
-    the following in your week 2 exercise repository:
+    returns `True` or `False` depending on whether or not the argument is
+    prime. There is no need use a sophisticated algorithm, simply checking
+    whether the number is zero modulo any of the integers less than its square
+    root will be fine. Test your code by running the following in the exercise
+    repository:
 
     .. code-block:: console
 
@@ -1030,3 +1060,9 @@ tools described in :numref:`tools` and set up a working folder and
 
 .. [#packaging] `https://packaging.python.org
     <https://packaging.python.org/tutorials/packaging-projects/>`__ 
+
+.. [#book_repo] `https://github.com/object-oriented-python/object-oriented-programming
+    <https://github.com/object-oriented-python/object-oriented-programming>`__
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
