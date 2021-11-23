@@ -10,6 +10,9 @@ important part of learning to be a good programmer. If you're doing these
 exercises as a part of a formal course, then GitHub classroom provides
 additional support for automatically creating your personal repository for each
 exercise, for submitting your work, and providing feedback through autotesting.
+If you're working through this book yourself, you'll be able to use the
+template repositories on GitHub to access everything you need to do the
+exercises. 
 
 .. only:: not book
 
