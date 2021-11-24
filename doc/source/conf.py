@@ -231,6 +231,7 @@ latex_additional_files = [
     '_themes/finite_element/static/dialog-right.png',
     '_themes/finite_element/static/dialog-wrong.png',
     '_static/imperialmathnotes.sty',
+    '_static/poptitle.sty',
     'images/Imperial.pdf'
 ]
 
@@ -244,6 +245,9 @@ if tags.has("book"):
 \hypersetup{linkcolor=black}
 %\hypersetup{urlcolor=externallinkcolor}
 \hypersetup{urlcolor=black}
+\usepackage{poptitle}
+\subtitle{in Python for mathematicians}
+\edition{2021}
 """
 else:
     # Imperial lecture notes version.
@@ -338,6 +342,7 @@ latex_elements = {
 if tags.has("book"):
     latex_elements['geometry'] = r'\usepackage[papersize={189mm,246.1mm}]{geometry}'
     latex_elements['sphinxsetup'] += ',hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}'
+    latex_elements['maketitle'] = r'\poptitlepages'
 else:
     latex_elements['maketitle'] = r'\imperialmathnotestitlepages'
     latex_elements['sphinxsetup'] += ', \
@@ -353,12 +358,12 @@ else:
 #   u'M345A47 Finite Elements: Analysis and Implementation',
 #   u'David A. Ham and Colin J. Cotter', 'manual'),
 # ]
-if tags.has("book"):
-    latex_documents = [
-        ('index', 'objectorientedprogramming.tex',
-         'Object oriented programming\\\\\\LARGE in Python for mathematicians',
-         'David A. Ham', 'book'),
-    ]
+# if tags.has("book"):
+#     latex_documents = [
+#         ('index', 'objectorientedprogramming.tex',
+#          'Object oriented programming\\\\\\LARGE in Python for mathematicians',
+#          'David A. Ham', 'book'),
+#     ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
