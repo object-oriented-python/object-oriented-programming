@@ -134,7 +134,7 @@ Python you use.
     which were introduced in Python 3.6, so the code will not work in earlier
     versions of Python.
 
-.. _venv:
+.. _create_venv:
 
 Setting up a Python virtual environment
 ---------------------------------------

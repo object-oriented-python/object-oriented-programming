@@ -5,7 +5,7 @@ Debugging and testing
 
 In :numref:`Chapter %s <errors_and_exceptions>` we learned about
 :term:`exceptions <exception>` and how to read the :term:`traceback` that is
-printed when an unhandled exception is raised. This week we will look at other
+printed when an unhandled exception is raised. In this chapter we will look at other
 tools and techniques that we can use to understand what is wrong with a piece
 of code, and therefore how to fix it. Before we do that, we'll divert just
 briefly to introduce an important Python module that we'll use in a lot of the
@@ -84,7 +84,7 @@ Observe that the :class:`~pandas.DataFrame` acts as a dictionary of
 one-dimensional data :class:`~pandas.Series`. A :class:`pandas.Series` can be
 indexed and sliced like any other Python :ref:`sequence type <typesseq>`. This
 very high level introduction is all we'll need to use pandas in demonstrations
-this week. Much more documentation is available on the `pandas website <https://pandas.pydata.org/docs/>`__.
+in this chapter. Much more documentation is available on the `pandas website <https://pandas.pydata.org/docs/>`__.
 
 .. note::
 
@@ -120,7 +120,7 @@ advantage that integrates well with IPython. Another advanced command-line
 debugger is `pdb++
 <https://github.com/pdbpp/pdbpp#pdb-a-drop-in-replacement-for-pdb>`__. The
 distinct advantage of pdb++ is that it replaces the built-in pdb. Among other
-things, this means it can be triggered from a failed `pytest
+things, this means it can be triggered from a failed `Pytest
 <https://docs.pytest.org/en/stable/>`__ test. 
 
 The alternative to a command-line debugger is to use a graphical debugger
@@ -650,15 +650,15 @@ and fails if it is.
 Creating a test command
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Since pytest provides a framework for creating programs which succeed or fail,
+Since Pytest provides a framework for creating programs which succeed or fail,
 one approach is write the test that we wish had existed at the time the bug
 slipped into our code. The bisection search effectively enables us to
 retrospectively introduce this test into our repository. Because we're going to
 be rolling back the state of our repository to before we created this command,
 this is one exception to the rule that you must always commit all of your work
 to the git repository. Make a copy of this command (for example the Python file
-containing the pytest test) outside your repository. For the rest of this
-section, we'll assume that you've created a pytest test in a file called
+containing the Pytest test) outside your repository. For the rest of this
+section, we'll assume that you've created a Pytest test in a file called
 :file:`bug_test.py` which you have placed in the folder containing your
 repository (if you followed the instructions in :numref:`Chapter %s
 <programs_files>` then this folder might be called
@@ -830,43 +830,68 @@ Glossary
 Exercises
 ---------
 
-The exercises work a little differently this week, because the objective is not
-to write code but to practice debugging techniques. The quiz is not on
-BlackBoard but is instead a Google form, because that offers instant feedback.
-You should work through the the exercises and quiz together. For most of exercises,
-there are quiz questions which you will be able to answer if you are
-successfully able to do the exercise.
+.. only:: not book
 
-Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/mi6I-jcG>`__.
+    The exercises work a little differently this week, because the objective is
+    not to write code but to practice debugging techniques. The information on
+    the `book website
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    points not just to the skeleton code but also to an online quiz which will
+    provide instant feedback on the questions below. You should access the
+    skeleton code and then work through the quiz questions.
 
-.. panels::
-    :card: quiz shadow
+.. only:: book
 
-    .. link-button:: https://forms.gle/cL5eZycNC9Js19uL7
-        :text: This week's quiz
-        :classes: stretched-link 
+    The exercises work a little differently this week, because the objective is
+    not to write code but to practice debugging techniques. The information on
+    the book website [#exercise_page]_
+    points not just to the skeleton code but also to an online quiz which will
+    provide instant feedback on the questions below. You should access the
+    skeleton code and then work through exercises, using the online quiz to
+    check your answers.   
 
 .. proof:exercise:: Debugging python code
 
     The skeleton code contains a Python script :file:`scripts/tests_report`.
-    Run this script under the Visual Studio code debugger and answer the quiz
-    questions about what you find.
+    Run this script under the Visual Studio code debugger and answer the
+    following questions about what you find. Entering the answers into the
+    online quiz will tell you if you are correct.
+
+    1. On which line of the file does the exception occur?
+    2. How many stack frames are there on the call stack when the exception occurs?
+    3. What is the exact value of the variable t?
     
 .. proof:exercise:: Minimal failing example
 
     In the file :file:`scripts/tests_report_mfe.py` construct a :term:`minimal failing
     example` which exhibits the error you discovered in the previous section.
     Your minimal failing example should contain one import and one other line
-    of code. :file:`tests/test_mfe.py` is a pytest test for this exercise.
+    of code. :file:`tests/test_mfe.py` is a Pytest test for this exercise.
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. proof:exercise:: Bisection
 
-    The Unified Form Language (UFL) is a computer symbolic algebra package used to
-    represent partial differential equations in software applying a numerical
-    technique called the finite element method. Clone the `course fork of the
-    UFL repository <https://github.com/object-oriented-python/ufl>`__. At some
-    point in the past, the following code worked:
+    .. only:: not book
+
+        The Unified Form Language (UFL) is a computer symbolic algebra package
+        used to represent partial differential equations in software applying a
+        numerical technique called the finite element method. Clone the `course
+        fork of the UFL repository
+        <https://github.com/object-oriented-python/ufl>`__. At some point in
+        the past, the following code worked:
+
+    .. only:: book
+
+        The Unified Form Language (UFL) is a computer symbolic algebra package
+        used to represent partial differential equations in software applying a
+        numerical technique called the finite element method. Clone the course
+        fork of the UFL repository [#ufl]_. At some point in
+        the past, the following code worked:
 
     .. code-block:: python3
 
@@ -874,5 +899,16 @@ Obtain the `skeleton code for these exercises from GitHub classroom
         argyris = ufl.FiniteElement("Argyris", degree=6, cell=ufl.triangle)
 
     Use `git bisect` to identify the first commit at which this code failed,
-    and the last commit at which it worked, and answer the corresponding quiz
-    questions.
+    and the last commit at which it worked, and answer the following questions.
+    The online quiz will tell you if you are correct.
+
+    1. What is the commit ID of the first bad commit?
+    2. What is the commit ID of the last good commit?
+
+.. rubric:: Footnotes
+
+.. [#ufl] `https://github.com/object-oriented-python/ufl
+    <https://github.com/object-oriented-python/ufl>`__
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

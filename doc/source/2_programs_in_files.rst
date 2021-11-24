@@ -922,12 +922,14 @@ Glossary
        A text file containing a sequence of Python statements to be
        executed. In Python, program and script are synonymous.
 
+.. _programs_in_files_exercises:
+
 Exercises
 ---------
 
 Before attempting the exercises, ensure that you have obtained the software
 tools described in :numref:`tools` and set up a working folder and
-:term:`virtual environment` as described in :numref:`venv`. If you're not
+:term:`virtual environment` as described in :numref:`create_venv`. If you're not
 already familiar with Git and GitHub then you will also need to work through
 :numref:`Appendix %s <git>` to learn enough to do the exercises.
 

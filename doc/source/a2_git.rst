@@ -350,6 +350,11 @@ button marked :kbd:`Create repository from template`.
 
 .. image:: images/github_template.png
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. _exercise_instructions:
 
@@ -364,12 +369,6 @@ will be in this book at the end of the relevant chapter. This time, we see
 this:
 
 .. image:: images/git_exercise.png
-
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
 
 So what we have to do is:
 

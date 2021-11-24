@@ -18,7 +18,7 @@ ability to make a complex object or operation out of several components. We can
 compose objects by simply making one object a :term:`attribute` of another
 object. This combines objects in a *has a* relationship. For example the
 :class:`~example_code.polynomial.Polynomial` class introduced in
-:numref:`chapter %s <objects>` *has a* :class:`tuple` of coefficients. Object
+:numref:`Chapter %s <objects>` *has a* :class:`tuple` of coefficients. Object
 composition of this sort is a core part of :term:`encapsulation`.
 
 Another way of composing abstractions is to make a new :term:`class`
@@ -808,9 +808,9 @@ Exercises
     .. hint::
 
         You will need to :keyword:`import` :class:`example_code.groups.Group`
-        from the `object_oriented_programming` repository that you installed
-        :ref:`in Chapter 2 <course_repo>`. You should also `git pull` in that
-        repository in order to get any changes that have happened in the
+        from the `object_oriented_programming` repository that you installed in
+        :numref:`programs_in_files_exercises`. You should also `git pull` in
+        that repository in order to get any changes that have happened in the
         intervening period.
 
     .. hint::

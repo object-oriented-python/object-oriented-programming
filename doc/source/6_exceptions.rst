@@ -195,7 +195,7 @@ level of code either typed directly into iPython or executed in a
 script. However, what happens if an error occurs in a function call or
 even several functions down? Consider the following code, which uses
 the :class:`~polynomial.Polynomial` class from
-:numref:`chapter %s <objects>`:
+:numref:`Chapter %s <objects>`:
 
 .. code-block:: ipython3
 

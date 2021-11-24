@@ -1176,19 +1176,35 @@ Glossary
         :func:`functools.singledispatch` function facilitates the creation of
         single dispatch functions.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 Exercises
 ---------
 
-Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/DVDJ8r1y>`__. You should also update your clone
-of the course repository to ensure you have the latest version of the
-:mod:`example_code` package.
+.. only:: not book
+
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. The exercises also make use
+    of the book repository which you installed in :ref:`in Chapter 2
+    <course_repo>`.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises. The exercises also make use
+    of the book repository which you installed in
+    :numref:`programs_in_files_exercises`.
 
 .. _ex_expr:
 
 .. proof:exercise::
 
-    In the skeleton repository for this week, create a :term:`package`
+    In the exercise repository, create a :term:`package`
     :mod:`expressions` which implements the class hierarchy in
     :numref:`expr_hierarchy`. When implementing :meth:`~object.__str__`, use the
     symbols `+`, `-`, `*`, `/`, and `^`. The names :class:`Symbol`,
@@ -1234,3 +1250,6 @@ of the course repository to ensure you have the latest version of the
     implementation is chosen on the basis of multiple function arguments, is
     also possible, and is a key feature of `the Julia programming language
     <https://julialang.org>`_. 
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

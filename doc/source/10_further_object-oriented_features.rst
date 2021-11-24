@@ -20,7 +20,7 @@ Decorators
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f1d61410-4200-42e5-92c4-acf2011de8ab>`__.
 
 
-In :numref:`Week %s <trees>` we encountered the
+In :numref:`Chapter %s <trees>` we encountered the
 :func:`functools.singledispatch` decorator, which turns a function into a
 :term:`single dispatch function`. More generally, a decorator is a function
 which takes in a function and returns another function. In other words, the
@@ -246,7 +246,7 @@ access features that it provides.
 Abstract methods
 ~~~~~~~~~~~~~~~~
 
-Let's look back at the groups example from :numref:`Week %s <inheritance>`. We
+Let's look back at the groups example from :numref:`Chapter %s <inheritance>`. We
 defined the base :class:`~example_code.groups.Group` class and specified that
 child classes had to implement the :meth:`_validate` and :meth:`operator`
 methods as well as the :attr:`symbol` :term:`class attribute`. But how should
@@ -564,12 +564,19 @@ Glossary
         its definition, but which is instead claimed as a subclass by the
         superclass.
 
-
 Exercises
 ---------
 
-Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/qTArFlxP>`__. 
+.. only:: not book
+
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises.
 
 .. proof:exercise::
 
@@ -605,3 +612,6 @@ Obtain the `skeleton code for these exercises from GitHub classroom
 .. [#python_in_python] Most of the :ref:`Python Standard Library <library-index>` is written
     in Python, so diving in and reading the source code is often an option if
     you really want to know how some part of the language works.
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
