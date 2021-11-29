@@ -612,7 +612,7 @@ course in a perfect world where we have full test suite coverage of all
 functionality, and the test suite is run on every commit, this situation will
 never occur. However the reality is that test coverage is never complete, and
 there will always be untested functionality in any non-trivial piece of
-software. Regressions are a particularly vexxing form of bug: there is little
+software. Regressions are a particularly vexing form of bug: there is little
 more frustrating to be coming up to a deadline and to discover that something
 that used to work no longer does.
 

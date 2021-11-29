@@ -298,7 +298,7 @@ formal course which the instructor has set up using GitHub classroom, or you
 are doing the exercises by yourself in private study. If you're using GitHub
 classroom as a part of a formal course where the instructor will be using
 GitHub classroom then follow the instructions in :numref:`accept_classroom`.
-If you're working on the exercises by yourself then follow the instructiosn in
+If you're working on the exercises by yourself then follow the instructions in
 :numref:`accept_template`.
 
 .. container:: vimeo

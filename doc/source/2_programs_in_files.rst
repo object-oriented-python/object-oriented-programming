@@ -75,7 +75,7 @@ IPython can now be run by simply typing:
 
     (PoP_venv) $ ipython
 
-This will result in output simiar to the following:
+This will result in output similar to the following:
 
 .. code-block:: ipython3
 

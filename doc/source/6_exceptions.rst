@@ -618,7 +618,7 @@ the exception matches the list of exceptions is executed. For example:
     In this case, the except block will match any exception which is raised in
     the corresponding try block. Using unconstrained except blocks like this is
     a somewhat dangerous strategy. Usually, the except block will be designed
-    to deal with a particular type of exeptional circumstance. However, an
+    to deal with a particular type of exceptional circumstance. However, an
     except block that catches any exception may well be triggered by a completely
     different exception, in which case it will just make the error more
     confusing by obscuring where the issue actually occurred.

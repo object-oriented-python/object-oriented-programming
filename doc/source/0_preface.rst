@@ -184,7 +184,7 @@ The course Principles of Programming, and the notes on which this book is
 based, were first delivered in spring 2020, when university teaching was
 completely online during the COVID pandemic. I'd like to thank teaching fellow
 Dr Matthew Woolway who worked tirelessly with me on the module and who put
-together many of the tests on the exercies, and the graduate teaching
+together many of the tests on the exercises, and the graduate teaching
 assistants Miguel Boland, Sophia Vorderwuelbecke and Connor Ward whose
 professionalism in delivering the course in very complex circumstances was
 outstanding. Pulling out all the stops to deliver the written and video

@@ -645,7 +645,7 @@ operators but different for terminals.
         def __repr__(self):
             return type(self).__name__ + repr(self.operands)
 
-    This approch is valid because the string representation of a :class:`tuple`
+    This approach is valid because the string representation of a :class:`tuple`
     is a pair of round brackets containing the string representation of each
     item in the tuple.
 
@@ -1053,7 +1053,7 @@ algorithm.
             if unvisited_children:
                 push e onto stack # Not ready to visit this node yet.
                 # Need to visit children before e. 
-                push all unvisted_children onto stack
+                push all unvisited_children onto stack
             else:
                 # Any children of e have been visited, so we can visit it.
                 visited[e] = visitor(e, *(visited(o) for o in e.operands))

@@ -846,8 +846,8 @@ instead of:
 
 .. _repetition:
 
-Avoid repetitition
-..................
+Avoid repetition
+................
 
 Programmers very frequently need to do *nearly* the same thing over and over.
 One obvious way to do this is to write code for the first case, then copy and

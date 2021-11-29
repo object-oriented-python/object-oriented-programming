@@ -123,7 +123,7 @@ references in this book are to that version.
 Within Python 3, there is a minor version release approximately every year.
 Once released, this receives security updates for 5 years. At the time of
 writing, Python 3.10 is the newest release version, and Python 3.6 is the
-oldest version that still recieves security fixes. The user-facing differences
+oldest version that still receives security fixes. The user-facing differences
 between minor Python versions are usually fairly minimal, so for the purposes
 of this book it doesn't matter which of the currently supported versions of
 Python you use. 

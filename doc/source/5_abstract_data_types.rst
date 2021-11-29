@@ -724,7 +724,8 @@ Here we have introduced in some detail a few relatively simple abstract data
 types that illustrate the distinction between the mathematical properties of a
 type and the concrete details of its implementation. There are many other
 abstract data types, some of which you will have already met, and we will
-encouter a few more in this course. For context, here are a few other examples.
+encounter a few more in this course. For context, here are a few other
+examples.
 
 set
     A set is an unordered collection of objects with the property that objects
