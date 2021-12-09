@@ -395,8 +395,8 @@ We'll consider postorder traversal first, as it's the easier to implement.
         tree: TreeNode
             The tree to be visited.
         fn: function(node, *fn_children)
-            A function to be applied at each node. The function should take the
-            node to be visited as its first argument, and the results of
+            A function to be applied at each node. The function should take
+            the node to be visited as its first argument, and the results of
             visiting its children as any further arguments.
         """
         return fn(tree, *(postvisitor(c, fn) for c in tree.children))
@@ -480,8 +480,8 @@ call :func:`previsitor` on the child nodes.
         tree: TreeNode
             The tree to be visited.
         fn: function(node, fn_parent)
-            A function to be applied at each node. The function should take the
-            node to be visited as its first argument, and the result of
+            A function to be applied at each node. The function should take
+            the node to be visited as its first argument, and the result of
             visiting its parent as the second.
         """
         fn_out = fn(tree, fn_parent)
@@ -776,7 +776,8 @@ function.
             Any keyword arguments required to evaluate specific types of
             expression.
         symbol_map: dict
-            A dictionary mapping Symbol names to numerical values, for example:
+            A dictionary mapping Symbol names to numerical values, for
+            example:
 
             {'x': 1}
         """
@@ -819,24 +820,24 @@ function.
         return o[0] ** o[1]
 
 Next we turn our attention to the implementation of evaluation for the different
-expression types. Look first at lines 27-29, which provide the evaluation of
+expression types. Look first at lines 28-30, which provide the evaluation of
 :class:`Number` nodes. The function body is trivial: the evaluation of a
 :class:`Number` is simply its value. The function interface is more interesting.
 Notice that the function name is given as `_`. This is the Python convention for
 a name which will never be used. This function will never be called by its
-declared name. Instead, look at the decorator on line 27. The single dispatch
+declared name. Instead, look at the decorator on line 28. The single dispatch
 function :func:`~example_code.expression_tools.evaluate` has a :term:`method`
 :meth:`register`. When used as a decorator, the :meth:`register` method of a
 single dispatch function registers the function that follows as implementation
 for the :keyword:`class` given as an argument to :meth:`register`. On this
 occasion, this is :class:`expressions.Number`.
 
-Now look at lines 32-34. These contain the implementation of
+Now look at lines 33-35. These contain the implementation of
 :func:`~example_code.expression_tools.evaluate` for :class:`expressions.Symbol`.
 In order to evaluate a symbol, we depend on the mapping from symbol names to
 numerical values that has been passed in. 
 
-Finally, look at lines 37-39. These define the evaluation visitor for addition.
+Finally, look at lines 38-40. These define the evaluation visitor for addition.
 This works simply by adding the results of evaluating the two operands of
 :class:`expressions.Add`. The evaluation visitors for the other operators
 follow in an analogous manner.
@@ -869,8 +870,8 @@ function.
         expr: Expression
             The expression to be visited.
         fn: function(node, *o, **kwargs)
-            A function to be applied at each node. The function should take the
-            node to be visited as its first argument, and the results of
+            A function to be applied at each node. The function should take
+            the node to be visited as its first argument, and the results of
             visiting its operands as any further positional arguments. Any
             additional information that the visitor requires can be passed in
             as keyword arguments.

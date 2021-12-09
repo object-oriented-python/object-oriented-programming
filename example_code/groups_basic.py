@@ -65,7 +65,7 @@ class CyclicGroup:
 
 
 class GeneralLinearGroup:
-    """The general linear group represented by degree x degree matrices."""
+    """The general linear group represented by degree square matrices."""
 
     def __init__(self, degree):
         self.degree = degree

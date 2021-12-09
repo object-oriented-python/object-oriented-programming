@@ -36,8 +36,8 @@ def previsitor(tree, fn, fn_parent=None):
     tree: TreeNode
         The tree to be visited.
     fn: function(node, fn_parent)
-        A function to be applied at each node. The function should take the
-        node to be visited as its first argument, and the result of
+        A function to be applied at each node. The function should take
+        the node to be visited as its first argument, and the result of
         visiting its parent as the second.
     """
     fn_out = fn(tree, fn_parent)

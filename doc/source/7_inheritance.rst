@@ -59,6 +59,12 @@ a :term:`class`, :func:`issubclass` will tell us when one
    In [5]: issubclass(int, Number)
    Out[5]: True
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 In fact, there is a whole hierarchy of
 numeric types in :mod:`numbers`:
 
@@ -322,7 +328,7 @@ follows:
     :linenos:
 
     class GeneralLinearGroup:
-        """The general linear group represented by degree x degree matrices."""
+        """The general linear group represented by degree square matrices."""
         def __init__(self, degree):
             self.degree = degree
 
@@ -351,7 +357,7 @@ follows:
 
         def __repr__(self):
             """Return the canonical string representation of the group."""
-            return f"{type(self).__name__}({repr(self.degree)})"
+            return f"{type(sxelf).__name__}({repr(self.degree)})"
 
 We won't illustrate the operation of this class, though the reader is welcome to
 :keyword:`import` the :mod:`example_code.groups_basic` module and experiment.
@@ -592,6 +598,12 @@ than the current one with:
 
 Observe that since `type(self)` is a :term:`class`, we can :term:`instantiate`
 it by calling it.
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 Calling parent class methods
 ----------------------------

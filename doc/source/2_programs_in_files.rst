@@ -424,6 +424,12 @@ packages come in. A Python package is a collection of module files,
 which can be imported together. The basic folder structure of a Python
 package is shown in :numref:`package-layout`.
 
+.. only:: book
+    
+    .. raw:: latex
+
+        \clearpage
+
 .. _package-layout:
 
 .. code-block::
@@ -649,15 +655,13 @@ There is one more feature of Pip packages that it is useful to introduce at
 this stage: dependencies. If you write a package and the modules in that
 package themselves import other packages, then a user will need those packages
 to be installed in their Python environment, or your package will not work. If
-those packages form part of the Python :ref:`Standard Library <library-index>`
-then you need do nothing at all since they will automatically be available.
-However, if your package depends on other packages that need to be installed
-from PyPI then steps need to be taken to ensure that your users will have the
-correct packages installed. The `install_requires` keyword argument to
-:func:`setuptools.setup` takes a list of Pip package names. Pip will install
-any of these packages that are not already available before installing the
-package itself. :numref:`dependency-setup-py` illustrates this by adding a
-dependency on :mod:`numpy`.
+your package depends on other packages that need to be installed from PyPI then
+steps need to be taken to ensure that your users will have the correct packages
+installed. The `install_requires` keyword argument to :func:`setuptools.setup`
+takes a list of Pip package names. Pip will install any of these packages that
+are not already available before installing the package itself.
+:numref:`dependency-setup-py` illustrates this by adding a dependency on
+:mod:`numpy`.
 
 .. _dependency-setup-py:
 
@@ -675,11 +679,15 @@ dependency on :mod:`numpy`.
 
 .. warning::
 
-    `install_requires` should only list packages that Pip can install from
-    PyPI. In particular, packages from the built-in Python Standard Library
-    must not be listed in `install_requires`. Listing these packages is
-    unnecessary, since they are guaranteed to be available, and will cause an
-    error because Pip will attempt (and fail) to install them from PyPI.
+    `install_requires` should not list packages from the Python Standard
+    Library. These are always available, and listing them will cause Pip to error.
+    
+
+..     `install_requires` should only list packages that Pip can install from
+..     PyPI. In particular, packages from the built-in Python Standard Library
+..     must not be listed in `install_requires`. Listing these packages is
+..     unnecessary, since they are guaranteed to be available, and will cause an
+..     error because Pip will attempt (and fail) to install them from PyPI.
 
 Testing frameworks
 ------------------
@@ -947,11 +955,6 @@ already familiar with Git and GitHub then you will also need to work through
 ..     you will use for this course on your computer. Start with an overall folder
 ..     for the module, and create a virtual environment in that module.
 
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
 
 .. _course_repo:
 
@@ -1030,8 +1033,13 @@ already familiar with Git and GitHub then you will also need to work through
         After this and every exercise in which you write code, ensure that you
         add any new files to Git, commit all of your changes, and push to
         GitHub. Then ensure that the tests pass on GitHub. For more information
-        about how to do any of these, refer back the :ref:`Faculty of Natural Sciences
-        Git instructions <github_classroom_exercise>`.
+        about how to do any of these, refer to :numref:`Appendix %s <git>`.
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. proof:exercise::
 

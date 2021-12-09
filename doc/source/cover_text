@@ -1,0 +1,19 @@
+This book is for mathematicians, scientists, and engineers who have learned the
+very basics of programming in Python, and who would like to become more capable
+programmers. In addition to covering higher level programming concepts such as
+objects, inheritance, and abstract data types, emphasis is placed on
+programming skills such as interpreting and debugging errors. If you find
+yourself baffled by the pages of error messages that Python emits, and would
+like to make sense of them, then this book is for you.
+
+The book takes a mathematician's view of programming, introducing higher level
+programming abstractions by analogy with the abstract objects that make up
+higher mathematics. Examples and exercises are chosen from across mathematics,
+though the actual mathematical knowledge required to understand this book is
+limited to differentiating functions of one variable.
+
+Dr David Ham is Reader in Computational Mathematics at Imperial College London.
+He teaches the object-oriented programming course for undergraduate
+mathematicians on which this book is based, as well as an advanced course on
+the finite element method. His research focusses on high level abstractions and
+code generation for forward and inverse finite element simulation.

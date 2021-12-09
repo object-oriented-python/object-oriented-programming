@@ -248,6 +248,21 @@ if tags.has("book"):
 \usepackage{poptitle}
 \subtitle{in Python for mathematicians}
 \edition{2021}
+\makeatletter
+   \fancypagestyle{normal}{
+    \fancyhf{}
+    \fancyfoot[RO]{{\py@HeaderFamily\thepage}}
+    \fancyfoot[LO]{{\py@HeaderFamily\nouppercase{\rightmark}}}
+    \fancyhead[RO]{{}}
+    \if@twoside
+     \fancyfoot[LE]{{\py@HeaderFamily\thepage}}
+     \fancyfoot[RE]{{\py@HeaderFamily\nouppercase{\leftmark}}}
+     \fancyhead[LE]{{}}
+    \fi
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+   }
+\makeatother
 """
 else:
     # Imperial lecture notes version.
@@ -341,7 +356,7 @@ latex_elements = {
 
 if tags.has("book"):
     latex_elements['geometry'] = r'\usepackage[papersize={189mm,246.1mm}]{geometry}'
-    latex_elements['sphinxsetup'] += ',hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}'
+    latex_elements['sphinxsetup'] += ',hmargin={1.9cm,1.3cm},vmargin={2cm,2cm}'
     latex_elements['maketitle'] = r'\poptitlepages'
 else:
     latex_elements['maketitle'] = r'\imperialmathnotestitlepages'

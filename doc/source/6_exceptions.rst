@@ -107,6 +107,12 @@ occurs. Consider the following code:
     a = (1, 2
     print(a)
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 The error here is a missing closing bracket on the first line, however
 the error message which the :term:`Python interpreter` prints when this code is run is:
 

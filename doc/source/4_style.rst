@@ -143,7 +143,7 @@ activated your :term:`virtual environment` and then run:
 
 .. code-block:: console
 
-    (my_venv) $ python -m pip install flake8
+    (PoP_venv) $ python -m pip install flake8
 
 This is enough to run Flake8 on the command line, however you will probably want
 to set up your editor to highlight flake8 incompatibilities in your source. For
@@ -299,14 +299,14 @@ White space within lines
 
         .. code-block:: python3
 
-            my_function (1) # Space between function name and bracket.
+            sin (1) # Space between function name and bracket.
             x [0] # Space before index square bracket.
 
     .. container:: goodcode
 
         .. code-block:: python3
 
-            my_function(1)
+            sin(1)
             x[0]
  
 3. Put a space after a comma but not before it, exactly like you would
@@ -537,14 +537,14 @@ function, variable, and module names
 
         .. code-block:: python3
 
-            def Euler  # Don't capitalise function names.
+            def Euler(n): # Don't capitalise function names.
             MaxRadius = 10.  # No CamelCase.
 
     .. container:: goodcode
 
         .. code-block:: python3
         
-            def euler  # Lower case, even for names.
+            def euler(n):  # Lower case, even for names.
             max_radius = 10.  # Separate words with _.
 
 method parameters
@@ -1036,7 +1036,8 @@ a full stop.
     .. code-block:: python3
 
         def fib(n):
-            "Return the n-th Fibonacci number"  # Single quotes, no full stop.
+            "Return the n-th Fibonacci number"  # Single quotes,
+                                                # no full stop.
 
         def fib(n):
             """Returns the n-th Fibonacci number."""  # Sentence not 
@@ -1336,6 +1337,11 @@ neverending sequence of gliders:
 
         Gliders rotated by 1, 2, and 3 right angles anticlockwise.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. proof:exercise::
 

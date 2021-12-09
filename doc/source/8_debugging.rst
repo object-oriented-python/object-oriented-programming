@@ -46,8 +46,14 @@ illustrated with an example.
     Richard,Mccoy,RM518
     Marjorie,Jackson,MJ1418
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 :numref:`student_data` shows the first few records in a table of student data.
-Having installed pandas:
+Having installed Pandas:
 
 .. code-block:: console
 
@@ -80,11 +86,23 @@ the following code enables us to access the data from within Python:
     In [6]: type(students['FirstName'])
     Out[6]: pandas.core.series.Series
 
-Observe that the :class:`~pandas.DataFrame` acts as a dictionary of
-one-dimensional data :class:`~pandas.Series`. A :class:`pandas.Series` can be
-indexed and sliced like any other Python :ref:`sequence type <typesseq>`. This
-very high level introduction is all we'll need to use pandas in demonstrations
-in this chapter. Much more documentation is available on the `pandas website <https://pandas.pydata.org/docs/>`__.
+.. only:: not book
+
+    Observe that the :class:`~pandas.DataFrame` acts as a dictionary of
+    one-dimensional data :class:`~pandas.Series`. A :class:`pandas.Series` can be
+    indexed and sliced like any other Python :ref:`sequence type <typesseq>`. This
+    very high level introduction is all we'll need to use pandas in demonstrations
+    in this chapter. Much more documentation is available on the `Pandas website <https://pandas.pydata.org/docs/>`__.
+
+.. only:: book
+
+    Observe that the :class:`~pandas.DataFrame` acts as a dictionary of
+    one-dimensional data :class:`~pandas.Series`. A :class:`pandas.Series` can be
+    indexed and sliced like any other Python :ref:`sequence type <typesseq>`. This
+    very high level introduction is all we'll need to use pandas in demonstrations
+    in this chapter. Much more documentation is available on the 
+    Pandas website [#pandas]_.
+
 
 .. note::
 
@@ -497,17 +515,17 @@ The recipe for hypothesis-based debugging runs something like the following:
 1. Hypothesis Formation
    
    What statements would be true were this issue not occurring. For example:
-    a. Are there variables which should have a known type or value, or would
-       have a known type or value in response to a different input?
-    b. Does it appear that particular code that should have run already has
-       not, or code that should not run has run?
-    c. Looking at a value which is observed to be wrong, where is the operation
-       that computes that value? Does a. or b. apply to any of the inputs to
-       that operation.
+   a. Are there variables which should have a known type or value, or would
+    have a known type or value in response to a different input?
+   b. Does it appear that particular code that should have run already has
+    not, or code that should not run has run?
+   c. Looking at a value which is observed to be wrong, where is the operation
+    that computes that value? Does a. or b. apply to any of the inputs to
+    that operation.
 
-    This process requires intuition and understanding of the problem. It is the
-    least systematic part of the process. The following steps are much more
-    systematic.
+   This process requires intuition and understanding of the problem. It is the
+   least systematic part of the process. The following steps are much more
+   systematic.
 
 2. Hypothesis testing
 
@@ -906,6 +924,9 @@ Exercises
     2. What is the commit ID of the last good commit?
 
 .. rubric:: Footnotes
+
+.. [#pandas] `<https://pandas.pydata.org/docs/>
+    <https://pandas.pydata.org/docs/>`__
 
 .. [#ufl] `https://github.com/object-oriented-python/ufl
     <https://github.com/object-oriented-python/ufl>`__

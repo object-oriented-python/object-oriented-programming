@@ -22,10 +22,10 @@ The assumptions underpinning this approach seem to be some combination of a
 belief that maths degrees should only teach maths, as well a feeling that the
 mathematical algorithms are some how the difficult part and that programming is
 a mere technical skill that students will somehow pick up along the way. The
-regrettable consequence of this approach is that many maths students and
-graduates end up without the programming, software development, and debugging
-skills that they need to make effective use of computers in their further
-studies or working careers.
+consequence of this approach is that many maths students and graduates end up
+without the programming, software development, and debugging skills that they
+need to make effective use of computers in their further studies or working
+careers.
 
 What is this book for?
 ----------------------
