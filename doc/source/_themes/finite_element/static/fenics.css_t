@@ -16,7 +16,7 @@
 
 body {
     font-family: Verdana, Geneva, sans-serif;
-    font-size: 14px;
+    font-size: 1rem;
     background-color: #ffffff;
     color: #ffffff;
     margin: 0;    padding: 0;
@@ -68,7 +68,7 @@ div.body {
     background-color: #ffffff;
     color: #3E4349;
     padding: 0 30px 30px 30px;
-    font-size: 14px;
+    font-size: 1rem;
     overflow: auto;
 }
 
@@ -77,7 +77,7 @@ div.footer {
     width: 100%;
     padding: 13px 0;
     text-align: center;
-    font-size: 13px;
+    font-size: .875rem;
     background: #000;
     clear:both;
 }
@@ -94,7 +94,7 @@ div.footer a:hover {
 div.related {
     line-height: 30px;
     color: #373839;
-    font-size: 12px;
+    font-size: 0.75rem;
     background-color: #eee;
 }
 
@@ -147,7 +147,7 @@ a.commit-link {
 
 pre.commit {
   clear: both;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 p.sidebar-title {
@@ -220,16 +220,37 @@ div.body h6 {
 }
 
 h1 .section-number::before {
-    content: "Week ";
+    content: "Chapter ";
+}
+
+#getting-help h1 .section-number::before,
+#just-enough-git-to-get-by h1 .section-number::before {
+    content: "Appendix ";
+}
+
+#preface h1 .section-number::before {
+    content: "";
 }
 
 .toctree-l1 > a::before {
-    content: "Week ";
+    content: "Chapter ";
+}
+
+.appendix.docutils.container .toctree-l1 > a::before {
+    content: "Appendix ";
+}
+
+.preface.docutils.container .toctree-l1 > a::before {
+    content: "";
+}
+
+.toctree-l1 > a::before {
+    content: "Chapter ";
 }
 
 a.headerlink {
     color: #1b61d6;
-    font-size: 12px;
+    font-size: 0.75rem;
     padding: 0 4px 0 4px;
     text-decoration: none;
 }
@@ -327,7 +348,7 @@ pre, code {
  }
 
 .highlight pre {
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 17px;
     background-color: #fafafa;
     padding: 10px;
@@ -350,7 +371,7 @@ div.linenodiv {
 }
 
 .linenos pre {
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 17px;
     padding: 10px;
     margin: 0;
@@ -391,7 +412,7 @@ div.quiz {
 tt {
     background-color: transparent;
     color: #222;
-    font-size: 14px;
+    font-size: 1rem;
     font-family: Consolas, "andale mono", "lucida console", monospace;
 }
 
@@ -473,7 +494,7 @@ tt.xref {
 }
 #access .menu-header,
 div.menu {
-	font-size: 13px;
+	font-size: .875rem;
 	margin-right: 20px;
 	width: 100%;
 }
@@ -582,6 +603,14 @@ div.menu li {
     left:690px;
 }
 
+.preface.docutils.container,
+.appendix.docutils.container {
+    margin:0;
+    padding-left:0;
+    padding-right:0;
+    width:100%;
+}
+
 #container,
 #content  {
     margin:0;
@@ -597,7 +626,7 @@ padding-left: 1em;
 }
 
 #sub-feature {
-    font-size:13px;
+    font-size:.875rem;
     line-height:18px;
     position:relative;
     overflow:hidden;
@@ -664,7 +693,7 @@ a.button {
     -moz-border-radius: .7em;
     border-radius: .7em;
     color:#667;
-    font-size:13px;
+    font-size:.875rem;
     margin:0 10px 0 0;
     padding:.75em 1.25em;
     text-decoration:none;
@@ -745,7 +774,7 @@ img[alt="build status"] {
     margin:10px 0px 10px 0px;
     /*padding:10px 5px 50px 5px;*/
     font-weight:bold;
-    font-size:16px;
+    font-size:1.125rem;
 }
 
 .feed_item {    
@@ -755,7 +784,7 @@ img[alt="build status"] {
 }
 
 .feed_item_date {
-    font-size: 12px;
+    font-size: .75rem;
 }
 
 /* Equispace the logos. */

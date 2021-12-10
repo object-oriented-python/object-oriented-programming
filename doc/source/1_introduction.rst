@@ -102,7 +102,7 @@ are:
 .. only:: html
 
     Installation instructions for these pieces of code are provided `on this
-    page <https://object-oriented-programming.github.io/installation.html>`__`.
+    page <https://object-oriented-programming.github.io/installation.html>`__.
 
 This is not a course about Git, but a minimal familiarity with Git and GitHub
 will be needed in order to work with the examples. :numref:`Appendix %s <git>`

@@ -89,18 +89,29 @@ scratch in :numref:`Chapter %s <programs_files>`.
 How to use this book
 --------------------
 
-You can, of course, simply sit down and read this book from cover to cover, or
-dip in to see what it has to say on particular subjects. However, reading a
-book about programming will not teach you to program. For that, you need to get
-your hands dirty writing code and debugging your mistakes. To help with this
-there is a book website at:
+.. only:: latex
 
-    `https://object-oriented-programming.github.io
-    <https://object-oriented-programming.github.io>`__
-    
-As well as a web version of the full text of the book, the website contains
-videos and the code needed to do the programming exercises at the end of each
-chapter.
+    You can, of course, simply sit down and read this book from cover to cover,
+    or dip in to see what it has to say on particular subjects. However,
+    reading a book about programming will not teach you to program. For that,
+    you need to get your hands dirty writing code and debugging your mistakes.
+    To help with this there is a book website at:
+
+        `https://object-oriented-programming.github.io
+        <https://object-oriented-programming.github.io>`__
+        
+    As well as a web version of the full text of the book, the website contains
+    videos and the code needed to do the programming exercises at the end of
+    each chapter.
+
+.. only:: html
+
+    You can, of course, simply sit down and read this book from cover to cover,
+    or dip in to see what it has to say on particular subjects. However,
+    reading a book about programming will not teach you to program. For that,
+    you need to get your hands dirty writing code and debugging your mistakes.
+    The videos and exercises throughout the book are designed to help you do
+    this.
 
 The videos
 ..........

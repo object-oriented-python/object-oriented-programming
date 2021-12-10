@@ -30,6 +30,13 @@
    would be very interested to hear from anyone interested in using it to
    teach.
 
+.. container:: preface
+
+   .. toctree::
+      :maxdepth: 2
+
+      0_preface.rst
+
 .. toctree::
    :numbered:
    :maxdepth: 2
@@ -45,13 +52,11 @@
    9_trees_and_directed_acyclic_graphs.rst
    10_further_object-oriented_features.rst
    
-.. .. only:: latex and not book
-
 .. raw:: latex
 
       \appendix
 
-.. only:: latex
+.. container:: appendix
 
    .. toctree::
       :numbered:
