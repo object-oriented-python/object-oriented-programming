@@ -157,8 +157,8 @@ concepts introduced in that chapter. Terms to be found in a glossary are given
 
     Python has excellent `official online documentation
     <https://docs.python.org/3/>`_, and we link to that throughout the text.
-    External links show up in orange while :ref:`internal links to other parts
-    of the notes <introduction>` are red.
+    External links show up in purple while :ref:`internal links to other parts
+    of the notes <introduction>` are blue.
 
 The text sometimes introduces counterexamples: illustrations of code errors or
 bad implementation ideas. These will be flagged with a big red cross:

@@ -161,13 +161,13 @@ div.youtube{
 /* -- body styles ----------------------------------------------------------- */
 
 a, a .pre {
-    color: #c52b03;
+    color: #0000dd;
     text-decoration: none;
     word-wrap: break-word;
 }
 
 a.external, a.external .pre{
-    color: #e55d05;
+    color: #9200ce;
 }
 
 a:hover, a:hover .pre {
