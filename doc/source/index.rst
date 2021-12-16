@@ -20,15 +20,19 @@
 
 .. only:: html
 
-   This is the online textbook for MATH50009 Principles of Programming, a
-   second year object oriented programming module offered to mathematics
-   undergraduates at Imperial College London. Read the introductory chapter for
-   information on how to go about doing the module week by week.
+   Welcome to the website for the book Object-oriented Programming in Python
+   for Mathematicians. Here you'll find the full hyperlinked book text, as well
+   as consolidated lists of the accompanying :doc:`videos <videos>` and
+   :doc:`exercise repositories <exercises>`.
 
-   If you're not taking the module at Imperial, you should nonetheless feel
-   free to use this material to learn object-oriented programming in Python. I
-   would be very interested to hear from anyone interested in using it to
-   teach.
+   .. image:: images/cover.png
+      :width: 10em
+      :align: right
+      :target: https://fixme.foo
+
+   The complete book text is available on this website. However, if you'd
+   like to have a physical copy, then please `buy the book
+   <https://fixme.foo>`__.
 
 .. container:: preface
 

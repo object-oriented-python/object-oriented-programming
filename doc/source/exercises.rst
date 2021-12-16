@@ -1,3 +1,5 @@
+.. _exercises:
+
 Exercise code
 =============
 

@@ -58,7 +58,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Object oriented programming'
+project = u'Object-oriented Programming'
 author = u'David A. Ham'
 copyright = u'2019-2021, David A. Ham'
 
@@ -246,7 +246,7 @@ if tags.has("book"):
 %\hypersetup{urlcolor=externallinkcolor}
 \hypersetup{urlcolor=black}
 \usepackage{poptitle}
-\subtitle{in Python for mathematicians}
+\subtitle{in Python for Mathematicians}
 \edition{2021}
 \makeatletter
    \fancypagestyle{normal}{
@@ -268,7 +268,7 @@ else:
     # Imperial lecture notes version.
     preamble = r"""
 \usepackage{imperialmathnotes}
-\subtitle{in Python for mathematicians}
+\subtitle{in Python for Mathematicians}
 \imperialmathnotesvolume{2}
 \edition{2021}
 """
