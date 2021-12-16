@@ -1,18 +1,16 @@
 from numbers import Number
 
 
+
 class Polynomial:
 
     def __init__(self, coefs):
-
         self.coefficients = coefs
 
     def degree(self):
-
         return len(self.coefficients) - 1
 
     def __str__(self):
-
         coefs = self.coefficients
         terms = []
 
@@ -30,16 +28,13 @@ class Polynomial:
         return " + ".join(reversed(terms)) or "0"
 
     def __repr__(self):
-
-        return self.__class__.__name__ + "(" + repr(self.coefficients) + ")"
+        return type(self).__name__ + "(" + repr(self.coefficients) + ")"
 
     def __eq__(self, other):
-
         return isinstance(other, Polynomial) and \
             self.coefficients == other.coefficients
 
     def __add__(self, other):
-
         if isinstance(other, Number):
             return Polynomial((self.coefficients[0] + other,)
                               + self.coefficients[1:])
@@ -62,5 +57,4 @@ class Polynomial:
             return NotImplemented
 
     def __radd__(self, other):
-
         return self + other

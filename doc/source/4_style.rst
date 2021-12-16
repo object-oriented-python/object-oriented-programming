@@ -3,91 +3,83 @@
 A matter of style
 =================
 
-.. dropdown:: Video: why style?
+.. details:: Video: why style?
 
-    .. container:: vimeo
+    .. vimeo:: 499766703
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/499766703"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3572d8ea-5635-4b1a-9243-acae0150ddf8>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3572d8ea-5635-4b1a-9243-acae0150ddf8>`__
 
 
 The value of convention
 -----------------------
 
-Consider the following definition of the limit of a function :math:`f` at a point :math:`c`:
+Consider the following definition of the limit of a function :math:`f` at a
+point :math:`c`:
 
 .. proof:definition::
 
-   Suppose we have a function :math:`f(x): \mathbb{R} \rightarrow \mathbb{R}`. Then:
+   Suppose we have a function :math:`f(x): \mathbb{R} \rightarrow \mathbb{R}`.
+   Then:
 
    .. math::
 
-      \lim_{x\rightarrow c} f(x) = L \iff \forall \delta > 0,\ \exists \epsilon > 0,\ |x - c| < \epsilon \Rightarrow |f(x) - L| < \delta
+      \lim_{x\rightarrow c} f(x) = L \iff \forall\, \delta > 0,\ \exists\,
+      \epsilon > 0,\ |x - c| < \epsilon \Rightarrow |f(x) - L| < \delta
 
-This is a perfectly valid definition of a limit: you could use it to
-go on and derive all the analysis you have learned so far. However, you
-would confuse yourself and your readers horribly, because I have
-swapped the roles of :math:`\delta` and :math:`\epsilon` in the
-definition. The formal properties of mathematical objects do not
-depend on the names we give them or, often, on how we lay out formulae
-on a page. However, mathematics is designed to be read by humans with
-their habit-forming, pattern-matching brains. So if everyone adopts
-similar conventions for how to write down mathematics, everyone
-schooled in those conventions will find that mathematics easier to
-understand. This is vitally important because understanding
-mathematics is *hard*. Non-standard notation makes it doubly hard
-because the reader has to consciously remember the meaning of all the
-symbols. Conversely, once a reader has learned the notational
-conventions for a field of mathematics, the meanings of the symbols
-become natural and don't require conscious thought. This leaves all
-the available brainpower to concentrate on the mathematical content
-at hand.
+This is a perfectly valid definition of a limit: you could use it to go on and
+derive all of real analysis. However, you would confuse yourself and your
+readers horribly, because I have swapped the roles of :math:`\delta` and
+:math:`\epsilon` in the definition. The formal properties of mathematical
+objects do not depend on the names we give them or, often, on how we lay out
+formulae on a page. However, mathematics is designed to be read by humans with
+their habit-forming, pattern-matching brains. So if everyone adopts similar
+conventions for how to write down mathematics, everyone schooled in those
+conventions will find that mathematics easier to understand. This is vitally
+important because understanding mathematics is hard. Non-standard notation
+makes it doubly hard because the reader has to consciously remember the meaning
+of all the symbols. Conversely, once a reader has learned the notational
+conventions for a field of mathematics, the meanings of the symbols become
+natural and don't require conscious thought. This leaves all the available
+brainpower to concentrate on the mathematical content at hand.
 
-You might at first think that this logic does not apply to computer
-programs. After all, a computer program is read by another computer
-program, and is not understood but rather acted on
-mechanically. Surely it doesn't matter how it looks or what symbols
-you use, so long as it's correct and, possibly, fast? This entirely
-understandable sentiment has afflicted almost all programmers at some
-point or another and typically has got them into more or less serious
+You might at first think that this logic does not apply to computer programs.
+After all, a computer program is read by another computer program, and is not
+understood but rather acted on mechanically. Surely it doesn't matter how it
+looks or what symbols you use, so long as it's correct and, possibly, fast?
+This entirely understandable sentiment has afflicted almost all programmers at
+some point or another and typically has got them into more or less serious
 difficulty before they realised that it's completely wrong.
 
-In reality, a computer program is frequently read. Indeed, code is
-typically read many more times than it is written or changed. Most
-obviously, programmers read code in order to understand its functionality,
-and in order to work out what is wrong with the code when it fails to
-produce the correct results. Reading code is very much like reading
-mathematics because a computer program is nothing but a realisation
-of mathematical algorithms. Consequently, the observation that maths
-can be very hard to read carries over to code, and therefore the need
-to make code as easy to understand as possible also applies
-here. Another analogy that carries over from mathematics is that very
-often it's one's own work that one is trying to understand and
-correct. This ought to create a very strong incentive to write very
-clear code adhering to all the conventions, because the poor
-individual who has to read your work to find the bugs might very well
-be you!
+In reality, a computer program is frequently read. Indeed, code is typically
+read many more times than it is written or changed. Most obviously, programmers
+read code in order to understand its functionality, and in order to work out
+what is wrong with the code when it fails to produce the correct results.
+Reading code is very much like reading mathematics because a computer program
+is nothing but a realisation of mathematical algorithms. Consequently, the
+observation that maths can be very hard to read carries over to code. It is
+therefore essential to make code as easy to understand as possible. Another
+analogy that carries over from mathematics is that very often it's one's own
+work that one is trying to understand and correct. This ought to create a very
+strong incentive to write very clear code adhering to all the conventions,
+because the poor individual who has to read your work to find the bugs might
+very well be you!
 
-Just as in mathematics, programming has a whole set of conventions
-which sit on top of the formal requirements of a programming language.
-These exist in order to make the code easier for all programmers
-to read. Some of these rules, typically the more formulaic ones about
-matters such as code layout and naming conventions, are somewhat
-different in different programming languages. Others, most especially
-higher lever principles like parsimony and modularity, are universal
-principles that apply more or less regardless of the language employed
-or the sort of programming being undertaken. Good programming style,
-like good writing style, is a skill learned through experience and
-through receiving feedback on the code you write, and it is not the
-intention of this chapter to produce an exhaustive guide. However, it
-is useful to introduce some of the key concepts, rules and conventions
-in a more formal way.
+Just as in mathematics, programming has a whole set of conventions which sit on
+top of the formal requirements of a programming language. These exist in order
+to make the code easier for all programmers to read. Some of these rules,
+typically the more formulaic ones about matters such as code layout and naming
+conventions, are somewhat different in different programming languages. Others,
+most especially higher level principles like :term:`parsimony` and
+:term:`modularity`, are universal principles that apply more or less regardless
+of the language employed or the sort of programming being undertaken. Good
+programming style, like good writing style, is a skill learned through
+experience and through receiving feedback on the code you write, and it is not
+the intention of this chapter to produce an exhaustive guide. However, it is
+useful to introduce some of the key concepts, rules and conventions in a more
+formal way.
 
 PEP 8
 -----
@@ -111,18 +103,15 @@ with code layout rules while this chapter roams more widely.
 Linters
 .......
 
-.. dropdown:: Video: installing and using a linter.
+.. details:: Video: installing and using a linter.
 
-    .. container:: vimeo
 
-        .. raw:: html
+    .. vimeo:: 499770130
 
-            <iframe src="https://player.vimeo.com/video/499770130"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
+    .. only:: html
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=91c271e4-a61f-493c-a725-acae015273d5>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=91c271e4-a61f-493c-a725-acae015273d5>`__
 
 
 One of the helpful characteristics of PEP 8 is that many of its strictures can
@@ -154,14 +143,14 @@ activated your :term:`virtual environment` and then run:
 
 .. code-block:: console
 
-    $ python -m pip install flake8
+    (PoP_venv) $ python -m pip install flake8
 
 This is enough to run Flake8 on the command line, however you will probably want
 to set up your editor to highlight flake8 incompatibilities in your source. For
-visual studio code, first open the command palette by typing :kbd:`control` +
+Visual Studio Code, first open the command palette by typing :kbd:`control` +
 :kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
 "Python: Select Linter" to bring up the list of available linters, and select
-"flake8" from the dropdown list. The video above shows this process.
+"flake8" from the details list. The video for this section shows this process.
 
 How to tell Flake8 to shut up
 .............................
@@ -173,25 +162,25 @@ Near the top of PEP 8 is the following heading:
     A foolish consistency is the hobgoblin of little minds.
 
 What this refers to is that just religiously following PEP 8 is not enough to
-produce highly readable code. Indeed, sometimes the rules might induce you do to
-something which makes no sense at all. In those cases, one should step outside
-PEP 8. This is a dangerous licence to take, and it is important to point out that
-this does not mean that a programmer should ignore PEP 8 merely because they
-disagree with a particular convention. Breaking PEP 8 is something you should do
-only when you really have to.
+produce highly readable code. Indeed, sometimes the rules might induce you do
+to something which makes no sense at all. In those cases, one should step
+outside PEP 8. This is a dangerous licence to take, and it is important to
+point out that this does not mean that a programmer should ignore PEP 8 merely
+because they disagree with a particular convention. Breaking PEP 8 is something
+you should do only when you really have to.
 
 In the rare cases where it is necessary to break PEP 8, Flake8 turns into a
 problem. It doesn't know anything of the judgement call that the programmer has
 made, and so will complain about the offending code. For example, we have
 learned that it is frequently desirable to import names in the
 :file:`__init__.py` file of a :term:`package` in order to include them in the
-package's top level :term:`namespace`. The problem with this is that these names
-are not used inside the :file:`__init__.py` file so Flake8 will complain that
-this is an unnecessary import.
+package's top level :term:`namespace`. The problem with this is that these
+names are not used inside the :file:`__init__.py` file so Flake8 will complain
+that this is an unnecessary import.
 
-The way to suppress linter errors is using a special comment at the end of the
-line which causes the error. For example, :file:`fibonacci/__init__.py` contains
-the following line:
+One way to suppress linter errors is using a special comment at the end of the
+line which causes the error. For example, :file:`fibonacci/__init__.py`
+contains the following line:
 
 .. code-block:: python3
 
@@ -213,6 +202,33 @@ We suppress this error by adding this comment:
 The comment starts with the keyword `noqa`, which stands for "no questions
 asked" and then gives the error code which is to be ignored for this line. This
 can be found in the Flake8 output.
+
+Configuring Flake8
+..................
+
+`noqa` comments are very useful for one-off suppression of Flake8
+errors. However, it's also likely to be the case that there are some rules that
+you just don't want to apply across your whole project. This configuration can
+be achieved in the file :file:`setup.cfg`, which lives in the top of your
+Git repository alongside :file:`setup.py`. :file:`setup.cfg` can be
+used to configure a lot of different Python tools, so it stores different
+configurations in different sections. :numref:`flake8conf` shows an example
+Flake8 section. The full list of available options is presented in the `Flake8
+documentation <https://flake8.pycqa.org>`_.
+
+.. _flake8conf:
+
+.. code-block:: ini
+    :caption: A :file:`setup.cfg` Flake8 section which instructs Flake8 to
+        ignore the :file:`doc/` directory, to ignore rule `D105` (docstrings
+        for magic methods), and to add in the non-default rule `W504` (error
+        for a trailing operator at the end of a continued line).
+
+    [flake8]
+    exclude = doc
+    extend-ignore = D105
+    extend-select = W504
+
 
 Code layout
 -----------
@@ -283,14 +299,14 @@ White space within lines
 
         .. code-block:: python3
 
-            my_function (1) # Space between function name and bracket.
-            x [0] # Space between variable name and index square bracket.
+            sin (1) # Space between function name and bracket.
+            x [0] # Space before index square bracket.
 
     .. container:: goodcode
 
         .. code-block:: python3
 
-            my_function(1)
+            sin(1)
             x[0]
  
 3. Put a space after a comma but not before it, exactly like you would
@@ -342,14 +358,14 @@ White space within lines
 
 5. Do not put a space either before or after the equals sign of a :ref:`keyword
    argument <tut-keywordargs>`. In this case, grouping the parameter name and
-   the argument is more important. Also creates a visual distinction between
+   the argument is more important. This rule also creates a visual distinction between
    assignment statements and keyword arguments.
 
     .. container:: badcode
 
         .. code-block:: python3
 
-            myfunction(arg1 = val1, arg2 = val2) # Spaces around equals signs.
+            myfunction(arg1 = val1, arg2 = val2)
 
     .. container:: goodcode
 
@@ -395,7 +411,8 @@ Line breaks
    break the lines using the implied continuation within round, square
    or curly brackets than explicitly with a backslash. This is because
    the brackets provide good visual "book ends" for the beginning and
-   end of the continuation.
+   end of the continuation. Of course this is sometimes impossible, so it is
+   occasionally necessary to use backslashes to break lines.
 3. When a mathematical operator occurs at a line break, always put the
    operator first on the next line, and not last on the first
    line. Having the second line start with a mathematical operator
@@ -442,24 +459,22 @@ Indentation
         .. code-block:: python3
 
             capitals = {"France": "Paris",
-                        "China": "Beijing", # First character one place right of {
-                        "Australia": "Canberra"} # } at the end of the line.
+                        "China": "Beijing",
+                        "Australia": "Canberra"}
 
    b. With the opening bracket as the last item on the first
       line. Subsequent lines are indented more than the first line but
       the same as each other. The closing bracket comes on a new line,
-      and is either indented to the same level as the first line, or
-      to the subsequent lines (but be consistent in nearby code about
-      which).
+      and is either indented to the same level as the first line.
 
     .. container:: goodcode
 
         .. code-block:: python3
 
-            capitals = { # First line ends with {
-                "Central African Republic": "Bangui", # Next line indented.
-                "Trinidad and Tobago": "Port of Spain", # Indented to match.
-                } # Indented to match.
+            capitals = {
+                "Central African Republic": "Bangui", 
+                "Trinidad and Tobago": "Port of Spain",
+            }
 
 
 Names
@@ -491,15 +506,15 @@ class names
 
         .. code-block:: python3
 
-            my_class # No capitals, underscore between words.
-            myClass # Missing leading capital.
-            My_Class # Underscore between words.
+            complex_polynomial # No capitals, underscore between words.
+            complexPolynomial # Missing leading capital.
+            Complex_Polynomial # Underscore between words.
 
     .. container:: goodcode
 
         .. code-block:: python3
 
-            MyClass
+            ComplexPolynomial
 
 exception names
     Exceptions are classes, so the rules for class names apply with the
@@ -522,14 +537,14 @@ function, variable, and module names
 
         .. code-block:: python3
 
-            def Euler  # Don't capitalise function names.
+            def Euler(n): # Don't capitalise function names.
             MaxRadius = 10.  # No CamelCase.
 
     .. container:: goodcode
 
         .. code-block:: python3
         
-            def euler  # Lower case, even for names.
+            def euler(n):  # Lower case, even for names.
             max_radius = 10.  # Separate words with _.
 
 method parameters
@@ -669,7 +684,8 @@ It would be much better to write a single more abstract but simpler line:
 
     .. code-block:: python3
 
-         result = [num for num in range(1, 9999) if all(num % x == 0 for x in range(1, 8))]
+         result = [num for num in range(1, 9999)
+                   if all(num % x == 0 for x in range(1, 8))]
 
 
 Use comprehensions
@@ -830,8 +846,8 @@ instead of:
 
 .. _repetition:
 
-Avoid repetitition
-..................
+Avoid repetition
+................
 
 Programmers very frequently need to do *nearly* the same thing over and over.
 One obvious way to do this is to write code for the first case, then copy and
@@ -849,13 +865,13 @@ to the near-identical clones of that code? The chance is very high that the bug
 stays unfixed in those versions thereby creating yet another spot the difference
 puzzle for the next person encountering a bug.
 
-Abstractions are essentially tools for removing harmful repetition. For example,
-it may be possible to bundle up the repeated code in a function or class, and to
-encode the differences between versions in the :term:`parameters <parameter>` to
-the function or class constructor. If the differences between the versions of
-the code require different code, as opposed to different values of some
-quantities, then it may be possible to use :term:`inheritance` to avoid
-repetition. We will return to this in :numref:`week %s<inheritance>`.
+Abstractions are essentially tools for removing harmful repetition. For
+example, it may be possible to bundle up the repeated code in a function or
+class, and to encode the differences between versions in the :term:`parameters
+<parameter>` to the function or class constructor. If the differences between
+the versions of the code require different code, as opposed to different values
+of some quantities, then it may be possible to use :term:`inheritance` to avoid
+repetition. We will return to this in :numref:`Chapter %s<inheritance>`.
 
 
 Comments
@@ -904,8 +920,9 @@ simpler alternative strategy is actually invalid.
 PEP 8 rules for comments
 ........................
 
-Comments start with a single :file:`#` followed by a single space. 
-:term:`Inline comments <inline comment>` are separated from the code by at least two spaces.
+Comments start with a single :file:`#` followed by a single space.
+:term:`Inline comments <inline comment>` are separated from the code by at
+least two spaces.
 
 .. container:: badcode
 
@@ -921,10 +938,10 @@ Comments start with a single :file:`#` followed by a single space.
 
         self.count += 1  # Two spaces before #, one after.
 
-Each line of a block comment starts with a single :file:`#` indented to the same level as a
-normal line of code. The :file:`#` is followed by a single space, unless a
-particular piece of comment should be indented with respect to the paragraph it
-is in, in which case additional spaces are allowed.
+Each line of a block comment starts with a single :file:`#` indented to the
+same level as a normal line of code. The :file:`#` is followed by a single
+space, unless a particular piece of comment should be indented with respect to
+the paragraph it is in, in which case additional spaces are allowed.
 
 .. container:: goodcode
 
@@ -972,7 +989,8 @@ The following is displayed:
 
 There is also a specific IPython help extension, which also works in Jupyter
 notebooks (IPython and Jupyter are related projects). Appending a question mark
-:kbd:`?` to an object name prints a slightly different version of the help information:
+:kbd:`?` to an object name prints a slightly different version of the help
+information:
 
 .. code-block:: ipython3
 
@@ -1018,14 +1036,17 @@ a full stop.
     .. code-block:: python3
 
         def fib(n):
-            "Return the n-th Fibonacci number" # Single quotes, missing full stop.
+            "Return the n-th Fibonacci number"  # Single quotes,
+                                                # no full stop.
 
         def fib(n):
-            """Returns the n-th Fibonacci number.""" # Sentence not imperative.
+            """Returns the n-th Fibonacci number."""  # Sentence not 
+                                                      # imperative.
 
         def fib(n):
             """fib(n)
-            Return the n-th Fibonacci number.""" # Don't include the function signature.
+            Return the n-th Fibonacci number."""  # Don't include the
+                                                  # function signature.
 
 .. container:: goodcode
 
@@ -1039,13 +1060,12 @@ Long docstrings
 ...............
 
 Conversely, a more complex object will require much more information in its
-docstring. Consider :func:`numpy.array` (click on the link for the
-documentation). The web documentation, also generated from the docstring, needs
-to cover 5 parameters, and detail the return type. It also contains several
-examples, references to other functions, and an explanatory note. This is an
-example of very good documentation.
+docstring. :numref:`docstring-det` shows the full docstring of the function
+:func:`numpy.linalg.det`. This covers the type and shape of the input
+parameter and return value, references to other implementations, and examples
+of usage.
 
-There is no widely used official standard for the layout of a long docstring,
+There is no single universal standard for the layout of a long docstring,
 but there are two project or institution-based conventions that are recognised
 by the web documentation system. One from `Google
 <https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`__
@@ -1053,6 +1073,54 @@ and the other from the `Numpy
 <https://numpydoc.readthedocs.io/en/latest/format.html>`__ project. You should
 consistently use one of these styles across a whole project. Clearly if you are
 contributing code to an existing project then you should follow their style.
+
+.. _docstring-det:
+
+.. code-block:: python3
+   :caption: The :term:`docstring` for :func:`numpy.linalg.det`. This is a long
+       docstring using the Numpy convention.
+
+   def det(a):
+       """
+       Compute the determinant of an array.
+
+       Parameters
+       ----------
+       a : (..., M, M) array_like
+           Input array to compute determinants for.
+       
+       Returns
+       -------
+       det : (...) array_like
+           Determinant of `a`.
+       
+       See Also
+       --------
+       slogdet : Another way to represent the determinant, more suitable
+         for large matrices where underflow/overflow may occur.
+       scipy.linalg.det : Similar function in SciPy.
+
+       Notes
+       -----
+       .. versionadded:: 1.8.0
+       Broadcasting rules apply, see the `numpy.linalg` documentation for
+       details.
+       The determinant is computed via LU factorization using the LAPACK
+       routine ``z/dgetrf``.
+
+       Examples
+       --------
+       The determinant of a 2-D array [[a, b], [c, d]] is ad - bc:
+       >>> a = np.array([[1, 2], [3, 4]])
+       >>> np.linalg.det(a)
+       -2.0 # may vary
+       Computing determinants for a stack of matrices:
+       >>> a = np.array([ [[1, 2], [3, 4]], [[1, 2], [2, 1]], [[1, 3], [3, 1]] ])
+       >>> a.shape
+       (3, 2, 2)
+       >>> np.linalg.det(a)
+       array([-2., -3., -8.])
+       """
 
 Enforcing docstring conventions in Flake8
 .........................................
@@ -1089,25 +1157,25 @@ A brief diversion into cellular automata
 ----------------------------------------
 
 We'll now take a brief diversion into a completely different area of
-mathematics: cellular automata. This is entirely irrelevant to the contents of
-this course, except that it provides a useful and, hopefully, interesting basis
-for this week's exercises. `The game of life
+mathematics: cellular automata. This is entirely irrelevant to the subject at
+hand, except that it provides a useful and, hopefully, interesting basis for
+this chapter's exercises. `The Game of Life
 <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>`__ is a mathematical
 system invented by the mathematician `John Horton Conway FRS
 <https://en.wikipedia.org/wiki/John_Horton_Conway>`__ in 1970. The board of the
 game is a grid of squares, like an infinite piece of graph paper (though we'll
-only work with finite boards, since our computers have finite memory). Each cell
-on the board is either alive (value 1) or dead (value 0). The only human
+only work with finite boards, since our computers have finite memory). Each
+cell on the board is either alive (value 1) or dead (value 0). The only human
 interaction is to set the initial state of every square on the board to either
-alive or dead. The game then proceeds as a series of steps. At each step the new
-state of the board is calculated according to these rules:
+alive or dead. The game then proceeds as a series of steps. At each step the
+new state of the board is calculated according to these rules:
 
-0. The neighbours of a square are the 8 immediately surrounding squares.
-1. Any square with exactly 3 live neighbours at the old step is live at the new
+1. The neighbours of a square are the 8 immediately surrounding squares.
+2. Any square with exactly 3 live neighbours at the old step is live at the new
    step.
-2. Any square which is alive at the old step and has exactly 2 live neighbours
+3. Any square which is alive at the old step and has exactly 2 live neighbours
    at the old step remains alive at the new step.
-3. All other squares on the board at the new step are dead.
+4. All other squares on the board at the new step are dead.
 
 Using only these three rules, an amazingly complex array of behaviour can be
 generated, depending only on the pattern of cells which starts off alive.
@@ -1120,7 +1188,7 @@ life cells, and running the game will execute the algorithm.
 
 .. figure:: images/glider_gun.png
     :align: center
-    :width: 40%
+    :width: 60%
 
     Snapshot of the Game of Life at one step. The black squares are live and the
     white ones are dead. Two gliders can be seen moving across the board at (25,
@@ -1161,40 +1229,36 @@ Glossary
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+.. .. only:: html
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2070388_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+..    .. panels::
+..        :card: quiz shadow
+
+..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2070388_1&mode=cpview
+..            :text: This week's quiz
+..            :classes: stretched-link 
 
 .. proof:exercise::
 
     Install flake8, pep8-naming, and flake8-docstrings.
     Configure your Python editor to use flake8.
 
-The `skeleton code for this week's exercises on GitHub Classroom
-<https://classroom.github.com/a/GCKdXtVA>`__ contains a package :mod:`life`
-which implements Conway's Game of Life. Accept the assignment, and clone the
-repository. Install the package in editable mode. This will also install some
-additional packages that the :mod:`life` package depends on. This is achieved
-using an additional argument to :func:`setuptools.setup`.
+.. only:: not book
 
-.. code-block:: python3
-    :caption: `setup.py` for the :mod:`life` package. The `install_requires`
-        parameter is used to install other packages that :mod:`life` needs.
+    The skeleton code on GitHub for this chapter's exercises contains a package
+    :mod:`life` which implements Conway's Game of Life. Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. Clone the repository into
+    your working folder and install the package in editable mode.
 
-    from setuptools import setup, find_packages
-    setup(
-        name="life",
-        version="0.1",
-        packages=find_packages(),
-        install_requires=[
-            "matplotlib",
-            "scipy",
-            "numpy"
-        ]
-    )
+.. only:: book
+
+    The skeleton code on GitHub for this chapter's exercises contains a package
+    :mod:`life` which implements Conway's Game of Life. Using the information
+    on the book website [#exercise_page]_
+    obtain the skeleton code for these exercises. Clone the repository into
+    your working folder and install the package in editable mode.
+
 
 A couple of example scripts are provided which demonstrate the game of life.
 This one shows a glider flying across the board:
@@ -1227,13 +1291,14 @@ neverending sequence of gliders:
 
 .. proof:exercise::
 
-    .. figure:: images/glider.png
+    .. figure:: images/glider_flip.png
         :height: 10em
-        :align: right
+        :align: center
 
-        An upright glider, live squares in black.
+        From left to right: an upright glider, a vertically flipped glider, a
+        horizontally flipped glider, and a transposed glider.
 
-    A pattern such as a glider clearly maintains its behaviour if translated,
+    A pattern such as a glider maintains its behaviour if translated,
     reflected or rotated.
 
     1.  Add a class :class:`Pattern` to :mod:`life.life`. The :term:`constructor` should
@@ -1241,12 +1306,6 @@ neverending sequence of gliders:
         assign it to the :term:`attribute` `grid`.
     2.  Add :class:`Pattern` to the :keyword:`import` statement in
         :mod:`life.__init__`. 
-
-    .. figure:: images/glider_v.png
-        :height: 10em
-        :align: right
-
-        Vertically flipped glider.
 
     3.  Add a :term:`method` :meth:`flip_vertical` which returns a new
         :class:`Pattern` whose rows are in reversed order, so that the pattern
@@ -1257,24 +1316,13 @@ neverending sequence of gliders:
             A slice of the form `::-1` returns that dimension of an array in
             reverse order.
 
-    .. figure:: images/glider_h.png
-        :height: 10em
-        :align: right
-
-        Horizontally flipped glider.
-
     4.  Add a :term:`method` :meth:`flip_horizontal` which returns a new
         :class:`Pattern` whose rows are in reversed order, so that the pattern
         is reversed left-right.
 
-    .. figure:: images/glider_t.png
-        :height: 10em
-        :align: right
-
-        Transposed glider.
-
     5.  Add a :term:`method` :meth:`flip_diag` which returns a new pattern which
         is the transpose of the original.
+
     6.  Add a :term:`method` :meth:`rotate` with a :term:`parameter` `n`.
         This should return a new :class:`Pattern` which is the original pattern
         rotated through `n` right angles anticlockwise.
@@ -1289,34 +1337,36 @@ neverending sequence of gliders:
 
         Gliders rotated by 1, 2, and 3 right angles anticlockwise.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. proof:exercise::
 
-    Add a method :meth:`insert` to the :class:`Game` class. This should take two
-    parameters, a :class:`Pattern` and a pair of integers representing a square
-    on the game board. The method should modify the game board so as to insert
-    the pattern provided at a location centred on the location given by the pair
-    of integers.
+    Add a method :meth:`insert` to the :class:`Game` class. This should take
+    two parameters, a :class:`Pattern` and a pair of integers representing a
+    square on the game board. The method should modify the game board so as to
+    insert the pattern provided at a location centred on the location given by
+    the pair of integers. :numref:`glider_inserted` illustrates this operation.
+
+    .. _glider_inserted:
 
     .. figure:: images/glider_inserted.png
         :width: 60%
         :align: center
 
-        A glider inserted at the location (2, 5) (highlighted in orange).
+        A glider inserted at the location (2, 5). The insertion location is
+        highlighted in orange. 
 
-Once you have completed the exercises, the third script provided will work. This
-sets up two gliders which collide and eventually turn into a pattern of six
-oscillating blinkers:
+Once you have completed the exercises, the third script provided will work.
+This sets up two gliders which collide and eventually turn into a pattern of
+six oscillating blinkers:
 
 .. code-block:: console
 
     $ python scripts/two_gliders.py
-
-.. note:: 
-
-    Use this example in the quiz:
-
-    False if src_petsc4py_exists and args.honour_petsc_dir else True
 
 
 .. rubric:: Footnotes
@@ -1328,3 +1378,6 @@ oscillating blinkers:
           such, they are usually of little interest to most Python
           users. However the PEPs having to do with style have wider
           significance.
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

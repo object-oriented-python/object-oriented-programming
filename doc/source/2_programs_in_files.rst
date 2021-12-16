@@ -3,118 +3,40 @@
 Programs in files
 ===================
 
-This week we will start to learn how to combine pieces of code into larger units,
-and how to package up your code so that you or others can do the same. 
-You will previously have written Python code in Jupyter notebooks, and
-possibly used an interactive Python environment such as
-iPython. Jupyter notebooks are an excellent platform for writing and
-documenting short pieces of code. However, they are much less good for
-writing code which is designed to be used by other people. If the
-intention is to write mathematical building blocks out of which more
-complex algorithms can be constructed, then we need a different way of
-storing code: one which is accessible in more automated ways than
-typing in a web browser. As an introduction to writing code in files,
-we will first consider Python scripts. We'll then move on to making
-code really reusable by creating Python modules and packages.
-
-Setting up a Python environment for this course
------------------------------------------------
-
-.. dropdown:: Video: setting up your virtual environment.
-
-    .. container:: vimeo
-
-        .. raw:: html
-
-            <iframe src="https://player.vimeo.com/video/486546635"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`__
-
-
-During this course, we're going to create, edit, and install a whole bunch of
-Python packages. In order to have a predictable programming environment in which
-the experiments we're doing don't interfere with anything outside the course for
-which we might be using Python, and conversely to ensure that nothing we've
-installed elsewhere interferes with how we're doing the course, we'll do
-everything in a Python :term:`virtual environment`, or :term:`venv`. You should read up on Python
-virtual environments on the :ref:`Faculty of Natural Sciences Python installation
-page <fons:python_virtual_environments>`.
-
-.. hint::
-
-   Don't forget that you need to activate the venv in every new :ref:`terminal <fons:terminal>` session.
-
-Installing Python packages
---------------------------
-
-Suppose we've created and activated a venv, and now there's a Python
-package we'd like to have access to. Installation of Python packages
-is handled by :doc:`pip:index`. Pip has many usage options, which
-enable a large number of different installation
-configurations. However, for most users most of the time, a few simple
-pip commands suffice. As with :term:`venv` creation, package
-installation is best accomplished from the terminal and not from
-within Python itself. Don't forget to activate the venv!
-
-Installing packages from PyPI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`PyPI <https://pypi.org>`__ is the Python Package Index. It is the
-official download location for publicly released Python packages which
-aren't themselves a part of the built-in :doc:`Python Standard Library
-<python:library/index>`. Many important mathematical packages
-including :mod:`numpy` and `sympy <https://www.sympy.org>`__ are
-distributed from PyPI. Suppose your venv doesn't have :mod:`numpy`
-installed and you need it. You would install it with the following
-terminal command:
-
-.. code-block:: console
-
-   (my_venv) $ python -m pip install numpy
-
-It is also possible to invoke pip directly using the command `pip3`,
-but there are some circumstances where that might result in pip using
-the wrong Python installation. The approach used here is safer.
-
-Python packages may depend on other Python packages, so it's quite
-likely that pip will install more packages than those you directly
-asked for. This is necessary if those packages are to actually work.
-
-Pip can also be used to upgrade a package to the latest version:
-
-.. code-block:: console
-
-   (my_venv) $ python -m pip install --upgrade numpy
+In this chapter we will start to learn how to combine pieces of code into
+larger units, and how to package up your code so that you or others can do the
+same. You may previously have written Python code in Jupyter notebooks, and
+possibly used an interactive Python environment such as IPython. Jupyter
+notebooks are an excellent platform for writing and documenting short pieces of
+code. However, they are much less good for writing code which is designed to be
+used by other people. If the intention is to write mathematical building blocks
+out of which more complex algorithms can be constructed, then we need a
+different way of storing code: one which is accessible in more automated ways
+than typing in a web browser. As an introduction to writing code in files, we
+will first consider Python scripts. We'll then move on to making code really
+reusable by creating Python modules and packages.
 
 The Python interpreter
 ----------------------
 
-.. dropdown:: Video: a first Python script.
+.. details:: Video: a first Python script.
 
-    .. container:: vimeo
+    .. vimeo:: 486557682
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486557682"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
 
 Before we dive into the various different ways that Python code can be
-organised and run, it's helpful to have a mental model of what it
-actually means for Python code to execute. Python is an interpreted
-language. This means that the program that runs is not made up of the
-primitive machine-level instructions that the processor in your
-computer executes. Instead, the Python program is read and executed by
-another piece of software, the Python interpreter. The Python
-interpreter takes a sequence of Python statements and performs the
-actions they specify. The Python interpreter takes care of allocating
-the required memory and causes the right sequences of primitive
-machine-level instructions to execute on the actual hardware for your
-programme to run.
+organised and run, it's helpful to have a mental model of what it actually
+means for Python code to execute. Python is an interpreted language. This means
+that the program that runs is not made up of the primitive machine-level
+instructions that the processor in your computer executes. Instead, the Python
+program is read and executed by another piece of software, the Python
+interpreter. The Python interpreter takes a sequence of Python statements and
+performs the actions they specify. The interpreter takes care of allocating the
+required memory and causes the right sequences of primitive machine-level
+instructions to execute on the actual hardware such that your programme runs.
 
 The Python interpreter is the same no matter whether you use Jupyter
 notebooks, an interactive Python terminal such as IPython, or execute
@@ -129,6 +51,47 @@ maybe something more exotic. Usually, when we refer to Python doing
 something or responding to code in a particular way, what we mean is
 that this is what the interpreter does in those circumstances.
 
+IPython
+~~~~~~~
+
+If you've only ever used Jupyter notebooks, then you won't yet have encountered
+a purely command line interface to the Python interpreter. You can launch a
+command line Python interface simply by running the command `python` with no
+further arguments. However, a much more user-friendly interface with features
+such as syntax highlighting, tab completion and a searchable command history is
+provided by IPython. If you're familiar with Jupyter notebooks then IPython
+will be very familiar indeed, because the Python backend to Jupyter is IPython.
+
+IPython is available as a package on PyPI. So, having ensured that our venv is
+active, we can install it by running:
+
+.. code-block:: console
+
+    (PoP_venv) $ python -m pip install ipython
+
+IPython can now be run by simply typing:
+
+.. code-block:: console
+
+    (PoP_venv) $ ipython
+
+This will result in output similar to the following:
+
+.. code-block:: ipython3
+
+    Python 3.9.4 (default, Apr  5 2021, 01:50:46) 
+    Type 'copyright', 'credits' or 'license' for more information
+    IPython 7.19.0 -- An enhanced Interactive Python. Type '?' for help.
+
+    In [1]: 
+
+Just as in a Jupyter notebook, this last line is the Python prompt at which
+you can type any Python you like. If you press return after a complete Python
+statement, the statement will execute immediately. Unlike in a Jupyter
+notebook, there is no special key combination or button to trigger execution.
+We'll use IPython from time to time to illustrate the operation of the various
+Python constructs that we'll learn about. However, our focus is on building
+larger units of code, and it is to this that we will now turn.
 
 Python scripts and text editors
 -------------------------------
@@ -141,29 +104,30 @@ and edit Python files with a program called a text editor. A good text
 editor will help you to code by highlighting syntax and helping with
 indentation. Some text editors also feature advanced features such as
 built-in access to documentation, or highlighting style problems in
-your code. A more fully-featured option is an Integrated Development
-Environment (IDE). IDEs combine an editor with a Python interpreter to
+your code. A more fully-featured option is an :term:`integrated development
+environment` (IDE). IDEs combine an editor with a Python interpreter to
 run your code, a debugger and often other features such as integration
 with Git.
 
-During this course, it will be assumed that you're using the IDE Microsoft
-Visual Studio Code. You don't have to do so, and if you have a strong preference
-for another text editor or IDE then you are welcome to use it. That said, if
-your text editor does not have a collaborative editing facility equivalent to
-Visual Studo Code's Live Share, then you are likely to need to use Visual Studio
-Code when you ask for help so that the helper can share your editor session.
+One such IDE is Microsoft Visual Studio Code. This is a free and open source
+IDE with good support for Git and Python, including for debugging Python
+programmes. It also has a particularly helpful Live Share facility, which
+enables two or more programmers to work on the same piece of code at the same
+time over the internet. The descriptions presented here will assume that you
+are using Visual Studio Code, but you can, of course, use another editor or IDE
+for your Python programming.
 
 .. note:: Text files
 
     You are doubtless familiar with the concept of a file stored in a folder on
-    your computer. You will also be aware that there are many different types of
-    file, more or less related to the type of data they contain and the programs
-    which created them. Files fall into two important categories, binary files
-    and text files. A binary file is a stream of data whose contents make
-    sense under the rules of the application which created it, but not
-    otherwise. Word documents, PDFs, and JPEGs are examples of binary files.
-    Plain text files are files which, as the name suggests, consist of a string
-    of characters. Anyone looking at the content of a text file can
+    your computer. You will also be aware that there are many different types
+    of file, more or less related to the type of data they contain and the
+    programs which created them. Files fall into two important categories,
+    binary files and text files. A binary file is a stream of data whose
+    contents make sense under the rules of the application which created it,
+    but not otherwise. Word documents, PDFs, and JPEGs are examples of binary
+    files. Plain text files are files which, as the name suggests, consist of a
+    string of characters. Anyone looking at the content of a text file can
     understand it, so long as they understand the human or computer language in
     which it is written. LaTeX source files and Python scripts are examples of
     text files. This matters when you come to edit these files. Text files are
@@ -177,7 +141,7 @@ A first Python script
 ~~~~~~~~~~~~~~~~~~~~~
 
 Tradition dictates that the first stand-alone program one writes in
-any language simply prints out the string `Hello World`. Using a text
+any language simply prints out the string `Hello World`. Using an IDE or text
 editor, we create a file which we'll call :file:`hello.py` containing just
 the following line of Python code:
 
@@ -185,40 +149,29 @@ the following line of Python code:
 
    print("Hello World")
 
-The :file:`.py` file extension is not strictly required for Python scripts,
-but it can be useful as it will cause most text editors to recognise
-the file as a Python file. Having remembered to save :file:`hello.py` to
-disk from the text editor, we can now run the program. Open a
-terminal, and change to the folder (directory) where you saved
-:file:`hello.py`. For example, if :file:`hello.py` is in the directory :file:`src` in
-your home directory, then on most operating systems, you would type the following:
+The :file:`.py` file extension is not strictly required for Python scripts, but
+it can be useful as it will cause most text editors to recognise the file as a
+Python file. Having remembered to save :file:`hello.py` to disk from the text
+editor, we can now run the program. Open a terminal, and change to the folder
+(directory) where you saved :file:`hello.py`. For example, if :file:`hello.py`
+is in the directory :file:`src` in your home directory, then on most operating
+systems, you would type the following:
 
 .. code-block:: console
 
-    $ cd src
-    $ python3 hello.py
+    (PoP_venv) $ cd src
+    (PoP_venv) $ python hello.py
 
-on Windows you might instead need to type:
-
-.. code-block:: console
-
-    > cd src
-    > py hello.py
-
-
-The dollar sign is the command prompt. Its different on some systems, for
-example, it's often a greater than sign (`>`). The text to the left of the
-command prompt might also be different depending on which terminal program you
-are using on which operating system, but we are only concerned with the commands
-to the right of the prompt. The first of these, `cd` (*change directory*)
-switches the current folder to :file:`src`. The second command actually runs the
-Python interpreter on :file:`hello.py`. Depending on what is installed on your
-computer, it might also be possible to leave off the `3` at the end of
-`python3`, however on some systems the plain `python` command is still linked to
-the old version 2 of Python, so it's better to be explicit and type `python3`.
-Once we start working with Python :term:`virtual environments <virtual
-environment>`, it will always be safe to use `python` without the 3. When we
-press the :kbd:`enter` key after the last line above, our tiny Python script
+The first of these commands,
+`cd` (*change directory*) switches the current folder to :file:`src`. The
+second command actually runs the Python interpreter on :file:`hello.py`. From
+within our venv, we can be confident that `python` will refer to the right
+version of Python. If you need to run Python outside of a venv then the
+situation is a little more complex. On Linux or MacOS, you might need to type
+`python3` instead of `python`, because `python` still points at the old Python
+version 2 interpreter. On Windows, there is a convenient command `py` which
+will usually find and run the most appropriate Python. When we press the
+:kbd:`enter` key after the last line above, our tiny Python script
 :file:`hello.py` runs and the following is displayed:
 
 .. code-block:: console
@@ -247,11 +200,18 @@ you can go back over your work and find the error. A particularly
 frustrating phenomenon, often encountered shortly before a submission
 deadline, is to suddenly discover that something which used to work no
 longer does. If you took the next logical step and committed your
-scripts to a git repository, making a new commit every time you edit
+scripts to a Git repository, making a new commit every time you edit
 it, you would also be able to go back and find the point at which the
 script stopped working. We will return to this debugging technique in
 :numref:`bisection-debugging`.
 
+.. hint::
+
+    Whenever you need to perform a calculation as a part of an assignment or
+    project, or as part of your job, **always** write a script to perform the
+    calculation and store that script under revision control. Adopting this
+    simple practice will save you enormous amounts of frustration and wasted
+    time over the course of your career.
 
 When not to use scripts
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -274,17 +234,13 @@ shortly.
 Modules
 -------
 
-.. dropdown:: Video: a first Python module.
+.. details:: Video: a first Python module.
 
-    .. container:: vimeo
+    .. vimeo:: 486845755
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486845755"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
 
 A module is, like a script, a plain text file containing Python
 code. Modules must have names ending in :file:`.py`. So far, that's
@@ -308,8 +264,8 @@ containing the following simple function:
        else:
            return fib(n-2) + fib(n-1)
 
-If I now run IPython in the folder containing my new file
-:file:`fibonacci.py` then I will be able to import the :mod:`fibonacci`
+If we now run IPython in the folder containing our new file
+:file:`fibonacci.py` then we will be able to import the :mod:`fibonacci`
 module, and use the function :func:`fib`:
 
 .. code-block:: ipython3
@@ -361,7 +317,7 @@ quote one of the key developers of the Python language:
    with them for as long as you have used a computer, without even
    thinking about it. This is because folders are simply namespaces
    for files. Each filename can exist only once in each folder, and
-   you can nest folders inside folders. 
+   folders can be nested inside folders. 
 
 Other forms of import
 ~~~~~~~~~~~~~~~~~~~~~
@@ -371,7 +327,7 @@ want: it clearly separates the names in the module from the names we
 have defined ourselves, and makes it very obvious to a reader where
 the names come from. The downside is that names in namespaces can be
 quite long and cumbersome, which is particularly inconvenient if names
-are to be used frequently or in the middle of formulae: you probably
+are to be used frequently or in the middle of expressions: you probably
 don't really want to write :func:`math.sin` in every trig formula you
 ever write. One alternative is to rename the module on import. This is
 achieved using the keyword :keyword:`as <import>` in an import statement. For example,
@@ -434,23 +390,27 @@ from the module (without any warning or error). This is a frequent
 source of confusion. For this reason, importing `*` is usually a bad
 idea.
 
-The full details of all the ways that the import statement can be used
-is in :ref:`the official Python documentation. <python:import>`
+.. only:: not book
+
+    The full details of all the ways that the import statement can be used
+    is in :ref:`the official Python Language Reference. <python:import>`
+
+.. only:: book
+
+    The full details of all the ways that the import statement can be used
+    is in the official Python Language Reference. [#import]_
+
 
 Packages
 --------
 
-.. dropdown:: Video: a first Python package.
+.. details:: Video: a first Python package.
 
-    .. container:: vimeo
+    .. vimeo:: 487003753
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/487003753"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
 
 
 Modules are the principal mechanism for storing code which is intended
@@ -462,7 +422,18 @@ be much more logical, and much easier to work with, to split the code
 up into several files of more reasonable length. This is where
 packages come in. A Python package is a collection of module files,
 which can be imported together. The basic folder structure of a Python
-package looks like the following::
+package is shown in :numref:`package-layout`.
+
+.. only:: book
+    
+    .. raw:: latex
+
+        \clearpage
+
+.. _package-layout:
+
+.. code-block::
+    :caption: The file layout for a simple package.
 
     my_git_repo
     ├── my_package
@@ -484,7 +455,7 @@ they make up the Python package.
     This is not really a part of the package at all, but the
     :file:`my_package` folder needs to be in some folder, and this is a
     reminder that all your work should be in a revision control system
-    such as :ref:`git <fons:git>`. It would be usual for
+    such as :ref:`Git <git>`. It is usual for
     package folders to be contained immediately in the top level of
     the repository, in the manner shown here.
 
@@ -525,14 +496,14 @@ they make up the Python package.
 Importing packages
 ~~~~~~~~~~~~~~~~~~
 
-The system for importing packages is the same as that described in
-:numref:`modules`, though the nested nature of packages makes the
-process somewhat more involved. Importing a package also imports all
-the modules it contains, including those in subpackages. This will
-establish a set of nested namespaces. In the example above, after
-importing :mod:`my_package`, :mod:`module_3` will be accessible as
-`my_package.subpackage.module_3`. The usual rules about the `from`
-keyword still apply, so:
+The system for importing packages is the same as that described for modules in
+:numref:`modules`, though the nested nature of packages makes the process
+somewhat more involved. Importing a package also imports all the modules it
+contains, including those in subpackages. This will establish a set of nested
+namespaces. In the example above, let's suppose we have imported
+:mod:`my_package`. :mod:`module_3` will be accessible as
+`my_package.subpackage.module_3`. The usual rules about the `from` keyword
+still apply, so:
 
 .. code-block:: python3
 
@@ -584,25 +555,30 @@ Making packages installable
 
 In order for the :ref:`import statement <python:import>` to work, Python needs
 to know that the package being imported exists, and where to find it. This is
-achieved by *installing* the package. In order to make a package installable, we
-need to provide Python with a bit more information about it. This
-information is contained in a Python script which must be called :file:`setup.py`.
-This file isn't part of the package and does not go in the package folder.
-Instead, it should be placed in the top-level folder of your git repository, so
-that the Python package installer will be able to find it.
+achieved by installing the package. In order to make a package installable, we
+need to provide Python with a bit more information about it. This information
+can be provided in a Python script which must be called :file:`setup.py`. This
+file isn't part of the package and does not go in the package folder. Instead,
+it should be placed in the top-level folder of your git repository, so that the
+Python package installer will be able to find it.
 
-At the very least, :file:`setup.py` should contain the following:
+.. _minimal-setup-py:
 
 .. code-block:: python3
+    :caption: A minimal :file:`setup.py` which will make all the Python
+        packages found in subfolders of the folder containing :file:`setup.py`
+        installable. 
 
-   from setuptools import setup, find_packages
-   setup(
-       name="my_package",
-       version="0.1",
-       packages=find_packages(),
-   )
+    from setuptools import setup, find_packages
+    setup(
+        name="my_package",
+        version="0.1",
+        packages=find_packages(),
+    )
 
-`Setuptools <https://setuptools.readthedocs.io/en/latest/index.html>`__
+:numref:`minimal-setup-py` shows a very basic :file:`setup.py` which uses
+`setuptools` to make packages installable. `Setuptools
+<https://setuptools.readthedocs.io/en/latest/index.html>`__
 is a Python package which exists to help with the packaging and
 installation of Python packages. The :func:`~setuptools.setup`
 function records metadata such as the installation name to be given to
@@ -611,27 +587,38 @@ about all of the packages in the current repository, but this can be
 automated with the :func:`~setuptools.find_packages` function, which
 will return a list of folders containing a file named :file:`__init__.py`.
 
-This very simple :file:`setup.py` will suffice for packages that you only
-intend to use yourself. Should you wish to publish packages for use by
-other people, then you'll need to add some more information to the
-file. The canonical guide to this is the `Python packaging user guide
-<https://packaging.python.org/tutorials/packaging-projects/>`__.
+.. only:: not book
+
+    This very simple :file:`setup.py` will suffice for packages that you only
+    intend to use yourself. Should you wish to publish packages for use by other
+    people, then you'll need to provide significantly more information in
+    :file:`setup.py` and, potentially, in other places too. The canonical guide to
+    this is the `Python Packaging User Guide
+    <https://packaging.python.org/tutorials/packaging-projects/>`__.
+
+.. only:: book
+
+    This very simple :file:`setup.py` will suffice for packages that you only
+    intend to use yourself. Should you wish to publish packages for use by
+    other people, then you'll need to provide significantly more information in
+    :file:`setup.py` and, potentially, in other places too. The canonical guide
+    to this is the Python Packaging User Guide. [#packaging]_
 
 Installing a package from local code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another important case is where the Python package exists in files
-(hopefully a git repository!) on your local computer. This is usually
-the case where you are developing the package yourself. In this case,
+In :numref:`install-from-pypi` we learned how to use Pip to install packages
+from the online Python package repository, PyPI. However, Pip can also be used
+to install a package from a folder on your computer. In this case,
 you would type:
 
 .. code-block:: console
 
-   (my_venv) $ python -m pip install -e folder/
+   (PoP_venv) $ python -m pip install -e folder/
 
 replacing `folder` with the name of the top-level folder of your
 repository: the folder containing :file:`setup.py`. The option flag `-e`
-tells pip to install the package in 'editable' mode. This means that
+tells Pip to install the package in 'editable' mode. This means that
 instead of copying the package files to your venv's Python packages
 folder, symbolic links will be created. This means that any changes
 that you make to your package will show up the next time the package
@@ -649,55 +636,103 @@ the package every time you change it.
    started every time the script is run, so the packages used are
    guaranteed to be up to date.
 
+Pip packages and Python packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One frequent source of confusion in making packages installable and actually
+installing them is that Pip and Python have slightly different definitions of
+what constitutes a package. A Python package, as we have just learned, is a
+folder containing (at least) a file called :file:`__init__.py`. For Pip,
+however, a package is everything that :file:`setup.py` installs. In particular,
+this can include multiple Python packages. Indeed, :numref:`minimal-setup-py`
+is sufficient to install any number of Python packages contained in subfolders
+of the folder containing :file:`setup.py`.
+
+Package dependencies
+~~~~~~~~~~~~~~~~~~~~
+
+There is one more feature of Pip packages that it is useful to introduce at
+this stage: dependencies. If you write a package and the modules in that
+package themselves import other packages, then a user will need those packages
+to be installed in their Python environment, or your package will not work. If
+your package depends on other packages that need to be installed from PyPI then
+steps need to be taken to ensure that your users will have the correct packages
+installed. The `install_requires` keyword argument to :func:`setuptools.setup`
+takes a list of Pip package names. Pip will install any of these packages that
+are not already available before installing the package itself.
+:numref:`dependency-setup-py` illustrates this by adding a dependency on
+:mod:`numpy`.
+
+.. _dependency-setup-py:
+
+.. code-block:: python3
+    :caption: An extension to the :file:`setup.py` from
+        :numref:`minimal-setup-py` to require that :mod:`numpy` is installed.
+
+    from setuptools import setup, find_packages
+    setup(
+        name="my_package",
+        version="0.1",
+        packages=find_packages(),
+        install_requires=["numpy"]
+    )
+
+.. warning::
+
+    `install_requires` should not list packages from the Python Standard
+    Library. These are always available, and listing them will cause Pip to error.
+    
+
+..     `install_requires` should only list packages that Pip can install from
+..     PyPI. In particular, packages from the built-in Python Standard Library
+..     must not be listed in `install_requires`. Listing these packages is
+..     unnecessary, since they are guaranteed to be available, and will cause an
+..     error because Pip will attempt (and fail) to install them from PyPI.
+
 Testing frameworks
 ------------------
 
-.. dropdown:: Video: introducing Pytest.
+.. details:: Video: introducing Pytest.
 
-    .. container:: vimeo
+    .. vimeo:: 486987209
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/486987209"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
+Attempting to establish whether a program correctly implements the intended
+algorithm is core to effective programming, and programmers often spend more
+time correcting bugs than writing new code. We will turn to the question of how
+to debug in :numref:`Chapter %s <debugging>`. However, right from the start, we
+need to test the code we write, so we will cover the practical details of
+including tests in your code here.
 
-Attempting to establish whether a program correctly implements the
-intended algorithm is core to effective programming, and programmers
-often spend more time correcting bugs than writing new code. We will
-turn to the question of how to debug in :numref:`debugging`. However,
-right from the start, we need to test the code we write, so we will cover
-the practical details of including tests in your code here.
-
-There are a number of Python packages which support code testing. The
-concepts are largely similar so rather than get bogged down in the
-details of multiple frameworks, we will introduce :doc:`pytest
-<pytest:index>`, which is one of the most widely used. Pytest is simply a Python
-package, so you can install it into your current environment using:
+There are a number of Python packages which support code testing. The concepts
+are largely similar so rather than get bogged down in the details of multiple
+frameworks, we will introduce :doc:`Pytest <pytest:index>`, which is one of the
+most widely used. Pytest is simply a Python package, so you can install it into
+your current environment using:
 
 .. code-block:: console
 
-    $ python -m pip install pytest
+    (PoP_venv) $ python -m pip install pytest
 
 Pytest tests
 ~~~~~~~~~~~~
 
-A Pytest test is simply a function whose name starts with `test_`. In
-the simplest case, the function has no arguments. Pytest will call each
-such function in turn. If the function executes without error, then the
-test is taken to have passed, while if an error occurs then the test
-has failed. This behaviour might at first seem surprising - we don't
-just want the code to run, it has to get the right answer. However,
-thinking about it the other way around, we certainly want the test to
-fail if an error occurs. It's also very easy to arrange things such
-that an error occurs when the wrong answer is reached. This is most
-readily achieved using :ref:`the assert statement <python:assert>`.
-This simply consists of `assert` followed
-by a Python expression. If the expression is true, then execution just
-continues, but if it's false, then an error occurs. For example:
+A Pytest test is simply a function whose name starts with `test_`. In the
+simplest case, the function has no arguments. Pytest will call each such
+function in turn. If the function executes without error, then the test is
+taken to have passed, while if an error occurs then the test has failed. This
+behaviour might at first seem surprising - we don't just want the code to run,
+it has to get the right answer. However, if we think about it the other way
+around, we certainly want the test to fail if an error occurs. It's also very
+easy to arrange things such that an error occurs when the wrong answer is
+reached. This is most readily achieved using :ref:`the assert statement
+<python:assert>`. This simply consists of `assert` followed by a Python
+expression. If the expression is true, then execution just continues, but if
+it's false, then an error occurs. For example:
 
 .. code-block:: ipython3
 
@@ -740,8 +775,8 @@ We can then invoke the tests from the shell:
 
 .. code-block:: console
 
-    $ cd fibonacci
-    $ pytest tests
+    (PoP_venv) $ cd fibonacci
+    (PoP_venv) $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -757,7 +792,7 @@ instead see something like:
 
 .. code-block:: console
 
-    $ pytest tests
+    (PoP_venv) $ pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -782,78 +817,80 @@ instead see something like:
 
 Here we can see an `F` after `tests/test_fibonacci.py` indicating
 that the test failed, and we see some output detailing what went
-wrong. We will learn how to interpret this output in :numref:`debugging`.
+wrong. We will learn how to interpret this output in :numref:`Chapter %s
+<errors_and_exceptions>`.
 
-Additional useful pytest tricks
+
+Additional useful Pytest tricks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It can be useful to run a specific test file, which is achieved simply by naming
-that file as the argument to pytest. For example:
+that file as the argument to Pytest. For example:
 
 .. code-block:: console
 
-    $ pytest tests/test_fibonacci.py
+    (PoP_venv) $ pytest tests/test_fibonacci.py
 
 It is even possible to select an individual test to run, using a double colon
 `::` followed by the test name:
 
 .. code-block:: console
 
-    $ pytest tests/test_fibonacci.py::test_fibonacci_values
+    (PoP_venv) $ pytest tests/test_fibonacci.py::test_fibonacci_values
 
 Often if one test fails then the same problem in your code will cause a whole
 series of tests to fail, resulting in a very long list of error messages which
 is hard to read. A useful tool in this circumstance is the `-x` option, which
-tells pytest to stop after the first test fail. For example:
+tells Pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
-    $ pytest -x tests
+    (PoP_venv) $ pytest -x tests
 
-The tests are usually arranged in increasing order of sophistication, so the
+The tests are often arranged in increasing order of sophistication, so the
 earlier tests are likely to catch the most basic errors in your code. For this
 reason, it is usually the best policy to try to fix the first error first, and
 only move onto the next problem when the previous test passes.
 
 .. note::
 
-    The exercise repositories in this course will usually contain a
+    The exercise repositories that accompany this book will contain a
     :file:`tests` folder full of tests that check that you have correctly
-    implemented the week's exercises. You should get in the habit of running the
-    tests as you work through the exercises, as they are designed not just to
-    pass if your code is correct, but to provide feedback as to what might be
-    going wrong if your code contains errors.
+    implemented the chapter's exercises. You should get in the habit of running
+    the tests as you work through the exercises, as they are designed not just
+    to pass if your code is correct, but to provide feedback as to what might
+    be going wrong if your code contains errors.
 
 Writing code to a specified interface
 -------------------------------------
 
-Creating more capable programmes depends completely on being able to interface
+Creating more capable programs depends completely on being able to interface
 different pieces of code. You will write code which calls code written by other
 people, and others will call code written by you. This can only work if the
 caller and the callee agree exactly on the interface: what are the names of the
 :term:`packages <package>`, :term:`modules <module>` and functions being
 called. How many arguments do they take? What are the names of the
-:term:`keyword parameters <parameter>`? Computer languages are notoriously pedantic about such
-things: they have no capability to simply read through small differences as a
-human would. You have doubtless already encountered the frustrating situation of
-spending extended periods repeatedly getting errors until you realised that
-something has to be spelt slightly differently, or that you used a capital
-letter where you should have used a lower case one. 
+:term:`keyword parameters <parameter>`? Computer languages are notoriously
+pedantic about such things: they have no capability to simply read through
+small differences as a human would. You have doubtless already encountered the
+frustrating situation of spending extended periods repeatedly getting errors
+until you realised that something has to be spelt slightly differently, or that
+you used a capital letter where you should have used a lower case one. 
 
 What changes as you move on to write code which will be called by other code is
-that this need for precision and pedantry now flows in both directions. Not only
-do you need to call other code using precisely the correct interface, you also
-need to provide precisely the correct interface to the code that will call you.
-This will be the case all the way through this course as the tests for each
-exercise will call your code. The exercises will specify what the correct
-interface is, either in the exercise question itself, or through the skeleton
-code which is provided.
+that this need for precision and pedantry now flows in both directions. Not
+only do you need to call other code using precisely the correct interface, you
+also need to provide precisely the correct interface to the code that will call
+you. This is particularly true when working with a testing framework, as the
+tests for each exercise will call your code. The exercises will specify what
+the correct interface is, either in the exercise question itself, or through
+the skeleton code which is provided.
 
 Your code needs to follow exactly the specification in the exercise: all the
 right names, accepting arguments of the correct type and so on. If it does not,
 then the tests will simply fail. Changing the tests to suit your preferred
 interface is not an acceptable answer, your code needs to comply with the
-interface specified in the tests [#interface_errors]_.
+interface specified in the tests.
 
 This requirement to code to a published specification is not an artifact of the
 testing framework: it is often the case that code written in a research or
@@ -868,17 +905,19 @@ Glossary
     :sorted:
 
     module
-       A text file containing Python code which is accessed using the :ref:`import statement <python:import>`.
+       A text file containing Python code which is accessed using the
+       :ref:`import statement <python:import>`.
 
     namespace
-       A collection of names. Within a single namespace, each
-       name has a single defined meaning. Names in different spaces
-       can be referred to using the syntax `namespace.name` where
-       `namespace` is an name for the namespace. namespaces are
-       themselves named, so they can be nested (`namespace.inner_namespace.name`).
+       A collection of names. Within a single namespace, each name has a single
+       defined meaning. Names in different spaces can be referred to using the
+       syntax `namespace.name` where `namespace` is an name for the namespace.
+       namespaces are themselves named, so they can be nested
+       (`namespace.inner_namespace.name`).
 
     package
-       A grouping of related :term:`modules <module>` into a single importable unit.
+       A grouping of related :term:`modules <module>` into a single importable
+       unit.
 
     Python interpreter
        The piece of software which interprets and executes Python commands. 
@@ -891,66 +930,92 @@ Glossary
        A text file containing a sequence of Python statements to be
        executed. In Python, program and script are synonymous.
 
-    venv
-    virtual environment
-       A lightweight private Python installation with its own set of
-       Python packages installed.
+.. _programs_in_files_exercises:
 
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+Before attempting the exercises, ensure that you have obtained the software
+tools described in :numref:`tools` and set up a working folder and
+:term:`virtual environment` as described in :numref:`create_venv`. If you're not
+already familiar with Git and GitHub then you will also need to work through
+:numref:`Appendix %s <git>` to learn enough to do the exercises.
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+.. .. panels::
+..     :card: quiz shadow
 
-.. proof:exercise::
+..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
+..         :text: This week's quiz
+..         :classes: stretched-link 
 
-    Follow the :ref:`instructions on the Faculty of Natural Sciences Python
-    installation page <fons:python_folders>` to create the folder structure
-    you will use for this course on your computer. Start with an overall folder
-    for the module, and create a virtual environment in that module.
+.. .. proof:exercise::
+
+..     Follow the :ref:`instructions on the Faculty of Natural Sciences Python
+..     installation page <fons:python_folders>` to create the folder structure
+..     you will use for this course on your computer. Start with an overall folder
+..     for the module, and create a virtual environment in that module.
+
 
 .. _course_repo:
 
 .. proof:exercise::
 
-    Visit the `GitHub repository for these notes
-    <https://github.com/object-oriented-python/object-oriented-programming>`__.
-    Clone that git repository into your course folder, and install the Python
-    package it contains into your virtual environment. Check that it has
-    installed correctly by installing pytest, and running:
+    .. only:: not book
+            
+        Visit the `GitHub repository for this book
+        <https://github.com/object-oriented-python/object-oriented-programming>`__.
+        Clone that git repository into your course folder, and install the Python
+        package it contains into your virtual environment. Check that it has
+        installed correctly by installing Pytest, and running:
+
+    .. only:: book
+            
+        Visit the GitHub repository for this book. [#book_repo]_
+        Clone that git repository into your working folder, and install the Python
+        package it contains into your virtual environment. Check that it has
+        installed correctly by installing Pytest, and running:
 
     .. code-block:: console
 
-        $ pytest tests/test_fibonacci.py
+        (PoP_venv) $ pytest tests/test_fibonacci.py
 
-    You could also run iPython,  import :mod:`fibonacci` and try out
+    You could also run IPython,  import :mod:`fibonacci` and try out
     :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
 
 .. proof:exercise::
 
-    Accept the `first Github Classroom assignment for this module
-    <https://classroom.github.com/a/VltGa-Xl>`__ and clone it into your course folder. The assignment
-    repository just contains a :file:`README` and some tests. Your job in the
-    following exercises will be to populate it with the remaining content.
+    .. only:: not book
+
+        Using the information on the `book website
+        <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+        create your first exercise repository for this module and clone it
+        into your working folder. The exercise repository just contains a
+        :file:`README` and some tests. Your job in the following exercises will be
+        to populate it with the remaining content.
+
+    .. only:: book
+
+        Using the information on the `book website` [#exercise_page]_
+        create your first exercise repository for this module and clone it
+        into your working folder. The exercise repository just contains a
+        :file:`README` and some tests. Your job in the following exercises will be
+        to populate it with the remaining content.
+
 
 .. proof:exercise::
 
     Create a new Python :term:`package` named :mod:`math_utils` containing a
     :term:`module` called :mod:`primes`. In the :mod:`primes` module define a
     function :func:`isprime` which takes in a single integer argument and
-    returns `True` or `False` depending on whether or not the argument is prime.
-    There is no need to be sophisticated in the algorithm used to check for
-    primeness, simply checking whether the number is zero modulo any of the
-    integers less than its square root will be fine. Test your code by running
-    the following in your week 2 exercise repository:
+    returns `True` or `False` depending on whether or not the argument is
+    prime. There is no need use a sophisticated algorithm, simply checking
+    whether the number is zero modulo any of the integers less than its square
+    root will be fine. Test your code by running the following in the exercise
+    repository:
 
     .. code-block:: console
 
-        $ pytest tests/test_exercise_2_4.py
+        (PoP_venv) $ pytest tests/test_exercise_2_4.py
 
     Then push your code to GitHub and check that the tests pass there too.
 
@@ -966,10 +1031,15 @@ Exercises
     .. note:: 
 
         After this and every exercise in which you write code, ensure that you
-        add any new files to git, commit all of your changes, and push to
+        add any new files to Git, commit all of your changes, and push to
         GitHub. Then ensure that the tests pass on GitHub. For more information
-        about how to do any of these, refer back the :ref:`Faculty of Natural Sciences
-        Git instructions <github_classroom_exercise>`.
+        about how to do any of these, refer to :numref:`Appendix %s <git>`.
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. proof:exercise::
 
@@ -978,7 +1048,7 @@ Exercises
     installable.
 
     Pytest can't easily test installability for you, so once you have managed to
-    install your package yourself, commit and push to github to check that the
+    install your package yourself, commit and push to GitHub to check that the
     tests there are also able to install your package.
 
 .. proof:exercise::
@@ -992,8 +1062,17 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004) <https://www.python.org/dev/peps/pep-0020/>`__
+.. [#peters] Tim Peters, `"PEP 20 -- The Zen Of Python" (2004)
+    <https://www.python.org/dev/peps/pep-0020/>`__ 
 
-.. [#interface_errors] Of course if you find a case where it appears that the
-   tests don't honour the interface published in the exercise, you should raise
-   an issue reporting this.
+.. [#import] `https://docs.python.org/3/reference
+    <https://docs.python.org/3/reference/simple_stmts.html#import>`__
+
+.. [#packaging] `https://packaging.python.org
+    <https://packaging.python.org/tutorials/packaging-projects/>`__ 
+
+.. [#book_repo] `https://github.com/object-oriented-python/object-oriented-programming
+    <https://github.com/object-oriented-python/object-oriented-programming>`__
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

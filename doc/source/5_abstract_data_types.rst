@@ -3,7 +3,7 @@
 Abstract data types
 ===================
 
-In :numref:`week %s <objects>`, we introduced the concept of :term:`type` as an
+In :numref:`Chapter %s <objects>`, we introduced the concept of :term:`type` as an
 :term:`abstraction` comprising a set of possible values, and a set of
 operations. All types in Python are abstractions in this sense
 because we deal with them in terms of their defined properties rather
@@ -26,115 +26,64 @@ define the concrete realisation of a data type:
     A *data structure* describes the concrete implementation of a data type:
     which data is stored, in what order, and how it is interpreted.
 
-In understanding abstract data types, it is often useful to think about the data
-structures which could be used to implement them.
+In understanding abstract data types, it is often useful to think about the
+data structures which could be used to implement them, but there is also value
+in understanding an abstract type purely in terms of its mathematical
+properties. 
 
 .. _stacks:
 
 Stacks
 ------
 
-.. dropdown:: Video: stacks as an abstract data type.
+.. details:: Video: stacks as an abstract data type.
 
-    .. container:: vimeo
 
-        .. raw:: html
+    .. vimeo:: 506479213
 
-            <iframe src="https://player.vimeo.com/video/506479213"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
+    .. only:: html
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b014e13a-82ca-4a57-ac7f-acc000e64349>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b014e13a-82ca-4a57-ac7f-acc000e64349>`__.
 
 
 Possibly the simplest abstract data type which is not synonymous with
 a Python type is the :term:`stack`. A stack is a sequence of objects
 in which only the most recently added object is accessible. The image
 to have in mind is a stack of plates on a spring-loaded holder of the
-type found in many universities or workplace canteens. Each time a
+type found in many university and workplace canteens. Each time a
 plate is added to the stack, the whole pile is *pushed* down to keep
 the top of the stack in place. If the top plate is removed, then the
 whole stack *pops* back up. An alternative name for a stack is
 a :term:`LIFO (last in, first out)`, because the last object added to
-the stack is the first object retrieved (contrast :term:`FIFO <FIFO (first in, first out)>`).
+the stack is the first object retrieved.
 
-Recall that a :term:`type` is defined by a set of possible values and
-a set of operations. The value of stack is an ordered sequence of objects of any
-type. The operations are `push` to add a new object to the sequence,
-and `pop` to return the most recently added object, and remove it from
-the sequence. :numref:`stackdiag` shows these operations. It is also common to add an additional operation of
-`peek`, which returns the most recently added object without removing
-it from the stack.
+Recall that a :term:`type` is defined by a set of possible values and a set of
+operations. The value of stack is an ordered sequence of objects of any type.
+The operations are `push` to add a new object to the sequence, and `pop` to
+return the most recently added object, and remove it from the sequence.
+:numref:`stackdiag` shows these operations. It is also common to add an
+additional operation of `peek`, which returns the most recently added object
+without removing it from the stack.
 
 .. _stackdiag:
 
-.. blockdiag::
-    :caption: Cartoon of a sequence of stack operations. First 24, 12, 57 are
-        pushed, then 57 is popped.
+.. figure:: images/stack.*
 
-
-      blockdiag stack{
-      // setup info
-      node_height = 30;
-      "Stack" [color = orange];           //push
-      "Stack " [color=orange, stacked];   //push
-      "Stack  " [color=orange, stacked];  //push
-      "Stack   " [color=orange, stacked]; //pop
-      "push 24" [color="#2E8B57"]; 
-      "push 12" [color="#2E8B57"]; 
-      "push 57" [color="#2E8B57"]; 
-      "pop" [color="#CD5C5C"];
-      group{
-      24;
-      color =  orange
-      }
-
-      group second{
-      12; "24 ";
-      color =  orange
-      }
-
-      group third{
-      57 ;"12 "; "24  ";
-      color =  orange
-      }
-
-      group fourth{
-      "12  "; "24   ";
-      color =  orange
-      }
-
-      // structure and flow
-      "push 24" -> "Stack";
-      "push 24" -> 24 [style="none"];
-
-      "push 12" -> "12" [style="none"];
-      "push 12" -> "Stack ";
-
-      "push 57" -> "12 " [style="none"];
-      "push 57" -> "Stack  ";
-      
-      "Stack" -> "pop" [style="none"];
-      "pop" -> "Stack   ";
-      "pop" -> "12  "[style="none"];
-
-      C [shape = "dots"]
-      "Stack " -> C [style="none"];
-      }
+    A sequence of stack operations. 24, 12, and 57. Finally the pop operation
+    removes (and would return) 57.
    
 An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Reverse Polish notation, or postfix notation, is a way of writing
-mathematical operations without using operator precedence or brackets in
-order to determine the order of operations. This makes the
-implementation of reverse Polish notation arithmetic particularly
-simple. Reverse Polish calculators require fewer button pushes for
-complex calculations and were popular in the 1970s. They are still
-available, most famously from HP. In a more current example, the
-PostScript language used to describe documents for printers is reverse
-Polish.
+Reverse Polish notation, or postfix notation, is a way of writing mathematical
+operations without using operator precedence or brackets in order to determine
+the order of operations. This makes the algorithm for evaluating expressions
+written in reverse Polish notation arithmetic particularly simple. Reverse
+Polish calculators require fewer button pushes for complex calculations and
+were popular in the 1970s. They are still available, most famously from HP. In
+a more current example, the PostScript language used to describe documents for
+printers is written in reverse Polish notation.
 
 In reverse Polish notation, the operator follows its operands. For
 example to add the numbers one and two, one would write :math:`1\ 2\
@@ -165,7 +114,7 @@ calculator.
 
 Notice that we pop the second operand before the first. This is
 because :math:`4\ 2\ -` means :math:`4 - 2`, not :math:`2 - 4`.
-:numref:`rptable` Shows how a reverse Polish calculator would evaluate
+:numref:`rptable` shows how a reverse Polish calculator would evaluate
 an arithmetic expression.
 
 .. _rptable:
@@ -210,6 +159,10 @@ Implementing stacks in Python
 While it is strictly true that Python does not have a stack type, the
 :class:`list` class functions as a perfectly good stack. The
 relationship between the two is shown in :numref:`list_stack`.
+
+.. raw:: latex
+
+    \clearpage
 
 .. _list_stack:
 
@@ -269,32 +222,28 @@ likely to result in a large and complex piece of code which nobody
 understands. Such a program will almost inevitably produce the wrong
 answer, and finding out what is wrong will be exceptionally difficult.
 
-Abstract data types provide part of the mathematical interface that
-separates different concerns. The user of an abstract data type has an
-object with a simple set of operations which is easy to reason about,
-while the implementer of an abstract data type only has to provide an
-object with the required methods. They do not have to reason about all
-the ways in which that object might be used. By learning to think
-about programming in terms of abstract types and objects, you will
-become a better programmer who can address more complex programming
-tasks.
+Abstract data types provide part of the mathematical interface that separates
+different concerns. The user of an abstract data type has an object with a
+simple set of operations which is easy to reason about. At the same time, the
+implementer of an abstract data type only has to provide an object with the
+required methods: they do not have to reason about all the ways in which that
+object might be used. By learning to think about programming in terms of
+abstract types and objects, you will become a better programmer who can address
+more complex programming tasks.
 
 
 Algorithmic complexity
 ----------------------
 
-.. dropdown:: Video: dynamic arrays and algorithmic complexity.
+.. details:: Video: dynamic arrays and algorithmic complexity.
 
-    .. container:: vimeo
 
-        .. raw:: html
+    .. vimeo:: 506479208
 
-            <iframe src="https://player.vimeo.com/video/506479208"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
+    .. only:: html
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=516115a0-b13d-4693-951b-acc000e642ff>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=516115a0-b13d-4693-951b-acc000e642ff>`__.
 
 
 The second reason that understanding abstract data types is important
@@ -342,9 +291,9 @@ number of operations required to execute an algorithm, and space
 complexity, which measures the peak memory usage of an algorithm or
 data structure.
 
-.. _badstack:
-
 .. container:: badcode
+
+    .. _badstack:
 
     .. code-block:: python3
        :caption: A poorly designed stack implementation in which push and pop cost
@@ -407,65 +356,13 @@ called a :term:`dynamic array`. :numref:`dynamicarray` illustrates its operation
    
 .. _dynamicarray:
 
-.. graphviz::
-    :caption: A dynamic array implementation of a :class:`list`. The existing
-        memory buffer is full, so when 11 is appended to the list, a larger
-        buffer is created and the whole list is copied into it. When 13 is
-        subsequently appended to the list, there is still space in the buffer so
-        it is not necessary to copy the whole list.
-    :align: center
+.. figure:: images/dynamic_array.*
 
-    digraph dl {
-    	bgcolor="#ffffff00" # RGBA (with alpha)
-	    graph [
-	    rankdir = "LR"
-	    ];
-	    node [
-	    fontsize = "16"
-	    shape = "ellipse"
-	    ];
-	    edge [
-	    ];
-	    
-	    subgraph cluster_0 {
-	    		style="ellipse, dashed";
-	    		bgcolor="#CD5C5C";
-	    "node0" [
-	    label = "<f0> 2 | 3| 5| 7 |e <f1>"
-	    shape = "record"
-	    ];
-	    }
-	    
-	    subgraph cluster_3 {
-	    		style="ellipse, dashed";
-	    		bgcolor="#2E8B57";
-	    		
-	    "node1" [
-	    label = "<f0> 2 | 3| 5| 7 | <f1> 11| | | <f2>"
-	    shape = "record"
-
-	    ];
-        }
-	    subgraph cluster_4 {
-	    		style="ellipse, dashed";
-	    		bgcolor="#2E8B57";
-	    
-	    "node3" [
-	    label = "<f0> 2 | 3| 5| 7| <f1> 11| <f2> 13| | <f3>"
-	    shape = "record"
-	    ];
-	    }
-
-	    "node0":f0 -> "node1":f0 [
-	    id = 2
-		label = "append 11"
-	    ];
-
-		"node1":f0 -> "node3":f0 [
-	    id = 2
-		label = "append 13"
-	    ];
-    }
+    A dynamic array implementation of a :class:`list`. The existing
+    memory buffer is full, so when 11 is appended to the list, a larger
+    buffer is created and the whole list is copied into it. When 13 is
+    subsequently appended to the list, there is still space in the buffer so
+    it is not necessary to copy the whole list.
    
 What does this memory allocation strategy mean for the computational
 complexity of appending items to the list? There are two cases. If
@@ -501,9 +398,9 @@ time complexity of :math:`O(n)`.
 We can use Python's :term:`introspection` capabilities to illustrate how the
 dynamic allocation of space for a list works as the list is appended. The
 :func:`sys.getsizeof` function returns the amount of computer memory that an
-object consumes. The function in :numref:`byte_size` uses this to diagnose the memory
-consumption of progressively longer lists, and :numref:`byte_size` demonstrates
-this.
+object consumes. The function in :numref:`byte_size` uses this to diagnose the
+memory consumption of progressively longer lists, and :numref:`byte_size_demo`
+demonstrates this.
 
 .. _byte_size:
 
@@ -558,18 +455,14 @@ this.
 Queues and deques
 -----------------
 
-.. dropdown:: Video: deques and ring buffers.
+.. details:: Video: deques and ring buffers.
 
-    .. container:: vimeo
+    .. vimeo:: 506710190
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/506710190"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5ba7fde3-8ca9-48e2-b66b-acc100bd1953>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5ba7fde3-8ca9-48e2-b66b-acc100bd1953>`__.
 
 
 A :term:`queue` is, like a :term:`stack`, an ordered sequence of
@@ -579,28 +472,29 @@ the queue and taken from the front. As with a stack, the optimal
 implementations of item insertion and removal are :math:`O(1)`.
 
 A :term:`deque` (Double Ended QUEue) is a generalisation of a queue to
-permit adding and removing items at either end. Indeed, the observant
-reader will note that a stack is also a special case of a
-deque. Python's standard library contains the
+permit adding and removing items at either end. The observant
+reader will note that stacks and queues are both special cases of
+deques. Python's standard library contains the
 :class:`collections.deque` class, providing a simple and efficient
 implementation of a deque.
 
 Ring buffers
 ~~~~~~~~~~~~
 
-How might one go about implementing a deque? A dynamic array allows values to be
-appended with :math:`O(1)` complexity, but doesn't offer an efficient mechanism
-for prepending values. One might think that the natural solution for this would
-be to create a double-ended dynamic array: a buffer with spare space at each
-end. Unfortunately this is not optimally efficient in the case where the deque
-is used to implement a queue of approximately constant length. In that case,
-values are consistently added at one end of the :term:`data structure` and removed from
-the other. Even in the case of a double-ended dynamic array, the buffer space at
-the append end of the queue will constantly run out, necessitating an expensive
-copy operation. The solution is to use a dynamic array, but to logically join up
-its ends, so that the first position in the buffer follows on from the last.
-Only in the case where all positions in the buffer are full will the buffer be
-reallocated. This data structure is called a ring buffer. 
+How might one go about implementing a deque? A dynamic array allows values to
+be appended with :math:`O(1)` complexity, but doesn't offer an efficient
+mechanism for prepending values. One might think that the natural solution for
+this would be to create a double-ended dynamic array: a buffer with spare space
+at each end. Unfortunately this is not optimally efficient in the case where
+the deque is used to implement a queue of approximately constant length. In
+that case, values are consistently added at one end of the :term:`data
+structure` and removed from the other. Even in the case of a double-ended
+dynamic array, the buffer space at the append end of the queue will constantly
+run out, necessitating an expensive copy operation. The solution is to use a
+dynamic array, but to logically join up its ends, so that the first position in
+the buffer follows on from the last. Only in the case where all positions in
+the buffer are full will the buffer be reallocated. This data structure is
+called a ring buffer. 
 
 .. _ring_buffer:
 
@@ -620,18 +514,14 @@ Linked lists
 ------------
 
 
-.. dropdown:: Video: linked lists.
+.. details:: Video: linked lists.
 
-    .. container:: vimeo
+    .. vimeo:: 506743244
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/506743244"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d1b2b176-066a-4d68-aa01-acc100eec5c6>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d1b2b176-066a-4d68-aa01-acc100eec5c6>`__.
 
 One disadvantage of a deque (and hence of a stack or queue) is that inserting an
 object into the middle of the sequence is often an :math:`O(n)` operation,
@@ -651,102 +541,13 @@ record convenient information such as the list length, but it's not strictly nec
 
 .. _linked_list_dia:
 
-.. graphviz::
-   :caption: Diagram of a linked list. A new link containing the value `F` is
-        being inserted between the link with value `C` and that with value `D`.
-   :align: center
+.. figure:: images/linked_list.*
 
-    digraph ll {
-		bgcolor="#ffffff00"
-		graph [
-		rankdir = "TB"
-		];
-		node [
-		fontsize = "16"
-		];
-		edge [
-		];
+     Diagram of a linked list. A new link containing the value `E` is
+     inserted between the link with value `B` and that with value `C`. First,
+     the link reference from `E` is pointed to `C` (blue dashed line). Next,
+     the link reference from `B` is pointed to `E` (red dotted line).
 
-		subgraph cluster_1 {
-				style="ellipse, dashed";
-				bgcolor="lightgray";
-
-		"node_init" [
-		label = "<f0> A| next| 1 <f1>"
-		shape = "record"
-		];
-
-		"node0" [
-		label = "<f0> B| next| 1 <f1>"
-		shape = "record"
-		];
-
-		"node1" [
-		label = "<f0> C| next| 1 <f1>"
-		shape = "record"
-		];
-
-		"node2" [
-		label = "<f0> D| next| 1 <f1>"
-		shape = "record"
-		];
-		
-		 "node3" [
-		label = "<f0> E| next| 1 <f1>"
-		shape = "record"
-		];
-
-		 "node4" [
-		label = "None"
-		shape = "record"
-		];
-
-		
-
-		subgraph cluster_2 {
-				style="ellipse, dashed";
-				bgcolor="#2E8B57";
-		
-		"node5" [
-		label = "<f0> F| next|_ <f1>"
-		shape = "record"
-		];
-		}
-
-		"node_init":f1 -> "node0":f0 [
-		id = 0
-		];
-		
-		"node0":f1 -> "node1":f0 [
-		id = 1
-		];
-        
-		"node1":f1 -> "node2":f0 [
-		id = 2
-		label ="old link"
-		];
-		
-		"node2":f1 -> "node3":f0 [
-		id = 3
-		];
-
-		"node1":f1 -> "node5":f0 [
-		id = 4
-		label =" new link"
-		style= "dashed"
-		];
-
-		"node5":f1 -> "node2":f0 [
-		id = 5
-		style= "dashed"
-		];
-
-        "node3":f1 -> "node4":f1 [
-        id = 6
-        style = dashed
-		];
-	   }
-   }
 	
 .. code-block:: python3
    :caption: A simple singly linked list implementation.
@@ -764,14 +565,13 @@ record convenient information such as the list length, but it's not strictly nec
           link.next = self.next
           self.next = link
 
-Linked lists tend to have advantages where data is sparse. For
-example, our implementation of a :class:`~example_code.polynomial.Polynomial` in
-:numref:`objects` would represent :math:`x^{100} + 1` very
-inefficiently, with 98 zeroes. Squaring this polynomial would cause
-tens of thousands of operations, almost all of them on
-zeroes. Conversely, if we implemented polynomials with linked lists of
-terms, this squaring operation would take the handful of operations we
-expect.
+Linked lists tend to have advantages where data is sparse. For example, our
+implementation of a :class:`~example_code.polynomial.Polynomial` in
+:numref:`Chapter %s <objects>` would represent :math:`x^{100} + 1` very
+inefficiently, with 98 zeroes. Squaring this polynomial would cause tens of
+thousands of operations, almost all of them on zeroes. Conversely, if we
+implemented polynomials with linked lists of terms, this squaring operation
+would take the handful of operations we expect.
 
 A doubly linked list differs from a singly linked list in that each
 link contains links both to the next link and to the previous
@@ -788,18 +588,14 @@ based on ring buffers.
 The iterator protocol
 ---------------------
 
-.. dropdown:: Video: the iterator protocol.
+.. details:: Video: the iterator protocol.
 
-    .. container:: vimeo
+    .. vimeo:: 506743250
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/506743250"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f37ae26c-a39a-4757-bc0d-acc100eec588>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f37ae26c-a39a-4757-bc0d-acc100eec588>`__.
 
 
 The abstract data types we have considered here are collections of
@@ -807,7 +603,7 @@ objects, and one common abstract operation which is applicable to
 collections is to iterate over them. That is to say, to loop over the
 objects in the collection and perform some action for each one. This
 operation is sufficiently common that Python provides a special syntax
-for it, the :ref:`for loop <python:for>`. You will already be very
+for it: the :ref:`for loop <python:for>`. You will already be very
 familiar with looping over sequences such as lists:
 
 .. code-block:: ipython3
@@ -819,28 +615,29 @@ familiar with looping over sequences such as lists:
    Hello Mars
    Hello Venus
 
-Python offers a useful abstraction of this concept. By implementing
-the correct :term:`special methods <special method>`, a container
-class can provide the ability to be iterated over. This is a great
-example of abstraction in action: the user doesn't need to know or
-care how a particular container is implemented and therefore how to
-find all of its contents.
+Python offers a useful abstraction of this concept. By implementing the correct
+:term:`special methods <special method>`, a container class can provide the
+ability to be iterated over. This is a great example of abstraction in action:
+the user doesn't need to know or care how a particular container is implemented
+and therefore how to find all of its contents, they can simply write a for loop
+to access every item in turn.
 
 There are two :term:`special methods <special method>` required for iteration.
 Neither take any arguments beyond the object itself. The first,
 :meth:`~container.__iter__`, needs to be implemented by the container type. Its
 role is to return an object which implements iteration. This could be the
-container itself, or it could be a special iteration object (for example because
-it is necessary to store a number recording where the iteration is up to).
+container itself, or it could be a special iteration object (for example
+because it is necessary to store a number recording where the iteration is up
+to).
 
-The object returned by :meth:`~container.__iter__` needs to itself implement
-:meth:`~iterator.__iter__` (for example it could simply `return self`). In
-addition, it needs to implement the :meth:`~iterator.__next__` method. This is
-called by Python repeatedly to obtain the next object in the iteration
-sequence. Once the sequence is exhausted, subsequent calls to
-:meth:`~iterator.__next__` should raise the built-in :class:`StopIteration`
-exception. This tells Python that the iteration is over. This
-arrangement is called the iterator protocol, and it's further
+The object returned by :meth:`~container.__iter__` is called an iterator. It
+also needs to implement :meth:`~iterator.__iter__` (for example it could simply
+`return self`). In addition, it needs to implement the
+:meth:`~iterator.__next__` method. This is called by Python repeatedly to
+obtain the next object in the iteration sequence. Once the sequence is
+exhausted, subsequent calls to :meth:`~iterator.__next__` should raise the
+built-in :class:`StopIteration` exception. This tells Python that the iteration
+is over. This arrangement is called the iterator protocol, and it's further
 documented in the :ref:`official Python documentation <typeiter>`.
 
 .. hint::
@@ -855,11 +652,11 @@ documented in the :ref:`official Python documentation <typeiter>`.
       raise StopIteration
 
 Let's suppose we want to make the linked list in :numref:`linked_list`
-iterable. We'll need to make another object to keep track of where we
-are in the list at each point in the
-iteration. :numref:`iterating_linked_list` shows the code. The helper
-class :class:`LinkIterator` is never seen by the user, it's just there
-to keep track of the iteration.
+iterable. We'll need to make another object (an iterator) to keep track of
+where we are in the list at each point in the iteration.
+:numref:`iterating_linked_list` shows the code. The iterator class
+:class:`LinkIterator` is never seen by the user, it's just there to keep track
+of the iteration.
 
 .. _iterating_linked_list:
 
@@ -927,7 +724,8 @@ Here we have introduced in some detail a few relatively simple abstract data
 types that illustrate the distinction between the mathematical properties of a
 type and the concrete details of its implementation. There are many other
 abstract data types, some of which you will have already met, and we will
-encouter a few more in this course. For context, here are a few other examples.
+encounter a few more in this course. For context, here are a few other
+examples.
 
 set
     A set is an unordered collection of objects with the property that objects
@@ -941,15 +739,16 @@ dictionary or map
     operations on average. The Python :class:`dict` type is an implementation.
 
 graph
-    A general relation between a set and itself defined by a set of values and a
-    set of edges, where each edge connects exactly two vertices. Graphs can be
-    used to describe very general relationships among data.
+    A general relation between a set and itself defined by a set of vertices
+    and a set of edges, where each edge connects exactly two vertices. Graphs
+    can be used to describe very general relationships among data.
 
 tree
     A particular sort of graph in which edges have a direction (a from and a to
-    node), and each node is the origin of at most one edge. Trees can be used to
-    describe many types of structured relationship. We will show how trees and
-    related structures can be used in symbolic maths in :numref:`trees`.
+    node), and each node is the origin of at most one edge. Trees can be used
+    to describe many types of structured relationship. We will show how trees
+    and related structures can be used in symbolic maths in :numref:`Chapter %s
+    <trees>`.
 
 Glossary
 --------
@@ -1030,23 +829,32 @@ Glossary
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+.. .. panels::
+..     :card: quiz shadow
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2077681_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2077681_1&mode=cpview
+..         :text: This week's quiz
+..         :classes: stretched-link 
 
+.. only:: not book
 
-Obtain the `skeleton code for these exercises from GitHub classroom
-<https://classroom.github.com/a/eHigwP_C>`__. You will also need to install the pytest-timeout package.
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. You will also need to install
+    the pytest-timeout package.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises. You will also need to install the
+    pytest-timeout package.
 
 .. proof:exercise::
 
-    In this week's skeleton repository, create a :term:`package` called
+    In the exercise repository, create a :term:`package` called
     :mod:`adt_examples` with a :term:`module` called
-    :mod:`adt_examples.fibonacci`. Make the package installable and install in
-    editable mode. Create a class :class:`Fib` implementing the iterator
+    :mod:`adt_examples.fibonacci`. Make the package installable and install it
+    in editable mode. Create a class :class:`Fib` implementing the iterator
     protocol which returns the Fibonacci numbers. In other words, the following
     code should print the `Fibonacci` numbers under 100:
 
@@ -1065,7 +873,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom
 
 .. proof:exercise::
 
-    In this week's skeleton repository, create a :term:`module`
+    In the exercise repository, create a :term:`module`
     :mod:`adt_examples.rpcalc` containing a class :class:`RPCalc` implementing a
     reverse Polish calculator. The calculator should have the following methods:
 
@@ -1073,9 +881,10 @@ Obtain the `skeleton code for these exercises from GitHub classroom
         This takes a single argument. If it is a number then it should be
         pushed onto the calculator's internal stack. If it is the string for a
         recognised operator, then the appropriate number of operands should be
-        popped from the internal stack, the result pushed back on the stack.
-        Your calculator should support the following operators: `"+"`, `"-"`,
-        `"*"`, `"/"`, `"sin"`, `"cos"`. The method should not return anything.
+        popped from the internal stack, and the result pushed back on the
+        stack. Your calculator should support the following operators: `"+"`,
+        `"-"`, `"*"`, `"/"`, `"sin"`, `"cos"`. This method should not return
+        anything.
 
     :meth:`pop`
         This method, which takes no arguments, should pop the top item on the
@@ -1092,7 +901,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom
 
 .. proof:exercise::
 
-    In this week's skeleton repository, create a :term:`module`
+    In the exercise repository, create a :term:`module`
     :mod:`adt_examples.deque` containing a class :class:`Deque` implementing a
     :term:`deque`. Your implementation should use a ring buffer implemented
     as a Python list. In order to make things somewhat simpler, we will use a
@@ -1151,3 +960,8 @@ Obtain the `skeleton code for these exercises from GitHub classroom
     .. note::
 
         You may not use :class:`collections.deque` to implement this exercise.
+
+.. rubric:: Footnotes
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

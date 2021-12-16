@@ -8,19 +8,38 @@
 
       \frontmatter
 
+   .. toctree::
+      :maxdepth: 2
+
+      0_preface
+
 
    .. raw:: latex
          
       \mainmatter
 
-This is the online textbook for MATH50009 Principles of Programming, a second
-year object oriented programming module offered to mathematics undergraduates at
-Imperial College London. Read the introductory chapter for information on how to
-go about doing the module week by week.
+.. only:: html
 
-If you're not taking the module at Imperial, you should nonetheless feel free to
-use this material to learn object-oriented programming in Python. I would be
-very interested to hear from anyone interested in using it to teach.
+   Welcome to the website for the book Object-oriented Programming in Python
+   for Mathematicians. Here you'll find the full hyperlinked book text, as well
+   as consolidated lists of the accompanying :doc:`videos <videos>` and
+   :doc:`exercise repositories <exercises>`.
+
+   .. image:: images/cover.png
+      :width: 10em
+      :align: right
+      :target: https://fixme.foo
+
+   The complete book text is available on this website. However, if you'd
+   like to have a physical copy, then please `buy the book
+   <https://fixme.foo>`__.
+
+.. container:: preface
+
+   .. toctree::
+      :maxdepth: 2
+
+      0_preface.rst
 
 .. toctree::
    :numbered:
@@ -32,11 +51,27 @@ very interested to hear from anyone interested in using it to teach.
    4_style.rst
    5_abstract_data_types.rst
    6_exceptions.rst
-   7_midterm.rst
-   8_inheritance.rst
-   9_debugging.rst
-   10_trees_and_directed_acyclic_graphs.rst
-   11_further_object-oriented_features.rst
+   7_inheritance.rst
+   8_debugging.rst
+   9_trees_and_directed_acyclic_graphs.rst
+   10_further_object-oriented_features.rst
    
-..
-   zbibliography
+.. raw:: latex
+
+      \appendix
+
+.. container:: appendix
+
+   .. toctree::
+      :numbered:
+      :maxdepth: 2
+      
+      a1_help
+      a2_git
+
+
+..       :numbered:
+..       :maxdepth: 1
+
+..       example_code
+..       fibonacci

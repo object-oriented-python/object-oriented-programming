@@ -138,6 +138,20 @@ latexpdf: apidoc
 	cd $(BUILDDIR)/latex; latexmk -pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
+book:
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b latex -t book $(BUILDDIR)/book
+	@echo
+	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/book."
+	@echo "Run \`make' in that directory to run these through (pdf)latex" \
+	      "(use \`make bookpdf' here to do that automatically)."
+
+bookpdf:
+	PYTHONPATH=$(PWD)/..:$(PYTHONPATH) $(SPHINXBUILD) -b latex -t book $(ALLSPHINXOPTS) $(BUILDDIR)/book
+	@echo "Running LaTeX files through pdflatex..."
+# $(MAKE) -C $(BUILDDIR)/latex all-pdf
+	cd $(BUILDDIR)/book; latexmk -pdf
+	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/book."
+
 latexpdfja: apidoc
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through platex and dvipdfmx..."

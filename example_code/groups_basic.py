@@ -14,7 +14,6 @@ class Element:
     value:
         The individual element value.
     """
-
     def __init__(self, group, value):
         group._validate(value)
         self.group = group
@@ -23,8 +22,7 @@ class Element:
     def __mul__(self, other):
         """Use * to represent the group operation."""
         return Element(self.group,
-                       self.group.operation(self.value,
-                                            other.value))
+                       self.group.operation(self.value, other.value))
 
     def __str__(self):
         """Return a string of the form value_group."""
@@ -32,18 +30,16 @@ class Element:
 
     def __repr__(self):
         """Return the canonical string representation of the element."""
-        return f"{type(self).__name__}" \
-               f"({repr(self.group), repr(self.value)})"
+        return f"{type(self).__name__}({repr(self.group), repr(self.value)})"
 
 
 class CyclicGroup:
-    """A cyclic group represented by integer addition modulo group order."""
-
+    """A cyclic group represented by addition modulo group order."""
     def __init__(self, order):
         self.order = order
 
     def _validate(self, value):
-        """Ensure that value is a legitimate element value in this group."""
+        """Ensure that value is an allowed element value in this group."""
         if not (isinstance(value, Integral) and 0 <= value < self.order):
             raise ValueError("Element value must be an integer"
                              f" in the range [0, {self.order})")
@@ -69,13 +65,13 @@ class CyclicGroup:
 
 
 class GeneralLinearGroup:
-    """The general linear group represented by degree x degree matrices."""
+    """The general linear group represented by degree square matrices."""
 
     def __init__(self, degree):
         self.degree = degree
 
     def _validate(self, value):
-        """Ensure that value is a legitimate element value in this group."""
+        """Ensure that value is an allowed element value in this group."""
         if not (isinstance(value, np.ndarray),
                 value.shape == (self.degree, self.degree)):
             raise ValueError("Element value must be a "

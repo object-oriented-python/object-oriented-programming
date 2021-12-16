@@ -3,18 +3,15 @@
 Errors and exceptions
 =====================
 
-.. dropdown:: Video: errors and exceptions.
+.. details:: Video: errors and exceptions.
 
-    .. container:: vimeo
 
-        .. raw:: html
+    .. vimeo:: 509280820
 
-            <iframe src="https://player.vimeo.com/video/509280820"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
+    .. only:: html
 
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d58d4c55-6216-4deb-be70-acc7015033f4>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d58d4c55-6216-4deb-be70-acc7015033f4>`__.
 
 
 
@@ -37,7 +34,7 @@ meaning, or which just don't amount to a meaningful statement within
 the rules of the language. A mathematician confronting an undefined
 mathematical expression can do little else than throw up their hands
 and ask the author what they meant. The :term:`Python interpreter`, upon
-encountering code which has no defined meaning, responds similarly,
+encountering code which has no defined meaning, responds similarly;
 though rather than raising its non-existent hands, it raises an
 :term:`exception`. It is then up to the programmer to divine what to do next.
 
@@ -57,11 +54,11 @@ error:
 An important rule in interpreting Python errors, the reasons for which we will
 return to, is to always read the error message from the bottom up. In
 this case, the last line contains the name of the exception which has
-been raised :obj:`ZeroDivisionError`, followed by a colon, followed by
+been raised, :obj:`ZeroDivisionError`, followed by a colon, followed by
 a descriptive string providing more information about what has gone
 wrong. In this case, that more or less says the same as the exception
 name, but that won't be the case for all exceptions. The four lines
-above the exception are called a traceback. We'll return to
+above the exception are called a :term:`traceback`. We'll return to
 interpreting tracebacks presently. In this case the error is easy to interpret
 and understand: the code divided the :class:`float` value `0.` by another zero,
 and this does not have a well-defined result in Python's arithmetic system.
@@ -109,6 +106,12 @@ occurs. Consider the following code:
 
     a = (1, 2
     print(a)
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 The error here is a missing closing bracket on the first line, however
 the error message which the :term:`Python interpreter` prints when this code is run is:
@@ -176,23 +179,21 @@ to what has gone wrong, and there is usually also an error message and
 sometimes more data to help diagnose the problem. The :doc:`full list
 of built-in exceptions <library/exceptions>` is available in the
 Python documentation. Python developers can define their own
-exceptions so there are many more defined in third-party packages.
+exceptions so there are many more defined in third-party packages. We will
+turn to the subject of defining new exception classes in
+:numref:`defining_exceptions`. 
 
 Tracebacks: finding errors
 --------------------------
 
-.. dropdown:: Video: tracebacks.
+.. details:: Video: tracebacks.
 
-    .. container:: vimeo
+    .. vimeo:: 509280880
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/509280880"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f3f8a555-31c8-41e3-a176-acc701503469>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f3f8a555-31c8-41e3-a176-acc701503469>`__.
 
 
 The errors we have looked at so far have all been located in the top
@@ -200,7 +201,7 @@ level of code either typed directly into iPython or executed in a
 script. However, what happens if an error occurs in a function call or
 even several functions down? Consider the following code, which uses
 the :class:`~polynomial.Polynomial` class from
-:numref:`chapter %s <objects>`:
+:numref:`Chapter %s <objects>`:
 
 .. code-block:: ipython3
 
@@ -211,10 +212,10 @@ the :class:`~polynomial.Polynomial` class from
     In [3]: print(p)
     bx + a
 
-So, perhaps surprisingly, we are able to define a polynomial whose
-coefficients are letters, and we can even print the resulting
-object. However, if we attempt to add this polynomial to the number 1,
-we are in trouble:
+Perhaps surprisingly, it turns out that we are able to define a polynomial
+whose coefficients are letters, and we can even print the resulting object.
+However, if we attempt to add this polynomial to the number 1, we are in
+trouble:
 
 .. code-block:: ipython3
 
@@ -250,21 +251,19 @@ suggests. In order to understand this message, we need to understand a
 little about how a Python program is executed, and in particular about
 the call stack.
 
+.. _call_stack:
+
 The call stack
 ..............
 
-.. dropdown:: Video: the call stack.
+.. details:: Video: the call stack.
 
-    .. container:: vimeo
+    .. vimeo:: 509281576
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/509281576"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cab860f1-ff35-4402-afe9-acc701503419>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cab860f1-ff35-4402-afe9-acc701503419>`__.
 
 A Python program is a sequence of Python statements, which are
 executed in a sequence determined by the flow control logic of the
@@ -337,7 +336,7 @@ occurred. The traceback for this frame starts:
     ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
 
 This indicates that the frame describes code in the file
-`polynomial.py` (which on the author's computer is located in the
+`polynomial.py` (which, on the author's computer, is located in the
 folder `~~/docs/object-oriented-programming/src/`). Specifically, the
 stack frame describes the execution of the :meth:`__add__` method,
 which is the :term:`special method` responsible for polynomial
@@ -376,18 +375,14 @@ line of the iPython session.
 Raising exceptions
 ------------------
 
-.. dropdown:: Video: raising an exception.
+.. details:: Video: raising an exception.
 
-    .. container:: vimeo
+    .. vimeo:: 509492490
 
-        .. raw:: html
-
-            <iframe src="https://player.vimeo.com/video/509492490"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d0b05710-bbb8-47b4-9afa-acc8011e7635>`__.
+    .. only:: html
+    
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d0b05710-bbb8-47b4-9afa-acc8011e7635>`__.
 
 
 Thus far we've noticed that an exception occurs when something goes
@@ -494,29 +489,24 @@ distinction is of negligible importance for our current purposes.
 Handling exceptions
 -------------------
 
-.. dropdown:: Video: handling exceptions.
+.. details:: Video: handling exceptions.
 
-    .. container:: vimeo
+    .. vimeo:: 509492495
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/509492495"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=25f14034-34a1-44ec-83f7-acc8011e76a0>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=25f14034-34a1-44ec-83f7-acc8011e76a0>`__.
 
 
-So far we have seen several different sorts of exception, how to raise
-them, and how to understand the resulting :term:`traceback`. The
-:term:`traceback` is very helpful if the exception was caused by a bug
-in our code, so that we need to understand and correct the
-error. However, sometimes an exception is a valid result of a valid
-input, and we just need the program to do something out of the
-ordinary to deal with the situation. For example, Euclid's algorithm
-for finding the greatest common divisor of :math:`a` and :math:`b` can
-very nearly be written recursively as:
+So far we have seen several different sorts of exception, how to raise them,
+and how to understand the resulting :term:`traceback`. The :term:`traceback` is
+very helpful if the exception was caused by a bug in our code, as it is a rich
+source of the information needed to understand and correct the error. However,
+sometimes an exception is a valid result of a valid input, and we just need the
+program to do something out of the ordinary to deal with the situation. For
+example, Euclid's algorithm for finding the greatest common divisor of
+:math:`a` and :math:`b` can very nearly be written recursively as:
 
 .. code-block:: python
 
@@ -599,23 +589,19 @@ version of :func:`gcd` then we have, as we might expect:
 Except clauses
 ..............
 
-.. dropdown:: Video: further exception handling.
+.. details:: Video: further exception handling.
 
-    .. container:: vimeo
+    .. vimeo:: 509492496
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/509492496"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0d7840de-17b2-4268-b079-acc8011e7660>`__.
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0d7840de-17b2-4268-b079-acc8011e7660>`__.
 
 Let's look in a little more detail at how :keyword:`except` works. The full
 version of the except statement takes a tuple of exception classes. If an
 exception is raised matching any of the exceptions in that tuple then the code
-in the except block is executed. 
+in the except block is executed.
 
 It's also possible to have more than one :keyword:`except` block following a
 single :keyword:`try` statement. In this case, the first except block for which
@@ -632,17 +618,29 @@ the exception matches the list of exceptions is executed. For example:
         ...: 
     Zero division error
 
+.. note::
+
+    It is also possible to omit the list of exceptions after :keyword:`except`.
+    In this case, the except block will match any exception which is raised in
+    the corresponding try block. Using unconstrained except blocks like this is
+    a somewhat dangerous strategy. Usually, the except block will be designed
+    to deal with a particular type of exceptional circumstance. However, an
+    except block that catches any exception may well be triggered by a completely
+    different exception, in which case it will just make the error more
+    confusing by obscuring where the issue actually occurred.
 
 Else and finally
 ................
 
 It can also be useful to execute some code only if an exception is not raised.
-This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else <try>` clause after a
-:keyword:`try` block is caused only if no exception was raised. 
+This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else
+<try>` clause after a :keyword:`try` block is caused only if no exception was
+raised.
 
 It is also sometimes useful to be able to execute some code no matter what
 happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
-then this code will be executed whether or not an exception was raised. This
+then the code it contains will be executed if either an exception is raised and
+handled by an :keyword:`except` block, or no exception occurred. This
 plethora of variants on the :keyword:`try` block can get a little confusing, so
 a practical example may help. :numref:`except_demo` prints out a different
 message for each type of clause. 
@@ -654,7 +652,7 @@ message for each type of clause.
     :linenos:
 
     def except_demo(n):
-        """A simple demonstration of all the clauses of a :keyword:`try` block."""
+        """Demonstrate all the clauses of a `try` block."""
 
         print(f"Attempting division by {n}")
         try:
@@ -805,17 +803,33 @@ Glossary
         in each :term:`stack frame`, with the current frame at the
         bottom and the outermost frame at the top.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+.. .. panels::
+..     :card: quiz shadow
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2083792_1&mode=cpview
-        :text: This week's quiz
-        :classes: stretched-link 
+..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2083792_1&mode=cpview
+..         :text: This week's quiz
+..         :classes: stretched-link 
 
-Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
+.. Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
+.. only:: not book
+
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises.
+
+.. only:: book
+
+    Using the information on the book website [#exercise_page]_ obtain the
+    skeleton code for these exercises.
 
 .. proof:exercise::
 
@@ -833,7 +847,7 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
     iteration should fail if :math:`n` exceeds a user-specified number of
     iterations.
     
-    The skeleton code for this week contains a function
+    The skeleton code for this chapter contains a function
     :func:`nonlinear_solvers.solvers.newton_raphson` which takes as arguments a
     function, its derivative and a starting point for the iteration. It can also
     optionally be passed a value for :math:`\epsilon` and a maximum number of
@@ -874,3 +888,6 @@ Obtain the `skeleton code for these exercises from GitHub classroom <https://cla
 
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__

@@ -1,0 +1,36 @@
+1.1, `Setting up your virtual environment. <https://player.vimeo.com/video/486546635>`_
+2.1, `A first Python script. <https://player.vimeo.com/video/486557682>`_
+2.2, `A first Python module. <https://player.vimeo.com/video/486845755>`_
+2.3, `A first Python package. <https://player.vimeo.com/video/487003753>`_
+2.4, `Introducing Pytest. <https://player.vimeo.com/video/486987209>`_
+3.1, `A first class <https://player.vimeo.com/video/488143930>`_
+3.2, `Defining methods <https://player.vimeo.com/video/488273256>`_
+3.3, `Printing classes <https://player.vimeo.com/video/488275072>`_
+3.4, `Object equality and test driven development <https://player.vimeo.com/video/488981397>`_
+3.5, `Polynomial addition. <https://player.vimeo.com/video/489009900>`_
+4.1, `Why style? <https://player.vimeo.com/video/499766703>`_
+4.2, `Installing and using a linter. <https://player.vimeo.com/video/499770130>`_
+5.1, `Stacks as an abstract data type. <https://player.vimeo.com/video/506479213>`_
+5.2, `Dynamic arrays and algorithmic complexity. <https://player.vimeo.com/video/506479208>`_
+5.3, `Deques and ring buffers. <https://player.vimeo.com/video/506710190>`_
+5.4, `Linked lists. <https://player.vimeo.com/video/506743244>`_
+5.5, `The iterator protocol. <https://player.vimeo.com/video/506743250>`_
+6.1, `Errors and exceptions. <https://player.vimeo.com/video/509280820>`_
+6.2, `Tracebacks. <https://player.vimeo.com/video/509280880>`_
+6.3, `The call stack. <https://player.vimeo.com/video/509281576>`_
+6.4, `Raising an exception. <https://player.vimeo.com/video/509492490>`_
+6.5, `Handling exceptions. <https://player.vimeo.com/video/509492495>`_
+6.6, `Further exception handling. <https://player.vimeo.com/video/509492496>`_
+7.1, `Inheritance and composition. <https://player.vimeo.com/video/516216973>`_
+7.2, `An example from group theory. <https://player.vimeo.com/video/516277973>`_
+7.3, `Inheritance. <https://player.vimeo.com/video/516698411>`_
+8.1, `Using a graphical debugger. <https://player.vimeo.com/video/520604326>`_
+8.2, `Command line debuggers. <https://player.vimeo.com/video/520605730>`_
+8.3, `Minimal failing examples and bisection. <https://player.vimeo.com/video/520604328>`_
+9.1, `Splat and double splat. <https://player.vimeo.com/video/523477744>`_
+9.2, `Tree data structures. <https://player.vimeo.com/video/523477713>`_
+9.3, `Tree traversal. <https://player.vimeo.com/video/523477719>`_
+9.4, `Evaluating expressions. <https://player.vimeo.com/video/523478799>`_
+10.1, `Decorators. <https://player.vimeo.com/video/526946976>`_
+10.2, `Abstract base classes. <https://player.vimeo.com/video/526947635>`_
+10.3, `Virtual subclasses. <https://player.vimeo.com/video/526947427>`_

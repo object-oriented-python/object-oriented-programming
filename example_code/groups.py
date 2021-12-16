@@ -17,7 +17,6 @@ class Element:
     value:
         The value of this entity. Valid values depend on the group.
     """
-
     def __init__(self, group, value):
         group._validate(value)
         self.group = group
@@ -50,7 +49,6 @@ class Group:
         The primary group parameter, such as order or degree. The
         precise meaning of n changes from subclass to subclass.
     """
-
     def __init__(self, n):
         self.n = n
 
@@ -69,11 +67,10 @@ class Group:
 
 class CyclicGroup(Group):
     """A cyclic group represented by integer addition modulo n."""
-
     symbol = "C"
 
     def _validate(self, value):
-        """Ensure that value is a legitimate element value in this group."""
+        """Ensure that value is an allowed element value in this group."""
         if not (isinstance(value, Integral) and 0 <= value < self.n):
             raise ValueError("Element value must be an integer"
                              f" in the range [0, {self.n})")
@@ -88,11 +85,10 @@ class CyclicGroup(Group):
 
 class GeneralLinearGroup(Group):
     """The general linear group represented by n x n matrices."""
-
     symbol = "G"
 
     def _validate(self, value):
-        """Ensure that value is a legitimate element value in this group."""
+        """Ensure that value is an allowed element value in this group."""
         value = np.asarray(value)
         if not (value.shape == (self.n, self.n)):
             raise ValueError("Element value must be a "

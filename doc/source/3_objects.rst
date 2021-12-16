@@ -3,7 +3,7 @@
 Objects and abstraction
 =======================
 
-This week we will take a first look at the representation of
+In this chapter we will take a first look at the representation of
 abstract mathematical objects and operations as data objects in a
 computer program. We will learn about what it means for objects to have
 a :term:`type`, and how to create new types using the :keyword:`class` keyword.
@@ -16,7 +16,7 @@ Consider this line of Python code::
   print(a + b)
 
 What does it do? Well, assuming that `a` and `b` are suitably defined, it
-prints their sum. This, however, begs the question: what is "suitably
+prints their sum. This, however, begs the questions: what is "suitably
 defined", and what is "sum"? For example:
 
 .. code-block:: ipython3
@@ -26,8 +26,8 @@ defined", and what is "sum"? For example:
   In [3]: print(a + b)                                           
   3
 
-You're unlikely to be surprised that Python can add :ref:`integers <typesnumeric>`. On the
-other hand:
+You're unlikely to be surprised that Python can add :ref:`integers
+<typesnumeric>`. On the other hand it turns out we can also add strings:
   
 .. code-block:: ipython3
   
@@ -175,18 +175,14 @@ Python is an object, and every object has a type.
 Defining new types
 ------------------
 
-.. dropdown:: Video: a first class
+.. details:: Video: a first class
 
-    .. container:: vimeo
+    .. vimeo:: 488143930
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/488143930"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f8b07554-16ea-47b8-bf19-ac8a010af0f6>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f8b07554-16ea-47b8-bf19-ac8a010af0f6>`__
 
 Python has a rich set of :doc:`built-in types
 <library/stdtypes>`. These form powerful building blocks for the
@@ -235,7 +231,6 @@ a very simple implementation::
   class Polynomial:
 
     def __init__(self, coefs):
-
         self.coefficients = coefs
 
 We'll interpret the :math:`i`-th coefficient as the coefficient of :math:`x^i`.
@@ -256,7 +251,7 @@ understand.
 
 The :ref:`class definition <python:class>` statement opens a new block, so
 just like a :ref:`function definition <function>`, it starts with
-the keyword, followed by the name of the class we are defining, and
+the keyword followed by the name of the class we are defining, and
 ends with a colon. User-defined classes in Python (i.e. classes not
 built into the language) usually have CapWords names. This means
 that all the words in the name are capitalised and run together without spaces. For
@@ -289,9 +284,9 @@ This is called :term:`instantiating <instantiate>` an object of type
 
 .. note::
 
-    Notice that :meth:`Polynomial.__init__` doesn't return anything. The role of
-    :meth:`~object.__init__` is to set up the object, `self`; it is not to return a
-    value. :meth:`~object.__init__` never returns a value.
+    Notice that :meth:`Polynomial.__init__` doesn't return anything. The role
+    of the :meth:`~object.__init__` method is to set up the object, `self`; it
+    is not to return a value. :meth:`~object.__init__` never returns a value.
 
 Attributes
 ..........
@@ -301,7 +296,7 @@ have just one line::
 
   self.coefficients = coefs
 
-Remember that `self` is the object we are setting up, and coefs is the
+Remember that `self` is the object we are setting up, and `coefs` is the
 other parameter to :meth:`~object.__init__`. This line of code creates a new
 name inside this :class:`Polynomial` object, called
 `coefficients`, and associates this new name with the object passed as
@@ -324,18 +319,14 @@ create a private attribute.
 Methods
 .......
 
-.. dropdown:: Video: defining methods
+.. details:: Video: defining methods
 
-    .. container:: vimeo
+    .. vimeo:: 488273256
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/488273256"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=613249ca-71b8-4f3b-8db9-ac8a0166aa42>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=613249ca-71b8-4f3b-8db9-ac8a0166aa42>`__
 
 We have already met the :term:`special method` :meth:`~object.__init__`,
 which defines the class constructor. A much more typical case is an
@@ -346,11 +337,9 @@ we might add a :meth:`degree` method to our class::
   class Polynomial:
 
     def __init__(self, coefs):
-
         self.coefficients = coefs
 
     def degree(self):
-        
         return len(self.coefficients) - 1
 
 Observe that the new method is indented inside the :keyword:`class`
@@ -358,7 +347,7 @@ block at the same level as the :meth:`~object.__init__` method. Observe also
 that it too takes `self` as its first parameter. A key difference from
 the :meth:`~object.__init__` method is that :meth:`degree` now returns a
 value, as most functions do. We can now use our new method to recover
-the degree of our Polynomial.
+the degree of our polynomial.
 
 .. code-block:: ipython3
 
@@ -372,7 +361,8 @@ that `f.degree()` is just a short way of writing
 name. Attributes and methods on an object form part of the same
 :term:`namespace`, so you can't have an attribute and a method with the same
 name. If you try, then the name will be overwritten with whichever was defined
-later, so that will be the one which is accessed.
+later, and the attribute or method defined first will no longer be accessible
+under that name. This is unlikely to be what you wanted.
 
 .. note::
 
@@ -386,18 +376,14 @@ later, so that will be the one which is accessed.
 String representations of objects
 .................................
 
-.. dropdown:: Video: printing classes
+.. details:: Video: printing classes
 
-    .. container:: vimeo
+    .. vimeo:: 488275072
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/488275072"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b30db20c-1224-41b7-a5f2-ac8a01680608>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b30db20c-1224-41b7-a5f2-ac8a01680608>`__
 
 
 Remember that a key reason for defining new classes is to enable users
@@ -449,7 +435,7 @@ method name for the human readable string representation of an object is
         # Sum polynomial terms from high to low exponent.
         return " + ".join(reversed(terms)) or "0"
 
-This slightly longer piece of code results from the fact that the
+This somewhat longer piece of code results from the fact that the
 linear and constant terms in a polynomial are usually represented
 slightly differently from the higher-order terms. Having added this
 new method to our class, we can now observe the result:
@@ -472,12 +458,11 @@ line. By convention, :meth:`~object.__repr__` should return a string which a
 user might type in order to recreate the object. For example::
 
   def __repr__(self):
-  
-      return self.__class__.__name__ + "(" + repr(self.coefficients) + ")"
+      return type(self).__name__ + "(" + repr(self.coefficients) + ")"
 
-`self.__class__.__name__` simply evaluates to the class name, in this case
+`type(self).__name__` simply evaluates to the class name, in this case
 `Polynomial`. This is better than hard-coding the class name because, as we will
-see in :numref:`week %s <inheritance>`, this implementation of
+see in :numref:`Chapter %s <inheritance>`, this implementation of
 :meth:`~object.__repr__` might well end up being inherited by a class with a
 different name. Notice that in order to help ensure consistency of
 representations we call :func:`repr` on the coefficients in this case, whereas
@@ -496,18 +481,14 @@ We can now observe the difference in the result:
 Object equality
 ...............
 
-.. dropdown:: Video: object equality and test driven development
+.. details:: Video: object equality and test driven development
 
-    .. container:: vimeo
+    .. vimeo:: 488981397
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/488981397"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=821e53ec-d2c8-43a6-bb16-ac8c01045f31>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=821e53ec-d2c8-43a6-bb16-ac8c01045f31>`__
 
 When are two objects equal? For built-in types Python has equality rules which
 broadly match the mathematical identities that you might expect. For example,
@@ -577,7 +558,6 @@ coefficients is:
 .. code-block:: python3
 
     def __eq__(self, other):
-
         return isinstance(other, Polynomial) and \
             self.coefficients == other.coefficients
 
@@ -600,18 +580,14 @@ equality now behaves as we might expect.
 Defining arithmetic options on objects
 ......................................
 
-.. dropdown:: Video: polynomial addition.
+.. details:: Video: polynomial addition.
 
-    .. container:: vimeo
+    .. vimeo:: 489009900
 
-        .. raw:: html
+    .. only:: html
 
-            <iframe src="https://player.vimeo.com/video/489009900"
-            frameborder="0" allow="autoplay; fullscreen"
-            allowfullscreen></iframe>
-
-    Imperial students can also `watch this video on Panopto
-    <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=727c5b9a-bf61-480e-912e-ac8c01045f09>`__
+        Imperial students can also `watch this video on Panopto
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=727c5b9a-bf61-480e-912e-ac8c01045f09>`__
 
 It's all very well to be able to compare our polynomial objects, but
 we won't really have captured the mathematical abstraction involved
@@ -621,8 +597,10 @@ observed that objects of some classes can be added. Is this true for
 
 .. code-block:: ipython3
 
-   In [2]: a = Polynomial((1, 0))                                                                                     
-   In [3]: b = Polynomial((1,))                                                                                       
+   In [2]: a = Polynomial((1, 0))   
+
+   In [3]: b = Polynomial((1,))     
+
    In [4]: a + b                                                                                                      
    ---------------------------------------------------------------------------
    TypeError                                 Traceback (most recent call last)
@@ -645,21 +623,19 @@ a number to a polynomial. In either case, the result will be a new
 polynomial, with coefficients equal to the sum of those of the
 summands.
 
-We also need to do something in the case where a user attempts to add
-to a polynomial a value for which the operation makes no sense. For
-example, a user might accidentally attempt to add a string to a
-polynomial. In this case, the Python language specification requires
-that we return the special value
-:obj:`NotImplemented`. Differentiating between the types of operands
-requires two more Python features we have not yet met. One of these is
-the built in function :func:`isinstance`, which tests whether an
-object is an instance of a class. The other is the class :class:`~numbers.Number`,
-which we import from the :mod:`numbers` module. All Python numbers are
-instances of :class:`~numbers.Number` so this provides a mechanism for checking
-whether the other operand is a number. We will consider
-:func:`isinstance` and :class:`~numbers.Number` in more detail when we look at
-:ref:`inheritance <inheritance>` and :ref:`abstract base classes
-<abstract_base_classes>`.
+We also need to do something in the case where a user attempts to add to a
+polynomial a value for which the operation makes no sense. For example, a user
+might accidentally attempt to add a string to a polynomial. In this case, the
+Python language specification requires that we return the special value
+:obj:`NotImplemented`. Differentiating between the types of operands requires
+two more Python features we have not yet met. One of these is the built in
+function :func:`isinstance`, which tests whether an object is an instance of a
+class. The other is the class :class:`~numbers.Number`, which we import from
+the built-in :mod:`numbers` module. All Python numbers are instances of
+:class:`~numbers.Number` so this provides a mechanism for checking whether the
+other operand is a number. We will consider :func:`isinstance` and
+:class:`~numbers.Number` in more detail when we look at :ref:`inheritance
+<inheritance>` and :ref:`abstract base classes <abstract_base_classes>`.
 
 Putting all this together, :numref:`polynomial_add` defines polynomial addition.
 
@@ -669,20 +645,22 @@ Putting all this together, :numref:`polynomial_add` defines polynomial addition.
     :name: polynomial_add
 
     def __add__(self, other):
-        
         if isinstance(other, Number):
-            return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
-        
+            return Polynomial((self.coefficients[0] + other,)
+                              + self.coefficients[1:])
+
         elif isinstance(other, Polynomial):
-            # Work out how many coefficient places the two polynomials have in common.
+            # Work out how many coefficient places the two polynomials have in
+            # common.
             common = min(self.degree(), other.degree()) + 1
             # Sum the common coefficient positions.
             coefs = tuple(a + b for a, b in zip(self.coefficients[:common],
-                                                 other.coefficients[:common]))
-            
-            # Append the high degree coefficients from the higher degree summand.
+                                                other.coefficients[:common]))
+
+            # Append the high degree coefficients from the higher degree
+            # summand.
             coefs += self.coefficients[common:] + other.coefficients[common:]
-            
+
             return Polynomial(coefs)
 
         else:
@@ -697,14 +675,21 @@ Let's try our new addition functionality in action:
 .. code-block:: ipython3
    
    In [2]: a = Polynomial((1, 2, 0, 1))
+
    In [3]: print(a)                                                                                                   
    x^3 + 2x + 1
-   In [4]: b = Polynomial((0, 1))                                                                                     
+
+   In [4]: b = Polynomial((0, 1))      
+
    In [5]: print(b)
+   x + 1
+
    In [6]: print(a + b)                                                                                               
    x^3 + 3x + 1
+
    In [7]: print(a + 1)                                                                                               
    x^3 + 2x + 2
+
    In [8]: print(1 + a)                                                                                               
    ---------------------------------------------------------------------------
    TypeError                                 Traceback (most recent call last)
@@ -719,7 +704,7 @@ So, everything proceeds as expected until we try to add a
 
 .. code-block:: ipython3
     
-    In [9]: int.__add__(1, a)                                                                                          
+    In [9]: int.__add__(1, a)        
     Out[9]: NotImplemented
 
 Naturally, Python's inbuilt :class:`int` type knows nothing about our
@@ -733,7 +718,6 @@ operand. Because we know that polynomial addition is commutative,
 we can define this very easily::
 
     def __radd__(self, other):
-
         return self + other
 
 With our newly enhanced :class:`Polynomial` class, we can revisit the
@@ -742,6 +726,7 @@ previously problematic operation:
 .. code-block:: ipython3
    
    In [2]: a = Polynomial((1, 2, 0, 1))
+
    In [3]: print(1 + a)                                                                                               
    x^3 + 2x + 2
 
@@ -756,9 +741,12 @@ intrinsic operators:
 .. code-block:: ipython3
 
    In [1]: x = Polynomial((0, 1))
+
    In [2]: print(x)
    x
+
    In [3]: p = x**3 + 2*x + 2
+
    In [4]: p
    Polynomial((2, 2, 0, 1))
 
@@ -779,7 +767,7 @@ to say, if:
 
 then for any real :math:`x`, :math:`f(x)` is defined and is a real
 number. We already know from the example of :func:`abs`, above, that
-Python functions are objects. However our challenge is the converse of
+Python functions are objects. However, our challenge is the converse of
 this: we have :class:`Polynomial` objects which we would like to be
 able to call like functions. The solution to our challenge is that
 calling a function is an operation on an object similar to addition,
@@ -888,17 +876,27 @@ Glossary
 Exercises
 ---------
 
-.. panels::
-    :card: quiz shadow
+.. .. only:: html
 
-    .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
-        :text: This week's quiz
-        :classes: stretched-link 
+..    .. panels::
+..        :card: quiz shadow
 
+..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
+..            :text: This week's quiz
+..            :classes: stretched-link 
 
-Obtain the `skeleton code for these exercises from GitHub Classroom <https://classroom.github.com/a/mElLR0AD>`__. 
-The skeleton code contains a :mod:`polynomial` package with a version of 
-the :class:`Polynomial` class.
+.. only:: not book
+
+    Using the information on the `book website 
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    obtain the skeleton code for these exercises. The skeleton code contains a
+    :mod:`polynomial` package with a version of the :class:`Polynomial` class.
+
+.. only:: book
+
+    Using the information on the `book website` [#exercise_page]_,
+    obtain the skeleton code for these exercises. The skeleton code contains a
+    :mod:`polynomial` package with a version of the :class:`Polynomial` class.
 
 .. proof:exercise::
 
@@ -919,15 +917,16 @@ the :class:`Polynomial` class.
 
 .. proof:exercise::
 
-    Define a function `derivative` in :file:`polynomials.py` which takes a
-    :class:`Polynomial` and returns a new :class:`Polynomial` which is its
-    derivative. Also define a :meth:`dx` method on the :class:`Polynomial` class
-    which returns the derivative of that :class:`Polynomial`. Rather than
-    duplicating code, you should implement the function by calling the method.
+    Define a :meth:`dx` method on the :class:`Polynomial` class which returns a
+    new :class:`Polynomial` which is the derivative of that
+    :class:`Polynomial`. Also define a function `derivative` in
+    :file:`polynomials.py` which takes a :class:`Polynomial` and returns  its
+    derivative. Rather than duplicating code, you should implement the function
+    by calling the method.
 
 .. proof:exercise::
 
-    Inside the exercise repository for this week, create a new :mod:`shape`
+    Inside the exercise repository, create a new :mod:`shape`
     package containing a :mod:`circle` module. 
     
     1. Create a :class:`Circle` class
@@ -955,7 +954,10 @@ the :class:`Polynomial` class.
 .. proof:exercise::
 
     Make the :mod:`circle` and :mod:`polynomial` packages installable. As with
-    last week's exercise, pytest can't test this so you'll need to push to
+    last chapter's exercise, Pytest can't test this so you'll need to push to
     GitHub and check that the autograding tests pass there.
 
-        
+.. rubric:: Footnotes
+
+.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
+    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
