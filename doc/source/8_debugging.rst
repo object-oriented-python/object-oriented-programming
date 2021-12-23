@@ -515,13 +515,14 @@ The recipe for hypothesis-based debugging runs something like the following:
 1. Hypothesis Formation
    
    What statements would be true were this issue not occurring. For example:
+
    a. Are there variables which should have a known type or value, or would
-    have a known type or value in response to a different input?
+      have a known type or value in response to a different input?
    b. Does it appear that particular code that should have run already has
-    not, or code that should not run has run?
+      not, or code that should not run has run?
    c. Looking at a value which is observed to be wrong, where is the operation
-    that computes that value? Does a. or b. apply to any of the inputs to
-    that operation.
+      that computes that value? Does a. or b. apply to any of the inputs to
+      that operation.
 
    This process requires intuition and understanding of the problem. It is the
    least systematic part of the process. The following steps are much more

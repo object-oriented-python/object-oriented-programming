@@ -28,11 +28,11 @@
    .. image:: images/cover.png
       :width: 10em
       :align: right
-      :target: https://fixme.foo
+      :target: https://www.amazon.co.uk/dp/B09NR9R9P3
 
    The complete book text is available on this website. However, if you'd
    like to have a physical copy, then please `buy the book
-   <https://fixme.foo>`__.
+   <https://www.amazon.co.uk/dp/B09NR9R9P3>`__.
 
 .. container:: preface
 
