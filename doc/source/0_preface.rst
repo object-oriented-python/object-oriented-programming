@@ -97,8 +97,8 @@ How to use this book
     you need to get your hands dirty writing code and debugging your mistakes.
     To help with this there is a book website at:
 
-        `https://object-oriented-programming.github.io
-        <https://object-oriented-programming.github.io>`__
+        `https://object-oriented-python.github.io
+        <https://object-oriented-python.github.io>`__
         
     As well as a web version of the full text of the book, the website contains
     videos and the code needed to do the programming exercises at the end of
@@ -126,8 +126,8 @@ it's better to watch the video *after* reading the relevant section.
     The videos are marked in the text by a blue box at the right hand side,
     containing the video number. This corresponds to the list of links at:
 
-        `https://object-oriented-programming.github.io/edition1/videos.html
-        <https://object-oriented-programming.github.io/edition1/videos.html>`__
+        `https://object-oriented-python.github.io/edition1/videos.html
+        <https://object-oriented-python.github.io/edition1/videos.html>`__
 
 The exercises
 .............
@@ -141,8 +141,8 @@ correct responses to a range of inputs. Tests like this provide immediate
 feedback and enable you to know how you are doing. Links to the skeleton code
 for each chapter are provided at:
 
-        `https://object-oriented-programming.github.io/edition1/exercises.html
-        <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+        `https://object-oriented-python.github.io/edition1/exercises.html
+        <https://object-oriented-python.github.io/edition1/exercises.html>`__
 
 
 Conventions employed

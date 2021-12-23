@@ -87,8 +87,8 @@ are:
     access. Rather than provide the install information here, this information
     is instead provided on the book website:
 
-        `https://object-oriented-programming.github.io/installation.html
-        <https://object-oriented-programming.github.io/installation.html>`__
+        `https://object-oriented-python.github.io/installation.html
+        <https://object-oriented-python.github.io/installation.html>`__
 
 .. only:: latex and not book
 
@@ -97,7 +97,7 @@ are:
     you are essentially by definition seated at a computer with internet
     access. Rather than provide the install information here, this information
     is instead provided on `the book website: 
-    <https://object-oriented-programming.github.io/installation.html>`__.
+    <https://object-oriented-python.github.io/installation.html>`__.
 
 .. only:: html
 

@@ -1189,7 +1189,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition1/exercises.html>`__
     obtain the skeleton code for these exercises. The exercises also make use
     of the book repository which you installed in :ref:`in Chapter 2
     <course_repo>`.
@@ -1252,5 +1252,5 @@ Exercises
     also possible, and is a key feature of `the Julia programming language
     <https://julialang.org>`_. 
 
-.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
-    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
+    <https://object-oriented-python.github.io/edition1/exercises.html>`__

@@ -823,7 +823,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition1/exercises.html>`__
     obtain the skeleton code for these exercises.
 
 .. only:: book
@@ -889,5 +889,5 @@ Exercises
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.
 
-.. [#exercise_page] `https://object-oriented-programming.github.io/edition1/exercises.html
-    <https://object-oriented-programming.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
+    <https://object-oriented-python.github.io/edition1/exercises.html>`__
