@@ -196,12 +196,14 @@ based, were first delivered in spring 2020, when university teaching was
 completely online during the COVID pandemic. I'd like to thank teaching fellow
 Dr Matthew Woolway who worked tirelessly with me on the module and who put
 together many of the tests on the exercises, and the graduate teaching
-assistants Miguel Boland, Sophia Vorderwuelbecke and Connor Ward whose
+assistants Miguel Boland, Sophia Vorderwuelbecke, and Connor Ward whose
 professionalism in delivering the course in very complex circumstances was
 outstanding. Pulling out all the stops to deliver the written and video
 materials for online learning meant a lot of evenings and weekends. I am
 exceptionally grateful to my wife Gebina Ham for disproportionately picking up
 our childcare responsibilities in that period in order to make this possible.
+I'd also like to thank Dr Aaron Pereira for his eagle-eyed corrections to the
+text.
 
 This is a textbook about programming in Python, so it would be remiss of me not
 to also thank the developers of the Python language, its CPython reference
