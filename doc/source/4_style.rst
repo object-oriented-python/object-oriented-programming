@@ -465,7 +465,7 @@ Indentation
    b. With the opening bracket as the last item on the first
       line. Subsequent lines are indented more than the first line but
       the same as each other. The closing bracket comes on a new line,
-      and is either indented to the same level as the first line.
+      and is indented to the same level as the first line.
 
     .. container:: goodcode
 

@@ -152,7 +152,7 @@ which implements the group operation. Element objects will then :term:`delegate
 
 Finally, we will want an :term:`infix operator` representing the group
 operation. Group theorists often use a dot, but we need to choose one of the
-infix operators that Python supports. We'll chose `*`, which is possibly the
+infix operators that Python supports. We'll choose `*`, which is possibly the
 closest match among Python's operators. One could easily envisage a more
 complete implementation of a group, with support for group properties such as
 generators and element features such as inverses. Our objective here is to
@@ -284,7 +284,7 @@ integer between 0 and 5, an exception is raised.
 
     ValueError: Element value must be an integer in the range [0, 5)
 
-:numref:`cyclic_group` illustrates :term:`composition`: on line 4
+:numref:`cyclic_group` illustrates :term:`composition`: on line 13
 :class:`~example_code.groups_basic.Element`, is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
 attempted to construct this the other way around with classes having elements,
@@ -296,8 +296,8 @@ defined.
 This code also demonstrates :term:`delegation`. In order to avoid having to
 define different element classes for different groups, the element class does
 not in substance implement either value validation, or the group operation.
-Instead, at line 3, validation is delegated to the group by calling
-:meth:`group._validate` and at line 10 the implementation of the group
+Instead, at line 12, validation is delegated to the group by calling
+:meth:`group._validate` and at line 19 the implementation of the group
 operation is delegated to the group by calling :meth:`self.group.operation`.
 
 General linear groups
@@ -357,7 +357,7 @@ follows:
 
         def __repr__(self):
             """Return the canonical string representation of the group."""
-            return f"{type(sxelf).__name__}({repr(self.degree)})"
+            return f"{type(self).__name__}({repr(self.degree)})"
 
 We won't illustrate the operation of this class, though the reader is welcome to
 :keyword:`import` the :mod:`example_code.groups_basic` module and experiment.

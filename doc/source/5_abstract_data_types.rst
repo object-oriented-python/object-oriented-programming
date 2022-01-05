@@ -257,13 +257,13 @@ of big :math:`O`:
 
 .. proof:definition:: :math:`O`
 
-   Let `f`, `g`, be real-valued functions. Then:
+   Let :math:`f`, :math:`g`, be real-valued functions. Then:
 
    .. math::
 
       f(n) = O(g(n)) \textrm{ as } n\rightarrow \infty
 
-   if there exists :math:`M>0` and `N>0` such that:
+   if there exists :math:`M>0` and :math:`N>0` such that:
 
    .. math::
 
