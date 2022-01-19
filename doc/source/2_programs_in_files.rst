@@ -1015,7 +1015,7 @@ already familiar with Git and GitHub then you will also need to work through
 
     .. code-block:: console
 
-        (PoP_venv) $ pytest tests/test_exercise_2_4.py
+        (PoP_venv) $ pytest tests/test_exercise_2_3.py
 
     Then push your code to GitHub and check that the tests pass there too.
 
