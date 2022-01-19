@@ -768,7 +768,7 @@
          id="feComposite3265-8"
          in2="result9"
          in="result11" /></filter></defs><sodipodi:namedview
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g80663"
      inkscape:window-maximized="0"
      inkscape:window-y="25"
      inkscape:window-x="0"
@@ -12654,7 +12654,7 @@
            x="641.64233"
            y="405.90552"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:39.1111px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:1.33333"
-           id="tspan77908">Video 10.3</tspan><tspan
+           id="tspan77908">Video 6.6</tspan><tspan
            sodipodi:role="line"
            x="641.64233"
            y="454.7944"
@@ -12671,7 +12671,7 @@
            id="tspan79188"
            x="640.16602"
            y="452.83365"
-           sodipodi:role="line">Virtual subclasses</tspan></text></g><rect
+           sodipodi:role="line">Further exception handling</tspan></text></g><rect
        style="display:inline;fill:#000042;fill-opacity:1;stroke:#ffffff;stroke-width:2.95978;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect1062-3-4"
        width="249.28911"
@@ -12694,7 +12694,7 @@
        y="375.39703"
        id="text223962"><tspan
          sodipodi:role="line"
-         id="tspan223960"></tspan></text></g><style
+         id="tspan223960" /></text></g><style
      type="text/css"
      id="style4933">
 	.st0{fill:#003C70;}
