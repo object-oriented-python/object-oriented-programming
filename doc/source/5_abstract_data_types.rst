@@ -643,7 +643,7 @@ documented in the :ref:`official Python documentation <typeiter>`.
 .. hint::
 
    Raising exceptions is the subject of :numref:`raising_exceptions`,
-   to which we will turn presently. Fur current purposes, it is
+   to which we will turn presently. For current purposes, it is
    sufficient to know that iteration is halted when :meth:`~iterator.__next__`
    executes this line of code:
 
