@@ -1,0 +1,42 @@
+#! /usr/bin/env python3
+import pandas
+from argparse import ArgumentParser
+import sys
+
+parser = ArgumentParser(
+    description="""Import GitHub Classroom autotest"""
+    """ results into Blackboard.""")
+parser.add_argument(
+    "github", type=str, action="store",
+    help="The CSV Grade file downloaded from GitHub Classroom."
+)
+parser.add_argument(
+    "blackboard", type=str, action="store",
+    help="The CSV Grade file downloaded from Blackboard."
+)
+parser.add_argument("--week", type=int, action="store",
+                    help="The week whose exercises we are marking.")
+parser.add_argument("--max-mark", type=int, action="store",
+                    help="The maximum mark achievable.")
+
+args = parser.parse_args()
+
+blackboard = pandas.read_csv(args.blackboard)
+
+try:
+    mark_column = [k for k in blackboard.keys()
+                   if k.startswith(f"Week {args.week}")][0]
+except IndexError:
+    sys.stderr.write(f'{args.blackboard} has no Week {args.week} column')
+
+github = pandas.read_csv(args.github)
+
+grade_map = {username: grade//args.max_mark or float("NaN") for username, grade
+             in zip(github["roster_identifier"], github["points_awarded"])}
+
+grades = [grade_map.get(username, float("NaN"))
+          for username in blackboard["Username"]]
+
+blackboard[mark_column].update(grades)
+
+blackboard.to_csv(f"marks_week_{args.week}.csv", index=False)
