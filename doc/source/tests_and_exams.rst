@@ -118,8 +118,8 @@ Exercises
 
 .. proof:exercise::
 
-    Obtain the `first practice problem from GitHub Classroom
-    <https://classroom.github.com/a/wNgTuHeo>`__. Follow the instructions in
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/Aw6c2upG>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. note::
@@ -129,9 +129,25 @@ Exercises
 
 .. proof:exercise::
 
-    Obtain the `second practice problem from GitHub Classroom
-    <https://classroom.github.com/a/fQmijiXp>`__. Follow the instructions in
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/FN6lgjAp>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/iZ_xv8bl>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/7_D2F0Iz>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+    
+        This problem was the midterm test in 2021.
 
 .. Midterm test instructions
 .. -------------------------
@@ -165,8 +181,6 @@ Exercises
 ..     particular, you may consult any resource published on the internet, but you may
 ..     not seek help from anyone else, whether in person, by email, chat message,
 ..     forum post or any other means.
-
-
 
 Exam preparation
 ----------------
@@ -213,24 +227,12 @@ chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
 with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
 You can access that book by logging in with your Imperial credentials.
 
-The first two questions are in exam format. 
+The these questions are in exam format. 
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/HdgipMxw>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
-
-    .. note::
-
-        This exercise is fully set up as an exam question, including provisional
-        points on the autotests. It should be doable in 30 minutes, though the
-        level of programming is a little more basic than the exam questions.
-
-.. proof:exercise::
-
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/6usAsES4>`__. Follow the instructions in
+    <https://classroom.github.com/a/2KLrIvq2>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
@@ -242,6 +244,27 @@ The first two questions are in exam format.
         doesn't help with that. Marks are not given as the question is the
         wrong length, so dividing 20 marks over the question would just be
         misleading
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/AKaRcEJn>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This was the May 2021 exam.
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/6usAsES4>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This was the August 2021 exam.
+
 
 Further programming practice ideas
 ----------------------------------
