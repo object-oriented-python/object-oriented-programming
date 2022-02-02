@@ -258,7 +258,7 @@ The these questions are in exam format.
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/6usAsES4>`__. Follow the instructions in
+    <https://classroom.github.com/a/-G6FQtis>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
