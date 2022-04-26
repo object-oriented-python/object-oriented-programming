@@ -22,7 +22,7 @@ topics are assessed.
     particular your code must be sufficiently different from any available
     code samples for such problems to be found on the internet.
 
-    Write a 10--20 report describing the class of PDEs to be solved, the
+    Write a 10--20 page report describing the class of PDEs to be solved, the
     discretisations employed, and the Python code written. Special
     attention should be paid to how the code is organised, and how
     the code is tested.
@@ -32,3 +32,8 @@ topics are assessed.
     include the mathematical interest of the class of PDEs solved
     and discretisations employed, and the application of the PDE solver
     to interesting problems.
+
+    Of course, it may be of interest to you to consider other kinds of
+    problems (previous submissions implemented various graph algorithms,
+    for example). If you'd like to do something different to that described
+    above, please contact the course lecturer to discuss your proposal.
