@@ -17,7 +17,7 @@ Introduction: abstraction in mathematics and programming
 
     In the video above, please ignore Dr Ham's comments regarding assessment, quizzes, the Piazza forum, and
     the midterm in week 7.
-    The live lab sessions for the Oxford course will take place on Tuesdays at 09:00 each week.
+    The office hours for the Oxford course will take place on Thursdays at 15:00 each week.
 
 A core tool of mathematics is to define abstract objects and the
 operations which apply to them. This approach defines all the basic
