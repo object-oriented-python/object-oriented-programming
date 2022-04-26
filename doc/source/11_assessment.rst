@@ -32,7 +32,3 @@ topics are assessed.
     include the mathematical interest of the class of PDEs solved
     and discretisations employed, and the application of the PDE solver
     to interesting problems.
-
-    Applications of the code to other tasks arising in your research
-    (including MMSC MSc research projects) are especially encouraged.
-    If you can kill two birds with one stone, please do so.
