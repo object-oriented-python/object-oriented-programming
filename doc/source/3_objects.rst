@@ -476,6 +476,15 @@ We can now observe the difference in the result:
    In [3]: f                                                                                                          
    Out[3]: Polynomial((1, 2, 0, 4, 5))
 
+When using :ref:`f-strings <python:tut-f-strings>`, the :func:`repr` of a an
+object can be inserted instead of the :class:`str` by using the ``!r`` modifier.
+For example, we could just as well have written the method above as:
+
+.. code-block:: python3
+
+  def __repr__(self):
+      return f"{type(self).__name__}({self.coefficients!r})"
+
 .. _object_equality:
 
 Object equality

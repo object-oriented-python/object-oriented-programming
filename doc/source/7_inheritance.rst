@@ -191,8 +191,7 @@ minimal characterisation of a group will suffice.
 
         def __repr__(self):
             """Return the canonical string representation of the element."""
-            return f"{type(self).__name__}" \
-                f"({repr(self.group)}, {repr(self.value)})"
+            return f"{type(self).__name__}{self.group, self.value!r}"
 
 
     class CyclicGroup:

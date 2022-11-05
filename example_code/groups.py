@@ -17,6 +17,7 @@ class Element:
     value:
         The value of this entity. Valid values depend on the group.
     """
+
     def __init__(self, group, value):
         group._validate(value)
         self.group = group
@@ -34,8 +35,7 @@ class Element:
 
     def __repr__(self):
         """Return the canonical string representation of the element."""
-        return f"{type(self).__name__}" \
-               f"({repr(self.group), repr(self.value)})"
+        return f"{type(self).__name__}{self.group, self.value!r}"
 
 
 class Group:
@@ -49,6 +49,7 @@ class Group:
         The primary group parameter, such as order or degree. The
         precise meaning of n changes from subclass to subclass.
     """
+
     def __init__(self, n):
         self.n = n
 
@@ -67,6 +68,7 @@ class Group:
 
 class CyclicGroup(Group):
     """A cyclic group represented by integer addition modulo n."""
+
     symbol = "C"
 
     def _validate(self, value):
