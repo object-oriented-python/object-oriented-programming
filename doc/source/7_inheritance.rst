@@ -192,7 +192,7 @@ minimal characterisation of a group will suffice.
         def __repr__(self):
             """Return the canonical string representation of the element."""
             return f"{type(self).__name__}" \
-                f"({repr(self.group), repr(self.value)})"
+                f"({repr(self.group)}, {repr(self.value)})"
 
 
     class CyclicGroup:
@@ -285,7 +285,7 @@ integer between 0 and 5, an exception is raised.
     ValueError: Element value must be an integer in the range [0, 5)
 
 :numref:`cyclic_group` illustrates :term:`composition`: on line 13
-:class:`~example_code.groups_basic.Element`, is associated with a group object.
+:class:`~example_code.groups_basic.Element` is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
 attempted to construct this the other way around with classes having elements,
 however this would have immediately hit the issue that elements have exactly

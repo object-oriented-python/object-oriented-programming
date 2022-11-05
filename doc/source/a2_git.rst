@@ -543,7 +543,7 @@ second of those presently, but first let's learn about `git add`.
 .. note::
 
     The default branch may be called something other than `main`. In
-    particular, older repositories often have a default branch called `main`.
+    particular, older repositories often have a default branch called `master`.
     It doesn't matter what the default branch is called.
 
 Staging files for commit
