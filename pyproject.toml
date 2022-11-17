@@ -1,0 +1,15 @@
+[build-system]
+required = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "oo-programming-exercises"
+version = 2022.0
+authors = [
+    { name="David A. Ham", "David.Ham@imperial.ac.uk" },
+]
+description=("Code for Object oriented programming "
+             "in Python for mathematicians.")
+
+[project.urls]
+"Homepage" = "https://object-oriented-python.github.io/"

@@ -618,7 +618,7 @@ observed that objects of some classes can be added. Is this true for
 
    TypeError: unsupported operand type(s) for +: 'Polynomial' and 'Polynomial'
 
-Of course, once again this is not so surprising since we haven't
+Once again, this is not so surprising since we haven't
 defined what addition of polynomials should mean. The :term:`special
 method` which defines addition is :meth:`~object.__add__`. It takes the
 object itself and another object and returns their sum. That is,    
