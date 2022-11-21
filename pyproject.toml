@@ -1,15 +1,18 @@
 [build-system]
-required = ["hatchling"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
 name = "oo-programming-exercises"
-version = 2022.0
+version = "2022.0"
 authors = [
-    { name="David A. Ham", "David.Ham@imperial.ac.uk" },
+    { name="David A. Ham", email="David.Ham@imperial.ac.uk" },
 ]
-description=("Code for Object oriented programming "
-             "in Python for mathematicians.")
+description= """
+Code for Object oriented programming in Python for mathematicians."""
+dependencies = ["numpy"]
+license-file = "LICENSE.md"
+license = "CC-BY-4.0"
 
 [project.urls]
 "Homepage" = "https://object-oriented-python.github.io/"
