@@ -63,7 +63,7 @@ class Group:
 
     def __repr__(self):
         """Return the canonical string representation of the element."""
-        return f"{type(self).__name__}({repr(self.n)})"
+        return f"{type(self).__name__}({self.n!r})"
 
 
 class CyclicGroup(Group):

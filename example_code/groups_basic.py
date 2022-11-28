@@ -30,7 +30,7 @@ class Element:
 
     def __repr__(self):
         """Return the canonical string representation of the element."""
-        return f"{type(self).__name__}({repr(self.group), repr(self.value)})"
+        return f"{type(self).__name__}{self.group, self.value!r}"
 
 
 class CyclicGroup:
@@ -61,7 +61,7 @@ class CyclicGroup:
 
     def __repr__(self):
         """Return the canonical string representation of the group."""
-        return f"{type(self).__name__}({repr(self.order)})"
+        return f"{type(self).__name__}({self.order!r})"
 
 
 class GeneralLinearGroup:
@@ -95,4 +95,4 @@ class GeneralLinearGroup:
 
     def __repr__(self):
         """Return the canonical string representation of the group."""
-        return f"{type(self).__name__}({repr(self.degree)})"
+        return f"{type(self).__name__}({self.degree!r})"

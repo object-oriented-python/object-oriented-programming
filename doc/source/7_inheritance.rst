@@ -15,7 +15,7 @@ Inheritance and composition
 
 A key feature of abstractions is :term:`composability <composition>`: the
 ability to make a complex object or operation out of several components. We can
-compose objects by simply making one object a :term:`attribute` of another
+compose objects by simply making one object an :term:`attribute` of another
 object. This combines objects in a *has a* relationship. For example the
 :class:`~example_code.polynomial.Polynomial` class introduced in
 :numref:`Chapter %s <objects>` *has a* :class:`tuple` of coefficients. Object
@@ -223,7 +223,7 @@ minimal characterisation of a group will suffice.
 
         def __repr__(self):
             """Return the canonical string representation of the group."""
-            return f"{type(self).__name__}({repr(self.order)})"
+            return f"{type(self).__name__}({self.order!r})"
 
 :numref:`cyclic_group` shows an implementation of our minimal conception of
 cyclic groups. Before considering it in any detail let's try it out to observe
@@ -239,7 +239,7 @@ the concrete effects of the classes:
     2_C5
 
 We observe that we are able to create the cyclic group of order 5. Due to the
-definition of the :meth:`~object.__call__` :term:`special method` at line 35,
+definition of the :meth:`~object.__call__` :term:`special method` at line 49,
 we are then able to create elements of the group by calling the group object.
 The group operation then has the expected effect:
 
@@ -286,7 +286,7 @@ integer between 0 and 5, an exception is raised.
 :numref:`cyclic_group` illustrates :term:`composition`: on line 13
 :class:`~example_code.groups_basic.Element` is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
-attempted to construct this the other way around with classes having elements,
+attempted to construct this the other way around with groups having elements,
 however this would have immediately hit the issue that elements have exactly
 one group, while a group might have an unlimited number of elements. Object
 composition is typically most successful when the relationship is uniquely
@@ -356,7 +356,7 @@ follows:
 
         def __repr__(self):
             """Return the canonical string representation of the group."""
-            return f"{type(self).__name__}({repr(self.degree)})"
+            return f"{type(self).__name__}({self.degree!r})"
 
 We won't illustrate the operation of this class, though the reader is welcome to
 :keyword:`import` the :mod:`example_code.groups_basic` module and experiment.
@@ -409,7 +409,7 @@ does.
 
         def __repr__(self):
             """Return the canonical string representation of the element."""
-            return f"{type(self).__name__}({repr(self.n)})"
+            return f"{type(self).__name__}({self.n!r})"
 
 
     class CyclicGroup(Group):
