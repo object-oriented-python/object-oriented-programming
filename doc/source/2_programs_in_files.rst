@@ -78,10 +78,9 @@ IPython can now be run by simply typing:
 This will result in output similar to the following:
 
 .. code-block:: ipython3
-
-    Python 3.9.4 (default, Apr  5 2021, 01:50:46) 
+    Python 3.11.0 (main, Oct 25 2022, 14:13:24) [Clang 14.0.0 (clang-1400.0.29.202)]
     Type 'copyright', 'credits' or 'license' for more information
-    IPython 7.19.0 -- An enhanced Interactive Python. Type '?' for help.
+    IPython 8.6.0 -- An enhanced Interactive Python. Type '?' for help.
 
     In [1]: 
 
@@ -295,15 +294,15 @@ containing complex maths functions called
 :mod:`python:cmath`. Clearly, it's important that we can distinguish
 between :func:`python:math.sin` and :func:`python:cmath.sin`. Here the
 module names :mod:`math` and :mod:`cmath` form the namespaces that
-differentiate between the two :func:`sin` functions. There are
-essentially only two core namespace concepts. One of them is that
-every name is in a namespace, and any given time points to a unique
-value. The second one is that namespaces can be nested, so a name in a
-namespace can itself be another namespace. For example, the math
-namespace contains the value :obj:`math.pi`, which itself defines a
-namespace for some operations that are built into Python numbers. The
-(somewhat uninteresting) imaginary part of π can be accessed as
-:obj:`math.pi.imag`.
+differentiate between the two :func:`sin` functions.
+
+There are essentially only two core namespace concepts. One of them is that
+every name is in a namespace, and any given time points to a unique value. The
+second one is that namespaces can be nested, so a name in a namespace can
+itself be another namespace. For example, the math namespace contains the value
+:obj:`math.pi`, which itself defines a namespace for some operations that are
+built into Python numbers. The (somewhat uninteresting) imaginary part of π can
+be accessed as :obj:`math.pi.imag`.
 
 Namespaces are a simple but fundamental concept in programming. To
 quote one of the key developers of the Python language:
@@ -1022,7 +1021,7 @@ already familiar with Git and GitHub then you will also need to work through
 
         Using the information on the `book website
         <https://object-oriented-python.github.io/edition1/exercises.html>`__
-        create your first exercise repository for this module and clone it
+        create your chapter 2 exercise repository for this module and clone it
         into your working folder. The exercise repository just contains a
         :file:`README` and some tests. Your job in the following exercises will be
         to populate it with the remaining content.

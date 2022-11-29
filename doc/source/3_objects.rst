@@ -691,7 +691,7 @@ Let's try our new addition functionality in action:
    In [4]: b = Polynomial((0, 1))      
 
    In [5]: print(b)
-   x + 1
+   x
 
    In [6]: print(a + b)                                                                                               
    x^3 + 3x + 1
