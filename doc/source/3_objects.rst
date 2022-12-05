@@ -798,6 +798,68 @@ creating single objects representing high level mathematical
 abstractions whose concrete realisation in code may require many
 pieces of data and a large number of complex functions.
    
+Assignment and instantiation
+----------------------------
+
+One common confusion among new Python programmers concerns the distinction
+between making new objects, and assigning new names to existing objects. The
+key point to remember is that assignment in Python does not by itself create
+new objects, only new variable names. For example:
+
+.. code-block:: ipython3
+
+    In [1]: a = set()
+
+    In [2]: b = a
+
+The right hand side of the first line :term:`instantiates <instantiate>` a new
+set, and the assignment creates the name `a` and associates it with the same
+set. The second line is just an assignment: it associates the name `b` with the
+same set. We can see the effect of this if we add an item to `b` and then look
+at the contents of `a`:
+
+.. code-block:: ipython3
+
+    In [3]: b.add(1)
+
+    In [4]: print(a)
+    {1}
+
+The same distinction between instantiating objects and making new references to
+them is the cause of a frequent mistake when trying to create a list of empty
+objects:
+
+.. code-block:: ipython3
+
+    In [5]: c = [set()] * 5
+
+    In [6]: print(c)
+    [set(), set(), set(), set(), set()]
+
+The programmer almost certainly intended to create a list containing five empty
+sets. Instead, they have created a list containing five references to the same
+set:
+
+.. code-block:: ipython3
+
+    In [7]: c[0].add(2)
+
+    In [8]: print(c)
+    [{2}, {2}, {2}, {2}, {2}]
+
+The right way to create a list of five empty sets is to use a list
+comprehension. This will instantiate a different set for each entry in the
+list:
+
+.. code-block:: ipython3
+
+    In [9]: d = [set() for i in range(5)]
+
+    In [10]: d[0].add(2)
+
+    In [11]: print(d)
+    [{2}, set(), set(), set(), set()]
+
 Glossary
 --------
 
