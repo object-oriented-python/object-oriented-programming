@@ -1,7 +1,7 @@
 Preface
 =======
 
-Computers have revolutionised mathematics and the many scientific, engineering
+Computers have revolutionised mathematics and the many scientific, engineering,
 and economic fields in which mathematics is applied. In the applications of
 mathematics the role of computation has long been obvious and prominent. Now,
 the development of theorem proving software is increasing the prominence of
@@ -68,7 +68,7 @@ who would like to learn to be a more capable programmer. The mathematical
 examples assume that you know how to differentiate functions of one variable,
 but very little beyond that. Where examples or exercises employ other
 mathematics, such as cellular automata in :numref:`Chapter %s <style>` and
-groups in :numref:`Chapter %s <abstract_data_types>`, enough of the mathematics
+groups in :numref:`Chapter %s <inheritance>`, enough of the mathematics
 will be introduced that the reader should be able to understand the programming
 concept being explained, without necessarily understanding all of the
 mathematical details of the example.
@@ -78,7 +78,7 @@ the sort of basic Python usually covered in a first programming or
 computational methods course. In particular the reader will be assumed to be
 familiar with writing functions, variable assignments, loops, and list
 comprehensions. The reader is also assumed to have used numeric and string data
-values, as well as dictionaries, lists, and tuples.
+values, as well as dictionaries, sets, lists, and tuples.
 
 Many introductory Python courses exclusively use Jupyter notebooks, so nothing
 beyond that is assumed. Getting set up with a working Python installation is
