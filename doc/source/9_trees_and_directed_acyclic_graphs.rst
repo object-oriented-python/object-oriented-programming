@@ -287,7 +287,7 @@ Data structures for trees
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5477e1b1-1040-4a07-97a5-aceb01230fc6>`__.
 
 Unlike the sequence types we have previously met, trees are not linear objects.
-If we wish to iterate through every node in the tree then we have a choices to
+If we wish to iterate through every node in the tree then we have choices to
 make about the order in which we do so. In particular, there are two obvious
 classes of traversal order:
 
