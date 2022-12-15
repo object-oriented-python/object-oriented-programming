@@ -76,23 +76,20 @@ Now consider the case of an expression that doesn't make mathematical sense:
             ^
     SyntaxError: invalid syntax
 
-This creates a syntax error, signified by a :obj:`SyntaxError`
-exception. In programming languages, as with human languages, the
-syntax is the set of rules which defines which expressions are
-well-formed. Notice that the earlier lines of a syntax error appear
-somewhat different to those of the previous exception. Almost all
-exceptions occur because the :term:`Python interpreter` attempts to evaluate a
-statement or expression and encounters a problem. Syntax errors are a
-special case: when a syntax error occurs, the interpreter can't even
-get as far as attempting to evaluate because the sequence of
-characters it has been asked to execute do not make sense in
-Python. This does, however, have one advantage, which is that the
-error message shows the precise point in the line at which the Python
-interpreter found a problem. This is indicated by the caret symbol
-(`^`). In this case, the reason that the expression doesn't make any
-sense is that the modulo operator (`%`) is not a permissible second
-operand to multiplication (`*`), so the Python interpreter places the
-caret under the modulo operator.
+This creates a syntax error, signified by a :obj:`SyntaxError` exception. In
+programming languages, as with human languages, the syntax is the set of rules
+which defines which expressions are well-formed. Notice that the earlier lines
+of a syntax error appear somewhat different to those of the previous exception.
+Almost all exceptions occur because the :term:`Python interpreter` attempts to
+evaluate a statement or expression and encounters a problem. Syntax errors are
+a special case: when a syntax error occurs, the interpreter can't even get as
+far as attempting to evaluate because the sequence of characters it has been
+asked to execute do not make sense in Python. This time, the error message
+shows the precise point in the line at which the Python interpreter found a
+problem. This is indicated by the caret symbol (`^`). In this case, the reason
+that the expression doesn't make any sense is that the modulo operator (`%`) is
+not a permissible second operand to multiplication (`*`), so the Python
+interpreter places the caret under the modulo operator.
 
 Even though the Python interpreter will highlight the point at which
 the syntax doesn't make sense, this might not quite actually be the
