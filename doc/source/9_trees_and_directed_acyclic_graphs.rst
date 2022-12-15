@@ -1091,7 +1091,7 @@ a symbol with respect to any other symbol is 0. Because terminals have no
 operands, the implementation of differentiation when visiting a terminal is
 particularly easy. Note that the symbol with respect to which we are
 differentiating will need to be passed in to the visitor. This can be achieved
-with a keyword argument in a manner analogous to `tree_map` in
+with a keyword argument in a manner analogous to `symbol_map` in
 :numref:`tree_evaluate`.
 
 The differentiation of operators is achieved by an applying the chain rule. For
