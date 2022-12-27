@@ -400,7 +400,7 @@ debugger commands that is enough to get started.
     `the pdb documentation <debugger-commands>`__. The part before the brackets
     is an abbreviated command which saves typing.
     :width: 100%
-    :widths: 15, 60, 25
+    :widths: 17, 59, 24
     :escape: '
     :name: debug-commands
     
@@ -565,7 +565,7 @@ Most of the exercises presented here are examples of test-driven
 development: the tests are written to the problem specification, and you then
 write code implementing the specification which you test using the tests.
 
-Test-driven development is not only a good way of knowing when you have coded
+Test-driven development is not just a good way of knowing when you have coded
 correctly. The process of creating the tests is also a very good way of
 establishing whether you understand the problem, and that specification is
 well-posed.
@@ -622,28 +622,28 @@ at least now have a much smaller piece of code to ask for help with.
 Bisection debugging
 ...................
 
-We are already familiar with git as a mechanism for accessing and saving
-code. However, revision control offers a lot more to the programmer than a
-place to keep code. In particular, one of the key benefits is the ability to go
-back to a previous version. This is particularly helpful in debugging
+We are already familiar with git as a mechanism for accessing and saving code.
+However, revision control offers a lot more to the programmer than a place to
+keep code. In particular, one of the key benefits is the ability to go back to
+a previous version. This is particularly helpful in debugging
 :term:`regressions <regression>`: things that used to work but no longer do. Of
 course in a perfect world where we have full test suite coverage of all
 functionality, and the test suite is run on every commit, this situation will
 never occur. However the reality is that test coverage is never complete, and
 there will always be untested functionality in any non-trivial piece of
-software. Regressions are a particularly vexing form of bug: there is little
-more frustrating to be coming up to a deadline and to discover that something
-that used to work no longer does.
+software. Regressions are a particularly vexing form of bug: there are few
+things more frustrating than to be coming up to a deadline and to discover that
+something that used to work no longer does.
 
 If revision control has been used well over the course of a coding project, it
 offers a mechanism for debugging regressions. We just have to roll back the
 repository to previous versions until we find one in which the bug does not
-occur. In fact, we can think of this process mathematically. We can think of
-our repository as a function defined on the ordered set of commits which takes
-a positive value at commits without the bug in question, and negative values at
-commits which exhibit the bug. Our task is to find the zero of this function.
-In other words, to find a pair of adjacent commits such that the bug is absent
-in the first commit, but present in the second commit. Once we have established
+occur. In fact, we can think of this process mathematically. Our repository
+induces function defined on the ordered set of commits which takes a positive
+value at commits without the bug in question, and negative values at commits
+which exhibit the bug. Our task is to find the zero of this function. In other
+words, we must find a pair of adjacent commits such that the bug is absent in
+the first commit, but present in the second commit. Once we have established
 this, then we know that the bug is caused by one of the (hopefully small) set
 of changes introduced in that commit.
 
@@ -709,18 +709,19 @@ in order to check if the bug is present there. The command to do that is:
 
 .. code-block:: console
 
-    $ git reset --hard 66a10d5d374de796827ac3152f0c507a46b73d60
+    $ git checkout a7426bd8533f2c819f7f164df9c197e277d058c3
 
 Obviously you replace the commit ID with the commit you wish to roll back to.
+Git will print a warning that you are now in "detached HEAD" state. This is
+fine because we only want to run the code at this state, we don't want to make
+new commits from here.
+
 We can see what we've done by checking the status of the repository:
 
 .. code-block:: console
 
     $ git status
-    On branch main
-    Your branch is behind 'origin/main' by 7 commits, and can be fast-forwarded.
-    (use "git pull" to update your local branch)
-
+    HEAD detached at a7426bd8
     nothing to commit, working tree clean
 
 We could, for example, run our test to check if the bug is present:
@@ -735,14 +736,14 @@ the repository with:
 .. code-block:: console
 
     $ git rev-parse HEAD
-    66a10d5d374de796827ac3152f0c507a46b73d60
+    9e29934847407ea1d3ca3aba8062ce6fcbb7aff3
 
-If we want to take the repository back to the newest commit then we do as the
-status message told us, and pull:
+If we want to take the repository back to the newest commit then we simply
+check out the branch name we started from. For example:
 
 .. code-block:: console
 
-    $ git pull
+    $ git checkout main
 
 If we now check the status of our repository, we find we're at the head of our
 branch with a clean working tree:
@@ -768,25 +769,39 @@ set up the bisection we run:
 
 .. code-block:: console
 
-    $ git bisect start HEAD 66a10d5d374de796827ac3152f0c507a46b73d60 -- 
+    $ git bisect start HEAD 9e29934847407ea1d3ca3aba8062ce6fcbb7aff3 -- 
 
-Obviously you replace the commit ID with your starting point. ``HEAD`` is a git
-shorthand for the current state of the repository, so it's a suitable end point
-in most cases. You can also substitute an explicit commit ID there. The final
-``--`` is required and acts to distinguish the commit IDs we are providing from
-any file names that we might be passing to the command (we won't be covering
-that case). Next we run the actual bisection:
+Obviously you replace the commit ID with your starting point. ``HEAD`` is a
+suitable end point in most cases. You can also substitute an explicit commit ID
+or a branch name there. The final ``--`` is required and acts to distinguish
+the commit IDs we are providing from any file names that we might be passing to
+the command (we won't be covering that case). Next we run the actual bisection:
 
 .. code-block:: console
 
     $ git bisect run python -m pytest ../bug_test.py
 
-When the bisection terminates, the current state of the repository will be on
-the first commit that exhibits the bug. We can check the difference between
-that commit and the previous one using:
+When the bisection terminates, git prints out the commit ID of the first commit
+that exhibited the bug. Git also creates a log of all the commits that were
+tested during the bisection, and we can also retrieve the first bad commit from
+there. If we run:
 
 .. code-block:: console
 
+    $ git bisect log
+
+Then the last line of the output is:
+
+.. code-block:: console
+
+    # first bad commit: [f03fcc09a24cabf0f2c76d850371c2c1f1396b6c]
+    Enforce q\d notation be default (#60)
+
+We can check the difference between that commit and the previous one using:
+
+.. code-block:: console
+
+    $ git checkout f03fcc09a24cabf0f2c76d850371c2c1f1396b6c
     $ git diff HEAD~1
 
 Here ``HEAD~1`` refers to the previous commit. Indeed, if we thought that the
@@ -915,7 +930,9 @@ Exercises
     .. code-block:: python3
 
         import ufl
-        argyris = ufl.FiniteElement("Argyris", degree=6, cell=ufl.triangle)
+        r = ufl.FiniteElement("R", cell=ufl.triangle)
+        assert r.sobolev_space() is ufl.L2
+
 
     Use `git bisect` to identify the first commit at which this code failed,
     and the last commit at which it worked, and answer the following questions.
