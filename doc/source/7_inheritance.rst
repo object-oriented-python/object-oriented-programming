@@ -163,7 +163,7 @@ minimal characterisation of a group will suffice.
     :caption: A simple implementation of a cyclic group class, and a generic
               group element.
     :name: cyclic_group
-    :linenos:
+    :lineno-start: 7
 
     class Element:
         """An element of the specified group.
@@ -196,7 +196,6 @@ minimal characterisation of a group will suffice.
 
     class CyclicGroup:
         """A cyclic group represented by addition modulo group order."""
-
         def __init__(self, order):
             self.order = order
 
@@ -255,35 +254,32 @@ integer between 0 and 5, an exception is raised.
 
 .. code-block:: ipython3
 
-    ---------------------------------------------------------------------------
-    ValueError                                Traceback (most recent call last)
-    <ipython-input-4-a5d8472d4486> in <module>
-    ----> 1 C(1.5)
+   In [4]: C(1.5)
+   --------------------------------------------------------------------------
+   ValueError                               Traceback (most recent call last)
+   Cell In[4], line 1
+   ----> 1 C(1.5)
 
-    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py in __call__(self, value)
-        58     def __call__(self, value):
-        59         """Create an element of this group."""
-    ---> 60         return Element(self, value)
-        61 
-        62     def __str__(self):
+   File ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py:56, in CyclicGroup.__call__(self, value)
+        54 def __call__(self, value):
+        55     """Create an element of this group."""
+   ---> 56     return Element(self, value)
 
-    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py in __init__(self, group, value)
-        17 
-        18     def __init__(self, group, value):
-    ---> 19         group._validate(value)
-        20         self.group = group
-        21         self.value = value
+   File ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py:18, in Element.__init__(self, group, value)
+        17 def __init__(self, group, value):
+   ---> 18     group._validate(value)
+        19     self.group = group
+        20     self.value = value
 
-    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py in _validate(self, value)
-        46         """Ensure that value is a legitimate element value in this group."""
-        47         if not (isinstance(value, Integral) and 0 <= value < self.order):
-    ---> 48             raise ValueError("Element value must be an integer"
-        49                              f" in the range [0, {self.order})")
-        50 
+   File ~/docs/principles_of_programming/object-oriented-programming/example_code/groups_basic.py:44, in CyclicGroup._validate(self, value)
+        42 """Ensure that value is an allowed element value in this group."""
+        43 if not (isinstance(value, Integral) and 0 <= value < self.order):
+   ---> 44     raise ValueError("Element value must be an integer"
+        45                      f" in the range [0, {self.order})")
 
-    ValueError: Element value must be an integer in the range [0, 5)
+   ValueError: Element value must be an integer in the range [0, 5)
 
-:numref:`cyclic_group` illustrates :term:`composition`: on line 13
+:numref:`cyclic_group` illustrates :term:`composition`: on line 19
 :class:`~example_code.groups_basic.Element` is associated with a group object.
 This is a classic *has a* relationship: an element has a group. We might have
 attempted to construct this the other way around with groups having elements,
@@ -295,8 +291,8 @@ defined.
 This code also demonstrates :term:`delegation`. In order to avoid having to
 define different element classes for different groups, the element class does
 not in substance implement either value validation, or the group operation.
-Instead, at line 12, validation is delegated to the group by calling
-:meth:`group._validate` and at line 19 the implementation of the group
+Instead, at line 18, validation is delegated to the group by calling
+:meth:`group._validate` and at line 25 the implementation of the group
 operation is delegated to the group by calling :meth:`self.group.operation`.
 
 General linear groups
@@ -381,7 +377,8 @@ does.
 
 .. code-block:: python3
     :caption: Implementation of a base class for a generic group, and
-        subclasses for the cyclic groups and general linear groups.
+        subclasses for the cyclic groups and general linear groups. This code
+        is available in the book repository in :file:`example_code/groups.py`
     :name: groups_inheritance
     :linenos:
 
@@ -532,22 +529,22 @@ were to instantiate :class:`Group` itself:
 
 .. code-block:: ipython3
 
-    In [1]: from example_code.groups import Group
+   In [1]: from example_code.groups import Group
 
-    In [2]: g = Group(1)
+   In [2]: g = Group(1)
 
-    In [3]: print(g)
-    ---------------------------------------------------------------------------
-    AttributeError                            Traceback (most recent call last)
-    <ipython-input-3-e1cdc681402c> in <module>
-    ----> 1 print(g)
+   In [3]: print(g)
+   --------------------------------------------------------------------------
+   AttributeError                           Traceback (most recent call last)
+   Cell In[3], line 1
+   ----> 1 print(g)
 
-    ~/docs/principles_of_programming/object-oriented-programming/example_code/groups.py in __str__(self)
-        61     def __str__(self):
-        62         """Return a string in the form symbol then group parameter."""
-    ---> 63         return f"{self.symbol}{self.n}"
-        64 
-        65     def __repr__(self):
+   File ~/docs/principles_of_programming/object-oriented-programming/example_code/groups.py:62, in Group.__str__(self)
+        60 def __str__(self):
+        61     """Return a string in the form symbol then group parameter."""
+   ---> 62     return f"{self.symbol}{self.n}"
+
+   AttributeError: 'Group' object has no attribute 'symbol'
 
 In fact, :class:`Group` is never supposed to be instantiated, it plays the role
 of an :term:`abstract base class`. In other words, its role is to provide
