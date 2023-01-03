@@ -529,32 +529,31 @@ happens if we run this code? Let's try:
 
 .. code-block:: ipython
 
-       In [5]: gcd(10, 12)
-    ---------------------------------------------------------------------------
-    ZeroDivisionError                         Traceback (most recent call last)
-    <ipython-input-5-d0750d9f2658> in <module>
+    In [2]: gcd(10, 12)
+    --------------------------------------------------------------------------
+    ZeroDivisionError                        Traceback (most recent call last)
+    Cell In[2], line 1
     ----> 1 gcd(10, 12)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
+    Cell In[1], line 2, in gcd(a, b)
+        1 def gcd(a, b):
     ----> 2     return gcd(b, a % b)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
+    Cell In[1], line 2, in gcd(a, b)
+        1 def gcd(a, b):
     ----> 2     return gcd(b, a % b)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
+        [... skipping similar frames: gcd at line 2 (1 times)]
+
+    Cell In[1], line 2, in gcd(a, b)
+        1 def gcd(a, b):
     ----> 2     return gcd(b, a % b)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
-    ----> 2     return gcd(b, a % b)
-
-    ZeroDivisionError: integer division or modulo by zero
+    ZeroDivisionError: integer modulo by zero
 
 Notice how the recursive call to :func:`gcd` causes several
-:term:`stack frames <stack frame>` that look the same. That makes
+:term:`stack frames <stack frame>` that look the same. Indeed, the Python
+interpreter even notices the similarity and skips over one. That makes
 sense: :func:`gcd` calls itself until `b` is zero, and then we get a
 :class:`ZeroDivisionError` because modulo zero is undefined. To
 complete this function, what we need to do is to tell Python to stop
@@ -725,11 +724,17 @@ clause. Indeed, some of the functions called might themselves contain
 :keyword:`try` blocks with the result that an exception is raised at a
 point which is ultimately inside several :keyword:`try` blocks.
 
-The :term:`Python interpreter` deals with this situation by starting
-from the current :term:`stack frame` and working upwards, a process
-known as *unwinding the stack*. In pseudocode, the algorithm is:
+The :term:`Python interpreter` deals with this situation by starting from the
+current :term:`stack frame` and working upwards, a process known as *unwinding
+the stack*. :numref:`unwind` shows pseudocode for this process.
+
+.. _unwind:
 
 .. code-block:: python3
+   :caption: Pseudocode for the process of *unwinding the stack*, in which the 
+        interpreter successively looks through higher stack frames to search 
+        for an :keyword:`except` clause matching the exception that has just 
+        been raised.
 
    while call stack not empty:
        if current execution point is in a try block \
