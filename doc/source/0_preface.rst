@@ -202,8 +202,8 @@ outstanding. Pulling out all the stops to deliver the written and video
 materials for online learning meant a lot of evenings and weekends. I am
 exceptionally grateful to my wife Gebina Ham for disproportionately picking up
 our childcare responsibilities in that period in order to make this possible.
-I'd also like to thank Dr Aaron Pereira for his eagle-eyed corrections to the
-text.
+I'd also like to thank Dr Aaron Pereira and Reuben Nixon-Hill for their
+eagle-eyed corrections to the text.
 
 This is a textbook about programming in Python, so it would be remiss of me not
 to also thank the developers of the Python language, its CPython reference
@@ -215,3 +215,14 @@ This book is typeset using the Sphinx documentation system. Among other things
 this facilitates generating the web, PDF, and print versions of the book from a
 single source. Thanks are due to its authors as well as those of the underlying
 LaTeX and TeX typesetting systems.
+
+Changes in the second edition
+-----------------------------
+
+The second edition is a minor update correcting numerous small issues that have
+been pointed out over the last year. A more substantive change is that the
+explanation of packaging in :numref:`programs_files` has been modernised to use
+:file:`pyproject.toml` in place of `setup.py`.
+:numref:`assignment_and_instantiation` has been added in response to confusion
+expressed by a number of students about the distinction between instantiating
+new objects and assigning new variable names to existing objects.

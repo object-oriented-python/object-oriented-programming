@@ -801,7 +801,9 @@ object-oriented programming. In particular, encapsulation is key to
 creating single objects representing high level mathematical
 abstractions whose concrete realisation in code may require many
 pieces of data and a large number of complex functions.
-   
+
+.. _assignment_and_instantiation:
+
 Assignment and instantiation
 ----------------------------
 

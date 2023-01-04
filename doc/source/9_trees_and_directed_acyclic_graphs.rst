@@ -325,7 +325,7 @@ become apparent that it is not always possible to do so.
 
         def __init__(self, value, *children):
             self.value = value
-            self.children = tuple(children)
+            self.children = children
 
         def __repr__(self):
             """Return the canonical string representation."""
