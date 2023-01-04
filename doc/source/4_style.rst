@@ -1000,11 +1000,22 @@ information:
     File:      ~/docs/principles_of_programming/object-oriented-programming/fibonacci/fibonacci.py
     Type:      function
 
-Finally, the same information is used in the :func:`web documentation
-<fibonacci.fibonacci.fib>`. Notice that the :term:`function signature` is not a
-part of the docstring. Python is capable of extracting the signature of the
-function and adding it into the documentation without the programmer having to
-manually add it to the docstring.
+.. only:: not book
+
+   Finally, the same information is used in the :func:`web documentation
+   <fibonacci.fibonacci.fib>`. Notice that the :term:`function signature` is
+   not a part of the docstring. Python is capable of extracting the signature
+   of the function and adding it into the documentation without the programmer
+   having to manually add it to the docstring.
+
+.. only:: book
+
+   Finally, the same information is used in the web documentation
+   of the function. Notice that the :term:`function signature` is
+   not a part of the docstring. Python is capable of extracting the signature
+   of the function and adding it into the documentation without the programmer
+   having to manually add it to the docstring.
+
 
 Where to use docstrings
 .......................

@@ -595,12 +595,6 @@ than the current one with:
 Observe that since `type(self)` is a :term:`class`, we can :term:`instantiate`
 it by calling it.
 
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
-
 Calling parent class methods
 ----------------------------
 

@@ -711,7 +711,7 @@ packages that are not already available before installing the package itself.
 
 .. warning::
 
-    Neither `dependencies` nor `requires`should list packages from the Python
+    Neither `dependencies` nor `requires` should list packages from the Python
     Standard Library. These are always available, and listing them will cause
     Pip to error.
     
@@ -769,13 +769,12 @@ it's false, then an error occurs. For example:
 
 .. code-block:: ipython3
 
-   In [1]: assert 1 == 0
-   ---------------------------------------------------------------------------
-   AssertionError                            Traceback (most recent call last)
-   <ipython-input-1-e99f91a18d62> in <module>
-   ----> 1 assert 1 == 0
+    --------------------------------------------------------------------------
+    AssertionError                           Traceback (most recent call last)
+    Cell In [1], line 1
+    ----> 1 assert 1==0
 
-   AssertionError:
+    AssertionError: 
 
 Pytest files
 ~~~~~~~~~~~~
@@ -803,6 +802,12 @@ are usually gathered in a separate tests folder. For example::
     ├── tests
     │   └── test_fibonacci.py
     └── pyproject.toml
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 We can then invoke the tests from the shell:
 
@@ -1067,12 +1072,6 @@ already familiar with Git and GitHub then you will also need to work through
         add any new files to Git, commit all of your changes, and push to
         GitHub. Then ensure that the tests pass on GitHub. For more information
         about how to do any of these, refer to :numref:`Appendix %s <git>`.
-
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
 
 .. proof:exercise::
 

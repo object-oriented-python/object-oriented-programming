@@ -41,15 +41,17 @@ we add an integer to a :ref:`string <textseq>`?
 
 .. code-block:: ipython3
 
-  In [1]: a = 1
-  In [2]: b = 'og'
-  In [3]: print(a + b)
-  ---------------------------------------------------------------------------
-  TypeError                                 Traceback (most recent call last)
-  <ipython-input-3-0ae8b1612688> in <module>
-  ----> 1 print(a + b)
-  
-  TypeError: unsupported operand type(s) for +: 'int' and 'str'
+    In [1]: a = 1
+
+    In [2]: b = 'og'
+
+    In [3]: print(a + b)
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [3], line 1
+    ----> 1 print(a + b)
+
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
 In this error, Python is complaining that `+` does not make sense if
 the items being added (the :term:`operands`) are an integer and a
@@ -62,15 +64,17 @@ also in trouble:
 
 .. code-block:: ipython3
   
-  In [1]: a = {1, 2}
-  In [2]: b = {2, 3}
-  In [3]: print(a + b)
-  ---------------------------------------------------------------------------
-  TypeError                                 Traceback (most recent call last)
-  <ipython-input-3-0ae8b1612688> in <module>
-  ----> 1 print(a + b)
+    In [1]: a = {1, 2}
 
-  TypeError: unsupported operand type(s) for +: 'set' and 'set'
+    In [2]: b = {2, 3}
+
+    In [3]: print(a + b)
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [3], line 1
+    ----> 1 print(a + b)
+
+    TypeError: unsupported operand type(s) for +: 'set' and 'set'
   
 Conversely we might suspect that two values can be added only if they are of the same
 type. However it is perfectly legal to add an integer and a :ref:`floating
@@ -700,9 +704,9 @@ Let's try our new addition functionality in action:
    x^3 + 2x + 2
 
    In [8]: print(1 + a)                                                                                               
-   ---------------------------------------------------------------------------
-   TypeError                                 Traceback (most recent call last)
-   <ipython-input-8-a42ff1c9a542> in <module>
+   --------------------------------------------------------------------------
+   TypeError                                Traceback (most recent call last)
+   Cell In [8], line 1
    ----> 1 print(1 + a)
    
    TypeError: unsupported operand type(s) for +: 'int' and 'Polynomial'

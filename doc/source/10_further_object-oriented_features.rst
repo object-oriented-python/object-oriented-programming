@@ -327,9 +327,9 @@ be observed if we try to instantiate :class:`~example_code.groups_abc.Group`:
     In [1]: from example_code.groups_abc import Group
 
     In [2]: Group(1)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    <ipython-input-2-76d67216101e> in <module>
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [2], line 1
     ----> 1 Group(1)
 
     TypeError: Can't instantiate abstract class Group with abstract methods _validate, operation, symbol
