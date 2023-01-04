@@ -965,7 +965,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__
     obtain the skeleton code for these exercises. The skeleton code contains a
     :mod:`polynomial` package with a version of the :class:`Polynomial` class.
 
@@ -1036,5 +1036,5 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

@@ -1025,7 +1025,7 @@ already familiar with Git and GitHub then you will also need to work through
     .. only:: not book
 
         Using the information on the `book website
-        <https://object-oriented-python.github.io/edition1/exercises.html>`__
+        <https://object-oriented-python.github.io/edition2/exercises.html>`__
         create your chapter 2 exercise repository for this module and clone it
         into your working folder. The exercise repository just contains a
         :file:`README` and some tests. Your job in the following exercises will be
@@ -1106,5 +1106,5 @@ already familiar with Git and GitHub then you will also need to work through
 .. [#book_repo] `https://github.com/object-oriented-python/object-oriented-programming
     <https://github.com/object-oriented-python/object-oriented-programming>`__
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

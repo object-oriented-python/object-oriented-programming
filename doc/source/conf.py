@@ -81,7 +81,9 @@ release = ''
 
 redirects = {
     "edition1/exercises": "../exercises.html",
-    "edition1/videos": "../videos.html"
+    "edition1/videos": "../videos.html",
+    "edition2/exercises": "../exercises.html",
+    "edition2/videos": "../videos.html"
 }
 
 # There are two options for replacing |today|: either, you set today to some
