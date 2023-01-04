@@ -287,7 +287,7 @@ Data structures for trees
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5477e1b1-1040-4a07-97a5-aceb01230fc6>`__.
 
 Unlike the sequence types we have previously met, trees are not linear objects.
-If we wish to iterate through every node in the tree then we have a choices to
+If we wish to iterate through every node in the tree then we have choices to
 make about the order in which we do so. In particular, there are two obvious
 classes of traversal order:
 
@@ -325,7 +325,7 @@ become apparent that it is not always possible to do so.
 
         def __init__(self, value, *children):
             self.value = value
-            self.children = tuple(children)
+            self.children = children
 
         def __repr__(self):
             """Return the canonical string representation."""
@@ -1091,7 +1091,7 @@ a symbol with respect to any other symbol is 0. Because terminals have no
 operands, the implementation of differentiation when visiting a terminal is
 particularly easy. Note that the symbol with respect to which we are
 differentiating will need to be passed in to the visitor. This can be achieved
-with a keyword argument in a manner analogous to `tree_map` in
+with a keyword argument in a manner analogous to `symbol_map` in
 :numref:`tree_evaluate`.
 
 The differentiation of operators is achieved by an applying the chain rule. For
@@ -1189,7 +1189,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__
     obtain the skeleton code for these exercises. The exercises also make use
     of the book repository which you installed in :ref:`in Chapter 2
     <course_repo>`.
@@ -1252,5 +1252,5 @@ Exercises
     also possible, and is a key feature of `the Julia programming language
     <https://julialang.org>`_. 
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

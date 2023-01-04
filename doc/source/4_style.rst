@@ -1000,11 +1000,22 @@ information:
     File:      ~/docs/principles_of_programming/object-oriented-programming/fibonacci/fibonacci.py
     Type:      function
 
-Finally, the same information is used in the :func:`web documentation
-<fibonacci.fibonacci.fib>`. Notice that the :term:`function signature` is not a
-part of the docstring. Python is capable of extracting the signature of the
-function and adding it into the documentation without the programmer having to
-manually add it to the docstring.
+.. only:: not book
+
+   Finally, the same information is used in the :func:`web documentation
+   <fibonacci.fibonacci.fib>`. Notice that the :term:`function signature` is
+   not a part of the docstring. Python is capable of extracting the signature
+   of the function and adding it into the documentation without the programmer
+   having to manually add it to the docstring.
+
+.. only:: book
+
+   Finally, the same information is used in the web documentation
+   of the function. Notice that the :term:`function signature` is
+   not a part of the docstring. Python is capable of extracting the signature
+   of the function and adding it into the documentation without the programmer
+   having to manually add it to the docstring.
+
 
 Where to use docstrings
 .......................
@@ -1247,7 +1258,7 @@ Exercises
 
     The skeleton code on GitHub for this chapter's exercises contains a package
     :mod:`life` which implements Conway's Game of Life. Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__
     obtain the skeleton code for these exercises. Clone the repository into
     your working folder and install the package in editable mode.
 
@@ -1379,5 +1390,5 @@ six oscillating blinkers:
           users. However the PEPs having to do with style have wider
           significance.
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

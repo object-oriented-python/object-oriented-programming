@@ -1,7 +1,7 @@
 Preface
 =======
 
-Computers have revolutionised mathematics and the many scientific, engineering
+Computers have revolutionised mathematics and the many scientific, engineering,
 and economic fields in which mathematics is applied. In the applications of
 mathematics the role of computation has long been obvious and prominent. Now,
 the development of theorem proving software is increasing the prominence of
@@ -68,7 +68,7 @@ who would like to learn to be a more capable programmer. The mathematical
 examples assume that you know how to differentiate functions of one variable,
 but very little beyond that. Where examples or exercises employ other
 mathematics, such as cellular automata in :numref:`Chapter %s <style>` and
-groups in :numref:`Chapter %s <abstract_data_types>`, enough of the mathematics
+groups in :numref:`Chapter %s <inheritance>`, enough of the mathematics
 will be introduced that the reader should be able to understand the programming
 concept being explained, without necessarily understanding all of the
 mathematical details of the example.
@@ -78,7 +78,7 @@ the sort of basic Python usually covered in a first programming or
 computational methods course. In particular the reader will be assumed to be
 familiar with writing functions, variable assignments, loops, and list
 comprehensions. The reader is also assumed to have used numeric and string data
-values, as well as dictionaries, lists, and tuples.
+values, as well as dictionaries, sets, lists, and tuples.
 
 Many introductory Python courses exclusively use Jupyter notebooks, so nothing
 beyond that is assumed. Getting set up with a working Python installation is
@@ -126,8 +126,8 @@ it's better to watch the video *after* reading the relevant section.
     The videos are marked in the text by a blue box at the right hand side,
     containing the video number. This corresponds to the list of links at:
 
-        `https://object-oriented-python.github.io/edition1/videos.html
-        <https://object-oriented-python.github.io/edition1/videos.html>`__
+        `https://object-oriented-python.github.io/edition2/videos.html
+        <https://object-oriented-python.github.io/edition2/videos.html>`__
 
 The exercises
 .............
@@ -141,8 +141,8 @@ correct responses to a range of inputs. Tests like this provide immediate
 feedback and enable you to know how you are doing. Links to the skeleton code
 for each chapter are provided at:
 
-        `https://object-oriented-python.github.io/edition1/exercises.html
-        <https://object-oriented-python.github.io/edition1/exercises.html>`__
+        `https://object-oriented-python.github.io/edition2/exercises.html
+        <https://object-oriented-python.github.io/edition2/exercises.html>`__
 
 
 Conventions employed
@@ -202,8 +202,8 @@ outstanding. Pulling out all the stops to deliver the written and video
 materials for online learning meant a lot of evenings and weekends. I am
 exceptionally grateful to my wife Gebina Ham for disproportionately picking up
 our childcare responsibilities in that period in order to make this possible.
-I'd also like to thank Dr Aaron Pereira for his eagle-eyed corrections to the
-text.
+I'd also like to thank Dr Aaron Pereira and Reuben Nixon-Hill for their
+eagle-eyed corrections to the text.
 
 This is a textbook about programming in Python, so it would be remiss of me not
 to also thank the developers of the Python language, its CPython reference
@@ -215,3 +215,14 @@ This book is typeset using the Sphinx documentation system. Among other things
 this facilitates generating the web, PDF, and print versions of the book from a
 single source. Thanks are due to its authors as well as those of the underlying
 LaTeX and TeX typesetting systems.
+
+Changes in the second edition
+-----------------------------
+
+The second edition is a minor update correcting numerous small issues that have
+been pointed out over the last year. A more substantive change is that the
+explanation of packaging in :numref:`programs_files` has been modernised to use
+:file:`pyproject.toml` in place of `setup.py`.
+:numref:`assignment_and_instantiation` has been added in response to confusion
+expressed by a number of students about the distinction between instantiating
+new objects and assigning new variable names to existing objects.

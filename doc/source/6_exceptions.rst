@@ -44,9 +44,9 @@ error:
 .. code-block:: ipython3
 
     In [3]: 0./0.
-    ---------------------------------------------------------------------------
-    ZeroDivisionError                         Traceback (most recent call last)
-    <ipython-input-3-4e5c12397e23> in <module>
+    --------------------------------------------------------------------------
+    ZeroDivisionError                        Traceback (most recent call last)
+    Cell In [3], line 1
     ----> 1 0./0.
 
     ZeroDivisionError: float division by zero
@@ -71,28 +71,25 @@ Now consider the case of an expression that doesn't make mathematical sense:
 .. code-block:: ipython3
 
     In [5]: 3 * %
-      File "<ipython-input-5-442f22cdc61f>", line 1
+    Cell In [5], line 1
         3 * %
             ^
     SyntaxError: invalid syntax
 
-This creates a syntax error, signified by a :obj:`SyntaxError`
-exception. In programming languages, as with human languages, the
-syntax is the set of rules which defines which expressions are
-well-formed. Notice that the earlier lines of a syntax error appear
-somewhat different to those of the previous exception. Almost all
-exceptions occur because the :term:`Python interpreter` attempts to evaluate a
-statement or expression and encounters a problem. Syntax errors are a
-special case: when a syntax error occurs, the interpreter can't even
-get as far as attempting to evaluate because the sequence of
-characters it has been asked to execute do not make sense in
-Python. This does, however, have one advantage, which is that the
-error message shows the precise point in the line at which the Python
-interpreter found a problem. This is indicated by the caret symbol
-(`^`). In this case, the reason that the expression doesn't make any
-sense is that the modulo operator (`%`) is not a permissible second
-operand to multiplication (`*`), so the Python interpreter places the
-caret under the modulo operator.
+This creates a syntax error, signified by a :obj:`SyntaxError` exception. In
+programming languages, as with human languages, the syntax is the set of rules
+which defines which expressions are well-formed. Notice that the earlier lines
+of a syntax error appear somewhat different to those of the previous exception.
+Almost all exceptions occur because the :term:`Python interpreter` attempts to
+evaluate a statement or expression and encounters a problem. Syntax errors are
+a special case: when a syntax error occurs, the interpreter can't even get as
+far as attempting to evaluate because the sequence of characters it has been
+asked to execute do not make sense in Python. This time, the error message
+shows the precise point in the line at which the Python interpreter found a
+problem. This is indicated by the caret symbol (`^`). In this case, the reason
+that the expression doesn't make any sense is that the modulo operator (`%`) is
+not a permissible second operand to multiplication (`*`), so the Python
+interpreter places the caret under the modulo operator.
 
 Even though the Python interpreter will highlight the point at which
 the syntax doesn't make sense, this might not quite actually be the
@@ -167,9 +164,9 @@ of exception built in. For example, if we attempt to access the number
 .. code-block:: ipython3
 
     In [1]: (0, 1)[2]
-    ---------------------------------------------------------------------------
-    IndexError                                Traceback (most recent call last)
-    <ipython-input-1-def0bb43ba85> in <module>
+    --------------------------------------------------------------------------
+    IndexError                               Traceback (most recent call last)
+    Cell In [1], line 1
     ----> 1 (0, 1)[2]
 
     IndexError: tuple index out of range
@@ -205,7 +202,7 @@ the :class:`~polynomial.Polynomial` class from
 
 .. code-block:: ipython3
 
-    In [1]: from polynomial import Polynomial
+    In [1]: from example_code.polynomial import Polynomial
 
     In [2]: p = Polynomial(("a", "b"))
 
@@ -220,22 +217,24 @@ trouble:
 .. code-block:: ipython3
 
     In [4]: print(1 + p)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    <ipython-input-5-141816221609> in <module>
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [4], line 1
     ----> 1 print(1 + p)
 
-    ~/docs/object-oriented-programming/src/polynomial.py in __radd__(self, other)
-         57     def __radd__(self, other):
-         58
-    ---> 59         return self + other
+    File ~/docs/principles_of_programming/object-oriented-programming/example_code/polynomial.py:59, in Polynomial.__radd__(self, other)
+        58 def __radd__(self, other):
+    ---> 59     return self + other
 
-    ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
-         38
-         39         if isinstance(other, Number):
-    ---> 40             return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
-         41
-         42         elif isinstance(other, Polynomial):
+    File ~/docs/principles_of_programming/object-oriented-programming/example_code/polynomial.py:38, in Polynomial.__add__(self, other)
+        36 def __add__(self, other):
+        37     if isinstance(other, Number):
+    ---> 38         return Polynomial((self.coefficients[0] + other,)
+        39                           + self.coefficients[1:])
+        41     elif isinstance(other, Polynomial):
+        42         # Work out how many coefficient places the two polynomials have in
+        43         # common.
+        44         common = min(self.degree(), other.degree()) + 1
 
     TypeError: can only concatenate str (not "int") to str
 
@@ -307,22 +306,24 @@ Let's return to the traceback for our erroneous polynomial addition:
 .. code-block:: ipython3
 
     In [4]: print(1 + p)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    <ipython-input-5-141816221609> in <module>
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [4], line 1
     ----> 1 print(1 + p)
 
-    ~/docs/object-oriented-programming/src/polynomial.py in __radd__(self, other)
-         57     def __radd__(self, other):
-         58
-    ---> 59         return self + other
+    File ~/docs/principles_of_programming/object-oriented-programming/example_code/polynomial.py:59, in Polynomial.__radd__(self, other)
+        58 def __radd__(self, other):
+    ---> 59     return self + other
 
-    ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
-         38
-         39         if isinstance(other, Number):
-    ---> 40             return Polynomial((self.coefficients[0] + other,) + self.coefficients[1:])
-         41
-         42         elif isinstance(other, Polynomial):
+    File ~/docs/principles_of_programming/object-oriented-programming/example_code/polynomial.py:38, in Polynomial.__add__(self, other)
+        36 def __add__(self, other):
+        37     if isinstance(other, Number):
+    ---> 38         return Polynomial((self.coefficients[0] + other,)
+        39                           + self.coefficients[1:])
+        41     elif isinstance(other, Polynomial):
+        42         # Work out how many coefficient places the two polynomials have in
+        43         # common.
+        44         common = min(self.degree(), other.degree()) + 1
 
     TypeError: can only concatenate str (not "int") to str
 
@@ -333,34 +334,32 @@ occurred. The traceback for this frame starts:
 
 .. code-block:: ipython3
 
-    ~/docs/object-oriented-programming/src/polynomial.py in __add__(self, other)
+    File ~/docs/principles_of_programming/object-oriented-programming/example_code/polynomial.py:38, in Polynomial.__add__(self, other)
 
-This indicates that the frame describes code in the file
-`polynomial.py` (which, on the author's computer, is located in the
-folder `~~/docs/object-oriented-programming/src/`). Specifically, the
-stack frame describes the execution of the :meth:`__add__` method,
-which is the :term:`special method` responsible for polynomial
-addition. The lines below this show the line on which execution
-stopped (line 40, in this case) and a couple of lines on either side,
-for context.
+This indicates that the frame describes code in the file `polynomial.py`
+(which, on the author's computer, is located in the folder
+`~~/principles_of_programming/object-oriented-programming/example_code/`).
+Specifically, the stack frame describes the execution of the :meth:`__add__`
+method, which is the :term:`special method` responsible for polynomial
+addition. The lines below this show the line on which execution stopped (line
+38, in this case) and a couple of lines on either side, for context.
 
-The stack frame above this shows the function from which the
-:meth:`__add__` method was called. In this case, this is the reverse
-addition :term:`special method`, :meth:`__radd__`. On line 59 :meth:`__radd__` calls
-:meth:`__add__` through the addition of `self` and `other`.
+The stack frame above this shows the function from which the :meth:`__add__`
+method was called. In this case, this is the reverse addition :term:`special
+method`, :meth:`__radd__`. On line 59 :meth:`__radd__` calls :meth:`__add__`
+through the addition of `self` and `other`.
 
-Finally, the top stack frame corresponds to the command that the user
-typed in iPython. This stack frame looks a little different from the
-others. For starters, instead of the file name there is the string
-`<ipython-input-5-141816221609>`. This is simply the :term:`Python
-interpreter`'s internal name for a notional "file" containing one line
-of iPython input. Similarly, because the line the user typed is not in
-any function, the interpreter treats it as code written in the top
-level of an unnamed module called `<module>`. Finally, because the
-interpreter treats every line of input as a separate file, the call to
-:meth:`__radd__` implementing the reverse addition of the number 1 to
-the polynomial `p` occurs on line 1 even though we are on the fourth
-line of the iPython session.
+Finally, the top stack frame corresponds to the command that the user typed in
+iPython. This stack frame looks a little different from the others. Instead of
+a file name there and a function name there is `Cell In [4], line 1`. This
+indicates that the exception was raised on line 1 of the IPython cell `In [4]`.
+
+.. hint::
+
+    Older versions of Python display less helpful location information for the
+    top stack frame, so in that case you might see something like
+    `<ipython-input-2-c3aeb16193d4> in <module>` rather than
+    `Cell In [4], line 1`.
 
 .. hint::
 
@@ -402,24 +401,32 @@ take a string argument, which is the error message to be printed. In
 :numref:`typesafe_fib`, we inform the user that we were expecting an
 integer rather than the type actually provided.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
+
 .. _typesafe_fib:
 
 .. code-block:: python3
-    :emphasize-lines: 6,7,8
+    :emphasize-lines: 8,9,10
     :caption: A version of the Fibonacci function which raises an
              exception if a non-integer type is passed as the
              argument.
     :linenos:
 
-
     from numbers import Integral
+
 
     def typesafe_fib(n):
         """Return the n-th Fibonacci number, raising an exception if a
         non-integer is passed as n."""
         if not isinstance(n, Integral):
                 raise TypeError(
-                        f"fib expects an integer, not a {type(n).__name__}")
+                    f"fib expects an integer, not a {type(n).__name__}"
+                )
         if n == 0:
             return 0
         elif n == 1:
@@ -432,19 +439,22 @@ If we now pass a non-integer value to this function, we observe the following:
 
 .. code-block:: ipython3
 
-    In [1]: from fibonacci import typesafe_fib
+    In [1]: from fibonacci.typesafe_fibonacci import typesafe_fib
     In [2]: typesafe_fib(1.5)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    <ipython-input-2-c3aeb16193d4> in <module>
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [2], line 1
     ----> 1 typesafe_fib(1.5)
 
-    ~/docs/object-oriented-programming/fibonacci/fibonacci.py in typesafe_fib(n)
-         14        non-integer is passed as n."""
-         15        if not isinstance(n, Integral):
-    ---> 16               raise TypeError(
-         17                      f"fib expects an integer, not a {type(n).__name__}")
-         18        if n == 0:
+    File ~/docs/principles_of_programming/object-oriented-programming/fibonacci/typesafe_fibonacci.py:8, in typesafe_fib(n)
+        5 """Return the n-th Fibonacci number, raising an exception if a
+        6 non-integer is passed as n."""
+        7 if not isinstance(n, Integral):
+    ----> 8     raise TypeError(
+        9         f"fib expects an integer, not a {type(n).__name__}"
+        10     )
+        11 if n == 0:
+        12     return 0
 
     TypeError: fib expects an integer, not a float
 
@@ -519,32 +529,31 @@ happens if we run this code? Let's try:
 
 .. code-block:: ipython
 
-       In [5]: gcd(10, 12)
-    ---------------------------------------------------------------------------
-    ZeroDivisionError                         Traceback (most recent call last)
-    <ipython-input-5-d0750d9f2658> in <module>
+    In [2]: gcd(10, 12)
+    --------------------------------------------------------------------------
+    ZeroDivisionError                        Traceback (most recent call last)
+    Cell In[2], line 1
     ----> 1 gcd(10, 12)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
+    Cell In[1], line 2, in gcd(a, b)
+        1 def gcd(a, b):
     ----> 2     return gcd(b, a % b)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
+    Cell In[1], line 2, in gcd(a, b)
+        1 def gcd(a, b):
     ----> 2     return gcd(b, a % b)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
+        [... skipping similar frames: gcd at line 2 (1 times)]
+
+    Cell In[1], line 2, in gcd(a, b)
+        1 def gcd(a, b):
     ----> 2     return gcd(b, a % b)
 
-    <ipython-input-4-1ab7512041a6> in gcd(a, b)
-          1 def gcd(a, b):
-    ----> 2     return gcd(b, a % b)
-
-    ZeroDivisionError: integer division or modulo by zero
+    ZeroDivisionError: integer modulo by zero
 
 Notice how the recursive call to :func:`gcd` causes several
-:term:`stack frames <stack frame>` that look the same. That makes
+:term:`stack frames <stack frame>` that look the same. Indeed, the Python
+interpreter even notices the similarity and skips over one. That makes
 sense: :func:`gcd` calls itself until `b` is zero, and then we get a
 :class:`ZeroDivisionError` because modulo zero is undefined. To
 complete this function, what we need to do is to tell Python to stop
@@ -715,11 +724,17 @@ clause. Indeed, some of the functions called might themselves contain
 :keyword:`try` blocks with the result that an exception is raised at a
 point which is ultimately inside several :keyword:`try` blocks.
 
-The :term:`Python interpreter` deals with this situation by starting
-from the current :term:`stack frame` and working upwards, a process
-known as *unwinding the stack*. In pseudocode, the algorithm is:
+The :term:`Python interpreter` deals with this situation by starting from the
+current :term:`stack frame` and working upwards, a process known as *unwinding
+the stack*. :numref:`unwind` shows pseudocode for this process.
+
+.. _unwind:
 
 .. code-block:: python3
+   :caption: Pseudocode for the process of *unwinding the stack*, in which the 
+        interpreter successively looks through higher stack frames to search 
+        for an :keyword:`except` clause matching the exception that has just 
+        been raised.
 
    while call stack not empty:
        if current execution point is in a try block \
@@ -823,7 +838,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__
     obtain the skeleton code for these exercises.
 
 .. only:: book
@@ -889,5 +904,5 @@ Exercises
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

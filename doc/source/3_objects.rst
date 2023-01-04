@@ -41,15 +41,17 @@ we add an integer to a :ref:`string <textseq>`?
 
 .. code-block:: ipython3
 
-  In [1]: a = 1
-  In [2]: b = 'og'
-  In [3]: print(a + b)
-  ---------------------------------------------------------------------------
-  TypeError                                 Traceback (most recent call last)
-  <ipython-input-3-0ae8b1612688> in <module>
-  ----> 1 print(a + b)
-  
-  TypeError: unsupported operand type(s) for +: 'int' and 'str'
+    In [1]: a = 1
+
+    In [2]: b = 'og'
+
+    In [3]: print(a + b)
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [3], line 1
+    ----> 1 print(a + b)
+
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
 In this error, Python is complaining that `+` does not make sense if
 the items being added (the :term:`operands`) are an integer and a
@@ -62,15 +64,17 @@ also in trouble:
 
 .. code-block:: ipython3
   
-  In [1]: a = {1, 2}
-  In [2]: b = {2, 3}
-  In [3]: print(a + b)
-  ---------------------------------------------------------------------------
-  TypeError                                 Traceback (most recent call last)
-  <ipython-input-3-0ae8b1612688> in <module>
-  ----> 1 print(a + b)
+    In [1]: a = {1, 2}
 
-  TypeError: unsupported operand type(s) for +: 'set' and 'set'
+    In [2]: b = {2, 3}
+
+    In [3]: print(a + b)
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [3], line 1
+    ----> 1 print(a + b)
+
+    TypeError: unsupported operand type(s) for +: 'set' and 'set'
   
 Conversely we might suspect that two values can be added only if they are of the same
 type. However it is perfectly legal to add an integer and a :ref:`floating
@@ -618,7 +622,7 @@ observed that objects of some classes can be added. Is this true for
 
    TypeError: unsupported operand type(s) for +: 'Polynomial' and 'Polynomial'
 
-Of course, once again this is not so surprising since we haven't
+Once again, this is not so surprising since we haven't
 defined what addition of polynomials should mean. The :term:`special
 method` which defines addition is :meth:`~object.__add__`. It takes the
 object itself and another object and returns their sum. That is,    
@@ -691,7 +695,7 @@ Let's try our new addition functionality in action:
    In [4]: b = Polynomial((0, 1))      
 
    In [5]: print(b)
-   x + 1
+   x
 
    In [6]: print(a + b)                                                                                               
    x^3 + 3x + 1
@@ -700,9 +704,9 @@ Let's try our new addition functionality in action:
    x^3 + 2x + 2
 
    In [8]: print(1 + a)                                                                                               
-   ---------------------------------------------------------------------------
-   TypeError                                 Traceback (most recent call last)
-   <ipython-input-8-a42ff1c9a542> in <module>
+   --------------------------------------------------------------------------
+   TypeError                                Traceback (most recent call last)
+   Cell In [8], line 1
    ----> 1 print(1 + a)
    
    TypeError: unsupported operand type(s) for +: 'int' and 'Polynomial'
@@ -797,7 +801,71 @@ object-oriented programming. In particular, encapsulation is key to
 creating single objects representing high level mathematical
 abstractions whose concrete realisation in code may require many
 pieces of data and a large number of complex functions.
-   
+
+.. _assignment_and_instantiation:
+
+Assignment and instantiation
+----------------------------
+
+One common confusion among new Python programmers concerns the distinction
+between making new objects, and assigning new names to existing objects. The
+key point to remember is that assignment in Python does not by itself create
+new objects, only new variable names. For example:
+
+.. code-block:: ipython3
+
+    In [1]: a = set()
+
+    In [2]: b = a
+
+The right hand side of the first line :term:`instantiates <instantiate>` a new
+set, and the assignment creates the name `a` and associates it with the same
+set. The second line is just an assignment: it associates the name `b` with the
+same set. We can see the effect of this if we add an item to `b` and then look
+at the contents of `a`:
+
+.. code-block:: ipython3
+
+    In [3]: b.add(1)
+
+    In [4]: print(a)
+    {1}
+
+The same distinction between instantiating objects and making new references to
+them is the cause of a frequent mistake when trying to create a list of empty
+objects:
+
+.. code-block:: ipython3
+
+    In [5]: c = [set()] * 5
+
+    In [6]: print(c)
+    [set(), set(), set(), set(), set()]
+
+The programmer almost certainly intended to create a list containing five empty
+sets. Instead, they have created a list containing five references to the same
+set:
+
+.. code-block:: ipython3
+
+    In [7]: c[0].add(2)
+
+    In [8]: print(c)
+    [{2}, {2}, {2}, {2}, {2}]
+
+The right way to create a list of five empty sets is to use a list
+comprehension. This will instantiate a different set for each entry in the
+list:
+
+.. code-block:: ipython3
+
+    In [9]: d = [set() for i in range(5)]
+
+    In [10]: d[0].add(2)
+
+    In [11]: print(d)
+    [{2}, set(), set(), set(), set()]
+
 Glossary
 --------
 
@@ -897,7 +965,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__
     obtain the skeleton code for these exercises. The skeleton code contains a
     :mod:`polynomial` package with a version of the :class:`Polynomial` class.
 
@@ -968,5 +1036,5 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

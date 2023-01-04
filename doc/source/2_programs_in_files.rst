@@ -78,10 +78,9 @@ IPython can now be run by simply typing:
 This will result in output similar to the following:
 
 .. code-block:: ipython3
-
-    Python 3.9.4 (default, Apr  5 2021, 01:50:46) 
+    Python 3.11.0 (main, Oct 25 2022, 14:13:24) [Clang 14.0.0 (clang-1400.0.29.202)]
     Type 'copyright', 'credits' or 'license' for more information
-    IPython 7.19.0 -- An enhanced Interactive Python. Type '?' for help.
+    IPython 8.6.0 -- An enhanced Interactive Python. Type '?' for help.
 
     In [1]: 
 
@@ -295,15 +294,15 @@ containing complex maths functions called
 :mod:`python:cmath`. Clearly, it's important that we can distinguish
 between :func:`python:math.sin` and :func:`python:cmath.sin`. Here the
 module names :mod:`math` and :mod:`cmath` form the namespaces that
-differentiate between the two :func:`sin` functions. There are
-essentially only two core namespace concepts. One of them is that
-every name is in a namespace, and any given time points to a unique
-value. The second one is that namespaces can be nested, so a name in a
-namespace can itself be another namespace. For example, the math
-namespace contains the value :obj:`math.pi`, which itself defines a
-namespace for some operations that are built into Python numbers. The
-(somewhat uninteresting) imaginary part of π can be accessed as
-:obj:`math.pi.imag`.
+differentiate between the two :func:`sin` functions.
+
+There are essentially only two core namespace concepts. One of them is that
+every name is in a namespace, and any given time points to a unique value. The
+second one is that namespaces can be nested, so a name in a namespace can
+itself be another namespace. For example, the math namespace contains the value
+:obj:`math.pi`, which itself defines a namespace for some operations that are
+built into Python numbers. The (somewhat uninteresting) imaginary part of π can
+be accessed as :obj:`math.pi.imag`.
 
 Namespaces are a simple but fundamental concept in programming. To
 quote one of the key developers of the Python language:
@@ -443,7 +442,7 @@ package is shown in :numref:`package-layout`.
     │   └── subpackage
     │       ├── __init__.py
     │       └── module_3.py
-    └── setup.py
+    └── pyproject.toml
 
 If you haven't seen a diagram like this before, the names with lines
 descending from their first letter are folder names, and the
@@ -486,9 +485,9 @@ they make up the Python package.
     containing a file :file:`__init__.py`. It can also contain modules and
     further subpackages.
 
-:file:`setup.py`
+:file:`pyproject.toml`
     This file is outside the package folder and is not
-    actually a part of the package. The role of :file:`setup.py` will be
+    actually a part of the package. The role of :file:`pyproject.toml` will be
     covered in :numref:`installable_packages`.
 
 .. _importing_packages:
@@ -555,54 +554,66 @@ Making packages installable
 
 In order for the :ref:`import statement <python:import>` to work, Python needs
 to know that the package being imported exists, and where to find it. This is
-achieved by installing the package. In order to make a package installable, we
-need to provide Python with a bit more information about it. This information
-can be provided in a Python script which must be called :file:`setup.py`. This
-file isn't part of the package and does not go in the package folder. Instead,
-it should be placed in the top-level folder of your git repository, so that the
-Python package installer will be able to find it.
+achieved by installing the package using Pip. In order to make a package
+installable, we need to provide Pip with a bit more information about it. The
+modern way to provide this information is using a configuration file which must
+be called :file:`pyproject.toml`. This file isn't part of the package and does
+not go in the package folder. Instead, it should be placed in the top-level
+folder of your git repository, so that the Python package installer will be
+able to find it.
 
-.. _minimal-setup-py:
+.. _minimal-pyproject-toml:
 
 .. code-block:: python3
-    :caption: A minimal :file:`setup.py` which will make all the Python
-        packages found in subfolders of the folder containing :file:`setup.py`
-        installable. 
+    :caption: A minimal :file:`pyproject.toml` which will make all the Python
+        packages found in subfolders of the folder containing
+        :file:`pyproject.toml` installable. 
 
-    from setuptools import setup, find_packages
-    setup(
-        name="my_package",
-        version="0.1",
-        packages=find_packages(),
-    )
+    [build-system]
+    requires = ["hatchling"]
+    build-backend = "hatchling.build"
 
-:numref:`minimal-setup-py` shows a very basic :file:`setup.py` which uses
-`setuptools` to make packages installable. `Setuptools
-<https://setuptools.readthedocs.io/en/latest/index.html>`__
-is a Python package which exists to help with the packaging and
-installation of Python packages. The :func:`~setuptools.setup`
-function records metadata such as the installation name to be given to
-your whole set of packages, and the version. It also needs to know
-about all of the packages in the current repository, but this can be
-automated with the :func:`~setuptools.find_packages` function, which
-will return a list of folders containing a file named :file:`__init__.py`.
+    [project]
+    name = "my_package"
+    version = "0.1"
+
+:numref:`minimal-pyproject-toml` shows a very basic :file:`pyproject.toml`.
+This isn't a Python file, instead it's a configuration file written in a
+language called `TOML <https://toml.io/en/>`__. In our case, the TOML file
+comprises two sections, which TOML calls "tables". 
+
+The first table is called `build-system`, and enables us to choose which of the
+various Python project management packages we wish to use. For our very simple
+package we'll use `hatchling` which is part of the Python project management
+system `Hatch <https://hatch.pypa.io/>`. There are a number of other packages
+we could have used for this, but for our simple purposes it doesn't much matter
+which we use. Inside tables, TOML records configuration information as
+key-value pairs. There are two keys that we must set in the `build-system`
+table. `requires` is a list of packages that Pip should install in order to
+build this package. In this case, that is just `hatchling`. The second key we
+need is `build-backend`. This is the name of the Python module that will be
+used to build the package. For `hatchling` this is the `build` module in so we
+write `hatchling.build`. 
+
+The `project` table contains information about the Pip package we're creating.
+At a minimum, we need to give our Pip package a name and a version number.
 
 .. only:: not book
 
-    This very simple :file:`setup.py` will suffice for packages that you only
-    intend to use yourself. Should you wish to publish packages for use by other
-    people, then you'll need to provide significantly more information in
-    :file:`setup.py` and, potentially, in other places too. The canonical guide to
-    this is the `Python Packaging User Guide
+    This very simple :file:`pyproject.toml` will suffice for packages that you
+    only intend to use yourself. Should you wish to publish packages for use by
+    other people, then you'll need to provide significantly more information in
+    :file:`pyproject.toml` and, potentially, in other places too. The canonical
+    guide to this is the `Python Packaging User Guide
     <https://packaging.python.org/tutorials/packaging-projects/>`__.
 
 .. only:: book
 
-    This very simple :file:`setup.py` will suffice for packages that you only
-    intend to use yourself. Should you wish to publish packages for use by
+    This very simple :file:`pyproject.toml` will suffice for packages that you
+    only intend to use yourself. Should you wish to publish packages for use by
     other people, then you'll need to provide significantly more information in
-    :file:`setup.py` and, potentially, in other places too. The canonical guide
-    to this is the Python Packaging User Guide. [#packaging]_
+    :file:`pyproject.toml` and, potentially, in other places too. The canonical
+    guide to this is the Python Packaging User Guide. [#packaging]_
 
 Installing a package from local code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -616,14 +627,24 @@ you would type:
 
    (PoP_venv) $ python -m pip install -e folder/
 
-replacing `folder` with the name of the top-level folder of your
-repository: the folder containing :file:`setup.py`. The option flag `-e`
-tells Pip to install the package in 'editable' mode. This means that
-instead of copying the package files to your venv's Python packages
-folder, symbolic links will be created. This means that any changes
-that you make to your package will show up the next time the package
-is imported in a new Python process, avoiding the need to reinstall
-the package every time you change it.
+replacing :file:`folder` with the name of the top-level folder of your
+repository: the folder containing :file:`pyproject.toml`. The option flag `-e` tells
+Pip to install the package in 'editable' mode. This means that instead of
+copying the package files to your venv's Python packages folder, symbolic links
+will be created. This means that any changes that you make to your package will
+show up the next time the package is imported in a new Python process, avoiding
+the need to reinstall the package every time you change it.
+
+The name `folder` in the example above is an example of a relative path. This
+means that `folder` is located relative to the folder in which the command
+`python -m pip` is run. It often happens that a user wants to install the
+package whose :file:`pyproject.toml` is in the current folder. In this case
+it's helpful to know that the special relative path :file:`.` refers to the
+current folder. So to install the package defined in the current folder, type:
+
+.. code-block:: console
+
+   (PoP_venv) $ python -m pip install -e .
 
 .. warning::
 
@@ -643,10 +664,10 @@ One frequent source of confusion in making packages installable and actually
 installing them is that Pip and Python have slightly different definitions of
 what constitutes a package. A Python package, as we have just learned, is a
 folder containing (at least) a file called :file:`__init__.py`. For Pip,
-however, a package is everything that :file:`setup.py` installs. In particular,
-this can include multiple Python packages. Indeed, :numref:`minimal-setup-py`
+however, a package is everything that :file:`pyproject.toml` installs. In particular,
+this can include multiple Python packages. Indeed, :numref:`minimal-pyproject-toml`
 is sufficient to install any number of Python packages contained in subfolders
-of the folder containing :file:`setup.py`.
+of the folder containing :file:`pyproject.toml`.
 
 Package dependencies
 ~~~~~~~~~~~~~~~~~~~~
@@ -657,30 +678,42 @@ package themselves import other packages, then a user will need those packages
 to be installed in their Python environment, or your package will not work. If
 your package depends on other packages that need to be installed from PyPI then
 steps need to be taken to ensure that your users will have the correct packages
-installed. The `install_requires` keyword argument to :func:`setuptools.setup`
-takes a list of Pip package names. Pip will install any of these packages that
-are not already available before installing the package itself.
-:numref:`dependency-setup-py` illustrates this by adding a dependency on
+installed. The `dependencies` key in the `project` table provides a list of
+packages on which the current package depends. Pip will install any of these
+packages that are not already available before installing the package itself.
+:numref:`dependency-pyproject-toml` illustrates this by adding a dependency on
 :mod:`numpy`.
 
-.. _dependency-setup-py:
+.. _dependency-pyproject-toml:
 
 .. code-block:: python3
-    :caption: An extension to the :file:`setup.py` from
-        :numref:`minimal-setup-py` to require that :mod:`numpy` is installed.
+    :caption: An extension to the :file:`pyproject.toml` from
+        :numref:`minimal-pyproject-toml` to require that :mod:`numpy` is installed.
 
-    from setuptools import setup, find_packages
-    setup(
-        name="my_package",
-        version="0.1",
-        packages=find_packages(),
-        install_requires=["numpy"]
-    )
+    [build-system]
+    requires = ["hatchling"]
+    build-backend = "hatchling.build"
+
+    [project]
+    name = "my_package"
+    version = "0.1"
+    dependencies = ["numpy"]
+
+.. note::
+
+    It is important to understand the difference between the `requires` key in
+    the `build-system` table and the `dependencies` key in the `project` table.
+    The former is a list of packages needed to build the package, while the
+    latter is a list of packages needed to use the current package. You will
+    often need to specify `dependencies` but, unless you are doing something
+    quite advanced such as writing Python packages in another language, you
+    will not need to add to `requires`.
 
 .. warning::
 
-    `install_requires` should not list packages from the Python Standard
-    Library. These are always available, and listing them will cause Pip to error.
+    Neither `dependencies` nor `requires` should list packages from the Python
+    Standard Library. These are always available, and listing them will cause
+    Pip to error.
     
 
 ..     `install_requires` should only list packages that Pip can install from
@@ -736,13 +769,12 @@ it's false, then an error occurs. For example:
 
 .. code-block:: ipython3
 
-   In [1]: assert 1 == 0
-   ---------------------------------------------------------------------------
-   AssertionError                            Traceback (most recent call last)
-   <ipython-input-1-e99f91a18d62> in <module>
-   ----> 1 assert 1 == 0
+    --------------------------------------------------------------------------
+    AssertionError                           Traceback (most recent call last)
+    Cell In [1], line 1
+    ----> 1 assert 1==0
 
-   AssertionError:
+    AssertionError: 
 
 Pytest files
 ~~~~~~~~~~~~
@@ -769,7 +801,13 @@ are usually gathered in a separate tests folder. For example::
     │   └── fibonacci.py
     ├── tests
     │   └── test_fibonacci.py
-    └── setup.py
+    └── pyproject.toml
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 We can then invoke the tests from the shell:
 
@@ -987,8 +1025,8 @@ already familiar with Git and GitHub then you will also need to work through
     .. only:: not book
 
         Using the information on the `book website
-        <https://object-oriented-python.github.io/edition1/exercises.html>`__
-        create your first exercise repository for this module and clone it
+        <https://object-oriented-python.github.io/edition2/exercises.html>`__
+        create your chapter 2 exercise repository for this module and clone it
         into your working folder. The exercise repository just contains a
         :file:`README` and some tests. Your job in the following exercises will be
         to populate it with the remaining content.
@@ -1035,17 +1073,11 @@ already familiar with Git and GitHub then you will also need to work through
         GitHub. Then ensure that the tests pass on GitHub. For more information
         about how to do any of these, refer to :numref:`Appendix %s <git>`.
 
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
-
 .. proof:exercise::
 
-    Following :numref:`installable_packages`, create a :file:`setup.py` file in
-    your exercise repository, so that the :mod:`math_utils` :term:`package` is
-    installable.
+    Following :numref:`installable_packages`, create a :file:`pyproject.toml`
+    file in your exercise repository, so that the :mod:`math_utils`
+    :term:`package` is installable.
 
     Pytest can't easily test installability for you, so once you have managed to
     install your package yourself, commit and push to GitHub to check that the
@@ -1074,5 +1106,5 @@ already familiar with Git and GitHub then you will also need to work through
 .. [#book_repo] `https://github.com/object-oriented-python/object-oriented-programming
     <https://github.com/object-oriented-python/object-oriented-programming>`__
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

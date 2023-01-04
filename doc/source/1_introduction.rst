@@ -73,7 +73,7 @@ tools. At various points you'll also need install several more Python packages,
 but you don't need to install those right now. The core tools you will need
 are:
 
-    1. Python version 3.6 or later.
+    1. Python version 3.7 or later.
     2. Git (the revision control system we're going to use).
     3. A Python-aware text editor or :term:`integrated development
        environment` (IDE). Visual Studio Code is recommended, and all the
@@ -122,17 +122,11 @@ references in this book are to that version.
 
 Within Python 3, there is a minor version release approximately every year.
 Once released, this receives security updates for 5 years. At the time of
-writing, Python 3.10 is the newest release version, and Python 3.6 is the
+writing, Python 3.11 is the newest release version, and Python 3.7 is the
 oldest version that still receives security fixes. The user-facing differences
 between minor Python versions are usually fairly minimal, so for the purposes
 of this book it doesn't matter which of the currently supported versions of
 Python you use. 
-
-.. warning::
-
-    The example code in the exercises uses :ref:`f-strings <tut-f-strings>`
-    which were introduced in Python 3.6, so the code will not work in earlier
-    versions of Python.
 
 .. _create_venv:
 

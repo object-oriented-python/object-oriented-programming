@@ -327,9 +327,9 @@ be observed if we try to instantiate :class:`~example_code.groups_abc.Group`:
     In [1]: from example_code.groups_abc import Group
 
     In [2]: Group(1)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-    <ipython-input-2-76d67216101e> in <module>
+    --------------------------------------------------------------------------
+    TypeError                                Traceback (most recent call last)
+    Cell In [2], line 1
     ----> 1 Group(1)
 
     TypeError: Can't instantiate abstract class Group with abstract methods _validate, operation, symbol
@@ -570,7 +570,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__
     obtain the skeleton code for these exercises.
 
 .. only:: book
@@ -613,5 +613,5 @@ Exercises
     in Python, so diving in and reading the source code is often an option if
     you really want to know how some part of the language works.
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition1/exercises.html
-    <https://object-oriented-python.github.io/edition1/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
+    <https://object-oriented-python.github.io/edition2/exercises.html>`__

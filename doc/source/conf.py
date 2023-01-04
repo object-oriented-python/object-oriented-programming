@@ -61,7 +61,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Object-oriented Programming'
 author = u'David A. Ham'
-copyright = u'2019-2021, David A. Ham'
+copyright = u'2019-2023, David A. Ham'
 
 mathjax_path = \
     "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" # noqa 501
@@ -71,7 +71,7 @@ mathjax_path = \
 # built documents.
 #
 # The short X.Y version.
-version = '2021.0'
+version = '2023.0'
 # The full version, including alpha/beta/rc tags.
 release = ''
 
@@ -81,7 +81,9 @@ release = ''
 
 redirects = {
     "edition1/exercises": "../exercises.html",
-    "edition1/videos": "../videos.html"
+    "edition1/videos": "../videos.html",
+    "edition2/exercises": "../exercises.html",
+    "edition2/videos": "../videos.html"
 }
 
 # There are two options for replacing |today|: either, you set today to some
@@ -255,6 +257,7 @@ if tags.has("book"):
 \title{Object-oriented Programming}
 \subtitle{in Python for Mathematicians}
 \edition{2021}
+\edition{2023}
 \makeatletter
    \fancypagestyle{normal}{
     \fancyhf{}
