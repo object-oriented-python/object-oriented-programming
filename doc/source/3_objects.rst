@@ -615,9 +615,9 @@ observed that objects of some classes can be added. Is this true for
    In [3]: b = Polynomial((1,))     
 
    In [4]: a + b                                                                                                      
-   ---------------------------------------------------------------------------
-   TypeError                                 Traceback (most recent call last)
-   <ipython-input-4-bd58363a63fc> in <module>
+   --------------------------------------------------------------------------
+   TypeError                                Traceback (most recent call last)
+   Cell In [4], line 1
    ----> 1 a + b
 
    TypeError: unsupported operand type(s) for +: 'Polynomial' and 'Polynomial'
