@@ -28,11 +28,11 @@
    .. image:: images/cover.png
       :width: 10em
       :align: right
-      :target: https://www.amazon.co.uk/dp/B09NR9R9P3
+      :target: https://www.amazon.co.uk/dp/B0BRM69HKH
 
    The complete book text is available on this website. However, if you'd
    like to have a physical copy, then please `buy the book
-   <https://www.amazon.co.uk/dp/B09NR9R9P3>`__.
+   <https://www.amazon.co.uk/dp/B0BRM69HKH>`__.
 
 .. container:: preface
 
