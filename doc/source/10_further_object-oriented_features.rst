@@ -17,7 +17,7 @@ Decorators
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f1d61410-4200-42e5-92c4-acf2011de8ab>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=75d2f2a5-5ab9-464b-8eee-ae1c00dbf366>`__.
 
 
 In :numref:`Chapter %s <trees>` we encountered the
@@ -210,7 +210,7 @@ Abstract base classes
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f4678a69-731c-45fe-bdbf-acf2011de880>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9a9b872a-9499-40b7-a228-ae1c00dbf947>`__.
 
 We have now on several occasions encountered classes which are not designed to
 be instantiated themselves, but merely serve as parent classes to concrete
@@ -389,7 +389,7 @@ Virtual subclasses
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4114bb1d-cc31-4cfc-81a6-acf2011de8d6>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=fd48b1c1-8e81-4c6d-8415-ae1c00dc07eb>`__.
 
 We learned in :numref:`Chapter %s <objects>` that we can determine if a type is a
 number by checking if it is an instance of :class:`numbers.Number`. This is a

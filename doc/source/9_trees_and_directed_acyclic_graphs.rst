@@ -32,7 +32,7 @@ The splat and double splat operators
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2cb93382-321b-4af6-8d5e-aceb0123103d>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=a481be22-0df9-4aa1-bbed-ae1c00dba7a6>`__.
 
 
 Before we go on to write code for trees and their traversal,  we need to
@@ -284,7 +284,7 @@ Data structures for trees
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5477e1b1-1040-4a07-97a5-aceb01230fc6>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=be25b5ba-f361-4aa1-b2a8-ae1c00dbc5a6>`__.
 
 Unlike the sequence types we have previously met, trees are not linear objects.
 If we wish to iterate through every node in the tree then we have choices to
@@ -365,7 +365,7 @@ Traversing :class:`~example_code.graphs.TreeNode`
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=69b00d45-077d-46ff-933c-aceb01231001>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3da6b798-c795-44a2-bf91-ae1c00dbd0f6>`__.
 
 A function which traverses a tree is often called a tree visitor, because it
 visits every node in the tree. What does it do when it visits? Well it could do
@@ -703,7 +703,7 @@ Operations on expression trees
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=88f9564a-73c9-4760-8f48-aceb01230f9b>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b9310ae7-0cf5-41f0-b0cc-ae1c00dbe39b>`__.
 
 Many operations on expression trees can be implemented using tree visitors, most
 frequently by visiting the tree in postorder. An example is

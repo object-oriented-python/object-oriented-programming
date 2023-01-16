@@ -10,7 +10,7 @@ Inheritance and composition
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d744e96d-14d7-4e51-9b67-acd900dc916f>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b40b76c6-ba53-4e0f-84e9-ae1c00db5322>`__.
 
 
 A key feature of abstractions is :term:`composability <composition>`: the
@@ -108,7 +108,7 @@ An example from group theory
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8931fde6-f808-4e6f-9526-acd901069280>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=1110c00a-dba2-4d7b-895a-ae1c00db630f>`__.
 
 
 In order to illustrate how composition and inheritance work, let's suppose that
@@ -305,7 +305,7 @@ General linear groups
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8686b42d-415f-4122-82c5-acda00e39b9c>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=14c473ff-f126-4348-b6d5-ae1c00db6c07>`__.
 
 
 We still haven't encountered inheritance, though. Where does that come into the

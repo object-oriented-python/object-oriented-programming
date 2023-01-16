@@ -11,7 +11,7 @@ Errors and exceptions
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d58d4c55-6216-4deb-be70-acc7015033f4>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9c437655-106e-47d2-85d4-ae1c00db1ca7>`__.
 
 
 
@@ -190,7 +190,7 @@ Tracebacks: finding errors
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f3f8a555-31c8-41e3-a176-acc701503469>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=55886da2-963f-43c3-9dc2-ae1c00db2513>`__.
 
 
 The errors we have looked at so far have all been located in the top
@@ -262,7 +262,7 @@ The call stack
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cab860f1-ff35-4402-afe9-acc701503419>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f4fc8938-8e22-47bb-ac78-ae1c00db2e41>`__.
 
 A Python program is a sequence of Python statements, which are
 executed in a sequence determined by the flow control logic of the
@@ -381,7 +381,7 @@ Raising exceptions
     .. only:: html
     
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d0b05710-bbb8-47b4-9afa-acc8011e7635>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=fe0a11e0-4600-4578-9207-ae1c00db3aa1>`__.
 
 
 Thus far we've noticed that an exception occurs when something goes
@@ -506,7 +506,7 @@ Handling exceptions
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=25f14034-34a1-44ec-83f7-acc8011e76a0>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=1dfd1930-5b27-4858-8fd1-ae1c00db4473>`__.
 
 
 So far we have seen several different sorts of exception, how to raise them,

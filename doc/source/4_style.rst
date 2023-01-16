@@ -10,7 +10,7 @@ A matter of style
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3572d8ea-5635-4b1a-9243-acae0150ddf8>`__
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=81bda525-60bb-46a7-bdc9-ae1c00da8a74>`__
 
 
 The value of convention
@@ -111,7 +111,7 @@ Linters
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=91c271e4-a61f-493c-a725-acae015273d5>`__
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=63c09ddd-ec18-4746-b1b9-ae1c00da9680>`__
 
 
 One of the helpful characteristics of PEP 8 is that many of its strictures can
