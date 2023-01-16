@@ -3,14 +3,6 @@
 Introduction: abstraction in mathematics and programming
 ========================================================
 
-.. .. details:: Video introduction.
-
-..     .. vimeo:: 486106801
-
-..     .. only:: html
-
-..         Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ee8cae7f-1b42-4db3-adc0-ac840144de53>`_
-
 A core tool of mathematics is to define abstract objects and the
 operations which apply to them. This approach defines all the basic
 building blocks which enable us to reason mathematically and perform
@@ -139,7 +131,7 @@ Setting up a Python virtual environment
 
     .. only:: html
 
-        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=011d73de-d93c-4dc8-8996-ac8501521b33>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d63e1c6e-18ff-48de-af03-ae1c00da3b3f>`__
 
 In the course of the exercises, You're going to create, edit, and install a
 whole bunch of Python packages. It's highly desirable have a predictable

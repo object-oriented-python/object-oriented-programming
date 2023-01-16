@@ -25,7 +25,7 @@ The Python interpreter
 
     .. only:: html
 
-        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f9a50a0-59b4-4bdf-ab90-ac850154fafb>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8773e5b7-a331-4ca3-a59d-ae1c00da3b4f>`__
 
 Before we dive into the various different ways that Python code can be
 organised and run, it's helpful to have a mental model of what it actually
@@ -78,6 +78,7 @@ IPython can now be run by simply typing:
 This will result in output similar to the following:
 
 .. code-block:: ipython3
+
     Python 3.11.0 (main, Oct 25 2022, 14:13:24) [Clang 14.0.0 (clang-1400.0.29.202)]
     Type 'copyright', 'credits' or 'license' for more information
     IPython 8.6.0 -- An enhanced Interactive Python. Type '?' for help.
@@ -239,7 +240,7 @@ Modules
 
     .. only:: html
 
-        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=972f92c6-6b55-4510-9c2c-ac8600fca11a>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2f0cb956-9e78-4022-94ff-ae1c00da3b41>`__
 
 A module is, like a script, a plain text file containing Python
 code. Modules must have names ending in :file:`.py`. So far, that's
@@ -409,7 +410,7 @@ Packages
 
     .. only:: html
 
-        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4b0aedd-02a8-45d1-946b-ac86015b6d0b>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=a1a9c7ab-147b-491d-b3dc-ae1c00da3b3f>`__
 
 
 Modules are the principal mechanism for storing code which is intended
@@ -732,7 +733,7 @@ Testing frameworks
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c636383d-6125-4a7c-bad7-ac86015b6d4c>`__
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=73421f63-998c-4273-9c41-ae1c00da4624>`__
 
 Attempting to establish whether a program correctly implements the intended
 algorithm is core to effective programming, and programmers often spend more
