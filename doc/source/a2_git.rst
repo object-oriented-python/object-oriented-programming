@@ -123,8 +123,8 @@ computers.
 
 Before you start configuring Git, you'll want to make sure that you have a
 working Git installation using the instructions on the book web page: 
-`https://object-oriented-programming.github.io/install_git.html
-<https://object-oriented-programming.github.io/install_git.html>`__
+`https://object-oriented-python.github.io/installation.html
+<https://object-oriented-python.github.io/installation.html>`__
 
 Your details
 ~~~~~~~~~~~~
@@ -318,8 +318,8 @@ For each exercise, your module will provide access to a link that you can use
 to accept the corresponding GitHub classroom assignment. In this case, there is
 a tiny toy assignment created just for this exercise. The assignment acceptance
 link is available on the exercises page for this book:
-`https://object-oriented-programming.github.io/edition2/exercises.html
-<https://object-oriented-programming.github.io/edition2/exercises.html>`__
+`https://object-oriented-python.github.io/edition2/exercises.html
+<https://object-oriented-python.github.io/edition2/exercises.html>`__
 
 When you click on the assignment, if you're not already logged into your `GitHub
 <https://GitHub.com>`__ account then you will be prompted to do so. If this is
