@@ -210,7 +210,7 @@ Configuring Flake8
 errors. However, it's also likely to be the case that there are some rules that
 you just don't want to apply across your whole project. This configuration can
 be achieved in the file :file:`setup.cfg`, which lives in the top of your
-Git repository alongside :file:`setup.py`. :file:`setup.cfg` can be
+Git repository alongside :file:`pyproject.toml`. :file:`setup.cfg` can be
 used to configure a lot of different Python tools, so it stores different
 configurations in different sections. :numref:`flake8conf` shows an example
 Flake8 section. The full list of available options is presented in the `Flake8
