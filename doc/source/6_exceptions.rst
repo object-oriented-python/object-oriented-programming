@@ -605,7 +605,7 @@ Except clauses
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0d7840de-17b2-4268-b079-acc8011e7660>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4819cfe6-2743-4ed2-986e-af8e00c2198a>`__.
 
 Let's look in a little more detail at how :keyword:`except` works. The full
 version of the except statement takes a tuple of exception classes. If an

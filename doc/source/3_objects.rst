@@ -186,7 +186,7 @@ Defining new types
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f3bb77ba-aa5b-4373-b673-ae1c00da573a>`__
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b70b944d-612c-4e57-9538-af8d01031342>`__
 
 Python has a rich set of :doc:`built-in types
 <library/stdtypes>`. These form powerful building blocks for the
