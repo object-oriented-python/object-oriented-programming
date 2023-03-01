@@ -28,8 +28,8 @@ question will be subdivided into identified parts with a specified number of
 marks associated with each.
 
 The test will work using GitHub Classroom. The link to accept the test
-"assignment" will be distributed at the start time of the test, simultaneously in the
-course Teams channel, by email, and in the Ed forum. The test repository
+"assignment" will be distributed at the start time of the test, simultaneously
+as an announcement on Blackboard, and in the Ed forum. The test repository
 will contain a file :file:`README.rst` containing the questions, skeleton code
 appropriate to the questions, and tests. GitHub shows :file:`README.rst` files on
 the repository web page, and the instructions will be easier to read there since
@@ -119,7 +119,7 @@ Exercises
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/Aw6c2upG>`__. Follow the instructions in
+    <https://classroom.github.com/a/31SQjj08>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. note::
@@ -130,24 +130,34 @@ Exercises
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/FN6lgjAp>`__. Follow the instructions in
+    <https://classroom.github.com/a/ZYLLD4Qr>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/iZ_xv8bl>`__. Follow the instructions in
+    <https://classroom.github.com/a/qTpghcCr>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/7_D2F0Iz>`__. Follow the instructions in
+    <https://classroom.github.com/a/U0xEHO2Y>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
     
         This problem was the midterm test in 2021.
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/3CXs2lUR>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+    
+        This problem was the midterm test in 2022.
 
 .. Midterm test instructions
 .. -------------------------
@@ -182,88 +192,86 @@ Exercises
 ..     not seek help from anyone else, whether in person, by email, chat message,
 ..     forum post or any other means.
 
-Exam preparation
-----------------
+   Exam preparation
+   ----------------
 
-The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
-of the advice about preparing applies there too. As with all second year
-elective modules, the exam will comprise four questions, each marked out of 20.
+   The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
+   of the advice about preparing applies there too. As with all second year
+   elective modules, the exam will comprise four questions, each marked out of 20.
 
-As with everything in this course, the one thing you can do to effectively
-prepare for the exam is to program. You should complete any of the exercises in
-the course that you have not yet done, and more exercises are given below.
+   As with everything in this course, the one thing you can do to effectively
+   prepare for the exam is to program. You should complete any of the exercises in
+   the course that you have not yet done, and more exercises are given below.
 
-Exam scope
-~~~~~~~~~~
+   Exam scope
+   ~~~~~~~~~~
 
-Everything we have covered in the course up to and including week 10 will be
-fully examinable. The week 11 material is not examinable with the
-following exceptions:
+   Everything we have covered in the course up to and including week 10 will be
+   fully examinable. The week 11 material is not examinable with the
+   following exceptions:
 
-1. You may need to use :term:`abstract base classes <abstract base class>` from
-   the standard library to check the type of variables. This is simply what you
-   have been doing all term, for example using :class:`numbers.Number` to check
-   that a value is numeric.
-2. The skeleton code may include :term:`abstract base classes <abstract base
-   class>` from which your classes may need to inherit. This is actually a help
-   to you in the exam, because the :term:`abstract methods <abstract method>`
-   will provide information about what you need to implement, and a helpful
-   error message if you haven't done so.
+   1. You may need to use :term:`abstract base classes <abstract base class>` from
+      the standard library to check the type of variables. This is simply what you
+      have been doing all term, for example using :class:`numbers.Number` to check
+      that a value is numeric.
+   2. The skeleton code may include :term:`abstract base classes <abstract base
+      class>` from which your classes may need to inherit. This is actually a help
+      to you in the exam, because the :term:`abstract methods <abstract method>`
+      will provide information about what you need to implement, and a helpful
+      error message if you haven't done so.
 
-Support while revising
-~~~~~~~~~~~~~~~~~~~~~~
+   Support while revising
+   ~~~~~~~~~~~~~~~~~~~~~~
 
-The module Ed forum will remain open throughout the revision period and we
-will be very happy to respond to your questions. There will also be a live
-revision session during week 1 of summer term in the module team. This will be
-an opportunity to ask individual questions just like in the labs. If enough
-people attend then I will also run a group Q & A session.
+   The module Ed forum will remain open throughout the revision period and we
+   will be very happy to respond to your questions. There will also be a revision
+   lecture at the start of the summer term.
 
-Practice questions
-~~~~~~~~~~~~~~~~~~
+   Practice questions
+   ~~~~~~~~~~~~~~~~~~
 
-Some specifically-designed practice questions are presented below. In addition to this, there are a lot of very good exercises in
-chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
-with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
-You can access that book by logging in with your Imperial credentials.
+   Some specifically-designed practice questions are presented below. In addition to this, there are a lot of very good exercises in
+   chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
+   with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
+   You can access that book by logging in with your Imperial credentials.
 
-The these questions are in exam format. 
+   The these questions are in exam format. 
 
-.. proof:exercise::
+   .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/2KLrIvq2>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+       Obtain the `practice problem from GitHub Classroom
+       <https://classroom.github.com/a/2KLrIvq2>`__. Follow the instructions in
+       the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+       .. note::
 
-        This exercise is at the level of an exam question, though longer. An
-        actual exam question would be pruned back to be achievable in 30
-        minutes. Here the complete exercise is presented because the main thing
-        you need to do is practice programming, and cutting out material
-        doesn't help with that. Marks are not given as the question is the
-        wrong length, so dividing 20 marks over the question would just be
-        misleading
+           This exercise is at the level of an exam question, though longer. An
+           actual exam question would be pruned back to be achievable in 30
+           minutes. Here the complete exercise is presented because the main thing
+           you need to do is practice programming, and cutting out material
+           doesn't help with that. Marks are not given as the question is the
+           wrong length, so dividing 20 marks over the question would just be
+           misleading
 
-.. proof:exercise::
+   .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/AKaRcEJn>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+       Obtain the `practice problem from GitHub Classroom
+       <https://classroom.github.com/a/AKaRcEJn>`__. Follow the instructions in
+       the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+       .. note::
 
-        This was the May 2021 exam.
+           This was the May 2021 exam.
 
-.. proof:exercise::
+   .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/-G6FQtis>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+       Obtain the `practice problem from GitHub Classroom
+       <https://classroom.github.com/a/-G6FQtis>`__. Follow the instructions in
+       the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+       .. note::
 
-        This was the August 2021 exam.
+           This was the August 2021 exam.
 
 
 Further programming practice ideas
