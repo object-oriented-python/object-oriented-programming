@@ -586,7 +586,7 @@ Debugging tactics
     .. only:: html
 
         Imperial students can also `watch this video on Panopto
-        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=42a0ff49-8700-4561-a053-ae1c00db982b>`__.
+        <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=89203c0c-3861-4a22-906b-afb80103be6d>`__.
 
 
 .. _debugging-mfe:
