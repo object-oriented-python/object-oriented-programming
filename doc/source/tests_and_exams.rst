@@ -159,119 +159,63 @@ Exercises
     
         This problem was the midterm test in 2022.
 
-.. Midterm test instructions
-.. -------------------------
+Exam preparation
+----------------
 
-.. 1.  The midterm test will start at 0900 UTC (London time) on Friday 26 February 2021 and will run for 40
-..     minutes. Students with additional time will be contacted about this separately.
-.. 2.  The test will take the form of a GitHub Classroom assignment, just like all of
-..     the exercises. The URL to accept the assignment will be posted at the start
-..     of the test on the `module Team <https://teams.microsoft.com/l/team/19%3ae96b9a199b15419281f55f454d240249%40thread.tacv2/conversations?groupId=1b12939c-d8c9-4e4d-a291-0ff35d57869f&tenantId=2b897507-ee8c-4575-830b-4f8267c3d307>`__, as Blackboard announcement, and posted on
-..     Piazza. Of these, the Team is the most instant form of communication so you
-..     are advised to look there and use the other sources as a backup.
-.. 3.  The test instructions are in the :file:`README.md` in the repository.
-..     GitHub will show this to you on the repository website. The instructions
-..     are very similar to those for the practice problems above, so you should
-..     make sure you have tried those in advance of the test.
-.. 4.  You submit your work by committing and pushing to the repository on GitHub
-..     created when you accept the GitHub Classroom assignment. You must commit and
-..     push as you go along. **There is no additional upload time at the end of the test period.**
-.. 5.  If you have a problem during the midterm test, you should post a question
-..     `on Piazza <https://piazza.com/class/kjob8in6eox1bp>`__. During the test,
-..     Piazza will be configured so that student posts can only be seen by the
-..     instructors. Other than this difference you should follow `the instructions
-..     on what to do in case of problems <_static/If_you_have_a_problem.pdf>`__ 
-..     provided by the maths exams office in their
-..     email of 11 February. In particular, if those instructions require you to
-..     `email the exam team <mailto:maths.exams@imperial.ac.uk>`__ after the test
-..     then you should do so. Posting on Piazza is only a mechanism for getting
-..     immediate help during the exam.
-.. 6.  The usual `academic integrity rules for remote assessments <_static/Academic_Integrity.pdf>`__ 
-..     apply. In
-..     particular, you may consult any resource published on the internet, but you may
-..     not seek help from anyone else, whether in person, by email, chat message,
-..     forum post or any other means.
+The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
+of the advice about preparing applies there too. As with all second year
+elective modules, the exam will comprise four questions, each marked out of 20.
 
-   Exam preparation
-   ----------------
+As with everything in this course, the one thing you can do to effectively
+prepare for the exam is to program. You should complete any of the exercises in
+the course that you have not yet done, and more exercises are given below.
 
-   The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
-   of the advice about preparing applies there too. As with all second year
-   elective modules, the exam will comprise four questions, each marked out of 20.
+Exam scope
+~~~~~~~~~~
 
-   As with everything in this course, the one thing you can do to effectively
-   prepare for the exam is to program. You should complete any of the exercises in
-   the course that you have not yet done, and more exercises are given below.
+Everything we have covered in the course up to and including week 11
+(chapter 10) will be fully examinable. 
 
-   Exam scope
-   ~~~~~~~~~~
+Support while revising
+~~~~~~~~~~~~~~~~~~~~~~
 
-   Everything we have covered in the course up to and including week 10 will be
-   fully examinable. The week 11 material is not examinable with the
-   following exceptions:
+The module Ed forum will remain open throughout the revision period and we
+will be very happy to respond to your questions. There will also be a revision
+lecture at the start of the summer term.
 
-   1. You may need to use :term:`abstract base classes <abstract base class>` from
-      the standard library to check the type of variables. This is simply what you
-      have been doing all term, for example using :class:`numbers.Number` to check
-      that a value is numeric.
-   2. The skeleton code may include :term:`abstract base classes <abstract base
-      class>` from which your classes may need to inherit. This is actually a help
-      to you in the exam, because the :term:`abstract methods <abstract method>`
-      will provide information about what you need to implement, and a helpful
-      error message if you haven't done so.
+Past papers
+~~~~~~~~~~~
 
-   Support while revising
-   ~~~~~~~~~~~~~~~~~~~~~~
+.. proof:exercise::
 
-   The module Ed forum will remain open throughout the revision period and we
-   will be very happy to respond to your questions. There will also be a revision
-   lecture at the start of the summer term.
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/4RbkTyL3>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-   Practice questions
-   ~~~~~~~~~~~~~~~~~~
+    .. note::
 
-   Some specifically-designed practice questions are presented below. In addition to this, there are a lot of very good exercises in
-   chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
-   with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
-   You can access that book by logging in with your Imperial credentials.
+        This was the August 2021 exam.
 
-   The these questions are in exam format. 
+.. proof:exercise::
 
-   .. proof:exercise::
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/5b7Ovt_j>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-       Obtain the `practice problem from GitHub Classroom
-       <https://classroom.github.com/a/2KLrIvq2>`__. Follow the instructions in
-       the README file that will be displayed on GitHub on your copy of the page.
+    .. note::
 
-       .. note::
+        This was the May 2022 exam.
 
-           This exercise is at the level of an exam question, though longer. An
-           actual exam question would be pruned back to be achievable in 30
-           minutes. Here the complete exercise is presented because the main thing
-           you need to do is practice programming, and cutting out material
-           doesn't help with that. Marks are not given as the question is the
-           wrong length, so dividing 20 marks over the question would just be
-           misleading
+.. proof:exercise::
 
-   .. proof:exercise::
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/srMI08Z9>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-       Obtain the `practice problem from GitHub Classroom
-       <https://classroom.github.com/a/AKaRcEJn>`__. Follow the instructions in
-       the README file that will be displayed on GitHub on your copy of the page.
+    .. note::
 
-       .. note::
+        This was the August 2022 exam.
 
-           This was the May 2021 exam.
-
-   .. proof:exercise::
-
-       Obtain the `practice problem from GitHub Classroom
-       <https://classroom.github.com/a/-G6FQtis>`__. Follow the instructions in
-       the README file that will be displayed on GitHub on your copy of the page.
-
-       .. note::
-
-           This was the August 2021 exam.
 
 
 Further programming practice ideas
@@ -281,6 +225,11 @@ In addition to these exam-style questions, you can also usefully practice
 programming by going beyond the specification of the exercises in the course.
 The following exercises are just ideas for how to do that. They do not come
 with additional code or tests.
+
+In addition to this, there are a lot of very good exercises in
+chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
+with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
+You can access that book by logging in with your Imperial credentials.
 
 .. proof:exercise::
 
