@@ -284,8 +284,8 @@ for the correct activation command.
 
     .. only:: not book
 
-        For further information, see :doc:`the official Python venv documentation
-        <library/venv>`.
+        For further information, see :external:doc:`the official Python venv
+        documentation <library/venv>`.
 
     .. only:: book
 

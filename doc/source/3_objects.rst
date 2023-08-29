@@ -139,11 +139,11 @@ Python concept of type goes much further, as we discover if we call
   Out[2]: builtin_function_or_method
 
 So `1` is an object of type :class:`int`, which means that it comes with all of
-Python's operations for integer arithmetic. :func:`abs`, on the other hand,
-is a :doc:`built-in function <library/functions>`, so its defining operation is that it can be
-called on one or more suitable arguments (for example `abs(1)`). If
-every object has a type, what about types themselves? What is the type
-of `int`?
+Python's operations for integer arithmetic. :func:`abs`, on the other hand, is
+a :external:doc:`built-in function <library/functions>`, so its defining
+operation is that it can be called on one or more suitable arguments (for
+example `abs(1)`). If every object has a type, what about types themselves?
+What is the type of `int`?
 
 .. code-block:: ipython3
   
@@ -188,7 +188,7 @@ Defining new types
         Imperial students can also `watch this video on Panopto
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b70b944d-612c-4e57-9538-af8d01031342>`__
 
-Python has a rich set of :doc:`built-in types
+Python has a rich set of :external:doc:`built-in types
 <library/stdtypes>`. These form powerful building blocks for the
 language, but one very soon finds mathematical abstractions which do
 not have implementations among the built-in types of the Python
