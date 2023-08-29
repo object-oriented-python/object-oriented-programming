@@ -10,7 +10,7 @@ authors = [
 ]
 description= """
 Code for Object oriented programming in Python for mathematicians."""
-dependencies = ["numpy"]
+dependencies = ["numpy", "ipython"]
 license-file = "LICENSE.md"
 license = "CC-BY-4.0"
 
