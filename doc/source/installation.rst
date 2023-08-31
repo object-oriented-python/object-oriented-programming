@@ -1,3 +1,5 @@
+:orphan:
+
 Installing the necessary software
 =================================
 

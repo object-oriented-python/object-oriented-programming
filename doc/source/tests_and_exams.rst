@@ -1,3 +1,5 @@
+:orphan:
+
 .. _midterm:
 
 Midterm test preparation

@@ -1,3 +1,5 @@
+:orphan:
+
 .. code-block:: python3
 
     class a:
