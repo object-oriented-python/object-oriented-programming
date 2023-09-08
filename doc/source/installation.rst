@@ -45,7 +45,7 @@ Windows
 .......
 
 Install `Python from the Microsoft Store
-https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K`__. 
+<https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K>`__. 
 
 MacOS
 .....

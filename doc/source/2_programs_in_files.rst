@@ -136,14 +136,52 @@ for your Python programming.
     computer languages than others. Importantly, you can't edit text files in a
     program such as Microsoft Word and expect to end up with something usable.
 
+Setting up a Visual Studio Code workspace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Over the course of this book, you will work in a number of git repostitories,
+each containing the exercises for one chapter. In order for Visual Studio Code
+to correctly find all the configuration files you need it to, it's necessary to
+use what is called a `Multi-root Workspace
+<https://code.visualstudio.com/docs/editor/multi-root-workspaces>`__. This is
+simply a way of telling Visual Studio Code that we have multiple folders
+containing code.
+
+Open Visual Studio Code, and from the `file` menu select `open folder`. Choose
+the top level workspace folder that you created in :numref:`working_folder`
+(you might have called this :file:`principles_of_programming`). You should now
+be able to see this folder name in the `Explorer` panel on the left of the
+Visual Studio Code screen, with the name of your venv folder beneath it.
+
+Next, we need to save this workspace. From the `file` menu select `Save
+Workspace As...` and click the :kbd:`save` button (there's no need to change
+the filename). You'll see a file called something like
+:file:`principles_of_programming.code-workspace` appear in the `Explorer`
+panel. This file contains workspace settings, and you can also click on it in
+your operating system's file explorer to start Visual Studio Code in this
+workspace.
+
+Finally, let's create a test folder in which we'll create our first Python
+script. Open a terminal by clicking on the `New Terminal` item in the
+`Terminal` menu of Visual Studio Code. Type the following:
+
+.. code-block:: console
+
+    $ mkdir test
+
+You should see the :file:`test` folder appear in the `Explorer` panel. However,
+we haven't yet told Visual Studio Code to treat `test` as a top level code
+folder. To do that, choose `Add Folder to Workspace` from the `file` menu, and
+select the `test` folder. This will cause the folder to appear alongside the
+workspace folder in the `Explorer` tab.
 
 A first Python script
 ~~~~~~~~~~~~~~~~~~~~~
 
-Tradition dictates that the first stand-alone program one writes in
-any language simply prints out the string `Hello World`. Using an IDE or text
-editor, we create a file which we'll call :file:`hello.py` containing just
-the following line of Python code:
+Tradition dictates that the first stand-alone program one writes in any
+language simply prints out the string `Hello World`. Using an IDE or text
+editor, we create a file in our :file:`test` folder, which we'll call
+:file:`hello.py` containing just the following line of Python code:
 
 .. code-block:: python
 
@@ -152,25 +190,20 @@ the following line of Python code:
 The :file:`.py` file extension is not strictly required for Python scripts, but
 it can be useful as it will cause most text editors to recognise the file as a
 Python file. Having remembered to save :file:`hello.py` to disk from the text
-editor, we can now run the program. Open a terminal, and change to the folder
-(directory) where you saved :file:`hello.py`. For example, if :file:`hello.py`
-is in the directory :file:`src` in your home directory, then on most operating
-systems, you would type the following:
+editor, we can now run the program. Open a terminal, and activate your virtual
+environment. Next, change to :file:`test`
+folder. On most operating systems, you would type the following:
 
 .. code-block:: console
 
-    (PoP_venv) $ cd src
+    (PoP_venv) $ cd test
     (PoP_venv) $ python hello.py
 
 The first of these commands,
-`cd` (*change directory*) switches the current folder to :file:`src`. The
+`cd` (*change directory*) switches the current folder to :file:`test`. The
 second command actually runs the Python interpreter on :file:`hello.py`. From
 within our venv, we can be confident that `python` will refer to the right
-version of Python. If you need to run Python outside of a venv then the
-situation is a little more complex. On Linux or MacOS, you might need to type
-`python3` instead of `python`, because `python` still points at the old Python
-version 2 interpreter. On Windows, there is a convenient command `py` which
-will usually find and run the most appropriate Python. When we press the
+version of Python. When we press the
 :kbd:`enter` key after the last line above, our tiny Python script
 :file:`hello.py` runs and the following is displayed:
 

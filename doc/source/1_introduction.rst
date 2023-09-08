@@ -157,7 +157,7 @@ On Mac or Linux, the safest way to ensure that you are running the right
 version of Python is to use the full version number, e.g. `python3.11`. You can
 check this with, for example:
 
-.. code-block:: 
+.. code-block:: console
 
     $ python3.11 --version
 
@@ -190,6 +190,8 @@ which links back to the Python you installed on your computer. This means that
 virtual environments behave like separate Python installations for most
 purposes, but are fast to install and take very little space because they share
 most of their files with the already installed Python.
+
+.. _working_folder:
 
 Creating a working folder
 .........................
