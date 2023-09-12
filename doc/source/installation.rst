@@ -73,7 +73,7 @@ For example on Ubuntu or Debian you would run:
 You can also install newer versions of Python on Ubuntu or Debian using the 
 `dead snakes  package archive <https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa>`__.
 
-while on Fedora and related distributions you would run:
+On Fedora and related distributions you would run:
 
 .. code-block:: console
 
