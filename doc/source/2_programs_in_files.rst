@@ -141,11 +141,13 @@ Setting up a Visual Studio Code workspace
 
 Over the course of this book, you will work in a number of git repostitories,
 each containing the exercises for one chapter. In order for Visual Studio Code
-to correctly find all the configuration files you need it to, it's necessary to
+to correctly find all the configuration files you need it to, it's helpful to
 use what is called a `Multi-root Workspace
 <https://code.visualstudio.com/docs/editor/multi-root-workspaces>`__. This is
 simply a way of telling Visual Studio Code that we have multiple folders
-containing code.
+containing code. Once we start using Visual Studio Code's style checking
+features in :numref:`style`, this will ensure that the style rules we intend to
+apply to each repository are selected correctly.
 
 Open Visual Studio Code, and from the `file` menu select `open folder`. Choose
 the top level workspace folder that you created in :numref:`working_folder`
@@ -174,6 +176,16 @@ we haven't yet told Visual Studio Code to treat `test` as a top level code
 folder. To do that, choose `Add Folder to Workspace` from the `file` menu, and
 select the `test` folder. This will cause the folder to appear alongside the
 workspace folder in the `Explorer` tab.
+
+.. _debug_screen:
+
+.. figure:: images/vscode_workspace.png
+    :width: 100%
+
+    The Visual Studio Code debugging window showing a multi-root workspace
+    containing the top level :file:`principles_of_programming` folder, as
+    well as the :file:`test` folder. Note that the :file:`test` folder
+    is also visible inside the :file:`principles_of_programming` folder.
 
 A first Python script
 ~~~~~~~~~~~~~~~~~~~~~
