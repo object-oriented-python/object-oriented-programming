@@ -175,9 +175,10 @@ You should see the :file:`test` folder appear in the `Explorer` panel. However,
 we haven't yet told Visual Studio Code to treat `test` as a top level code
 folder. To do that, choose `Add Folder to Workspace` from the `file` menu, and
 select the `test` folder. This will cause the folder to appear alongside the
-workspace folder in the `Explorer` tab.
+workspace folder in the `Explorer` tab. :numref:`vscode_workspace` shows a
+workspace in this configuration.
 
-.. _debug_screen:
+.. _vscode_workspace:
 
 .. figure:: images/vscode_workspace.png
     :width: 100%

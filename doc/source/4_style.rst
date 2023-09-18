@@ -146,11 +146,23 @@ activated your :term:`virtual environment` and then run:
     (PoP_venv) $ python -m pip install flake8
 
 This is enough to run Flake8 on the command line, however you will probably want
-to set up your editor to highlight flake8 incompatibilities in your source. For
-Visual Studio Code, first open the command palette by typing :kbd:`control` +
-:kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
-"Python: Select Linter" to bring up the list of available linters, and select
-"flake8" from the details list. The video for this section shows this process.
+to set up your editor to highlighte PEP8 incompatibilities in your source. For
+Visual Studio Code:
+
+1. Install the Flake8 extension:
+    a. Click the |extensions| icon on the left of the screen.
+    b. Type `Flake8` in the search box.
+    c. Click the blue `Install` button.
+2. Instruct the extension to use Flake8 from your virtual environment:
+    a. Type :kbd:`control` + :kbd:`,` (:kbd:`⌘` + :kbd:`,` on Mac) to open the `Settings` tab.
+    b. Type `flake8.importStrategy` in the `Search settings` bar at the top of
+       the page.
+    c. Change the dropdown from `useBundled` to `fromEnvironment`.
+
+The video for this section shows this process.
+
+.. |extensions| image:: /images/vscode_extensions.pdf
+
 
 How to tell Flake8 to shut up
 .............................
