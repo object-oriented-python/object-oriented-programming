@@ -1153,7 +1153,7 @@ the command line:
     $ flake8 --docstring-convention numpy
 
 or by saving the configuration option in a config file. For example you can add
-a file :file:`setup.cfg` alongside :file:`setup.py` at the top of your git
+a file :file:`setup.cfg` alongside :file:`pyproject.toml` at the top of your git
 repository, and include the following:
 
 .. code-block:: python3
