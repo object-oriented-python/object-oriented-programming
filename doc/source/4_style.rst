@@ -146,7 +146,7 @@ activated your :term:`virtual environment` and then run:
     (PoP_venv) $ python -m pip install flake8
 
 This is enough to run Flake8 on the command line, however you will probably want
-to set up your editor to highlighte PEP8 incompatibilities in your source. For
+to set up your editor to highlight  PEP 8 incompatibilities in your source. For
 Visual Studio Code:
 
 1. Install the Flake8 extension:

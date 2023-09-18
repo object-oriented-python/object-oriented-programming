@@ -646,13 +646,35 @@ This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else
 <try>` clause after a :keyword:`try` block is caused only if no exception was
 raised.
 
-It is also sometimes useful to be able to execute some code no matter what
-happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
-then the code it contains will be executed if either an exception is raised and
-handled by an :keyword:`except` block, or no exception occurred. This
-plethora of variants on the :keyword:`try` block can get a little confusing, so
-a practical example may help. :numref:`except_demo` prints out a different
-message for each type of clause. 
+.. only:: not book
+    
+    It is also sometimes useful to be able to execute some code no matter what
+    happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
+    then the code it contains will be executed whether or not an exception is
+    raised and whether or not any exception is handled by an :keyword:`except`
+    clause. The contents of the :keyword:`finally` clause will always execute. This
+    may be useful, for example, if it is necessary to close an external file or
+    network connection at the end of an operation, even if an exception is raised.
+    The full details of the :keyword:`finally` clause are covered in the
+    :py:ref:`section of the official Python tutorial on handling exceptions
+    <tut-handling>`.
+
+.. only:: book
+
+    It is also sometimes useful to be able to execute some code no matter what
+    happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
+    then the code it contains will be executed whether or not an exception is
+    raised and whether or not any exception is handled by an :keyword:`except`
+    clause. The contents of the :keyword:`finally` clause will always execute. This
+    may be useful, for example, if it is necessary to close an external file or
+    network connection at the end of an operation, even if an exception is raised.
+    The full details of the :keyword:`finally` clause are covered in the
+    section of the official Python tutorial on handling exceptions [#tut_exceptions]_.
+
+
+This plethora of variants on the :keyword:`try` block can get a little
+confusing, so a practical example may help. :numref:`except_demo` prints out a
+different message for each type of clause. 
 
 .. _except_demo:
 
@@ -668,8 +690,6 @@ message for each type of clause.
             print(0./n)
         except ZeroDivisionError:
             print("Zero division")
-        except TypeError:
-            print(f"Can't divide by a {type(n).__name__}.")
         else:
             print("Division successful.")
         finally:
@@ -701,15 +721,27 @@ the :keyword:`finally` block. Next we divide by zero:
 This caused a :class:`ZeroDivisionError`, which was caught by the first
 :keyword:`except` clause. Since an exception was raised, the the :keyword:`else
 <try>` block is not executed, but the :keyword:`finally` block still executes.
-Similarly, if we attempt to divide by a string, we are caught by the second
-:keyword:`except` clause:
+Finally, if we attempt to divide by a string, the exception is not handled, but
+the :keyword:`finally` block executes before the exception causes a traceback:
 
 .. code-block:: ipython3
 
     In [4]: except_demo("frog")
     Attempting division by frog
-    Can't divide by a str.
     Finishing up.
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    Cell In[4], line 1
+    ----> 1 except_demo("frog")
+
+    Cell In[3], line 6, in except_demo(n)
+          4 print(f"Attempting division by {n}")
+          5 try:
+    ----> 6     print(0./n)
+          7 except ZeroDivisionError:
+          8     print("Zero division")
+
+    TypeError: unsupported operand type(s) for /: 'float' and 'str'
 
 Exception handling and the call stack
 .....................................
@@ -892,6 +924,9 @@ Exercises
     your bisection function.
 
 .. rubric:: Footnotes
+
+.. [#tut_exceptions] `https://docs.python.org/3/tutorial/errors.html#tut-handling
+    <https://docs.python.org/3/tutorial/errors.html#tut-handling>`__
 
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.
