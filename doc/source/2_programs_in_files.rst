@@ -146,8 +146,8 @@ use what is called a `Multi-root Workspace
 <https://code.visualstudio.com/docs/editor/multi-root-workspaces>`__. This is
 simply a way of telling Visual Studio Code that we have multiple folders
 containing code. Once we start using Visual Studio Code's style checking
-features in :numref:`style`, this will ensure that the style rules we intend to
-apply to each repository are selected correctly.
+features in :numref:`Chapter %s <style>`, this will ensure that the style rules
+we intend to apply to each repository are selected correctly.
 
 Open Visual Studio Code, and from the `file` menu select `open folder`. Choose
 the top level workspace folder that you created in :numref:`working_folder`

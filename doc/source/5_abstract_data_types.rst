@@ -70,8 +70,8 @@ without removing it from the stack.
 
 .. figure:: images/stack.*
 
-    A sequence of stack operations. 24, 12, and 57. Finally the pop operation
-    removes (and would return) 57.
+    A sequence of stack operations. First, 24, 12, and 57 are pushed onto the
+    stack. Finally the pop operation removes (and would return) 57.
    
 An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
