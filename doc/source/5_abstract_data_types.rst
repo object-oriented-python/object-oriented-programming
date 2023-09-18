@@ -561,7 +561,6 @@ record convenient information such as the list length, but it's not strictly nec
 
        def insert(self, link):
           '''Insert a new link after the current one.'''
-
           link.next = self.next
           self.next = link
 
@@ -672,7 +671,6 @@ of the iteration.
 
         def insert(self, link):
             '''Insert a new link after the current one.'''
-
             link.next = self.next
             self.next = link
 
