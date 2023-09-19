@@ -2,7 +2,7 @@
 if [[ $VIRTUAL_ENV ]];
 then
     pip install sphinx sphinxcontrib-bibtex sphinxcontrib-proof \
-        sphinx-autobuild sphinx-panels sphinxcontrib-youtube \
+        sphinx-autobuild sphinxcontrib-youtube \
         sphinxcontrib-blockdiag sphinx-reredirects
     pip install git+https://github.com/dham/sphinxcontrib-details-directive.git
 else

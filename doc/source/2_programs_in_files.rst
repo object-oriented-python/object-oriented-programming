@@ -1026,21 +1026,6 @@ tools described in :numref:`tools` and set up a working folder and
 already familiar with Git and GitHub then you will also need to work through
 :numref:`Appendix %s <git>` to learn enough to do the exercises.
 
-.. .. panels::
-..     :card: quiz shadow
-
-..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
-..         :text: This week's quiz
-..         :classes: stretched-link 
-
-.. .. proof:exercise::
-
-..     Follow the :ref:`instructions on the Faculty of Natural Sciences Python
-..     installation page <fons:python_folders>` to create the folder structure
-..     you will use for this course on your computer. Start with an overall folder
-..     for the module, and create a virtual environment in that module.
-
-
 .. _course_repo:
 
 .. proof:exercise::

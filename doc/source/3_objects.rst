@@ -953,15 +953,6 @@ Glossary
 Exercises
 ---------
 
-.. .. only:: html
-
-..    .. panels::
-..        :card: quiz shadow
-
-..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
-..            :text: This week's quiz
-..            :classes: stretched-link 
-
 .. only:: not book
 
     Using the information on the `book website 

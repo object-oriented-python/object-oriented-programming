@@ -38,7 +38,6 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.blockdiag',
     'sphinx.ext.napoleon',
-    'sphinx_panels',
     'sphinxcontrib.details.directive',
     'sphinx_reredirects'
 ]
