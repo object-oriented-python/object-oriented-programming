@@ -257,6 +257,7 @@ if tags.has("book"):
 \subtitle{in Python for Mathematicians}
 \edition{2021}
 \edition{2023}
+\edition{2023}
 \makeatletter
    \fancypagestyle{normal}{
     \fancyhf{}

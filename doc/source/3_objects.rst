@@ -968,6 +968,12 @@ Exercises
 
 .. proof:exercise::
 
+    Turn the exercises repository into an installable Pip package. As with
+    last chapter's exercise, Pytest can't test this so you'll need to push to
+    GitHub and check that the autograding tests pass there.
+
+.. proof:exercise::
+
     Implement the following operations on the :class:`Polynomial` class. 
 
     1. Subtraction (:meth:`~object.__sub__` and :meth:`~object.__rsub__`).
@@ -977,6 +983,15 @@ Exercises
        may be useful to know that all integers are instances of
        :class:`numbers.Integral`.
     4. Polynomial evaluation at a scalar value (:meth:`~object.__call__`).
+
+    .. hint::
+
+        A limitation of the provided implementation of :class:`Polynomial` is
+        that it doesn't strip leading zeroes. This means that it doesn't
+        correctly identify that, for example, `Polynomial((0, 1)) ==
+        Polynomial((1,))`. You may find it convenient to remove this limitation
+        by removing any leading zeroes in `Polynomial.__init__()`. If you do
+        this, take care that printing the zero polynomial still works.
 
     .. note::
 
@@ -1018,12 +1033,6 @@ Exercises
           from shape import Circle
           c = Circle((1., 0.), 2)
           print((0.5, 0.5) in c)
-
-.. proof:exercise::
-
-    Make the :mod:`circle` and :mod:`polynomial` packages installable. As with
-    last chapter's exercise, Pytest can't test this so you'll need to push to
-    GitHub and check that the autograding tests pass there.
 
 .. rubric:: Footnotes
 

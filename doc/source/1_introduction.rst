@@ -161,8 +161,8 @@ check this with, for example:
 
     $ python3.11 --version
 
-If this fails, then the relevant Python version isn't (installed) and you will 
-need to use a different version, or install it.
+If this fails, then the relevant Python version isn't (correctly) installed and
+you will need to use a different version, or install it.
 
 .. _create_venv:
 
@@ -248,7 +248,7 @@ while on Mac or Linux you would type:
     $ python3.11 -m venv PoP_venv
 
 If you're using a different version of Python then modify the command according
-to the discussion in section :ref:`run_version`.
+to the discussion in section :numref:`run_version`.
 Don't forget that the `>` or `$` stands for the command prompt: you don't
 type it. This command will create the folder `PoP_venv` and various
 subfolders containing things like the Python program itself and space

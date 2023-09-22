@@ -293,7 +293,7 @@ White space within lines
         .. code-block:: python3
 
             ( 1, 2) # Space after opening bracket.
-            (1, 2 ) # Space after closing bracket.
+            (1, 2 ) # Space before closing bracket.
 
     .. container:: goodcode
 
