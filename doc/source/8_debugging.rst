@@ -875,7 +875,7 @@ Exercises
     The exercises work a little differently this week, because the objective is
     not to write code but to practice debugging techniques. The information on
     the `book website
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     points not just to the skeleton code but also to an online quiz which will
     provide instant feedback on the questions below. You should access the
     skeleton code and then work through the quiz questions.
@@ -949,5 +949,5 @@ Exercises
 .. [#ufl] `https://github.com/object-oriented-python/ufl
     <https://github.com/object-oriented-python/ufl>`__
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

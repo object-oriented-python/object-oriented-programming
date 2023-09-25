@@ -1261,7 +1261,7 @@ Exercises
 
     The skeleton code on GitHub for this chapter's exercises contains a package
     :mod:`life` which implements Conway's Game of Life. Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     obtain the skeleton code for these exercises. Clone the repository into
     your working folder and install the package in editable mode.
 
@@ -1393,5 +1393,5 @@ six oscillating blinkers:
           users. However the PEPs having to do with style have wider
           significance.
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

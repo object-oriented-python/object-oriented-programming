@@ -126,8 +126,8 @@ it's better to watch the video *after* reading the relevant section.
     The videos are marked in the text by a blue box at the right hand side,
     containing the video number. This corresponds to the list of links at:
 
-        `https://object-oriented-python.github.io/edition2/videos.html
-        <https://object-oriented-python.github.io/edition2/videos.html>`__
+        `https://object-oriented-python.github.io/edition3/videos.html
+        <https://object-oriented-python.github.io/edition3/videos.html>`__
 
 The exercises
 .............
@@ -141,8 +141,8 @@ correct responses to a range of inputs. Tests like this provide immediate
 feedback and enable you to know how you are doing. Links to the skeleton code
 for each chapter are provided at:
 
-        `https://object-oriented-python.github.io/edition2/exercises.html
-        <https://object-oriented-python.github.io/edition2/exercises.html>`__
+        `https://object-oriented-python.github.io/edition3/exercises.html
+        <https://object-oriented-python.github.io/edition3/exercises.html>`__
 
 
 Conventions employed
