@@ -1177,11 +1177,11 @@ Glossary
         :func:`functools.singledispatch` function facilitates the creation of
         single dispatch functions.
 
-.. only:: book
+.. .. only:: book
 
-    .. raw:: latex
+..     .. raw:: latex
 
-        \clearpage
+..         \clearpage
 
 Exercises
 ---------

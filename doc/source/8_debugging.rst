@@ -861,6 +861,12 @@ Glossary
         occur in a previous version. The functionality of the software has
         "gone backwards".
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 Exercises
 ---------
 
@@ -901,12 +907,6 @@ Exercises
     example` which exhibits the error you discovered in the previous section.
     Your minimal failing example should contain one import and one other line
     of code. :file:`tests/test_mfe.py` is a Pytest test for this exercise.
-
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
 
 .. proof:exercise:: Bisection
 
