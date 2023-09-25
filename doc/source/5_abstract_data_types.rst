@@ -472,11 +472,9 @@ the queue and taken from the front. As with a stack, the optimal
 implementations of item insertion and removal are :math:`O(1)`.
 
 A :term:`deque` (Double Ended QUEue) is a generalisation of a queue to permit
-adding and removing items at either end. This adds operations, which might be
-called `pushleft` and `popleft`, to add and remove an item at the start of the
-deque. The observant reader will note that stacks and queues are both special
-cases of deques. Python's standard library contains the
-:class:`collections.deque` class, providing a simple and efficient
+adding and removing items at either end. The observant reader will note that
+stacks and queues are both special cases of deques. Python's standard library
+contains the :class:`collections.deque` class, providing a simple and efficient
 implementation of a deque.
 
 Ring buffers
