@@ -638,6 +638,8 @@ the exception matches the list of exceptions is executed. For example:
     different exception, in which case it will just make the error more
     confusing by obscuring where the issue actually occurred.
 
+.. _else_finally:
+
 Else and finally
 ................
 

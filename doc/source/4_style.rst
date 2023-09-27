@@ -135,6 +135,8 @@ conformance. Indeed, without a mechanism like this, there is a strong
 tendency for programmers to cut style corners, with the effect that
 the code in a project becomes harder and harder to read and work with.
 
+.. _flake8_extension:
+
 Installing Flake8
 .................
 
@@ -162,7 +164,6 @@ Visual Studio Code:
 The video for this section shows this process.
 
 .. |extensions| image:: /images/vscode_extensions.pdf
-
 
 How to tell Flake8 to shut up
 .............................

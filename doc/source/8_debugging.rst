@@ -403,6 +403,12 @@ example, `gdb <https://www.gnu.org/software/gdb/>`__ on code written in
 languages such as C and C++. :numref:`debug-commands` shows a basic set of
 debugger commands that is enough to get started.
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 .. csv-table:: Common debugger commands. For a much more complete list see 
     `the pdb documentation <debugger-commands>`__. The part before the brackets
     is an abbreviated command which saves typing.

@@ -136,6 +136,8 @@ for your Python programming.
     computer languages than others. Importantly, you can't edit text files in a
     program such as Microsoft Word and expect to end up with something usable.
 
+.. _workspaces:
+
 Setting up a Visual Studio Code workspace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
