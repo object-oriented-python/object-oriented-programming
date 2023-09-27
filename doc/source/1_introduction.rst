@@ -65,7 +65,7 @@ tools. At various points you'll also need install several more Python packages,
 but you don't need to install those right now. The core tools you will need
 are:
 
-    1. Python version 3.7 or later.
+    1. Python version 3.8 or later (3.11 or later recommended).
     2. Git (the revision control system we're going to use).
     3. A Python-aware text editor or :term:`integrated development
        environment` (IDE). Visual Studio Code is recommended, and all the
@@ -114,11 +114,55 @@ references in this book are to that version.
 
 Within Python 3, there is a minor version release approximately every year.
 Once released, this receives security updates for 5 years. At the time of
-writing, Python 3.11 is the newest release version, and Python 3.7 is the
+writing, Python 3.11 is the newest release version, and Python 3.8 is the
 oldest version that still receives security fixes. The user-facing differences
 between minor Python versions are usually fairly minimal, so for the purposes
 of this book it doesn't matter which of the currently supported versions of
-Python you use. 
+Python you use, though it is usually advantageous to use the newest version you
+can conveniently install.
+
+.. _run_version:
+
+Running the right Python version
+................................
+
+Once we have created a virtual environment, we will be able to run Python just
+by typing `python`. However, before we get there, what we need to do in order
+to run Python differs a little depending on the operating system, how we
+installed Python, and whether there are multiple versions of Python installed
+on the computer. 
+
+On Windows, the `py` command acts as a general launcher for Python. The
+following command will print out the version of Python that it will launch by
+default:
+
+.. code-block:: console
+
+    > py --version
+
+On the author's computer, this prints `Python 3.11.4`, which is the version of
+Python I expect to be using. This means I can launch Python on Windows using
+just `py`. If it printed a different version, then I could attempt to force it
+to use the version I want like this:
+
+.. code-block:: console
+
+    > py -3.11 --version
+
+If that fails, then there is an issue with your Python documentation and you
+need to go back to the start of this section to work out how to install the
+right version.
+
+On Mac or Linux, the safest way to ensure that you are running the right
+version of Python is to use the full version number, e.g. `python3.11`. You can
+check this with, for example:
+
+.. code-block:: console
+
+    $ python3.11 --version
+
+If this fails, then the relevant Python version isn't (correctly) installed and
+you will need to use a different version, or install it.
 
 .. _create_venv:
 
@@ -146,6 +190,8 @@ which links back to the Python you installed on your computer. This means that
 virtual environments behave like separate Python installations for most
 purposes, but are fast to install and take very little space because they share
 most of their files with the already installed Python.
+
+.. _working_folder:
 
 Creating a working folder
 .........................
@@ -177,12 +223,12 @@ system, but we are only concerned with the commands to the right of the prompt.
 Creating the venv
 .................
 
-Now that we have our working folder, we will switch to doing everything in our
-:term:`IDE`, so launch Visual Studio Code. Click on `Open...` in
-the main window or in the `File` menu and select the folder you just created.
-This will open a Visual Studio Code workspace in that folder. You will probably
-be able to see a terminal window at the bottom of the screen. If it's not
-there then open the `View` menu and select `Terminal` to make it appear.
+.. Now that we have our working folder, we will switch to doing everything in our
+.. :term:`IDE`, so launch Visual Studio Code. Click on `Open...` in
+.. the main window or in the `File` menu and select the folder you just created.
+.. This will open a Visual Studio Code workspace in that folder. You will probably
+.. be able to see a terminal window at the bottom of the screen. If it's not
+.. there then open the `View` menu and select `Terminal` to make it appear.
 
 The most straightforward way to create a venv is on the terminal
 command line, not from within Python itself. This is accomplished
@@ -193,14 +239,16 @@ called `PoP_venv` on Windows, you would type:
 
 .. code-block:: console
 
-    > py -m venv PoP_venv
+    > py -3.11 -m venv PoP_venv
 
 while on Mac or Linux you would type:
 
 .. code-block:: console
 
-    $ python3 -m venv PoP_venv
+    $ python3.11 -m venv PoP_venv
 
+If you're using a different version of Python then modify the command according
+to the discussion in section :numref:`run_version`.
 Don't forget that the `>` or `$` stands for the command prompt: you don't
 type it. This command will create the folder `PoP_venv` and various
 subfolders containing things like the Python program itself and space
@@ -210,12 +258,7 @@ an error, so make sure you choose a new name.
 
 .. note::
 
-    Running `py` on Windows or `python3` on Mac or Linux is a mechanism to
-    attempt to ensure that the right version of Python runs. If you have
-    multiple Python installations on your computer then you might end up
-    running the wrong one. If this happens then you will need to type the full
-    path to the Python you want to use (starting with `/` on Mac or Linux or
-    `\\` on Windows). Once the venv is installed and activated, it will be
+    Once the venv is installed and activated, it will be
     sufficient to type `python` as the venv will ensure that this is the
     correct version.
 
@@ -267,7 +310,7 @@ that you are now using the venv. It might look something like:
 
    (PoP_venv) $
 
-Any subsequent invocations of Python commands such as `python3` will
+Any subsequent invocations of Python commands such as `python` will
 now use the version from the venv, with access to whatever packages
 you have installed in that venv. If you are using a terminal shell
 other than bash or zsh, then see the :mod:`venv` package documentation
@@ -284,8 +327,8 @@ for the correct activation command.
 
     .. only:: not book
 
-        For further information, see :doc:`the official Python venv documentation
-        <library/venv>`.
+        For further information, see :external:doc:`the official Python venv
+        documentation <library/venv>`.
 
     .. only:: book
 

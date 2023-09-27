@@ -134,12 +134,7 @@ provides a more powerful Python command line including features such as colour
 syntax highlighting, tab completion, and better-formatted tracebacks, `ipdb
 <https://github.com/gotcha/ipdb#ipython-pdb>`_ provides a somewhat friendlier
 command line to the same set of debugger commands as :mod:`pdb`. ipdb has the
-advantage that integrates well with IPython. Another advanced command-line
-debugger is `pdb++
-<https://github.com/pdbpp/pdbpp#pdb-a-drop-in-replacement-for-pdb>`__. The
-distinct advantage of pdb++ is that it replaces the built-in pdb. Among other
-things, this means it can be triggered from a failed `Pytest
-<https://docs.pytest.org/en/stable/>`__ test. 
+advantage that integrates well with IPython.  
 
 The alternative to a command-line debugger is to use a graphical debugger
 integrated with your :term:`IDE`. Visual Studio Code integrates with the
@@ -153,14 +148,12 @@ Installing debuggers
 ....................
 
 Other than the built-in pdb, debuggers typically come as Python packages, so to
-install all the ones mentioned so far, run:
+install the two mentioned above, run:
 
 .. code-block:: console
 
-    $ python -m pip install ipdb pdbpp debugpy
+    $ python -m pip install ipdb debugpy
 
-pdb++ isn't a legal package name, which is why the package in that case is
-called pdbpp. 
 
 Using a graphical debugger
 --------------------------
@@ -338,28 +331,42 @@ automatic debugger launching every time an untrapped exception occurs. `%pdb`
 acts as a toggle switch, so you use the same command to switch off automatic
 debugger calling.
 
-Invoking pdbpp from a failed test
+Invoking ipdb from a failed test
 .................................
 
 `Pytest <https://docs.pytest.org/en/stable/>`__ has built-in support for
-calling a debugger at the point that a test exceptions. By default this
-debugger is pdb, but if pdbpp is installed then it is called instead. The option to
-do this is `--pdb`. However, in order to have a useful debugging session two
-other options are usually required. The first issue is that, by default, Pytest
-does not print the output of tests. Using a debugger without seeing the output
-is a somewhat fruitless endeavour, so we pass `-s` to have Pytest print all
-output. Finally, if one test is failing then often many will, and we usually
-want to work on one test at a time. Passing `-x` ensures that Pytest exits
-after the first failing test. We therefore run, for example:
+calling a debugger at the point that a test exceptions. The option to do this
+is `--pdb`. However, this will launch pdb. To tell Pytest to run ipdb instead,
+we need to also pass the somewhat cryptic option
+`--pdbcls=IPython.terminal.debugger:Pdb`. Finally, if one test is failing then
+often many will, and we usually want to work on one test at a time. Passing
+`-x` ensures that Pytest exits after the first failing test. We therefore run,
+for example:
 
 .. code-block:: console
 
-    $ pytest --pdb -s -x tests/test_pandas_fail.py
+    $ pytest --pdb --pdbcls=IPython.terminal.debugger:Pdb -x tests/test_pandas_fail.py
+
+This is clearly not the easiest command line. As an alternative, it is possible
+to add the `--pdbcls` argument to the `setup.cfg` file in the top folder of the
+repository. Add the following section to that file:
+
+.. code-block:: ini
+
+    [tool:pytest]
+    addopts = "--pdbcls=IPython.terminal.debugger:Pdb"
+
+Ipdb can now be invoked on a failing test using:
+
+.. code-block:: console
+
+    $ pytest --pdb -x tests/test_pandas_fail.py
+
 
 Invoking the debugger from a running program
 ............................................
 
-The alternative to post-mortem debugging is to invoke the debugger from within
+An alternative to post-mortem debugging is to invoke the debugger from within
 a program that is running normally. This is often useful if the erroneous
 behaviour you are concerned about is not an exception but rather the
 calculation of an incorrect value. This is a process entirely analogous to
@@ -370,8 +377,8 @@ in an IDE window, insert a line of code. For ipdb, the line to insert is:
 
     import ipdb; ipdb.set_trace()
 
-while pdb and pdbpp can use the built-in :func:`breakpoint()` function that was
-introduced in Python 3.7, or use their own function:
+while pdb can use the built-in :func:`breakpoint()` function or use their own
+function:
 
 .. code-block:: ipython3
 
@@ -382,11 +389,11 @@ Command-line debugger commands
 
 Whichever way your command-line debugger is invoked, it will give you a command
 line with a prompt somewhat different from the Python prompt, so that you know
-that you're in the debugger. For example, the pdb++ prompt looks like this:
+that you're in the debugger. For example, the ipdb prompt looks like this:
 
 .. code-block:: python3
 
-    (Pdb++)
+    ipdb> 
 
 All of the debuggers we are concerned with will support the same core set of
 commands, though there are some differences in more advanced functionality. The
@@ -395,6 +402,12 @@ learning to use ipdb will also help equip you with the skills to use, for
 example, `gdb <https://www.gnu.org/software/gdb/>`__ on code written in
 languages such as C and C++. :numref:`debug-commands` shows a basic set of
 debugger commands that is enough to get started.
+
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
 
 .. csv-table:: Common debugger commands. For a much more complete list see 
     `the pdb documentation <debugger-commands>`__. The part before the brackets
@@ -423,16 +436,6 @@ debugger commands that is enough to get started.
     preference to evaluating a Python variable with the same name. This can
     mean that, rather than displaying the value of a variable called `q`, the
     debugger will just quit.
-
-    pdb++ reverses this behaviour, so it will prefer evaluating a variable to
-    executing a debugger command. Should you really need to execute a
-    debugger command whose name coincides with a variable, you can do so by
-    prefacing it with two exclamation marks:
-     
-    .. code-block:: console
-
-        (Pdb++) !!q
-
 
 Debugging strategy
 ------------------
@@ -861,6 +864,12 @@ Glossary
         occur in a previous version. The functionality of the software has
         "gone backwards".
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 Exercises
 ---------
 
@@ -869,7 +878,7 @@ Exercises
     The exercises work a little differently this week, because the objective is
     not to write code but to practice debugging techniques. The information on
     the `book website
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     points not just to the skeleton code but also to an online quiz which will
     provide instant feedback on the questions below. You should access the
     skeleton code and then work through the quiz questions.
@@ -901,12 +910,6 @@ Exercises
     example` which exhibits the error you discovered in the previous section.
     Your minimal failing example should contain one import and one other line
     of code. :file:`tests/test_mfe.py` is a Pytest test for this exercise.
-
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
 
 .. proof:exercise:: Bisection
 
@@ -943,11 +946,11 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#pandas] `<https://pandas.pydata.org/docs/>
+.. [#pandas] `https://pandas.pydata.org/docs/
     <https://pandas.pydata.org/docs/>`__
 
 .. [#ufl] `https://github.com/object-oriented-python/ufl
     <https://github.com/object-oriented-python/ufl>`__
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

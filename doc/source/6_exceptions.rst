@@ -173,7 +173,7 @@ of exception built in. For example, if we attempt to access the number
 
 The exception type provides some indication as
 to what has gone wrong, and there is usually also an error message and
-sometimes more data to help diagnose the problem. The :doc:`full list
+sometimes more data to help diagnose the problem. The :external:doc:`full list
 of built-in exceptions <library/exceptions>` is available in the
 Python documentation. Python developers can define their own
 exceptions so there are many more defined in third-party packages. We will
@@ -638,6 +638,8 @@ the exception matches the list of exceptions is executed. For example:
     different exception, in which case it will just make the error more
     confusing by obscuring where the issue actually occurred.
 
+.. _else_finally:
+
 Else and finally
 ................
 
@@ -646,13 +648,35 @@ This can be achieved using an :keyword:`else <try>` clause. An :keyword:`else
 <try>` clause after a :keyword:`try` block is caused only if no exception was
 raised.
 
-It is also sometimes useful to be able to execute some code no matter what
-happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
-then the code it contains will be executed if either an exception is raised and
-handled by an :keyword:`except` block, or no exception occurred. This
-plethora of variants on the :keyword:`try` block can get a little confusing, so
-a practical example may help. :numref:`except_demo` prints out a different
-message for each type of clause. 
+.. only:: not book
+    
+    It is also sometimes useful to be able to execute some code no matter what
+    happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
+    then the code it contains will be executed whether or not an exception is
+    raised and whether or not any exception is handled by an :keyword:`except`
+    clause. The contents of the :keyword:`finally` clause will always execute. This
+    may be useful, for example, if it is necessary to close an external file or
+    network connection at the end of an operation, even if an exception is raised.
+    The full details of the :keyword:`finally` clause are covered in the
+    :py:ref:`section of the official Python tutorial on handling exceptions
+    <tut-handling>`.
+
+.. only:: book
+
+    It is also sometimes useful to be able to execute some code no matter what
+    happened in the :keyword:`try` block. If there is a :keyword:`finally` clause
+    then the code it contains will be executed whether or not an exception is
+    raised and whether or not any exception is handled by an :keyword:`except`
+    clause. The contents of the :keyword:`finally` clause will always execute. This
+    may be useful, for example, if it is necessary to close an external file or
+    network connection at the end of an operation, even if an exception is raised.
+    The full details of the :keyword:`finally` clause are covered in the
+    section of the official Python tutorial on handling exceptions [#tut_exceptions]_.
+
+
+This plethora of variants on the :keyword:`try` block can get a little
+confusing, so a practical example may help. :numref:`except_demo` prints out a
+different message for each type of clause. 
 
 .. _except_demo:
 
@@ -668,8 +692,6 @@ message for each type of clause.
             print(0./n)
         except ZeroDivisionError:
             print("Zero division")
-        except TypeError:
-            print(f"Can't divide by a {type(n).__name__}.")
         else:
             print("Division successful.")
         finally:
@@ -701,15 +723,27 @@ the :keyword:`finally` block. Next we divide by zero:
 This caused a :class:`ZeroDivisionError`, which was caught by the first
 :keyword:`except` clause. Since an exception was raised, the the :keyword:`else
 <try>` block is not executed, but the :keyword:`finally` block still executes.
-Similarly, if we attempt to divide by a string, we are caught by the second
-:keyword:`except` clause:
+Finally, if we attempt to divide by a string, the exception is not handled, but
+the :keyword:`finally` block executes before the exception causes a traceback:
 
 .. code-block:: ipython3
 
     In [4]: except_demo("frog")
     Attempting division by frog
-    Can't divide by a str.
     Finishing up.
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    Cell In[4], line 1
+    ----> 1 except_demo("frog")
+
+    Cell In[3], line 6, in except_demo(n)
+          4 print(f"Attempting division by {n}")
+          5 try:
+    ----> 6     print(0./n)
+          7 except ZeroDivisionError:
+          8     print("Zero division")
+
+    TypeError: unsupported operand type(s) for /: 'float' and 'str'
 
 Exception handling and the call stack
 .....................................
@@ -827,18 +861,10 @@ Glossary
 Exercises
 ---------
 
-.. .. panels::
-..     :card: quiz shadow
-
-..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2083792_1&mode=cpview
-..         :text: This week's quiz
-..         :classes: stretched-link 
-
-.. Obtain the `skeleton code for these exercises from GitHub classroom <https://classroom.github.com/a/JqFsKmoR>`__. 
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     obtain the skeleton code for these exercises.
 
 .. only:: book
@@ -901,8 +927,11 @@ Exercises
 
 .. rubric:: Footnotes
 
+.. [#tut_exceptions] `https://docs.python.org/3/tutorial/errors.html#tut-handling
+    <https://docs.python.org/3/tutorial/errors.html#tut-handling>`__
+
 .. [#function] "Function call" here includes :term:`method` calls and
                operations implemented using a :term:`special method`.
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

@@ -126,8 +126,8 @@ it's better to watch the video *after* reading the relevant section.
     The videos are marked in the text by a blue box at the right hand side,
     containing the video number. This corresponds to the list of links at:
 
-        `https://object-oriented-python.github.io/edition2/videos.html
-        <https://object-oriented-python.github.io/edition2/videos.html>`__
+        `https://object-oriented-python.github.io/edition3/videos.html
+        <https://object-oriented-python.github.io/edition3/videos.html>`__
 
 The exercises
 .............
@@ -141,8 +141,8 @@ correct responses to a range of inputs. Tests like this provide immediate
 feedback and enable you to know how you are doing. Links to the skeleton code
 for each chapter are provided at:
 
-        `https://object-oriented-python.github.io/edition2/exercises.html
-        <https://object-oriented-python.github.io/edition2/exercises.html>`__
+        `https://object-oriented-python.github.io/edition3/exercises.html
+        <https://object-oriented-python.github.io/edition3/exercises.html>`__
 
 
 Conventions employed
@@ -216,13 +216,20 @@ this facilitates generating the web, PDF, and print versions of the book from a
 single source. Thanks are due to its authors as well as those of the underlying
 LaTeX and TeX typesetting systems.
 
-Changes in the second edition
------------------------------
+Changes in the second and third editions
+----------------------------------------
 
-The second edition is a minor update correcting numerous small issues that have
-been pointed out over the last year. A more substantive change is that the
-explanation of packaging in :numref:`programs_files` has been modernised to use
+The second edition was a minor update correcting numerous small issues that have
+been pointed out over the last year. A more substantive change was that the
+explanation of packaging in :numref:`programs_files` was modernised to use
 :file:`pyproject.toml` in place of `setup.py`.
-:numref:`assignment_and_instantiation` has been added in response to confusion
+:numref:`assignment_and_instantiation` was added in response to confusion
 expressed by a number of students about the distinction between instantiating
 new objects and assigning new variable names to existing objects.
+
+The third edition is similarly a minor update. In documents Visual Studio Code
+workspaces in :numref:`workspaces`, and the Flake8 extension in
+:numref:`flake8_extension`. Together, these provide correctly integrated code
+linting. It also consistently uses `python -m` to invoke tools such as `pip`,
+`pytest` and `flake8`. This is less error-prone for students. The description
+of :keyword:`finally` in :numref:`else_finally` has been also improved.

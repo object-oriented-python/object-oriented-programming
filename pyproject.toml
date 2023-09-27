@@ -10,9 +10,20 @@ authors = [
 ]
 description= """
 Code for Object oriented programming in Python for mathematicians."""
-dependencies = ["numpy"]
+dependencies = ["numpy", "ipython"]
 license-file = "LICENSE.md"
 license = "CC-BY-4.0"
 
 [project.urls]
 "Homepage" = "https://object-oriented-python.github.io/"
+
+[project.optional-dependencies]
+all = [
+    "flake8",
+    "pep8-naming",
+    "flake8-docstrings",
+    "pytest",
+    "pandas",
+    "ipdb",
+    "debugpy",
+]

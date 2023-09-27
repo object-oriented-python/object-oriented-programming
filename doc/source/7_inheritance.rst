@@ -671,12 +671,12 @@ Creating new exception classes
 
 Python provides a wide range of :term:`exceptions <exception>`, and usually the
 right thing to do when writing code that might need to raise an exception is to
-peruse the :doc:`list of built-in exceptions <library/exceptions>` and choose
-the one which best matches the circumstances. However, sometimes there is no
-good match, or it might be that the programmer wants user code to be able to
-catch exactly this exception without the risk that some other operation will
-raise the same exception and be caught by mistake. In this case, it is necessary
-to create a new type of exception. 
+peruse the :external:doc:`list of built-in exceptions <library/exceptions>` and
+choose the one which best matches the circumstances. However, sometimes there
+is no good match, or it might be that the programmer wants user code to be able
+to catch exactly this exception without the risk that some other operation will
+raise the same exception and be caught by mistake. In this case, it is
+necessary to create a new type of exception. 
 
 A new exception will be a new :term:`class` which inherits from another
 exception class. In most cases, the only argument that the exception
@@ -778,7 +778,7 @@ Exercises
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     obtain the skeleton code for these exercises.
 
 .. only:: book
@@ -866,5 +866,5 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

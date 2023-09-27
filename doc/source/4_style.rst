@@ -135,6 +135,8 @@ conformance. Indeed, without a mechanism like this, there is a strong
 tendency for programmers to cut style corners, with the effect that
 the code in a project becomes harder and harder to read and work with.
 
+.. _flake8_extension:
+
 Installing Flake8
 .................
 
@@ -146,11 +148,22 @@ activated your :term:`virtual environment` and then run:
     (PoP_venv) $ python -m pip install flake8
 
 This is enough to run Flake8 on the command line, however you will probably want
-to set up your editor to highlight flake8 incompatibilities in your source. For
-Visual Studio Code, first open the command palette by typing :kbd:`control` +
-:kbd:`shift` + :kbd:`P` (:kbd:`⌘` + :kbd:`shift` + :kbd:`P` on Mac). There type
-"Python: Select Linter" to bring up the list of available linters, and select
-"flake8" from the details list. The video for this section shows this process.
+to set up your editor to highlight  PEP 8 incompatibilities in your source. For
+Visual Studio Code:
+
+1. Install the Flake8 extension:
+    a. Click the |extensions| icon on the left of the screen.
+    b. Type `Flake8` in the search box.
+    c. Click the blue `Install` button.
+2. Instruct the extension to use Flake8 from your virtual environment:
+    a. Type :kbd:`control` + :kbd:`,` (:kbd:`⌘` + :kbd:`,` on Mac) to open the `Settings` tab.
+    b. Type `flake8.importStrategy` in the `Search settings` bar at the top of
+       the page.
+    c. Change the dropdown from `useBundled` to `fromEnvironment`.
+
+The video for this section shows this process.
+
+.. |extensions| image:: /images/vscode_extensions.pdf
 
 How to tell Flake8 to shut up
 .............................
@@ -281,7 +294,7 @@ White space within lines
         .. code-block:: python3
 
             ( 1, 2) # Space after opening bracket.
-            (1, 2 ) # Space after closing bracket.
+            (1, 2 ) # Space before closing bracket.
 
     .. container:: goodcode
 
@@ -1153,7 +1166,7 @@ the command line:
     $ flake8 --docstring-convention numpy
 
 or by saving the configuration option in a config file. For example you can add
-a file :file:`setup.cfg` alongside :file:`setup.py` at the top of your git
+a file :file:`setup.cfg` alongside :file:`pyproject.toml` at the top of your git
 repository, and include the following:
 
 .. code-block:: python3
@@ -1240,15 +1253,6 @@ Glossary
 Exercises
 ---------
 
-.. .. only:: html
-
-..    .. panels::
-..        :card: quiz shadow
-
-..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2070388_1&mode=cpview
-..            :text: This week's quiz
-..            :classes: stretched-link 
-
 .. proof:exercise::
 
     Install flake8, pep8-naming, and flake8-docstrings.
@@ -1258,7 +1262,7 @@ Exercises
 
     The skeleton code on GitHub for this chapter's exercises contains a package
     :mod:`life` which implements Conway's Game of Life. Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     obtain the skeleton code for these exercises. Clone the repository into
     your working folder and install the package in editable mode.
 
@@ -1390,5 +1394,5 @@ six oscillating blinkers:
           users. However the PEPs having to do with style have wider
           significance.
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

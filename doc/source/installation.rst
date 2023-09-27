@@ -1,3 +1,5 @@
+:orphan:
+
 Installing the necessary software
 =================================
 
@@ -19,7 +21,7 @@ window) and run the following command:
 
 .. code-block:: console
 
-    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 Don't type the :kbd:`$`. That's the terminal prompt (it might appear as another
 symbol such as :kbd:`%` for you).
@@ -43,7 +45,7 @@ Windows
 .......
 
 Install `Python from the Microsoft Store
-<https://www.microsoft.com/en-us/p/python-310/9pjpw5ldxlz5>`__. 
+<https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K>`__. 
 
 MacOS
 .....
@@ -53,7 +55,8 @@ purposes. Instead, install Python from Homebrew:
 
 .. code-block:: console
 
-    $ brew install python
+    $ brew install python3.11
+
 
 Linux
 .....
@@ -67,7 +70,10 @@ For example on Ubuntu or Debian you would run:
 
     $ sudo apt install python3-pip
 
-while on Fedora and related distributions you would run:
+You can also install newer versions of Python on Ubuntu or Debian using the 
+`dead snakes  package archive <https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa>`__.
+
+On Fedora and related distributions you would run:
 
 .. code-block:: console
 

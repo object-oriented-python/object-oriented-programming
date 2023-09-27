@@ -883,3 +883,8 @@ summary {
   width: 100% !important;
   height: 100% !important;
 }
+
+/* Hack to cause vs code icon to appear at the right scale.*/
+#installing-flake8 img {
+    height: 2ex;
+}

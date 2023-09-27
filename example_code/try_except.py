@@ -1,5 +1,3 @@
-
-
 def except_demo(n):
     """Demonstrate all the clauses of a `try` block."""
 
@@ -8,8 +6,6 @@ def except_demo(n):
         print(0./n)
     except ZeroDivisionError:
         print("Zero division")
-    except TypeError:
-        print(f"Can't divide by a {type(n).__name__}.")
     else:
         print("Division successful.")
     finally:

@@ -139,11 +139,11 @@ Python concept of type goes much further, as we discover if we call
   Out[2]: builtin_function_or_method
 
 So `1` is an object of type :class:`int`, which means that it comes with all of
-Python's operations for integer arithmetic. :func:`abs`, on the other hand,
-is a :doc:`built-in function <library/functions>`, so its defining operation is that it can be
-called on one or more suitable arguments (for example `abs(1)`). If
-every object has a type, what about types themselves? What is the type
-of `int`?
+Python's operations for integer arithmetic. :func:`abs`, on the other hand, is
+a :external:doc:`built-in function <library/functions>`, so its defining
+operation is that it can be called on one or more suitable arguments (for
+example `abs(1)`). If every object has a type, what about types themselves?
+What is the type of `int`?
 
 .. code-block:: ipython3
   
@@ -188,7 +188,7 @@ Defining new types
         Imperial students can also `watch this video on Panopto
         <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b70b944d-612c-4e57-9538-af8d01031342>`__
 
-Python has a rich set of :doc:`built-in types
+Python has a rich set of :external:doc:`built-in types
 <library/stdtypes>`. These form powerful building blocks for the
 language, but one very soon finds mathematical abstractions which do
 not have implementations among the built-in types of the Python
@@ -953,19 +953,10 @@ Glossary
 Exercises
 ---------
 
-.. .. only:: html
-
-..    .. panels::
-..        :card: quiz shadow
-
-..        .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054444_1
-..            :text: This week's quiz
-..            :classes: stretched-link 
-
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     obtain the skeleton code for these exercises. The skeleton code contains a
     :mod:`polynomial` package with a version of the :class:`Polynomial` class.
 
@@ -974,6 +965,12 @@ Exercises
     Using the information on the `book website` [#exercise_page]_,
     obtain the skeleton code for these exercises. The skeleton code contains a
     :mod:`polynomial` package with a version of the :class:`Polynomial` class.
+
+.. proof:exercise::
+
+    Turn the exercises repository into an installable Pip package. As with
+    last chapter's exercise, Pytest can't test this so you'll need to push to
+    GitHub and check that the autograding tests pass there.
 
 .. proof:exercise::
 
@@ -986,6 +983,15 @@ Exercises
        may be useful to know that all integers are instances of
        :class:`numbers.Integral`.
     4. Polynomial evaluation at a scalar value (:meth:`~object.__call__`).
+
+    .. hint::
+
+        A limitation of the provided implementation of :class:`Polynomial` is
+        that it doesn't strip leading zeroes. This means that it doesn't
+        correctly identify that, for example, `Polynomial((0, 1)) ==
+        Polynomial((1,))`. You may find it convenient to remove this limitation
+        by removing any leading zeroes in `Polynomial.__init__()`. If you do
+        this, take care that printing the zero polynomial still works.
 
     .. note::
 
@@ -1028,13 +1034,7 @@ Exercises
           c = Circle((1., 0.), 2)
           print((0.5, 0.5) in c)
 
-.. proof:exercise::
-
-    Make the :mod:`circle` and :mod:`polynomial` packages installable. As with
-    last chapter's exercise, Pytest can't test this so you'll need to push to
-    GitHub and check that the autograding tests pass there.
-
 .. rubric:: Footnotes
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="ring_buffer.svg"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
    id="svg8"
    version="1.1"
    viewBox="0 0 140.60252 180.21828"
    height="180.21828mm"
-   width="140.60252mm">
+   width="140.60252mm"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <rect
@@ -720,9 +720,9 @@
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="0"
-     inkscape:window-y="0"
+     inkscape:window-y="25"
      inkscape:window-x="0"
-     inkscape:window-height="1440"
+     inkscape:window-height="1387"
      inkscape:window-width="2560"
      fit-margin-bottom="10"
      fit-margin-right="10"
@@ -734,15 +734,18 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="412.13803"
-     inkscape:cx="291.24085"
+     inkscape:cy="412.33903"
+     inkscape:cx="291.17598"
      inkscape:zoom="1.2999012"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -751,7 +754,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -800,11 +803,11 @@
        x="53.637745"
        y="45.053528" />
     <text
-       style="font-size:4.23332999999999959px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect940);"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect940)"
        id="text938"
        xml:space="preserve" />
     <text
-       style="font-size:4.23332999999999959px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect946);"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect946)"
        id="text944"
        xml:space="preserve" />
     <rect
@@ -1249,7 +1252,7 @@
          id="tspan3417"
          x="10.802846"
          y="106.43501"
-         style="stroke-width:0.264583">4. pop()</tspan></text>
+         style="stroke-width:0.264583">4. popleft()</tspan></text>
     <g
        transform="translate(23.813533,50.740943)"
        id="g2136-6-0">
@@ -1429,7 +1432,7 @@
          y="143.32655"
          x="10.802846"
          id="tspan3417-7"
-         sodipodi:role="line">6. pop()</tspan></text>
+         sodipodi:role="line">6. popleft()</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
@@ -1625,7 +1628,7 @@
          id="tspan6330-0"
          sodipodi:role="line">9. append(G)</tspan></text>
     <text
-       style="font-size:4.23332999999999959px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect7618);"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect7618)"
        id="text7616"
        xml:space="preserve" />
     <rect

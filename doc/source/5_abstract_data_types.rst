@@ -70,8 +70,8 @@ without removing it from the stack.
 
 .. figure:: images/stack.*
 
-    A sequence of stack operations. 24, 12, and 57. Finally the pop operation
-    removes (and would return) 57.
+    A sequence of stack operations. First, 24, 12, and 57 are pushed onto the
+    stack. Finally the pop operation removes (and would return) 57.
    
 An example: reverse Polish notation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -471,11 +471,10 @@ sequence is the *earliest* added. Items can be added to the back of
 the queue and taken from the front. As with a stack, the optimal
 implementations of item insertion and removal are :math:`O(1)`.
 
-A :term:`deque` (Double Ended QUEue) is a generalisation of a queue to
-permit adding and removing items at either end. The observant
-reader will note that stacks and queues are both special cases of
-deques. Python's standard library contains the
-:class:`collections.deque` class, providing a simple and efficient
+A :term:`deque` (Double Ended QUEue) is a generalisation of a queue to permit
+adding and removing items at either end. The observant reader will note that
+stacks and queues are both special cases of deques. Python's standard library
+contains the :class:`collections.deque` class, providing a simple and efficient
 implementation of a deque.
 
 Ring buffers
@@ -561,7 +560,6 @@ record convenient information such as the list length, but it's not strictly nec
 
        def insert(self, link):
           '''Insert a new link after the current one.'''
-
           link.next = self.next
           self.next = link
 
@@ -672,7 +670,6 @@ of the iteration.
 
         def insert(self, link):
             '''Insert a new link after the current one.'''
-
             link.next = self.next
             self.next = link
 
@@ -829,17 +826,10 @@ Glossary
 Exercises
 ---------
 
-.. .. panels::
-..     :card: quiz shadow
-
-..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2077681_1&mode=cpview
-..         :text: This week's quiz
-..         :classes: stretched-link 
-
 .. only:: not book
 
     Using the information on the `book website 
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
     obtain the skeleton code for these exercises. You will also need to install
     the pytest-timeout package.
 
@@ -963,5 +953,5 @@ Exercises
 
 .. rubric:: Footnotes
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__

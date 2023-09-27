@@ -136,14 +136,67 @@ for your Python programming.
     computer languages than others. Importantly, you can't edit text files in a
     program such as Microsoft Word and expect to end up with something usable.
 
+.. _workspaces:
+
+Setting up a Visual Studio Code workspace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Over the course of this book, you will work in a number of git repostitories,
+each containing the exercises for one chapter. In order for Visual Studio Code
+to correctly find all the configuration files you need it to, it's helpful to
+use what is called a `Multi-root Workspace
+<https://code.visualstudio.com/docs/editor/multi-root-workspaces>`__. This is
+simply a way of telling Visual Studio Code that we have multiple folders
+containing code. Once we start using Visual Studio Code's style checking
+features in :numref:`Chapter %s <style>`, this will ensure that the style rules
+we intend to apply to each repository are selected correctly.
+
+Open Visual Studio Code, and from the `file` menu select `open folder`. Choose
+the top level workspace folder that you created in :numref:`working_folder`
+(you might have called this :file:`principles_of_programming`). You should now
+be able to see this folder name in the `Explorer` panel on the left of the
+Visual Studio Code screen, with the name of your venv folder beneath it.
+
+Next, we need to save this workspace. From the `file` menu select `Save
+Workspace As...` and click the :kbd:`save` button (there's no need to change
+the filename). You'll see a file called something like
+:file:`principles_of_programming.code-workspace` appear in the `Explorer`
+panel. This file contains workspace settings, and you can also click on it in
+your operating system's file explorer to start Visual Studio Code in this
+workspace.
+
+Finally, let's create a test folder in which we'll create our first Python
+script. Open a terminal by clicking on the `New Terminal` item in the
+`Terminal` menu of Visual Studio Code. Type the following:
+
+.. code-block:: console
+
+    $ mkdir test
+
+You should see the :file:`test` folder appear in the `Explorer` panel. However,
+we haven't yet told Visual Studio Code to treat `test` as a top level code
+folder. To do that, choose `Add Folder to Workspace` from the `file` menu, and
+select the `test` folder. This will cause the folder to appear alongside the
+workspace folder in the `Explorer` tab. :numref:`vscode_workspace` shows a
+workspace in this configuration.
+
+.. _vscode_workspace:
+
+.. figure:: images/vscode_workspace.png
+    :width: 100%
+
+    The Visual Studio Code debugging window showing a multi-root workspace
+    containing the top level :file:`principles_of_programming` folder, as
+    well as the :file:`test` folder. Note that the :file:`test` folder
+    is also visible inside the :file:`principles_of_programming` folder.
 
 A first Python script
 ~~~~~~~~~~~~~~~~~~~~~
 
-Tradition dictates that the first stand-alone program one writes in
-any language simply prints out the string `Hello World`. Using an IDE or text
-editor, we create a file which we'll call :file:`hello.py` containing just
-the following line of Python code:
+Tradition dictates that the first stand-alone program one writes in any
+language simply prints out the string `Hello World`. Using an IDE or text
+editor, we create a file in our :file:`test` folder, which we'll call
+:file:`hello.py` containing just the following line of Python code:
 
 .. code-block:: python
 
@@ -152,25 +205,20 @@ the following line of Python code:
 The :file:`.py` file extension is not strictly required for Python scripts, but
 it can be useful as it will cause most text editors to recognise the file as a
 Python file. Having remembered to save :file:`hello.py` to disk from the text
-editor, we can now run the program. Open a terminal, and change to the folder
-(directory) where you saved :file:`hello.py`. For example, if :file:`hello.py`
-is in the directory :file:`src` in your home directory, then on most operating
-systems, you would type the following:
+editor, we can now run the program. Open a terminal, and activate your virtual
+environment. Next, change to :file:`test`
+folder. On most operating systems, you would type the following:
 
 .. code-block:: console
 
-    (PoP_venv) $ cd src
+    (PoP_venv) $ cd test
     (PoP_venv) $ python hello.py
 
 The first of these commands,
-`cd` (*change directory*) switches the current folder to :file:`src`. The
+`cd` (*change directory*) switches the current folder to :file:`test`. The
 second command actually runs the Python interpreter on :file:`hello.py`. From
 within our venv, we can be confident that `python` will refer to the right
-version of Python. If you need to run Python outside of a venv then the
-situation is a little more complex. On Linux or MacOS, you might need to type
-`python3` instead of `python`, because `python` still points at the old Python
-version 2 interpreter. On Windows, there is a convenient command `py` which
-will usually find and run the most appropriate Python. When we press the
+version of Python. When we press the
 :kbd:`enter` key after the last line above, our tiny Python script
 :file:`hello.py` runs and the following is displayed:
 
@@ -182,7 +230,7 @@ When to use scripts
 ~~~~~~~~~~~~~~~~~~~
 
 The key advantage of a script is that it is repeatable: it can be
-executed again, and exactly the same commands will execute. Writing
+run again, and exactly the same commands will execute. Writing
 scripts is an absolutely essential programming discipline in any
 circumstance where you might want to know what you did and, possibly,
 do it again. For example, suppose you have a project in a
@@ -424,11 +472,11 @@ packages come in. A Python package is a collection of module files,
 which can be imported together. The basic folder structure of a Python
 package is shown in :numref:`package-layout`.
 
-.. only:: book
+.. .. only:: book
     
-    .. raw:: latex
+..     .. raw:: latex
 
-        \clearpage
+..         \clearpage
 
 .. _package-layout:
 
@@ -632,7 +680,7 @@ replacing :file:`folder` with the name of the top-level folder of your
 repository: the folder containing :file:`pyproject.toml`. The option flag `-e` tells
 Pip to install the package in 'editable' mode. This means that instead of
 copying the package files to your venv's Python packages folder, symbolic links
-will be created. This means that any changes that you make to your package will
+will be created. Consequently, any changes that you make to your package will
 show up the next time the package is imported in a new Python process, avoiding
 the need to reinstall the package every time you change it.
 
@@ -707,8 +755,8 @@ packages that are not already available before installing the package itself.
     The former is a list of packages needed to build the package, while the
     latter is a list of packages needed to use the current package. You will
     often need to specify `dependencies` but, unless you are doing something
-    quite advanced such as writing Python packages in another language, you
-    will not need to add to `requires`.
+    quite advanced such as writing Python packages in another programming
+    language, you will not need to add to `requires`.
 
 .. warning::
 
@@ -793,6 +841,12 @@ create a file called :file:`test_fibonacci.py` containing:
        for i, f in enumerate([1, 1, 2, 3, 5, 8]):
            assert fib(i+1) == f
 
+.. only:: book
+
+    .. raw:: latex
+
+        \clearpage
+
 These files don't themselves form part of the package, instead they
 are usually gathered in a separate tests folder. For example::
 
@@ -804,18 +858,12 @@ are usually gathered in a separate tests folder. For example::
     │   └── test_fibonacci.py
     └── pyproject.toml
 
-.. only:: book
-
-    .. raw:: latex
-
-        \clearpage
-
 We can then invoke the tests from the shell:
 
 .. code-block:: console
 
     (PoP_venv) $ cd fibonacci
-    (PoP_venv) $ pytest tests
+    (PoP_venv) $ python -m pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -831,7 +879,7 @@ instead see something like:
 
 .. code-block:: console
 
-    (PoP_venv) $ pytest tests
+    (PoP_venv) $ python -m pytest tests
     ========================== test session starts ===========================
     platform darwin -- Python 3.7.7, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
     rootdir: /Users/dham/docs/object-oriented-programming, inifile: setup.cfg
@@ -868,14 +916,14 @@ that file as the argument to Pytest. For example:
 
 .. code-block:: console
 
-    (PoP_venv) $ pytest tests/test_fibonacci.py
+    (PoP_venv) $ python -m pytest tests/test_fibonacci.py
 
 It is even possible to select an individual test to run, using a double colon
 `::` followed by the test name:
 
 .. code-block:: console
 
-    (PoP_venv) $ pytest tests/test_fibonacci.py::test_fibonacci_values
+    (PoP_venv) $ python -m pytest tests/test_fibonacci.py::test_fibonacci_values
 
 Often if one test fails then the same problem in your code will cause a whole
 series of tests to fail, resulting in a very long list of error messages which
@@ -884,7 +932,7 @@ tells Pytest to stop after the first test fail. For example:
 
 .. code-block:: console
 
-    (PoP_venv) $ pytest -x tests
+    (PoP_venv) $ python -m pytest -x tests
 
 The tests are often arranged in increasing order of sophistication, so the
 earlier tests are likely to catch the most basic errors in your code. For this
@@ -980,21 +1028,6 @@ tools described in :numref:`tools` and set up a working folder and
 already familiar with Git and GitHub then you will also need to work through
 :numref:`Appendix %s <git>` to learn enough to do the exercises.
 
-.. .. panels::
-..     :card: quiz shadow
-
-..     .. link-button:: https://bb.imperial.ac.uk/webapps/assessment/take/launchAssessment.jsp?course_id=_25965_1&content_id=_2054443_1&mode=cpview
-..         :text: This week's quiz
-..         :classes: stretched-link 
-
-.. .. proof:exercise::
-
-..     Follow the :ref:`instructions on the Faculty of Natural Sciences Python
-..     installation page <fons:python_folders>` to create the folder structure
-..     you will use for this course on your computer. Start with an overall folder
-..     for the module, and create a virtual environment in that module.
-
-
 .. _course_repo:
 
 .. proof:exercise::
@@ -1016,7 +1049,7 @@ already familiar with Git and GitHub then you will also need to work through
 
     .. code-block:: console
 
-        (PoP_venv) $ pytest tests/test_fibonacci.py
+        (PoP_venv) $ python -m pytest tests/test_fibonacci.py
 
     You could also run IPython,  import :mod:`fibonacci` and try out
     :func:`fibonacci.fib <fibonacci.fibonacci.fib>` yourself.
@@ -1026,7 +1059,7 @@ already familiar with Git and GitHub then you will also need to work through
     .. only:: not book
 
         Using the information on the `book website
-        <https://object-oriented-python.github.io/edition2/exercises.html>`__
+        <https://object-oriented-python.github.io/edition3/exercises.html>`__
         create your chapter 2 exercise repository for this module and clone it
         into your working folder. The exercise repository just contains a
         :file:`README` and some tests. Your job in the following exercises will be
@@ -1054,7 +1087,7 @@ already familiar with Git and GitHub then you will also need to work through
 
     .. code-block:: console
 
-        (PoP_venv) $ pytest tests/test_exercise_2_3.py
+        (PoP_venv) $ python -m pytest tests/test_exercise_2_3.py
 
     Then push your code to GitHub and check that the tests pass there too.
 
@@ -1107,5 +1140,5 @@ already familiar with Git and GitHub then you will also need to work through
 .. [#book_repo] `https://github.com/object-oriented-python/object-oriented-programming
     <https://github.com/object-oriented-python/object-oriented-programming>`__
 
-.. [#exercise_page] `https://object-oriented-python.github.io/edition2/exercises.html
-    <https://object-oriented-python.github.io/edition2/exercises.html>`__
+.. [#exercise_page] `https://object-oriented-python.github.io/edition3/exercises.html
+    <https://object-oriented-python.github.io/edition3/exercises.html>`__
