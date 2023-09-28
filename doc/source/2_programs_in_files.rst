@@ -458,7 +458,7 @@ Packages
 
     .. only:: html
 
-        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=a1a9c7ab-147b-491d-b3dc-ae1c00da3b3f>`__
+        Imperial students can also `watch this video on Panopto <https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4f600702-02e0-4f9a-8edb-af8601177507>`__
 
 
 Modules are the principal mechanism for storing code which is intended
