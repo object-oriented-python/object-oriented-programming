@@ -14,7 +14,7 @@ GitHub Classroom assignments for the exercises, you should not use the links
 here but rather use the Classroom links provided by your instructor. Students
 taking Principles of Programming at Imperial College London will find their
 list of GitHub Classroom links `on Blackboard
-<https://bb.imperial.ac.uk/webapps/blackboard/content/listContentEditable.jsp?content_id=_2707976_1&course_id=_34500_1>`__.
+<https://bb.imperial.ac.uk/ultra/courses/_37896_1/cl/outline>`__.
 
 
 * `Chapter 2 exercises <https://github.com/object-oriented-python/exercises-chapter-2>`__
