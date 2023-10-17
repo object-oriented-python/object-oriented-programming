@@ -141,7 +141,7 @@ for your Python programming.
 Setting up a Visual Studio Code workspace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Over the course of this book, you will work in a number of git repostitories,
+Over the course of this book, you will work in a number of git repositories,
 each containing the exercises for one chapter. In order for Visual Studio Code
 to correctly find all the configuration files you need it to, it's helpful to
 use what is called a `Multi-root Workspace
