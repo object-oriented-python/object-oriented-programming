@@ -988,7 +988,7 @@ Exercises
 
         A limitation of the provided implementation of :class:`Polynomial` is
         that it doesn't strip leading zeroes. This means that it doesn't
-        correctly identify that, for example, `Polynomial((0, 1)) ==
+        correctly identify that, for example, `Polynomial((1, 0)) ==
         Polynomial((1,))`. You may find it convenient to remove this limitation
         by removing any leading zeroes in `Polynomial.__init__()`. If you do
         this, take care that printing the zero polynomial still works.
