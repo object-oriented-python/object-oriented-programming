@@ -121,7 +121,7 @@ Exercises
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/31SQjj08>`__. Follow the instructions in
+    <https://classroom.github.com/a/aAZlccNh>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. note::
@@ -132,19 +132,19 @@ Exercises
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/ZYLLD4Qr>`__. Follow the instructions in
+    <https://classroom.github.com/a/Z_N1oT5H>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/qTpghcCr>`__. Follow the instructions in
+    <https://classroom.github.com/a/ABVAZFhT>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/U0xEHO2Y>`__. Follow the instructions in
+    <https://classroom.github.com/a/4gqpMGKz>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
@@ -154,128 +154,138 @@ Exercises
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/3CXs2lUR>`__. Follow the instructions in
+    <https://classroom.github.com/a/_OkMaVLz>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
     
         This problem was the midterm test in 2022.
 
-Exam preparation
-----------------
-
-The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
-of the advice about preparing applies there too. As with all second year
-elective modules, the exam will comprise four questions, each marked out of 20.
-
-As with everything in this course, the one thing you can do to effectively
-prepare for the exam is to program. You should complete any of the exercises in
-the course that you have not yet done, and more exercises are given below.
-
-Exam scope
-~~~~~~~~~~
-
-Everything we have covered in the course up to and including week 11
-(chapter 10) will be fully examinable. 
-
-Support while revising
-~~~~~~~~~~~~~~~~~~~~~~
-
-The module Ed forum will remain open throughout the revision period and we
-will be very happy to respond to your questions. There will also be a revision
-lecture at the start of the summer term.
-
-Past papers
-~~~~~~~~~~~
-
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/4RbkTyL3>`__. Follow the instructions in
+    <https://classroom.github.com/a/o7iGDV31>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
-
-        This was the August 2021 exam.
-
-.. proof:exercise::
-
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/5b7Ovt_j>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
-
-    .. note::
-
-        This was the May 2022 exam.
-
-.. proof:exercise::
-
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/srMI08Z9>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
-
-    .. note::
-
-        This was the August 2022 exam.
-
-
-
-Further programming practice ideas
-----------------------------------
-
-In addition to these exam-style questions, you can also usefully practice
-programming by going beyond the specification of the exercises in the course.
-The following exercises are just ideas for how to do that. They do not come
-with additional code or tests.
-
-In addition to this, there are a lot of very good exercises in
-chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
-with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
-You can access that book by logging in with your Imperial credentials.
-
-.. proof:exercise::
-
-    Extend the :class:`Polynomial` class from :numref:`Chapter %s <objects>` to
-    support polynomial division. Polynomial division results in a quotient and
-    a remainder, so you might choose to implement :meth:`~object.__floordiv__`
-    to return the quotient and :meth:`~object.__mod__` to return the remainder,
-    in a manner analogous to integer division. You might also implement
-    :meth:`~object.__truediv__` and have it return the quotient if the
-    polynomial division is exact, but raise :class:`ValueError` if there is a
-    remainder.
-
-    .. hint::
-
-        Don't forget that repeating code is poor style, so you might need a
-        helper method to implement the actual polynomial division.
     
-.. proof:exercise::
+        This problem was the midterm test in spring 2023.
 
-    Extend the :class:`Deque` class from :numref:`Week %s
-    <abstract_data_types>` to automatically resize the ring buffer by a
-    proportion of its length when it is full, and when it becomes too empty.
-    You can check the behaviour of your implementation against
-    :class:`collections.deque`.
+.. Exam preparation
+.. ----------------
 
-.. proof:exercise::
+.. The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
+.. of the advice about preparing applies there too. As with all second year
+.. elective modules, the exam will comprise four questions, each marked out of 20.
 
-    For a real challenge, extend the groups implementation from :numref:`Week
-    %s <inheritance>` to support taking the quotient of two groups. What do the
-    values and validation of a quotient group look like in code? You could
-    implement :meth:`~object.__truediv__` on :class:`Group` to provide the user
-    interface.
+.. As with everything in this course, the one thing you can do to effectively
+.. prepare for the exam is to program. You should complete any of the exercises in
+.. the course that you have not yet done, and more exercises are given below.
 
-.. proof:exercise::
+.. Exam scope
+.. ~~~~~~~~~~
 
-    Write additional single dispatch visitor functions to extend the
-    capabilities of the symbolic algebra system you wrote in :numref:`Week %s
-    <trees>`. You could, for example, write a visitor which performs
-    cancellation of expressions involving 1 or 0. You could implement expansion
-    of brackets according to distributive laws. Finally you could canonicalise
-    commutative operators such as `+` and `*` so that, for example `1 + x` is
-    mapped to `x + 1`. Doing this over multiple layers of the tree
-    (for example, transforming `1 + 2*x + 3*x**2` to `3*x**2 + 2*x + 1`) is an additional
-    challenge.
+.. Everything we have covered in the course up to and including week 11
+.. (chapter 10) will be fully examinable. 
+
+.. Support while revising
+.. ~~~~~~~~~~~~~~~~~~~~~~
+
+.. The module Ed forum will remain open throughout the revision period and we
+.. will be very happy to respond to your questions. There will also be a revision
+.. lecture at the start of the summer term.
+
+.. Past papers
+.. ~~~~~~~~~~~
+
+.. .. proof:exercise::
+
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/4RbkTyL3>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
+
+..     .. note::
+
+..         This was the August 2021 exam.
+
+.. .. proof:exercise::
+
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/5b7Ovt_j>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
+
+..     .. note::
+
+..         This was the May 2022 exam.
+
+.. .. proof:exercise::
+
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/srMI08Z9>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
+
+..     .. note::
+
+..         This was the August 2022 exam.
+
+
+
+.. Further programming practice ideas
+.. ----------------------------------
+
+.. In addition to these exam-style questions, you can also usefully practice
+.. programming by going beyond the specification of the exercises in the course.
+.. The following exercises are just ideas for how to do that. They do not come
+.. with additional code or tests.
+
+.. In addition to this, there are a lot of very good exercises in
+.. chapters 7 and 9 of `Hans Petter Langtangen, A Primer on Scientific Programming
+.. with Python <https://link.springer.com/book/10.1007%2F978-3-662-49887-3>`__.
+.. You can access that book by logging in with your Imperial credentials.
+
+.. .. proof:exercise::
+
+..     Extend the :class:`Polynomial` class from :numref:`Chapter %s <objects>` to
+..     support polynomial division. Polynomial division results in a quotient and
+..     a remainder, so you might choose to implement :meth:`~object.__floordiv__`
+..     to return the quotient and :meth:`~object.__mod__` to return the remainder,
+..     in a manner analogous to integer division. You might also implement
+..     :meth:`~object.__truediv__` and have it return the quotient if the
+..     polynomial division is exact, but raise :class:`ValueError` if there is a
+..     remainder.
+
+..     .. hint::
+
+..         Don't forget that repeating code is poor style, so you might need a
+..         helper method to implement the actual polynomial division.
+    
+.. .. proof:exercise::
+
+..     Extend the :class:`Deque` class from :numref:`Week %s
+..     <abstract_data_types>` to automatically resize the ring buffer by a
+..     proportion of its length when it is full, and when it becomes too empty.
+..     You can check the behaviour of your implementation against
+..     :class:`collections.deque`.
+
+.. .. proof:exercise::
+
+..     For a real challenge, extend the groups implementation from :numref:`Week
+..     %s <inheritance>` to support taking the quotient of two groups. What do the
+..     values and validation of a quotient group look like in code? You could
+..     implement :meth:`~object.__truediv__` on :class:`Group` to provide the user
+..     interface.
+
+.. .. proof:exercise::
+
+..     Write additional single dispatch visitor functions to extend the
+..     capabilities of the symbolic algebra system you wrote in :numref:`Week %s
+..     <trees>`. You could, for example, write a visitor which performs
+..     cancellation of expressions involving 1 or 0. You could implement expansion
+..     of brackets according to distributive laws. Finally you could canonicalise
+..     commutative operators such as `+` and `*` so that, for example `1 + x` is
+..     mapped to `x + 1`. Doing this over multiple layers of the tree
+..     (for example, transforming `1 + 2*x + 3*x**2` to `3*x**2 + 2*x + 1`) is an additional
+..     challenge.
 
 .. Exam instructions
 .. -------------------------
