@@ -27,3 +27,6 @@ all = [
     "ipdb",
     "debugpy",
 ]
+
+[tool.hatch.build.targets.wheel]
+    packages = ["fibonacci", "example_code"]
