@@ -702,7 +702,8 @@ If we now type `git status`, we find that we are no longer ahead of
 
    nothing to commit, working tree clean
 
-If we turn back to the repository website on GitHub, we can also see that the commit has arrived:
+If we turn back to the repository website on GitHub, we can also see that the
+commit has arrived:
 
 .. image:: images/github_post_commit.png
 
@@ -773,6 +774,101 @@ This is indeed very useful as the error tells us that the test was expecting
 example, however the tests provided with the exercises in this book also
 attempt to provide useful feedback on what has gone wrong when a test is
 failed.
+
+Doing an exercise again
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes, such as when you are revising for an exam by doing past papers, you 
+might want to start again with a fresh template repository. Using Git, this can
+be achieved by working on a new branch whose base is the commit before you
+started your work. First, commit and push your existing work. Verify that you
+have done so by running:
+
+.. code-block:: console
+
+    $ git status
+
+The result should be something like:
+
+.. code-block:: console
+
+    On branch main
+    Your branch is up to date with 'origin/main'.
+
+    nothing to commit, working tree clean
+   
+If you don't see `nothing to commit` then commit your work. If you don't see
+`up to date` then push.
+
+If your repository comes from GitHub classroom then your
+instructor may have set up a feedback branch for you, and you can use that as
+your starting point. To see if this is the case, run:
+
+.. code-block:: console
+
+    $ git branch -a
+
+If you see `remotes/origin/feedback` then you can simply use `feedback` as the
+base for your new branch. If you don't have a feedback branch then you need to
+search back through the history of your repository to find your first commit.
+Run:
+
+.. code-block:: console
+
+    $ git log
+
+and scroll back to find the last commit *before* your first commit. Copy the
+commit hash. Now we're ready to create the new branch. You need to choose a new
+name for your branch, which is not the same as any other branch name in this
+repository. For example, if you choose the branch name `second_attempt` then
+you would create the branch by typing:
+
+.. code-block:: console
+
+    $ git branch feedback second_attempt
+
+If you don't have a `feedback` branch then you would instead use the commit
+hash of the last commit before your work, which you found above by searching
+the log.
+
+You switch your working repository to the new branch using:
+
+.. code-block:: console
+
+    $ git checkout second_attempt
+
+You could also switch back to your first attempt by running:
+
+.. code-block:: console
+
+    $ git checkout main
+
+When you come to push your new work to GitHub, you will find that this fails
+with a message such as:
+
+.. code-block:: console
+
+   fatal: The current branch second_attempt has no upstream branch.
+   To push the current branch and set the remote as upstream, use
+
+       git push --set-upstream origin second_attempt
+
+   To have this happen automatically for branches without a tracking
+   upstream, see 'push.autoSetupRemote' in 'git help config'.
+    
+Fortunately, this error message tells you exactly what to do, so run:
+
+.. code-block:: console
+
+    git push --set-upstream origin second_attempt
+
+When you look at your repository on GitHub, the default display is for the main
+branch. On the left near the top you will find a dropdown button that starts
+with the name `main` (or `master` on old repositories). You use this to switch
+branch.
+
+.. image:: images/github_change_branch.png
+
 
 .. rubric:: Footnotes
 
