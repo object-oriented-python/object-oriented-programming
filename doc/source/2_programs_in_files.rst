@@ -614,9 +614,8 @@ able to find it.
 .. _minimal-pyproject-toml:
 
 .. code-block:: python3
-    :caption: A minimal :file:`pyproject.toml` which will make all the Python
-        packages found in subfolders of the folder containing
-        :file:`pyproject.toml` installable. 
+    :caption: A minimal :file:`pyproject.toml` which will make the `my_package`
+        package installable. 
 
     [build-system]
     requires = ["hatchling"]
@@ -626,10 +625,14 @@ able to find it.
     name = "my_package"
     version = "0.1"
 
+    [tool.hatch.build.targets.wheel]
+    packages = ["my_package"]
+
+
 :numref:`minimal-pyproject-toml` shows a very basic :file:`pyproject.toml`.
 This isn't a Python file, instead it's a configuration file written in a
 language called `TOML <https://toml.io/en/>`__. In our case, the TOML file
-comprises two sections, which TOML calls "tables". 
+comprises three sections, which TOML calls "tables". 
 
 The first table is called `build-system`, and enables us to choose which of the
 various Python project management packages we wish to use. For our very simple
@@ -646,6 +649,8 @@ write `hatchling.build`.
 
 The `project` table contains information about the Pip package we're creating.
 At a minimum, we need to give our Pip package a name and a version number.
+Finally, the `packages` key in the `[tool.hatch.build.targets.wheel]` table
+contains the list of Python package folders to be included.
 
 .. only:: not book
 
@@ -713,10 +718,8 @@ One frequent source of confusion in making packages installable and actually
 installing them is that Pip and Python have slightly different definitions of
 what constitutes a package. A Python package, as we have just learned, is a
 folder containing (at least) a file called :file:`__init__.py`. For Pip,
-however, a package is everything that :file:`pyproject.toml` installs. In particular,
-this can include multiple Python packages. Indeed, :numref:`minimal-pyproject-toml`
-is sufficient to install any number of Python packages contained in subfolders
-of the folder containing :file:`pyproject.toml`.
+however, a package is everything that :file:`pyproject.toml` installs, which
+could include any number of Python packages.
 
 Package dependencies
 ~~~~~~~~~~~~~~~~~~~~
@@ -747,6 +750,11 @@ packages that are not already available before installing the package itself.
     name = "my_package"
     version = "0.1"
     dependencies = ["numpy"]
+
+    [tool.hatch.build.targets.wheel]
+    packages = ["my_package"]
+
+
 
 .. note::
 
