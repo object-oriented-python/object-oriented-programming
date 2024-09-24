@@ -188,29 +188,29 @@ Exam scope
 Everything we have covered in the course up to and including week 11
 (chapter 10) will be fully examinable. 
 
-Allowed materials
-~~~~~~~~~~~~~~~~~
+.. Allowed materials
+.. ~~~~~~~~~~~~~~~~~
 
-1. You may take the exam using your own laptop or a College PC.
-2. You may consult static websites such as https://python.org, and the course
-  text https://object-oriented-python.github.io. If you wish, you may use
-  search engines without embedded conversational AI capabilities such as
-  Google.
-3. You must not attempt to communicate with anyone other than an invigilator.
-  This includes, but is not limited to:
+.. 1. You may take the exam using your own laptop or a College PC.
+.. 2. You may consult static websites such as https://python.org, and the course
+..    text https://object-oriented-python.github.io. If you wish, you may use
+..    search engines without embedded conversational AI capabilities such as
+..    Google.
+.. 3. You must not attempt to communicate with anyone other than an invigilator.
+..    This includes, but is not limited to:
 
-   a. sending or receiving emails,
+..    a. sending or receiving emails,
 
-   b. sending or receiving instant messages on any platform, and
+..    b. sending or receiving instant messages on any platform, and
 
-   c. posting on any web forum.
+..    c. posting on any web forum.
 
-4. You must not attempt to employ conversational AI tools such as ChatGPT,
-  Microsoft Bing, or GitHub Copilot.
+.. 4. You must not attempt to employ conversational AI tools such as ChatGPT,
+..   Microsoft Bing, or GitHub Copilot.
 
-Using unauthorised materials or attempting to communicate with anyone other
-than an invigilator are exam offences and will be dealt with under the academic
-misconduct policy and procedures.
+.. Using unauthorised materials or attempting to communicate with anyone other
+.. than an invigilator are exam offences and will be dealt with under the academic
+.. misconduct policy and procedures.
 
 Support while revising
 ~~~~~~~~~~~~~~~~~~~~~~
