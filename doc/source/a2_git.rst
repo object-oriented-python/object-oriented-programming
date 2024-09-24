@@ -776,7 +776,7 @@ attempt to provide useful feedback on what has gone wrong when a test is
 failed.
 
 Doing an exercise again
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Sometimes, such as when you are revising for an exam by doing past papers, you 
 might want to start again with a fresh template repository. Using Git, this can
@@ -825,7 +825,7 @@ you would create the branch by typing:
 
 .. code-block:: console
 
-    $ git branch feedback second_attempt
+    $ git branch second_attempt feedback
 
 If you don't have a `feedback` branch then you would instead use the commit
 hash of the last commit before your work, which you found above by searching
