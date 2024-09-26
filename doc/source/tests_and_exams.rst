@@ -29,13 +29,13 @@ final exam you could spend more time on some questions than others. The
 question will be subdivided into identified parts with a specified number of
 marks associated with each.
 
-The test will work using GitHub Classroom. The link to accept the test
-"assignment" will be distributed at the start time of the test, simultaneously
-as an announcement on Blackboard, and in the Ed forum. The test repository
-will contain a file :file:`README.rst` containing the questions, skeleton code
-appropriate to the questions, and tests. GitHub shows :file:`README.rst` files on
-the repository web page, and the instructions will be easier to read there since
-any links will be clickable.
+.. The test will work using GitHub Classroom. The link to accept the test
+.. "assignment" will be distributed at the start time of the test, simultaneously
+.. as an announcement on Blackboard, and in the Ed forum. The test repository
+.. will contain a file :file:`README.rst` containing the questions, skeleton code
+.. appropriate to the questions, and tests. GitHub shows :file:`README.rst` files on
+.. the repository web page, and the instructions will be easier to read there since
+.. any links will be clickable.
 
 The mark scheme
 ---------------
@@ -64,112 +64,112 @@ inelegantly written (for example taking many too many steps to achieve simple
 functionality) and which used a suboptimal algorithm could be expected to earn
 half of the marks available for a question.
 
-Using Git in the test
----------------------
+.. Using Git in the test
+.. ---------------------
 
-You should accept the test from GitHub Classroom, and clone the test repository
-into the folder you created for the course, just like you have been doing for
-the exercise repositories. This will help ensure that you are programming in
-the same environment you have been using all along, and therefore avoid any
-unfortunate misconfiguration surprises in the test.
+.. You should accept the test from GitHub Classroom, and clone the test repository
+.. into the folder you created for the course, just like you have been doing for
+.. the exercise repositories. This will help ensure that you are programming in
+.. the same environment you have been using all along, and therefore avoid any
+.. unfortunate misconfiguration surprises in the test.
 
-This is a test of programming as a whole, so using Git correctly is a part of
-the test. This has some consequences for how you should go about the test:
+.. This is a test of programming as a whole, so using Git correctly is a part of
+.. the test. This has some consequences for how you should go about the test:
 
-1. Commit *and* push your work as you go along. Do not rely on committing once
-   at the end of the test. You will be marked on what you have pushed to GitHub
-   at the end of the test period. If the first time that you try to push
-   something to GitHub is at the end of the test time, and something goes wrong, then
-   you will receive 0% for the test, because you will not have pushed any
-   answers.
-2. Don't forget to `git add` any files you need to create. If you don't add them
-   to the repository, they won't be pushed and therefore they won't be marked.
+.. 1. Commit *and* push your work as you go along. Do not rely on committing once
+..    at the end of the test. You will be marked on what you have pushed to GitHub
+..    at the end of the test period. If the first time that you try to push
+..    something to GitHub is at the end of the test time, and something goes wrong, then
+..    you will receive 0% for the test, because you will not have pushed any
+..    answers.
+.. 2. Don't forget to `git add` any files you need to create. If you don't add them
+..    to the repository, they won't be pushed and therefore they won't be marked.
 
-.. warning::
+.. .. warning::
 
-    If you commit and push often as you go through the test then not only will
-    you know that you have some marks in the bank already, but you will have a
-    record of what you had done at each point in time. In the unlikely event of a failure outside your
-    control, such as your network failing or GitHub going down, it will be very
-    easy to assign the correct marks to students who have already pushed a large
-    part of their work to GitHub. At the other extreme, it will be difficult to
-    ascribe any credit at all to students with no pushed work who then push a
-    single commit to GitHub after the time has expired.
+..     If you commit and push often as you go through the test then not only will
+..     you know that you have some marks in the bank already, but you will have a
+..     record of what you had done at each point in time. In the unlikely event of a failure outside your
+..     control, such as your network failing or GitHub going down, it will be very
+..     easy to assign the correct marks to students who have already pushed a large
+..     part of their work to GitHub. At the other extreme, it will be difficult to
+..     ascribe any credit at all to students with no pushed work who then push a
+..     single commit to GitHub after the time has expired.
 
-Preparing for the test
-----------------------
+.. Preparing for the test
+.. ----------------------
 
-The way to prepare for the test is to program. In the first instance, you should
-make sure you have completed all of the programming exercises for the previous
-weeks. Ensure that you can run and pass all the tests locally on your machine,
-and also ensure that you have pushed everything to GitHub and that the tests
-show as passing there.
+.. The way to prepare for the test is to program. In the first instance, you should
+.. make sure you have completed all of the programming exercises for the previous
+.. weeks. Ensure that you can run and pass all the tests locally on your machine,
+.. and also ensure that you have pushed everything to GitHub and that the tests
+.. show as passing there.
 
-Once you've gone through the previous exercises, you should attempt the practice
-questions here. Each of these is a question similar in format and length to the
-questions on the exam. Just like on the exam, the question is specified in the
-:file:`README.rst` file in the exercise repository. When you first attempt each
-of these exercises, you should set yourself a 40 minute timer and see what you
-can get done (and committed and pushed!) in the time you would have in the test.
-After that, if you haven't finished, then go on and finish the exercise.
-Programming is a practical discipline, and finishing one exercise will make you
-faster and more capable when you attempt the next one.
+.. Once you've gone through the previous exercises, you should attempt the practice
+.. questions here. Each of these is a question similar in format and length to the
+.. questions on the exam. Just like on the exam, the question is specified in the
+.. :file:`README.rst` file in the exercise repository. When you first attempt each
+.. of these exercises, you should set yourself a 40 minute timer and see what you
+.. can get done (and committed and pushed!) in the time you would have in the test.
+.. After that, if you haven't finished, then go on and finish the exercise.
+.. Programming is a practical discipline, and finishing one exercise will make you
+.. faster and more capable when you attempt the next one.
 
-Exercises
----------
+.. Exercises
+.. ---------
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/aAZlccNh>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/aAZlccNh>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-.. note::
+.. .. note::
 
-    Do not forget to commit and push as you go. Do not leave this until the end
-    of the test.
+..     Do not forget to commit and push as you go. Do not leave this until the end
+..     of the test.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/Z_N1oT5H>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/Z_N1oT5H>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/ABVAZFhT>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/ABVAZFhT>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/4gqpMGKz>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/4gqpMGKz>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
     
-        This problem was the midterm test in 2021.
+..         This problem was the midterm test in 2021.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/_OkMaVLz>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/_OkMaVLz>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
     
-        This problem was the midterm test in 2022.
+..         This problem was the midterm test in 2022.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/o7iGDV31>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/o7iGDV31>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
     
-        This problem was the midterm test in spring 2023.
+..         This problem was the midterm test in spring 2023.
 
 Exam preparation
 ----------------
@@ -219,58 +219,58 @@ The module Ed forum will remain open throughout the revision period and we
 will be very happy to respond to your questions. There will also be a revision
 lecture at the start of the summer term.
 
-Past papers
-~~~~~~~~~~~
+.. Past papers
+.. ~~~~~~~~~~~
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/T2uShUW8>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/T2uShUW8>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
 
-        This was the August 2021 exam.
+..         This was the August 2021 exam.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/lHkZo7H0>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/lHkZo7H0>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
 
-        This was the May 2022 exam.
+..         This was the May 2022 exam.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/6CNSDTzo>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/6CNSDTzo>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
 
-        This was the August 2022 exam.
+..         This was the August 2022 exam.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/ian0yjPK>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/ian0yjPK>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
 
-        This was the May 2023 exam.
+..         This was the May 2023 exam.
 
-.. proof:exercise::
+.. .. proof:exercise::
 
-    Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/p-JqEA4w>`__. Follow the instructions in
-    the README file that will be displayed on GitHub on your copy of the page.
+..     Obtain the `practice problem from GitHub Classroom
+..     <https://classroom.github.com/a/p-JqEA4w>`__. Follow the instructions in
+..     the README file that will be displayed on GitHub on your copy of the page.
 
-    .. note::
+..     .. note::
 
-        This was the January 2024 exam.
+..         This was the January 2024 exam.
 
 
 .. Further programming practice ideas
