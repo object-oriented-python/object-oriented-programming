@@ -1084,14 +1084,14 @@ already familiar with Git and GitHub then you will also need to work through
 
 .. proof:exercise::
 
-    Create a new Python :term:`package` named :mod:`math_utils` containing a
-    :term:`module` called :mod:`primes`. In the :mod:`primes` module define a
-    function :func:`isprime` which takes in a single integer argument and
-    returns `True` or `False` depending on whether or not the argument is
-    prime. There is no need use a sophisticated algorithm, simply checking
-    whether the number is zero modulo any of the integers less than its square
-    root will be fine. Test your code by running the following in the exercise
-    repository:
+    In your week 2 exercise repository, create a new Python :term:`package`
+    named :mod:`math_utils` containing a :term:`module` called :mod:`primes`.
+    In the :mod:`primes` module define a function :func:`isprime` which takes
+    in a single integer argument and returns `True` or `False` depending on
+    whether or not the argument is prime. There is no need use a sophisticated
+    algorithm, simply checking whether the number is zero modulo any of the
+    integers less than its square root will be fine. Test your code by running
+    the following in the exercise repository:
 
     .. code-block:: console
 
