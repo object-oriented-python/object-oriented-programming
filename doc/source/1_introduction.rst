@@ -65,7 +65,7 @@ tools. At various points you'll also need install several more Python packages,
 but you don't need to install those right now. The core tools you will need
 are:
 
-    1. Python version 3.8 or later (3.11 or later recommended).
+    1. Python version 3.9 or later (3.11 or later recommended).
     2. Git (the revision control system we're going to use).
     3. A Python-aware text editor or :term:`integrated development
        environment` (IDE). Visual Studio Code is recommended, and all the
@@ -114,7 +114,7 @@ references in this book are to that version.
 
 Within Python 3, there is a minor version release approximately every year.
 Once released, this receives security updates for 5 years. At the time of
-writing, Python 3.11 is the newest release version, and Python 3.8 is the
+writing, Python 3.12 is the newest release version, and Python 3.9 is the
 oldest version that still receives security fixes. The user-facing differences
 between minor Python versions are usually fairly minimal, so for the purposes
 of this book it doesn't matter which of the currently supported versions of
@@ -140,26 +140,26 @@ default:
 
     > py --version
 
-On the author's computer, this prints `Python 3.11.4`, which is the version of
+On the author's computer, this prints `Python 3.12.6`, which is the version of
 Python I expect to be using. This means I can launch Python on Windows using
 just `py`. If it printed a different version, then I could attempt to force it
 to use the version I want like this:
 
 .. code-block:: console
 
-    > py -3.11 --version
+    > py -3.12 --version
 
 If that fails, then there is an issue with your Python documentation and you
 need to go back to the start of this section to work out how to install the
 right version.
 
 On Mac or Linux, the safest way to ensure that you are running the right
-version of Python is to use the full version number, e.g. `python3.11`. You can
+version of Python is to use the full version number, e.g. `python3.12`. You can
 check this with, for example:
 
 .. code-block:: console
 
-    $ python3.11 --version
+    $ python3.12 --version
 
 If this fails, then the relevant Python version isn't (correctly) installed and
 you will need to use a different version, or install it.
@@ -239,13 +239,13 @@ called `PoP_venv` on Windows, you would type:
 
 .. code-block:: console
 
-    > py -3.11 -m venv PoP_venv
+    > py -3.12 -m venv PoP_venv
 
 while on Mac or Linux you would type:
 
 .. code-block:: console
 
-    $ python3.11 -m venv PoP_venv
+    $ python3.12 -m venv PoP_venv
 
 If you're using a different version of Python then modify the command according
 to the discussion in section :numref:`run_version`.
