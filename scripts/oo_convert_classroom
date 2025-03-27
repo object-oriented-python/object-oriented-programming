@@ -1,0 +1,87 @@
+#! /usr/bin/env python
+import json
+import yaml
+import os
+import copy
+from argparse import ArgumentParser
+
+
+yaml_template = {
+    'name': 'Autograding Tests',
+    'on': ['push', 'repository_dispatch'],
+    'permissions': {'checks': 'write', 'actions': 'read', 'contents': 'read'},
+    'jobs': {'run-autograding-tests': {'runs-on': 'ubuntu-latest'}}
+}
+
+
+def report(runners):
+    return {
+        'name': 'Autograding Reporter',
+        'uses': 'classroom-resources/autograding-grading-reporter@v1',
+        'env': {r.upper() + "_RESULTS": '${{steps.' + r + '.outputs.result}}'
+                for r in runners},
+        'with': {'runners': ", ".join(runners)}
+    }
+
+
+step_header = [
+    {'name': 'Checkout code', 'uses': 'actions/checkout@v4'},
+    {'name': 'Install Python',
+     'uses': 'actions/setup-python@v5',
+     'with': {'python-version': '3.12'}}
+]
+
+step_template = {
+    'uses': 'classroom-resources/autograding-command-grader@v1',
+    'with': {
+        'setup-command': '',
+        'command': '',
+        'timeout': 1,
+        'max-score': 0
+    }
+}
+
+
+def convert_tests(tests):
+    """Convert tests from old json to new yaml."""
+    steps = step_header.copy()
+    for test in tests:
+        step = copy.deepcopy(step_template)
+        step["name"] = test["name"]
+        step["id"] = test["name"]
+        step["with"]["test-name"] = test["name"]
+        step["with"]["setup-command"] = test["setup"]
+        step["with"]["command"] = test["run"]
+        step["with"]["timeout"] = test["timeout"]
+        step["with"]["max-score"] = test["points"]
+        steps.append(step)
+    steps.append(report([test["name"] for test in tests]))
+
+    tests_yaml = yaml_template.copy()
+    tests_yaml['jobs']['run-autograding-tests']['steps'] = steps
+    return tests_yaml
+
+
+if __name__ == "__main__":
+    parser = ArgumentParser(
+        description="""Convert old GitHub classroom autograding.json into"""
+        """ new classroom.yml."""
+    )
+    parser.add_argument(
+        "repository", type=str, action="store",
+        help="The folder name of the repository to convert."
+    )
+    args = parser.parse_args()
+
+    with open(os.path.join(
+        args.repository, ".github", "classroom", "autograding.json"
+    ), "r") as infile:
+        tests = json.load(infile)
+
+    out_yaml = convert_tests(tests["tests"])
+
+    with open(os.path.join(
+        args.repository, ".github", "workflows", "classroom.yml"
+    ), "w") as outfile:
+        for key in ['name', 'on', 'permissions', 'jobs']:
+            outfile.write(yaml.dump({key: out_yaml[key]}))

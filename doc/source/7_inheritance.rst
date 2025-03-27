@@ -329,11 +329,11 @@ follows:
 
         def _validate(self, value):
             """Ensure that value is an allowed element value in this group."""
-            if not (isinstance(value, np.ndarray),
-                    value.shape == (self.degree, self.degree)):
+            value = np.asarray(value)
+            if not (value.shape == (self.n, self.n)):
                 raise ValueError("Element value must be a "
-                                f"{self.degree} x {self.degree}"
-                                "square array.")
+                                 f"{self.n} x {self.n}"
+                                 "square array.")
 
         def operation(self, a, b):
             """Perform the group operation on two values.

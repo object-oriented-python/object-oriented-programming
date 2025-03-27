@@ -45,7 +45,7 @@ Windows
 .......
 
 Install `Python from the Microsoft Store
-<https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K>`__. 
+<https://apps.microsoft.com/detail/9ncvdn91xzqp>`__. 
 
 MacOS
 .....
@@ -55,7 +55,7 @@ purposes. Instead, install Python from Homebrew:
 
 .. code-block:: console
 
-    $ brew install python3.11
+    $ brew install python3.12
 
 
 Linux
