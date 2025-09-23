@@ -615,28 +615,29 @@ familiar with looping over sequences such as lists:
 
 Python offers a useful abstraction of this concept. By implementing the correct
 :term:`special methods <special method>`, a container class can provide the
-ability to be iterated over. This is a great example of abstraction in action:
-the user doesn't need to know or care how a particular container is implemented
-and therefore how to find all of its contents, they can simply write a for loop
-to access every item in turn.
+ability to be iterated over. Such a class is called an :term:`iterable`. This
+is a great example of abstraction in action: the user doesn't need to know or
+care how a particular container is implemented and therefore how to find all of
+its contents, they can simply write a for loop to access every item in turn.
 
 There are two :term:`special methods <special method>` required for iteration.
 Neither take any arguments beyond the object itself. The first,
-:meth:`~container.__iter__`, needs to be implemented by the container type. Its
-role is to return an object which implements iteration. This could be the
-container itself, or it could be a special iteration object (for example
-because it is necessary to store a number recording where the iteration is up
-to).
+:meth:`~container.__iter__`, needs to be implemented by the :term:`iterable`
+type. Its role is to return an object which implements iteration. Usually this
+will be a new object which keeps track of the iteration.
 
-The object returned by :meth:`~container.__iter__` is called an iterator. It
-also needs to implement :meth:`~iterator.__iter__` (for example it could simply
-`return self`). In addition, it needs to implement the
-:meth:`~iterator.__next__` method. This is called by Python repeatedly to
-obtain the next object in the iteration sequence. Once the sequence is
-exhausted, subsequent calls to :meth:`~iterator.__next__` should raise the
-built-in :class:`StopIteration` exception. This tells Python that the iteration
-is over. This arrangement is called the iterator protocol, and it's further
-documented in the :ref:`official Python documentation <typeiter>`.
+The object returned by :meth:`~container.__iter__` is called an
+:term:`iterator`. It also needs to implement :meth:`~iterator.__iter__`, for
+the technical reason that it should be possible to interate over either the
+iterable or the corresponding iterator. The :meth:`~iterator.__iter__` method
+of an :term:`iterator` will usually simply `return self`. In addition,
+iterators must implement the :meth:`~iterator.__next__` method. This is called
+by Python repeatedly to obtain the next object in the iteration sequence. Once
+the sequence is exhausted, subsequent calls to :meth:`~iterator.__next__`
+should raise the built-in :class:`StopIteration` exception. This tells Python
+that the iteration is over. This arrangement is called the iterator protocol,
+and it's further documented in the :ref:`official Python documentation
+<typeiter>`.
 
 .. hint::
 
@@ -714,14 +715,52 @@ automatically:
    In [5]: tuple(linked_list)
    Out[5]: (1, 2, 3)
 
+Generator expressions
+---------------------
+
+In addition to the iterator protocol, Python also includes an intrinsic syntax
+for creating a simple iterator. These iterators are called generator
+expressions and their syntax is very similar to that of the comprehensions with
+which you are already familiar. As a trivial example, one could loop over the
+first 5 square numbers with:
+
+.. code-block:: ipython3
+
+    In [3]: for j in (i**2 for i in range(5)):
+       ...:     print(j)   
+       ...: 
+    0
+    1
+    4
+    9
+    16
+
+The difference between the generator expression `(i**2 for i in range(5))` and
+the list comprehension `[i**2 for i in range(5)]` is that the loop in the list
+comprehension is immediately executed and the results put into a list object.
+In contrast, the generator expression produces an iterator object which is
+iterated over as it is used. Generator expressions are mostly useful when the
+sequence is to be used only once. The following slightly frivolous example
+function removes the vowels from a string:
+
+.. code-block:: python3
+
+    def no_vowels(string):
+        return "".join(char for char in string if char not in "aeiou")
+
+This example illustrates another feature of the generator expression syntax:
+the brackets surrounding the expression can be omitted if it is the only
+argument to a function. In this case, that function is the :meth:`~str.join`
+method of the empty string (`""`).
+
 Other abstract data types
 -------------------------
 
-Here we have introduced in some detail a few relatively simple abstract data
-types that illustrate the distinction between the mathematical properties of a
-type and the concrete details of its implementation. There are many other
-abstract data types, some of which you will have already met, and we will
-encounter a few more in this course. For context, here are a few other
+In this chapter we have introduced in some detail a few relatively simple
+abstract data types that illustrate the distinction between the mathematical
+properties of a type and the concrete details of its implementation. There are
+many other abstract data types, some of which you will have already met, and we
+will encounter a few more in this course. For context, here are a few other
 examples.
 
 set
@@ -789,8 +828,17 @@ Glossary
 
     introspection
         The ability to inspect the implementation of a program from inside that
-        program while it is running.   
-        
+        program while it is running.
+
+    iterable
+        An object over which iteration is possible. Iterators have an
+        :meth:`~container.__iter__` method which returns an :term:`iterator`.
+
+    iterator  
+        An object encoding the progress of an iteration. Python internally
+        implements iteration by successively calling the
+        :meth:`~iterator.__next__` method of an iterator.
+
     queue
     FIFO (first in, first out)
         An :term:`abstract data type` representing an ordered sequence
