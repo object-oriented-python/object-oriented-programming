@@ -317,9 +317,9 @@ Accepting the assignment on GitHub Classroom
 For each exercise, your module will provide access to a link that you can use
 to accept the corresponding GitHub classroom assignment. In this case, there is
 a tiny toy assignment created just for this exercise. The assignment acceptance
-link is available on the exercises page for this book:
-`https://object-oriented-python.github.io/edition3/exercises.html
-<https://object-oriented-python.github.io/edition3/exercises.html>`__
+link is available at:
+`https://classroom.github.com/a/Ve9truKA
+<https://classroom.github.com/a/Ve9truKA>`__
 
 When you click on the assignment, if you're not already logged into your `GitHub
 <https://GitHub.com>`__ account then you will be prompted to do so. If this is
@@ -331,6 +331,27 @@ green button. GitHub Classroom will now create a new repository containing your
 personal copy of the assignment. You can click on the link provided to navigate
 to your new GitHub repository. You will also receive an email inviting you to
 this repository. You can now skip forward to :numref:`exercise_instructions`. 
+
+.. note::
+
+    When attempt to accept an assignment you might instead receive an error
+    message starting:
+
+    .. warning::
+
+       Your GitHub account cannot this invitation at this time. The
+       Classroom's Organization restricts membership to users within the same
+       enterprise. 
+
+    If this is the case, then your institution is using GitHub Enterprise, and
+    it's necessary for you to associate your GitHub username with the
+    Enterprise. You will need to ask your instructor how to do this. For
+    students at Imperial College London, you should click on the Imperial
+    GitHub `single sign on page
+    <https://github.com/orgs/ImperialCollegeLondon/sso>` and sign in using your
+    Imperial credentials. If prompted to do so, also sign in with your GitHub
+    username. You should now be able to go back and click on the assignment
+    acceptance link.
 
 .. _accept_template:
 
