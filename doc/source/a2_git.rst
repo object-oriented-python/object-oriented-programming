@@ -348,7 +348,7 @@ this repository. You can now skip forward to :numref:`exercise_instructions`.
     Enterprise. You will need to ask your instructor how to do this. For
     students at Imperial College London, you should click on the Imperial
     GitHub `single sign on page
-    <https://github.com/orgs/ImperialCollegeLondon/sso>` and sign in using your
+    <https://github.com/orgs/ImperialCollegeLondon/sso>`__ and sign in using your
     Imperial credentials. If prompted to do so, also sign in with your GitHub
     username. You should now be able to go back and click on the assignment
     acceptance link.
