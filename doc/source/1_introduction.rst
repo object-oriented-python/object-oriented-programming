@@ -239,13 +239,13 @@ called `PoP_venv` on Windows, you would type:
 
 .. code-block:: console
 
-    > py -3.12 -m venv PoP_venv
+    > py -3.13 -m venv PoP_venv
 
 while on Mac or Linux you would type:
 
 .. code-block:: console
 
-    $ python3.12 -m venv PoP_venv
+    $ python3.13 -m venv PoP_venv
 
 If you're using a different version of Python then modify the command according
 to the discussion in section :numref:`run_version`.
