@@ -21,13 +21,10 @@ Python documentation for any features they suggest.
 Test format
 -----------
 
-The final exam will be two hours long and comprise 4 questions, each of which
-will be marked out of 20. The midterm test will be 40 minutes long, so to keep
-the question format consistent with the final exam, there will a single
-question. The extra 10 minutes is to give you some flexibility, because in the
-final exam you could spend more time on some questions than others. The
-question will be subdivided into identified parts with a specified number of
-marks associated with each.
+The final exam will be two hours long and comprise 3 questions, each of which
+will be marked out of 20. The midterm test will be 40 minutes long and there
+will a single question. The question will be subdivided into identified parts
+with a specified number of marks associated with each.
 
 .. The test will work using GitHub Classroom. The link to accept the test
 .. "assignment" will be distributed at the start time of the test, simultaneously
@@ -48,53 +45,53 @@ of flake8 and disregard any false positives. The other 2 marks will be allocated
 on a similar basis for basic style matters that flake8 cannot check, such as
 conforming with naming conventions and commenting appropriately.
 
-The remaining 16 marks will be allocated to the various parts of the questions. As with a
-written maths test, getting the correct final answer is necessary but not
-sufficient. A full marks answer to a question will be functionally correct, have
-optimal :term:`algorithmic complexity`, and be elegant and readable. The tests
-provided are an aid to writing correct code: passing the tests does not prove
-that your answer is correct. For example, your code could produce the correct
-output in the cases tested but nonetheless fail to implement the specification in
-the question. For the avoidance of doubt, a correct answer is one which
-correctly implements the specification, not simply one which passes the tests
-provided. 
+The remaining 16 marks will be allocated to the various parts of the questions.
+As with a written maths test, getting the correct final answer is necessary but
+not sufficient. A full marks answer to a question will be functionally correct,
+have optimal :term:`algorithmic complexity`, and be elegant and readable. The
+tests provided are an aid to writing correct code: passing the tests does not
+prove that your answer is correct. For example, your code could produce the
+correct output in the cases tested but nonetheless fail to implement the
+specification in the question. For the avoidance of doubt, a correct answer is
+one which correctly implements the specification, not simply one which passes
+the tests provided. 
 
 As a rough guide, a solution which produced the correct output but was very
 inelegantly written (for example taking many too many steps to achieve simple
 functionality) and which used a suboptimal algorithm could be expected to earn
 half of the marks available for a question.
 
-.. Using Git in the test
-.. ---------------------
+Using Git in the test
+---------------------
 
-.. You should accept the test from GitHub Classroom, and clone the test repository
-.. into the folder you created for the course, just like you have been doing for
-.. the exercise repositories. This will help ensure that you are programming in
-.. the same environment you have been using all along, and therefore avoid any
-.. unfortunate misconfiguration surprises in the test.
+You should accept the test from GitHub Classroom, and clone the test repository
+into the folder you created for the course, just like you have been doing for
+the exercise repositories. This will help ensure that you are programming in
+the same environment you have been using all along, and therefore avoid any
+unfortunate misconfiguration surprises in the test.
 
-.. This is a test of programming as a whole, so using Git correctly is a part of
-.. the test. This has some consequences for how you should go about the test:
+This is a test of programming as a whole, so using Git correctly is a part of
+the test. This has some consequences for how you should go about the test:
 
-.. 1. Commit *and* push your work as you go along. Do not rely on committing once
-..    at the end of the test. You will be marked on what you have pushed to GitHub
-..    at the end of the test period. If the first time that you try to push
-..    something to GitHub is at the end of the test time, and something goes wrong, then
-..    you will receive 0% for the test, because you will not have pushed any
-..    answers.
-.. 2. Don't forget to `git add` any files you need to create. If you don't add them
-..    to the repository, they won't be pushed and therefore they won't be marked.
+1. Commit *and* push your work as you go along. Do not rely on committing once
+   at the end of the test. You will be marked on what you have pushed to GitHub
+   at the end of the test period. If the first time that you try to push
+   something to GitHub is at the end of the test time, and something goes wrong, then
+   you will receive 0% for the test, because you will not have pushed any
+   answers.
+2. Don't forget to `git add` any files you need to create. If you don't add them
+   to the repository, they won't be pushed and therefore they won't be marked.
 
-.. .. warning::
+.. warning::
 
-..     If you commit and push often as you go through the test then not only will
-..     you know that you have some marks in the bank already, but you will have a
-..     record of what you had done at each point in time. In the unlikely event of a failure outside your
-..     control, such as your network failing or GitHub going down, it will be very
-..     easy to assign the correct marks to students who have already pushed a large
-..     part of their work to GitHub. At the other extreme, it will be difficult to
-..     ascribe any credit at all to students with no pushed work who then push a
-..     single commit to GitHub after the time has expired.
+    If you commit and push often as you go through the test then not only will
+    you know that you have some marks in the bank already, but you will have a
+    record of what you had done at each point in time. In the unlikely event of a failure outside your
+    control, such as your network failing or GitHub going down, it will be very
+    easy to assign the correct marks to students who have already pushed a large
+    part of their work to GitHub. At the other extreme, it will be difficult to
+    ascribe any credit at all to students with no pushed work who then push a
+    single commit to GitHub after the time has expired.
 
 Preparing for the test
 ----------------------
@@ -121,38 +118,48 @@ Exercises
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/whZ5Hmzx>`__. Follow the instructions in
+    <https://classroom.github.com/a/N9g4rTii>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     Note that these instructions are only applicable to the practice problems.
-    The test this year will be conducted using a new system.
+    The instructions this year will be different.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/BIoMj_-E>`__. Follow the instructions in
+    <https://classroom.github.com/a/inNEPHVo>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     Note that these instructions are only applicable to the practice problems.
-    The test this year will be conducted using a new system.
+    The instructions this year will be different.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/jVHNwYHx>`__. Follow the instructions in
+    <https://classroom.github.com/a/OIuwA4kx>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     Note that these instructions are only applicable to the practice problems.
-    The test this year will be conducted using a new system.
+    The instructions this year will be different.
 
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/6bPHF9F7>`__. Follow the instructions in
+    <https://classroom.github.com/a/xiJiYtY5>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     Note that these instructions are only applicable to the practice problems.
-    The test this year will be conducted using a new system.
+    The instructions this year will be different.
+
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/maQ7QXJ3>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    Note that these instructions are only applicable to the practice problems.
+    The instructions this year will be different.
 
 .. Exam preparation
 .. ----------------
