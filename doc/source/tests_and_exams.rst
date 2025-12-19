@@ -161,106 +161,133 @@ Exercises
     Note that these instructions are only applicable to the practice problems.
     The instructions this year will be different.
 
-.. Exam preparation
-.. ----------------
+Exam preparation
+----------------
 
-.. The final exam will be similar in format to the :ref:`midterm test <midterm>`, so all
-.. of the advice about preparing applies there too. As with all second year
-.. elective modules, the exam will comprise four questions, each marked out of 20.
+The final exam will be similar in format to the :ref:`midterm test <midterm>`,
+so all of the advice about preparing applies there too. The exam will comprise
+three questions, each marked out of 20.
 
-.. As with everything in this course, the one thing you can do to effectively
-.. prepare for the exam is to program. You should complete any of the exercises in
-.. the course that you have not yet done, and more exercises are given below.
+As with everything in this course, the one thing you can do to effectively
+prepare for the exam is to program. You should complete any of the exercises in
+the course that you have not yet done, and more exercises are given below.
 
-.. Exam scope
-.. ~~~~~~~~~~
+Exam scope
+~~~~~~~~~~
 
-.. Everything we have covered in the course up to and including week 11
-.. (chapter 10) will be fully examinable. 
+Everything we hve covered in the course up to and including week 10 (chapter 9)
+will be fully examinable. Chapter 11 will not be tested in the exam this year.
+There will not be specific questions on debugging, but obviously debugging
+skills will be important in completing the programming exercises.
 
-.. .. Allowed materials
-.. .. ~~~~~~~~~~~~~~~~~
+.. Allowed materials
+.. ~~~~~~~~~~~~~~~~~
 
-.. .. 1. You may take the exam using your own laptop or a College PC.
-.. .. 2. You may consult static websites such as https://python.org, and the course
-.. ..    text https://object-oriented-python.github.io. If you wish, you may use
-.. ..    search engines without embedded conversational AI capabilities such as
-.. ..    Google.
-.. .. 3. You must not attempt to communicate with anyone other than an invigilator.
-.. ..    This includes, but is not limited to:
+.. 1. You may take the exam using your own laptop or a College PC.
+.. 2. You may consult static websites such as https://python.org, and the course
+..    text https://object-oriented-python.github.io. If you wish, you may use
+..    search engines without embedded conversational AI capabilities such as
+..    Google.
+.. 3. You must not attempt to communicate with anyone other than an invigilator.
+..    This includes, but is not limited to:
 
-.. ..    a. sending or receiving emails,
+..    a. sending or receiving emails,
 
-.. ..    b. sending or receiving instant messages on any platform, and
+..    b. sending or receiving instant messages on any platform, and
 
-.. ..    c. posting on any web forum.
+..    c. posting on any web forum.
 
-.. .. 4. You must not attempt to employ conversational AI tools such as ChatGPT,
-.. ..   Microsoft Bing, or GitHub Copilot.
+.. 4. You must not attempt to employ conversational AI tools such as ChatGPT,
+..   Microsoft Bing, or GitHub Copilot.
 
-.. .. Using unauthorised materials or attempting to communicate with anyone other
-.. .. than an invigilator are exam offences and will be dealt with under the academic
-.. .. misconduct policy and procedures.
+.. Using unauthorised materials or attempting to communicate with anyone other
+.. than an invigilator are exam offences and will be dealt with under the academic
+.. misconduct policy and procedures.
 
-.. Support while revising
-.. ~~~~~~~~~~~~~~~~~~~~~~
+Support while revising
+~~~~~~~~~~~~~~~~~~~~~~
 
-.. The module Ed forum will remain open throughout the revision period and we
-.. will be very happy to respond to your questions. There will also be a revision
-.. lecture at the start of the summer term.
+The module Ed forum will remain open throughout the revision period and we
+will be very happy to respond to your questions. There will also be a revision
+lecture at the start of the summer term.
 
-.. .. Past papers
-.. .. ~~~~~~~~~~~
+Past papers
+~~~~~~~~~~~
 
-.. .. .. proof:exercise::
+Note that earlier past papers have four questions. Since May 2025 the exam has
+three questions.
 
-.. ..     Obtain the `practice problem from GitHub Classroom
-.. ..     <https://classroom.github.com/a/T2uShUW8>`__. Follow the instructions in
-.. ..     the README file that will be displayed on GitHub on your copy of the page.
 
-.. ..     .. note::
+.. proof:exercise::
 
-.. ..         This was the August 2021 exam.
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/T2uShUW8>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-.. .. .. proof:exercise::
+    .. note::
 
-.. ..     Obtain the `practice problem from GitHub Classroom
-.. ..     <https://classroom.github.com/a/lHkZo7H0>`__. Follow the instructions in
-.. ..     the README file that will be displayed on GitHub on your copy of the page.
+        This was the August 2021 exam.
 
-.. ..     .. note::
+.. proof:exercise::
 
-.. ..         This was the May 2022 exam.
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/lHkZo7H0>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-.. .. .. proof:exercise::
+    .. note::
 
-.. ..     Obtain the `practice problem from GitHub Classroom
-.. ..     <https://classroom.github.com/a/6CNSDTzo>`__. Follow the instructions in
-.. ..     the README file that will be displayed on GitHub on your copy of the page.
+        This was the May 2022 exam.
 
-.. ..     .. note::
+.. proof:exercise::
 
-.. ..         This was the August 2022 exam.
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/6CNSDTzo>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-.. .. .. proof:exercise::
+    .. note::
 
-.. ..     Obtain the `practice problem from GitHub Classroom
-.. ..     <https://classroom.github.com/a/ian0yjPK>`__. Follow the instructions in
-.. ..     the README file that will be displayed on GitHub on your copy of the page.
+        This was the August 2022 exam.
 
-.. ..     .. note::
+.. proof:exercise::
 
-.. ..         This was the May 2023 exam.
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/ian0yjPK>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
 
-.. .. .. proof:exercise::
+    .. note::
 
-.. ..     Obtain the `practice problem from GitHub Classroom
-.. ..     <https://classroom.github.com/a/p-JqEA4w>`__. Follow the instructions in
-.. ..     the README file that will be displayed on GitHub on your copy of the page.
+        This was the May 2023 exam.
 
-.. ..     .. note::
+.. proof:exercise::
 
-.. ..         This was the January 2024 exam.
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/p-JqEA4w>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This was the January 2024 exam.
+
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/gz3Pg2dF>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This was the May 2025 exam.
+
+.. proof:exercise::
+
+    Obtain the `practice problem from GitHub Classroom
+    <https://classroom.github.com/a/YoetQFj9>`__. Follow the instructions in
+    the README file that will be displayed on GitHub on your copy of the page.
+
+    .. note::
+
+        This was the August 2025 exam.
 
 
 .. .. Further programming practice ideas
