@@ -221,7 +221,7 @@ three questions.
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/T2uShUW8>`__. Follow the instructions in
+    <https://classroom.github.com/a/2zw_s9Y2>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
@@ -231,7 +231,7 @@ three questions.
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/lHkZo7H0>`__. Follow the instructions in
+    <https://classroom.github.com/a/0z6-4vck>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
@@ -241,7 +241,7 @@ three questions.
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/6CNSDTzo>`__. Follow the instructions in
+    <https://classroom.github.com/a/Yo0Y5L-V>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
@@ -251,7 +251,7 @@ three questions.
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/ian0yjPK>`__. Follow the instructions in
+    <https://classroom.github.com/a/tMaLtqdP>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
@@ -261,7 +261,7 @@ three questions.
 .. proof:exercise::
 
     Obtain the `practice problem from GitHub Classroom
-    <https://classroom.github.com/a/p-JqEA4w>`__. Follow the instructions in
+    <https://classroom.github.com/a/ubGLt-3h>`__. Follow the instructions in
     the README file that will be displayed on GitHub on your copy of the page.
 
     .. note::
