@@ -351,12 +351,6 @@ Classroom 50. Then:
     Imperial credentials. If prompted to do so, also sign in with your GitHub
     username. You should now be able to go back and accept the invitation.
 
-.. note::
-
-    If your course uses GitHub Classroom instead, the process is similar:
-    click on the assignment link provided by your instructor, sign in to
-    GitHub, give GitHub Classroom permission to access your account, and
-    accept the assignment.
 
 .. _accept_template:
 
