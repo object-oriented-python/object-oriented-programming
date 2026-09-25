@@ -8,7 +8,7 @@ repositories hosted on `GitHub <https://github.com>`__. This is a deliberate
 choice, because learning to use a revision control system such as Git is an
 important part of learning to be a good programmer. If you're doing these
 exercises as a part of a formal course, then a classroom service such as
-Classroom 50 or GitHub Classroom provides additional support for automatically creating your personal repository for each
+Classroom 50 provides additional support for automatically creating your personal repository for each
 exercise, for submitting your work, and providing feedback through autotesting.
 If you're working through this book yourself, you'll be able to use the
 template repositories on GitHub to access everything you need to do the
@@ -105,8 +105,8 @@ Jupyter notebooks. During the course of the work, you might need to show your
 code to the lecturer or a teaching assistant in order to get help, and at the
 end you need to share your work with the module staff to get it marked.
 
-Classroom services such as `Classroom 50 <https://classroom50.org>`__ and
-GitHub Classroom work with GitHub to provide every student doing a particular
+Classroom services such as `Classroom 50 <https://classroom50.org>`__  work with
+GitHub to provide every student doing a particular
 coding exercise with their own repository on GitHub that's prepopulated with
 the lecturer's skeleton code and ready to work with. Principles of Programming
 at Imperial College London uses Classroom 50. As we'll

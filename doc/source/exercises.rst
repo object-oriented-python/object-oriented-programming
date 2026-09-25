@@ -10,8 +10,8 @@ Chapter. For further information on using GitHub template repositories, see
 :numref:`Appendix %s <git>`.
 
 If you are using this book as a part of a course where the instructor provides
-assignments for the exercises (for example through Classroom 50 or GitHub
-Classroom), you should not use the links here but rather use the assignment
+assignments for the exercises (for example through Classroom 50),
+you should not use the links here but rather use the assignment
 links provided by your instructor. Students taking Principles of Programming at
 Imperial College London will find their assignments on `Classroom 50
 <https://classroom50.org/Imperial-MATH50009>`__.
