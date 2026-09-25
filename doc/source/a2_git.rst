@@ -326,14 +326,30 @@ Classroom 50. Then:
 
 1. Go to the Classroom 50 page for your course and click
    :kbd:`Sign in with GitHub`. For Principles of Programming at Imperial
-   College London, this page is `https://classroom50.org/Imperial-MATH50009
-   <https://classroom50.org/Imperial-MATH50009>`__. The first time you sign in, you will be asked
-   to give Classroom 50 permission to act on your behalf. You should do so.
+   College London, this page is
+   `https://classroom50.org/Imperial-MATH50009 <https://classroom50.org/Imperial-MATH50009>`__.
+   The first time you sign in, you will be asked to give Classroom 50
+   permission to act on your behalf. You should do so.
 2. Open the assignment and accept it. Classroom 50 will create a new
    repository containing your personal copy of the assignment, named after
    the classroom, the assignment, and your GitHub username.
 3. Follow the link to your new repository on GitHub. You can now skip forward
    to :numref:`exercise_instructions`.
+
+.. note::
+
+    When you try to accept the invitation to the course's GitHub
+    organisation, you might instead receive an error message saying that the
+    organisation restricts membership to users within the same enterprise.
+
+    If this is the case, then your institution is using GitHub Enterprise, and
+    it's necessary for you to associate your GitHub username with the
+    Enterprise. You will need to ask your instructor how to do this. For
+    students at Imperial College London, you should click on the Imperial
+    GitHub `single sign on page
+    <https://github.com/orgs/ImperialCollegeLondon/sso>`__ and sign in using your
+    Imperial credentials. If prompted to do so, also sign in with your GitHub
+    username. You should now be able to go back and accept the invitation.
 
 .. note::
 
