@@ -64,7 +64,7 @@ half of the marks available for a question.
 Using Git in the test
 ---------------------
 
-You should accept the test from GitHub Classroom, and clone the test repository
+You should accept the test from Classroom 50, and clone the test repository
 into the folder you created for the course, just like you have been doing for
 the exercise repositories. This will help ensure that you are programming in
 the same environment you have been using all along, and therefore avoid any

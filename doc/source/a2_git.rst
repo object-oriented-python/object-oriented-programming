@@ -7,8 +7,8 @@ The exercises in this book are all based on `Git <https://git-scm.com>`__
 repositories hosted on `GitHub <https://github.com>`__. This is a deliberate
 choice, because learning to use a revision control system such as Git is an
 important part of learning to be a good programmer. If you're doing these
-exercises as a part of a formal course, then GitHub classroom provides
-additional support for automatically creating your personal repository for each
+exercises as a part of a formal course, then a classroom service such as
+Classroom 50 provides additional support for automatically creating your personal repository for each
 exercise, for submitting your work, and providing feedback through autotesting.
 If you're working through this book yourself, you'll be able to use the
 template repositories on GitHub to access everything you need to do the
@@ -17,7 +17,8 @@ exercises.
 .. only:: not book
 
     This introduction just provides enough information to enable you to set up
-    and use Git, GitHub, and GitHub Classroom for the exercises in this book.
+    and use Git, GitHub, and a classroom service such as Classroom 50 for the
+    exercises in this book.
     For a more in-depth introduction to Git and GitHub, you are encouraged to
     work through the excellent `Git tutorial provided by the Software Carpentry
     project <http://swcarpentry.github.io/git-novice/>`__.
@@ -25,7 +26,8 @@ exercises.
 .. only:: book
 
     This introduction just provides enough information to enable you to set up
-    and use Git, GitHub, and GitHub Classroom for the exercises in this book.
+    and use Git, GitHub, and a classroom service such as Classroom 50 for the
+    exercises in this book.
     For a more in-depth introduction to Git and GitHub, you are encouraged to
     work through the excellent Git tutorial provided by the Software Carpentry
     project. [#swcarpentry]_
@@ -91,8 +93,8 @@ software development platform. Depending on the module you are taking, you may
 also use some of these extra features of GitHub, but we will mostly focus on how
 to use the core feature of storing a copy of your repository online.
 
-What is GitHub Classroom?
--------------------------
+What is a classroom service?
+----------------------------
 
 All of the collaborative features of Git and GitHub might sound like overkill
 when all you need to do is complete coding assignments that only you work on.
@@ -103,9 +105,11 @@ Jupyter notebooks. During the course of the work, you might need to show your
 code to the lecturer or a teaching assistant in order to get help, and at the
 end you need to share your work with the module staff to get it marked.
 
-GitHub Classroom is a service that works with GitHub to provide every student
-doing a particular coding exercise with their own repository on GitHub that's
-prepopulated with the lecturer's skeleton code and ready to work with. As we'll
+Classroom services such as `Classroom 50 <https://classroom50.org>`__  work with
+GitHub to provide every student doing a particular
+coding exercise with their own repository on GitHub that's prepopulated with
+the lecturer's skeleton code and ready to work with. Principles of Programming
+at Imperial College London uses Classroom 50. As we'll
 see below, this makes it really easy to obtain the exercise and work with it.
 
 .. _configure_git:
@@ -286,18 +290,19 @@ register for these benefits at `https://education.github.com/benefits
 
 .. _github_classroom_exercise:
 
-Doing exercises using GitHub or GitHub Classroom
-------------------------------------------------
+Doing exercises using GitHub or a classroom service
+---------------------------------------------------
 
 The exercises in this book are available as GitHub repositories, including
 skeleton code and automated testing. The way that you use Git and GitHub to
 access and do these exercises is always the same, though there are two
 different ways of initially generating your personal exercise repository on
 GitHub, depending on whether you are doing these exercises as a part of a
-formal course which the instructor has set up using GitHub classroom, or you
-are doing the exercises by yourself in private study. If you're using GitHub
-classroom as a part of a formal course where the instructor will be using
-GitHub classroom then follow the instructions in :numref:`accept_classroom`.
+formal course which the instructor has set up using a classroom service such
+as Classroom 50, or you are doing the exercises by yourself in private study.
+If you're doing the exercises as part of a formal course where the instructor
+has set up a classroom service, then follow the instructions in
+:numref:`accept_classroom`.
 If you're working on the exercises by yourself then follow the instructions in
 :numref:`accept_template`.
 
@@ -311,37 +316,31 @@ If you're working on the exercises by yourself then follow the instructions in
 
 .. _accept_classroom:
 
-Accepting the assignment on GitHub Classroom
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Accepting the assignment on Classroom 50
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For each exercise, your module will provide access to a link that you can use
-to accept the corresponding GitHub classroom assignment. In this case, there is
-a tiny toy assignment created just for this exercise. The assignment acceptance
-link is available at:
-`https://classroom.github.com/a/Ve9truKA
-<https://classroom.github.com/a/Ve9truKA>`__
+If your course uses `Classroom 50 <https://classroom50.org>`__, your instructor
+will first invite you to the course's GitHub organisation. This invitation
+arrives by email from GitHub, and you must accept it before you can use
+Classroom 50. Then:
 
-When you click on the assignment, if you're not already logged into your `GitHub
-<https://GitHub.com>`__ account then you will be prompted to do so. If this is
-your first GitHub Classroom assignment, you'll also be asked to give GitHub
-Classroom permission to access your GitHub account. You should do so.
-
-You will now be asked to accept the assignment. Do so by clicking on the large
-green button. GitHub Classroom will now create a new repository containing your
-personal copy of the assignment. You can click on the link provided to navigate
-to your new GitHub repository. You will also receive an email inviting you to
-this repository. You can now skip forward to :numref:`exercise_instructions`. 
+1. Go to the Classroom 50 page for your course and click
+   :kbd:`Sign in with GitHub`. For Principles of Programming at Imperial
+   College London, this page is
+   `https://classroom50.org/Imperial-MATH50009 <https://classroom50.org/Imperial-MATH50009>`__.
+   The first time you sign in, you will be asked to give Classroom 50
+   permission to act on your behalf. You should do so.
+2. Open the assignment and accept it. Classroom 50 will create a new
+   repository containing your personal copy of the assignment, named after
+   the classroom, the assignment, and your GitHub username.
+3. Follow the link to your new repository on GitHub. You can now skip forward
+   to :numref:`exercise_instructions`.
 
 .. note::
 
-    When attempt to accept an assignment you might instead receive an error
-    message starting:
-
-    .. warning::
-
-       Your GitHub account cannot this invitation at this time. The
-       Classroom's Organization restricts membership to users within the same
-       enterprise. 
+    When you try to accept the invitation to the course's GitHub
+    organisation, you might instead receive an error message saying that the
+    organisation restricts membership to users within the same enterprise.
 
     If this is the case, then your institution is using GitHub Enterprise, and
     it's necessary for you to associate your GitHub username with the
@@ -350,15 +349,15 @@ this repository. You can now skip forward to :numref:`exercise_instructions`.
     GitHub `single sign on page
     <https://github.com/orgs/ImperialCollegeLondon/sso>`__ and sign in using your
     Imperial credentials. If prompted to do so, also sign in with your GitHub
-    username. You should now be able to go back and click on the assignment
-    acceptance link.
+    username. You should now be able to go back and accept the invitation.
+
 
 .. _accept_template:
 
 Accessing the exercise using the template repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you don't have an instructor who has set up GitHub Classroom exercises for
+If you don't have an instructor who has set up classroom exercises for
 your course then you will obtain your copy of the exercise by creating a new
 repository in your GitHub account using the template provided. To use the
 template, navigate to the exercise repository, which in this case is:
@@ -821,7 +820,7 @@ The result should be something like:
 If you don't see `nothing to commit` then commit your work. If you don't see
 `up to date` then push.
 
-If your repository comes from GitHub classroom then your
+If your repository was created by a classroom service then your
 instructor may have set up a feedback branch for you, and you can use that as
 your starting point. To see if this is the case, run:
 

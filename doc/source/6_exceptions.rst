@@ -174,7 +174,7 @@ of exception built in. For example, if we attempt to access the number
 The exception type provides some indication as
 to what has gone wrong, and there is usually also an error message and
 sometimes more data to help diagnose the problem. The :external:doc:`full list
-of built-in exceptions <library/exceptions>` is available in the
+of built-in exceptions <builtins/exceptions>` is available in the
 Python documentation. Python developers can define their own
 exceptions so there are many more defined in third-party packages. We will
 turn to the subject of defining new exception classes in

@@ -55,7 +55,7 @@ purposes. Instead, install Python from Homebrew:
 
 .. code-block:: console
 
-    $ brew install python3.12
+    $ brew install python@3.13
 
 
 Linux
@@ -85,8 +85,8 @@ Git
 Git is a revision control system. Revision control systems enable you to keep
 track of the different versions of a piece of code as you work on them, and to
 have these versions on different computers as well as backed up in the cloud. We
-will use Git and GitHub classroom as a mechanism for distributing, working with
-and submitting code exercises.
+will use Git and GitHub, together with a classroom service such as Classroom 50,
+as a mechanism for distributing, working with and submitting code exercises.
 
 Windows
 .......
@@ -117,7 +117,7 @@ On Fedora:
 
 .. code-block::
 
-    $ sudo apt install git-all
+    $ sudo dnf install git-all
 
 
 Visual Studio Code

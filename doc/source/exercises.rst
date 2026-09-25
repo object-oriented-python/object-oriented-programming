@@ -10,10 +10,11 @@ Chapter. For further information on using GitHub template repositories, see
 :numref:`Appendix %s <git>`.
 
 If you are using this book as a part of a course where the instructor provides
-GitHub Classroom assignments for the exercises, you should not use the links
-here but rather use the Classroom links provided by your instructor. Students
-taking Principles of Programming at Imperial College London will find their
-list of GitHub Classroom links on Blackboard.
+assignments for the exercises (for example through Classroom 50),
+you should not use the links here but rather use the assignment
+links provided by your instructor. Students taking Principles of Programming at
+Imperial College London will find their assignments on `Classroom 50
+<https://classroom50.org/Imperial-MATH50009>`__.
 
 
 * `Chapter 2 exercises <https://github.com/object-oriented-python/exercises-chapter-2>`__
