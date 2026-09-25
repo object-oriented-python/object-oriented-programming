@@ -36,7 +36,7 @@ extensions = [
     'IPython.sphinxext.ipython_console_highlighting',
     'IPython.sphinxext.ipython_directive',
     'sphinx.ext.graphviz',
-    'sphinxcontrib.blockdiag',
+    #'sphinxcontrib.blockdiag',
     'sphinx.ext.napoleon',
     'sphinxcontrib.details.directive',
     'sphinx_reredirects'

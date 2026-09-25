@@ -895,8 +895,5 @@ branch.
 .. [#swcarpentry] `http://swcarpentry.github.io/git-novice
     <http://swcarpentry.github.io/git-novice/>`_ 
 
-.. [#swcarpentry_editor] `https://swcarpentry.github.io/git-novice/02-setup/
-    <https://swcarpentry.github.io/git-novice/02-setup/>`
-
-.. [#Chrome] To use these installation instructions for Chrome OS you first
-    need to :ref:`set up Linux on your Chromebook <linux-chrome>`. 
+.. [#swcarpentry_editor] `https://swcarpentry.github.io/git-novice/02-setup.html
+    <https://swcarpentry.github.io/git-novice/02-setup.html>`
