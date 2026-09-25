@@ -671,7 +671,7 @@ Creating new exception classes
 
 Python provides a wide range of :term:`exceptions <exception>`, and usually the
 right thing to do when writing code that might need to raise an exception is to
-peruse the :external:doc:`list of built-in exceptions <library/exceptions>` and
+peruse the :external:doc:`list of built-in exceptions <builtins/exceptions>` and
 choose the one which best matches the circumstances. However, sometimes there
 is no good match, or it might be that the programmer wants user code to be able
 to catch exactly this exception without the risk that some other operation will
