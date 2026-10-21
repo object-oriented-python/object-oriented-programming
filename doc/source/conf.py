@@ -70,7 +70,7 @@ mathjax_path = \
 # built documents.
 #
 # The short X.Y version.
-version = '2023.0'
+version = '2026.0'
 # The full version, including alpha/beta/rc tags.
 release = ''
 
@@ -260,6 +260,7 @@ if tags.has("book"):
 \edition{2021}
 \edition{2023}
 \edition{2023}
+\edition{2026}
 \makeatletter
    \fancypagestyle{normal}{
     \fancyhf{}
